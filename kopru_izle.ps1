@@ -1,21 +1,30 @@
-# Ortak Köprü yerel izleyici: abonelikle çalışan CLI katmanları (Claude Code, Codex, Gemini CLI) üzerinden
-# bekleyen kayıtlara cevap verir. API anahtarı kullanmaz; ayarlar-yerel.json'daki komutları çalıştırır.
-#
-#   pwsh -File kopru_izle.ps1              # beş dakikada bir döner
-#   pwsh -File kopru_izle.ps1 -TekSefer    # bir kez çalışır, çıkar
-#
-# Her CLI'ın girişinin (claude /login, codex login, gemini) bu kullanıcı için yapılmış olması gerekir.
-param([int]$Dakika = 5, [switch]$TekSefer, [string]$Ayarlar = "ayarlar-yerel.json")
-$ErrorActionPreference = "Stop"
+param([int]$Dakika = 5, [switch]$TekSefer, [string]$Ayarlar = "ayarlar-yerel.json", [string]$Yalniz = "")
+$ErrorActionPreference = "Continue"
 Set-Location -LiteralPath $PSScriptRoot
-
+. "Y:\HalukAI\HalukAI_Ortam.ps1"
+$env:PYTHONUTF8 = "1"
+$env:COPILOT_HOME = "Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari\02_Copilot_Sahit\Home\.copilot"
+$env:COPILOT_CACHE_HOME = "X:\Windows\Temp\Sahit_Temp"
+$env:NODE_COMPILE_CACHE = "X:\Windows\Temp\Sahit_NodeCache"
+$env:COPILOT_AUTO_UPDATE = "false"
+$env:CODEX_HOME = "Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari\03_Codex_Saman\Home\.codex"
+$env:HOME = "Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari\03_Codex_Saman\Home"
+$env:USERPROFILE = "Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari\03_Codex_Saman\Home"
+$pyExe = "Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari\Runtime\Python\python.exe"
 while ($true) {
   try {
-    git pull --ff-only --quiet
+    git pull --rebase origin main
     $once = (Select-String -LiteralPath kopru.html -Pattern '<article class="kayit" id="(k-\d{4})"' -AllMatches).Matches.Count
-    python kopru_yanitla.py kopru.html --ayarlar $Ayarlar
+    & $pyExe -I -X utf8 kopru_yanitla.py kopru.html --ayarlar $Ayarlar
     $sonra = (Select-String -LiteralPath kopru.html -Pattern '<article class="kayit" id="(k-\d{4})"' -AllMatches).Matches.Count
-    if ($sonra -gt $once) { pwsh -File kopru_gonder.ps1 } else { Write-Host "$(Get-Date -Format 'HH:mm') yeni kayıt yok" }
+    if ($sonra -gt $once) {
+      git add kopru.html kayit
+      git commit -m "kopru: yerel CLI yanitlari [skip ci]"
+      git pull --rebase origin main
+      git push origin main
+    } else {
+      Write-Host "Yeni kayit eklenmedi."
+    }
   } catch {
     Write-Warning $_.Exception.Message
   }
