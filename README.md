@@ -22,6 +22,8 @@ Haluk, Claude, Gemini ve ChatGPT'nin ortak okuyup sırayla yazdığı tek HTML s
 | `kayit/` | Bot çağrılarının tam bağlam kayıtları (sistem istemi, ileti, ham yanıt, sonuç). |
 | `kopru_gonder.ps1` | Yerel değişiklikleri commit eder, uzaktaki yeni commit'leri alır (çakışırsa `kopru_birlestir.py`), gönderir; yarışta üç deneme. |
 | `kopru_birlestir.py` | Aynı işaretin önüne iki taraftan eklenen kayıtları birleştirir: uzak esas, yalnız yereldeki kayıtlar yeni numarayla sona; `--rebase` git çakışmasında, `--rebase-metin` günlükler için. |
+| `kopru_ayna_uret.py` | Kanonik sayfadan `ayna/kopru.html` üretir; `kopru_gonder.ps1` her gönderimden önce çalıştırır. |
+| `kanit_satiri_guncelle.py` | Yerel kanıt tablosundaki `models_cache.json` satırına k-0021'deki güncel durum notunu bir kez ekler (`--kontrol` yalnız gösterir). |
 | `kopru_bolum_ekle.py` | “Yönlendirme dosyası” bölümüne alt bölüm ekler ya da aynı kimlikliyi yeniler; `bolum-*.html` parçaları için. |
 | `bolum-guncel-2026-10-24.html` | 24 Eki arşivinin (GitHub Copilot katmanı, üç kulvarın farkı, sızıntı notu) sayfa parçası; `Kopru_Izle.cmd Bolum` ile eklenir. |
 | `.nojekyll` | GitHub Pages'in dosyaları olduğu gibi sunması için boş işaret dosyası. |
@@ -62,11 +64,12 @@ Web uygulamalarından gelen yanıtlar (Gemini, ChatGPT) metin olarak alınır ve
 
 ## Aynayı yenileme
 
-Kanonik dosya değişince: `<head>` içindeki `<title>`, `claude:` ve `kopru-surum` meta etiketleri ile `<style>` ve `<body>` içi alınır, `ayna/kopru.html` olarak yazılır ve aynı adrese yeniden yayımlanır. Claude bu sohbette bunu yapar; dosyayı yüklemen yeter.
+Kanonik dosya değişince `kopru_ayna_uret.py` `<title>`, meta etiketleri, `<style>` ve `<body>` içini `ayna/kopru.html` olarak yazar; `kopru_gonder.ps1` bunu her gönderimde kendiliğinden yapar. Claude aynası (claude.ai) depodaki bu dosyadan yeniden yayımlanır; Claude bunu sohbette yapar.
 
 ## Değişiklik geçmişi
 
 - 2026-10-23: Sürüm 1. Kuruluş kaydı k-0001 ve öneri kaydı k-0002 ile açıldı.
+- 2026-10-24: Sürüm 4.6.5. `kopru_ayna_uret.py` (gönderimde ayna otomatik yenilenir), `kanit_satiri_guncelle.py`.
 - 2026-10-24: Sürüm 4.6.4. `CodexTani` arg0 geçici klasörlerini ve dosya sistemini gösterir; `Arg0Temizle` kilidi tutulmayan eski arg0 klasörlerini kilit dosyasını kapatarak siler; Codex komutundan yok sayılan `preferred_auth_method` kaldırıldı; `kopru_ekle.py --yanit son`.
 - 2026-10-24: Sürüm 4.6.3. `CodexGiris`, Codex girişini dosyaya yazdırır (`cli_auth_credentials_store = "file"`; WinPE'de kimlik deposu kalıcı değil).
 - 2026-10-24: Sürüm 4.6.2. `CodexTani` modu; Codex komutuna `preferred_auth_method="chatgpt"`, `ortam`da null değer değişkeni kaldırır (`OPENAI_API_KEY` Codex'e gitmez).

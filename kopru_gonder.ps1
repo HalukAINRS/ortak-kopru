@@ -32,6 +32,7 @@ function Son-Kayit {
 # 1. Denetim ve yerel commit
 & $pyExe @pyArgs -I -X utf8 kopru_ekle.py kopru.html --kontrol
 if ($LASTEXITCODE -ne 0) { Write-Error "Denetim geçmedi; gönderilmedi."; exit 1 }
+& $pyExe @pyArgs -I -X utf8 kopru_ayna_uret.py kopru.html ayna/kopru.html   # ayna kanonik dosyanın gerisinde kalmasın
 git add -A -- . ":!yanit*.json" ":!istem*.txt"
 if (git status --porcelain) {
   $ileti = "köprü: $(Son-Kayit)" + $(if ($Bot) { " [skip ci]" } else { "" })
