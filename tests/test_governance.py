@@ -429,6 +429,22 @@ class RunLedgerTests(unittest.TestCase):
         self.assertEqual("xhigh", details["reasoning_requested"])
         self.assertEqual("observed-fixture-model", details["model_observed"])
 
+        redirect = kopru_yanitla.urllib.error.HTTPError(
+            "https://api.example.test/v1", 302, "redirect", {"Location": "https://other.example.test/"}, BytesIO(b"")
+        )
+        with mock.patch.object(kopru_yanitla.urllib.request, "build_opener") as build_opener:
+            build_opener.return_value.open.side_effect = redirect
+            with self.assertRaises(kopru_yanitla.ProviderHTTPError) as caught:
+                kopru_yanitla.http_json(
+                    "https://api.example.test/v1", {}, {"Authorization": "******"},
+                    safe_errors=True, on_request=lambda _: None,
+                )
+        self.assertEqual(302, caught.exception.status_code)
+        handler = build_opener.call_args.args[0]
+        self.assertIsInstance(handler, kopru_yanitla._NoRedirectHandler)
+        self.assertIsNone(handler.redirect_request(None, None, 302, "redirect", {}, "https://other.example.test/"))
+        build_opener.return_value.open.assert_called_once()
+
         with mock.patch.object(kopru_yanitla.urllib.request, "urlopen") as urlopen:
             with self.assertRaises(OSError):
                 kopru_yanitla.http_json(
