@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0     # birleştirme için geçmiş gerekir
 
       - uses: actions/setup-python@v5
         with:
@@ -59,6 +59,23 @@ jobs:
           else
             son=$(grep -o '<article class="kayit" id="k-[0-9]\{4\}"' kopru.html | tail -1 | grep -o 'k-[0-9]\{4\}')
             git commit -m "köprü: bot yanıtları, son $son [skip ci]"
-            git pull --rebase origin main
-            git push
+            # Bu arada başka gönderim olduysa: uzak esas, yalnız bizim kayıtlarımız yeni numarayla eklenir (kopru_birlestir.py).
+            for deneme in 1 2 3; do
+              git fetch -q origin main
+              if ! git rebase origin/main; then
+                while cakisan=$(git diff --name-only --diff-filter=U) && [ -n "$cakisan" ]; do
+                  for f in $cakisan; do
+                    case "$f" in
+                      kopru.html)   python kopru_birlestir.py --rebase kopru.html ;;
+                      kayit/*.log)  python kopru_birlestir.py --rebase-metin "$f" ;;
+                      *)            git checkout --theirs -- "$f" ;;
+                    esac
+                    git add -- "$f"
+                  done
+                  GIT_EDITOR=true git rebase --continue || true
+                done
+              fi
+              git push origin HEAD:main && break
+              echo "Gönderim reddedildi, yeniden deneniyor ($deneme/3)"
+            done
           fi

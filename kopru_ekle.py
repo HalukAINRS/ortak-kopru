@@ -80,6 +80,9 @@ def dis_yukleme_kontrol(belge):
 
 
 def main():
+    for akis in (sys.stdout, sys.stderr):  # Windows konsolunda Türkçe karakterler için
+        if hasattr(akis, "reconfigure"):
+            akis.reconfigure(encoding="utf-8", errors="replace")
     p = argparse.ArgumentParser(description="Ortak Köprü'ye kayıt ekler.")
     p.add_argument("dosya")
     p.add_argument("--kimden")
@@ -92,6 +95,7 @@ def main():
     p.add_argument("--durum", default=None, choices=DURUMLAR)
     p.add_argument("--kontrol", action="store_true", help="yalnız denetle, yazma")
     p.add_argument("--json", dest="json_dosya", help="alanları JSON dosyasından al: kimden, kime, konu, govde, dayanak, yanit, durum")
+    p.add_argument("--zaman", default=None, help="kaydın zamanı, ISO 8601 (yalnız birleştirme taşır; boşsa şimdi)")
     a = p.parse_args()
     if a.json_dosya:
         import json as _json
@@ -102,7 +106,7 @@ def main():
             sys.exit("HATA: JSON dosyasında bir nesne bulunamadı.")
         veri = _json.loads(ham[i:j + 1])
         # Komut satırında açıkça verilen alan JSON'dakini ezer; izleyici betikleri imzayı böyle zorlar.
-        for alan in ("kimden", "kime", "konu", "govde", "dayanak", "yanit", "durum"):
+        for alan in ("kimden", "kime", "konu", "govde", "dayanak", "yanit", "durum", "zaman"):
             if getattr(a, alan) in (None, "") and veri.get(alan) not in (None, ""):
                 setattr(a, alan, str(veri[alan]))
     if a.durum is None:
@@ -153,6 +157,13 @@ def main():
 
     kid = f"k-{son+1:04d}"
     simdi = datetime.datetime.now().astimezone().replace(microsecond=0)
+    if a.zaman:
+        try:
+            simdi = datetime.datetime.fromisoformat(a.zaman)
+            if simdi.tzinfo is None:
+                simdi = simdi.astimezone()
+        except ValueError:
+            sys.exit("HATA: --zaman ISO 8601 olmalı, ör. 2026-10-24T01:30:00+03:00")
     iso = simdi.isoformat()
     yanit_html = f'<a href="#{a.yanit}">{a.yanit}</a>' if a.yanit else "—"
     dayanak = html.escape(a.dayanak) if a.dayanak else "görüş (dayanak verilmedi)"

@@ -4,6 +4,7 @@
 #   Kopru_Izle.cmd Hazirlik        → her parçayı denetler, eksikleri ve ne yapılacağını yazar; model çağırmaz
 #   Kopru_Izle.cmd Tek             → bir tur çalışır, çıkar; "Tek Copilot" yalnız o katılımcı
 #   Kopru_Izle.cmd Ekle dosya.json → JSON'daki kaydı sayfaya ekler (ör. davet-copilot.json), sonra Gonder gerekir
+#   Kopru_Izle.cmd Bolum parca.html → “Yönlendirme dosyası”na alt bölüm ekler/yeniler (ör. bolum-guncel-2026-10-24.html), sonra Gonder
 #   Kopru_Izle.cmd Gonder          → sayfayı denetler, değişiklikleri commit edip GitHub'a gönderir
 #   Kopru_Izle.cmd VM              → Hacker sanal makinesini başlatır (Hacker_Baslat.ps1 -Mod Kontrol)
 #   Kopru_Izle.cmd CopilotKontrol  → Copilot CLI'a Şahit ortamında küçük bir deneme sorusu sorar (giriş sınaması)
@@ -11,7 +12,7 @@
 # Yollar Hacker_Baslat.ps1, Saman_Baslat.ps1, Sahit_Baslat.ps1 ve HalukAI_Ortam.ps1'dekilerle aynı; kurulum değişirse
 # burada ve ayarlar-yerel.json'da düzelt. Bu dosya makineye özgüdür; makineden bağımsız izleyici kopru_izle.ps1'dir.
 param(
-  [ValidateSet("Izle", "Hazirlik", "Tek", "Ekle", "Gonder", "VM", "CopilotKontrol")][string]$Mod = "Izle",
+  [ValidateSet("Izle", "Hazirlik", "Tek", "Ekle", "Bolum", "Gonder", "VM", "CopilotKontrol")][string]$Mod = "Izle",
   [string]$Secenek = "",
   [int]$Dakika = 5,
   [string]$Yalniz = ""
@@ -26,13 +27,15 @@ $PythonExe    = "$Katmanlar\Runtime\Python\python.exe"
 $PythonIndir  = "https://www.python.org/ftp/python/3.14.9/python-3.14.9-embed-amd64.zip"
 $SshExe       = "$Katmanlar\Runtime\Git-Portable-2.56.0.2\usr\bin\ssh.exe"
 $SshAnahtar   = "$Katmanlar\01_Claude_Code_Hacker\Home\.ssh\hacker_arm64_035"
+$SshBilinen   = "$Katmanlar\01_Claude_Code_Hacker\Home\.ssh\known_hosts"   # VM sunucu anahtarı burada sabit (Haluk, 24 Eki)
+$ClaudeVm     = "/home/hacker/bin/claude-arm64-035"                              # VM içindeki Claude Code sarmalayıcısı
 $HackerBaslat = "$Katmanlar\01_Claude_Code_Hacker\Hacker_Baslat.ps1"
 $CodexExe     = "$Katmanlar\03_Codex_Saman\npm_global\node_modules\@openai\codex\node_modules\@openai\codex-win32-x64\vendor\x86_64-pc-windows-msvc\bin\codex.exe"
 $SamanHome    = "$Katmanlar\03_Codex_Saman\Home"
 $CopilotExe   = "$Katmanlar\Runtime\Copilot-1.0.103-win-x64\copilot.exe"
 $SahitHome    = "$Katmanlar\02_Copilot_Sahit\Home"
 $DepoYolu     = "Y:/HalukAI/Ortak_Kopru/kopru"      # git safe.directory eğik çizgi ister
-$SshOrtak     = @("-p", "2222", "-i", $SshAnahtar, "-o", "BatchMode=yes", "-o", "UserKnownHostsFile=Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari\01_Claude_Code_Hacker\Home\.ssh\known_hosts",
+$SshOrtak     = @("-p", "2222", "-i", $SshAnahtar, "-o", "BatchMode=yes", "-o", "UserKnownHostsFile=$SshBilinen",
                   "-o", "StrictHostKeyChecking=yes", "-o", "LogLevel=ERROR", "-o", "ConnectTimeout=10", "hacker@127.0.0.1")
 
 # ---- Ortam ----
@@ -90,11 +93,21 @@ switch ($Mod) {
     Write-Host "Göndermek için: Kopru_Izle.cmd Gonder" -ForegroundColor Cyan
   }
 
+  "Bolum" {
+    $py = Bul-PyYol
+    if (-not $py) { Write-Error "Python yok (bkz. Hazirlik)."; return }
+    if (-not $Secenek -or -not (Test-Path -LiteralPath $Secenek)) { Write-Error "Parça dosyasını ver: Kopru_Izle.cmd Bolum bolum-guncel-2026-10-24.html"; return }
+    & $py -I -X utf8 kopru_bolum_ekle.py kopru.html $Secenek
+    if ($LASTEXITCODE -ne 0) { return }
+    & $py -I -X utf8 kopru_ekle.py kopru.html --kontrol
+    Write-Host "Göndermek için: Kopru_Izle.cmd Gonder (ayna da yenilenmeli; Claude bu sohbette yapar)" -ForegroundColor Cyan
+  }
+
   "CopilotKontrol" {
     if (-not (Test-Path -LiteralPath $CopilotExe)) { Write-Error "copilot.exe yok: $CopilotExe"; return }
     Sahit-Ortami
     Write-Host "Copilot CLI'a Şahit ortamında soruluyor (tek kısa çağrı)..." -ForegroundColor Cyan
-    $cevap = ("Yalniz OK yaz, baska hicbir sey yazma." | & $CopilotExe -s --no-color --no-auto-update --disable-client-telemetry --disable-builtin-mcps --no-custom-instructions --no-ask-user --allow-all-tools --deny-tool "shell,write" 2>&1 | Out-String).Trim()
+    $cevap = ("Yalniz OK yaz, baska hicbir sey yazma." | & $CopilotExe -s --no-color --no-auto-update --disable-client-telemetry --disable-builtin-mcps --no-custom-instructions --no-ask-user --sync-session off --allow-all-tools --deny-tool "shell,write" 2>&1 | Out-String).Trim()
     Write-Host "Çıkış kodu: $LASTEXITCODE" -ForegroundColor $(if ($LASTEXITCODE -eq 0) { "Green" } else { "Yellow" })
     Write-Host "Cevap: $cevap"
     if ($cevap -match "(?i)login|authenticat|token") { Write-Host "Giriş gerekiyor: Sahit_Baslat.ps1 ile Copilot'u aç, içinde /login yaz; sonra bu kontrolü yinele." -ForegroundColor Yellow }
@@ -139,9 +152,9 @@ switch ($Mod) {
 
     # 5. Hacker VM (Claude)
     if (Port-Acik 2222) {
-      $cl = (& $SshExe @SshOrtak "/home/hacker/bin/claude-arm64-035 --version" 2>&1 | Select-Object -Last 1)
+      $cl = (& $SshExe @SshOrtak "$ClaudeVm --version" 2>&1 | Select-Object -Last 1)
       if ($LASTEXITCODE -eq 0) { Ekle "Claude (Hacker VM)" "TAMAM" "ssh tamam · $cl" }
-      else { Ekle "Claude (Hacker VM)" "SORUN" "ssh bağlandı ama claude cevap vermedi: $cl" }
+      else { Ekle "Claude (Hacker VM)" "SORUN" "ssh/claude cevap vermedi: $cl (known_hosts yoksa: Hacker_Baslat.ps1 ile bir kez elle bağlanıp anahtarı kaydet)" }
     } else { Ekle "Claude (Hacker VM)" "KAPALI" "2222 kapalı → Kopru_Izle.cmd VM (QEMU açılır, 1-2 dk). VM kapalıyken Claude sessiz kalır." }
 
     # 6. Sayfa denetimi ve bekleyenler

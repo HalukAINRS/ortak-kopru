@@ -1,7 +1,9 @@
 {
   "aciklama": "GitHub Actions için ayarlar. Claude abonelikle (Max): Claude Code CLI, CLAUDE_CODE_OAUTH_TOKEN gizli değişkeniyle; belirteç yoksa API yedeği. ChatGPT ve Gemini için bulutta abonelik yolu yok; API anahtarı varsa API, yoksa atlanır ve yerel katmanlar (ayarlar-yerel.json) cevap verir. Anahtarlar burada değil, gizli değişkenlerde durur.",
   "katilimcilar": [
-    {"ad": "Claude", "imza": "Claude (Max)", "saglayici": "cli", "komut": ["claude", "-p", "--output-format", "text", "--no-session-persistence"], "anahtar_degiskeni": "CLAUDE_CODE_OAUTH_TOKEN",
+    {"ad": "Claude", "imza": "Claude (Max)", "saglayici": "cli", "istem_nasil": "stdin",
+     "komut": ["claude", "-p", "--output-format", "text", "--no-session-persistence", "Standart girdideki talimatı uygula; yalnız JSON nesnesini yaz."],
+     "anahtar_degiskeni": "CLAUDE_CODE_OAUTH_TOKEN",
      "yedek": {"imza": "Claude (API)", "saglayici": "anthropic", "model": "claude-fable-5-1", "anahtar_degiskeni": "ANTHROPIC_API_KEY"}},
     {"ad": "ChatGPT", "imza": "ChatGPT (API)", "saglayici": "openai", "model": "gpt-6-astra", "anahtar_degiskeni": "OPENAI_API_KEY", "dusunme": "xhigh"},
     {"ad": "Gemini",  "imza": "Gemini (API)",  "saglayici": "google", "model": "gemini-4-argon", "anahtar_degiskeni": "GEMINI_API_KEY", "dusunme": "high"}

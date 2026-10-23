@@ -1,9 +1,90 @@
 {
-  "aciklama": "Senin makinen için ayarlar: üç CLI katmanı abonelikle çalışır (Claude Max -> Claude Code [Hacker], GitHub Copilot -> Copilot CLI [Şahit], ChatGPT Pro -> Codex [Şaman]).",
-  "katilimcilar": [
-    {"ad": "Claude",  "imza": "Claude (Hacker)",  "saglayici": "cli", "istem_nasil": "stdin", "komut": ["Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\Runtime\\Git-Portable-2.56.0.2\\usr\\bin\\ssh.exe", "-p", "2222", "-i", "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\01_Claude_Code_Hacker\\Home\\.ssh\\hacker_arm64_035", "-o", "BatchMode=yes", "-o", "UserKnownHostsFile=Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\01_Claude_Code_Hacker\\Home\\.ssh\\known_hosts", "-o", "StrictHostKeyChecking=yes", "hacker@127.0.0.1", "/home/hacker/bin/claude-arm64-035", "-p", "--output-format", "text", "--no-session-persistence"]},
-    {"ad": "Copilot", "imza": "Copilot (Şahit)",  "saglayici": "cli", "istem_nasil": "stdin", "komut": ["Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\Runtime\\Copilot-1.0.103-win-x64\\copilot.exe", "-s", "--no-color", "--no-auto-update", "--disable-client-telemetry", "--disable-builtin-mcps", "--no-custom-instructions", "--no-ask-user", "--allow-all-tools", "--deny-tool", "shell,write"]},
-    {"ad": "ChatGPT", "imza": "ChatGPT (Şaman)",  "saglayici": "cli", "istem_nasil": "stdin", "komut": ["Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\03_Codex_Saman\\npm_global\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\bin\\codex.exe", "exec", "-"]}
-  ],
-  "en_cok_cikti_token": 16000
+ "aciklama": "Senin makinen için ayarlar: üçü de abonelikle çalışan CLI'lar üzerinden (Claude Max → VM'deki Claude Code [Hacker], ChatGPT Pro → Codex [Şaman], GitHub Copilot → Copilot CLI [Şahit]). API anahtarı yok. İstem üçüne de standart girdiden gider (Windows komut satırı sınırına takılmaz, model dosya okumak zorunda kalmaz). Claude: ssh ile VM'deki sarmalayıcı (/home/hacker/bin/claude-arm64-035), sunucu anahtarı known_hosts'ta sabit (StrictHostKeyChecking=yes; Haluk'un 24 Eki düzeltmesi), araçlar kapalı (--tools \"\"). 'ortam' alanı yalnız o komuta verilir: her CLI kendi katmanının Home'unu görür. Copilot'ta --sync-session off: köprü çağrıları GitHub'ın oturum geçmişine eşitlenmez. Gemini yerelde yok; bulutta API anahtarı varsa ayarlar.json üzerinden, yoksa web yanıtı kopru_ekle.py --json ile eklenir. Yollar Hacker_Baslat.ps1, Saman_Baslat.ps1, Sahit_Baslat.ps1 ve HalukAI_Ortam.ps1'den; kurulum değişirse burada ve kopru_yerel.ps1'in başında düzelt.",
+ "katilimcilar": [
+  {
+   "ad": "Claude",
+   "imza": "Claude (Hacker)",
+   "saglayici": "cli",
+   "istem_nasil": "stdin",
+   "zaman_asimi": 1800,
+   "komut": [
+    "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\Runtime\\Git-Portable-2.56.0.2\\usr\\bin\\ssh.exe",
+    "-p",
+    "2222",
+    "-i",
+    "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\01_Claude_Code_Hacker\\Home\\.ssh\\hacker_arm64_035",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "UserKnownHostsFile=Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\01_Claude_Code_Hacker\\Home\\.ssh\\known_hosts",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "LogLevel=ERROR",
+    "-o",
+    "ConnectTimeout=15",
+    "hacker@127.0.0.1",
+    "/home/hacker/bin/claude-arm64-035 -p --output-format text --no-session-persistence --tools \"\""
+   ]
+  },
+  {
+   "ad": "ChatGPT",
+   "imza": "ChatGPT (Şaman)",
+   "saglayici": "cli",
+   "istem_nasil": "stdin",
+   "zaman_asimi": 1800,
+   "komut": [
+    "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\03_Codex_Saman\\npm_global\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\bin\\codex.exe",
+    "exec",
+    "--skip-git-repo-check",
+    "-c",
+    "model_reasoning_effort=\"xhigh\"",
+    "-"
+   ],
+   "ortam": {
+    "HOME": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\03_Codex_Saman\\Home",
+    "USERPROFILE": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\03_Codex_Saman\\Home",
+    "CODEX_HOME": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\03_Codex_Saman\\Home\\.codex",
+    "APPDATA": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\03_Codex_Saman\\Home\\AppData\\Roaming",
+    "LOCALAPPDATA": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\03_Codex_Saman\\Home\\AppData\\Local",
+    "TEMP": "X:\\Windows\\Temp\\Saman_Temp",
+    "TMP": "X:\\Windows\\Temp\\Saman_Temp"
+   }
+  },
+  {
+   "ad": "Copilot",
+   "imza": "Copilot (Şahit)",
+   "saglayici": "cli",
+   "istem_nasil": "stdin",
+   "zaman_asimi": 1800,
+   "komut": [
+    "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\Runtime\\Copilot-1.0.103-win-x64\\copilot.exe",
+    "-s",
+    "--no-color",
+    "--no-auto-update",
+    "--disable-client-telemetry",
+    "--disable-builtin-mcps",
+    "--no-custom-instructions",
+    "--no-ask-user",
+    "--reasoning-effort",
+    "xhigh",
+    "--sync-session",
+    "off",
+    "--allow-all-tools",
+    "--deny-tool",
+    "shell,write"
+   ],
+   "ortam": {
+    "HOME": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\02_Copilot_Sahit\\Home",
+    "USERPROFILE": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\02_Copilot_Sahit\\Home",
+    "COPILOT_HOME": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\02_Copilot_Sahit\\Home\\.copilot",
+    "COPILOT_CACHE_HOME": "X:\\Windows\\Temp\\Sahit_Temp",
+    "NODE_COMPILE_CACHE": "X:\\Windows\\Temp\\Sahit_NodeCache",
+    "COPILOT_AUTO_UPDATE": "false",
+    "TEMP": "X:\\Windows\\Temp\\Sahit_Temp",
+    "TMP": "X:\\Windows\\Temp\\Sahit_Temp"
+   }
+  }
+ ],
+ "en_cok_cikti_token": 16000
 }

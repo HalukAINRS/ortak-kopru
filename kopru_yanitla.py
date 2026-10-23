@@ -7,6 +7,11 @@ Modlar:
   python3 kopru_yanitla.py kopru.html --kuru                  # API çağırmadan istemleri kur ve kayit/ altına yaz
   python3 kopru_yanitla.py kopru.html --bekleyenler Gemini    # Gemini'ye düşen açık kayıtları JSON listele
   python3 kopru_yanitla.py kopru.html --istem Gemini          # Gemini için istem metnini yaz (CLI katmanları kullanır)
+  python3 kopru_yanitla.py kopru.html --ayarlar ayarlar-yerel.json --yalniz Claude   # yalnız bir katılımcıyı çalıştır
+
+Katılımcı ayarları: "saglayici" api adı (anthropic, openai, google) ya da "cli"; cli için "komut" listesi, "istem_nasil"
+(dosya | stdin | arg), isteğe bağlı "ortam" (yalnız o komuta verilecek ortam değişkenleri) ve "zaman_asimi" (saniye).
+Komut bu makinede yoksa katılımcı sessizce atlanır; atlanan her çalıştırma kayit/atlandi.log'a tek satır düşer.
 
 Bekleyen kaydın tanımı: durumu açık, "kime" alanında katılımcının adı geçen, katılımcının kendi yazmadığı ve
 katılımcının daha sonra yazdığı bir kaydın "yanıt" alanının kapsamadığı kayıt. Bir yanıt kaydı, yanıt alanındaki
@@ -14,7 +19,7 @@ numaraya kadar olan bütün bekleyenleri kapsar; bu yüzden her çalıştırmada
 
 Anahtarlar yalnız ortam değişkeninden okunur ve hiçbir yere yazılmaz.
 """
-import argparse, datetime, json, os, re, subprocess, sys, tempfile, urllib.error, urllib.request
+import argparse, datetime, json, os, re, shutil, subprocess, sys, tempfile, urllib.error, urllib.request
 
 BURASI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, BURASI)
@@ -115,13 +120,42 @@ def http_json(url, veri, basliklar, zaman_asimi=180):
         raise RuntimeError(f"HTTP {e.code}: {govde}") from None
 
 
-def cli_cagir(komut, sistem, kullanici, istem_nasil="arg", zaman_asimi=1800):
-    """Abonelikle çalışan bir CLI'ı (claude -p, codex exec, gemini -p) etkileşimsiz çalıştırır; standart çıktı yanıttır."""
+class KomutYok(Exception):
+    """CLI komutu bu makinede yok (kurulmamış ya da yol yanlış). Sessiz atlanır, kayıt dosyası yazılmaz."""
+
+
+def komut_var_mi(komut):
+    """Komutun ilk ögesi tam yolsa dosya var mı, değilse PATH'te bulunuyor mu bakar."""
+    exe = komut[0]
+    if os.sep in exe or (os.altsep and os.altsep in exe) or (len(exe) > 1 and exe[1] == ":"):
+        return os.path.isfile(exe)
+    return shutil.which(exe) is not None
+
+
+def cli_cagir(komut, sistem, kullanici, istem_nasil="dosya", ad="bot", zaman_asimi=1800, ortam=None):
+    """Abonelikle çalışan bir CLI'ı (claude -p, codex exec, gemini -p) etkileşimsiz çalıştırır; standart çıktı yanıttır.
+    istem_nasil: "dosya" → istem istem-<ad>.txt dosyasına yazılır, komuttaki {dosya} yer tutucusu adıyla değiştirilir
+                 (Windows komut satırı sınırını aşmaz; CLI dosyayı kendi okur);
+                 "stdin" → istem standart girdiden verilir (ssh üzerinden uzak makinedeki CLI için de);
+                 "arg"   → istem son argüman olur (yalnız kısa istemler, Linux/macOS).
+    ortam: yalnız bu komut için eklenecek ortam değişkenleri (ör. CLI'ın kendi HOME'u); süreç ortamının üstüne yazılır.
+    Çıktı her zaman UTF-8 okunur (Windows'ta konsol kod sayfasına bağlı kalmaz)."""
     istem = sistem + "\n\n---\n\n" + kullanici
-    if istem_nasil == "stdin":
-        sonuc = subprocess.run(komut, input=istem, capture_output=True, text=True, timeout=zaman_asimi, cwd=BURASI)
+    komut = list(komut)
+    if not komut_var_mi(komut):
+        raise KomutYok(komut[0])
+    cevre = dict(os.environ)
+    cevre.update({k: str(v) for k, v in (ortam or {}).items()})
+    secenek = dict(capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=zaman_asimi, cwd=BURASI, env=cevre)
+    if istem_nasil == "dosya":
+        dosya = f"istem-{re.sub(r'[^A-Za-z0-9]+', '-', ad).strip('-')}.txt"
+        open(os.path.join(BURASI, dosya), "w", encoding="utf-8").write(istem)
+        komut = [c.replace("{dosya}", dosya) for c in komut]
+        sonuc = subprocess.run(komut, **secenek)
+    elif istem_nasil == "stdin":
+        sonuc = subprocess.run(komut, input=istem, **secenek)
     else:
-        sonuc = subprocess.run(list(komut) + [istem], capture_output=True, text=True, timeout=zaman_asimi, cwd=BURASI)
+        sonuc = subprocess.run(komut + [istem], **secenek)
     if sonuc.returncode != 0:
         raise RuntimeError(f"CLI çıkış kodu {sonuc.returncode}: {(sonuc.stderr or sonuc.stdout)[-1500:]}")
     return sonuc.stdout, {"cli": " ".join(komut), "stderr_son": (sonuc.stderr or "")[-300:]}
@@ -185,12 +219,21 @@ def kayit_yaz(ad, model, saglayici, sistem, kullanici, ham, sonuc):
     return yol
 
 
+def atlandi_yaz(ad, hatalar):
+    """Yol bulunamayınca her çalıştırmada koca bir kayıt dosyası yerine kayit/atlandi.log'a tek satır düşer."""
+    os.makedirs(os.path.join(BURASI, "kayit"), exist_ok=True)
+    zaman = datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%d %H:%M:%SZ")
+    with open(os.path.join(BURASI, "kayit", "atlandi.log"), "a", encoding="utf-8") as fh:
+        fh.write(f"{zaman} {ad}: {' | '.join(hatalar)}\n")
+
+
 def ekle(yol, veri):
     with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8", dir=BURASI) as fh:
         json.dump(veri, fh, ensure_ascii=False)
         gecici = fh.name
     try:
-        sonuc = subprocess.run([sys.executable, "-I", os.path.join(BURASI, "kopru_ekle.py"), yol, "--json", gecici], capture_output=True, text=True)
+        sonuc = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(BURASI, "kopru_ekle.py"), yol, "--json", gecici],
+                               capture_output=True, text=True, encoding="utf-8", errors="replace")
     finally:
         os.unlink(gecici)
     if sonuc.returncode != 0:
@@ -199,12 +242,16 @@ def ekle(yol, veri):
 
 
 def main():
+    for akis in (sys.stdout, sys.stderr):  # Windows konsolunda Türkçe karakterler için
+        if hasattr(akis, "reconfigure"):
+            akis.reconfigure(encoding="utf-8", errors="replace")
     p = argparse.ArgumentParser()
     p.add_argument("dosya")
     p.add_argument("--ayarlar", default=os.path.join(BURASI, "ayarlar.json"))
     p.add_argument("--kuru", action="store_true", help="API çağırma; istemleri kur ve kayit/ altına yaz")
     p.add_argument("--bekleyenler", metavar="AD", help="yalnız listele")
     p.add_argument("--istem", metavar="AD", help="istem metnini yaz ve çık")
+    p.add_argument("--yalniz", metavar="AD", help="ayarlardaki katılımcılardan yalnız bunu çalıştır")
     a = p.parse_args()
 
     kayitlar = kayitlari_oku(a.dosya)
@@ -225,6 +272,8 @@ def main():
     eklenenler = []
     for kat in ayar["katilimcilar"]:
         ad = kat["ad"]
+        if a.yalniz and ad != a.yalniz:
+            continue
         bek = bekleyenler(kayitlar, ad)
         if not bek:
             print(f"{ad}: bekleyen yok")
@@ -245,16 +294,19 @@ def main():
                 continue
             try:
                 if yol_ayar["saglayici"] == "cli":
-                    ham, kullanim = cli_cagir(yol_ayar["komut"], sistem, kullanici, yol_ayar.get("istem_nasil", "arg"))
+                    ham, kullanim = cli_cagir(yol_ayar["komut"], sistem, kullanici, yol_ayar.get("istem_nasil", "dosya"), ad,
+                                              int(yol_ayar.get("zaman_asimi", 1800)), yol_ayar.get("ortam"))
                 else:
                     ham, kullanim = cagir(yol_ayar["saglayici"], yol_ayar["model"], anahtar, sistem, kullanici, en_cok, yol_ayar.get("dusunme"))
                 kullanilan = yol_ayar
                 break
+            except KomutYok as e:
+                hatalar.append(f"{yol_ayar['saglayici']}: komut yok: {e}")
             except Exception as e:  # noqa: BLE001
                 hatalar.append(f"{yol_ayar['saglayici']}: {str(e)[:300]}")
         if kullanilan is None:
-            yol = kayit_yaz(ad, kat.get("model", "-"), kat["saglayici"], sistem, kullanici, "", "ATLANDI: " + " | ".join(hatalar))
-            print(f"{ad}: atlandı ({' | '.join(hatalar)[:200]})")
+            atlandi_yaz(ad, hatalar)
+            print(f"{ad}: atlandı ({' | '.join(hatalar)[:200]}) → kayit/atlandi.log")
             continue
         try:
             veri = json_ayikla(ham)
