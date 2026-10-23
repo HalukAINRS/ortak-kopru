@@ -115,25 +115,43 @@ def http_json(url, veri, basliklar, zaman_asimi=180):
         raise RuntimeError(f"HTTP {e.code}: {govde}") from None
 
 
-def cagir(saglayici, model, anahtar, sistem, kullanici, en_cok_token):
-    if saglayici == "anthropic":
-        y = http_json("https://api.anthropic.com/v1/messages",
-                      {"model": model, "max_tokens": en_cok_token, "system": sistem, "messages": [{"role": "user", "content": kullanici}]},
-                      {"x-api-key": anahtar, "anthropic-version": "2023-06-01"})
-        return "".join(p.get("text", "") for p in y.get("content", []) if p.get("type") == "text"), y.get("usage")
-    if saglayici == "openai":
-        y = http_json("https://api.openai.com/v1/chat/completions",
-                      {"model": model, "messages": [{"role": "system", "content": sistem}, {"role": "user", "content": kullanici}], "max_completion_tokens": en_cok_token},
-                      {"Authorization": f"Bearer {anahtar}"})
-        return y["choices"][0]["message"]["content"], y.get("usage")
-    if saglayici == "google":
-        y = http_json(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
-                      {"system_instruction": {"parts": [{"text": sistem}]}, "contents": [{"role": "user", "parts": [{"text": kullanici}]}],
-                       "generationConfig": {"maxOutputTokens": en_cok_token}},
-                      {"x-goog-api-key": anahtar})
-        parcalar = y["candidates"][0]["content"]["parts"]
-        return "".join(p.get("text", "") for p in parcalar), y.get("usageMetadata")
-    raise ValueError(f"bilinmeyen sağlayıcı: {saglayici}")
+def cagir(saglayici, model, anahtar, sistem, kullanici, en_cok_token, caba=None):
+    """Üretici API'sini çağırır. Derin düşünme ayarı (caba) 400 verirse bir alt düzeyle, sonra ayarsız yeniden dener."""
+    denemeler = [caba, "high", None] if caba and caba != "high" else ([caba, None] if caba else [None])
+    son_hata = None
+    for c in denemeler:
+        try:
+            if saglayici == "anthropic":
+                govde = {"model": model, "max_tokens": en_cok_token, "system": sistem, "messages": [{"role": "user", "content": kullanici}]}
+                y = http_json("https://api.anthropic.com/v1/messages", govde, {"x-api-key": anahtar, "anthropic-version": "2023-06-01"})
+                return "".join(p.get("text", "") for p in y.get("content", []) if p.get("type") == "text"), y.get("usage")
+            if saglayici == "openai":
+                govde = {"model": model, "instructions": sistem, "input": kullanici, "max_output_tokens": en_cok_token}
+                if c:
+                    govde["reasoning"] = {"effort": c}
+                y = http_json("https://api.openai.com/v1/responses", govde, {"Authorization": f"Bearer {anahtar}"})
+                metin = []
+                for oge in y.get("output", []):
+                    if oge.get("type") == "message":
+                        for par in oge.get("content", []):
+                            if par.get("type") == "output_text":
+                                metin.append(par.get("text", ""))
+                return "".join(metin), y.get("usage")
+            if saglayici == "google":
+                uretim = {"maxOutputTokens": en_cok_token}
+                if c:
+                    uretim["thinkingConfig"] = {"thinkingLevel": c}
+                govde = {"system_instruction": {"parts": [{"text": sistem}]}, "contents": [{"role": "user", "parts": [{"text": kullanici}]}], "generationConfig": uretim}
+                y = http_json(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent", govde, {"x-goog-api-key": anahtar})
+                parcalar = y["candidates"][0]["content"]["parts"]
+                return "".join(p.get("text", "") for p in parcalar if not p.get("thought")), y.get("usageMetadata")
+            raise ValueError(f"bilinmeyen sağlayıcı: {saglayici}")
+        except RuntimeError as e:
+            son_hata = e
+            if c is None or not str(e).startswith("HTTP 400"):
+                raise
+            print(f"  {saglayici}: düşünme ayarı '{c}' kabul edilmedi, bir alt düzey deneniyor")
+    raise son_hata
 
 
 # ---------- yanıt işleme ----------
@@ -209,7 +227,7 @@ def main():
             print(f"{ad}: {len(bek)} bekleyen; istem {yol} dosyasına yazıldı")
             continue
         try:
-            ham, kullanim = cagir(kat["saglayici"], kat["model"], anahtar, sistem, kullanici, en_cok)
+            ham, kullanim = cagir(kat["saglayici"], kat["model"], anahtar, sistem, kullanici, en_cok, kat.get("dusunme"))
             veri = json_ayikla(ham)
             veri["kimden"] = kat.get("imza", f"{ad} (API)")
             veri.setdefault("kime", "Sen")

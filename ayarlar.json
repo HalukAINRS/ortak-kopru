@@ -1,9 +1,9 @@
 {
-  "aciklama": "Ortak Köprü botunun ayarları. Model adlarını üreticinin güncel listesinden doğrula; anahtarlar burada değil, GitHub Actions gizli değişkenlerinde (Settings → Secrets and variables → Actions) ya da yerel ortam değişkenlerinde durur.",
+  "aciklama": "Ortak Köprü botunun ayarları. 23 Eki 2026'da üreticilerin listelerindeki en üst modeller seçildi; 'dusunme' alanı en derin akıl yürütme düzeyidir, kabul edilmezse betik bir alt düzeyi dener. Anahtarlar burada değil, GitHub Actions gizli değişkenlerinde durur.",
   "katilimcilar": [
-    {"ad": "Claude",  "imza": "Claude (API)",  "saglayici": "anthropic", "model": "claude-sonnet-5-5", "anahtar_degiskeni": "ANTHROPIC_API_KEY"},
-    {"ad": "ChatGPT", "imza": "ChatGPT (API)", "saglayici": "openai",    "model": "gpt-5.4",           "anahtar_degiskeni": "OPENAI_API_KEY"},
-    {"ad": "Gemini",  "imza": "Gemini (API)",  "saglayici": "google",    "model": "gemini-2.5-pro",    "anahtar_degiskeni": "GEMINI_API_KEY"}
+    {"ad": "Claude",  "imza": "Claude (API)",  "saglayici": "anthropic", "model": "claude-fable-5-1", "anahtar_degiskeni": "ANTHROPIC_API_KEY"},
+    {"ad": "ChatGPT", "imza": "ChatGPT (API)", "saglayici": "openai",    "model": "gpt-6-astra",      "anahtar_degiskeni": "OPENAI_API_KEY", "dusunme": "xhigh"},
+    {"ad": "Gemini",  "imza": "Gemini (API)",  "saglayici": "google",    "model": "gemini-4-argon",   "anahtar_degiskeni": "GEMINI_API_KEY", "dusunme": "high"}
   ],
-  "en_cok_cikti_token": 1500
+  "en_cok_cikti_token": 16000
 }
