@@ -256,6 +256,11 @@ def governed_execute(root, compiled, selected, approval_path, runs_dir):
 
 # ---------- üretici çağrıları ----------
 
+class _NoRedirectHandler(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
 def http_json(url, veri, basliklar, zaman_asimi=180, safe_errors=False, on_request=None):
     body = json.dumps(veri, ensure_ascii=not bool(on_request)).encode("utf-8")
     if on_request and len(body) > 16 * 1024 * 1024:
@@ -268,7 +273,11 @@ def http_json(url, veri, basliklar, zaman_asimi=180, safe_errors=False, on_reque
         })
     istek = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json", **basliklar}, method="POST")
     try:
-        with urllib.request.urlopen(istek, timeout=zaman_asimi) as y:
+        if on_request:
+            response = urllib.request.build_opener(_NoRedirectHandler()).open(istek, timeout=zaman_asimi)
+        else:
+            response = urllib.request.urlopen(istek, timeout=zaman_asimi)
+        with response as y:
             response = y.read(16 * 1024 * 1024 + 1) if on_request else y.read()
             if on_request and len(response) > 16 * 1024 * 1024:
                 raise RuntimeError("governed provider response exceeds the 16 MiB limit")
