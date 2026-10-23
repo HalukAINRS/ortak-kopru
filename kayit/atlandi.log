@@ -19,3 +19,19 @@ To authenticate, you can use any of the following methods:
     "status": "PERMISSION_DENIED"
 2026-10-23 22:51:23Z ChatGPT: cli: CLI çıkış kodu 1: efresh available models: unexpected status 401 Unauthorized: Encountered invalidated oauth token for user, failing request, url: https://chatgpt.com/backend-api/codex/models?client_version=0.163.0, cf-ray: a4f44de0aea3e347-IST, request id: req_392a8ad3848045acb04bc58e650a2a21, auth
 2026-10-23 22:51:23Z Copilot: cli: CLI çıkış kodu 1: Error: No authentication information found.
+2026-10-23 22:56:18Z ChatGPT: openai: HTTP 401: {
+  "error": {
+    "message": "Incorrect API key provided: ''. You can find your API key at https://platform.openai.com/account/api-keys.",
+    "type": "invalid_request_error",
+    "param": null,
+    "code": "invalid_api_key"
+  }
+}
+2026-10-23 22:56:18Z Gemini: google: HTTP 403: {
+  "error": {
+    "code": 403,
+    "message": "Method doesn't allow unregistered callers (callers without established identity). Please use API Key or other form of API consumer identity to call this API.",
+    "status": "PERMISSION_DENIED"
+  }
+}
+
