@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ortak Köprü compiled context manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version",
+    "policy_path",
+    "policy_sha256",
+    "policy_raw_sha256",
+    "policy_object_sha256",
+    "context_hash",
+    "sources",
+    "request",
+    "messages_sha256",
+    "git",
+    "visibility",
+    "manifest_sha256"
+  ],
+  "properties": {
+    "manifest_version": { "const": 1 },
+    "policy_path": { "type": "string" },
+    "policy_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "policy_raw_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "policy_object_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "context_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "messages_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "manifest_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "path", "role", "sha256", "size_bytes", "transmit"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "path": { "type": "string", "minLength": 1 },
+          "role": { "enum": ["application_instruction", "untrusted_evidence", "user_task"] },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "size_bytes": { "type": "integer", "minimum": 0 },
+          "transmit": { "type": "boolean" }
+        }
+      }
+    },
+    "request": { "type": "object" },
+    "git": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["commit", "source_worktree"],
+      "properties": {
+        "commit": { "type": "string" },
+        "source_worktree": { "enum": ["clean", "dirty", "unknown"] }
+      }
+    },
+    "visibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "accepted_unknown_layers", "warnings", "layers"],
+      "properties": {
+        "mode": { "enum": ["strict", "limited"] },
+        "accepted_unknown_layers": { "type": "array", "items": { "type": "string" } },
+        "warnings": { "type": "array", "items": { "type": "string" } },
+        "layers": { "type": "object", "additionalProperties": { "enum": ["known", "unknown", "partial"] } }
+      }
+    }
+  }
+}

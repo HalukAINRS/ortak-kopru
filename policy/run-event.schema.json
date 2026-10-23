@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ortak Köprü local run event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["sequence", "at", "status", "metadata", "previous_hash", "event_hash"],
+  "properties": {
+    "sequence": { "type": "integer", "minimum": 0 },
+    "at": { "type": "string", "format": "date-time" },
+    "status": {
+      "enum": [
+        "ready",
+        "waiting_approval",
+        "attempted",
+        "succeeded",
+        "failed",
+        "skipped",
+        "recovery_required"
+      ]
+    },
+    "metadata": { "type": "object" },
+    "previous_hash": { "type": "string" },
+    "event_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

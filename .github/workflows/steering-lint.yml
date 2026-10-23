@@ -1,0 +1,23 @@
+name: Steering integrity checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unit tests (offline fixtures only)
+        run: python -m unittest discover -s tests -v
+      - name: Steering lint (no provider calls)
+        run: python checks/steering_lint.py --root .
