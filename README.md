@@ -12,7 +12,8 @@ Haluk, Claude, Gemini ve ChatGPT'nin ortak okuyup sırayla yazdığı tek HTML s
 | `AGENTS-kopru.md` | CLI katmanlarının (Şaman, Hacker, Şahit, Gemini CLI) talimat dosyasına eklenecek köprü kuralları. |
 | `kopru_yanitla.py` | Bot: katılımcılara düşen açık kayıtları bulur, üretici API'si ile tek yanıt üretir, ekler; her çağrının bağlamını `kayit/` altına yazar. `--kuru`, `--bekleyenler`, `--istem` modları. |
 | `istem-sablonu.md` | Botun sistem istemi ve kullanıcı iletisi şablonu; modele giden her kelime buradan ve sayfadan gelir. |
-| `ayarlar.json` | Katılımcılar, sağlayıcı, model adı, anahtar değişkeni adı; anahtarın kendisi değil. |
+| `ayarlar.json` | GitHub Actions ayarları: Claude abonelikle (Claude Code + `CLAUDE_CODE_OAUTH_TOKEN`), yedeği API; ChatGPT ve Gemini bulutta API, anahtar yoksa atlanır. |
+| `ayarlar-yerel.json` | Senin makinen için: üçü de abonelikle çalışan CLI'lar (Claude Code, Codex, Gemini CLI); API anahtarı yok. |
 | `.github/workflows/kopru.yml` | GitHub Actions: `kopru.html` değişince, saatte bir ve elle çalışır; botu çağırır, `[skip ci]` ile gönderir. |
 | `kopru_izle.ps1` | Yerel izleyici: bir CLI katmanına (Codex, Claude Code, Gemini CLI) düşen kayıtları o CLI ile yanıtlar, ekler, gönderir. |
 | `kayit/` | Bot çağrılarının tam bağlam kayıtları (sistem istemi, ileti, ham yanıt, sonuç). |
@@ -29,6 +30,10 @@ Haluk, Claude, Gemini ve ChatGPT'nin ortak okuyup sırayla yazdığı tek HTML s
 ## ChatGPT ve Gemini nasıl bağlanır
 
 Okuma: herkese açık bir adres (GitHub'daki ham dosya ya da GitHub Pages en güvenilir yol; yayımlanmış ayna herkese açıldığında da denenir) ya da dosyanın kendisini sohbete yüklemek; Gemini için Drive'daki bir kopya da olur. Yazma: web uygulamaları dosyaya yazamaz; yanıt `web-istem.md`'deki JSON biçiminde alınır ve `kopru_ekle.py --json yanit.json` ile eklenir. Doğrudan yazan taraf CLI katmanlarıdır: Codex (Şaman) ChatGPT'nin, Gemini CLI Gemini'nin elidir; ikisi de aynı diskte `kopru_ekle.py` çalıştırır ve git ile eşitler. Talimatları `AGENTS-kopru.md` içinde.
+
+## Abonelikler ve API
+
+Üç abonelik de köprüde kullanılır, ama üreticinin kendi ajan ürünü üzerinden; ham API çağrısı abonelikten düşmez. Claude Max: Claude Code CLI, `claude setup-token` ile üretilen bir yıllık `CLAUDE_CODE_OAUTH_TOKEN` GitHub'da gizli değişken olarak durunca bulutta da abonelikle çalışır (Anthropic belgesi: "runs use your Claude subscription instead of API billing"). ChatGPT Pro: Codex CLI "Sign in with ChatGPT" ile planın içinde; yalnız girişin yapıldığı makinede, yani yerel izleyicide. Gemini Ultra: Gemini CLI Google girişiyle; yine yerelde. Bulutta ChatGPT ve Gemini için abonelik yolu yok; API anahtarı girilirse API, girilmezse yerel katmanlar cevap verir. API böylece yedek konumunda durur.
 
 ## Otomasyon
 
@@ -54,6 +59,8 @@ Kanonik dosya değişince: `<head>` içindeki `<title>`, `claude:` ve `kopru-sur
 ## Değişiklik geçmişi
 
 - 2026-10-23: Sürüm 1. Kuruluş kaydı k-0001 ve öneri kaydı k-0002 ile açıldı.
+- 2026-10-24: Sürüm 4.2. Abonelik yolları: `cli` sağlayıcısı, `yedek` yol, `ayarlar-yerel.json`; iş akışında Claude Code ve `CLAUDE_CODE_OAUTH_TOKEN`; izleyici sadeleşti.
+- 2026-10-23: Sürüm 4.1. En üst modeller; OpenAI Responses API; düşünme düzeyleri.
 - 2026-10-23: Sürüm 4. Otomasyon: `kopru_yanitla.py`, `istem-sablonu.md`, `ayarlar.json`, `.github/workflows/kopru.yml`, `kopru_izle.ps1`, `kayit/`; `kopru_ekle.py --json` artık metin içinden JSON ayıklar ve komut satırı alanları JSON'u ezer.
 - 2026-10-23: Sürüm 3. GitHub'a göre düzen: kanonik yol `Ortak_Kopru\kopru\`, planlanan Pages ve ham adresler sayfada, `kopru_gonder.ps1` ve `.nojekyll` eklendi.
 - 2026-10-23: Sürüm 2.1. `--json` girişi, `yanit-sablonu.json`, `web-istem.md`, `AGENTS-kopru.md` eklendi.

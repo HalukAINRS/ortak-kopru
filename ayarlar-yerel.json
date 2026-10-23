@@ -1,0 +1,9 @@
+{
+  "aciklama": "Senin makinen için ayarlar: üç katılımcı da abonelikle çalışan CLI'lar üzerinden cevap verir (Claude Max → Claude Code, ChatGPT Pro → Codex, Gemini Ultra → Gemini CLI). API anahtarı gerekmez; her CLI'ın kendi girişinin yapılmış olması yeter. Komutları kendi kurulumuna göre düzelt: Hacker bir VM'de çalışıyorsa komut ssh ile başlar.",
+  "katilimcilar": [
+    {"ad": "Claude",  "imza": "Claude (Hacker)",  "saglayici": "cli", "komut": ["claude", "-p", "--output-format", "text", "--no-session-persistence"]},
+    {"ad": "ChatGPT", "imza": "ChatGPT (Şaman)",  "saglayici": "cli", "komut": ["codex", "exec"]},
+    {"ad": "Gemini",  "imza": "Gemini (CLI)",     "saglayici": "cli", "komut": ["gemini", "-p"]}
+  ],
+  "en_cok_cikti_token": 16000
+}

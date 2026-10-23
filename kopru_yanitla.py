@@ -115,6 +115,18 @@ def http_json(url, veri, basliklar, zaman_asimi=180):
         raise RuntimeError(f"HTTP {e.code}: {govde}") from None
 
 
+def cli_cagir(komut, sistem, kullanici, istem_nasil="arg", zaman_asimi=1800):
+    """Abonelikle çalışan bir CLI'ı (claude -p, codex exec, gemini -p) etkileşimsiz çalıştırır; standart çıktı yanıttır."""
+    istem = sistem + "\n\n---\n\n" + kullanici
+    if istem_nasil == "stdin":
+        sonuc = subprocess.run(komut, input=istem, capture_output=True, text=True, timeout=zaman_asimi, cwd=BURASI)
+    else:
+        sonuc = subprocess.run(list(komut) + [istem], capture_output=True, text=True, timeout=zaman_asimi, cwd=BURASI)
+    if sonuc.returncode != 0:
+        raise RuntimeError(f"CLI çıkış kodu {sonuc.returncode}: {(sonuc.stderr or sonuc.stdout)[-1500:]}")
+    return sonuc.stdout, {"cli": " ".join(komut), "stderr_son": (sonuc.stderr or "")[-300:]}
+
+
 def cagir(saglayici, model, anahtar, sistem, kullanici, en_cok_token, caba=None):
     """Üretici API'sini çağırır. Derin düşünme ayarı (caba) 400 verirse bir alt düzeyle, sonra ayarsız yeniden dener."""
     denemeler = [caba, "high", None] if caba and caba != "high" else ([caba, None] if caba else [None])
@@ -217,30 +229,46 @@ def main():
         if not bek:
             print(f"{ad}: bekleyen yok")
             continue
-        anahtar = os.environ.get(kat["anahtar_degiskeni"], "")
-        if not anahtar and not a.kuru:
-            print(f"{ad}: anahtar yok ({kat['anahtar_degiskeni']}), atlandı")
-            continue
         sistem, kullanici = istem_kur(a.dosya, ad, bek)
         if a.kuru:
-            yol = kayit_yaz(ad, kat["model"], kat["saglayici"], sistem, kullanici, "(kuru çalıştırma, çağrı yapılmadı)", "kuru")
+            yol = kayit_yaz(ad, kat.get("model", "-"), kat["saglayici"], sistem, kullanici, "(kuru çalıştırma, çağrı yapılmadı)", "kuru")
             print(f"{ad}: {len(bek)} bekleyen; istem {yol} dosyasına yazıldı")
             continue
+        # Yollar: asıl yol, sonra varsa "yedek". Her yol için gereken ortam değişkeni (anahtar ya da abonelik belirteci) yoksa o yol atlanır.
+        yollar = [kat] + ([kat["yedek"]] if kat.get("yedek") else [])
+        ham, kullanim, kullanilan, hatalar = "", None, None, []
+        for yol_ayar in yollar:
+            degisken = yol_ayar.get("anahtar_degiskeni")
+            anahtar = os.environ.get(degisken, "") if degisken else ""
+            if degisken and not anahtar:
+                hatalar.append(f"{yol_ayar['saglayici']}: {degisken} yok")
+                continue
+            try:
+                if yol_ayar["saglayici"] == "cli":
+                    ham, kullanim = cli_cagir(yol_ayar["komut"], sistem, kullanici, yol_ayar.get("istem_nasil", "arg"))
+                else:
+                    ham, kullanim = cagir(yol_ayar["saglayici"], yol_ayar["model"], anahtar, sistem, kullanici, en_cok, yol_ayar.get("dusunme"))
+                kullanilan = yol_ayar
+                break
+            except Exception as e:  # noqa: BLE001
+                hatalar.append(f"{yol_ayar['saglayici']}: {str(e)[:300]}")
+        if kullanilan is None:
+            yol = kayit_yaz(ad, kat.get("model", "-"), kat["saglayici"], sistem, kullanici, "", "ATLANDI: " + " | ".join(hatalar))
+            print(f"{ad}: atlandı ({' | '.join(hatalar)[:200]})")
+            continue
         try:
-            ham, kullanim = cagir(kat["saglayici"], kat["model"], anahtar, sistem, kullanici, en_cok, kat.get("dusunme"))
             veri = json_ayikla(ham)
-            veri["kimden"] = kat.get("imza", f"{ad} (API)")
+            veri["kimden"] = kullanilan.get("imza") or kat.get("imza") or f"{ad} (API)"
             veri.setdefault("kime", "Sen")
             veri["yanit"] = bek[-1]["id"]
             veri["durum"] = "acik"
             veri.setdefault("dayanak", "")
             kid = ekle(a.dosya, veri)
-            sonuc = f"eklendi: {kid}; bekleyenler: {', '.join(k['id'] for k in bek)}; kullanım: {json.dumps(kullanim)}"
+            sonuc = f"eklendi: {kid}; yol: {kullanilan['saglayici']} {kullanilan.get('model', '')}; bekleyenler: {', '.join(k['id'] for k in bek)}; kullanım: {json.dumps(kullanim, ensure_ascii=False)}"
             eklenenler.append(kid)
         except Exception as e:  # noqa: BLE001
-            ham = locals().get("ham", "")
             sonuc = f"HATA: {e}"
-        yol = kayit_yaz(ad, kat["model"], kat["saglayici"], sistem, kullanici, ham, sonuc)
+        yol = kayit_yaz(ad, kullanilan.get("model", "-"), kullanilan["saglayici"], sistem, kullanici, ham, sonuc)
         print(f"{ad}: {sonuc.splitlines()[0][:200]} → {os.path.relpath(yol, BURASI)}")
     print("eklenen:", ", ".join(eklenenler) if eklenenler else "yok")
 
