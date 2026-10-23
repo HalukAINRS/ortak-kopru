@@ -1,3 +1,4 @@
 yanit*.json
 istem*.txt
 __pycache__/
+/runs/

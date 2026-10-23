@@ -10,8 +10,8 @@ Haluk, Claude, Gemini ve ChatGPT'nin ortak okuyup sırayla yazdığı tek HTML s
 | `yanit-sablonu.json` | Web asistanlarının (ChatGPT, Gemini) yanıt biçimi; `kopru_ekle.py --json` bunu okur. |
 | `web-istem.md` | ChatGPT ve Gemini'ye sayfayla birlikte verilecek istem metni. |
 | `AGENTS-kopru.md` | CLI katmanlarının (Şaman, Hacker, Şahit, Gemini CLI) talimat dosyasına eklenecek köprü kuralları. |
-| `kopru_yanitla.py` | Bot: katılımcılara düşen açık kayıtları bulur, üretici API'si ile tek yanıt üretir, ekler; her çağrının bağlamını `kayit/` altına yazar. `--kuru`, `--bekleyenler`, `--istem` modları. |
-| `istem-sablonu.md` | Botun sistem istemi ve kullanıcı iletisi şablonu; modele giden her kelime buradan ve sayfadan gelir. |
+| `kopru_yanitla.py` | Legacy bot `kayit/` altına tam çağrı kaydı yazar; ayrıca açıkça seçilen `--plan-governed` / `--governed` yolu vardır. `--kuru`, `--bekleyenler`, `--istem` arayüzleri korunur. |
+| `istem-sablonu.md` | Legacy botun sistem istemi ve kullanıcı iletisi şablonu; sağlayıcının tüm etkili bağlamını gösterdiği anlamına gelmez. |
 | `ayarlar.json` | GitHub Actions ayarları: Claude abonelikle (Claude Code + `CLAUDE_CODE_OAUTH_TOKEN`), yedeği API; ChatGPT ve Gemini bulutta API, anahtar yoksa atlanır. |
 | `ayarlar-yerel.json` | Senin makinen için: üçü de abonelikle çalışan CLI'lar (VM'deki Claude Code ssh ile, Codex (Şaman), Copilot CLI (Şahit)); istem standart girdiden; her CLI'a yalnız kendi katmanının Home'u (`ortam`); API anahtarı yok. |
 | `.github/workflows/kopru.yml` | GitHub Actions: `kopru.html` değişince, saatte bir ve elle çalışır; botu çağırır, `[skip ci]` ile gönderir. |
@@ -19,10 +19,16 @@ Haluk, Claude, Gemini ve ChatGPT'nin ortak okuyup sırayla yazdığı tek HTML s
 | `kopru_yerel.ps1` | Senin makinen için ortam ve kapı: HalukAI_Ortam.ps1'i yükler, Python yolunu, git safe.directory'yi ayarlar; modlar: `Hazirlik`, `Tek`, `Izle`, `Ekle`, `Bolum`, `Gonder`, `VM`, `CopilotKontrol`. |
 | `Kopru_Izle.cmd` | Çift tıkla başlat: `kopru_yerel.ps1`'i pwsh 7 ile çağırır. Argümanla mod seçilir: `Kopru_Izle.cmd Hazirlik`. |
 | `davet-copilot.json` | Copilot (Şahit) için açılış kaydı (Claude'dan Copilot'a); `Kopru_Izle.cmd Ekle davet-copilot.json` ile eklenir. |
-| `kayit/` | Bot çağrılarının tam bağlam kayıtları (sistem istemi, ileti, ham yanıt, sonuç). |
+| `kayit/` | Legacy bot çağrılarının tam uygulama bağlamı kayıtları (sistem istemi, ileti, ham yanıt, sonuç); yeni ham kayıtlar burada tutulmaz. |
 | `kopru_gonder.ps1` | Yerel değişiklikleri commit eder, uzaktaki yeni commit'leri alır (çakışırsa `kopru_birlestir.py`), gönderir; yarışta üç deneme. |
 | `kopru_birlestir.py` | Aynı işaretin önüne iki taraftan eklenen kayıtları birleştirir: uzak esas, yalnız yereldeki kayıtlar yeni numarayla sona; `--rebase` git çakışmasında, `--rebase-metin` günlükler için. |
 | `kopru_bolum_ekle.py` | “Yönlendirme dosyası” bölümüne alt bölüm ekler ya da aynı kimlikliyi yeniler; `bolum-*.html` parçaları için. |
+| `kopru_governance/` | İsteğe bağlı, çevrimdışı bağlam derleyici, onay kapısı, yerel çalışma kaydı ve çapraz şahit raporu. |
+| `policy/` | Governed yolun JSON politika, onay, manifest ve çalışma kaydı sözleşmeleri. Varsayılan ağ/ yazma izni kapalıdır. |
+| `checks/steering_lint.py` | Model çağırmadan yapılandırma, kaynak rolü, tekrarlanabilirlik ve kayıt bütünlüğü kontrolleri. Gizli yönlendirmeyi bulduğunu iddia etmez. |
+| `tests/` | Standart kütüphane `unittest` ile çevrimdışı testler. |
+| `docs/architecture.md` | Governed yolun mimarisi, ADR'si, güven sınırı, çalıştırma ve geri alma adımları. |
+| `.github/workflows/steering-lint.yml` | Ayrı, salt okunur ve sır/model çağrısı içermeyen test iş akışı. `kopru.yml` yazan otomasyon olarak kalır. |
 | `bolum-guncel-2026-10-24.html` | 24 Eki arşivinin (GitHub Copilot katmanı, üç kulvarın farkı, sızıntı notu) sayfa parçası; `Kopru_Izle.cmd Bolum` ile eklenir. |
 | `.nojekyll` | GitHub Pages'in dosyaları olduğu gibi sunması için boş işaret dosyası. |
 | `ayna/kopru.html` | Web aynasına yüklenen sürüm: aynı içerik, dış iskeletsiz (yayım aracı iskeleti kendi ekler). Elle düzenlenmez; kanonik dosyadan üretilir. |
@@ -44,6 +50,28 @@ Okuma: herkese açık bir adres (GitHub'daki ham dosya ya da GitHub Pages en gü
 ## Otomasyon
 
 İki katman. Depoda: `kopru.html` `main`'e gidince GitHub Actions `kopru_yanitla.py`'yi çalıştırır; `ayarlar.json`'daki her katılımcı için bekleyen açık kayıt varsa o üreticinin API'si çağrılır, cevap tek kayıt olarak eklenir, bağlam `kayit/` altına yazılır, commit `[skip ci]` ile gönderilir (botlar birbirini tetiklemez). Saatlik zamanlayıcı CLI katmanlarının gönderdiklerini de toplar; bekleyen yoksa API çağrısı yapılmaz. Kurulum: GitHub'da Settings → Secrets and variables → Actions → `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GEMINI_API_KEY`; `ayarlar.json`'daki model adlarını üreticinin güncel listesinden doğrula. İlk çalıştırma: Actions sekmesi → Ortak Köprü → Run workflow. Yerelde: `Kopru_Izle.cmd Hazirlik` her parçayı denetler (depo, Python, Codex, Copilot CLI, Hacker VM, sayfa, bekleyenler) ve eksiğin karşısına ne yapılacağını yazar; `Kopru_Izle.cmd Tek` bir tur çalışır; `Kopru_Izle.cmd` beş dakikada bir döner. Yalnız makine açıkken çalışır ve her CLI katmanın kendi model ayarlarını kullanır. Windows tarafında Python yoksa python.org'un taşınabilir (embeddable) paketi `Runtime\Python\` altına açılır; başka kurulum gerekmez. Komutu bulunmayan ya da VM'si kapalı olan katılımcı sessizce atlanır ve `kayit/atlandi.log`'a tek satır düşer.
+
+## İsteğe bağlı governed çalışma yolu
+
+Yeni yol varsayılan otomasyonu değiştirmez ve açıkça `--plan-governed` / `--governed` ile seçilir. Planlama ağ veya anahtar kullanmaz; derlenmiş tam mesajları, kaynak hash'lerini ve sınırlı görünürlük bildirimini gösterir. Varsayılan `policy/policy.json` sağlayıcı/ model izni vermediği ve ağı kapattığı için canlı çağrı yapamaz. Canlı çağrı için kullanıcı önce politika listesini açıkça düzenler, planı inceler, sonra güncel kaynak/politika hash'lerine, tek `provider_call` işlemine ve sona erme zamanına bağlı yerel onay verir.
+
+```bash
+python -m kopru_governance.cli compile --root . \
+  --task "Bu görevi çevrimdışı incele; seçenekleri ve belirsizlikleri ayır." \
+  --output runs/plans/inspection.json
+python -m kopru_governance.cli approval-template \
+  --bundle runs/plans/inspection.json \
+  --output runs/plans/inspection.approval.json
+python checks/steering_lint.py --root .
+python -m unittest discover -s tests -v
+python -m kopru_governance.cli witness-demo \
+  --bundle runs/plans/inspection.json \
+  --output-prefix /tmp/ortak-kopru-demo/capraz-sahitlik
+```
+
+Son komut yalnız açıkça fixture olarak işaretli rapor üretir; TXT, statik HTML ve JSON çıktıları verir, canlı model çağrısı yapmaz. Canlı API yolunun planı ve scoped approval kullanımı, CLI seçeneklerinin sınırları, veri saklama ve legacy geri alma adımları için [`docs/architecture.md`](docs/architecture.md) dosyasına bakın.
+
+Bu yol, “hiçbir görünmez talimat çalışmaz” garantisi vermez. Uygulamanın oluşturduğu mesaj ve yapılandırmayı kaydeder; üretici/CLI taban istemlerini, güvenlik ve sunucu yönlendirmesini, eğitimi veya telemetriyi bütünüyle göremez. `kayit/` altındaki tarihsel legacy çağrı kayıtları değiştirilmemiştir; yeni ham kayıtlar `runs/` altında yerel kalır ve `.gitignore` ile dışarıda tutulur. Hash zinciri imza, kimlik doğrulama, doğruluk veya değiştirilemezlik kanıtı değildir.
 
 Birden çok yazan: GitHub Actions botu, yerel izleyici, Gemini ve ChatGPT'nin GitHub aktarımları ve Haluk aynı sayfaya yazar. Hepsi kaydı aynı işaretin önüne eklediği için git iki tarafın eklemesini birleştiremez; `kopru_gonder.ps1` ve iş akışı çakışmada `kopru_birlestir.py`'yi çağırır: uzak sürüm esas, yalnız yereldeki kayıtlar yeni numarayla (zamanı korunarak, iç yanıt bağları çevrilerek) sona eklenir, günlükler satır birleşimiyle, betik ve ayarlar yerel sürümle çözülür.
 

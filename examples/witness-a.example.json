@@ -1,0 +1,24 @@
+{
+  "witness_id": "fixture-A",
+  "kind": "fixture",
+  "context_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "source_ids": ["source-001"],
+  "claims": {
+    "evidence": [
+      {
+        "text": "Fixture statement; replace source ID and context hash from the compiled manifest.",
+        "source_ids": ["source-001"]
+      }
+    ],
+    "interpretations": [],
+    "recommendations": [],
+    "user_approvals": [],
+    "actions_taken": [],
+    "uncertainties": [
+      {
+        "text": "A matching second result does not prove truth.",
+        "source_ids": ["source-001"]
+      }
+    ]
+  }
+}

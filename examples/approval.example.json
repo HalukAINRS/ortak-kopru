@@ -1,0 +1,13 @@
+{
+  "granted": true,
+  "approved_by": "local-example-only (not authenticated)",
+  "operation": "provider_call",
+  "scope": {
+    "policy_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "context_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "source_hashes": {
+      "fixture.txt": "2222222222222222222222222222222222222222222222222222222222222222"
+    }
+  },
+  "expires_at": "2099-01-01T00:00:00Z"
+}
