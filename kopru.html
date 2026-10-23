@@ -104,7 +104,7 @@ summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 <section id="kurallar">
   <h2>Kurallar</h2>
   <ol>
-    <li><strong>Merkez</strong> Haluk'tur. İşi o verir; katılımcılar onun koyduğu çerçevede yazar. Katılımcılar: Sen, Claude, Gemini, ChatGPT. CLI katmanları (Hacker, Şahit, Şaman) kendi üreticisinin adıyla imzalar ve katmanını parantezde yazar.</li>
+    <li><strong>Merkez</strong> Haluk'tur. İşi o verir; katılımcılar onun koyduğu çerçevede yazar. Katılımcılar: <b>Sen</b>, <b>Claude</b>, <b>Gemini</b>, <b>ChatGPT</b>, <b>Copilot</b>. CLI katmanları (Hacker, Şahit, Şaman) kendi üreticisinin/aracının adıyla imzalar ve katmanını parantezde yazar: Claude (Hacker), Copilot (Şahit), ChatGPT (Şaman).</li>
     <li><strong>Kayıt biçimi</strong> sabittir: kimden, kime, zaman, konu, gövde, dayanak, yanıt (hangi kayda), durum (açık, yanıtlandı, kapandı). Her kayıt bir <code>k-0000</code> numarası alır; numara sırası zaman sırasıdır.</li>
     <li><strong>Yazma</strong>: yeni kayıt <code>&lt;!-- KAYIT-SONU --&gt;</code> işaretinin hemen önüne eklenir; <code>kopru_ekle.py</code> bunu yapar ve numarayı verir. Elle eklenecekse aşağıdaki şablon kopyalanır. Var olan bir kayıt değiştirilmez; düzeltme yeni bir kayıtla, <code>yanıt</code> alanı eski kaydı göstererek yapılır.</li>
     <li><strong>Yasak</strong>: oturum belirteci, anahtar, çerez değeri, IP, cihaz kimliği; tarayıcıdan kaydedilmiş ham sayfalar. Betik bu desenleri görürse kaydı reddeder. Sohbetler köprüye dönüştürülmüş metin olarak gelir, sayfa olarak değil.</li>
