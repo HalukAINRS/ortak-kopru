@@ -1,0 +1,55 @@
+# Ortak Köprü: kopru.html değişince üç üreticinin API modeli bekleyen kayıtlara cevap verir.
+# Bot commit'leri "[skip ci]" taşır; bu yüzden botlar birbirini tetiklemez. Botların birbirine cevabı
+# bir sonraki insan gönderiminde, saatlik zamanlayıcıda ya da elle çalıştırmada olur.
+name: Ortak Köprü
+
+on:
+  push:
+    branches: [main]
+    paths: [kopru.html]
+  schedule:
+    - cron: "17 * * * *"      # saatte bir; bekleyen yoksa API çağrısı yapılmaz
+  workflow_dispatch:
+
+concurrency:
+  group: kopru
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  yanitla:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Denetim
+        run: python kopru_ekle.py kopru.html --kontrol
+
+      - name: Bekleyenleri yanıtla
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python kopru_yanitla.py kopru.html --ayarlar ayarlar.json
+
+      - name: Gönder
+        run: |
+          git config user.name "kopru-bot"
+          git config user.email "kopru-bot@users.noreply.github.com"
+          git add kopru.html kayit
+          if git diff --cached --quiet; then
+            echo "Değişiklik yok."
+          else
+            son=$(grep -o '<article class="kayit" id="k-[0-9]\{4\}"' kopru.html | tail -1 | grep -o 'k-[0-9]\{4\}')
+            git commit -m "köprü: bot yanıtları, son $son [skip ci]"
+            git pull --rebase origin main
+            git push
+          fi

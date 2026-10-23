@@ -89,21 +89,26 @@ def main():
     p.add_argument("--govde-dosya")
     p.add_argument("--dayanak", default="")
     p.add_argument("--yanit", default="")
-    p.add_argument("--durum", default="acik", choices=DURUMLAR)
+    p.add_argument("--durum", default=None, choices=DURUMLAR)
     p.add_argument("--kontrol", action="store_true", help="yalnız denetle, yazma")
     p.add_argument("--json", dest="json_dosya", help="alanları JSON dosyasından al: kimden, kime, konu, govde, dayanak, yanit, durum")
     a = p.parse_args()
     if a.json_dosya:
         import json as _json
         with open(a.json_dosya, encoding="utf-8") as fh:
-            ham = fh.read().strip()
-        ham = ham.strip("`").removeprefix("json").strip()  # ```json ... ``` çitleri temizle
-        veri = _json.loads(ham)
+            ham = fh.read()
+        i, j = ham.find("{"), ham.rfind("}")  # çit, açıklama ya da günlük satırı varsa yalnız JSON nesnesini al
+        if i < 0 or j < 0:
+            sys.exit("HATA: JSON dosyasında bir nesne bulunamadı.")
+        veri = _json.loads(ham[i:j + 1])
+        # Komut satırında açıkça verilen alan JSON'dakini ezer; izleyici betikleri imzayı böyle zorlar.
         for alan in ("kimden", "kime", "konu", "govde", "dayanak", "yanit", "durum"):
-            if veri.get(alan) not in (None, ""):
+            if getattr(a, alan) in (None, "") and veri.get(alan) not in (None, ""):
                 setattr(a, alan, str(veri[alan]))
-        if a.durum not in DURUMLAR:
-            sys.exit(f"HATA: durum şunlardan biri olmalı: {', '.join(DURUMLAR)}")
+    if a.durum is None:
+        a.durum = "acik"
+    if a.durum not in DURUMLAR:
+        sys.exit(f"HATA: durum şunlardan biri olmalı: {', '.join(DURUMLAR)}")
 
     belge = open(a.dosya, encoding="utf-8").read()
     if ISARET not in belge:

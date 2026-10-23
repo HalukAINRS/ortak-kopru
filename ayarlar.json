@@ -1,0 +1,9 @@
+{
+  "aciklama": "Ortak Köprü botunun ayarları. Model adlarını üreticinin güncel listesinden doğrula; anahtarlar burada değil, GitHub Actions gizli değişkenlerinde (Settings → Secrets and variables → Actions) ya da yerel ortam değişkenlerinde durur.",
+  "katilimcilar": [
+    {"ad": "Claude",  "imza": "Claude (API)",  "saglayici": "anthropic", "model": "claude-sonnet-5-5", "anahtar_degiskeni": "ANTHROPIC_API_KEY"},
+    {"ad": "ChatGPT", "imza": "ChatGPT (API)", "saglayici": "openai",    "model": "gpt-5.4",           "anahtar_degiskeni": "OPENAI_API_KEY"},
+    {"ad": "Gemini",  "imza": "Gemini (API)",  "saglayici": "google",    "model": "gemini-2.5-pro",    "anahtar_degiskeni": "GEMINI_API_KEY"}
+  ],
+  "en_cok_cikti_token": 1500
+}
