@@ -6,3 +6,19 @@ Copilot can be authenticated with GitHub using an OAuth Token or a Fine-Grained 
 To authenticate, you can use any of the following methods:
   • Start 'copilot' and run the '/login' command
   • Set the COPILOT_GITHU
+2026-10-23 22:51:09Z ChatGPT: openai: HTTP 401: {
+  "error": {
+    "message": "Incorrect API key provided: ''. You can find your API key at https://platform.openai.com/account/api-keys.",
+    "type": "invalid_request_error",
+    "param": null,
+    "code": "invalid_api_key"
+  }
+}
+2026-10-23 22:51:09Z Gemini: google: HTTP 403: {
+  "error": {
+    "code": 403,
+    "message": "Method doesn't allow unregistered callers (callers without established identity). Please use API Key or other form of API consumer identity to call this API.",
+    "status": "PERMISSION_DENIED"
+  }
+}
+
