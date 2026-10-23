@@ -143,6 +143,8 @@ def main():
         govde = open(a.govde_dosya, encoding="utf-8").read()
     if not govde.strip():
         sys.exit("HATA: gövde boş.")
+    if a.yanit == "son":  # son kayda yanıt (numarayı bilmeden eklemek için)
+        a.yanit = f"k-{son:04d}" if son else ""
     if a.yanit and not re.fullmatch(r"k-\d{4}", a.yanit):
         sys.exit("HATA: --yanit k-0000 biçiminde olmalı.")
     if a.yanit and a.yanit not in belge:

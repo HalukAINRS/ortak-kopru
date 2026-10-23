@@ -10,11 +10,13 @@
 #   Kopru_Izle.cmd CopilotKontrol  → Copilot CLI'a Şahit ortamında küçük bir deneme sorusu sorar (giriş sınaması)
 #   Kopru_Izle.cmd CodexGiris      → Şaman ortamında `codex login` (tarayıcı); "CodexGiris Cihaz" cihaz kodu akışı; "CodexGiris Durum" yalnız durum
 #   Kopru_Izle.cmd CopilotGiris    → Şahit ortamında `copilot login` (tarayıcı); "CopilotGiris Cihaz" cihaz kodu akışı
+#   Kopru_Izle.cmd CodexTani       → Codex tanısı: ortam, config.toml yetki satırları, auth.json alan adları, arg0 geçici klasörleri, kısa deneme çağrısı (değer yazmaz)
+#   Kopru_Izle.cmd Arg0Temizle     → Codex'in silemediği eski arg0 klasörlerini kilidi tutulmayanlardan başlayarak siler (önce kilit dosyası kapatılır)
 #
 # Yollar Hacker_Baslat.ps1, Saman_Baslat.ps1, Sahit_Baslat.ps1 ve HalukAI_Ortam.ps1'dekilerle aynı; kurulum değişirse
 # burada ve ayarlar-yerel.json'da düzelt. Bu dosya makineye özgüdür; makineden bağımsız izleyici kopru_izle.ps1'dir.
 param(
-  [ValidateSet("Izle", "Hazirlik", "Tek", "Ekle", "Bolum", "Gonder", "VM", "CopilotKontrol", "CodexGiris", "CopilotGiris")][string]$Mod = "Izle",
+  [ValidateSet("Izle", "Hazirlik", "Tek", "Ekle", "Bolum", "Gonder", "VM", "CopilotKontrol", "CodexGiris", "CopilotGiris", "CodexTani", "Arg0Temizle")][string]$Mod = "Izle",
   [string]$Secenek = "",
   [int]$Dakika = 5,
   [string]$Yalniz = ""
@@ -74,6 +76,19 @@ function Saman-Ortami {
   foreach ($k in @($env:CODEX_HOME, $env:APPDATA, $env:LOCALAPPDATA)) { New-Item -Path $k -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null }
 }
 
+function Arg0-Listele {
+  $kok = Join-Path $env:CODEX_HOME "tmp\arg0-windows"
+  if (-not (Test-Path -LiteralPath $kok)) { Write-Host "  yok: $kok"; return }
+  $dirs = @(Get-ChildItem -LiteralPath $kok -Directory | Sort-Object LastWriteTime)
+  Write-Host "  $($dirs.Count) klasör; en eski: $(if ($dirs) { $dirs[0].LastWriteTime } else { '-' }) · en yeni: $(if ($dirs) { $dirs[-1].LastWriteTime } else { '-' })"
+  foreach ($d in $dirs | Select-Object -Last 3) {
+    $dosyalar = (Get-ChildItem -LiteralPath $d.FullName -Force | ForEach-Object { "$($_.Name) ($($_.Length) B)" }) -join ", "
+    Write-Host "  $($d.Name) [$($d.LastWriteTime.ToString('HH:mm:ss'))]: $dosyalar"
+  }
+  $bat = Get-ChildItem -LiteralPath $kok -Recurse -Filter "apply_patch.bat" -ErrorAction SilentlyContinue | Select-Object -First 1
+  if ($bat) { Write-Host "  örnek apply_patch.bat içeriği:"; Get-Content -LiteralPath $bat.FullName | ForEach-Object { "    $_" } }
+}
+
 function Sahit-Ortami {
   # Sahit_Baslat.ps1 ile aynı değerler; yalnız bu süreç için.
   $env:HOME = $SahitHome; $env:USERPROFILE = $SahitHome
@@ -118,6 +133,15 @@ switch ($Mod) {
     if (-not (Test-Path -LiteralPath $CodexExe)) { Write-Error "codex.exe yok: $CodexExe"; return }
     Saman-Ortami
     & $CodexExe --version
+    # WinPE'de Windows kimlik deposu süreçler/açılışlar arasında kalmıyor; giriş dosyaya (auth.json) yazılsın.
+    $cfg = Join-Path $env:CODEX_HOME "config.toml"
+    $icerik = if (Test-Path -LiteralPath $cfg) { Get-Content -LiteralPath $cfg -Raw } else { "" }
+    if ($icerik -notmatch '(?m)^\s*cli_auth_credentials_store\s*=') {
+      Set-Content -LiteralPath $cfg -Value ('cli_auth_credentials_store = "file"' + "`n" + $icerik) -Encoding utf8NoBOM -NoNewline
+      Write-Host "config.toml: cli_auth_credentials_store = `"file`" eklendi (giriş $env:CODEX_HOME\auth.json dosyasına yazılacak)." -ForegroundColor Yellow
+    } elseif ($icerik -match '(?m)^\s*cli_auth_credentials_store\s*=\s*"(?!file")') {
+      Write-Warning "config.toml'da cli_auth_credentials_store 'file' değil; WinPE'de giriş kalıcı olmaz. Satırı 'file' yap."
+    }
     if ($Secenek -eq "Durum") { & $CodexExe login status; return }
     if ($Secenek -eq "Cihaz") {
       Write-Host "Cihaz kodu akışı: yazılan adresi Chrome'da aç, kodu gir, ChatGPT Pro hesabınla onayla." -ForegroundColor Cyan
@@ -130,6 +154,68 @@ switch ($Mod) {
     Write-Host "--- durum ---" -ForegroundColor Cyan
     & $CodexExe login status
     Write-Host "Sonraki: Kopru_Izle.cmd Tek ChatGPT" -ForegroundColor Cyan
+  }
+
+  "CodexTani" {
+    if (-not (Test-Path -LiteralPath $CodexExe)) { Write-Error "codex.exe yok: $CodexExe"; return }
+    Saman-Ortami
+    Write-Host "--- ortam ---" -ForegroundColor Cyan
+    foreach ($d in @("OPENAI_API_KEY", "CODEX_API_KEY", "OPENAI_BASE_URL", "CODEX_HOME", "HOME", "USERPROFILE")) {
+      $v = [Environment]::GetEnvironmentVariable($d)
+      if ($d -like "*KEY*") { Write-Host ("  {0}: {1}" -f $d, $(if ($v) { "VAR ($($v.Length) karakter) ← Codex'i API yoluna saptırır" } else { "yok" })) }
+      else { Write-Host ("  {0}: {1}" -f $d, $v) }
+    }
+    foreach ($kapsam in @("User", "Machine")) {
+      $v = [Environment]::GetEnvironmentVariable("OPENAI_API_KEY", $kapsam)
+      if ($v) { Write-Host "  OPENAI_API_KEY $kapsam kapsamında kayıtlı (VAR)" -ForegroundColor Yellow }
+    }
+    $cfg = Join-Path $env:CODEX_HOME "config.toml"
+    Write-Host "--- $cfg ---" -ForegroundColor Cyan
+    if (Test-Path -LiteralPath $cfg) {
+      $satirlar = Select-String -LiteralPath $cfg -Pattern '^\s*(model_provider|preferred_auth_method|model|model_reasoning_effort|wire_api|base_url|env_key|chatgpt_base_url|openai_api_key|name|requires_openai_auth)\s*=|^\s*\[' 
+      if ($satirlar) { $satirlar | ForEach-Object { "  {0}: {1}" -f $_.LineNumber, ($_.Line -replace '(?i)((?:openai_)?api_key\s*=\s*").*?(")', '$1<gizli>$2') } } else { "  (yetki/sağlayıcı satırı yok)" }
+    } else { "  yok" }
+    $auth = Join-Path $env:CODEX_HOME "auth.json"
+    Write-Host "--- $auth ---" -ForegroundColor Cyan
+    if (Test-Path -LiteralPath $auth) {
+      try {
+        $j = Get-Content -LiteralPath $auth -Raw | ConvertFrom-Json
+        $alanlar = $j.PSObject.Properties.Name
+        Write-Host "  alanlar: $($alanlar -join ', ')"
+        if ($alanlar -contains "auth_mode") { Write-Host "  auth_mode: $($j.auth_mode)" }
+        if ($alanlar -contains "OPENAI_API_KEY") { Write-Host "  OPENAI_API_KEY alanı: $(if ($j.OPENAI_API_KEY) { 'DOLU ← API yoluna saptırabilir' } else { 'boş' })" }
+        if ($alanlar -contains "tokens") { Write-Host "  tokens alanları: $(($j.tokens.PSObject.Properties.Name) -join ', ')" }
+        if ($alanlar -contains "last_refresh") { Write-Host "  last_refresh: $($j.last_refresh)" }
+        Write-Host "  dosya zamanı: $((Get-Item -LiteralPath $auth).LastWriteTime)"
+      } catch { Write-Host "  okunamadı: $($_.Exception.Message)" }
+    } else { Write-Host '  yok (giriş kimlik deposunda olabilir; config.toml''a cli_auth_credentials_store = "file" ekleyip CodexGiris yinele)' }
+    Write-Host "--- arg0 geçici klasörleri ($env:CODEX_HOME\tmp\arg0-windows) ---" -ForegroundColor Cyan
+    Arg0-Listele
+    try { $v = Get-Volume -DriveLetter ($SamanHome.Substring(0,1)) -ErrorAction Stop; Write-Host "  sürücü $($SamanHome.Substring(0,2)) dosya sistemi: $($v.FileSystemType)" } catch { Write-Host "  dosya sistemi okunamadı: $($_.Exception.Message)" }
+    Write-Host "--- codex login status ---" -ForegroundColor Cyan
+    & $CodexExe login status 2>&1 | Select-Object -Last 3
+    Write-Host "--- deneme: codex exec ---" -ForegroundColor Cyan
+    $env:OPENAI_API_KEY = $null; $env:CODEX_API_KEY = $null
+    "Yalniz OK yaz, baska hicbir sey yazma." | & $CodexExe exec --skip-git-repo-check - 2>&1 | Select-Object -Last 12
+    Write-Host "çıkış kodu: $LASTEXITCODE"
+  }
+
+  "Arg0Temizle" {
+    Saman-Ortami
+    Arg0-Listele
+    $kok = Join-Path $env:CODEX_HOME "tmp\arg0-windows"
+    if (-not (Test-Path -LiteralPath $kok)) { Write-Host "Klasör yok, silinecek bir şey yok."; return }
+    $silinen = 0; $atlanan = 0
+    foreach ($d in Get-ChildItem -LiteralPath $kok -Directory) {
+      $kilit = Join-Path $d.FullName ".lock"
+      $bos = $true
+      if (Test-Path -LiteralPath $kilit) {
+        try { $fs = [System.IO.File]::Open($kilit, 'Open', 'ReadWrite', 'None'); $fs.Close() } catch { $bos = $false }   # açılamıyorsa canlı bir Codex tutuyor
+      }
+      if (-not $bos) { $atlanan++; Write-Host "  atlandı (kilit tutuluyor): $($d.Name)"; continue }
+      try { Remove-Item -LiteralPath $d.FullName -Recurse -Force -ErrorAction Stop; $silinen++ } catch { Write-Warning "  silinemedi: $($d.Name): $($_.Exception.Message)" }
+    }
+    Write-Host "Silinen: $silinen · atlanan (canlı): $atlanan" -ForegroundColor Green
   }
 
   "CopilotGiris" {

@@ -10,7 +10,7 @@ Modlar:
   python3 kopru_yanitla.py kopru.html --ayarlar ayarlar-yerel.json --yalniz Claude   # yalnız bir katılımcıyı çalıştır
 
 Katılımcı ayarları: "saglayici" api adı (anthropic, openai, google) ya da "cli"; cli için "komut" listesi, "istem_nasil"
-(dosya | stdin | arg), isteğe bağlı "ortam" (yalnız o komuta verilecek ortam değişkenleri) ve "zaman_asimi" (saniye).
+(dosya | stdin | arg), isteğe bağlı "ortam" (yalnız o komuta verilecek ortam değişkenleri; null değer o değişkeni kaldırır) ve "zaman_asimi" (saniye).
 Komut bu makinede yoksa katılımcı sessizce atlanır; atlanan her çalıştırma kayit/atlandi.log'a tek satır düşer.
 
 Bekleyen kaydın tanımı: durumu açık, "kime" alanında katılımcının adı geçen, katılımcının kendi yazmadığı ve
@@ -145,7 +145,11 @@ def cli_cagir(komut, sistem, kullanici, istem_nasil="dosya", ad="bot", zaman_asi
     if not komut_var_mi(komut):
         raise KomutYok(komut[0])
     cevre = dict(os.environ)
-    cevre.update({k: str(v) for k, v in (ortam or {}).items()})
+    for k, v in (ortam or {}).items():   # null → değişken kaldırılır (ör. OPENAI_API_KEY: Codex API yoluna sapmasın)
+        if v is None:
+            cevre.pop(k, None)
+        else:
+            cevre[k] = str(v)
     secenek = dict(capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=zaman_asimi, cwd=BURASI, env=cevre)
     if istem_nasil == "dosya":
         dosya = f"istem-{re.sub(r'[^A-Za-z0-9]+', '-', ad).strip('-')}.txt"

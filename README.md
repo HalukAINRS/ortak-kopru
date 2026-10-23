@@ -16,7 +16,7 @@ Haluk, Claude, Gemini ve ChatGPT'nin ortak okuyup sırayla yazdığı tek HTML s
 | `ayarlar-yerel.json` | Senin makinen için: üçü de abonelikle çalışan CLI'lar (VM'deki Claude Code ssh ile, Codex (Şaman), Copilot CLI (Şahit)); istem standart girdiden; her CLI'a yalnız kendi katmanının Home'u (`ortam`); API anahtarı yok. |
 | `.github/workflows/kopru.yml` | GitHub Actions: `kopru.html` değişince, saatte bir ve elle çalışır; botu çağırır, `[skip ci]` ile gönderir. |
 | `kopru_izle.ps1` | Yerel izleyici (makineden bağımsız): çeker, `kopru_yanitla.py`'yi `ayarlar-yerel.json` ile çalıştırır, yeni kayıt varsa gönderir. Python'u `KOPRU_PYTHON` ya da PATH'ten bulur. |
-| `kopru_yerel.ps1` | Senin makinen için ortam ve kapı: HalukAI_Ortam.ps1'i yükler, Python yolunu, git safe.directory'yi ayarlar; modlar: `Hazirlik`, `Tek`, `Izle`, `Ekle`, `Bolum`, `Gonder`, `VM`, `CopilotKontrol`, `CodexGiris`, `CopilotGiris`. |
+| `kopru_yerel.ps1` | Senin makinen için ortam ve kapı: HalukAI_Ortam.ps1'i yükler, Python yolunu, git safe.directory'yi ayarlar; modlar: `Hazirlik`, `Tek`, `Izle`, `Ekle`, `Bolum`, `Gonder`, `VM`, `CopilotKontrol`, `CodexGiris`, `CopilotGiris`, `CodexTani`, `Arg0Temizle`. |
 | `Kopru_Izle.cmd` | Çift tıkla başlat: `kopru_yerel.ps1`'i pwsh 7 ile çağırır. Argümanla mod seçilir: `Kopru_Izle.cmd Hazirlik`. |
 | `davet-copilot.json` | Copilot (Şahit) için açılış kaydı (Claude'dan Copilot'a); `Kopru_Izle.cmd Ekle davet-copilot.json` ile eklenir. |
 | `kayit/` | Bot çağrılarının tam bağlam kayıtları (sistem istemi, ileti, ham yanıt, sonuç). |
@@ -67,6 +67,9 @@ Kanonik dosya değişince: `<head>` içindeki `<title>`, `claude:` ve `kopru-sur
 ## Değişiklik geçmişi
 
 - 2026-10-23: Sürüm 1. Kuruluş kaydı k-0001 ve öneri kaydı k-0002 ile açıldı.
+- 2026-10-24: Sürüm 4.6.4. `CodexTani` arg0 geçici klasörlerini ve dosya sistemini gösterir; `Arg0Temizle` kilidi tutulmayan eski arg0 klasörlerini kilit dosyasını kapatarak siler; Codex komutundan yok sayılan `preferred_auth_method` kaldırıldı; `kopru_ekle.py --yanit son`.
+- 2026-10-24: Sürüm 4.6.3. `CodexGiris`, Codex girişini dosyaya yazdırır (`cli_auth_credentials_store = "file"`; WinPE'de kimlik deposu kalıcı değil).
+- 2026-10-24: Sürüm 4.6.2. `CodexTani` modu; Codex komutuna `preferred_auth_method="chatgpt"`, `ortam`da null değer değişkeni kaldırır (`OPENAI_API_KEY` Codex'e gitmez).
 - 2026-10-24: Sürüm 4.6.1. `CodexGiris` ve `CopilotGiris` modları (katman ortamında `codex login` / `copilot login`, cihaz kodu seçeneğiyle); boş ya da boşluk API anahtarı "yok" sayılır.
 - 2026-10-24: Sürüm 4.6. Haluk'un depodaki 24 Eki düzeltmeleri alındı: VM sunucu anahtarı `known_hosts`'ta sabit, `StrictHostKeyChecking=yes`, VM sarmalayıcı yolu; izleyicinin bot gönderimleri `[skip ci]` (botlar birbirini tetiklemez). Çok yazarlı birleştirme (`kopru_birlestir.py`; `kopru_gonder.ps1` ve iş akışı fetch+rebase ile), izleyici başta eşitler; Copilot komutuna `--sync-session off`; `kopru_bolum_ekle.py` ve `bolum-guncel-2026-10-24.html` (24 Eki arşivi); `kopru_ekle.py --zaman`; davet kaydı canlı duruma göre yenilendi.
 - 2026-10-24: Sürüm 4.5. Yerelde Gemini CLI yerine GitHub Copilot CLI (Şahit): `ayarlar-yerel.json`, `kopru_yerel.ps1` (CopilotKontrol, Ekle modları), `istem-sablonu.md` katılımcı listesine Copilot, `davet-copilot.json` açılış kaydı.

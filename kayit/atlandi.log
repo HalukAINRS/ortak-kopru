@@ -25,18 +25,9 @@ To authenticate, you can use any of the following methods:
 2026-10-23 22:52:00Z Copilot: cli: CLI çıkış kodu 1: Error: No authentication information found.
 2026-10-23 22:57:31Z ChatGPT: cli: CLI çıkış kodu 1: fatal: Transport channel closed, when UnexpectedServerResponse("HTTP 401: {\n  \"error\": {\n    \"message\": \"Encountered invalidated oauth token for user, failing request\",\n    \"type\": null,\n    \"code\": \"token_revoked\",\n    \"param\": null\n  },\n  \"status\": 401\n}")
 2026-10-23 22:57:32Z Copilot: cli: CLI çıkış kodu 1: Error: No authentication information found.
-
-Copilot can be authenticated with GitHub using an OAuth Token or a Fine-Grained Personal Access Token.
-
-To authenticate, you can use any of the following methods:
-  • Start 'copilot' and run the '/login' command
-  • Set the COPILOT_GITHU
 2026-10-23 23:00:14Z Copilot: cli: CLI çıkış kodu 1: Error: No authentication information found.
-
-Copilot can be authenticated with GitHub using an OAuth Token or a Fine-Grained Personal Access Token.
-
-To authenticate, you can use any of the following methods:
-  • Start 'copilot' and run the '/login' command
-  • Set the COPILOT_GITHU
 2026-10-23 23:24:39Z ChatGPT: openai: OPENAI_API_KEY yok
 2026-10-23 23:24:39Z Gemini: google: GEMINI_API_KEY yok
+2026-10-23 23:16:34Z ChatGPT: cli: CLI çıkış kodu 1: websocket: failed to connect to websocket: HTTP error: 401 Unauthorized, url: wss://api.openai.com/v1/responses
+ERROR: Reconnecting... 3/5
+2026-10-23T23:16:20.148332Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: HTTP error: 401 Unauthorized, url: 

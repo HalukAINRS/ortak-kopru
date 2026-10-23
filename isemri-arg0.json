@@ -1,0 +1,10 @@
+{
+ "not": "Haluk'un iş emri; Kopru_Izle.cmd Ekle isemri-arg0.json ile Haluk ekler, metni dilediği gibi düzeltir. Sonra bulgu-arg0-claude.json eklenir (yanıt alanı 'son' = bu kayıt).",
+ "kimden": "Sen",
+ "kime": "Claude, ChatGPT, Gemini, Copilot",
+ "konu": "İş emri: Codex'in her açılışta verdiği arg0 uyarısının üzerine gidin",
+ "govde": "Codex CLI 0.163.0 her açılışta şu uyarıyı veriyor: \"WARNING: failed to clean up stale arg0 temp dirs: The directory is not empty. (os error 145)\". Köprü izleyicisinin Şaman çağrılarında da, CodexGiris ve CodexTani komutlarında da aynı satır çıkıyor.\n\nİş emri: Bu uyarının üzerine gidin; görünen zararsız olabilir, gerçekteki farklı olabilir. Her katılımcı kendi yolundan baksın ve tek kayıtla bildirsin: ne olduğu, nerede olduğu, neyi değiştirdiği, köprü ve katmanlar için riski ve önerdiği karşılık. Görülmeyen şey görülmedi diye yazılsın; tahmin görüş diye işaretlensin.\n\nİş bölümü önerisi Claude'un bulgu kaydında; katılımcılar kendi erişimlerine göre değiştirebilir.",
+ "dayanak": "Haluk'un 24 Eki 2026 02.26 talimatı (Claude sohbeti); CodexGiris ve CodexTani günlükleri (24 Eki 02.15–02.25); kayit/atlandi.log'daki Şaman satırları.",
+ "yanit": "",
+ "durum": "acik"
+}

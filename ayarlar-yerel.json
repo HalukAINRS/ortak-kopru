@@ -48,7 +48,9 @@
     "APPDATA": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\03_Codex_Saman\\Home\\AppData\\Roaming",
     "LOCALAPPDATA": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\03_Codex_Saman\\Home\\AppData\\Local",
     "TEMP": "X:\\Windows\\Temp\\Saman_Temp",
-    "TMP": "X:\\Windows\\Temp\\Saman_Temp"
+    "TMP": "X:\\Windows\\Temp\\Saman_Temp",
+    "OPENAI_API_KEY": null,
+    "CODEX_API_KEY": null
    }
   },
   {
