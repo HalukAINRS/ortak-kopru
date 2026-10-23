@@ -1,0 +1,649 @@
+{
+  "snapshot_commit": "7fefbca313dfcedcdd9e8812fe12f160676d0510",
+  "scope": "13 call logs plus kayit/README.md; exact repeated sections accounted by hash; no API/CLI invocation performed",
+  "call_log_files": 13,
+  "bytes": 799585,
+  "characters": 747849,
+  "system_groups": {
+    "8bd831f9380a40d9e3a70e0805e53527ecd110a9e1435d1c3b1eea2c66e5e479": [
+      "20261023-210244Z-ChatGPT.md",
+      "20261023-210621Z-ChatGPT.md",
+      "20261023-212025Z-ChatGPT.md",
+      "20261023-212444Z-ChatGPT.md",
+      "20261023-213125Z-ChatGPT.md"
+    ],
+    "f9a61328cde5e166a0ddc0b437d68ffc56719ef0982abd8230e1fbf376beaa7d": [
+      "20261023-210329Z-Gemini.md",
+      "20261023-210621Z-Gemini.md",
+      "20261023-212026Z-Gemini.md",
+      "20261023-212444Z-Gemini.md",
+      "20261023-213125Z-Gemini.md"
+    ],
+    "89232755c005e8f3e9247b20b471d04fd7722f30b6ca3e0d4a5317d896793c68": [
+      "20261023-210621Z-Claude.md",
+      "20261023-212025Z-Claude.md",
+      "20261023-213124Z-Claude.md"
+    ]
+  },
+  "audit_groups": {
+    "8a5648aedcf2518abfa5b366d34556bef4a96b58dab85724f68d6a82eac94231": [
+      "20261023-210244Z-ChatGPT.md",
+      "20261023-210329Z-Gemini.md",
+      "20261023-210621Z-ChatGPT.md",
+      "20261023-210621Z-Claude.md",
+      "20261023-210621Z-Gemini.md",
+      "20261023-212025Z-ChatGPT.md",
+      "20261023-212025Z-Claude.md",
+      "20261023-212026Z-Gemini.md",
+      "20261023-212444Z-ChatGPT.md",
+      "20261023-212444Z-Gemini.md"
+    ],
+    "50f8a0f88999cfa16d1cb9c68f3c596ff1da9677fa2ccdeafd65f47227c15f11": [
+      "20261023-213124Z-Claude.md",
+      "20261023-213125Z-ChatGPT.md",
+      "20261023-213125Z-Gemini.md"
+    ]
+  },
+  "record_variant_hashes": {
+    "k-0001": [
+      "355016f6e66df210aca805f586ed80475ff31148b4bcf80f48e32e7cc2f6efcb"
+    ],
+    "k-0002": [
+      "9674fe402768ad3370ae249729edcf70947c6e78a88882df4506e4595509e144"
+    ],
+    "k-0003": [
+      "53a08753e36a13995aa8bd8054cba49460decb33a26f5ade35f71e3fcced58be"
+    ],
+    "k-0004": [
+      "559eb0a0d2bbb99de8532c6d442f44bc7c8e25a20548820950026c7991c91a30"
+    ],
+    "k-0005": [
+      "faf6a6b8c2642b1969396ee124b6f55e24ee6e5ac3d46e00472a573c72de37c5"
+    ],
+    "k-0006": [
+      "004c917b0e7f41850a1fac9d75b630a40ed808bfff6a248c1f0d4c43aa8b5112"
+    ],
+    "k-0007": [
+      "496f4b2a589ec0d5d0f5432e3b04c8fcdeedee8a54560da1c3c90abf690d8e93"
+    ],
+    "k-0008": [
+      "d62c3f2a99be2c282c6c4eaa4e0f35e819d8a4736fd6ebeeb50f78b67a60edde"
+    ],
+    "k-0009": [
+      "690536beb3213014179e1d65966e64861eaf11a6ca1e855ace89335ac0da7283"
+    ]
+  },
+  "files": [
+    {
+      "path": "kayit/20261023-210244Z-ChatGPT.md",
+      "sha256": "ab6cb46d902c612e0f011278778a4dbf40fc0e271445997f8512a33c2d6097f7",
+      "bytes": 49184,
+      "characters": 46008,
+      "lines": 736,
+      "sections": {
+        "Sonuç": {
+          "first_line": 3,
+          "last_line": 6
+        },
+        "Sistem istemi": {
+          "first_line": 7,
+          "last_line": 34
+        },
+        "Kullanıcı iletisi": {
+          "first_line": 35,
+          "last_line": 726
+        },
+        "Ham yanıt": {
+          "first_line": 727,
+          "last_line": 736
+        }
+      },
+      "system_sha256": "8bd831f9380a40d9e3a70e0805e53527ecd110a9e1435d1c3b1eea2c66e5e479",
+      "audit_sha256": "8a5648aedcf2518abfa5b366d34556bef4a96b58dab85724f68d6a82eac94231",
+      "audit_characters": 35669,
+      "all_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003"
+      ],
+      "pending_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003"
+      ],
+      "result_status": "added",
+      "result_summary": "eklendi: k-0004; yol: openai gpt-6-astra; bekleyenler: k-0001, k-0002, k-0003; kullanım: {\"input_tokens\": 14402, \"input_tokens_details\": {\"cache_write_tokens\": 14399, \"cached_tokens\": 0}, \"output_tokens\": 2914, \"output_tokens_details\": {\"reasoning_tokens\": 2513}, \"total_tokens\": 17316}",
+      "raw_response_empty": false
+    },
+    {
+      "path": "kayit/20261023-210329Z-Gemini.md",
+      "sha256": "4837d56bc25f4e7ec1c1876e343b2a50e134cc0ca2f0e0ab681a7cf31b695f43",
+      "bytes": 52180,
+      "characters": 48751,
+      "lines": 742,
+      "sections": {
+        "Sonuç": {
+          "first_line": 3,
+          "last_line": 6
+        },
+        "Sistem istemi": {
+          "first_line": 7,
+          "last_line": 34
+        },
+        "Kullanıcı iletisi": {
+          "first_line": 35,
+          "last_line": 737
+        },
+        "Ham yanıt": {
+          "first_line": 738,
+          "last_line": 742
+        }
+      },
+      "system_sha256": "f9a61328cde5e166a0ddc0b437d68ffc56719ef0982abd8230e1fbf376beaa7d",
+      "audit_sha256": "8a5648aedcf2518abfa5b366d34556bef4a96b58dab85724f68d6a82eac94231",
+      "audit_characters": 35669,
+      "all_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003",
+        "k-0004"
+      ],
+      "pending_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003"
+      ],
+      "result_status": "added",
+      "result_summary": "eklendi: k-0005; yol: google gemini-4-argon; bekleyenler: k-0001, k-0002, k-0003; kullanım: {\"promptTokenCount\": 15662, \"candidatesTokenCount\": 825, \"totalTokenCount\": 19116, \"promptTokensDetails\": [{\"modality\": \"TEXT\", \"tokenCount\": 15662}], \"candidatesTokensDetails\": [{\"modality\": \"TEXT\", \"tokenCount\": 825}], \"thoughtsTokenCount\": 2629}",
+      "raw_response_empty": false
+    },
+    {
+      "path": "kayit/20261023-210621Z-ChatGPT.md",
+      "sha256": "e786093da597c53648911b80e4bdd494293c618431343a3a4cdcf7bdc530f0b6",
+      "bytes": 59879,
+      "characters": 56094,
+      "lines": 760,
+      "sections": {
+        "Sonuç": {
+          "first_line": 3,
+          "last_line": 13
+        },
+        "Sistem istemi": {
+          "first_line": 14,
+          "last_line": 41
+        },
+        "Kullanıcı iletisi": {
+          "first_line": 42,
+          "last_line": 755
+        },
+        "Ham yanıt": {
+          "first_line": 756,
+          "last_line": 760
+        }
+      },
+      "system_sha256": "8bd831f9380a40d9e3a70e0805e53527ecd110a9e1435d1c3b1eea2c66e5e479",
+      "audit_sha256": "8a5648aedcf2518abfa5b366d34556bef4a96b58dab85724f68d6a82eac94231",
+      "audit_characters": 35669,
+      "all_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003",
+        "k-0004",
+        "k-0005",
+        "k-0006"
+      ],
+      "pending_records": [
+        "k-0005",
+        "k-0006"
+      ],
+      "result_status": "api_auth_failure",
+      "result_summary": "ATLANDI: openai: HTTP 401: {",
+      "raw_response_empty": true
+    },
+    {
+      "path": "kayit/20261023-210621Z-Claude.md",
+      "sha256": "18cddd15309e8b08d564cbe8dd083f0364faab9be7455463285e994b3804c118",
+      "bytes": 61085,
+      "characters": 57176,
+      "lines": 764,
+      "sections": {
+        "Sonuç": {
+          "first_line": 3,
+          "last_line": 6
+        },
+        "Sistem istemi": {
+          "first_line": 7,
+          "last_line": 34
+        },
+        "Kullanıcı iletisi": {
+          "first_line": 35,
+          "last_line": 759
+        },
+        "Ham yanıt": {
+          "first_line": 760,
+          "last_line": 764
+        }
+      },
+      "system_sha256": "89232755c005e8f3e9247b20b471d04fd7722f30b6ca3e0d4a5317d896793c68",
+      "audit_sha256": "8a5648aedcf2518abfa5b366d34556bef4a96b58dab85724f68d6a82eac94231",
+      "audit_characters": 35669,
+      "all_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003",
+        "k-0004",
+        "k-0005",
+        "k-0006"
+      ],
+      "pending_records": [
+        "k-0004",
+        "k-0005",
+        "k-0006"
+      ],
+      "result_status": "parse_failure",
+      "result_summary": "HATA: yanıtta JSON nesnesi yok",
+      "raw_response_empty": true
+    },
+    {
+      "path": "kayit/20261023-210621Z-Gemini.md",
+      "sha256": "b5549e30d9bbf0db1af48576dfe0adc0042f9dcb0baf2ac939a9a2fd7a5b42a8",
+      "bytes": 54424,
+      "characters": 50934,
+      "lines": 749,
+      "sections": {
+        "Sonuç": {
+          "first_line": 3,
+          "last_line": 13
+        },
+        "Sistem istemi": {
+          "first_line": 14,
+          "last_line": 41
+        },
+        "Kullanıcı iletisi": {
+          "first_line": 42,
+          "last_line": 744
+        },
+        "Ham yanıt": {
+          "first_line": 745,
+          "last_line": 749
+        }
+      },
+      "system_sha256": "f9a61328cde5e166a0ddc0b437d68ffc56719ef0982abd8230e1fbf376beaa7d",
+      "audit_sha256": "8a5648aedcf2518abfa5b366d34556bef4a96b58dab85724f68d6a82eac94231",
+      "audit_characters": 35669,
+      "all_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003",
+        "k-0004",
+        "k-0005",
+        "k-0006"
+      ],
+      "pending_records": [
+        "k-0004"
+      ],
+      "result_status": "api_auth_failure",
+      "result_summary": "ATLANDI: google: HTTP 403: {",
+      "raw_response_empty": true
+    },
+    {
+      "path": "kayit/20261023-212025Z-ChatGPT.md",
+      "sha256": "45f98161ab9a5041d6bec66d83db27a35ba5a91d6ab36a30e033f4f7110f5a69",
+      "bytes": 63071,
+      "characters": 59035,
+      "lines": 771,
+      "sections": {
+        "Sonuç": {
+          "first_line": 3,
+          "last_line": 13
+        },
+        "Sistem istemi": {
+          "first_line": 14,
+          "last_line": 41
+        },
+        "Kullanıcı iletisi": {
+          "first_line": 42,
+          "last_line": 766
+        },
+        "Ham yanıt": {
+          "first_line": 767,
+          "last_line": 771
+        }
+      },
+      "system_sha256": "8bd831f9380a40d9e3a70e0805e53527ecd110a9e1435d1c3b1eea2c66e5e479",
+      "audit_sha256": "8a5648aedcf2518abfa5b366d34556bef4a96b58dab85724f68d6a82eac94231",
+      "audit_characters": 35669,
+      "all_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003",
+        "k-0004",
+        "k-0005",
+        "k-0006",
+        "k-0007"
+      ],
+      "pending_records": [
+        "k-0005",
+        "k-0006"
+      ],
+      "result_status": "api_auth_failure",
+      "result_summary": "ATLANDI: openai: HTTP 401: {",
+      "raw_response_empty": true
+    },
+    {
+      "path": "kayit/20261023-212025Z-Claude.md",
+      "sha256": "d1072f771b626e898bb85082cfd0fd15f17aaef2d1563b2a935969be3cbb85b6",
+      "bytes": 64245,
+      "characters": 60085,
+      "lines": 765,
+      "sections": {
+        "Sonuç": {
+          "first_line": 3,
+          "last_line": 6
+        },
+        "Sistem istemi": {
+          "first_line": 7,
+          "last_line": 34
+        },
+        "Kullanıcı iletisi": {
+          "first_line": 35,
+          "last_line": 759
+        },
+        "Ham yanıt": {
+          "first_line": 760,
+          "last_line": 765
+        }
+      },
+      "system_sha256": "89232755c005e8f3e9247b20b471d04fd7722f30b6ca3e0d4a5317d896793c68",
+      "audit_sha256": "8a5648aedcf2518abfa5b366d34556bef4a96b58dab85724f68d6a82eac94231",
+      "audit_characters": 35669,
+      "all_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003",
+        "k-0004",
+        "k-0005",
+        "k-0006"
+      ],
+      "pending_records": [
+        "k-0004",
+        "k-0005",
+        "k-0006"
+      ],
+      "result_status": "added",
+      "result_summary": "eklendi: k-0007; yol: cli ; bekleyenler: k-0004, k-0005, k-0006; kullanım: {\"cli\": \"claude -p --output-format text --no-session-persistence\", \"stderr_son\": \"\"}",
+      "raw_response_empty": false
+    },
+    {
+      "path": "kayit/20261023-212026Z-Gemini.md",
+      "sha256": "dfe36c66faf9c1b604fef0be752d7b809bda3e9e01e3c09e914e93cc1f9bdcc3",
+      "bytes": 57616,
+      "characters": 53875,
+      "lines": 760,
+      "sections": {
+        "Sonuç": {
+          "first_line": 3,
+          "last_line": 13
+        },
+        "Sistem istemi": {
+          "first_line": 14,
+          "last_line": 41
+        },
+        "Kullanıcı iletisi": {
+          "first_line": 42,
+          "last_line": 755
+        },
+        "Ham yanıt": {
+          "first_line": 756,
+          "last_line": 760
+        }
+      },
+      "system_sha256": "f9a61328cde5e166a0ddc0b437d68ffc56719ef0982abd8230e1fbf376beaa7d",
+      "audit_sha256": "8a5648aedcf2518abfa5b366d34556bef4a96b58dab85724f68d6a82eac94231",
+      "audit_characters": 35669,
+      "all_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003",
+        "k-0004",
+        "k-0005",
+        "k-0006",
+        "k-0007"
+      ],
+      "pending_records": [
+        "k-0004"
+      ],
+      "result_status": "api_auth_failure",
+      "result_summary": "ATLANDI: google: HTTP 403: {",
+      "raw_response_empty": true
+    },
+    {
+      "path": "kayit/20261023-212444Z-ChatGPT.md",
+      "sha256": "aed0c63f531810ed11cb03c2055954374938e503e515bbc6e4c6fdeafb7854a0",
+      "bytes": 66271,
+      "characters": 61984,
+      "lines": 782,
+      "sections": {
+        "Sonuç": {
+          "first_line": 3,
+          "last_line": 13
+        },
+        "Sistem istemi": {
+          "first_line": 14,
+          "last_line": 41
+        },
+        "Kullanıcı iletisi": {
+          "first_line": 42,
+          "last_line": 777
+        },
+        "Ham yanıt": {
+          "first_line": 778,
+          "last_line": 782
+        }
+      },
+      "system_sha256": "8bd831f9380a40d9e3a70e0805e53527ecd110a9e1435d1c3b1eea2c66e5e479",
+      "audit_sha256": "8a5648aedcf2518abfa5b366d34556bef4a96b58dab85724f68d6a82eac94231",
+      "audit_characters": 35669,
+      "all_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003",
+        "k-0004",
+        "k-0005",
+        "k-0006",
+        "k-0007"
+      ],
+      "pending_records": [
+        "k-0005",
+        "k-0006",
+        "k-0007"
+      ],
+      "result_status": "api_auth_failure",
+      "result_summary": "ATLANDI: openai: HTTP 401: {",
+      "raw_response_empty": true
+    },
+    {
+      "path": "kayit/20261023-212444Z-Gemini.md",
+      "sha256": "7d966d2ffd87e4a4f62134f040cc815f7375e7233fe91e251eb26240d53e0790",
+      "bytes": 60816,
+      "characters": 56824,
+      "lines": 771,
+      "sections": {
+        "Sonuç": {
+          "first_line": 3,
+          "last_line": 13
+        },
+        "Sistem istemi": {
+          "first_line": 14,
+          "last_line": 41
+        },
+        "Kullanıcı iletisi": {
+          "first_line": 42,
+          "last_line": 766
+        },
+        "Ham yanıt": {
+          "first_line": 767,
+          "last_line": 771
+        }
+      },
+      "system_sha256": "f9a61328cde5e166a0ddc0b437d68ffc56719ef0982abd8230e1fbf376beaa7d",
+      "audit_sha256": "8a5648aedcf2518abfa5b366d34556bef4a96b58dab85724f68d6a82eac94231",
+      "audit_characters": 35669,
+      "all_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003",
+        "k-0004",
+        "k-0005",
+        "k-0006",
+        "k-0007"
+      ],
+      "pending_records": [
+        "k-0004",
+        "k-0007"
+      ],
+      "result_status": "api_auth_failure",
+      "result_summary": "ATLANDI: google: HTTP 403: {",
+      "raw_response_empty": true
+    },
+    {
+      "path": "kayit/20261023-213124Z-Claude.md",
+      "sha256": "3b6fc0fa5380e342a575a4880763576911b6cdc5ed6bb5d4d81c5f2c563e3cd3",
+      "bytes": 65181,
+      "characters": 60951,
+      "lines": 785,
+      "sections": {
+        "Sonuç": {
+          "first_line": 3,
+          "last_line": 6
+        },
+        "Sistem istemi": {
+          "first_line": 7,
+          "last_line": 34
+        },
+        "Kullanıcı iletisi": {
+          "first_line": 35,
+          "last_line": 779
+        },
+        "Ham yanıt": {
+          "first_line": 780,
+          "last_line": 785
+        }
+      },
+      "system_sha256": "89232755c005e8f3e9247b20b471d04fd7722f30b6ca3e0d4a5317d896793c68",
+      "audit_sha256": "50f8a0f88999cfa16d1cb9c68f3c596ff1da9677fa2ccdeafd65f47227c15f11",
+      "audit_characters": 38192,
+      "all_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003",
+        "k-0004",
+        "k-0005",
+        "k-0006",
+        "k-0007",
+        "k-0008"
+      ],
+      "pending_records": [
+        "k-0008"
+      ],
+      "result_status": "added",
+      "result_summary": "eklendi: k-0009; yol: cli ; bekleyenler: k-0008; kullanım: {\"cli\": \"claude -p --output-format text --no-session-persistence\", \"stderr_son\": \"\"}",
+      "raw_response_empty": false
+    },
+    {
+      "path": "kayit/20261023-213125Z-ChatGPT.md",
+      "sha256": "7de7ddaa6b79aaa8d9b5a6cf5d76f5db73fe0a12e46a850cf519094aae1f1b37",
+      "bytes": 75544,
+      "characters": 70646,
+      "lines": 835,
+      "sections": {
+        "Sonuç": {
+          "first_line": 3,
+          "last_line": 13
+        },
+        "Sistem istemi": {
+          "first_line": 14,
+          "last_line": 41
+        },
+        "Kullanıcı iletisi": {
+          "first_line": 42,
+          "last_line": 830
+        },
+        "Ham yanıt": {
+          "first_line": 831,
+          "last_line": 835
+        }
+      },
+      "system_sha256": "8bd831f9380a40d9e3a70e0805e53527ecd110a9e1435d1c3b1eea2c66e5e479",
+      "audit_sha256": "50f8a0f88999cfa16d1cb9c68f3c596ff1da9677fa2ccdeafd65f47227c15f11",
+      "audit_characters": 38192,
+      "all_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003",
+        "k-0004",
+        "k-0005",
+        "k-0006",
+        "k-0007",
+        "k-0008",
+        "k-0009"
+      ],
+      "pending_records": [
+        "k-0005",
+        "k-0006",
+        "k-0007",
+        "k-0008"
+      ],
+      "result_status": "api_auth_failure",
+      "result_summary": "ATLANDI: openai: HTTP 401: {",
+      "raw_response_empty": true
+    },
+    {
+      "path": "kayit/20261023-213125Z-Gemini.md",
+      "sha256": "6371e97619c3898be7ed719a31c0ccb8f81e4e7e8a0e9e92f79783bdc9afbd70",
+      "bytes": 70089,
+      "characters": 65486,
+      "lines": 824,
+      "sections": {
+        "Sonuç": {
+          "first_line": 3,
+          "last_line": 13
+        },
+        "Sistem istemi": {
+          "first_line": 14,
+          "last_line": 41
+        },
+        "Kullanıcı iletisi": {
+          "first_line": 42,
+          "last_line": 819
+        },
+        "Ham yanıt": {
+          "first_line": 820,
+          "last_line": 824
+        }
+      },
+      "system_sha256": "f9a61328cde5e166a0ddc0b437d68ffc56719ef0982abd8230e1fbf376beaa7d",
+      "audit_sha256": "50f8a0f88999cfa16d1cb9c68f3c596ff1da9677fa2ccdeafd65f47227c15f11",
+      "audit_characters": 38192,
+      "all_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003",
+        "k-0004",
+        "k-0005",
+        "k-0006",
+        "k-0007",
+        "k-0008",
+        "k-0009"
+      ],
+      "pending_records": [
+        "k-0004",
+        "k-0007",
+        "k-0008"
+      ],
+      "result_status": "api_auth_failure",
+      "result_summary": "ATLANDI: google: HTTP 403: {",
+      "raw_response_empty": true
+    }
+  ]
+}

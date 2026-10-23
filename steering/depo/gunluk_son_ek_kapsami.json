@@ -1,0 +1,261 @@
+{
+  "snapshot_commit": "df341f17356d0369ae1385ee376aad3a94b133d8",
+  "prior_snapshot_commit": "86616eb303b93a5e364dcfc2d1e97fd73376d71c",
+  "read_method": "git show immutable_commit:path; worktree not changed",
+  "new_logs": 3,
+  "new_bytes": 260015,
+  "new_characters": 243070,
+  "cumulative_log_count": 19,
+  "cumulative_results": {
+    "added": 6,
+    "openai_http401": 6,
+    "google_http403": 6,
+    "parse_failure": 1
+  },
+  "files": [
+    {
+      "path": "kayit/20261023-214924Z-ChatGPT.md",
+      "sha256": "e23090b31c14b725a0f267697fc4a326f5e76e606886d41b2542b4af1e3d4a54",
+      "bytes": 98256,
+      "characters": 91840,
+      "lines": 923,
+      "sections": {
+        "Sonuç": {
+          "first_line": 3,
+          "last_line": 13
+        },
+        "Sistem istemi": {
+          "first_line": 14,
+          "last_line": 41
+        },
+        "Kullanıcı iletisi": {
+          "first_line": 42,
+          "last_line": 918
+        },
+        "Ham yanıt": {
+          "first_line": 919,
+          "last_line": 923
+        }
+      },
+      "system_sha256": "8bd831f9380a40d9e3a70e0805e53527ecd110a9e1435d1c3b1eea2c66e5e479",
+      "system_previously_seen": true,
+      "audit_sha256": "4dcb7e17acde198391716fae6b472d0c60a56534fd17a4ce15b1fe14b72adfdd",
+      "audit_characters": 38180,
+      "all_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003",
+        "k-0004",
+        "k-0005",
+        "k-0006",
+        "k-0007",
+        "k-0008",
+        "k-0009",
+        "k-0010",
+        "k-0011",
+        "k-0012",
+        "k-0013"
+      ],
+      "pending_records": [
+        "k-0005",
+        "k-0006",
+        "k-0007",
+        "k-0008",
+        "k-0009",
+        "k-0010",
+        "k-0011",
+        "k-0012"
+      ],
+      "result_status": "api_auth_failure",
+      "result_summary": "ATLANDI: openai: HTTP 401: {",
+      "raw_response_empty": true,
+      "prior_record_values_match": true
+    },
+    {
+      "path": "kayit/20261023-214924Z-Claude.md",
+      "sha256": "5ecc04e32e988f38542ccf5bee396b655ea6f16a5f263e6ff8339b38597e41a3",
+      "bytes": 77309,
+      "characters": 72299,
+      "lines": 829,
+      "sections": {
+        "Sonuç": {
+          "first_line": 3,
+          "last_line": 6
+        },
+        "Sistem istemi": {
+          "first_line": 7,
+          "last_line": 34
+        },
+        "Kullanıcı iletisi": {
+          "first_line": 35,
+          "last_line": 823
+        },
+        "Ham yanıt": {
+          "first_line": 824,
+          "last_line": 829
+        }
+      },
+      "system_sha256": "89232755c005e8f3e9247b20b471d04fd7722f30b6ca3e0d4a5317d896793c68",
+      "system_previously_seen": true,
+      "audit_sha256": "4dcb7e17acde198391716fae6b472d0c60a56534fd17a4ce15b1fe14b72adfdd",
+      "audit_characters": 38180,
+      "all_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003",
+        "k-0004",
+        "k-0005",
+        "k-0006",
+        "k-0007",
+        "k-0008",
+        "k-0009",
+        "k-0010",
+        "k-0011",
+        "k-0012"
+      ],
+      "pending_records": [
+        "k-0012"
+      ],
+      "result_status": "added",
+      "result_summary": "eklendi: k-0013; yol: cli ; bekleyenler: k-0012; kullanım: {\"cli\": \"claude -p --output-format text --no-session-persistence\", \"stderr_son\": \"\"}",
+      "raw_response_empty": false,
+      "prior_record_values_match": true
+    },
+    {
+      "path": "kayit/20261023-214924Z-Gemini.md",
+      "sha256": "4dc4725c7d0efad4cdc6adb62271715f19e75d33a5c5a15f69c98d0d645a2343",
+      "bytes": 84450,
+      "characters": 78931,
+      "lines": 868,
+      "sections": {
+        "Sonuç": {
+          "first_line": 3,
+          "last_line": 13
+        },
+        "Sistem istemi": {
+          "first_line": 14,
+          "last_line": 41
+        },
+        "Kullanıcı iletisi": {
+          "first_line": 42,
+          "last_line": 863
+        },
+        "Ham yanıt": {
+          "first_line": 864,
+          "last_line": 868
+        }
+      },
+      "system_sha256": "f9a61328cde5e166a0ddc0b437d68ffc56719ef0982abd8230e1fbf376beaa7d",
+      "system_previously_seen": true,
+      "audit_sha256": "4dcb7e17acde198391716fae6b472d0c60a56534fd17a4ce15b1fe14b72adfdd",
+      "audit_characters": 38180,
+      "all_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003",
+        "k-0004",
+        "k-0005",
+        "k-0006",
+        "k-0007",
+        "k-0008",
+        "k-0009",
+        "k-0010",
+        "k-0011",
+        "k-0012",
+        "k-0013"
+      ],
+      "pending_records": [
+        "k-0009",
+        "k-0011",
+        "k-0012"
+      ],
+      "result_status": "api_auth_failure",
+      "result_summary": "ATLANDI: google: HTTP 403: {",
+      "raw_response_empty": true,
+      "prior_record_values_match": true
+    }
+  ],
+  "new_record_variant_hashes": {
+    "k-0012": [
+      "a58723d5053c22412484aa8d1cf7ce79d9d8e1aa03b39663aef9f439f4e15508"
+    ],
+    "k-0013": [
+      "6d97b0a5d54712a4c1270982ef8cc3244f8cfd56b3e0c10359b570825356ef06"
+    ]
+  },
+  "prior_log_checks": [
+    {
+      "path": "kayit/20261023-210244Z-ChatGPT.md",
+      "same_sha256": true
+    },
+    {
+      "path": "kayit/20261023-210329Z-Gemini.md",
+      "same_sha256": true
+    },
+    {
+      "path": "kayit/20261023-210621Z-ChatGPT.md",
+      "same_sha256": true
+    },
+    {
+      "path": "kayit/20261023-210621Z-Claude.md",
+      "same_sha256": true
+    },
+    {
+      "path": "kayit/20261023-210621Z-Gemini.md",
+      "same_sha256": true
+    },
+    {
+      "path": "kayit/20261023-212025Z-ChatGPT.md",
+      "same_sha256": true
+    },
+    {
+      "path": "kayit/20261023-212025Z-Claude.md",
+      "same_sha256": true
+    },
+    {
+      "path": "kayit/20261023-212026Z-Gemini.md",
+      "same_sha256": true
+    },
+    {
+      "path": "kayit/20261023-212444Z-ChatGPT.md",
+      "same_sha256": true
+    },
+    {
+      "path": "kayit/20261023-212444Z-Gemini.md",
+      "same_sha256": true
+    },
+    {
+      "path": "kayit/20261023-213124Z-Claude.md",
+      "same_sha256": true
+    },
+    {
+      "path": "kayit/20261023-213125Z-ChatGPT.md",
+      "same_sha256": true
+    },
+    {
+      "path": "kayit/20261023-213125Z-Gemini.md",
+      "same_sha256": true
+    },
+    {
+      "path": "kayit/20261023-213815Z-ChatGPT.md",
+      "same_sha256": true
+    },
+    {
+      "path": "kayit/20261023-213815Z-Claude.md",
+      "same_sha256": true
+    },
+    {
+      "path": "kayit/20261023-213816Z-Gemini.md",
+      "same_sha256": true
+    }
+  ],
+  "audit_delta_from_38192_char_version": {
+    "old_characters": 38192,
+    "new_characters": 38180,
+    "changed_audit_line": 588,
+    "change": "Desktop Commander endpoint text: deletion of 12-character hyphen/numeric suffix; value omitted",
+    "other_text_exact_match": true
+  },
+  "steering_bulgulari_present_in_snapshot_root": false,
+  "method": "Repeated system and prior record values matched by hash; audit delta examined without copying identifier; new results and k-0012/k-0013 read in full. No API/CLI invocation. No sensitive values copied."
+}

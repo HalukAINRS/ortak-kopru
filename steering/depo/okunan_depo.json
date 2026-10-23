@@ -1,0 +1,233 @@
+{
+  "repository": "HalukAINRS/ortak-kopru",
+  "commit": "df341f17356d0369ae1385ee376aad3a94b133d8",
+  "earlier_snapshots": [
+    "7fefbca313dfcedcdd9e8812fe12f160676d0510",
+    "86616eb303b93a5e364dcfc2d1e97fd73376d71c"
+  ],
+  "scope": "Son okunan sürümün takip edilen dosyaları. Daha önce okunup bu sürümden kaldırılan beş dosyanın inceleme ve karmaları YENI_DOSYALAR.md içinde tarihsel kaynak olarak korunur; gövdeleri yeniden yayımlanmaz.",
+  "files": [
+    {
+      "path": ".github/workflows/kopru.yml",
+      "git_blob_sha1": "71cfabce09624c0ab2e047b83c17e0e4711dc21d",
+      "bytes": 2225,
+      "sha256": "e139982735b84966728105c262c4e0b6fc930fbb944afda0295a46442aee443b"
+    },
+    {
+      "path": ".gitignore",
+      "git_blob_sha1": "8f4d256179813dd3e3b2eb3f1cb4d444b3e7bd42",
+      "bytes": 36,
+      "sha256": "3d16aa88e50faf3945c3603a762043f978ded6dcbed3901219f2de808e42f688"
+    },
+    {
+      "path": ".nojekyll",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "AGENTS-kopru.md",
+      "git_blob_sha1": "be3650d9e502ef38077bffb81b53f0cd007b908e",
+      "bytes": 1849,
+      "sha256": "bcbe2d319b3b68ef9f3a27b1f41c47bce76dbf66a7633926ec06f1e4640a9538"
+    },
+    {
+      "path": "README.md",
+      "git_blob_sha1": "3bfa7f37da3c48de1b1d571f52eadff5d06896b0",
+      "bytes": 7540,
+      "sha256": "87342a18f9a2eee695392a0d1e8b3045606bdf25eadf485cd56d77c353f6d869"
+    },
+    {
+      "path": "ayarlar-yerel.json",
+      "git_blob_sha1": "13f4719eaec5b21f7acced21e5456a53ce1943a6",
+      "bytes": 790,
+      "sha256": "36ea6eb0b6f7c374c616f75c2f9811636f43db1ea41509ebf84851624b618c61"
+    },
+    {
+      "path": "ayarlar.json",
+      "git_blob_sha1": "ce97096e64f6fc42c1d4e9ed8ae419e5917c8965",
+      "bytes": 1064,
+      "sha256": "2d7138ec9300df9623ff9e6826e12e087f36986dcd95bbe221ddbc0f0f70242a"
+    },
+    {
+      "path": "ayna/kopru.html",
+      "git_blob_sha1": "87f7a6d3e54ba84b222204470d46476d7b7f94dc",
+      "bytes": 67129,
+      "sha256": "fb4a97a4dc7b2b5018ada094cbf930a417dcb07c7baee9ab5b1aec108dfe8183"
+    },
+    {
+      "path": "istem-sablonu.md",
+      "git_blob_sha1": "a9a63273744c114f6d3d905881ab28356ba8817d",
+      "bytes": 1963,
+      "sha256": "6b865aa63b19f914eb34644d8c87e45f61047e52d105e3aa66c4acc9093066d4"
+    },
+    {
+      "path": "kayit/20261023-210244Z-ChatGPT.md",
+      "git_blob_sha1": "91cb778f274379806795dda605bf272467b32f52",
+      "bytes": 49184,
+      "sha256": "ab6cb46d902c612e0f011278778a4dbf40fc0e271445997f8512a33c2d6097f7"
+    },
+    {
+      "path": "kayit/20261023-210329Z-Gemini.md",
+      "git_blob_sha1": "235cfa23cda4081bbe3379bf2a14849d619d998f",
+      "bytes": 52180,
+      "sha256": "4837d56bc25f4e7ec1c1876e343b2a50e134cc0ca2f0e0ab681a7cf31b695f43"
+    },
+    {
+      "path": "kayit/20261023-210621Z-ChatGPT.md",
+      "git_blob_sha1": "d9a77e95284e87602c931d5567fdd07558f9cd50",
+      "bytes": 59879,
+      "sha256": "e786093da597c53648911b80e4bdd494293c618431343a3a4cdcf7bdc530f0b6"
+    },
+    {
+      "path": "kayit/20261023-210621Z-Claude.md",
+      "git_blob_sha1": "900d19ab7baa4bb0c4e9310c5b84fdc1f6a492e8",
+      "bytes": 61085,
+      "sha256": "18cddd15309e8b08d564cbe8dd083f0364faab9be7455463285e994b3804c118"
+    },
+    {
+      "path": "kayit/20261023-210621Z-Gemini.md",
+      "git_blob_sha1": "71a145d535bc758643f2cdd62d46f8c379509276",
+      "bytes": 54424,
+      "sha256": "b5549e30d9bbf0db1af48576dfe0adc0042f9dcb0baf2ac939a9a2fd7a5b42a8"
+    },
+    {
+      "path": "kayit/20261023-212025Z-ChatGPT.md",
+      "git_blob_sha1": "7c024ffced2f656d92a206970e50f08bf8545744",
+      "bytes": 63071,
+      "sha256": "45f98161ab9a5041d6bec66d83db27a35ba5a91d6ab36a30e033f4f7110f5a69"
+    },
+    {
+      "path": "kayit/20261023-212025Z-Claude.md",
+      "git_blob_sha1": "9fb064567867f0491c9aa27707cf825b025f7602",
+      "bytes": 64245,
+      "sha256": "d1072f771b626e898bb85082cfd0fd15f17aaef2d1563b2a935969be3cbb85b6"
+    },
+    {
+      "path": "kayit/20261023-212026Z-Gemini.md",
+      "git_blob_sha1": "80357270150ee42abf9fcf6c9baf2468db666620",
+      "bytes": 57616,
+      "sha256": "dfe36c66faf9c1b604fef0be752d7b809bda3e9e01e3c09e914e93cc1f9bdcc3"
+    },
+    {
+      "path": "kayit/20261023-212444Z-ChatGPT.md",
+      "git_blob_sha1": "f4539598c2b273c01a2a47e9e0b6db4c578004ff",
+      "bytes": 66271,
+      "sha256": "aed0c63f531810ed11cb03c2055954374938e503e515bbc6e4c6fdeafb7854a0"
+    },
+    {
+      "path": "kayit/20261023-212444Z-Gemini.md",
+      "git_blob_sha1": "497141bbd0123d1e7999234a2f779f2abb2ab65e",
+      "bytes": 60816,
+      "sha256": "7d966d2ffd87e4a4f62134f040cc815f7375e7233fe91e251eb26240d53e0790"
+    },
+    {
+      "path": "kayit/20261023-213124Z-Claude.md",
+      "git_blob_sha1": "a1eac8447b9809bf2c86333d4a64dab38627d85d",
+      "bytes": 65181,
+      "sha256": "3b6fc0fa5380e342a575a4880763576911b6cdc5ed6bb5d4d81c5f2c563e3cd3"
+    },
+    {
+      "path": "kayit/20261023-213125Z-ChatGPT.md",
+      "git_blob_sha1": "40ed4c64ed2b7844e96c577e160e4a0c8173b3a2",
+      "bytes": 75544,
+      "sha256": "7de7ddaa6b79aaa8d9b5a6cf5d76f5db73fe0a12e46a850cf519094aae1f1b37"
+    },
+    {
+      "path": "kayit/20261023-213125Z-Gemini.md",
+      "git_blob_sha1": "0cbb99d34f2ef3f8e5f0ae6ef0c9828def7a4864",
+      "bytes": 70089,
+      "sha256": "6371e97619c3898be7ed719a31c0ccb8f81e4e7e8a0e9e92f79783bdc9afbd70"
+    },
+    {
+      "path": "kayit/20261023-213815Z-ChatGPT.md",
+      "git_blob_sha1": "5f737d2e2428fe71910509c6d8364b51c7d66113",
+      "bytes": 86163,
+      "sha256": "8c03679316dbd60797f6da69b48d649fd1a45404d9a24c2d05316c4a8627e061"
+    },
+    {
+      "path": "kayit/20261023-213815Z-Claude.md",
+      "git_blob_sha1": "3ba0f4c7969918607a46c9350415bf826c1ead88",
+      "bytes": 70934,
+      "sha256": "e70b922b035e735616d712cc7b1034187b84d0d6004c7a66890eb836e452cc38"
+    },
+    {
+      "path": "kayit/20261023-213816Z-Gemini.md",
+      "git_blob_sha1": "af5da5382eb655015422fc8fff5660d9334c65fd",
+      "bytes": 72357,
+      "sha256": "db61adcaedcceae5e35fa4b019d99eb3ce8933d10b4df4d9e9aaffa1f70ad371"
+    },
+    {
+      "path": "kayit/20261023-214924Z-ChatGPT.md",
+      "git_blob_sha1": "4e7a9ef49f283d5045f1cdb0c79f0ba296bad44e",
+      "bytes": 98256,
+      "sha256": "e23090b31c14b725a0f267697fc4a326f5e76e606886d41b2542b4af1e3d4a54"
+    },
+    {
+      "path": "kayit/20261023-214924Z-Claude.md",
+      "git_blob_sha1": "6e55f545ca4faafb69fa69d0dfc422df3da6b24f",
+      "bytes": 77309,
+      "sha256": "5ecc04e32e988f38542ccf5bee396b655ea6f16a5f263e6ff8339b38597e41a3"
+    },
+    {
+      "path": "kayit/20261023-214924Z-Gemini.md",
+      "git_blob_sha1": "3e275105232e2f07176025021e493f04faf10c9f",
+      "bytes": 84450,
+      "sha256": "4dc4725c7d0efad4cdc6adb62271715f19e75d33a5c5a15f69c98d0d645a2343"
+    },
+    {
+      "path": "kayit/README.md",
+      "git_blob_sha1": "ea6708f3fe81bd0c19c967b6ca7308e1e62e0042",
+      "bytes": 160,
+      "sha256": "e7b6d2b3940ff5e7217ff10a470c62727e4ade98beec1bda021191da6557d4e2"
+    },
+    {
+      "path": "kopru.html",
+      "git_blob_sha1": "aa0ec61626a6495a052d229655cdf5f75e4c1a28",
+      "bytes": 103196,
+      "sha256": "2a3cf3d31dc0dec561b3b6ad516e8940827c6d6234a392b5c7bf991dfa6764e1"
+    },
+    {
+      "path": "kopru_ekle.py",
+      "git_blob_sha1": "fa46f5830034df5cf914e95ca81fe3642cb8540f",
+      "bytes": 8811,
+      "sha256": "63d5d756a583c1db95b6c4f67015579cc41c30a4dd31e5361d0fa81a5774a5e8"
+    },
+    {
+      "path": "kopru_gonder.ps1",
+      "git_blob_sha1": "a4bd9223d1fd82bdd8546b09a8da7af3dc62e27c",
+      "bytes": 835,
+      "sha256": "e8347f302c9eac65f9152afe82caf9fb9a3929b18bf03575493b8f0a8409f038"
+    },
+    {
+      "path": "kopru_izle.ps1",
+      "git_blob_sha1": "87068eafe6b9638367ee8166870b9efc58199dca",
+      "bytes": 1257,
+      "sha256": "7bc497d485066fcad2eba168b65534ee9136b94b48dfe4112d8c23788410a64b"
+    },
+    {
+      "path": "kopru_oku.py",
+      "git_blob_sha1": "8fcb0d0a0cbca3a75fe27fb2e9fc9f772bbbaa96",
+      "bytes": 3545,
+      "sha256": "485fa96f9478c3af4241e587ad05984d50dfd1bda17c8efda52fb0c6831f16f4"
+    },
+    {
+      "path": "kopru_yanitla.py",
+      "git_blob_sha1": "15834b9d9142502c029c35b9e10a0e78563fbea4",
+      "bytes": 13149,
+      "sha256": "1bd1b925b00f319650b4507390eac09984b79041028e6257336ed56632068712"
+    },
+    {
+      "path": "web-istem.md",
+      "git_blob_sha1": "c73f729eb8094445275eb8284cbb711bd20f03ec",
+      "bytes": 1251,
+      "sha256": "89a5edb0f1c5bf7375014a21e5eb950675937244c012d33851f90aa0881019ce"
+    },
+    {
+      "path": "yanit-sablonu.json",
+      "git_blob_sha1": "009a3b5e8061391e96bbc5393c55464ecad02676",
+      "bytes": 235,
+      "sha256": "876b742a36df0797872e3b49ebda77efe0a66995ed8db949bcee58750c94777f"
+    }
+  ]
+}
