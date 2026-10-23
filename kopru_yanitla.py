@@ -288,7 +288,7 @@ def main():
         ham, kullanim, kullanilan, hatalar = "", None, None, []
         for yol_ayar in yollar:
             degisken = yol_ayar.get("anahtar_degiskeni")
-            anahtar = os.environ.get(degisken, "") if degisken else ""
+            anahtar = (os.environ.get(degisken, "") or "").strip() if degisken else ""   # boş ya da boşluk değer = yok
             if degisken and not anahtar:
                 hatalar.append(f"{yol_ayar['saglayici']}: {degisken} yok")
                 continue

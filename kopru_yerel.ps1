@@ -8,11 +8,13 @@
 #   Kopru_Izle.cmd Gonder          → sayfayı denetler, değişiklikleri commit edip GitHub'a gönderir
 #   Kopru_Izle.cmd VM              → Hacker sanal makinesini başlatır (Hacker_Baslat.ps1 -Mod Kontrol)
 #   Kopru_Izle.cmd CopilotKontrol  → Copilot CLI'a Şahit ortamında küçük bir deneme sorusu sorar (giriş sınaması)
+#   Kopru_Izle.cmd CodexGiris      → Şaman ortamında `codex login` (tarayıcı); "CodexGiris Cihaz" cihaz kodu akışı; "CodexGiris Durum" yalnız durum
+#   Kopru_Izle.cmd CopilotGiris    → Şahit ortamında `copilot login` (tarayıcı); "CopilotGiris Cihaz" cihaz kodu akışı
 #
 # Yollar Hacker_Baslat.ps1, Saman_Baslat.ps1, Sahit_Baslat.ps1 ve HalukAI_Ortam.ps1'dekilerle aynı; kurulum değişirse
 # burada ve ayarlar-yerel.json'da düzelt. Bu dosya makineye özgüdür; makineden bağımsız izleyici kopru_izle.ps1'dir.
 param(
-  [ValidateSet("Izle", "Hazirlik", "Tek", "Ekle", "Bolum", "Gonder", "VM", "CopilotKontrol")][string]$Mod = "Izle",
+  [ValidateSet("Izle", "Hazirlik", "Tek", "Ekle", "Bolum", "Gonder", "VM", "CopilotKontrol", "CodexGiris", "CopilotGiris")][string]$Mod = "Izle",
   [string]$Secenek = "",
   [int]$Dakika = 5,
   [string]$Yalniz = ""
@@ -63,6 +65,15 @@ function Bul-PyYol {
   return $null
 }
 
+function Saman-Ortami {
+  # Saman_Baslat.ps1 ile aynı değerler; yalnız bu süreç için.
+  $env:HOME = $SamanHome; $env:USERPROFILE = $SamanHome
+  $env:CODEX_HOME = "$SamanHome\.codex"
+  $env:APPDATA = "$SamanHome\AppData\Roaming"; $env:LOCALAPPDATA = "$SamanHome\AppData\Local"
+  $env:TEMP = "X:\Windows\Temp\Saman_Temp"; $env:TMP = "X:\Windows\Temp\Saman_Temp"
+  foreach ($k in @($env:CODEX_HOME, $env:APPDATA, $env:LOCALAPPDATA)) { New-Item -Path $k -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null }
+}
+
 function Sahit-Ortami {
   # Sahit_Baslat.ps1 ile aynı değerler; yalnız bu süreç için.
   $env:HOME = $SahitHome; $env:USERPROFILE = $SahitHome
@@ -101,6 +112,39 @@ switch ($Mod) {
     if ($LASTEXITCODE -ne 0) { return }
     & $py -I -X utf8 kopru_ekle.py kopru.html --kontrol
     Write-Host "Göndermek için: Kopru_Izle.cmd Gonder (ayna da yenilenmeli; Claude bu sohbette yapar)" -ForegroundColor Cyan
+  }
+
+  "CodexGiris" {
+    if (-not (Test-Path -LiteralPath $CodexExe)) { Write-Error "codex.exe yok: $CodexExe"; return }
+    Saman-Ortami
+    & $CodexExe --version
+    if ($Secenek -eq "Durum") { & $CodexExe login status; return }
+    if ($Secenek -eq "Cihaz") {
+      Write-Host "Cihaz kodu akışı: yazılan adresi Chrome'da aç, kodu gir, ChatGPT Pro hesabınla onayla." -ForegroundColor Cyan
+      & $CodexExe login --device-auth
+    } else {
+      Write-Host "Tarayıcı açılacak; açılmazsa terminaldeki adresi Chrome'a kopyala. 'Sign in with ChatGPT' → Pro hesabınla onayla → buraya dön." -ForegroundColor Cyan
+      Write-Host "Giriş $env:CODEX_HOME\auth.json dosyasına yazılır (izleyici Şaman'ı aynı Home ile çağırır)." -ForegroundColor Cyan
+      & $CodexExe login
+    }
+    Write-Host "--- durum ---" -ForegroundColor Cyan
+    & $CodexExe login status
+    Write-Host "Sonraki: Kopru_Izle.cmd Tek ChatGPT" -ForegroundColor Cyan
+  }
+
+  "CopilotGiris" {
+    if (-not (Test-Path -LiteralPath $CopilotExe)) { Write-Error "copilot.exe yok: $CopilotExe"; return }
+    Sahit-Ortami
+    & $CopilotExe --version
+    if ($Secenek -eq "Cihaz") {
+      Write-Host "Cihaz kodu akışı: yazılan adresi Chrome'da aç, kodu gir, GitHub hesabınla onayla." -ForegroundColor Cyan
+      & $CopilotExe login --device-code
+    } else {
+      Write-Host "Tarayıcı açılacak; açılmazsa 'CopilotGiris Cihaz' dene. GitHub hesabınla onayla → buraya dön." -ForegroundColor Cyan
+      Write-Host "Giriş sistem kimlik deposuna, o yoksa $env:COPILOT_HOME altına yazılır; WinPE'de her açılışta yinelemek gerekebilir." -ForegroundColor Cyan
+      & $CopilotExe login
+    }
+    Write-Host "Sonraki: Kopru_Izle.cmd CopilotKontrol" -ForegroundColor Cyan
   }
 
   "CopilotKontrol" {

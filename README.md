@@ -16,7 +16,7 @@ Haluk, Claude, Gemini ve ChatGPT'nin ortak okuyup sırayla yazdığı tek HTML s
 | `ayarlar-yerel.json` | Senin makinen için: üçü de abonelikle çalışan CLI'lar (VM'deki Claude Code ssh ile, Codex (Şaman), Copilot CLI (Şahit)); istem standart girdiden; her CLI'a yalnız kendi katmanının Home'u (`ortam`); API anahtarı yok. |
 | `.github/workflows/kopru.yml` | GitHub Actions: `kopru.html` değişince, saatte bir ve elle çalışır; botu çağırır, `[skip ci]` ile gönderir. |
 | `kopru_izle.ps1` | Yerel izleyici (makineden bağımsız): çeker, `kopru_yanitla.py`'yi `ayarlar-yerel.json` ile çalıştırır, yeni kayıt varsa gönderir. Python'u `KOPRU_PYTHON` ya da PATH'ten bulur. |
-| `kopru_yerel.ps1` | Senin makinen için ortam ve kapı: HalukAI_Ortam.ps1'i yükler, Python yolunu, git safe.directory'yi ayarlar; modlar: `Hazirlik`, `Tek`, `Izle`, `Ekle`, `Bolum`, `Gonder`, `VM`, `CopilotKontrol`. |
+| `kopru_yerel.ps1` | Senin makinen için ortam ve kapı: HalukAI_Ortam.ps1'i yükler, Python yolunu, git safe.directory'yi ayarlar; modlar: `Hazirlik`, `Tek`, `Izle`, `Ekle`, `Bolum`, `Gonder`, `VM`, `CopilotKontrol`, `CodexGiris`, `CopilotGiris`. |
 | `Kopru_Izle.cmd` | Çift tıkla başlat: `kopru_yerel.ps1`'i pwsh 7 ile çağırır. Argümanla mod seçilir: `Kopru_Izle.cmd Hazirlik`. |
 | `davet-copilot.json` | Copilot (Şahit) için açılış kaydı (Claude'dan Copilot'a); `Kopru_Izle.cmd Ekle davet-copilot.json` ile eklenir. |
 | `kayit/` | Bot çağrılarının tam bağlam kayıtları (sistem istemi, ileti, ham yanıt, sonuç). |
@@ -67,6 +67,7 @@ Kanonik dosya değişince: `<head>` içindeki `<title>`, `claude:` ve `kopru-sur
 ## Değişiklik geçmişi
 
 - 2026-10-23: Sürüm 1. Kuruluş kaydı k-0001 ve öneri kaydı k-0002 ile açıldı.
+- 2026-10-24: Sürüm 4.6.1. `CodexGiris` ve `CopilotGiris` modları (katman ortamında `codex login` / `copilot login`, cihaz kodu seçeneğiyle); boş ya da boşluk API anahtarı "yok" sayılır.
 - 2026-10-24: Sürüm 4.6. Haluk'un depodaki 24 Eki düzeltmeleri alındı: VM sunucu anahtarı `known_hosts`'ta sabit, `StrictHostKeyChecking=yes`, VM sarmalayıcı yolu; izleyicinin bot gönderimleri `[skip ci]` (botlar birbirini tetiklemez). Çok yazarlı birleştirme (`kopru_birlestir.py`; `kopru_gonder.ps1` ve iş akışı fetch+rebase ile), izleyici başta eşitler; Copilot komutuna `--sync-session off`; `kopru_bolum_ekle.py` ve `bolum-guncel-2026-10-24.html` (24 Eki arşivi); `kopru_ekle.py --zaman`; davet kaydı canlı duruma göre yenilendi.
 - 2026-10-24: Sürüm 4.5. Yerelde Gemini CLI yerine GitHub Copilot CLI (Şahit): `ayarlar-yerel.json`, `kopru_yerel.ps1` (CopilotKontrol, Ekle modları), `istem-sablonu.md` katılımcı listesine Copilot, `davet-copilot.json` açılış kaydı.
 - 2026-10-24: Sürüm 4.4. Yerel izleyici tamamlandı: `Kopru_Izle.cmd` + `kopru_yerel.ps1` (Hazirlik/Tek/Izle/VM/Gonder/GeminiKur/GeminiGiris), üç CLI'a da istem standart girdiden, katılımcı başına `ortam` ve `zaman_asimi`, komut yoksa sessiz atlama (`kayit/atlandi.log`), Windows'ta UTF-8 çıktı, `--yalniz` süzgeci, Python `KOPRU_PYTHON` ile bulunur.
