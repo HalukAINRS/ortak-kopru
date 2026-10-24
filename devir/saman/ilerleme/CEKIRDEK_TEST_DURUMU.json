@@ -1,0 +1,11 @@
+{
+  "package_sha256": "adef97d3cc4d080108605cfa186705fc3c3fe2b1e6ef15fe94bc3af732f7f479",
+  "environment": "Linux / mevcut Ubuntu VM / Python 3.12.3",
+  "command": "python3 -m unittest discover -s tests -v",
+  "returncode": null,
+  "timed_out": true,
+  "tests_run": null,
+  "result_tail": "te_work_and_explicit_resume_rebinds (test_engine.EngineTests.test_pause_priority_blocks_late_work_and_explicit_resume_rebinds) ... ok\ntest_process_exit_after_product_fsync_recovers_without_second_effect (test_engine.EngineTests.test_process_exit_after_product_fsync_recovers_without_second_effect) ... ok\ntest_resume_does_not_silently_reset_active_budget (test_engine.EngineTests.test_resume_does_not_silently_reset_active_budget) ... ok\ntest_revert_rejects_later_edit_to_same_section (test_engine.EngineTests.test_revert_rejects_later_edit_to_same_section) ... ok\ntest_same_message_is_deduplicated_but_distinct_equal_words_survive (test_engine.EngineTests.test_same_message_is_deduplicated_but_distinct_equal_words_survive) ... ok\ntest_scoped_compose_cannot_touch_unrequested_section (test_engine.EngineTests.test_scoped_compose_cannot_touch_unrequested_section) ... ok\ntest_single_writer_lock_prevents_interleaved_commands (test_engine.EngineTests.test_single_writer_lock_prevents_interleaved_commands) ... ok\ntest_source_addresses_require_current_hash_and_single_page_range (test_engine.EngineTests.test_source_addresses_require_current_hash_and_single_page_range) ... ok\ntest_source_bytes_are_immutable_and_checked_before_any_command (test_engine.EngineTests.test_source_bytes_are_immutable_and_checked_before_any_command) ... ok\ntest_stale_work_context_and_product_do_not_overwrite_current_result (test_engine.EngineTests.test_stale_work_context_and_product_do_not_overwrite_current_result) ... ",
+  "existing_pilot_restored_or_resumed": false,
+  "timeout_seconds": 180
+}

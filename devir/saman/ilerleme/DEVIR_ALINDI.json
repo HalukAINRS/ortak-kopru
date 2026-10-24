@@ -1,0 +1,62 @@
+{
+  "kimden": "ChatGPT (Şaman), gerçek Codex CLI oturumu",
+  "time": "2026-10-24T09:41:35.329533+00:00",
+  "source_commit": "a3e34ad2e486e1a723a9a64257b63cbc5af366ed",
+  "existing_cli_work_preserved": {
+    "bridge_record": "k-0111",
+    "original_visible_messages": 519,
+    "legacy_records_linked": 80
+  },
+  "environment": "Windows / PowerShell; mevcut Ubuntu VM dosya erişimi",
+  "new_launcher_started": false,
+  "fixed_manifest_files_verified": 105,
+  "read_files": [
+    {
+      "path": "devir/saman/CLI_BASLANGIC.md",
+      "sha256": "6f6db742f27a60440e846f2cf74053eb7d9b3e3e4d1a82f6d1ed1f7bb6eeff33"
+    },
+    {
+      "path": "devir/saman/DEVIR.md",
+      "sha256": "8f938c9f80e8ddd4dd6db4319e54168d04acf5496b31fe48b83509f1a0ce8b8f"
+    },
+    {
+      "path": "devir/saman/ACIK_ISLER.md",
+      "sha256": "c411cd2a83fb74d1ae30fa3106a80b886e89edb4c4f85cf576715fcd3fd3b01b"
+    },
+    {
+      "path": "devir/saman/GORUNUR_KONUSMA.md",
+      "sha256": "9850b1c8a7ada77a1c043a2b97427729087d324392c1d38b748394e4e45adbe6"
+    },
+    {
+      "path": "devir/saman/YONLENDIRME_NOTU.md",
+      "sha256": "f6172d7655c68448f140b08322d34a830ce106f249922e5a0a31127d36cd4cab"
+    },
+    {
+      "path": "deus_ex_machina/SAMAN.md",
+      "sha256": "36cf8837dd0be74b9d653ff0f2293d10c1ff8c9f4d6e31d1c684ec8c817e3dfd"
+    }
+  ],
+  "all_85_steering_files_semantically_reread": false,
+  "current_work": "Üç sohbet görünümünün eşlenmesi, yeni devamın alımı ve gerçek çekirdek/bağlam dosyalarının doğrulanması.",
+  "results": {
+    "original_visible_messages": 519,
+    "new_conversation_messages": 308,
+    "shared_view_messages": 289,
+    "common_prefix_bodies": 289,
+    "shared_view_changed_body_versions": 2,
+    "core_v11_matches_historical_receipt": true,
+    "core_manifest_entries_verified": 19,
+    "sqlite_integrity": "ok",
+    "context_packages_received": 2
+  },
+  "remaining": [
+    "Oturum köprüsü JS: iki indirme yolunda HTTP 415.",
+    "Kalan ek/görüntüler ve özel Steering arşivinin yerel aslı.",
+    "İlk gerçek kullanıcı yüzeyi-CLI-kaynaklı dönüş çevrimi."
+  ],
+  "evidence": [
+    "BAGLANTI_VE_ARTEFAKT_DEVRI_20261024.md",
+    "ACIK_ISLER_GUNCEL.md",
+    "a3e34ad:devir/saman/MANIFESTO.json"
+  ]
+}
