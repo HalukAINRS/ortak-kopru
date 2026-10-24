@@ -15,7 +15,8 @@ Komut bu makinede yoksa katılımcı sessizce atlanır; atlanan her çalıştır
 
 Bekleyen kaydın tanımı: durumu açık, "kime" alanında katılımcının adı geçen, katılımcının kendi yazmadığı ve
 katılımcının daha sonra yazdığı bir kaydın "yanıt" alanının kapsamadığı kayıt. Bir yanıt kaydı, yanıt alanındaki
-numaraya kadar olan bütün bekleyenleri kapsar; bu yüzden her çalıştırmada katılımcı başına tek kayıt yeter.
+numaraya kadar aynı hedef kapsamındaki bekleyenleri kapsar. Açık katman adresi
+yalnız aynı katmanın yanıtıyla kapsanır; API yedeği CLI imzasını miras alamaz.
 
 Anahtarlar yalnız ortam değişkeninden okunur ve hiçbir yere yazılmaz.
 """
@@ -40,7 +41,36 @@ def ad_kok(s):
 
 
 def kime_adlari(s):
-    return [ad_kok(x) for x in (s or "").split(",") if x.strip()]
+    return [hedef_kimligi(x) for x in (s or "").split(",") if x.strip()]
+
+
+def hedef_kimligi(s):
+    """Üretici ve açık katman ayrı; yalın eski adresler üretici adresidir."""
+    s = (s or "").strip().casefold()
+    roller = {"saman": "şaman", "şaman": "şaman", "sahit": "şahit", "şahit": "şahit",
+              "hacker": "hacker", "cli": "cli", "api": "api"}
+    takma = {"şaman": ("chatgpt", "şaman"), "saman": ("chatgpt", "şaman"),
+             "şahit": ("copilot", "şahit"), "sahit": ("copilot", "şahit"),
+             "hacker": ("claude", "hacker")}
+    if s in takma:
+        return takma[s]
+    m = re.fullmatch(r"([^()]+?)(?:\s*\(([^()]+)\))?", s)
+    if not m:
+        return (s, "")
+    return (m[1].strip(), roller.get((m[2] or "").strip(), (m[2] or "").strip()))
+
+
+def yol_kimligi(ad, kat, yol):
+    """API yedeği üst CLI'ın imzasını miras alamaz."""
+    cli = yol["saglayici"] == "cli"
+    imza = yol.get("imza")
+    if not imza and cli and kat["saglayici"] == "cli":
+        imza = kat.get("imza")
+    imza = imza or f"{ad} ({'CLI' if cli else 'API'})"
+    kok, rol = hedef_kimligi(imza)
+    if kok != hedef_kimligi(ad)[0] or (not cli and rol in {"şaman", "şahit", "hacker", "cli"}) or (cli and rol == "api"):
+        raise ValueError("Yolun sağlayıcısı ile katman imzası uyuşmuyor.")
+    return imza
 
 
 def numara(kid):
@@ -49,18 +79,29 @@ def numara(kid):
 
 
 def bekleyenler(kayitlar, ad):
-    kapsanan_ust = -1
-    for k in kayitlar:
-        if ad_kok(k["kimden"]) == ad and k.get("yanit"):
-            kapsanan_ust = max(kapsanan_ust, numara(k["yanit"]))
+    hedef = hedef_kimligi(ad)
+    genel = (hedef[0], "")
+    kapsanan = {}
+    for y in kayitlar:
+        if not y.get("yanit"):
+            continue
+        kimden = hedef_kimligi(y["kimden"])
+        for kapsam in {kimden, (kimden[0], "")}:
+            kapsanan[kapsam] = max(kapsanan.get(kapsam, -1), numara(y["yanit"]))
     out = []
     for k in kayitlar:
         if k["durum"] != "acik":
             continue
-        if ad not in kime_adlari(k["kime"]):
+        adresler = kime_adlari(k["kime"])
+        kapsam = hedef if hedef in adresler else genel if genel in adresler else None
+        if kapsam is None:
             continue
-        if ad_kok(k["kimden"]) == ad:
+        kimden = hedef_kimligi(k["kimden"])
+        if kimden == kapsam or (not kapsam[1] and kimden[0] == kapsam[0]):
             continue
+        # Eski yalın üretici adreslerinin kapsama davranışı korunur.
+        # Açık katman adresini yalnız aynı katmanın yanıtı kapsar.
+        kapsanan_ust = kapsanan.get(kapsam, -1)
         if numara(k["id"]) <= kapsanan_ust:
             continue
         out.append(k)
@@ -271,26 +312,34 @@ def main():
         print(sistem + "\n\n---\n\n" + kullanici)
         return
 
-    ayar = json.load(open(a.ayarlar, encoding="utf-8"))
+    with open(a.ayarlar, encoding="utf-8") as dosya_ayar:
+        ayar = json.load(dosya_ayar)
     en_cok = int(ayar.get("en_cok_cikti_token", 1500))
     eklenenler = []
     for kat in ayar["katilimcilar"]:
         ad = kat["ad"]
         if a.yalniz and ad != a.yalniz:
             continue
-        bek = bekleyenler(kayitlar, ad)
-        if not bek:
-            print(f"{ad}: bekleyen yok")
-            continue
-        sistem, kullanici = istem_kur(a.dosya, ad, bek)
-        if a.kuru:
-            yol = kayit_yaz(ad, kat.get("model", "-"), kat["saglayici"], sistem, kullanici, "(kuru çalıştırma, çağrı yapılmadı)", "kuru")
-            print(f"{ad}: {len(bek)} bekleyen; istem {yol} dosyasına yazıldı")
-            continue
         # Yollar: asıl yol, sonra varsa "yedek". Her yol için gereken ortam değişkeni (anahtar ya da abonelik belirteci) yoksa o yol atlanır.
         yollar = [kat] + ([kat["yedek"]] if kat.get("yedek") else [])
         ham, kullanim, kullanilan, hatalar = "", None, None, []
+        bek_goruldu, kuru_yazildi = False, False
         for yol_ayar in yollar:
+            try:
+                hedef = yol_kimligi(ad, kat, yol_ayar)
+            except ValueError as e:
+                hatalar.append(str(e))
+                continue
+            bek = bekleyenler(kayitlar, hedef)
+            if not bek:
+                continue
+            bek_goruldu = True
+            sistem, kullanici = istem_kur(a.dosya, hedef, bek)
+            if a.kuru:
+                yol = kayit_yaz(ad, yol_ayar.get("model", "-"), yol_ayar["saglayici"], sistem, kullanici, "(kuru çalıştırma, çağrı yapılmadı)", "kuru")
+                print(f"{hedef}: {len(bek)} bekleyen; istem {yol} dosyasına yazıldı")
+                kuru_yazildi = True
+                break
             degisken = yol_ayar.get("anahtar_degiskeni")
             anahtar = (os.environ.get(degisken, "") or "").strip() if degisken else ""   # boş ya da boşluk değer = yok
             if degisken and not anahtar:
@@ -303,18 +352,24 @@ def main():
                 else:
                     ham, kullanim = cagir(yol_ayar["saglayici"], yol_ayar["model"], anahtar, sistem, kullanici, en_cok, yol_ayar.get("dusunme"))
                 kullanilan = yol_ayar
+                kullanilan_imza = hedef
                 break
             except KomutYok as e:
                 hatalar.append(f"{yol_ayar['saglayici']}: komut yok: {e}")
             except Exception as e:  # noqa: BLE001
                 hatalar.append(f"{yol_ayar['saglayici']}: {str(e)[:300]}")
+        if kuru_yazildi:
+            continue
+        if not bek_goruldu and not hatalar:
+            print(f"{ad}: bekleyen yok")
+            continue
         if kullanilan is None:
             atlandi_yaz(ad, hatalar)
             print(f"{ad}: atlandı ({' | '.join(hatalar)[:200]}) → kayit/atlandi.log")
             continue
         try:
             veri = json_ayikla(ham)
-            veri["kimden"] = kullanilan.get("imza") or kat.get("imza") or f"{ad} (API)"
+            veri["kimden"] = kullanilan_imza
             veri.setdefault("kime", "Sen")
             veri["yanit"] = bek[-1]["id"]
             veri["durum"] = "acik"
