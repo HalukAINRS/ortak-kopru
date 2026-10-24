@@ -10,15 +10,22 @@ Herkese açık olmayan kısım (defter, kaynak PDF, tarayıcı kaydı çözümle
 
 ## VM'de başlatma
 
-Windows'ta, zip'in bulunduğu klasörde (yollar `ayarlar-yerel.json` ile aynı):
+Komutlar iki ayrı yerde çalışır: önce Windows PowerShell'de, sonra ssh ile girilen VM'de.
 
-```bat
-set K=Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari
-"%K%\Runtime\Git-Portable-2.56.0.2\usr\bin\scp.exe" -P 2222 -i "%K%\01_Claude_Code_Hacker\Home\.ssh\hacker_arm64_035" -o UserKnownHostsFile="%K%\01_Claude_Code_Hacker\Home\.ssh\known_hosts" -o StrictHostKeyChecking=yes hacker-devri-2026-10-24.zip hacker@127.0.0.1:~/
-"%K%\Runtime\Git-Portable-2.56.0.2\usr\bin\ssh.exe" -p 2222 -i "%K%\01_Claude_Code_Hacker\Home\.ssh\hacker_arm64_035" -o UserKnownHostsFile="%K%\01_Claude_Code_Hacker\Home\.ssh\known_hosts" -o StrictHostKeyChecking=yes -t hacker@127.0.0.1
+**1. Windows PowerShell.** Zip'in bulunduğu klasörde (`Y:\HalukAI`). VM kapalıysa önce `Y:\HalukAI\Ortak_Kopru\kopru` içinde `.\Kopru_Izle.cmd VM`.
+
+```powershell
+$K = "Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari"
+$G = "$K\Runtime\Git-Portable-2.56.0.2\usr\bin"
+$S = "$K\01_Claude_Code_Hacker\Home\.ssh"
+$O = @("-i", "$S\hacker_arm64_035", "-o", "UserKnownHostsFile=$S\known_hosts", "-o", "StrictHostKeyChecking=yes")
+& "$G\scp.exe" -P 2222 @O hacker-devri-2026-10-24.zip hacker@127.0.0.1:
+& "$G\ssh.exe" -p 2222 @O -t hacker@127.0.0.1
 ```
 
-VM içinde:
+Zip'e göreli adla başvurulur. scp, `Y:\...` gibi bir yoldaki iki noktayı uzak makine adı sanır.
+
+**2. VM içinde.** ssh'den sonra istem `hacker@...$` olur.
 
 ```sh
 python3 -m zipfile -e ~/hacker-devri-2026-10-24.zip ~/      # ~/hacker-devri/ oluşur
