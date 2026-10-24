@@ -12,14 +12,18 @@
 #   Kopru_Izle.cmd CopilotGiris    → Şahit ortamında `copilot login` (tarayıcı); "CopilotGiris Cihaz" cihaz kodu akışı
 #   Kopru_Izle.cmd CodexTani       → Codex tanısı: ortam, config.toml yetki satırları, auth.json alan adları, arg0 geçici klasörleri, kısa deneme çağrısı (değer yazmaz)
 #   Kopru_Izle.cmd Arg0Temizle     → Codex'in silemediği eski arg0 klasörlerini kilidi tutulmayanlardan başlayarak siler (önce kilit dosyası kapatılır)
+#   Kopru_Izle.cmd SahitDevam      → Şahit CLI için varsayılan kuru önizleme; Baslat açıkça etkileşimli başlatır
 #
 # Yollar Hacker_Baslat.ps1, Saman_Baslat.ps1, Sahit_Baslat.ps1 ve HalukAI_Ortam.ps1'dekilerle aynı; kurulum değişirse
 # burada ve ayarlar-yerel.json'da düzelt. Bu dosya makineye özgüdür; makineden bağımsız izleyici kopru_izle.ps1'dir.
 param(
-  [ValidateSet("Izle", "Hazirlik", "Tek", "Ekle", "Bolum", "Gonder", "VM", "CopilotKontrol", "CodexGiris", "CopilotGiris", "CodexTani", "Arg0Temizle")][string]$Mod = "Izle",
+  [ValidateSet("Izle", "Hazirlik", "Tek", "Ekle", "Bolum", "Gonder", "VM", "CopilotKontrol", "CopilotGiris", "CodexGiris", "CodexTani", "Arg0Temizle", "SahitDevam")][string]$Mod = "Izle",
   [string]$Secenek = "",
   [int]$Dakika = 5,
-  [string]$Yalniz = ""
+  [string]$Yalniz = "",
+  [string]$CopilotExePath = "",
+  [string]$SahitHomePath = "",
+  [string]$DepoPath = ""
 )
 $ErrorActionPreference = "Continue"
 try { [Console]::OutputEncoding = [System.Text.Encoding]::UTF8 } catch {}
@@ -41,6 +45,75 @@ $SahitHome    = "$Katmanlar\02_Copilot_Sahit\Home"
 $DepoYolu     = "Y:/HalukAI/Ortak_Kopru/kopru"      # git safe.directory eğik çizgi ister
 $SshOrtak     = @("-p", "2222", "-i", $SshAnahtar, "-o", "BatchMode=yes", "-o", "UserKnownHostsFile=$SshBilinen",
                   "-o", "StrictHostKeyChecking=yes", "-o", "LogLevel=ERROR", "-o", "ConnectTimeout=10", "hacker@127.0.0.1")
+
+function Sahit-Ortami([string]$SahitHomeYolu = $SahitHome) {
+  # Sahit_Baslat.ps1 ile aynı değerler; yalnız bu süreç için.
+  $env:HOME = $SahitHomeYolu; $env:USERPROFILE = $SahitHomeYolu
+  $env:COPILOT_HOME = Join-Path $SahitHomeYolu ".copilot"
+  $env:COPILOT_CACHE_HOME = "X:\Windows\Temp\Sahit_Temp"; $env:NODE_COMPILE_CACHE = "X:\Windows\Temp\Sahit_NodeCache"
+  $env:TEMP = "X:\Windows\Temp\Sahit_Temp"; $env:TMP = "X:\Windows\Temp\Sahit_Temp"
+  $env:COPILOT_AUTO_UPDATE = "false"
+}
+
+# Bu dal, mevcut izleyici/teşhis başlangıç işlemlerinden önce çalışır: önizleme hiçbir ortam
+# hazırlığı, dosya yazımı, git/ssh komutu veya CLI çağrısı yapmaz.
+if ($Mod -eq "SahitDevam") {
+  $exeYolu = if ($CopilotExePath) { $CopilotExePath } else { $CopilotExe }
+  $homeYolu = if ($SahitHomePath) { $SahitHomePath } else { $SahitHome }
+  $repoYolu = if ($DepoPath) { $DepoPath } else { $PSScriptRoot }
+  $exeYolu = [System.IO.Path]::GetFullPath($exeYolu)
+  $homeYolu = [System.IO.Path]::GetFullPath($homeYolu)
+  $repoYolu = [System.IO.Path]::GetFullPath($repoYolu)
+  if (-not (Test-Path -LiteralPath $exeYolu -PathType Leaf)) { throw "Copilot CLI yürütülebilir dosyası yok: $exeYolu" }
+  if (-not (Test-Path -LiteralPath $repoYolu -PathType Container)) { throw "Çalışma deposu dizini yok: $repoYolu" }
+
+  $cliArgs = @()
+  $calistir = $false
+  switch ($Secenek) {
+    "Baslat" { $calistir = $true }
+    "Surum"  { $cliArgs = @("--version"); $calistir = $true }
+    "Yardim" { $cliArgs = @("--help"); $calistir = $true }
+    ""       { }
+    default  { throw "Bilinmeyen SahitDevam seçeneği '$Secenek'. Seçenekler: (önizleme), Baslat, Surum, Yardim." }
+  }
+
+  Write-Host "Şahit CLI kapısı" -ForegroundColor Cyan
+  Write-Host "  durum: $(if ($calistir) { 'açık kullanıcı isteği' } else { 'kuru önizleme; hiçbir süreç başlatılmadı' })"
+  Write-Host "  çalışma dizini: $repoYolu"
+  Write-Host "  yürütülebilir: $exeYolu"
+  Write-Host "  güvenli argümanlar: $(if ($cliArgs.Count) { $cliArgs -join ' ' } else { '(yok; etkileşimli varsayılan)' })"
+  Write-Host "  Home: $homeYolu"
+  Write-Host "  izin genişletme / otomatik zincir: yok"
+  if (-not $calistir) {
+    Write-Host "  başlatmak için: Kopru_Izle.cmd SahitDevam -Secenek Baslat"
+    Write-Host "  sürüm/help kontrolü: Kopru_Izle.cmd SahitDevam -Secenek Surum|Yardim"
+    return
+  }
+
+  if (-not (Test-Path -LiteralPath $homeYolu -PathType Container)) { throw "Şahit Home dizini yok: $homeYolu" }
+  $anahtarlar = @("HOME", "USERPROFILE", "COPILOT_HOME", "COPILOT_CACHE_HOME", "NODE_COMPILE_CACHE", "TEMP", "TMP", "COPILOT_AUTO_UPDATE")
+  $oncekiOrtam = @{}
+  foreach ($anahtar in $anahtarlar) { $oncekiOrtam[$anahtar] = [Environment]::GetEnvironmentVariable($anahtar, "Process") }
+  $oncekiDizin = Get-Location
+  try {
+    Sahit-Ortami $homeYolu
+    Set-Location -LiteralPath $repoYolu
+    if ($Secenek -eq "Baslat") {
+      Write-Host "Kullanıcının yönlendirmesiyle etkileşimli CLI açılıyor; görev istemini kullanıcı ayrıca verecek." -ForegroundColor Cyan
+    }
+    & $exeYolu @cliArgs
+  } finally {
+    Set-Location -LiteralPath $oncekiDizin.Path
+    foreach ($anahtar in $anahtarlar) {
+      if ($null -eq $oncekiOrtam[$anahtar]) {
+        Remove-Item -LiteralPath "Env:$anahtar" -ErrorAction SilentlyContinue
+      } else {
+        Set-Item -LiteralPath "Env:$anahtar" -Value $oncekiOrtam[$anahtar]
+      }
+    }
+  }
+  return
+}
 
 # ---- Ortam ----
 if (Test-Path -LiteralPath $OrtamBetigi) { . $OrtamBetigi } else { Write-Warning "Ortam betiği yok: $OrtamBetigi (PATH eksik kalabilir)" }
@@ -87,15 +160,6 @@ function Arg0-Listele {
   }
   $bat = Get-ChildItem -LiteralPath $kok -Recurse -Filter "apply_patch.bat" -ErrorAction SilentlyContinue | Select-Object -First 1
   if ($bat) { Write-Host "  örnek apply_patch.bat içeriği:"; Get-Content -LiteralPath $bat.FullName | ForEach-Object { "    $_" } }
-}
-
-function Sahit-Ortami {
-  # Sahit_Baslat.ps1 ile aynı değerler; yalnız bu süreç için.
-  $env:HOME = $SahitHome; $env:USERPROFILE = $SahitHome
-  $env:COPILOT_HOME = "$SahitHome\.copilot"
-  $env:COPILOT_CACHE_HOME = "X:\Windows\Temp\Sahit_Temp"; $env:NODE_COMPILE_CACHE = "X:\Windows\Temp\Sahit_NodeCache"
-  $env:TEMP = "X:\Windows\Temp\Sahit_Temp"; $env:TMP = "X:\Windows\Temp\Sahit_Temp"
-  $env:COPILOT_AUTO_UPDATE = "false"
 }
 
 switch ($Mod) {

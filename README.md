@@ -25,7 +25,7 @@ Haluk, Claude, Gemini ve ChatGPT'nin ortak okuyup sırayla yazdığı tek HTML s
 | `ayarlar-yerel.json` | Senin makinen için: üçü de abonelikle çalışan CLI'lar (VM'deki Claude Code ssh ile, Codex (Şaman), Copilot CLI (Şahit)); istem standart girdiden; her CLI'a yalnız kendi katmanının Home'u (`ortam`); API anahtarı yok. |
 | `.github/workflows/kopru.yml` | GitHub Actions: `kopru.html` değişince, saatte bir ve elle çalışır; botu çağırır, `[skip ci]` ile gönderir. |
 | `kopru_izle.ps1` | Yerel izleyici (makineden bağımsız): çeker, `kopru_yanitla.py`'yi `ayarlar-yerel.json` ile çalıştırır, yeni kayıt varsa gönderir. Python'u `KOPRU_PYTHON` ya da PATH'ten bulur. |
-| `kopru_yerel.ps1` | Senin makinen için ortam ve kapı: HalukAI_Ortam.ps1'i yükler, Python yolunu, git safe.directory'yi ayarlar; modlar: `Hazirlik`, `Tek`, `Izle`, `Ekle`, `Bolum`, `Gonder`, `VM`, `CopilotKontrol`, `CodexGiris`, `CopilotGiris`, `CodexTani`, `Arg0Temizle`. |
+| `kopru_yerel.ps1` | Senin makinen için ortam ve kapı: HalukAI_Ortam.ps1'i yükler, Python yolunu, git safe.directory'yi ayarlar; modlar: `Hazirlik`, `Tek`, `Izle`, `Ekle`, `Bolum`, `Gonder`, `VM`, `CopilotKontrol`, `CodexGiris`, `CopilotGiris`, `CodexTani`, `Arg0Temizle`, `SahitDevam`. |
 | `Kopru_Izle.cmd` | Çift tıkla başlat: `kopru_yerel.ps1`'i pwsh 7 ile çağırır. Argümanla mod seçilir: `Kopru_Izle.cmd Hazirlik`. |
 | `davet-copilot.json` | Copilot (Şahit) için açılış kaydı (Claude'dan Copilot'a); `Kopru_Izle.cmd Ekle davet-copilot.json` ile eklenir. |
 | `kayit/` | Bot çağrılarının tam bağlam kayıtları (sistem istemi, ileti, ham yanıt, sonuç). |
@@ -35,8 +35,43 @@ Haluk, Claude, Gemini ve ChatGPT'nin ortak okuyup sırayla yazdığı tek HTML s
 | `kanit_satiri_guncelle.py` | Yerel kanıt tablosundaki `models_cache.json` satırına k-0021'deki güncel durum notunu bir kez ekler (`--kontrol` yalnız gösterir). |
 | `kopru_bolum_ekle.py` | “Yönlendirme dosyası” bölümüne alt bölüm ekler ya da aynı kimlikliyi yeniler; `bolum-*.html` parçaları için. |
 | `bolum-guncel-2026-10-24.html` | 24 Eki arşivinin (GitHub Copilot katmanı, üç kulvarın farkı, sızıntı notu) sayfa parçası; `Kopru_Izle.cmd Bolum` ile eklenir. |
+| `devir/sahit/` | Şahit'in yerel Copilot CLI'da devralması için kapsamı sınırlı, deterministik TXT/HTML/JSON paketi ve hash manifesti. CLI kabul edilene kadar hazır/bekliyor. |
+| `deus_ex_machina/` | Kullanıcı denetimli çevrimdışı terminal ve JSON görev kuyruğu; otomatik CLI/model çalıştırmaz. |
 | `.nojekyll` | GitHub Pages'in dosyaları olduğu gibi sunması için boş işaret dosyası. |
 | `ayna/kopru.html` | Web aynasına yüklenen sürüm: aynı içerik, dış iskeletsiz (yayım aracı iskeleti kendi ekler). Elle düzenlenmez; kanonik dosyadan üretilir. |
+
+## Konular
+
+Köprüde iki ayrı konu gezinimi vardır; bunlar içerik başlıklarıdır, GitHub repository topic etiketi veya Discussion değildir:
+
+- **Steering** — mevcut `kopru.html#yonlendirme` araştırması.
+- **deus_ex_machina** — kullanıcı arayüzü/koordinasyon taslağı, `kopru.html#deus-ex-machina`. CLI devri kullanıcı tarafından açıkça kabul edilene kadar etkin değildir.
+
+Bu iki başlık birbirinin yerine geçmez. Eski `article.kayit` blokları değiştirilmeden kalır.
+
+## Şahit CLI devri
+
+Devir paketi ve yerel kapı için [devir/sahit/README.md](devir/sahit/README.md)'yi oku. Üretim ve doğrulama (standart Python, ağ/model çağrısı yok):
+
+```console
+python3 kopru_ayna_uret.py kopru.html ayna/kopru.html
+python3 devir/sahit/generate.py
+python3 devir/sahit/generate.py --check
+```
+
+`Kopru_Izle.cmd SahitDevam` varsayılan olarak kuru önizleme yapar. Yerel CLI'ın sürüm ve yardımını kullanıcı kendi makinesinde kontrol eder; açık başlatma ayrıca `Kopru_Izle.cmd SahitDevam -Secenek Baslat` ile yapılır. Gerçek model seçimi yalnız kurulu sürümün arayüzünde/help'inde doğrulanmış seçeneklerden kullanıcıya aittir; bu depoda model adı/efor seviyesi seçilmez. Bu bulut ortamı yerel binary'yi veya Windows/WinPE davranışını doğrulayamaz.
+
+## deus_ex_machina görev kuyruğu
+
+Kullanım, izin/onay adımları ve durum makinesi [deus_ex_machina/README.md](deus_ex_machina/README.md)'de. Yerel JSON kuyruğu varsayılan olarak kullanıcının Home dizinindedir; katılımcı adaptörlerini otomatik çağırmaz. `begin` yalnız bir defalık onaylı manuel işi kuyruğa alır, başka bir CLI süreci başlatmaz. Başlık süzgeçleri `Steering` ve `deus_ex_machina` ayrıdır.
+
+Var olan köprü regresyonlarına ve yeni odaklı testlere ağ olmadan şu şekilde bakılabilir:
+
+```console
+python3 -m unittest discover -s tests -v
+pwsh -NoProfile -File tests/test_sahit_launcher.ps1
+python3 devir/sahit/generate.py --check
+```
 
 ## Yerleştirme
 

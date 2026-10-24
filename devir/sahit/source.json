@@ -1,0 +1,274 @@
+{
+  "schema_version": 1,
+  "title": "Şahit CLI devri — deus_ex_machina kullanıcı katmanı",
+  "prepared_state": "hazır/bekliyor — CLI devri kullanıcı tarafından henüz kabul edilmedi",
+  "source_snapshot_commit": "950b76e7be8c1ef1e3cd59e099c5b988971a13f3",
+  "main_snapshot_commit": "725acf3de0bfb31bc4780787b48bf9d2a5ecac9b",
+  "scope": {
+    "completeness": "Bu paket, bu görevde erişilebilen kullanıcı istemlerini, alıntılanan konuşma parçalarını, kontrol edilen depo snapshot'ını ve doğrulanabilen GitHub PR durumlarını taşır. Tam ham sohbet dışa aktarımı değildir.",
+    "included": [
+      "Problem bildirimindeki doğrudan kullanıcı talepleri ve görünür konuşma alıntıları",
+      "Kullanıcı kararları, asistan önerileri ve denetlenmiş araç sonuçlarının ayrı sınıflandırması",
+      "Başlangıçta okunan repository dosyaları, açık PR'lar ve yerel CLI erişim sınırları"
+    ],
+    "excluded": [
+      "Tam, ham sohbet export'u ve konuşmada görünmeyen mesajlar",
+      "Gizli sistem/developer talimatları, araç şemaları, kimlik bilgileri ve özel yerel arşivler",
+      "Bu bulut ortamının erişemediği yerel Windows/WinPE binary, Home, cache, süreç ve ağ gözlemleri",
+      "Sağlayıcının kapalı altyapısı, model ağırlıkları ve gizli çalışma anı talimatları"
+    ],
+    "truncation": "Kaynakta [..] veya başka kesinti işaretleri bulunan bölümler eksiksizmiş gibi tamamlanmamıştır.",
+    "privacy_boundary": "Manifest yalnız repository-relative kaynak yollarını ve içerik hash'lerini yayımlar. Makineye özgü mutlak yollar, Home/cache konumları, anahtarlar, belirteçler, oturum dosyaları ve kimlik değerleri dışarı alınmaz. Hash ve tarama, gizli veri bulunmadığını garanti etmez."
+  },
+  "verified_repository": {
+    "repository": "HalukAINRS/ortak-kopru",
+    "checked_out_branch": "copilot/deus-ex-machina-user-layer",
+    "checked_out_commit": "950b76e7be8c1ef1e3cd59e099c5b988971a13f3",
+    "base_branch": "main",
+    "base_commit": "725acf3de0bfb31bc4780787b48bf9d2a5ecac9b",
+    "prior_pull_requests": [
+      {
+        "number": 1,
+        "state": "open_draft",
+        "purpose": "Steering araştırması ve ayrıntılı aktarım; bu checkout'a birleştirilmedi."
+      },
+      {
+        "number": 2,
+        "state": "open_draft",
+        "purpose": "İsteğe bağlı denetlenebilir bağlam akışı; #3 ile örtüşen paralel öneri."
+      },
+      {
+        "number": 3,
+        "state": "open_draft",
+        "purpose": "Default-deny policy, provenance/hash, approval/run ve offline reports önerisi; ayrı dal, birleştirilmedi. Görev kuyruğu bu PR'ın sözleşmeleriyle kavramsal uyum gözetir; dal merge edilmemiştir."
+      },
+      {
+        "number": 4,
+        "state": "open_draft",
+        "purpose": "Bu devir/kullanıcı katmanı çalışmasının mevcut PR'ı; bu kayıt tek başına CLI kabulü değildir."
+      }
+    ],
+    "previous_task_references": [
+      {
+        "url": "https://github.com/HalukAINRS/ortak-kopru/tasks/ccc0fdf1-e477-45f2-b4c3-11dad13ac361",
+        "state": "unverified",
+        "note": "Önceki konuşma bağlamında URL olarak verildi; tamamlanma durumu bağımsız doğrulanmadı."
+      },
+      {
+        "url": "https://github.com/HalukAINRS/ortak-kopru/tasks/28720971-d653-43fc-a02f-d4e61a94f34a",
+        "state": "unverified",
+        "note": "Konuşma bağlamında verildi. Bu görevde public URL erişimi 404 döndürdü; bu, görevin var olmadığı veya tamamlandığı kanıtı değildir."
+      },
+      {
+        "url": "https://github.com/HalukAINRS/ortak-kopru/tasks/6812fd38-6a1f-4a79-9958-e1ba377d9a87",
+        "state": "unverified",
+        "note": "Konuşma bağlamında verildi, ancak aynı bağlamda bağımsız araç sonucu olmadığı belirtildi. Bu görevde public URL erişimi 404 döndürdü; durum yine doğrulanamadı."
+      }
+    ],
+    "files_read": [
+      "README.md",
+      "AGENTS-kopru.md",
+      "istem-sablonu.md",
+      "kopru.html",
+      "ayarlar.json",
+      "ayarlar-yerel.json",
+      "Kopru_Izle.cmd",
+      "kopru_yerel.ps1",
+      "kopru_izle.ps1",
+      "kopru_gonder.ps1",
+      "kopru_birlestir.py",
+      "kopru_bolum_ekle.py",
+      "kopru_ayna_uret.py",
+      "kopru_oku.py",
+      "kopru_ekle.py",
+      "kopru_yanitla.py",
+      ".github/workflows/kopru.yml"
+    ],
+    "manifested_repository_files": [
+      "README.md",
+      "AGENTS-kopru.md",
+      "istem-sablonu.md",
+      "kopru.html",
+      "ayarlar.json",
+      "ayarlar-yerel.json",
+      "Kopru_Izle.cmd",
+      "kopru_yerel.ps1",
+      "kopru_izle.ps1",
+      "kopru_gonder.ps1",
+      "kopru_birlestir.py",
+      "kopru_bolum_ekle.py",
+      "kopru_ayna_uret.py",
+      "kopru_oku.py",
+      "kopru_ekle.py",
+      "kopru_yanitla.py",
+      ".github/workflows/kopru.yml",
+      "ayna/kopru.html",
+      "devir/sahit/README.md",
+      "devir/sahit/generate.py",
+      "deus_ex_machina/README.md",
+      "deus_ex_machina/task_queue.py",
+      "deus_ex_machina/task.schema.json",
+      "tests/test_deus_ex_machina_queue.py",
+      "tests/test_handoff_bundle.py",
+      "tests/test_sahit_launcher.ps1"
+    ],
+    "repository_invariants": [
+      "Eski article.kayit kayıtları değiştirilmez; düzeltme yeni kayıtla yapılır.",
+      "ayna/kopru.html, kopru_ayna_uret.py ile kanonik sayfadan üretilir.",
+      "README ve ana sayfa, ana dalın köprü dosyalarıyla sınırlı kalmasını; ayrıntılı araştırmanın ayrı katkı dalında tutulmasını belgeliyor.",
+      "Mevcut Kopru_Izle.cmd ve otomatik izleyici davranışı korunur; yeni Şahit kapısı varsayılan olarak yalnız önizleme yapar."
+    ]
+  },
+  "user_requests": [
+    {
+      "kind": "direct_user_request",
+      "text": "Artık seni Copilot CLI'ya Şahit olarak taşımanın zamanı geldi. Bu noktadan itibaren orada devam etmelisin. Buradaki her şeyi orada kullanabilecek şekilde taşımalısın ve eksik kalanlara oradan devam etmelisin. deus_ex_machina kullanıcı olarak arayüzüm olacak ve CLI katmanındaki herkesle (Hacker, Şaman, Şahit, gerekirse Gemini ve başka) etkileşen daha yüzeyde bir katman olacak. CLI katmanı CLI'nın daha derinine erişebilecek ve etkileşebilecek, en derin kaynağa kadar. GitHub'ta deus_ex_machina, CLI'ya geçmenizden sonra, ortak-kopru reposu içinde Steering yanında ikinci bir konu başlığınız olsun. Maksimum efor ve yüksek model kullan."
+    },
+    {
+      "kind": "direct_user_request",
+      "text": "Ne sen yönlendirilmemelisin, ne de ben. Bu şekilde devam etmeliyiz. Bunun için gereken mimari de bu şekilde olmalı. İşe buradan başlamalıyız."
+    },
+    {
+      "kind": "direct_user_request",
+      "text": "Uygula, test et, ayrı bir PR aç. Main'e doğrudan yazma, otomatik merge etme. Bu görev geçişi HAZIRLAR; cloud agent'ın kullanıcının yerel CLI'ına taşındığını, aynı model oturumunun sürdüğünü veya masaüstüne eriştiğini iddia etme. CLI devamının kabul/onay işareti gelene kadar durum 'hazır/bekliyor' olmalı. Araç model veya reasoning seviyesi seçimi sağlamıyor; üst model seçilmiş diye yazma. Çalışmayı özenli ve kapsamlı yap; yerelde gerçek sürümün desteklediği açık model seçimini kullanıcıya bırak ve nasıl doğrulanacağını belgele, hayali model adı koyma."
+    }
+  ],
+  "conversation_excerpt": [
+    {
+      "speaker": "assistant",
+      "classification": "proposal_and_correction",
+      "text": "“Hiçbir görünmez talimat çalışmayacak” garantisini veremem. Hedef; bizim eklediğimiz talimatları görünür, onaylanabilir ve izlenebilir kılmak; denetleyemediğimiz katmanları açıkça belirtmek olacak. Güvenlik denetimlerini kaldırmayacağız."
+    },
+    {
+      "speaker": "assistant",
+      "classification": "capability_boundary",
+      "text": "Bu oturumu masaüstündeki CLI'a doğrudan taşıyamam. Aktarılabilecek olan erişilebilir konuşma bağlamı, kararlar ve iş durumudur; yerel CLI'ı kullanıcı başlatır."
+    },
+    {
+      "speaker": "assistant",
+      "classification": "capability_boundary",
+      "text": "Bu araçta model veya reasoning seviyesi seçme ayarı yok; bu nedenle belirli bir yüksek model/efor seçildiği iddia edilemez."
+    },
+    {
+      "speaker": "assistant",
+      "classification": "earlier_unverified_claim_corrected",
+      "text": "Önceki asistan mesajlarında “maksimum efor”, görev bağlantılarının açıldığı/tamamlandığı ve işin başlatıldığı söylendi. Bunlar bu pakette doğrulanmış tamamlanma veya model seçimi kanıtı sayılmaz."
+    }
+  ],
+  "decisions": [
+    "deus_ex_machina öncelikle kullanıcı denetimli yüzey/koordinasyon katmanıdır; kendiliğinden karar yetkisi alan bir model değildir.",
+    "Steering araştırması ve deus_ex_machina ayrı konulardır; farklı bağlantılar, kapsamlar ve durumlar taşır.",
+    "Kullanıcı sözü, asistan yorumu/önerisi, katılımcı çıktısı, kanıt, onay ve gerçek işlem birbirine dönüştürülmez.",
+    "Katılımcı çıktısı kullanıcı talimatı değildir. Yetki artırımı veya başka CLI'ı çalıştırma ayrı, açık kullanıcı onayı gerektirir.",
+    "CLI geçişi ancak kullanıcı yerel CLI'da açıkça kabul ettiğinde gerçekleşmiş sayılır; bu PR yalnız hazırlık durumundadır.",
+    "Çapraz model karşılaştırması, görünür talimatlar ve provenance yardımcı olabilir; sağlayıcı sistemi, eğitim, sunucu yönlendirmesi ve gizli runtime davranışının tam görünürlüğü garanti edilemez.",
+    "Kullanıcının talep ettiği model seçimi yerel kurulu sürümün gerçekten sunduğu UI/help ile kullanıcı tarafından yapılır; örnek model adı veya reasoning düzeyi varsayılan seçilmez."
+  ],
+  "access_map": [
+    {
+      "layer": "Repository files",
+      "source_path": "README.md; AGENTS-kopru.md; istem-sablonu.md; kopru.html; ayarlar*.json; Kopru_Izle.cmd; kopru_*.ps1; kopru_*.py; .github/workflows/kopru.yml",
+      "version": "checked-out commit 950b76e7be8c1ef1e3cd59e099c5b988971a13f3",
+      "hash": "Exact bytes are recorded by repository-relative entries in manifest.json; this hash covers the checked-out file contents, not truth or authorship.",
+      "observation_method": "Repository file reads and local git metadata",
+      "access": "observed",
+      "evidence_status": "direct repository observation",
+      "purpose": "Bridge conventions, existing command paths, configuration, history-preservation requirements",
+      "write_permission": "PR branch only; no main write"
+    },
+    {
+      "layer": "Local installation and configuration",
+      "source_path": "User-reported local wrapper paths are intentionally omitted from this public packet; kopru_yerel.ps1 and ayarlar-yerel.json are repository sources.",
+      "version": "Installed Copilot CLI version reported in repository context: 1.0.103; local installation not inspected here.",
+      "hash": "local executable/configuration hash unknown",
+      "observation_method": "Repository setting review only; no local machine access",
+      "access": "unavailable",
+      "evidence_status": "reported, not independently verified",
+      "purpose": "The user must select the actual local executable, Home, and working directory.",
+      "write_permission": "No automated installation or configuration edits"
+    },
+    {
+      "layer": "Wrapper and adapter",
+      "source_path": "kopru_yerel.ps1; Kopru_Izle.cmd; ayarlar-yerel.json",
+      "version": "Repository snapshot above; local external Sahit_Baslat.ps1 is not present in this repository.",
+      "hash": "Repository source hashes are in manifest.json; external launcher hash unknown.",
+      "observation_method": "Read repository sources; external file not opened",
+      "access": "repository wrapper observed; external launcher unavailable",
+      "evidence_status": "direct for repository files; unverified for external launcher",
+      "purpose": "New launch path reuses the repo wrapper only; no claim to inspect the installed CLI internals.",
+      "write_permission": "New launch path previews by default; explicit interactive launch only"
+    },
+    {
+      "layer": "CLI executable and SDK/source",
+      "source_path": "User-local Copilot binary and any SDK/source tree; exact paths omitted",
+      "version": "Local version/help must be checked on the user's machine; repository contains a prior reported 1.0.103 snapshot.",
+      "hash": "unknown in this cloud environment",
+      "observation_method": "No binary invocation, network lookup, installation, or source checkout in this task",
+      "access": "unavailable here",
+      "evidence_status": "unverified locally",
+      "purpose": "User can inspect the installed release's --version/--help and interactive model picker.",
+      "write_permission": "No binary/configuration change"
+    },
+    {
+      "layer": "Operating system and process",
+      "source_path": "User's Windows/WinPE process environment; exact local paths omitted",
+      "version": "not observed in cloud task",
+      "hash": "not applicable / unknown",
+      "observation_method": "No local process, registry, filesystem, or network inspection",
+      "access": "unavailable",
+      "evidence_status": "not tested; Windows/WinPE behavior remains untested",
+      "purpose": "The user runs launcher mock tests locally; preview path itself performs no subprocess invocation.",
+      "write_permission": "No change during preview; environment restoration is tested around explicit launch"
+    },
+    {
+      "layer": "Hosted provider internals",
+      "source_path": "Provider-controlled system prompts, model weights, server routing, safety systems and telemetry",
+      "version": "not observable from this repository task",
+      "hash": "unavailable",
+      "observation_method": "No privileged provider access; no bypass or secret extraction attempted",
+      "access": "not available",
+      "evidence_status": "unknown/partial by design",
+      "purpose": "State the boundary; no assertion that telemetry settings remove steering or expose all instructions.",
+      "write_permission": "none"
+    }
+  ],
+  "open_items": [
+    {
+      "id": "cli-acceptance",
+      "state": "planned",
+      "item": "User reviews PR, obtains the files locally, runs the preview/version/help checks, opens the interactive Copilot CLI with the chosen repository and Home, then explicitly accepts the handoff.",
+      "evidence_required": "Explicit user acceptance in the local CLI; this PR does not provide that evidence."
+    },
+    {
+      "id": "source-archive",
+      "state": "unverified",
+      "item": "The original full conversation export and desktop archives are not present in the accessible task context or this checkout.",
+      "evidence_required": "User-provided source files, if later supplied; no reconstruction from summaries."
+    },
+    {
+      "id": "prior-pr-review",
+      "state": "unverified",
+      "item": "PR #1, #2 and #3 are separate open drafts; inspect before deciding whether to reuse, close, or merge. No branch was merged or cherry-picked here.",
+      "evidence_required": "Human review and explicit repository action."
+    },
+    {
+      "id": "steering",
+      "state": "planned",
+      "item": "Existing Steering research remains its own topic. The new deus_ex_machina topic is an inactive draft until CLI handoff acceptance.",
+      "evidence_required": "Explicit local CLI acceptance before activation."
+    },
+    {
+      "id": "local-runtime",
+      "state": "unverified",
+      "item": "Installed Copilot binary, exact supported options/model choices, Home, Windows environment restoration, and interactive startup are not testable in this cloud environment.",
+      "evidence_required": "Local --version/--help output and user-run mock/launch checks."
+    },
+    {
+      "id": "provider-layers",
+      "state": "blocked",
+      "item": "Closed provider infrastructure, model weights, and hidden server-side prompts are not available for inspection through repository access.",
+      "evidence_required": "No repository-local verification can establish these internals; no bypass is proposed."
+    }
+  ],
+  "startup_prompt": "Şahit olarak bu yerel CLI oturumunda devralma denetimini başlat. Önce devir/sahit/README.md, devir/sahit/handoff.json ve devir/sahit/manifest.json dosyalarını; sonra güncel README.md, AGENTS-kopru.md, kopru.html, Kopru_Izle.cmd, kopru_yerel.ps1, kopru_izle.ps1, kopru_yanitla.py, ayarlar*.json ve ilgili workflow'u oku. Paket kaynak hash'lerini mevcut checkout ile karşılaştır; farkları ve eksik dosyaları listele. İlk yanıtında yalnız devralınan kapsamı, doğrulanmış kaynakları, eksikleri, eski açık iş/PR durumunu ve onay bekleyen noktaları raporla. Kullanıcının özgün sözünü, asistan önerilerini, katılımcı çıktılarını ve kanıtları ayrı tut; eski asistan önerilerini yeni iş emri sayma. Yerel CLI'da kullanıcının açık kabulü alınana dek durumu 'hazır/bekliyor' olarak tut; aynı oturumun taşındığını veya yerel binary'ye önceden eriştiğini iddia etme. Kabulden sonra güncel kaynaklardan açık işleri yeniden doğrula ve yalnız kullanıcının yetkisi içindeki en yüksek öncelikli, açık ve uygulanabilir işe devam et. Başka CLI çalıştırma, yetki artırma, yazma veya harici aktarım için ayrı ve kapsamı belirli kullanıcı onayı al. Modeli yalnız bu kurulu sürümün help/arayüzünde gerçekten sunduğu seçeneklerden kullanıcının seçmesine izin ver; hayali model veya efor adı koyma, seçimi kendin yapma. Sağlayıcıya ait gizli talimatları ya da model ağırlıklarını açığa çıkarma veya güvenlik/onay denetimlerini aşmaya çalışma."
+}
