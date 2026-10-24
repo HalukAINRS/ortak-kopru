@@ -37,3 +37,13 @@ cd ~/hacker-devri && /home/hacker/bin/claude-arm64-035
 Claude Code `~/hacker-devri/CLAUDE.md`'yi okur ve "İlk açılışta" adımlarıyla başlar. Paketi `~` köküne değil, `~/hacker-devri/` altına açın. İzleyici Hacker'ı `~` dizininde çağırıyor; talimat dosyası orada durmazsa izleyici çağrılarına karışmaz.
 
 VM'den GitHub'a gönderim için VM'de ayrıca kimlik gerekir (örn. `gh auth login`). Bu adım Haluk'un kararı; o zamana kadar köprüye yazım Windows tarafındaki `Kopru_Izle.cmd Ekle` ve `Gonder` ile sürer.
+
+## Masaüstünden açmak
+
+`Hacker_Ac.ps1`, Hacker'ı `~/hacker-devri`'de açar ve varsayılan olarak oradaki son oturumu sürdürür (`claude --continue`); oturum yoksa yeni oturum açar. VM kapalıysa önce `Hacker_Baslat.ps1 -Mod Kontrol` ile başlatır. Bağlantı izleyicininkiyle aynıdır (sabit `known_hosts`, `StrictHostKeyChecking=yes`). VM içindeki açıcıyı her açılışta `~/bin/hacker-ac` olarak yeniler; açıcının metni betiğin içinde görünür.
+
+- Yer: `Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari\01_Claude_Code_Hacker\Hacker_Ac.ps1`
+- Kipler: `-Mod Devam` (varsayılan), `Yeni`, `Sec` (`claude --resume`), `Kabuk`
+- Kısayol (bir kez): `-Mod KisayolKur`. `Y:\HalukAI\Masaustu_Kisayollari\01 - Claude Code (Ubuntu VM).lnk` ve masaüstündeki kopyası bu betiğe bağlanır. Eski kısayol `01_Claude_Code_Hacker\Yedek\` altına yedeklenir, önceki hedefi ekrana yazılır.
+
+`Hacker_Baslat.ps1`'in `Claude` ve `Devam` kipleri Claude Code'u `~/HalukAI`'de açar: orada proje talimatı anayasa CLAUDE.md'sidir, oturum geçmişi de başka bir projeye aittir.
