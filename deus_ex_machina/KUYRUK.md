@@ -1,4 +1,6 @@
-# deus_ex_machina — kullanıcı denetimli görev yüzeyi
+# deus_ex_machina görev kuyruğu (Şahit katkısı)
+
+Katman rolleri ve CLI etkileşim sözleşmesi: [SOZLESME.md](SOZLESME.md). Bu dosya PR #4'te `deus_ex_machina/README.md` idi; Şaman dalındaki (`deus-ex-machina-2026-10-24`) aynı adlı kavram belgesiyle yol çakışmasın diye taşındı.
 
 Bu iskelet çevrimdışı terminal + yerel JSON kuyruğudur. `deus_ex_machina` ayrı bir model/ajan değildir ve kendiliğinden görev seçme, izin artırma veya CLI çalıştırma yetkisi yoktur. Mevcut katılımcılar: Hacker, Şaman, Şahit ve Gemini. Başka katılımcı eklemek açık kayıt/inceleme gerektirir; bilinmeyen adlar reddedilir.
 
