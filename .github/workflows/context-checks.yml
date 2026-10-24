@@ -1,0 +1,38 @@
+name: Transparent context checks
+
+on:
+  pull_request:
+    paths:
+      - "ortak_kopru/**"
+      - "policy/**"
+      - "checks/**"
+      - "reports/fixtures/**"
+      - "tests/**"
+      - "kopru_yanitla.py"
+      - ".github/workflows/context-checks.yml"
+  push:
+    branches: [main]
+    paths:
+      - "ortak_kopru/**"
+      - "policy/**"
+      - "checks/**"
+      - "reports/fixtures/**"
+      - "tests/**"
+      - "kopru_yanitla.py"
+      - ".github/workflows/context-checks.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Offline policy and provenance checks
+        run: python checks/steering_lint.py
+      - name: Unit tests (no provider calls)
+        run: python -m unittest discover -s tests -v
