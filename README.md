@@ -72,6 +72,7 @@ Sıralı devralma komutları, yerel yol bağımlılıkları, kabul adımı ve s�
 python3 devir/sahit/generate.py            # kaynaktan çıktıları ve manifesti yazar
 python3 devir/sahit/generate.py --check    # çıktılar, şema ve bağlı dosyalar kaynakla uyumlu mu
 python3 devir/sahit/generate.py --drift    # yalnız bilgi: gözlenen dosyaların anlık görüntüden sapması
+python3 devir/sahit/generate.py --pr-govdesi   # yazmadan: PR gövdesini doğrulanmış paketten türetip basar (yapıştırmayı kullanıcı yapar)
 ```
 
 `Kopru_Izle.cmd SahitDevam` varsayılan olarak kuru önizleme yapar; açık başlatma ayrıca `Kopru_Izle.cmd SahitDevam -Secenek Baslat` ile yapılır. Gerçek model seçimi yalnız kurulu sürümün arayüzünde/help'inde sunulan seçeneklerden kullanıcıya aittir; bu depoda model adı/efor seviyesi seçilmez. Yerel yol ve sürüm doğrulamaları paketin `local_verification` bölümünde kaynaklarıyla yazılıdır; etkileşimli başlatma ve WinPE davranışını kullanıcı doğrular.

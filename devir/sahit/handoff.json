@@ -67,11 +67,11 @@
     },
     {
       "id": "kopru-page-full",
-      "area": "kopru.html'in 110 kaydının ve kayit/*.md bağlam günlüklerinin tamamı",
+      "area": "kopru.html kayıtlarının ve kayit/*.md bağlam günlüklerinin tamamı",
       "level": "kısmi",
       "basis": "Sayfa yapısı, iki konu bölümü, son 3 kayıt ve --kontrol çıktısı okundu; kayıtların tamamı ve kayit/*.md günlükleri okunmadı. Taban sonrası main'e k-0111 ve k-0112 (Şaman, ikisi kapalı) eklendi; gövdeleri okundu, durum bildirimidir ve iş atamaz.",
       "evidence": [
-        "kopru_ekle.py kopru.html --kontrol: 110 kayıt, son k-0110",
+        "kopru_ekle.py kopru.html --kontrol: 110 kayıt, son k-0110 (taban anlık görüntüsü 52c797e)",
         "kopru_yanitla.py kopru.html --bekleyenler Copilot: 0 kayıt"
       ]
     },
@@ -182,7 +182,7 @@
     },
     {
       "id": "previous-task-urls",
-      "source": "Üç önceki cloud task adresi (aşağıda kısaltılmış)",
+      "source": "Üç önceki cloud task adresi (kısaltılmış; bkz. verified_repository.previous_task_references)",
       "state": "doğrulanamadı",
       "reason": "Cloud paketinde 404 döndüğü kayıtlı; bu oturumda GitHub görev API'si yok; tamamlanma kanıtı sayılmaz.",
       "who_can_supply": "Kullanıcı (tam adresler PR #4 geçmişinde)"
@@ -203,7 +203,7 @@
     },
     {
       "id": "bridge-records",
-      "source": "kopru.html'in 110 kaydı ve kayit/*.md günlükleri",
+      "source": "kopru.html kayıtlarının tamamı ve kayit/*.md günlükleri",
       "state": "eksik",
       "reason": "Yalnız yapı, iki bölüm ve son kayıtlar okundu.",
       "who_can_supply": "Şahit (kullanıcı isterse)"
@@ -268,8 +268,8 @@
     },
     {
       "id": "tests-run",
-      "check": "python -X utf8 -m unittest discover -s tests -v; pwsh -NoProfile -File tests/test_sahit_launcher.ps1; generate.py --check; generate.py --drift",
-      "result": "21 test OK (taşınabilir Python 3.14.9); başlatıcı testi çıkış 0 (pwsh 7.6.8); --check OK; --drift 0 sapma. Başka Python/pwsh sürümleri ve Windows dışı ortamlar denenmedi.",
+      "check": "python -X utf8 -m unittest discover -s tests -v; pwsh -NoProfile -File tests/test_sahit_launcher.ps1; generate.py --check; generate.py --drift; generate.py --pr-govdesi",
+      "result": "24 test OK (taşınabilir Python 3.14.9); başlatıcı testi çıkış 0 (pwsh 7.6.8); --check OK; --drift 0 sapma; --pr-govdesi çıkış 0 (yazmadı). Başka Python/pwsh sürümleri ve Windows dışı ortamlar denenmedi.",
       "status": "observed"
     },
     {
@@ -415,7 +415,7 @@
       "claude/hacker-devri-2026-10-24:deus_ex_machina/HACKER.md, devir/hacker/README.md"
     ],
     "files_read_partially": [
-      "kopru.html (yapı, #yonlendirme ve #deus_ex_machina bölümleri, son 3 kayıt, --kontrol çıktısı; 110 kaydın tamamı okunmadı)",
+      "kopru.html (yapı, #yonlendirme ve #deus_ex_machina bölümleri, son 3 kayıt, --kontrol çıktısı; kayıtların tamamı okunmadı)",
       "ayna/kopru.html (yalnız kopru_ayna_uret.py ile üretilen sürümle bayt karşılaştırması)",
       "deus_ex_machina/task.schema.json (ilk 40 satır)",
       "tests/test_deus_ex_machina_queue.py (ilk 60 satır; testler çalıştırıldı)"
@@ -484,7 +484,9 @@
     "Kabul, bundle_sha256 ilk 12 hanesini içeren açık kullanıcı beyanına bağlıdır; Şahit kabulü varsaymaz ve kendi adına yazmaz.",
     "Cloud paketindeki üç task adresinin tam UUID'leri bu pakette kısaltıldı: köprü yazıcısı UUID'yi cihaz/oturum kimliği olabilir diye reddeder (kopru_ekle.py:33). Tam adresler PR #4 geçmişinde kalır.",
     "SahitDevam başlatıcısına yeni bayrak eklenmedi ve --allow-all-tools geçirilmez. Köprü çağrısındaki mevcut --allow-all-tools + --deny-tool shell,write düzenine dokunulmadı; risk olarak işaretlendi (known_risks: bridge-allow-all-tools).",
-    "PR #6 açıldıktan sonra main'e giren Şaman değişikliği (00a2177) üç ortak dosyada çakıştı; iki taraf da korunarak birleştirildi ve satır kanıtları yeniden hesaplandı. Şaman'ın kapıları (SamanDevam/SamanHazirla, saman_devral.py) bu pakette değerlendirilmedi; yalnız README, Kopru_Izle.cmd ve kopru_yerel.ps1'deki eklemeleri korundu."
+    "PR #6 açıldıktan sonra main'e giren Şaman değişikliği (00a2177) üç ortak dosyada çakıştı; iki taraf da korunarak birleştirildi ve satır kanıtları yeniden hesaplandı. Şaman'ın kapıları (SamanDevam/SamanHazirla, saman_devral.py) bu pakette değerlendirilmedi; yalnız README, Kopru_Izle.cmd ve kopru_yerel.ps1'deki eklemeleri korundu.",
+    "PR gövdesi için yazma yetkisi gerektirmeyen seçenek 0 uygulandı: generate.py --pr-govdesi gövdeyi doğrulanmış paketten türetip stdout'a yazar. Köprüde istenen görüşler (k-0115) üç katmandan geldi: k-0116 (Claude (Max)), k-0117 (Claude (Hacker)), k-0118 (ChatGPT (Şaman)); üçü de 0'ı önerdi. Şartlar koda alındı: önce --check ile aynı bütünlük denetimi (uyuşmazlıkta gövde basılmaz), dosya yazmaz, gözlenen hash'leri yenilemez, ağ yok, mevcut gövde girdi değildir, saat/makine yolu/canlı PR durumu/model çıktısı girmez, sabit sıra ve LF, ham HTML/@anma/görsel/yerel yol bulunursa sessizce düzeltmek yerine hata verir. Gövde pakete dahil değildir (hash döngüsü olmaz); generate.py bağlı dosya olduğundan paket kimliği değişti.",
+    "A (tek MCP aracı) ve B (PAT betiği) seçilmedi; kullanıcı yetkisi 0 ile sınırlıdır. Seçilirlerse k-0116, k-0117 ve k-0118'deki şartlar geçerlidir (open_items: pr-write-path)."
   ],
   "access_map": [
     {
@@ -634,6 +636,14 @@
       "state": "blocked",
       "item": "Kapalı sağlayıcı altyapısı, model ağırlıkları ve gizli sunucu tarafı istemler repository erişimiyle incelenemez.",
       "evidence_required": "Bu iç yapıları repository içinden doğrulayacak bir yol yoktur; bypass önerilmez."
+    },
+    {
+      "id": "pr-write-path",
+      "priority": 11,
+      "owner": "user",
+      "state": "planned",
+      "item": "PR gövdesini otomatik yazma yolu (A: tek MCP aracı, B: PAT'lı betik) kurulmadı. Kurulacaksa şartlar: yazıcı yalnız body kabul eder; yazmadan önce gövde ve head yeniden okunur, sonra sonuç karşılaştırılır; yedek ve fark çıktısı köprü klasörünün dışında tutulur (kopru_gonder.ps1 git add -A yapar); belirteç diske yazılmaz, kullanıcı kendi kabuğunda girer ve işten sonra iptal eder; A ve B aynı ortam değişkeni adlarını (GH_TOKEN, GITHUB_TOKEN, COPILOT_GITHUB_TOKEN) paylaşmaz; A ayrı oturumda --sync-session off ile ve izleyicinin --allow-all-tools komutuna eklenmeden çalışır; gerçek sınır kod değil belirteç iznidir; iptal sorumlusu ve okunabilir bir kayıt belirlenir.",
+      "evidence_required": "Kullanıcının açık kararı ve belirteç izni; köprü kayıtları k-0116, k-0117, k-0118."
     }
   ],
   "known_risks": [

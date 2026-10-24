@@ -5,6 +5,7 @@ import hashlib
 import html
 import json
 import re
+import sys
 from pathlib import Path
 
 
@@ -204,12 +205,110 @@ def drift():
     return {name: ("missing" if current[name] is None else "changed") for name, digest in observed.items() if current[name] != digest}
 
 
+def md_text(value):
+    """Kaynak metni düz metne çevirir: tek satır, HTML kaçışlı (ham etiket ya da gizli yorum taşınmaz)."""
+    return html.escape(" ".join(str(value).split()), quote=False)
+
+
+UNSAFE_MARKDOWN = (
+    (re.compile(r"<[A-Za-z/!?]"), "raw HTML"),
+    (re.compile(r"(?<![\w`])@\w"), "@mention"),
+    (re.compile(r"!\["), "image"),
+    (re.compile(r"(?i)javascript:|data:text"), "script URL"),
+    (re.compile(r"\b[A-Za-z]:\\"), "local absolute path"),
+    (re.compile("[\x00-\x08\x0b\x0c\x0e-\x1f\x7f\u200b-\u200f\u202a-\u202e\u2066-\u2069]"), "control or bidi character"),
+)
+
+
+def render_pr_body(source, manifest):
+    """Doğrulanmış paketten PR gövdesi türetir. Saat, makine yolu, canlı PR durumu, model çıktısı ve mevcut gövde girdi değildir.
+    Güvensiz içerik (ham HTML, @anma, görsel, yerel yol) bulunursa sessizce düzeltmez, hata verir."""
+    repository = source["verified_repository"]
+    merged = repository["merged_from"]
+    bundle = manifest["bundle_sha256"]
+    levels = [row["level"] for row in source["completeness_matrix"]]
+    lines = [
+        f"Durum: **{md_text(source['acceptance']['state'])}**. Devralma kabul edilmedi; bu PR'ın birleştirilmesi kabul anlamına gelmez. Birleştirme kararı kullanıcıdadır.",
+        "",
+        "## Paket",
+        "",
+        f"- Sürüm `{manifest['bundle_version']}`, tarih `{manifest['prepared_on']}`.",
+        f"- `bundle_sha256`: `{bundle}`.",
+        f"- Kaynak dal `{md_text(merged['branch'])}` (PR #{int(merged['pull_request'])}) @ `{source['source_snapshot_commit']}`; gözlenen main anlık görüntüsü `{source['main_snapshot_commit']}`.",
+    ]
+    if "main_merged" in repository:
+        lines.append(f"- main birleşmesi `{md_text(repository['main_merged']['commit'])}`: {md_text(repository['main_merged']['resolution'])}")
+    lines += [
+        "",
+        "## Kabul",
+        "",
+        f"Kullanıcı yerel Copilot CLI oturumunda şunu yazar: `Şahit devrini kabul ediyorum: {bundle[:12]}`",
+        "",
+        "Kapsam: " + md_text(source["acceptance"]["scope_of_acceptance"]),
+        "",
+        f"## Tamlık: kesin {levels.count('kesin')}, kısmi {levels.count('kısmi')}, eksik {levels.count('eksik')}",
+        "",
+    ]
+    lines += [f"- `{row['id']}` ({row['level']}): {md_text(row['area'])}" for row in source["completeness_matrix"]]
+    lines += ["", "## Eksik kaynaklar", ""]
+    lines += [f"- `{row['id']}` ({row['state']}): {md_text(row['source'])}. Sağlayabilecek: {md_text(row['who_can_supply'])}." for row in source["missing_sources"]]
+    lines += ["", "## Öncelikli açık işler", ""]
+    lines += [f"{item['priority']}. `{item['id']}` ({item['owner']}, {item['state']}): {md_text(item['item'])}" for item in sorted(source["open_items"], key=lambda item: item["priority"])]
+    lines += ["", "## Bilinen riskler", ""]
+    lines += [f"- `{row['id']}` ({row['severity']}): {md_text(row['risk'])}" for row in source["known_risks"]]
+    lines += ["", "## İlgili PR'lar", ""]
+    lines += [f"- PR #{int(row['number'])} ({row['state']}): {md_text(row['purpose'])}" for row in repository["prior_pull_requests"]]
+    lines += [
+        "",
+        "## Paketin kayıtlı doğrulamaları",
+        "",
+        "Bu bölüm paketteki tarihsel kayıttır (`source.json` içindeki `local_verification`); bu çalıştırmada yeniden yapılmadı.",
+        "",
+    ]
+    lines += [f"- `{row['id']}`: {md_text(row['result'])}" for row in source["local_verification"]]
+    lines += [
+        "",
+        "## Yeniden doğrulama",
+        "",
+        "```",
+        "python3 devir/sahit/generate.py --check",
+        "python3 devir/sahit/generate.py --drift",
+        "python3 -m unittest discover -s tests",
+        "pwsh -NoProfile -File tests/test_sahit_launcher.ps1",
+        "```",
+        "",
+        "Ayrıntı: `devir/sahit/README.md`, `deus_ex_machina/SOZLESME.md`.",
+    ]
+    text = "\n".join(lines) + "\n"
+    for pattern, label in UNSAFE_MARKDOWN:
+        if pattern.search(text):
+            raise ValueError(f"PR body would contain {label}; refusing to print")
+    return text
+
+
+def mismatched(outputs):
+    return [name for name, expected in outputs.items() if not (HERE / name).is_file() or read_lf(HERE / name) != expected]
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--check", action="store_true", help="verify checked-in outputs, schemas and pinned files without writing")
     mode.add_argument("--drift", action="store_true", help="informational: list observed files that differ from the manifest snapshot")
+    mode.add_argument("--pr-govdesi", action="store_true", help="print a PR body derived from the verified package (same integrity check as --check; writes nothing, no network)")
     args = parser.parse_args(argv)
+    if args.pr_govdesi:
+        outputs = expected_outputs(refresh_observed=False)
+        mismatches = mismatched(outputs)
+        if mismatches:
+            parser.exit(1, "Generated files differ: " + ", ".join(mismatches) + "; PR body not printed\n")
+        try:
+            body = render_pr_body(json.loads(outputs["handoff.json"].decode("utf-8")), json.loads(outputs["manifest.json"].decode("utf-8")))
+        except ValueError as error:
+            parser.exit(1, f"{error}\n")
+        sys.stdout.buffer.write(body.encode("utf-8"))
+        sys.stdout.buffer.flush()
+        return 0
     if args.drift:
         changed = drift()
         for name, state in changed.items():

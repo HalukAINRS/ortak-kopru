@@ -13,7 +13,7 @@ Sürüm `2026-10-24.2` (öncesi: PR #4'teki `2026-10-24.1`). Sürüm, tarih ve h
 | `START_HERE.md` | Yerel oturuma verilecek başlangıç istemi (`source.json` içindeki `startup_prompt`). |
 | `manifest.json` | Sürüm, tarih, kaynak/çıktı/bağlı dosya hash'leri ve `bundle_sha256`. Kendi kendini hash'lemez. |
 | `handoff.schema.json`, `manifest.schema.json` | JSON şemaları; `generate.py` bunlarla doğrular (yalnız stdlib). |
-| `generate.py` | Çıktıları ve manifesti üretir; `--check` doğrular; `--drift` sapmayı gösterir. |
+| `generate.py` | Çıktıları ve manifesti üretir; `--check` doğrular; `--drift` sapmayı gösterir; `--pr-govdesi` PR gövdesini doğrulanmış paketten türetip basar. |
 
 JSON alan eşlemesi: **kapsam** = `scope`; **tamlık** = `completeness_matrix` (`kesin` / `kısmi` / `eksik`); **eksik kaynak** = `missing_sources`; **eksik işler, öncelik sırasıyla** = `open_items` (`priority`); **kanıt** = her satırın `evidence` alanı (dosya:satır ya da commit); **güvenlik sınırları** = `scope.privacy_boundary` ve `known_risks`; **doğrulanamayan varsayımlar** = `missing_sources` ile `access_map` içindeki "unverified/unavailable" satırları; **yerelde gözlenenler** = `local_verification`.
 
@@ -31,9 +31,23 @@ Python standart kütüphanesi yeterlidir; ağ ya da model çağrısı yapılmaz.
 python3 devir/sahit/generate.py            # source.json -> çıktılar + manifest (gözlenen hash'ler yenilenir)
 python3 devir/sahit/generate.py --check    # yazmadan: çıktılar, şema, bağlı dosyalar
 python3 devir/sahit/generate.py --drift    # yalnız bilgi: gözlenen dosya sapmaları
+python3 devir/sahit/generate.py --pr-govdesi   # yazmadan: PR gövdesini doğrulanmış paketten türetip stdout'a basar
 ```
 
 `source.json` ya da bağlı bir dosya değiştiyse önce üret, sonra `--check` çalıştır. Windows'ta `python3` yoksa `kopru_yerel.ps1:36`'teki `$PythonExe` (taşınabilir Python) kullanılır.
+
+## PR gövdesi
+
+`generate.py --pr-govdesi`, PR gövdesini doğrulanmış paketten (`manifest.json` ve `source.json`) türetip stdout'a basar. Gövdeyi GitHub'a **kullanıcı** yapıştırır; bu kip yazma yetkisi, belirteç ya da ağ kullanmaz. Köprüde istenen görüşler (k-0116, k-0117, k-0118) ve üç katmanın ortak önerisi (seçenek 0) üzerine kuruludur.
+
+- Önce `--check` ile aynı bütünlük denetimini yapar; uyuşmazlıkta gövde **basmaz** (çıkış 1). Dosya yazmaz, gözlenen hash'leri yenilemez.
+- Girdi yalnız paketin kendisidir: mevcut PR gövdesi, saat, makine yolu, canlı PR durumu ve model çıktısı girdi değildir. Aynı doğrulanmış paket aynı baytları verir (UTF-8, LF, sabit sıra).
+- Kaynak metin düz metne çevrilir (HTML kaçışlanır). Ham HTML, `@` anması, görsel, yerel yol ya da kontrol karakteri kalırsa sessizce düzeltmez, hata verir.
+- Test ve gözlem sonuçları "paketin kayıtlı doğrulaması" olarak aktarılır; bu çalıştırmada yeniden yapılmış gibi sunulmaz.
+- Gövde pakete dahil değildir (hash döngüsü olmaz). `generate.py` bağlı dosya olduğundan değiştiğinde `bundle_sha256` değişir; gövdeyi her zaman yeniden üretip güncel kimlikle yapıştır.
+- Sınır: kip çalışma ağacındaki dosyalarla çalışır; belirli bir commit'e kilitli olduğunu doğrulamaz (commit'ler `source.json` içinde yazılıdır). Basılan metni yapıştırmadan önce ham ve eksiksiz oku.
+
+Otomatik yazma yolu (MCP tek araç ya da belirteçli betik) kurulmadı; seçilirse şartlar `source.json` içindeki `pr-write-path` maddesindedir.
 
 ## Devralma komutları (sırayla)
 

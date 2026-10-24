@@ -3,18 +3,18 @@
   "bundle_version": "2026-10-24.2",
   "prepared_on": "2026-10-24",
   "source_file": "source.json",
-  "source_sha256": "cf00d58dd562d6458a25ced69e5246cb0e9cc6c45c4ca39a6f8a66849c96a9f9",
+  "source_sha256": "0c26a6ac548b5e7d9598f8fe6e6b3a5ca8dc230119c788f20ccd1655be25fc63",
   "source_snapshot_commit": "99dc8a37ef158ee42ee535f631f64e136fef202a",
   "main_snapshot_commit": "00a2177530ffc94c33c8a4df9bb8c4df172c937e",
   "outputs_sha256": {
-    "handoff.txt": "013d375ba320576f57a71eb556af69786f4f739b1b16510fb6be8a475b903cd6",
-    "handoff.html": "0b417d2235810c5424708fb567dcecf702b06a6d8b8159834f804197f9a27064",
-    "handoff.json": "bf06660462167b7fffaa409b00d68741cfc7fee0ec1121de577c09fa8b30ac77",
+    "handoff.txt": "56765f03fcdfaa57dc3a5f4f8ae4e995befe81e3403c223dbf8db0fd10786777",
+    "handoff.html": "46a13bae9b894e8eeee79266077701356924c4d3724ed2be15583383fd2d946f",
+    "handoff.json": "9824c51c06b8e61c21745a7684486116b81370f4d85ca4ad34d6faf9dec57c66",
     "START_HERE.md": "9d3514d7c747ade6e7a2fae290016d1d7819b875aa8840a048420c4e4842caa4"
   },
   "pinned_sources_sha256": {
-    "devir/sahit/README.md": "8bebe971cf42210a943b4d4223a7bcea46617c29f6bddb032948b9dec60ee82f",
-    "devir/sahit/generate.py": "808fa61b323ccf26c6640408b77839796535caf49eed891ab08b2014902162f4",
+    "devir/sahit/README.md": "37e6b9de8317a314b00bd0977ec86b224cad6481e65d122e298d43b36277de73",
+    "devir/sahit/generate.py": "a21300b54c7d2fe3f9785378be517324bdf4d64b0998e00da612af7caf729aa3",
     "devir/sahit/handoff.schema.json": "92355c25f652cffe324e02a192077231ed462ccdc5af0b4442442d04e2431e57",
     "devir/sahit/manifest.schema.json": "03c409bb26f1ab240bcaa3c4b0e3d3722cc042de2bcc92d7ccd17c55b7a31402",
     "deus_ex_machina/SOZLESME.md": "38dc95e4f31608fbd5eb578150d1d272ca9ed8ba2ad19574d97badc5d15c73a0",
@@ -22,11 +22,11 @@
     "deus_ex_machina/task_queue.py": "443c9a79cf66a74953c2d780f96258da35c46fbbb4223fb721d2ab72fcdd802c",
     "deus_ex_machina/task.schema.json": "ddcf3c9d0ac614bf88bfeacaf81d00be9e1682e0af19c3566895f4eb9c60258e",
     "tests/test_deus_ex_machina_queue.py": "eb87101238c4dd62b5f762b8094cc78afc845ea7b783641438dd3cb8da94901f",
-    "tests/test_handoff_bundle.py": "df85811d4c163b5da814ba6ef3daca46ec797f3b3681d2db7848cb248b20509b",
+    "tests/test_handoff_bundle.py": "20286a9e1dbea0233aaa8449fa5a769688e26801135b4eaeb256238b7b56c23d",
     "tests/test_sahit_launcher.ps1": "0b008eee7356a916342dacd2494b464ae35b0b08b55f4c057e780a2d08ccbf74"
   },
   "observed_sources_sha256": {
-    "README.md": "68a8be7389d04fc9e458aff17d237ffd846db0088f7fc147e4c4532a8b752fa9",
+    "README.md": "b60ccd02c7739731490027377efe2892048fc0797d949a4298f9c1ba803178e2",
     "AGENTS-kopru.md": "bcbe2d319b3b68ef9f3a27b1f41c47bce76dbf66a7633926ec06f1e4640a9538",
     "istem-sablonu.md": "009fa6d24f18c2defbb04a8eb6edf53fb19233c7f5e04cc41089d9ab160e6dec",
     "kopru.html": "6338bb4936929d648b70418eee888126a5e396947656d676e773a2d90b8b62db",
@@ -45,7 +45,7 @@
     "kopru_yanitla.py": "0988f3c9f1e938aa88b254b3a8dee714b218055163d1b5ea51129cc81e997d00",
     ".github/workflows/kopru.yml": "e119ea788300cfa5c7d7becf868ba70681abc5710537c77be0523430733b0467"
   },
-  "bundle_sha256": "bd9345f6dd7f092544a1ad608bb39211e2b2a694706a2c4df5c47607a82ae0b4",
+  "bundle_sha256": "bb93e661fd0494d40ee98e52958a2a83258b59fa5440fb42a057975e120a2a83",
   "manifest_self_hash": "omitted: self-referential hash is not meaningful",
   "line_endings": "hashes are computed over LF-normalized bytes",
   "privacy_boundary": "Manifest yalnız repository-relative kaynak yollarını ve içerik hash'lerini yayımlar. Makineye özgü mutlak yollar, Home/cache konumları, anahtarlar, belirteçler, oturum dosyaları ve kimlik değerleri dışarı alınmaz. Hash ve tarama, gizli veri bulunmadığını garanti etmez.",

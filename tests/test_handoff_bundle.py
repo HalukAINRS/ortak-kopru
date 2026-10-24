@@ -1,5 +1,6 @@
 import hashlib
 import importlib.util
+import io
 import json
 import re
 import subprocess
@@ -7,6 +8,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -110,6 +112,49 @@ class HandoffBundleTests(unittest.TestCase):
         for document in (HANDOFF / "README.md", ROOT / "deus_ex_machina" / "SOZLESME.md"):
             for match in DOC_REF.finditer(document.read_text(encoding="utf-8")):
                 check(*match.groups(), origin=document.name)
+
+    def test_pr_body_is_derived_deterministic_and_safe(self):
+        from kopru_ekle import yasak_kontrol
+
+        body = generator.render_pr_body(self.source, self.manifest)
+        self.assertEqual(body, generator.render_pr_body(json.loads(json.dumps(self.source)), json.loads(json.dumps(self.manifest))))
+        self.assertIn(self.manifest["bundle_sha256"], body)
+        self.assertIn("`Şahit devrini kabul ediyorum: " + self.manifest["bundle_sha256"][:12] + "`", body)
+        self.assertIn("bu çalıştırmada yeniden yapılmadı", body)
+        self.assertNotIn("\r", body)
+        self.assertTrue(body.endswith("\n"))
+        self.assertEqual(yasak_kontrol(body), [])
+        for row in self.source["completeness_matrix"] + self.source["open_items"] + self.source["known_risks"]:
+            self.assertIn(f"`{row['id']}`", body)
+
+    def test_pr_body_escapes_html_and_refuses_other_unsafe_content(self):
+        source = json.loads(json.dumps(self.source))
+        source["open_items"][0]["item"] = "a <!-- gizli talimat --> <img src=x>"
+        body = generator.render_pr_body(source, self.manifest)
+        self.assertNotIn("<!--", body)
+        self.assertNotIn("<img", body)
+        self.assertIn("&lt;!--", body)
+        for payload in ("@birisi", "![x](y)", "Y:\\HalukAI\\x", "a\u202eb"):
+            source["open_items"][0]["item"] = "a " + payload
+            with self.subTest(payload=payload), self.assertRaises(ValueError):
+                generator.render_pr_body(source, self.manifest)
+
+    def test_pr_body_cli_prints_exact_bytes_writes_nothing_and_fails_closed(self):
+        before = {path.name: path.read_bytes() for path in HANDOFF.iterdir() if path.is_file()}
+        run = subprocess.run([sys.executable, str(HANDOFF / "generate.py"), "--pr-govdesi"], capture_output=True)
+        self.assertEqual(run.returncode, 0, run.stderr)
+        self.assertEqual(run.stdout, generator.render_pr_body(self.source, self.manifest).encode("utf-8"))
+        self.assertEqual(before, {path.name: path.read_bytes() for path in HANDOFF.iterdir() if path.is_file()})
+        tampered = dict(generator.expected_outputs())
+        tampered["handoff.txt"] += b"x"
+        out = io.TextIOWrapper(io.BytesIO(), encoding="utf-8")
+        with mock.patch.object(generator, "expected_outputs", return_value=tampered), \
+                mock.patch.object(sys, "stdout", out), mock.patch.object(sys, "stderr", io.StringIO()):
+            with self.assertRaises(SystemExit) as raised:
+                generator.main(["--pr-govdesi"])
+        self.assertEqual(raised.exception.code, 1)
+        out.flush()
+        self.assertEqual(out.buffer.getvalue(), b"")
 
     def test_launcher_line_references_match_cited_content(self):
         # Birleşmeler kopru_yerel.ps1 satırlarını kaydırır; kanıt başvurusu sessizce eskimesin.
