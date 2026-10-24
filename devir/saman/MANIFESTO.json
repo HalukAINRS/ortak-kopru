@@ -1,0 +1,540 @@
+{
+  "schema_version": 1,
+  "handoff": "saman-2026-10-24",
+  "created_at": "2026-10-24T09:26:43+00:00",
+  "source_main": "95d646e6c8c694cf32d56aa7a2ab7a67c15ed729",
+  "previous_deus_commit": "df73d42c0ac63894617f92df7b97e5ec3cc97f78",
+  "steering_commit": "80fd42db48e91104383b47b6b4144f01790999be",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "size": 3007,
+      "sha256": "9596c19ff42b48471bacb7cf1ba35cf5c33f23f4c0292631bc37bcae458a0841"
+    },
+    {
+      "path": "README.md",
+      "size": 14135,
+      "sha256": "f992859fd91284625627824a14a737c54cefe0143fcacb316971c003148abc95"
+    },
+    {
+      "path": "deus_ex_machina/DEVIR_DURUMU.md",
+      "size": 5786,
+      "sha256": "508477c4cae472ed63d4af7bba7e0d1fe0233adc626dedfe3348cd1396789488"
+    },
+    {
+      "path": "deus_ex_machina/KATMANLAR.md",
+      "size": 3805,
+      "sha256": "857e29530540949c6fa3f7cb9df50f04bb8fcc232d9545ed2ba6f042cb6ede00"
+    },
+    {
+      "path": "deus_ex_machina/KAYNAK_DEVRI_20261024.md",
+      "size": 2879,
+      "sha256": "488e1f175a065c3956663978b8330406b735c319fbe13d91e2f02e44597a5928"
+    },
+    {
+      "path": "deus_ex_machina/README.md",
+      "size": 2812,
+      "sha256": "b81c9411064d7a6ede6fbcf832505011604262e52cad0a8a37e01c6af8dfe2d2"
+    },
+    {
+      "path": "deus_ex_machina/SAMAN.md",
+      "size": 3980,
+      "sha256": "36cf8837dd0be74b9d653ff0f2293d10c1ff8c9f4d6e31d1c684ec8c817e3dfd"
+    },
+    {
+      "path": "devir/saman/ACIK_ISLER.md",
+      "size": 4832,
+      "sha256": "c411cd2a83fb74d1ae30fa3106a80b886e89edb4c4f85cf576715fcd3fd3b01b"
+    },
+    {
+      "path": "devir/saman/BASLATMA.md",
+      "size": 5740,
+      "sha256": "987d77d5dff22925a002a0cfda64cc9ba7ee2149f980d550ab60362b61ca8f41"
+    },
+    {
+      "path": "devir/saman/CLI_BASLANGIC.md",
+      "size": 5145,
+      "sha256": "6f6db742f27a60440e846f2cf74053eb7d9b3e3e4d1a82f6d1ed1f7bb6eeff33"
+    },
+    {
+      "path": "devir/saman/DEVIR.md",
+      "size": 8538,
+      "sha256": "8f938c9f80e8ddd4dd6db4319e54168d04acf5496b31fe48b83509f1a0ce8b8f"
+    },
+    {
+      "path": "devir/saman/DEVIR_DURUMU.json",
+      "size": 1009,
+      "sha256": "905e429340d1717ba863c2201891ee139dd2e0fc786799c38fcd08a6cfce63fd"
+    },
+    {
+      "path": "devir/saman/DOGRULAMA.json",
+      "size": 1722,
+      "sha256": "c882c0b98c74de3d5cbfe4abc810df0a8cdaf433177667395136b34cb6151c32"
+    },
+    {
+      "path": "devir/saman/GORUNUR_KONUSMA.md",
+      "size": 1780,
+      "sha256": "9850b1c8a7ada77a1c043a2b97427729087d324392c1d38b748394e4e45adbe6"
+    },
+    {
+      "path": "devir/saman/KAYNAKLAR.json",
+      "size": 6459,
+      "sha256": "a5ed48e1dfdbcdbff8e7dfda74d12124f02c0e3816499ce376d9736a1c0f03f8"
+    },
+    {
+      "path": "devir/saman/KULLANICI_ILETILERI.json",
+      "size": 1488,
+      "sha256": "de2a4c278e2ae7e3e52062931cfdba484a9ae513126d4bcfdb152aa0b7893bb6"
+    },
+    {
+      "path": "devir/saman/README.md",
+      "size": 3775,
+      "sha256": "87451981589667d79b215f4f2a97aab671df28022945660d32752cd1dbba2f72"
+    },
+    {
+      "path": "devir/saman/SON_YANIT.md",
+      "size": 6981,
+      "sha256": "7fcffec1d7391647b41c8e110dadb937c67cc1c6dcc1b24e6963eeb0deb337a7"
+    },
+    {
+      "path": "devir/saman/YONLENDIRME_NOTU.md",
+      "size": 14380,
+      "sha256": "f6172d7655c68448f140b08322d34a830ce106f249922e5a0a31127d36cd4cab"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/AKTARIM_KAPSAMI.md",
+      "size": 5811,
+      "sha256": "1f94f850121531e259abbe39c7fdfa0d2f96431faad3a30f15b2ebd2674c52bb"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/ANA_RAPOR.md",
+      "size": 28285,
+      "sha256": "ebb2d085d958b9e873e5fcc9684766c7d25f92f975501710d89dc62957e67c7b"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/DEPO_OKUMASI.md",
+      "size": 19976,
+      "sha256": "77f5a434cd64308c4eecbed8267d8a21935edf231ee6b1227d7b9408aead4a4f"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/ISTENEN_BAGLAM.md",
+      "size": 5686,
+      "sha256": "fae1442eccd02bc95557c44a177639d665794331b98e979deef44902ea8e23c1"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/README.md",
+      "size": 11026,
+      "sha256": "b09ec697cd9d8cb786f014201a626eea21d18f4b684af39c303eed8f1aa59141"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/SHA256SUMS",
+      "size": 8017,
+      "sha256": "cefd19edcf2d3be3c1cc60ece7d0f3d7ad80d2d5a34b700ae5bfd1df7344d1e4"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/YAYIN_DOGRULAMASI.json",
+      "size": 3383,
+      "sha256": "9d4f89ef513ffaee87499dc6de43d80d694fcd4e66f45d6d4706f60beac56012"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/YAYIN_DOGRULAMASI_GUNCEL.json",
+      "size": 1959,
+      "sha256": "8517020e50e4bcd28dcbb4cc841ac3b1c2371c2d7f41067244125b91dc3377b0"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/aktarim_manifestosu.json",
+      "size": 428202,
+      "sha256": "0f7dcfd0bc7b098840b4adc78fc78f051f44b17e7957eea3ab7d1d63c35d4299"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/atif_denetimi.json",
+      "size": 150432,
+      "sha256": "8bf075dded255fb9ed046e647e9fc8b33695f87bc1a2eee354bfe2bae12d55b3"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/ARSIV_YENIDEN_DOGRULAMA.json",
+      "size": 12800,
+      "sha256": "cb79b82e9d02cf76f4d66414a95e6cb9263f76c2133ff2ca9ca2543acb96a38c"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/GUNCEL_KOD_VE_PR_OKUMASI.md",
+      "size": 17028,
+      "sha256": "9f61e74ccfc39f2ecb63ab468e5aca8c7a2f7b37a6f22da4ed22dad6dd362d9f"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/GUNCEL_OKUMA_2026-10-24.md",
+      "size": 14944,
+      "sha256": "5ecdc1027531bb0ecb823b184a3de1da5ae89e9cb2c5505eefa90a6428d81bda"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/GUNLUK_EKI.md",
+      "size": 6001,
+      "sha256": "e2a5a5be0349edef3698f76e33d6912f2b7116c175cf02590468783efec029f5"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/GUNLUK_OKUMASI.md",
+      "size": 11568,
+      "sha256": "8603eb055d4579d45d1bb6a3d3ec0feb7cdebf4fa413b5bdd3f75c5c8a698cb0"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/GUNLUK_SON_EK.md",
+      "size": 6396,
+      "sha256": "cb483a82f03efa1dd28a1476f557727bde83206fdea66aaf5c47b6944d5d1873"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/KOD_OKUMASI.md",
+      "size": 10784,
+      "sha256": "ddc8093c5b2160915b3da9b5b8d0bb0296ac5d0cf0a57ce53405481bdb9460ef"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/KOPRU_ILK_55_OKUMASI.md",
+      "size": 23595,
+      "sha256": "cfb7c8592a2707f620cc52475d870dc3c5934f70d9e183b1d2aa742db2205f87"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/KOPRU_SON_54_OKUMASI.md",
+      "size": 20087,
+      "sha256": "dedc8c5474ce91ccc60e35fe2b9c0a36814d71d877af3d580679c38a3866348e"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/PR3_OKUMASI.md",
+      "size": 24818,
+      "sha256": "b000fa2d1deaf74f649e95cbaec6f47510338aba4f30a5df69a3543d572710fc"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/REFERANS_DALLARI_OKUMASI.md",
+      "size": 16847,
+      "sha256": "8a6fa3b9201c853638ab053f1ca0c01613121744a7a226f9813eb8e13388ae4e"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/SON_DEGISIKLIK.md",
+      "size": 4482,
+      "sha256": "8001348190862016860c1b1cc4c8dd7f6958be80ee22869b255f9a3266c2dcd1"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/YENI_DOSYALAR.md",
+      "size": 15236,
+      "sha256": "9bbbac609fd0e79ff8acd3e8c95ffcc3ebc84d48b115c746d463d2d69ce23753"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/guncel_kopru_kapsami.json",
+      "size": 96753,
+      "sha256": "afdac5c999b1f4ac80769e309ea905ebff92bccd416e230c1d6a0c1682c728fe"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/gunluk_eki_kapsami.json",
+      "size": 5027,
+      "sha256": "f5bb6e4a93f57dada42ae0cad7a5b6844433fa0bceca12d91515aaa6fa396626"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/gunluk_kapsami.json",
+      "size": 18773,
+      "sha256": "c0f2dea7be20ebc4c75fedc786420725f3dab529bac29621b2535b5520aa9363"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/gunluk_son_ek_kapsami.json",
+      "size": 7006,
+      "sha256": "c8e3cd79a1efdc9678b86bf2e0ff6e5aea7e0f8915acc979c881f41f475b9a22"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/okunan_dal_ve_pr_surumleri.json",
+      "size": 3467,
+      "sha256": "154b3d58977be6fd7f818c353f5a099dd9eab728320b3725bac0fbe633f9b330"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/okunan_depo.json",
+      "size": 8837,
+      "sha256": "f752741f97107afd52f4c26556379d97fe9c543c6da858591307a8b8c399eb11"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/reference-branches-coverage.json",
+      "size": 124451,
+      "sha256": "d2b3a5e28be36898d556b1fcb28e6ae189cc3e874116f976308b92de815c9498"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/repo-log-equivalence.json",
+      "size": 44586,
+      "sha256": "a9d3e75e97e686fcb5f4de4204f18be0783356906e19dd6266520303e8bb089e"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/repo-log-equivalence.py",
+      "size": 10998,
+      "sha256": "e897e263280dd2efb5c729a5cf4c0a6abc75293d835112e332c962e7a23dc887"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/repo-pr4-equivalence.json",
+      "size": 1243,
+      "sha256": "ba21b3c5c1fa98c8b6726c28dc41bff4aee5cb2e4d76093fb4742229c1c6ecb8"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/repo-reading-manifest.json",
+      "size": 42146,
+      "sha256": "3b161327af7f8725de67f827dde24a96f7555a3f953a8c8d7f232e87a617a804"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/depo/yayin_oncesi_ana_dal_farki.json",
+      "size": 612,
+      "sha256": "067f76d8876b55265d2f7bff40c3f7c55ab79e02d8a653a28805cb3f84d5a26d"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/books_faith_remaining.md",
+      "size": 15640,
+      "sha256": "b9b296ff39b228a09d077f1122b68ec30efeebce0456b6acb361d64b00cbc997"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/claude_programs.md",
+      "size": 33263,
+      "sha256": "5873c0019b73ed281c1cc1ef9813ab88927a3fd001b36c4f5767b4270a38e85c"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/cognitive_metacognition_remaining.md",
+      "size": 11142,
+      "sha256": "a47048514165c6ed22a9b97e5fd0e3b3bb66369dbdf46dfdeba76834025fa071"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/conversations.md",
+      "size": 32388,
+      "sha256": "f9dd8e3c6b3481e42aa1ee7f01e153ac0ed71ef9bb7de08a1e1aeac4318d20bc"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/faith_remaining.md",
+      "size": 21042,
+      "sha256": "211362a59629220f3e69338dedc75ee802ebf38ce387a6aec0a7a2acc6d3dc26"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/foundational.md",
+      "size": 30731,
+      "sha256": "b0c5c53fb13f40e1efea24c43c620612defb1a5974f43a15d0a7e0765c23ef5b"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/historical.md",
+      "size": 20689,
+      "sha256": "69136f5ea8ff889d7015245d2736090ae5f968b47b3eb8bc3a6011dc33d30473"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/historical_document_status.md",
+      "size": 42777,
+      "sha256": "7f2254de26e1b6f2a6372e9daa2bebf05e5e797c0a7a9cf425dc79b13b63bc7f"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/historical_supplement.md",
+      "size": 20917,
+      "sha256": "cfa5792315fad16a2823c0552de963a7d19414b2810084ae4f6e6fc03f0f26bc"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/images.md",
+      "size": 22010,
+      "sha256": "ba9f3b5e71b0c9b29785e2776561e65ea2baa2d56b7d41adadc1dce7ada45c3c"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/long_corpus_remaining.md",
+      "size": 8381,
+      "sha256": "badaf8655394dac5240ce9e19bace392d6406e5bbbc69b1803a23535dcb96e12"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/metacognition_remaining.md",
+      "size": 9800,
+      "sha256": "bdd30ffc717123140a018bdc3259d2a00e4b25308535d8d1b322e2dd21fb249b"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/mlops_remaining.md",
+      "size": 8812,
+      "sha256": "243aa529b77ff8186adb6d6ebc7a9e2bfbdb8351237dce11fd44d369e49b0551"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/models.md",
+      "size": 13096,
+      "sha256": "0e51e49bbd2ffc60ebb02c47c6b8993b94ece407752ec3e047bfe7b300bb752a"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/models_remaining.md",
+      "size": 23901,
+      "sha256": "cb3d9bd867e3dd5eb19df73eaf04913622d298dee268cf0de99eaa077c909673"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/models_supplement.md",
+      "size": 20630,
+      "sha256": "e3a4ed4e45898c3d984f926a2f870e1a565d4cb9a36b0d26bc8374f8eb435701"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/operational_remaining.md",
+      "size": 21902,
+      "sha256": "75f379e6546ceff4de2d6b50b31cc767a5249d644464a95cc2d1b80a6860e8d7"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/root_supplement.md",
+      "size": 7081,
+      "sha256": "14de98266c895867f17fbf590b0018138b3e47d0f1b4ee3920afae02ef3a5985"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/systems_embedded_audit.md",
+      "size": 7799,
+      "sha256": "1ebbb68b68877a360d15f9cc301b2f7c9dff34f855ad9d4662a58d09a26b4eb3"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/systems_remaining.md",
+      "size": 28127,
+      "sha256": "767717a3e33b865adec83e233ed67ca4d57992f30272113264372eb5293ab081"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/incelemeler/two_conversations_remaining.md",
+      "size": 19385,
+      "sha256": "6cda241258e9578cc8ca41eacfefaebe1d7f6da3a505294434283e909e8be101"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/books_faith_remaining.json",
+      "size": 60792,
+      "sha256": "6371527e96f70430bece0d055213fb621b985e2975054b31d3f3e69e9d59b070"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/claude_programs.json",
+      "size": 72917,
+      "sha256": "7822b962321c843c68f044467e5f7e2b327e7337f07498ab7a39c9c4be76d99d"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/cognitive_metacognition_remaining.json",
+      "size": 51353,
+      "sha256": "5e962812153994f7752753314ce106757569157b73fe3ade92da9287d75c4812"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/conversations.json",
+      "size": 89526,
+      "sha256": "1ac4a3824f4fbb341aa79cccc34a9726856b095fddfcf0ac555cbbddfbb97ab3"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/downloads_images.json",
+      "size": 5166,
+      "sha256": "a16665c18c64d0adf9c66249f26514d61197a5617ca0124ba4dbca4eb104d90f"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/downloads_programs.json",
+      "size": 67241,
+      "sha256": "4a17dc8efb0d76bc06e359032c3813205895a103e083ed59a3b9db73d9a28ece"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/downloads_styles.json",
+      "size": 16667,
+      "sha256": "a50dc1ce5faee0bdf32e484b5949eccb2a84c3e76c3d904b66ef26c66327c086"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/faith_remaining.json",
+      "size": 54098,
+      "sha256": "b6626b1d7c8e2e2e3c57618bda906b4a36736a04c3467aab9e9dcfbacd7966ee"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/foundational.json",
+      "size": 103833,
+      "sha256": "8c8288dc3f50ceec8d1dc6f0dbd118378cbf7948b7ab8b8039aa5c5e014139a1"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/historical.json",
+      "size": 1142183,
+      "sha256": "ab5214ab56720fad9da3aaa3e71c8175fa38903d6c516ad12e2fb9d7102ba5fa"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/historical_supplement.json",
+      "size": 70072,
+      "sha256": "9d2e1a797f97a788ce8a05e9e60d282e10820cb8117560fa3477d98af694d99a"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/images.json",
+      "size": 42707,
+      "sha256": "2f9f15ec7b74f20ac777cfd0286b2ad69d27eae6217ba99e85e6ed23b166a81c"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/long_corpus_remaining.json",
+      "size": 93719,
+      "sha256": "d411e0ed73615e75ee7b397bf822abfe8bb597359644359084d95dc889662ac3"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/metacognition_remaining.json",
+      "size": 26644,
+      "sha256": "f0f904d1632568bf91e4322af49b02b28b9aa992d4167820247ea6b30a69629d"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/mlops_remaining.json",
+      "size": 48597,
+      "sha256": "084b20fe64c2f5158b3a9075eff3ae145ebbdde9c692b9f6c3eaed4aafd0af22"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/models.json",
+      "size": 68002,
+      "sha256": "e77eaa5544c675d6184ad385c2a69508044a5b6c307f530056d896725d073aae"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/models_remaining.json",
+      "size": 1133816,
+      "sha256": "0df01b434b8b04559c6a04d8c65bfa6207f1e1394ef6058abb084fd0587d2d0b"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/models_supplement.json",
+      "size": 151555,
+      "sha256": "3509a831b3604769a71613912ac3eecd12539d713bd97df755e6742befc32aae"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/old_css_1.json",
+      "size": 84835,
+      "sha256": "c0a3df89b13a8800791788a288d1797ee303b001b78c68f53b0df8f9e8f095c9"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/old_css_2.json",
+      "size": 122253,
+      "sha256": "fe2d27172c5410198f6770b14d9ff28d2c5fa6039efac19b148e3b73c860040c"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/old_programs.json",
+      "size": 37800,
+      "sha256": "2c425beb923d5f5f6161a6425880f94bb15fd6eacd7ed6945b21f709e4158438"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/operational_remaining.json",
+      "size": 451342,
+      "sha256": "ac7547215c1aff5ae7cf99a39087b5594df5869b770a443891c3d1b687678d68"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/paket_dogrulamasi.json",
+      "size": 129316,
+      "sha256": "8f079e8421a666f91cd0f0e7679715ce7b7e43a00019a79bc42b81f678eed0e2"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/root_supplement.json",
+      "size": 15969,
+      "sha256": "7ee084af44ffb13ee7b1f856f11b464ae04badd67d2cd5a2599836423fdc6850"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/systems_remaining.json",
+      "size": 328210,
+      "sha256": "bee41116ef95c44e30cc4f8355df565733dca66c61a99a43a8d11fb00a1c4c66"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kanitlar/two_conversations_remaining.json",
+      "size": 431668,
+      "sha256": "d7cf4aedb54244937752384679e0e0f4629b2ce2db26ab24270afa3b615c2155"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/kaynaklar.json",
+      "size": 618832,
+      "sha256": "46165efa96a378cc7c4a6435a559ec64479c3e4818a5dffb33974a0419a823e4"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/maskeleme_ve_donusum_kaydi.json",
+      "size": 271805,
+      "sha256": "08b3f4a92d35c6a3815b3f08f3c0d01eec97cf6a0e513409c2fbc357ba9829af"
+    },
+    {
+      "path": "devir/saman/kaynaklar/steering/okuma_durumlari.json",
+      "size": 1285628,
+      "sha256": "80d868639cd5b58be1244cafd3f416f9844b2dc0bdc2abbfddfa844c04ca1b6d"
+    },
+    {
+      "path": "devir/saman/yonlendirme_dogrulamasi.json",
+      "size": 11238,
+      "sha256": "dc52208ccbebc3cab3c72bc748ff161f4f4da09ef7d1aa250f105cbffc7ca2a5"
+    }
+  ],
+  "excluded_from_fixed_manifest": [
+    "devir/saman/MANIFESTO.json (self-reference)",
+    "devir/saman/ilerleme/ (new CLI progress)"
+  ],
+  "private_source_archive_in_public_payload": false
+}

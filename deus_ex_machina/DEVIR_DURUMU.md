@@ -29,3 +29,12 @@ Güncel kontrol: 99dc8a3 sürümünde SahitDevam başlatıcısı ve deus_ex_mach
 
 Dayanaklar: “HalukAI CLI Bağlam Aktarımı”, “HalukAI Kurulum Ortamı ve deus_ex_machina Karşılaştırması”, “İlk İş Güncel Kontrol Kaydı” sayfaları; ortak-kopru k-0014, k-0016; PR #4; bu oturumun yerel dosya ve tarayıcı okuma kayıtları.
 
+## Sonraki hazırlık oturumundan güncelleme — 24 Ekim 2026
+
+Yukarıdaki metin, konu dalının `df73d42c0ac63894617f92df7b97e5ec3cc97f78` sürümündeki Şaman kaynak devri bildirimidir. Ana dalın `95d646e6c8c694cf32d56aa7a2ab7a67c15ed729` sürümündeki k-0111 aynı ilerlemeyi kaydeder: 519 görünür mesaj (296 ana yol, 223 yan dal), 80 defter kaydının eşlenmesi, 029–038'in yalnız yan dallarda kalması; 15 girdi eki, 22 çıktı başvurusu ve altı yerel asıl dosya. Görünür mesaj ağacı ve eski defter eşlemesi tamamlanmış kaynak işi olarak korunur. Özel ham gövdeler bu sonraki web hazırlığında yeniden okunmuş veya yeniden alınmış sayılmaz.
+
+Yeni web oturumunun hedef Windows CLI bağlantısı yoktur. Bu sınır, kaynakta zaten bildirilmiş Şaman CLI çalışmasını yok saymaz. Bu oturumun hazırladığı [devir/saman](../devir/saman/README.md) ek paketinin hangi hedef oturumda okunup kabul edildiği ayrı kaydedilecektir. Zaten açık Şaman oturumu varsa önce o oturumun devamı kullanılır; başlatıcı, yeni oturum açılması gereken durumda alternatiftir. Hiçbir komut aynı süreç belleğinin otomatik taşındığı anlamına gelmez.
+
+Sonraki iş, `KAYNAK_ALIMI_20261024.md`, `MESAJ_DOGRULAMASI.json`, `ESKI_DEFTER_KARSILASTIRMA.json`, `DOSYA_BAGLANTILARI.json` ve ilgili yerel devam kaydına dönerek yalnız açık kalan ek/görüntü, v11, oturum köprüsü ve diğer dosya baytlarını tamamlamaktır. Tamamlanmış 519 mesaj/80 eşleme çalışması baştan yapılmaz.
+
+PR #4 için ilk kontrol 69adfbc sürümüne aittir. Son incelenen 99dc8a37ef158ee42ee535f631f64e136fef202a sürümünde SahitDevam ve çevrimdışı görev kuyruğu vardır; ana dala birleştiği veya gerçek uçtan uca CLI çevriminin kurulduğu varsayılmaz. PR #5'in bu web hazırlığında incelenen 2a68b375a09475115d526fdb7d81d24b2c523ab1 sürümünde Windows/VM başlangıç açıklaması düzeltilmiştir; yukarıdaki Şaman kaydının yalnız PR açıklamasını okuma kapsamıyla karıştırılmaz. Yeni açık işler [Şaman listesinde](../devir/saman/ACIK_ISLER.md) kaynak ve kabul ölçütleriyle tutulur.

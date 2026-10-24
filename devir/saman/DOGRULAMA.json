@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "scope": "Gönderen oturumun paket ve başlatıcı kontrolleri; hedef Windows/Codex kabulü değildir.",
+  "steering_snapshot_files": 85,
+  "steering_source_commit": "80fd42db48e91104383b47b6b4144f01790999be",
+  "steering_source_tree": "e038479c2aa2aeba6252f95d9bf64b5d251d522b",
+  "steering_snapshot_byte_equal": true,
+  "visible_user_messages": 2,
+  "visible_user_markdown_json_equal": true,
+  "source_message_hashes_verified": true,
+  "routing": "Kapalı Sen bilgi kaydı, boş yanit: bekleyen ve max-yanit değişmez; yayındaki gerçek kayıt ayrıca kontrol edilecek.",
+  "launcher_offline_tests": {
+    "passed": 13,
+    "failed": 0,
+    "environment": "Geçici Git depoları ve sahte CLI; gerçek Windows/WinPE/Codex değil",
+    "checked": [
+      "commit pin ancestry",
+      "manifest from pinned Git object",
+      "package hashes",
+      "source worktree unchanged",
+      "child environment and interactive argv",
+      "parent environment unchanged",
+      "repeat launch keeps progress and local edits",
+      "stale worktree and wrong branch/common-dir",
+      "source ZIP validation and private state",
+      "missing executable vs prepare-only",
+      "import without side effects",
+      "autocrlf byte preservation without config writes"
+    ],
+    "latest_duration_seconds": 1.965
+  },
+  "target_windows_cli_started": false,
+  "target_powershell_modes_executed": false,
+  "target_acceptance_received": false,
+  "concurrent_main_base": "95d646e6c8c694cf32d56aa7a2ab7a67c15ed729",
+  "concurrent_deus_base": "df73d42c0ac63894617f92df7b97e5ec3cc97f78",
+  "concurrent_cli_report": "k-0111: 519 görünür mesaj, 80 defter eşlemesi; bu ek paketin kabulü olarak sayılmadı."
+}

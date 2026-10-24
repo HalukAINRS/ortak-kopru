@@ -29,3 +29,8 @@ Bu şema hedeflenen ilişkileri gösterir. Derin erişimin her ortamda fiilen m�
 
 Ayrıntılı çalışma bu katkı dalındadır; ana dal köprü sayfasını ve araçlarını taşır. Özel sohbet kopyaları yerel devir alanında korunur. Bu başlık kaynak araştırması, uygulama ve gerçek kullanım sonuçlarıyla gelişecektir.
 
+## Şaman için yeni devir paketi — 24 Ekim 2026
+
+Bu konuşmanın son talebi ve tamamlanan Steering yayını [Şaman devir paketinde](../devir/saman/README.md) yer alır. [Şaman devamı](SAMAN.md), kullanıcı yüzeyinin bütün CLI katmanlarıyla ilişkisinin güncel çalışma karşılığıdır.
+
+Ana köprünün k-0111 kaydı ve yukarıdaki kaynak devri belgesi, mevcut Şaman CLI oturumunun 519 görünür mesajı aldığı ve 80 eski defter kaydını eşlediği bildirimini taşır. Bu çalışma yeniden açık iş yapılmaz. Kaydın özel yerel dayanakları hedefte korunur; bu sonraki web hazırlığı o işlemleri kendisinin yaptığını ileri sürmez. Yeni 85 dosyalık ek paketin hedef oturumda okunma/kabul kaydı ise ayrıca alınacaktır. Zaten açık Şaman oturumu varsa yeni dosyalar o oturuma okutularak devam edilir; ayrı etkileşimli başlatıcı yeni oturum için alternatiftir.

@@ -1,0 +1,15 @@
+{
+  "from_commit": "8571ddf8e3a33b432cc1c7ef88b69a902f390e5c",
+  "to_commit": "085422b3ea0a3301fb8f7e42cbff66b674e1235b",
+  "changed_files": [
+    {
+      "path": "kayit/atlandi.log",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 0,
+      "blob_sha": "c1d041095880cffaf46fabe9b115c64d91cdeef4"
+    }
+  ],
+  "interpretation": "Yayin hazirligi sirasinda ana dala yalniz kayit/atlandi.log icin bir atlama satiri eklendi; kanonik 109 kayit, ayna, kod, ayarlar ve diger dosyalar degismedi. Yeni commit aktarim commitinin ebeveyni olarak korunur.",
+  "canonical_reading_scope_unchanged": true
+}

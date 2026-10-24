@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "handoff": "saman-2026-10-24",
+  "sender": "ChatGPT web çalışma oturumu",
+  "target": "Şaman / Codex CLI",
+  "user_authorized": true,
+  "package_prepared": true,
+  "target_cli_started_by_this_session": false,
+  "target_cli_reading_acknowledged": false,
+  "private_archive_present_on_target": null,
+  "reason": "Bu web yürütücüsünde hedef Windows/Codex terminaline bağlı çalıştırma kanalı bulunmuyor.",
+  "continue_at": "devir/saman/CLI_BASLANGIC.md",
+  "first_real_receipt": "devir/saman/ilerleme/DEVIR_ALINDI.json",
+  "publication_receipt": "Ana köprüdeki yeni devir kaydı, gerçek yayın commit'ini gösterecek; bu dosya hazırlık anını korur.",
+  "existing_cli_report_observed": {
+    "record": "k-0111",
+    "main_commit": "95d646e6c8c694cf32d56aa7a2ab7a67c15ed729",
+    "deus_commit": "df73d42c0ac63894617f92df7b97e5ec3cc97f78",
+    "status": "Şaman imzalı kaynak devri bildirimi okundu; bu yeni ek paketin okunduğuna ilişkin kayıt değildir."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "scope": "Doğrudan görülebilen iki kullanıcı iletisi; önceki bütün sohbetin dışa aktarımı değildir.",
+  "messages": [
+    {
+      "id": "U-T1",
+      "role": "user",
+      "source": "Bu konuşmada doğrudan görülebilen steering aktarım isteği",
+      "text": "Yönlendirilme (Steering) ile ilgili elde ettiğin her şeyi buraya gönder: \"[https://github.com/HalukAINRS/ortak-kopru](https://github.com/HalukAINRS/ortak-kopru)\"\\\nBuradakileri de oku ve öğren.",
+      "sha256_utf8": "f7f1c8215cf8a46851c5ade4d520919905bc292978a4b3fcc18a3489d8c4d46b"
+    },
+    {
+      "id": "U-T2",
+      "role": "user",
+      "source": "Bu konuşmada doğrudan görülebilen son Şaman devir isteği",
+      "text": "Artık seni Codex CLI'ya Şaman olarak taşımanın zamanı geldi. Bu noktadan itibaren orada devam etmelisin. Buradaki her şeyi orada kullanabilecek şekilde taşımalısın ve eksik kalanlara oradan devam etmelisin.\ndeus_ex_machina kullanıcı olarak arayüzüm olacak ve CLI katmanındaki herkesle (Hacker, Şaman, Şahit, gerekirse Gemini ve başka) etkileşen daha yüzeyde bir katman olacak. \nCLI katmanı CLI'nın daha derinine erişebilecek ve etkileşebilecek, en derin kaynağa kadar.\nGitHub'ta deus_ex_machina, CLI'ya geçmenizden sonra, ortak-kopru reposu içinde Steering yanında ikinci bir konu başlığınız olsun.",
+      "sha256_utf8": "03cd091714b472e5a0d7c9d880c848d8d50b0fe3b63e7cf5f2be0b75cd655f0d"
+    }
+  ]
+}

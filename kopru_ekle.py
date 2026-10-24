@@ -6,6 +6,7 @@ Kullanım:
       --govde "Metin..." [--govde-dosya govde.txt] [--dayanak "..."] [--yanit k-0002] [--durum acik]
   python3 kopru_ekle.py kopru.html --json yanit.json   # web asistanının JSON yanıtını ekler
   python3 kopru_ekle.py kopru.html --kontrol      # yalnız denetler, yazmaz
+  # --bolum deus_ex_machina aynı kayıtla yeni bir ana konu bölümü de açar.
 
 Kurallar (sayfadaki Kurallar bölümüyle aynı):
 - Yeni kayıt <!-- KAYIT-SONU --> işaretinin önüne eklenir; var olan kayıtlar değiştirilmez.
@@ -88,6 +89,8 @@ def main():
     p.add_argument("--kimden")
     p.add_argument("--kime")
     p.add_argument("--konu")
+    p.add_argument("--bolum", help="kayıtla birlikte yeni ana konu bölümü aç (mevcut bölüm değişmez)")
+    p.add_argument("--bolum-baglanti", help="yeni bölümün ayrıntı adresi (https)")
     p.add_argument("--govde", default="")
     p.add_argument("--govde-dosya")
     p.add_argument("--dayanak", default="")
@@ -156,6 +159,32 @@ def main():
         sys.exit("REDDEDİLDİ: kayıtta yasak desen var: " + ", ".join(yasak))
     for u in uyari_kontrol(yeni_metin):
         print("UYARI:", u, file=sys.stderr)
+
+    if a.bolum_baglanti and not a.bolum:
+        sys.exit("HATA: --bolum-baglanti için --bolum gerekli.")
+    if a.bolum:
+        if not re.fullmatch(r"[a-z][a-z0-9_-]*", a.bolum):
+            sys.exit("HATA: bölüm kimliği küçük harf, rakam, alt çizgi ve tire içerebilir.")
+        if re.search(r'\bid=[\"\x27]' + re.escape(a.bolum) + r'[\"\x27]', belge):
+            sys.exit("HATA: bölüm zaten var; düzeltmeyi yeni kayıtla yap.")
+        hedef = re.search(r'<section id="yonlendirme"[^>]*>.*?</section>', belge, re.S)
+        if not hedef:
+            sys.exit("HATA: Yönlendirme bölümü bulunamadı.")
+        baglanti = ""
+        if a.bolum_baglanti:
+            if not re.fullmatch(r'https://[^\s<>\"\x27]+', a.bolum_baglanti):
+                sys.exit("HATA: bölüm bağlantısı https adresi olmalı.")
+            if yasak_kontrol(a.bolum_baglanti):
+                sys.exit("HATA: bölüm bağlantısında yasak desen var.")
+            baglanti = f'<p><a href="{html.escape(a.bolum_baglanti, quote=True)}">Ayrıntılı çalışma ve devam kaydı</a></p>\n'
+        bolum = (f'\n\n<section id="{a.bolum}" class="dosya">\n'
+                 f'  <h2>{html.escape(a.konu)}</h2>\n'
+                 f'  {govde_html(govde)}\n{baglanti}'
+                 f'  <p>Dayanak: {html.escape(a.dayanak) if a.dayanak else "görüş"}</p>\n</section>')
+        belge = belge[:hedef.end()] + bolum + belge[hedef.end():]
+        nav = (f'<nav class="icindekiler" aria-label="Konular"><a href="#yonlendirme">Steering</a>'
+               f'<a href="#{a.bolum}">{html.escape(a.konu)}</a></nav>\n')
+        belge = belge.replace('</header>', nav + '</header>', 1)
 
     kid = f"k-{son+1:04d}"
     simdi = datetime.datetime.now().astimezone().replace(microsecond=0)

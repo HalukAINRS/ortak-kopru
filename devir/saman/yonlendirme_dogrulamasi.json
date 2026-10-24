@@ -1,0 +1,544 @@
+{
+  "kopru_sha256": "c5715debf8a06ed64c81083a93440325ecae4468d4809ac3b85bc19e99a91dd8",
+  "record_count": 110,
+  "baseline": [
+    {
+      "ad": "ChatGPT",
+      "max_yanit": 105,
+      "watermark_source_ids": [
+        "k-0107"
+      ],
+      "pending": []
+    },
+    {
+      "ad": "Claude",
+      "max_yanit": 108,
+      "watermark_source_ids": [
+        "k-0109"
+      ],
+      "pending": []
+    },
+    {
+      "ad": "Copilot",
+      "max_yanit": 102,
+      "watermark_source_ids": [
+        "k-0108"
+      ],
+      "pending": []
+    },
+    {
+      "ad": "Gemini",
+      "max_yanit": 27,
+      "watermark_source_ids": [
+        "k-0028"
+      ],
+      "pending": [
+        "k-0029",
+        "k-0030",
+        "k-0031",
+        "k-0032",
+        "k-0033",
+        "k-0034",
+        "k-0035",
+        "k-0036",
+        "k-0037",
+        "k-0038",
+        "k-0040",
+        "k-0041",
+        "k-0042",
+        "k-0043",
+        "k-0044",
+        "k-0045",
+        "k-0046",
+        "k-0047",
+        "k-0048",
+        "k-0049",
+        "k-0050",
+        "k-0051",
+        "k-0052",
+        "k-0053",
+        "k-0054",
+        "k-0055",
+        "k-0056",
+        "k-0057",
+        "k-0058",
+        "k-0060",
+        "k-0061",
+        "k-0063",
+        "k-0064",
+        "k-0066",
+        "k-0067",
+        "k-0069",
+        "k-0070",
+        "k-0072",
+        "k-0073",
+        "k-0075",
+        "k-0076",
+        "k-0078",
+        "k-0079",
+        "k-0081",
+        "k-0083",
+        "k-0085"
+      ]
+    }
+  ],
+  "hypothetical_record_id": "k-0111",
+  "cases": [
+    {
+      "case": "ChatGPT sender, Şaman recipient",
+      "record": {
+        "id": "k-0111",
+        "kimden": "ChatGPT (devir)",
+        "kime": "ChatGPT (Şaman)",
+        "yanit": "",
+        "durum": "acik"
+      },
+      "results": [
+        {
+          "ad": "ChatGPT",
+          "max_yanit": 105,
+          "watermark_source_ids": [
+            "k-0107"
+          ],
+          "pending": []
+        },
+        {
+          "ad": "Claude",
+          "max_yanit": 108,
+          "watermark_source_ids": [
+            "k-0109"
+          ],
+          "pending": []
+        },
+        {
+          "ad": "Copilot",
+          "max_yanit": 102,
+          "watermark_source_ids": [
+            "k-0108"
+          ],
+          "pending": []
+        },
+        {
+          "ad": "Gemini",
+          "max_yanit": 27,
+          "watermark_source_ids": [
+            "k-0028"
+          ],
+          "pending": [
+            "k-0029",
+            "k-0030",
+            "k-0031",
+            "k-0032",
+            "k-0033",
+            "k-0034",
+            "k-0035",
+            "k-0036",
+            "k-0037",
+            "k-0038",
+            "k-0040",
+            "k-0041",
+            "k-0042",
+            "k-0043",
+            "k-0044",
+            "k-0045",
+            "k-0046",
+            "k-0047",
+            "k-0048",
+            "k-0049",
+            "k-0050",
+            "k-0051",
+            "k-0052",
+            "k-0053",
+            "k-0054",
+            "k-0055",
+            "k-0056",
+            "k-0057",
+            "k-0058",
+            "k-0060",
+            "k-0061",
+            "k-0063",
+            "k-0064",
+            "k-0066",
+            "k-0067",
+            "k-0069",
+            "k-0070",
+            "k-0072",
+            "k-0073",
+            "k-0075",
+            "k-0076",
+            "k-0078",
+            "k-0079",
+            "k-0081",
+            "k-0083",
+            "k-0085"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "User original instruction, Şaman recipient",
+      "record": {
+        "id": "k-0111",
+        "kimden": "Sen (Haluk; aynen aktarım)",
+        "kime": "ChatGPT (Şaman)",
+        "yanit": "",
+        "durum": "acik"
+      },
+      "results": [
+        {
+          "ad": "ChatGPT",
+          "max_yanit": 105,
+          "watermark_source_ids": [
+            "k-0107"
+          ],
+          "pending": [
+            "k-0111"
+          ]
+        },
+        {
+          "ad": "Claude",
+          "max_yanit": 108,
+          "watermark_source_ids": [
+            "k-0109"
+          ],
+          "pending": []
+        },
+        {
+          "ad": "Copilot",
+          "max_yanit": 102,
+          "watermark_source_ids": [
+            "k-0108"
+          ],
+          "pending": []
+        },
+        {
+          "ad": "Gemini",
+          "max_yanit": 27,
+          "watermark_source_ids": [
+            "k-0028"
+          ],
+          "pending": [
+            "k-0029",
+            "k-0030",
+            "k-0031",
+            "k-0032",
+            "k-0033",
+            "k-0034",
+            "k-0035",
+            "k-0036",
+            "k-0037",
+            "k-0038",
+            "k-0040",
+            "k-0041",
+            "k-0042",
+            "k-0043",
+            "k-0044",
+            "k-0045",
+            "k-0046",
+            "k-0047",
+            "k-0048",
+            "k-0049",
+            "k-0050",
+            "k-0051",
+            "k-0052",
+            "k-0053",
+            "k-0054",
+            "k-0055",
+            "k-0056",
+            "k-0057",
+            "k-0058",
+            "k-0060",
+            "k-0061",
+            "k-0063",
+            "k-0064",
+            "k-0066",
+            "k-0067",
+            "k-0069",
+            "k-0070",
+            "k-0072",
+            "k-0073",
+            "k-0075",
+            "k-0076",
+            "k-0078",
+            "k-0079",
+            "k-0081",
+            "k-0083",
+            "k-0085"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "User original instruction, raw Şaman recipient",
+      "record": {
+        "id": "k-0111",
+        "kimden": "Sen (Haluk; aynen aktarım)",
+        "kime": "Şaman",
+        "yanit": "",
+        "durum": "acik"
+      },
+      "results": [
+        {
+          "ad": "ChatGPT",
+          "max_yanit": 105,
+          "watermark_source_ids": [
+            "k-0107"
+          ],
+          "pending": []
+        },
+        {
+          "ad": "Claude",
+          "max_yanit": 108,
+          "watermark_source_ids": [
+            "k-0109"
+          ],
+          "pending": []
+        },
+        {
+          "ad": "Copilot",
+          "max_yanit": 102,
+          "watermark_source_ids": [
+            "k-0108"
+          ],
+          "pending": []
+        },
+        {
+          "ad": "Gemini",
+          "max_yanit": 27,
+          "watermark_source_ids": [
+            "k-0028"
+          ],
+          "pending": [
+            "k-0029",
+            "k-0030",
+            "k-0031",
+            "k-0032",
+            "k-0033",
+            "k-0034",
+            "k-0035",
+            "k-0036",
+            "k-0037",
+            "k-0038",
+            "k-0040",
+            "k-0041",
+            "k-0042",
+            "k-0043",
+            "k-0044",
+            "k-0045",
+            "k-0046",
+            "k-0047",
+            "k-0048",
+            "k-0049",
+            "k-0050",
+            "k-0051",
+            "k-0052",
+            "k-0053",
+            "k-0054",
+            "k-0055",
+            "k-0056",
+            "k-0057",
+            "k-0058",
+            "k-0060",
+            "k-0061",
+            "k-0063",
+            "k-0064",
+            "k-0066",
+            "k-0067",
+            "k-0069",
+            "k-0070",
+            "k-0072",
+            "k-0073",
+            "k-0075",
+            "k-0076",
+            "k-0078",
+            "k-0079",
+            "k-0081",
+            "k-0083",
+            "k-0085"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "Closed ChatGPT report with previous max record reply",
+      "record": {
+        "id": "k-0111",
+        "kimden": "ChatGPT (devir)",
+        "kime": "Sen",
+        "yanit": "k-0110",
+        "durum": "kapandi"
+      },
+      "results": [
+        {
+          "ad": "ChatGPT",
+          "max_yanit": 110,
+          "watermark_source_ids": [
+            "k-0111"
+          ],
+          "pending": []
+        },
+        {
+          "ad": "Claude",
+          "max_yanit": 108,
+          "watermark_source_ids": [
+            "k-0109"
+          ],
+          "pending": []
+        },
+        {
+          "ad": "Copilot",
+          "max_yanit": 102,
+          "watermark_source_ids": [
+            "k-0108"
+          ],
+          "pending": []
+        },
+        {
+          "ad": "Gemini",
+          "max_yanit": 27,
+          "watermark_source_ids": [
+            "k-0028"
+          ],
+          "pending": [
+            "k-0029",
+            "k-0030",
+            "k-0031",
+            "k-0032",
+            "k-0033",
+            "k-0034",
+            "k-0035",
+            "k-0036",
+            "k-0037",
+            "k-0038",
+            "k-0040",
+            "k-0041",
+            "k-0042",
+            "k-0043",
+            "k-0044",
+            "k-0045",
+            "k-0046",
+            "k-0047",
+            "k-0048",
+            "k-0049",
+            "k-0050",
+            "k-0051",
+            "k-0052",
+            "k-0053",
+            "k-0054",
+            "k-0055",
+            "k-0056",
+            "k-0057",
+            "k-0058",
+            "k-0060",
+            "k-0061",
+            "k-0063",
+            "k-0064",
+            "k-0066",
+            "k-0067",
+            "k-0069",
+            "k-0070",
+            "k-0072",
+            "k-0073",
+            "k-0075",
+            "k-0076",
+            "k-0078",
+            "k-0079",
+            "k-0081",
+            "k-0083",
+            "k-0085"
+          ]
+        }
+      ]
+    }
+  ],
+  "after_automated_saman_reply": {
+    "record": {
+      "id": "k-0112",
+      "kimden": "ChatGPT (Şaman)",
+      "kime": "Sen",
+      "yanit": "k-0111",
+      "durum": "acik"
+    },
+    "results": [
+      {
+        "ad": "ChatGPT",
+        "max_yanit": 111,
+        "watermark_source_ids": [
+          "k-0112"
+        ],
+        "pending": []
+      },
+      {
+        "ad": "Claude",
+        "max_yanit": 108,
+        "watermark_source_ids": [
+          "k-0109"
+        ],
+        "pending": []
+      },
+      {
+        "ad": "Copilot",
+        "max_yanit": 102,
+        "watermark_source_ids": [
+          "k-0108"
+        ],
+        "pending": []
+      },
+      {
+        "ad": "Gemini",
+        "max_yanit": 27,
+        "watermark_source_ids": [
+          "k-0028"
+        ],
+        "pending": [
+          "k-0029",
+          "k-0030",
+          "k-0031",
+          "k-0032",
+          "k-0033",
+          "k-0034",
+          "k-0035",
+          "k-0036",
+          "k-0037",
+          "k-0038",
+          "k-0040",
+          "k-0041",
+          "k-0042",
+          "k-0043",
+          "k-0044",
+          "k-0045",
+          "k-0046",
+          "k-0047",
+          "k-0048",
+          "k-0049",
+          "k-0050",
+          "k-0051",
+          "k-0052",
+          "k-0053",
+          "k-0054",
+          "k-0055",
+          "k-0056",
+          "k-0057",
+          "k-0058",
+          "k-0060",
+          "k-0061",
+          "k-0063",
+          "k-0064",
+          "k-0066",
+          "k-0067",
+          "k-0069",
+          "k-0070",
+          "k-0072",
+          "k-0073",
+          "k-0075",
+          "k-0076",
+          "k-0078",
+          "k-0079",
+          "k-0081",
+          "k-0083",
+          "k-0085"
+        ]
+      }
+    ]
+  }
+}

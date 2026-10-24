@@ -1,0 +1,80 @@
+{
+  "tarih": "2026-10-23T21:47:13.411955+00:00",
+  "kapsam": "Bu yeni steering yayın grubu. Eski katkıların tamamının hassas veri denetimi veya uzak yayın başarısı değildir.",
+  "kaynak_aktarimi": {
+    "scope": "Only publication_stage/steering files; root-authored additions and remote commit are outside this validation.",
+    "files": 53,
+    "bytes": 8099454,
+    "json_files": 31,
+    "full_report_body_equivalences_verified": 21,
+    "json_payload_equivalences_verified": 103,
+    "all_per_file_review_inputs_included": 26,
+    "source_manifest_files_verified": 1483,
+    "relative_markdown_links_checked": 87,
+    "current_source_count": 325,
+    "reference_audit_needing_scope_clarification": [],
+    "issues": [],
+    "five_largest": [
+      {
+        "path": "steering/okuma_durumlari.json",
+        "bytes": 1285628,
+        "sha256": "80d868639cd5b58be1244cafd3f416f9844b2dc0bdc2abbfddfa844c04ca1b6d",
+        "git_blob_sha1": "98659a844f913855b2db6399f4757b1cf382f1d5"
+      },
+      {
+        "path": "steering/kanitlar/historical.json",
+        "bytes": 1142183,
+        "sha256": "ab5214ab56720fad9da3aaa3e71c8175fa38903d6c516ad12e2fb9d7102ba5fa",
+        "git_blob_sha1": "6fe7fc7d57cfb7b5a8e35f215bcf6c3209c423e6"
+      },
+      {
+        "path": "steering/kanitlar/models_remaining.json",
+        "bytes": 1133816,
+        "sha256": "0df01b434b8b04559c6a04d8c65bfa6207f1e1394ef6058abb084fd0587d2d0b",
+        "git_blob_sha1": "dcb7612890e0c2305f541ff6febe381202c4e4c1"
+      },
+      {
+        "path": "steering/kaynaklar.json",
+        "bytes": 618832,
+        "sha256": "46165efa96a378cc7c4a6435a559ec64479c3e4818a5dffb33974a0419a823e4",
+        "git_blob_sha1": "ec5f7832e2bac92c8749ccc33c3b0affd3a53f4d"
+      },
+      {
+        "path": "steering/kanitlar/operational_remaining.json",
+        "bytes": 451342,
+        "sha256": "ac7547215c1aff5ae7cf99a39087b5594df5869b770a443891c3d1b687678d68",
+        "git_blob_sha1": "bbf321d432876f0ba12262f7d91eb07a3977e74a"
+      }
+    ]
+  },
+  "birlesik_denetim": {
+    "files": 68,
+    "jsons": 36,
+    "resolved_relative_links": 158,
+    "issues": [],
+    "canonical_records_preserved": 13,
+    "new_record": "k-0014",
+    "mirror_body_matches_canonical": true
+  },
+  "okunan_depo_commitleri": [
+    "7fefbca313dfcedcdd9e8812fe12f160676d0510",
+    "86616eb303b93a5e364dcfc2d1e97fd73376d71c",
+    "df341f17356d0369ae1385ee376aad3a94b133d8"
+  ],
+  "okunan_depo_dosyalari": 37,
+  "yontem": [
+    "21 tam rapor gövdesi ve 103 JSON girdi eşdeğerliği kaydedilen dönüşümler dışında doğrulandı.",
+    "Yeni yayın grubunda depo yasak desenleri, e-posta örüntüleri, JSON geçerliği ve göreli Markdown bağlantıları denetlendi.",
+    "Özgün kaynak paketine, diğer katılımcı kayıtlarına ve uygulama/denetim ayarlarına değişiklik yapılmadı."
+  ],
+  "sinir": "Yasak desen taraması bütün olası hassas bilgileri matematiksel olarak dışlayan bir garanti değildir; ham tarayıcı kayıtları kapsam dışında tutuldu. Bu kayıt arşivde önerilen sistemlerin davranış testi değildir.",
+  "yayin_yeri": {
+    "analysis_branch": "steering-inceleme-2026-10-24",
+    "main_changes": [
+      "kopru.html",
+      "ayna/kopru.html"
+    ],
+    "draft_pr": "Kalıcı ek yerleşimi için öneri; otomatik birleştirme yok.",
+    "base_sha": "df341f17356d0369ae1385ee376aad3a94b133d8"
+  }
+}

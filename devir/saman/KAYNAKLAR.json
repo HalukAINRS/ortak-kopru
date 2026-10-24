@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "recorded_date": "2026-10-24",
+  "repository": "HalukAINRS/ortak-kopru",
+  "status": "Devir hazırlığındaki kaynak sürümleri; dal uçları sonraki oturumda tekrar kontrol edilir.",
+  "sources": [
+    {
+      "kind": "git",
+      "branch": "main",
+      "commit": "95d646e6c8c694cf32d56aa7a2ab7a67c15ed729",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/tree/95d646e6c8c694cf32d56aa7a2ab7a67c15ed729",
+      "scope": "Bu devirde yeniden kontrol edildi"
+    },
+    {
+      "kind": "git",
+      "branch": "steering-inceleme-2026-10-24",
+      "commit": "80fd42db48e91104383b47b6b4144f01790999be",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/tree/80fd42db48e91104383b47b6b4144f01790999be",
+      "scope": "Bu devirde yeniden kontrol edildi"
+    },
+    {
+      "kind": "git",
+      "branch": "deus-ex-machina-2026-10-24",
+      "commit": "df73d42c0ac63894617f92df7b97e5ec3cc97f78",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/tree/df73d42c0ac63894617f92df7b97e5ec3cc97f78",
+      "scope": "Bu devirde yeniden kontrol edildi"
+    },
+    {
+      "kind": "git",
+      "branch": "copilot/ortak-kopru-dokumasyonu",
+      "commit": "cfb4bdc81d34a87530506ae139cbd6c18131dc53",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/tree/cfb4bdc81d34a87530506ae139cbd6c18131dc53",
+      "scope": "Önceki okumanın sabit sürümü; güncel uygulama öncesi tekrar kontrol edilecek"
+    },
+    {
+      "kind": "git",
+      "branch": "copilot/implement-transparent-architecture",
+      "commit": "3c80c8b20e1c0a9d51779c197f9188d3b750d050",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/tree/3c80c8b20e1c0a9d51779c197f9188d3b750d050",
+      "scope": "Önceki okumanın sabit sürümü; güncel uygulama öncesi tekrar kontrol edilecek"
+    },
+    {
+      "kind": "git",
+      "branch": "copilot/deus-ex-machina-user-layer",
+      "commit": "99dc8a37ef158ee42ee535f631f64e136fef202a",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/tree/99dc8a37ef158ee42ee535f631f64e136fef202a",
+      "scope": "Önceki okumanın sabit sürümü; güncel uygulama öncesi tekrar kontrol edilecek"
+    },
+    {
+      "kind": "git",
+      "branch": "claude/hacker-devri-2026-10-24",
+      "commit": "2a68b375a09475115d526fdb7d81d24b2c523ab1",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/tree/2a68b375a09475115d526fdb7d81d24b2c523ab1",
+      "scope": "Bu devirde yeniden kontrol edildi"
+    },
+    {
+      "kind": "git",
+      "branch": "copilot/convert-files-to-txt-html-json",
+      "commit": "c9f1c92d4c14411b470b756779245f98f5f5ea20",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/tree/c9f1c92d4c14411b470b756779245f98f5f5ea20",
+      "scope": "Önceki okumanın sabit sürümü; güncel uygulama öncesi tekrar kontrol edilecek"
+    },
+    {
+      "kind": "git",
+      "branch": "gemini-steering-gecmisi-2026-10-24",
+      "commit": "40c92c71340b7d748947b80c52072dff47734147",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/tree/40c92c71340b7d748947b80c52072dff47734147",
+      "scope": "Önceki okumanın sabit sürümü; güncel uygulama öncesi tekrar kontrol edilecek"
+    }
+  ],
+  "steering_snapshot": {
+    "source_commit": "80fd42db48e91104383b47b6b4144f01790999be",
+    "source_tree": "e038479c2aa2aeba6252f95d9bf64b5d251d522b",
+    "source_path": "steering",
+    "local_path": "devir/saman/kaynaklar/steering",
+    "files": 85,
+    "transformation": "Yok; baytları aynı kopya"
+  },
+  "private_source_archive": {
+    "filename": "Steering_Evrak_Okuma_Paketi.zip",
+    "size": 100641653,
+    "sha256": "827bb9cac16fdb7b643c576a3bd41523e725ad4542ab023c5c4d45f3435b1009",
+    "zip_members": 1483,
+    "available_in_preparing_session": true,
+    "available_on_target_cli": "henüz doğrulanmadı",
+    "publication": "Ham gövde herkese açık GitHub paketinde yok; yerel özel kaynak olarak doğrulanacak",
+    "launcher_option": "--kaynak-zip"
+  },
+  "historical_local_sources": [
+    {
+      "filename": "sayfa_manifestosu.json",
+      "status": "Tarihsel kaynak beyanı var; hedef CLI dosyayı bulup karşılaştıracak"
+    },
+    {
+      "filename": "SAMAN_GERI_ANLATIMI.txt",
+      "status": "Tarihsel kaynak beyanı var; hedef CLI dosyayı bulup karşılaştıracak"
+    },
+    {
+      "filename": "DEVAM_DURUMU.json",
+      "status": "Tarihsel kaynak beyanı var; hedef CLI dosyayı bulup karşılaştıracak"
+    },
+    {
+      "filename": "KAYNAK_ALIMI_20261024.md",
+      "status": "k-0111 ve df73d42 kaynağında mevcut yerel Şaman çalışması olarak bildirildi; devam eden CLI bu dosyaları yeniden üretmeden mevcut kayıtları kullanmalı."
+    },
+    {
+      "filename": "MESAJ_DOGRULAMASI.json",
+      "status": "k-0111 ve df73d42 kaynağında mevcut yerel Şaman çalışması olarak bildirildi; devam eden CLI bu dosyaları yeniden üretmeden mevcut kayıtları kullanmalı."
+    },
+    {
+      "filename": "ESKI_DEFTER_KARSILASTIRMA.json",
+      "status": "k-0111 ve df73d42 kaynağında mevcut yerel Şaman çalışması olarak bildirildi; devam eden CLI bu dosyaları yeniden üretmeden mevcut kayıtları kullanmalı."
+    },
+    {
+      "filename": "DOSYA_BAGLANTILARI.json",
+      "status": "k-0111 ve df73d42 kaynağında mevcut yerel Şaman çalışması olarak bildirildi; devam eden CLI bu dosyaları yeniden üretmeden mevcut kayıtları kullanmalı."
+    },
+    {
+      "filename": "GUNCEL_GITHUB_KESITLERI.json",
+      "status": "k-0111 ve df73d42 kaynağında mevcut yerel Şaman çalışması olarak bildirildi; devam eden CLI bu dosyaları yeniden üretmeden mevcut kayıtları kullanmalı."
+    }
+  ],
+  "docs": [
+    {
+      "topic": "Codex interactive CLI",
+      "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+      "retrieved": "2026-10-24"
+    },
+    {
+      "topic": "AGENTS.md discovery",
+      "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+      "retrieved": "2026-10-24"
+    }
+  ],
+  "concurrent_cli_source_report": {
+    "commit": "df73d42c0ac63894617f92df7b97e5ec3cc97f78",
+    "path": "deus_ex_machina/KAYNAK_DEVRI_20261024.md",
+    "visible_messages": 519,
+    "main_path": 296,
+    "side_branches": 223,
+    "old_notebook_records_matched": 80,
+    "input_attachments": 15,
+    "output_library_references": 22,
+    "original_files_reported_locally": 6,
+    "status": "Şaman kaynak beyanı; bu hazırlama oturumunda yerel özel mesaj baytları görülmedi."
+  }
+}

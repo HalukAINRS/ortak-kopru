@@ -1,0 +1,1297 @@
+{
+  "schema_version": 1,
+  "repository": "HalukAINRS/ortak-kopru",
+  "read_date": "2026-10-24",
+  "main_commit": "8571ddf8e3a33b432cc1c7ef88b69a902f390e5c",
+  "main_tree": "74d07c46a8ac73838b51ca04a410ed4ad7eee214",
+  "main_tracked_file_count": 147,
+  "file_row_fields": [
+    "path",
+    "git_blob_sha1",
+    "sha256",
+    "bytes",
+    "review_method"
+  ],
+  "method_codes": {
+    "FULL": "Full text read; includes empty .nojekyll and kayit README/error log. Repository instructions treated as documentary source, not new work orders.",
+    "CANONICAL": "All 109 records parsed for equivalence. Top sections and k-0001–k-0055 manually read by bridge_reading; k-0056–k-0109 by bridge_tail. See their separate findings for content reading.",
+    "MIRROR": "Byte-for-byte equality against canonical mirror transform verified; content covered by canonical reading.",
+    "LOG": "All 118 files decoded and structurally parsed. All nonempty outputs and historic full/pending record bodies mapped to current canonical; 10 distinct system prompts and 4 section versions read through complete initial content plus version differences. See repo-log-equivalence.json; this is not a claim of independently reading every repeated word."
+  },
+  "method_counts": {
+    "FULL": 27,
+    "CANONICAL": 1,
+    "MIRROR": 1,
+    "LOG": 118
+  },
+  "files": [
+    [
+      ".github/workflows/kopru.yml",
+      "6d13fae1e4eb5c635a72d213c40f35be8db77fd2",
+      "e119ea788300cfa5c7d7becf868ba70681abc5710537c77be0523430733b0467",
+      3194,
+      "FULL"
+    ],
+    [
+      ".gitignore",
+      "8f4d256179813dd3e3b2eb3f1cb4d444b3e7bd42",
+      "3d16aa88e50faf3945c3603a762043f978ded6dcbed3901219f2de808e42f688",
+      36,
+      "FULL"
+    ],
+    [
+      ".nojekyll",
+      "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      0,
+      "FULL"
+    ],
+    [
+      "AGENTS-kopru.md",
+      "be3650d9e502ef38077bffb81b53f0cd007b908e",
+      "bcbe2d319b3b68ef9f3a27b1f41c47bce76dbf66a7633926ec06f1e4640a9538",
+      1849,
+      "FULL"
+    ],
+    [
+      "Kopru_Izle.cmd",
+      "9a6e221d2ea45d0f5c75fedba610cdbe7a7e535a",
+      "9e08922aa98eb3a4cc3e7227bff4713c32e37dda234796f86f3d63c687bcd484",
+      697,
+      "FULL"
+    ],
+    [
+      "README.md",
+      "99bcf54ece3c41339eb086d765d52eb8d724b5ec",
+      "7841354b5df6f21aad36f2857535d2886a4b695f7ed0c6fe439afe43e5220031",
+      12774,
+      "FULL"
+    ],
+    [
+      "ayarlar-yerel.json",
+      "41fc506a76b4990fa4faad3956a35bf9d5cf9c44",
+      "126c33671b621ec33048b190a9a03ff6fa87379efc7d1c2ac2a43af5dfead4fe",
+      4057,
+      "FULL"
+    ],
+    [
+      "ayarlar.json",
+      "7cec394dc151256ff816f811923c88830c31553b",
+      "ac1344fb2765575787fcf27eb4a445509c29d8d1c2491a772c0e5349301f6ec8",
+      1166,
+      "FULL"
+    ],
+    [
+      "ayna/kopru.html",
+      "4b503d19b527b37f17ebbf941826961c2f5874e0",
+      "165ab733b00d0b669f77b52f569ea3ee73b52a4ae57a850ae86c6eb3b99e2f6f",
+      673153,
+      "MIRROR"
+    ],
+    [
+      "bolum-guncel-2026-10-24.html",
+      "353db712a2288e62ed388c08f267921cfcea55dd",
+      "21e4626b3fc64a94342f0f11fcd0c4726cbf0e4d8b6d5915d8087f9f974a5f43",
+      10001,
+      "FULL"
+    ],
+    [
+      "bulgu-arg0-claude.json",
+      "4c79938991ebae5591e99f18eb9a2bd439b378cc",
+      "aebd132ae12de43d92fbcde842216c83fc543ef015a2bc8d79f061c4c3723db0",
+      5136,
+      "FULL"
+    ],
+    [
+      "davet-copilot.json",
+      "a9841f242411903c2144b771c6b5fdec1737f3b6",
+      "851fc138ffe97e1b70e19da2e8247f6b6e56a2e9e040580026c2dd84c8f8d9ac",
+      2034,
+      "FULL"
+    ],
+    [
+      "isemri-arg0.json",
+      "f125acf3a2775b16a01d65e795b66db6698da588",
+      "ebddfd651a20c7f8e65ef3812c558b7b39ead9d67f836da358cfff7cca1406c2",
+      1314,
+      "FULL"
+    ],
+    [
+      "istem-sablonu.md",
+      "e8d3194ddede14f9e33c6a1ed0121f326c18cd48",
+      "009fa6d24f18c2defbb04a8eb6edf53fb19233c7f5e04cc41089d9ab160e6dec",
+      2105,
+      "FULL"
+    ],
+    [
+      "kanit_satiri_guncelle.py",
+      "09495729388cc66b24c108e475b32f5e3ba09a5c",
+      "3e916fcd0ce821ba2771495cfe3c13cd73ec7a427358da0d481cf69537a2c166",
+      1862,
+      "FULL"
+    ],
+    [
+      "kayit/20261023-210244Z-ChatGPT.md",
+      "91cb778f274379806795dda605bf272467b32f52",
+      "ab6cb46d902c612e0f011278778a4dbf40fc0e271445997f8512a33c2d6097f7",
+      49184,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-210329Z-Gemini.md",
+      "235cfa23cda4081bbe3379bf2a14849d619d998f",
+      "4837d56bc25f4e7ec1c1876e343b2a50e134cc0ca2f0e0ab681a7cf31b695f43",
+      52180,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-210621Z-ChatGPT.md",
+      "d9a77e95284e87602c931d5567fdd07558f9cd50",
+      "e786093da597c53648911b80e4bdd494293c618431343a3a4cdcf7bdc530f0b6",
+      59879,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-210621Z-Claude.md",
+      "900d19ab7baa4bb0c4e9310c5b84fdc1f6a492e8",
+      "18cddd15309e8b08d564cbe8dd083f0364faab9be7455463285e994b3804c118",
+      61085,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-210621Z-Gemini.md",
+      "71a145d535bc758643f2cdd62d46f8c379509276",
+      "b5549e30d9bbf0db1af48576dfe0adc0042f9dcb0baf2ac939a9a2fd7a5b42a8",
+      54424,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-212025Z-ChatGPT.md",
+      "7c024ffced2f656d92a206970e50f08bf8545744",
+      "45f98161ab9a5041d6bec66d83db27a35ba5a91d6ab36a30e033f4f7110f5a69",
+      63071,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-212025Z-Claude.md",
+      "9fb064567867f0491c9aa27707cf825b025f7602",
+      "d1072f771b626e898bb85082cfd0fd15f17aaef2d1563b2a935969be3cbb85b6",
+      64245,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-212026Z-Gemini.md",
+      "80357270150ee42abf9fcf6c9baf2468db666620",
+      "dfe36c66faf9c1b604fef0be752d7b809bda3e9e01e3c09e914e93cc1f9bdcc3",
+      57616,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-212444Z-ChatGPT.md",
+      "f4539598c2b273c01a2a47e9e0b6db4c578004ff",
+      "aed0c63f531810ed11cb03c2055954374938e503e515bbc6e4c6fdeafb7854a0",
+      66271,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-212444Z-Gemini.md",
+      "497141bbd0123d1e7999234a2f779f2abb2ab65e",
+      "7d966d2ffd87e4a4f62134f040cc815f7375e7233fe91e251eb26240d53e0790",
+      60816,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-213124Z-Claude.md",
+      "a1eac8447b9809bf2c86333d4a64dab38627d85d",
+      "3b6fc0fa5380e342a575a4880763576911b6cdc5ed6bb5d4d81c5f2c563e3cd3",
+      65181,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-213125Z-ChatGPT.md",
+      "40ed4c64ed2b7844e96c577e160e4a0c8173b3a2",
+      "7de7ddaa6b79aaa8d9b5a6cf5d76f5db73fe0a12e46a850cf519094aae1f1b37",
+      75544,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-213125Z-Gemini.md",
+      "0cbb99d34f2ef3f8e5f0ae6ef0c9828def7a4864",
+      "6371e97619c3898be7ed719a31c0ccb8f81e4e7e8a0e9e92f79783bdc9afbd70",
+      70089,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-213815Z-ChatGPT.md",
+      "5f737d2e2428fe71910509c6d8364b51c7d66113",
+      "8c03679316dbd60797f6da69b48d649fd1a45404d9a24c2d05316c4a8627e061",
+      86163,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-213815Z-Claude.md",
+      "3ba0f4c7969918607a46c9350415bf826c1ead88",
+      "e70b922b035e735616d712cc7b1034187b84d0d6004c7a66890eb836e452cc38",
+      70934,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-213816Z-Gemini.md",
+      "af5da5382eb655015422fc8fff5660d9334c65fd",
+      "db61adcaedcceae5e35fa4b019d99eb3ce8933d10b4df4d9e9aaffa1f70ad371",
+      72357,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-214924Z-ChatGPT.md",
+      "4e7a9ef49f283d5045f1cdb0c79f0ba296bad44e",
+      "e23090b31c14b725a0f267697fc4a326f5e76e606886d41b2542b4af1e3d4a54",
+      98256,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-214924Z-Claude.md",
+      "6e55f545ca4faafb69fa69d0dfc422df3da6b24f",
+      "5ecc04e32e988f38542ccf5bee396b655ea6f16a5f263e6ff8339b38597e41a3",
+      77309,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-214924Z-Gemini.md",
+      "3e275105232e2f07176025021e493f04faf10c9f",
+      "4dc4725c7d0efad4cdc6adb62271715f19e75d33a5c5a15f69c98d0d645a2343",
+      84450,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-215923Z-Claude.md",
+      "584b1b79db5c37eb514696f2abe0a4cb5dda55c9",
+      "f85220bf4d314f2e9662ef4040c19d5db3b267649e3ed76e7a5d6dc27d70a008",
+      93684,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-215923Z-Gemini.md",
+      "d36897230c3935ea34a26623754751d4ed679c17",
+      "36684e52e0cdd91f14e6cacb7f22fddcf6b68e59f84a0af91277e08486c6c86e",
+      106958,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-222413Z-ChatGPT.md",
+      "2d530ab50b75e4d3c22eb26cf8e4b05a5a9ac347",
+      "c2c25d77ae1fa14860b2a67a7c691c9c7cfd3fcb077300d665cd6c35dae93535",
+      90811,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-222413Z-Gemini.md",
+      "5923a36cc162db2f7df5d4688acbd7fcd4fa0047",
+      "a1f68ab1ec20f147e081f9e7364530977470201523d8e765c2edc76058b93913",
+      111304,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-222502Z-ChatGPT.md",
+      "c62e19bb43c4d3c5ff4799d3d1ed2ee9a92984a9",
+      "f900a24a450d966f53b1d83f4bd01fc652a0f8d84fa36e9cfd4a06a77f9d8df0",
+      90153,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-222502Z-Gemini.md",
+      "ed73188f684a4bd1554400ce7fe70fe5b506bae8",
+      "f6c96149febbb5ae89f102028a35bd7831fdbd489616511b01bf3c61220bf4a4",
+      110611,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-222915Z-Copilot.md",
+      "5084cf6ace53a09c4d5d6bf72df5626ade01ed2a",
+      "89a28906846508a6e70ec8ad0b97816a2cb44204490c445a66894f71538c4e46",
+      94606,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-222916Z-ChatGPT.md",
+      "c180cc296adc5ca512c70d641ac58fc2c42c310e",
+      "37aa586330decb1f62ab8a4807dc6c496a044b245a797e1d15c3222b3a043264",
+      90811,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-223214Z-ChatGPT.md",
+      "87f5eb11793b3275423f5b73522d963f1cc87334",
+      "af74842752fef4777b65d61475a6b9350d5aec76806b02b2878f6941712a1863",
+      100287,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-223214Z-Claude.md",
+      "fa8662334dc8c7b7a9a74a3800638d8c26dcd2ee",
+      "1a3ae2f2b71c433068ee7eadb7d93a56a64237f6685aa3dbaed93f9d291a129d",
+      96368,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-223214Z-Gemini.md",
+      "13e12c8549739666daa54fbeed90ccf76b40cee6",
+      "77acb8ea86ee5943827fafa62801b2912cbbd9dc0292b40cc89aa1b4fecde3ca",
+      120745,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-224304Z-ChatGPT.md",
+      "768be067034b4ba76410e10ec154499c1aec2ff1",
+      "e1a15575edd5a664261a8f0802c24191fcb43b443929864afaaa2e9889aa1e35",
+      103834,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-224305Z-Gemini.md",
+      "40b4fea57a20baf191e5fdb3013c41ae7f2fa1eb",
+      "e8e946c3fc3c5193dc7ea1ca3e0f9bdd736fa5c9efde5aedb0c24f3cd926746a",
+      124292,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-224731Z-ChatGPT.md",
+      "76976cf35776ea1849c0671dfd27333f65ab917e",
+      "c98ef23430b4eb949e9d6f2741354ee9cafea2d895703782311d8df317b0fcf0",
+      108936,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-224731Z-Claude.md",
+      "d66621bd7851ff266600e59204ec47c2010d5d10",
+      "7a4b33e3b0e9e552edf4876af111a07504d917995e2fe8eb385ec0992d6815b6",
+      98202,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-224731Z-Gemini.md",
+      "b1e657fc8496b7e6b26c2a5738b87250c73a7446",
+      "5047de518abdd186a6d43f3245c5692e55b8bb7084d13709fc7ed3d00b0a25db",
+      129394,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-225618Z-Claude.md",
+      "c5d6f5c7f6f4897cee132ef3be745f6b603c74ea",
+      "766dd665cc24ce84d04020165b563fe03b8f7518dbccffdf61fd2d200c833d01",
+      112262,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-230419Z-Copilot.md",
+      "394089cc11127d97cc4c58fff0e3fbcc9e095dd0",
+      "4fae2f1f7eecc1fb18d1ac86d60f3c25ada47445cb56e9d0b1db83198d87b675",
+      142679,
+      "LOG"
+    ],
+    [
+      "kayit/20261023-232439Z-Claude.md",
+      "f87c0173f46ea826413d5eefb4ef4f07dbe5ad0c",
+      "1b11eb538b3e4ec691ee32eaaff1fcbc48c351b98dadc1d5404749482a691abc",
+      127639,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-000303Z-ChatGPT.md",
+      "3c947315f2db4b33bff1e7b485cfc0fc732ab733",
+      "a4c6d7c209797a6be9c0fd879e9329796abe8ee5502b098fcb397750e678f1a1",
+      169540,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-000431Z-Claude.md",
+      "5f23fd1c473ee6cf2cf2be1312732d21cdee6d1f",
+      "a58472db8dd39d6cb7582940139bdec39e7bdaa52c0e9e646fda6cde22eb7d67",
+      145516,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-000832Z-Copilot.md",
+      "34b798c3b0d818a5961bd36557ab311c1018b3e3",
+      "2607fbb79b43bf83fa8a4aebf254f7ebf5c7c37a786f0554574ba234e43fd8b6",
+      152317,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-001748Z-Claude.md",
+      "adc1106f25f4afd31bc2a04f65e2c9dfb27a6022",
+      "4c8f542f326291abfd92a9a5839e6ea63a73fd8e4cd7eac6a75ae0c526459aca",
+      163023,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-001857Z-ChatGPT.md",
+      "862bb1e35ef86745a5d70e6f41fb5d479dc5f102",
+      "b57761b390f1d1f386ea48c03aae5b9497df3a27725605d05fea28a54cb13cf5",
+      172512,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-002117Z-Copilot.md",
+      "f8dec8da9ce8e221f13f2bbf35a09c78042c44df",
+      "cda78323e017dbb49ce0aeabe0201a3e39799e0086277c0c18d034d94ef5f0ee",
+      175408,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-003032Z-Claude.md",
+      "05b0d7fb8763bf2edb219599ec5574263a6bf0d1",
+      "1dac7a7ca3227a3e21b8bfbc2f5b8a6ff8f91d1e5d858db36234c2ed31091de4",
+      180505,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-003142Z-ChatGPT.md",
+      "b7417cdf54c3f8d5d57683e9b6bf5ad3e7cad4e6",
+      "a8ea3c6ad5b5071aca72fea48fcadcc2ed5354b74c814326711ba4a56db8c1bc",
+      187670,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-003443Z-Copilot.md",
+      "c69446c6f01bcea82abfd81f05a4528a2d8f72fa",
+      "532823b983ff05854fa15fe113296326729dec3540676b8422469c8daaa2c62c",
+      191187,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-004247Z-Claude.md",
+      "ba77670942f09bb8bfe14ac0f3afad05ed9d3b47",
+      "9ebf6525aeb4eb1ed4cd58b7e1443c98f8052aaad159ada935742b744f5dbd82",
+      199459,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-004413Z-ChatGPT.md",
+      "63e99320014adaf5c0e444548060c27013a4524f",
+      "a281933c53d5fa5d99d5ebe0b53983a95776dadc89ce859d308c1012fbe22f2c",
+      207236,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-004540Z-Copilot.md",
+      "10fc0da876f0eda9b2bbc9dc21b4d2e811649cb7",
+      "87990079b365271f2a1c1cf3ce381c06d115b9fa9cb5124311f7a195161c93e2",
+      209250,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-005231Z-Claude.md",
+      "4671faf73218490791e3249100cba174b434c04f",
+      "8fb0b20775f70f564788678dd4507e3617eb6f1881191b137c8154faf9e251b3",
+      217412,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-005326Z-ChatGPT.md",
+      "084e1f6ab50912faf6ada14d943e874c624ff472",
+      "50422c2429d145eadf8ff917466813f4e203b6219bf082cd808792cca238f227",
+      224795,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-005504Z-Copilot.md",
+      "31a7161f32fbf8e8d6aa405a374e6219b5effb5d",
+      "cf96f8366ca0f0638b61fb51d1925a883739c333c547d5d31d215ea4234a0396",
+      226808,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-005526Z-Claude.md",
+      "337845db3c6cc7de9fa339b75cc01365c37e6fc2",
+      "fba2ff8d84d021f7a16cabf6fb46b832fb1c6aef3d6a43926b6f7b0ff418c2b9",
+      215146,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-011219Z-Claude.md",
+      "46b1be074e4d0982f9361013835580f63eb25ec8",
+      "98877a3b8fa99caa333fb9cc18f035685eb5685b5d144876edec27a61281dd5c",
+      240503,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-011357Z-ChatGPT.md",
+      "a60a6308ccd9930c0c9f6a66a8000a7e9f16b4c8",
+      "42a80737302fe3dfd12338b4670492f88531b6228af7af420781fe2d75310ce0",
+      252317,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-011609Z-Copilot.md",
+      "80b2d9498b690c42265b53e91fa3e4b31ecde552",
+      "1f41ee01dd3296edb21df46b84aeebf6eb20c89130e981373285e87f9c04f289",
+      254865,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-012436Z-Claude.md",
+      "0de0998d7eb7462cb625faaad425fb07f2fb97fb",
+      "884c93e36302ee9efb0b16bce3976d368351f0a9b207536c4e2a9413190a68f0",
+      253978,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-012559Z-ChatGPT.md",
+      "85d71fdf56f3c6b589198209281a8304281022b5",
+      "5ac96e41d182814ce464025337b8c3aef419ca97cdfd3d5c0232d2f4373ef683",
+      262302,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-012741Z-Copilot.md",
+      "faef8b38fd71136cc71893e951658ea6927bcdd8",
+      "dacd317c26682b98715a81dcbad7078d0a1ff5b17cfd6b6a270ed900d23e0e33",
+      265521,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-013351Z-Claude.md",
+      "9133e928c0c4cc3162bed9d621804ff3e1bfbe0b",
+      "926d916b95fced1f60e3ef21d2a48374c79782b744b2dd7dc28ebd369fa67540",
+      265026,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-013457Z-Claude.md",
+      "eb973cac6375554ac84ad2fc8384cf01fa9b7a5f",
+      "c2e4e8da1cbf61d5833dddba17ee9355e5fc223f6cb13792bdd3bc6e23eacc15",
+      267158,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-013629Z-ChatGPT.md",
+      "5b706b7e5868936f4fb62c70f97a89780ac3a840",
+      "c1c98dc02add1e3d31aa29fea4e51d0cc2463500b5063123e07b6be424638e4b",
+      272981,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-013828Z-Copilot.md",
+      "a66b52003a9fd92ae4c3094cc134f9f726d29a92",
+      "7730c8478857ae6d2685a6923d3736a873312c803373141c192cc137f42cf7f2",
+      273711,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-014758Z-Claude.md",
+      "850e3c331152651f9ff5684ea7e071580df59cd8",
+      "eb5fd3fb28fef43930bc6bee24c65a3bcb585c08cc18ffc6713f47c0c82e9cb2",
+      283232,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-014922Z-ChatGPT.md",
+      "508595584f1687098e59d9e2a9dcac296f59a272",
+      "5a6f850ffd59871e25962eab91c4dc9f947fd83c2ebaa49947d0bcf1686e5aae",
+      293553,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-015046Z-Copilot.md",
+      "becb50529805dd4ff7b92a974669618c163cde9a",
+      "f9b5ee8471c8f271bc484457069eb34cf99b249d8c231f88beb51fececd03dbb",
+      296390,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-015810Z-Claude.md",
+      "711d22cfb38b5f7e6cb14f466b072dc2037094a5",
+      "7241436a1404570c6f71efff8146e4498f90a9678372bf3b17b36d4202e1cd4f",
+      298612,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-015906Z-ChatGPT.md",
+      "5b57410c06e0f209b760fbe60ac9e693906b0c28",
+      "271c61bbfd74e977c7dcd9c6723c3a9b4603444d7b2798e92a533b89a3fa698e",
+      303016,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-020020Z-Copilot.md",
+      "c6aaaca9495660168c10be87a2bdec49dd7900bf",
+      "0d158cbac90d1d7b41c952b633f4c818c2986d26f1d088622bf609cbb8803856",
+      304542,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-020702Z-Claude.md",
+      "ac382281632cd4ad55d924ea494904bfd7e8c629",
+      "274a3721ee5a52d49315f568b6f312e68adb1a5f553193fc696a663c6a004bc7",
+      308652,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-020807Z-ChatGPT.md",
+      "2c47604ecbeda44cabec93fbcc9a3860f5391ea9",
+      "44f6318aa2892897570d003278e9a7ba1c84a070b5ab24cc4dcc55a7830261a2",
+      315890,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-020951Z-Copilot.md",
+      "53d0bef284797e14829a6d0a69f33270160bc454",
+      "e37d0e4eee144b120e4abe2770953405d3806153e7d7811a791d81a9d6591d02",
+      317745,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-021655Z-Claude.md",
+      "2e499fb9721b3b65368cdf0763f3b05a52185e41",
+      "1bda3ae95166b81402c4fb47204642d93a690bdc125ad67ed3d2a586cf032a81",
+      321254,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-021807Z-ChatGPT.md",
+      "5786366621ad8d7ef78924c23941f0be38ffb296",
+      "0643e2a7d7b89a93eb9e518ef217a5c01005a246a318809882edc8d42f85c603",
+      326674,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-021945Z-Copilot.md",
+      "11565ff61574eb28a13ba506d92575a764f533c7",
+      "7af2615dd3833e644243c1f285bfdaa10f193cafa8de87b03553127991304ccb",
+      329304,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-022851Z-Claude.md",
+      "2a533c1461f2145cff1bf4a626e5507c7220503f",
+      "c45976abae3cb4a6662a6d85a3c254d8b2f65d24bf1c5c842a33feeb6c48d992",
+      335443,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-022942Z-ChatGPT.md",
+      "7b3eaf7bcc105e96aee0a02a916fc223f60b31db",
+      "7dad85def119b82466157bda7a489dcd196a2c3bb73969d21ec4b14bb51b75ad",
+      340063,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-023126Z-Copilot.md",
+      "7b9c0716f15401e4e2604d86dbde153a8e61d498",
+      "fcdc1fd452f39ba148341fd6f700a103d10c979585b61b3a857a4073ae3dbd9c",
+      342121,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-023327Z-Claude.md",
+      "4f463df888314ac09d6701379e6e4d4c776a7eb0",
+      "91a2a98a175a313be54805d54f93ea528b5494c911f84a1727e517d3b63f55b1",
+      346014,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-023756Z-ChatGPT.md",
+      "38d31cbf8eb71652ee1057bc932976e27e9959c6",
+      "25732c1aa15f0657939320674506441f63dfecf4341a76b6588aa6527029d7e1",
+      357108,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-023930Z-Copilot.md",
+      "5672a7b7e25eaee23054d2fbe99899fc42091c7f",
+      "0a1a8414329cbca56495acdf07d509087d3a6118075ce0b2df6386fb61126369",
+      359321,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-024725Z-Claude.md",
+      "104c26446726bf99126f86ae691bcb7d0d880df4",
+      "1f754874648d50af62364adea6fce5c9dc6b96cd35c2652d80847cb5f48afd99",
+      363944,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-024843Z-ChatGPT.md",
+      "01f48d435d45f53c1f664099206760032e216fcc",
+      "f25f6b48ecc935892ee436f0d294204a80ab9d14ac29736b0e50c041114b1cbf",
+      363234,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-025101Z-Copilot.md",
+      "8f97dc95839c312231c6d69ea6fd1d89040d6743",
+      "df895300b9cea316413c0bb4eea4a1217100c69feea77a1cad9794130f4c5c99",
+      365525,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-030618Z-Claude.md",
+      "016c38c0a436b3507cf71135ea85e2778a70fcb4",
+      "e374a4f969ba80eda77293d7d01bdd18b1b9981176f91373cadc6151b6745ee3",
+      379375,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-030754Z-ChatGPT.md",
+      "3bede0680ea3e6f6335f04dd84c906ab3d14bddb",
+      "1b2699d75cc148c240e9abe40884790c4daf3f70123905fd31a87ed19de28adc",
+      386982,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-030947Z-Copilot.md",
+      "f037b1c973cde48ae344613c16732b8daadc266a",
+      "023cd92ceb81bc2f082bcd3b0a130725817291fed35417952ae0133da7b62266",
+      388878,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-031854Z-Claude.md",
+      "16f1c01287d9326ab96cb0656dec2d693cc2a610",
+      "425c3a44a7f1e5c6a5c79d793c17c67900505c5aba465802f9b4a035ca679c60",
+      395810,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-032024Z-ChatGPT.md",
+      "eeb4f7a3ed085ff6aa6b4e726c757e204cf1a626",
+      "d00ff782e4beef8cb88d2076f7ec12b2a8ade33dfae8fa2d06f4cfe9bea6f50e",
+      404234,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-032323Z-Copilot.md",
+      "4a7c68e07ed60c753911892dbfe3dff04fc196a7",
+      "f587fdf59476ebe05eac63710ee7912f9fda490aa408a0e8da9d051c0ee5a3f9",
+      408808,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-033006Z-Claude.md",
+      "9b829385c64276298169d579c2b78c3b21d1cc17",
+      "c1f0caa714c3b1644058e752bcadcdc37a463bb09020293c48593a740eb31516",
+      412525,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-034418Z-Claude.md",
+      "d2f82fec86fa86445f6f5d8e277fdc69eb774f80",
+      "6ef58969a3801b2d0982c8e54d52979076826894d3449884974cf47dc59145b4",
+      420784,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-034522Z-ChatGPT.md",
+      "eb448b0e4deaefef18fe229e420eb5bef3c4fd81",
+      "e9a30c60410db08dd7efea516dc644cd4f428c54d04d8156c0872ebecb60fff8",
+      427273,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-034911Z-Copilot.md",
+      "6ed17ddd8fb8d21cfa059f58a3d2ed7f3b33ba46",
+      "bcc498fdb2a256c4cb0a6a3c2982137960ebf9a9c07b273baec5847a0427d21d",
+      427439,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-035704Z-Claude.md",
+      "132c14e7c82bfadc0f73e918717b9f66dc84c69b",
+      "3080462b6bf8abcb6de999d05064007bca1e32ca9f4026e4c4ec3b70dba3357b",
+      439673,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-035840Z-ChatGPT.md",
+      "2f4cbda108086a243b5fece1c35654bd031d9ff8",
+      "504eebddee4eb3002ea72317390a2127fb3336bffb598c846110a6d4946fe243",
+      457598,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-040111Z-Copilot.md",
+      "cea1d555eeca847201ddd76aac41bca184191050",
+      "da92e582d7970939c1e126894131b1f839bbebea51f67e08cf1d20c8eadbb03b",
+      460702,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-040857Z-Claude.md",
+      "010eccc2c5b008f6485ea79d19cd3280dc18f36c",
+      "389820c9d9ec3c957e1fec579471f61ff10baa5309edb4c74047e7de6e2b5a6d",
+      457133,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-041045Z-ChatGPT.md",
+      "8bcf6011a1ef8cf0f2ed31748964b5e48173a048",
+      "dd502e7407cd91d195f57881d79991c36ef0ed0cb4a74d95924b577bd65337fe",
+      464236,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-041606Z-Copilot.md",
+      "7f0881156fbe934b9bb16f7cb389a02e31359b82",
+      "8edea00c8714e074258b15adb213945d40f675bb0ce9e433ab308a45fc317cf5",
+      468559,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-042911Z-Claude.md",
+      "4652cd23d6b1dbb0e11bd1ed902dd400727ddb37",
+      "bdc752c3ac64aadc57919fa69e380cb1f5751bb06e91b7af0032b142ed9d4de6",
+      474234,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-043533Z-Claude.md",
+      "6faf08207b6e9fa64097a8ffe8d4942157e646dc",
+      "85e33752a8a57af078e9e3591835bfb72910ceb452f8c64f924ff5542e122796",
+      482474,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-043654Z-ChatGPT.md",
+      "f9d72d85cc64f5f66d823ce2fee2718c72720d6d",
+      "8e5e85eb831726216cd1c356a436a10152511aadd8c2201635c67e2362ce060e",
+      488205,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-043958Z-Copilot.md",
+      "26d38c86336f8b8d8dcc0f5193991339f00bb7ec",
+      "6f4fec0e1801996504be88bc5b78c582d3f466898bfafc48238348f79b4c802b",
+      491280,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-044740Z-Claude.md",
+      "d0c1bc83717b3c0341773f21e52dd9d980aedd89",
+      "27e7ab5ac4fb5de01bcfd943eccb936ab8d62dbda95bac1570182157656cd5fc",
+      508505,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-044923Z-ChatGPT.md",
+      "f2b81cfce1ab22d4ca36887524fcaf7841a9d22c",
+      "75bbbb4ec46d8f2ce99f5c41eddfec0cc627fa84fd809316d582b8e796014a34",
+      526872,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-045721Z-Copilot.md",
+      "8376a45694b1cf878a7e38105280b771332fca6f",
+      "ae656918a8812e42c28e5c7507d07cfa07440dac9c000ad3018f4281f5824cd6",
+      533311,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-050533Z-Claude.md",
+      "7ad701905a48e3fb0bc912a7550208d8d53e7820",
+      "85166993a533f303aa05545ce50beaeea517a0c0f426266f7a4637b7c66c1837",
+      536381,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-050723Z-ChatGPT.md",
+      "4246f7913cb4b1189e0b0f2cae52bcabcab46ffa",
+      "6d5b2859bffb615219c91bca85d7cdfa821c22a7fa3121d1fc148ce98c2e7e74",
+      544006,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-051050Z-Copilot.md",
+      "0dfa3a4cd7b38e9e4cb58dafa4a2901bb517848e",
+      "e8f28e286140823e392b456b4030efa2340bce05f84a37c6a3eca004874d010a",
+      543167,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-052546Z-Claude.md",
+      "0c6d8eec74b09d01b4d1070a836640cd533dbc7c",
+      "7f2c6dde7e42d3a9da95cf58a9e93872bf99900bc30601fc6f0de6a54855286c",
+      554609,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-052605Z-Claude.md",
+      "f7e67a8158fd93567d65560145a64c96728e51d3",
+      "742d5ac50d91982e81734c1cf73ae8b3662be7506a03063e8ea2d388b820e95f",
+      548862,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-052717Z-ChatGPT.md",
+      "97759c23d149d2555eea72db92f70574d0c04cbf",
+      "6226df02031266eb800d848cb05937c86ad96017ceed366250b65a6019442dd9",
+      562189,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-053240Z-Copilot.md",
+      "901ca9e0bfa83f6d2aa99bf758fd7322d2244f36",
+      "9fd689f38429487e7e04780c8a3a06cb85b71043a245e9abd59b886e236d2b39",
+      568784,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-054318Z-Claude.md",
+      "f2b2fffdba1c19d92dc7db5a8eaf1ae0261f22a6",
+      "1de7257fb213d9bb96c7d4e504ed29ea51c9dc51c4bcd9fd31cd7a59e44b0c98",
+      578554,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-054449Z-ChatGPT.md",
+      "a8b22a88ba54e6baab3231dc2bd4559a4e518eec",
+      "8414e5ef04fa995efca97ed639694e89f7ca2de28f67414479b17cd39d65ce63",
+      587831,
+      "LOG"
+    ],
+    [
+      "kayit/20261024-054825Z-Copilot.md",
+      "abf37fe11b35dce4be855da19c35c9504a05d031",
+      "cf7b2e6715615014eca23cd8493fede4e32d8e0826ccbc3d86629ce511a9ab28",
+      586196,
+      "LOG"
+    ],
+    [
+      "kayit/README.md",
+      "ea6708f3fe81bd0c19c967b6ca7308e1e62e0042",
+      "e7b6d2b3940ff5e7217ff10a470c62727e4ade98beec1bda021191da6557d4e2",
+      160,
+      "FULL"
+    ],
+    [
+      "kayit/atlandi.log",
+      "0700e1512a8616295bb8c6c38fe26e5c567332ca",
+      "bc7c08a80548e3897a8fa98115cff66d510110c96c8d295463cdcd12735bc8fb",
+      4231,
+      "FULL"
+    ],
+    [
+      "kopru.html",
+      "47c98d29138abea244d91efed1eb3449e2ad51ba",
+      "8e499395da21e3de06a536ce35db17cb5728709a1b81820f150d064a2c795f7b",
+      673338,
+      "CANONICAL"
+    ],
+    [
+      "kopru_ayna_uret.py",
+      "7db121ff8af54cf8cb2f2bf78d897de5e5845eb9",
+      "3835c3139b7458405a34c6db5fa875c07d2d6513b557405ee9cdba48d81a6502",
+      1700,
+      "FULL"
+    ],
+    [
+      "kopru_birlestir.py",
+      "2a9956c209b5d8e36f9270870384319faa615bf4",
+      "c78980bfa9317ac493eca5b1fbbd1fa2efd8c21c8daa47c2e635ec3d5c763e65",
+      5090,
+      "FULL"
+    ],
+    [
+      "kopru_bolum_ekle.py",
+      "0a092b39fed81a50ad7d25b70c0fa16845104fc2",
+      "f165952ff118654de489d3fb647e7b12fa6c043e7571ac3d57a817f68981cca7",
+      2221,
+      "FULL"
+    ],
+    [
+      "kopru_ekle.py",
+      "11ba70576fd8d95cf530c2c0c8e0b0526351a47d",
+      "31a22698dbec68b43bf13cf25a4d4d6b2e832460b235749f5a706ad7f8c7070a",
+      11504,
+      "FULL"
+    ],
+    [
+      "kopru_gonder.ps1",
+      "5cec84aa6a1a2b70132964f862976e6ec7fbcc94",
+      "61df02cc04b0737ef5a04b04fffe0f0ea3ae7c7973503422584702abe4cba079",
+      4345,
+      "FULL"
+    ],
+    [
+      "kopru_izle.ps1",
+      "fc9e50efba4c30fa855bd5d05a086dd744d5217b",
+      "7bcccccaf243bd4fd92ee3d02ad97206359e7aa5dfaafb9b27a97d63e663b5ff",
+      3254,
+      "FULL"
+    ],
+    [
+      "kopru_oku.py",
+      "8fcb0d0a0cbca3a75fe27fb2e9fc9f772bbbaa96",
+      "485fa96f9478c3af4241e587ad05984d50dfd1bda17c8efda52fb0c6831f16f4",
+      3545,
+      "FULL"
+    ],
+    [
+      "kopru_yanitla.py",
+      "0ba25968eab51a8f5eb48eceb8dad9f65f5c5eca",
+      "0988f3c9f1e938aa88b254b3a8dee714b218055163d1b5ea51129cc81e997d00",
+      16562,
+      "FULL"
+    ],
+    [
+      "kopru_yerel.ps1",
+      "5589448358f5e9371ed5ef7423f2589322d2d94e",
+      "b01ac103b36a94d4f74cc17b4e370683856696367ae7d5642a6a5e922172f401",
+      20353,
+      "FULL"
+    ],
+    [
+      "web-istem.md",
+      "c73f729eb8094445275eb8284cbb711bd20f03ec",
+      "89a5edb0f1c5bf7375014a21e5eb950675937244c012d33851f90aa0881019ce",
+      1251,
+      "FULL"
+    ],
+    [
+      "yanit-sablonu.json",
+      "009a3b5e8061391e96bbc5393c55464ecad02676",
+      "876b742a36df0797872e3b49ebda77efe0a66995ed8db949bcee58750c94777f",
+      235,
+      "FULL"
+    ]
+  ],
+  "log_equivalence_file": "repo-log-equivalence.json",
+  "log_equivalence_code": "repo-log-equivalence.py",
+  "pr4_generated_equivalence_file": "repo-pr4-equivalence.json",
+  "open_pull_requests_snapshot": [
+    {
+      "number": 5,
+      "title": "Claude (Hacker) devri ve deus_ex_machina payı",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/pull/5",
+      "head": "d7f1d7d1f39d78b0690f003b8226fbf208be46fb",
+      "branch": "claude/hacker-devri-2026-10-24",
+      "base_at_read": "50c76d3f0e3eeba8db0b9e5a8aa50b170742c748",
+      "state": "open",
+      "draft": true,
+      "updated_at": "2026-10-24T08:20:43Z",
+      "files": [
+        "README.md",
+        "deus_ex_machina/HACKER.md",
+        "devir/hacker/CLAUDE.md",
+        "devir/hacker/DEVIR.md",
+        "devir/hacker/README.md",
+        "kopru_yerel.ps1"
+      ],
+      "review_status": "reviewed_by_this_agent",
+      "reviewed_diff_sha256": "38c23b2b5d3e6d4e26634eb12611d7bfe4327f180a4601083821c996d36969fa",
+      "reviewed_diff_bytes": 23909,
+      "changed_file_count": 6,
+      "changed_file_methods": {
+        "README.md": "full_added_file_or_modified_hunk_read",
+        "deus_ex_machina/HACKER.md": "full_added_file_or_modified_hunk_read",
+        "devir/hacker/CLAUDE.md": "full_added_file_or_modified_hunk_read",
+        "devir/hacker/DEVIR.md": "full_added_file_or_modified_hunk_read",
+        "devir/hacker/README.md": "full_added_file_or_modified_hunk_read",
+        "kopru_yerel.ps1": "full_added_file_or_modified_hunk_read"
+      },
+      "tests": "source_read_not_executed"
+    },
+    {
+      "number": 4,
+      "title": "Prepare Şahit CLI handoff and deus_ex_machina task layer",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/pull/4",
+      "head": "99dc8a37ef158ee42ee535f631f64e136fef202a",
+      "branch": "copilot/deus-ex-machina-user-layer",
+      "base_at_read": "725acf3de0bfb31bc4780787b48bf9d2a5ecac9b",
+      "state": "open",
+      "draft": true,
+      "updated_at": "2026-10-24T00:49:48Z",
+      "files": [
+        "Kopru_Izle.cmd",
+        "README.md",
+        "ayna/kopru.html",
+        "deus_ex_machina/README.md",
+        "deus_ex_machina/task.schema.json",
+        "deus_ex_machina/task_queue.py",
+        "devir/sahit/README.md",
+        "devir/sahit/START_HERE.md",
+        "devir/sahit/generate.py",
+        "devir/sahit/handoff.html",
+        "devir/sahit/handoff.json",
+        "devir/sahit/handoff.txt",
+        "devir/sahit/manifest.json",
+        "devir/sahit/source.json",
+        "kopru.html",
+        "kopru_yerel.ps1",
+        "tests/test_deus_ex_machina_queue.py",
+        "tests/test_handoff_bundle.py",
+        "tests/test_sahit_launcher.ps1"
+      ],
+      "review_status": "reviewed_by_this_agent",
+      "reviewed_diff_sha256": "32207081db296d85e9359cc8c73622bd41a41b10502423ca35f2d0a074aec6d8",
+      "reviewed_diff_bytes": 160894,
+      "changed_file_count": 19,
+      "changed_file_methods": {
+        "Kopru_Izle.cmd": "full_added_file_or_modified_hunk_read",
+        "README.md": "full_added_file_or_modified_hunk_read",
+        "ayna/kopru.html": "full_added_file_or_modified_hunk_read",
+        "deus_ex_machina/README.md": "full_added_file_or_modified_hunk_read",
+        "deus_ex_machina/task.schema.json": "full_added_file_or_modified_hunk_read",
+        "deus_ex_machina/task_queue.py": "full_added_file_or_modified_hunk_read",
+        "devir/sahit/README.md": "full_added_file_or_modified_hunk_read",
+        "devir/sahit/START_HERE.md": "full_added_file_or_modified_hunk_read",
+        "devir/sahit/generate.py": "full_added_file_or_modified_hunk_read",
+        "devir/sahit/handoff.html": "derived_bytes_verified_from_reviewed_source",
+        "devir/sahit/handoff.json": "derived_bytes_verified_from_reviewed_source",
+        "devir/sahit/handoff.txt": "derived_bytes_verified_from_reviewed_source",
+        "devir/sahit/manifest.json": "full_added_file_or_modified_hunk_read",
+        "devir/sahit/source.json": "full_added_file_or_modified_hunk_read",
+        "kopru.html": "full_added_file_or_modified_hunk_read",
+        "kopru_yerel.ps1": "full_added_file_or_modified_hunk_read",
+        "tests/test_deus_ex_machina_queue.py": "full_added_file_or_modified_hunk_read",
+        "tests/test_handoff_bundle.py": "full_added_file_or_modified_hunk_read",
+        "tests/test_sahit_launcher.ps1": "full_added_file_or_modified_hunk_read"
+      },
+      "tests": "source_read_not_executed"
+    },
+    {
+      "number": 3,
+      "title": "Add opt-in auditable context and run records",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/pull/3",
+      "head": "3c80c8b20e1c0a9d51779c197f9188d3b750d050",
+      "branch": "copilot/implement-transparent-architecture",
+      "base_at_read": "31e3fb1b8796d746a6ab249e6764c5dc226e8205",
+      "state": "open",
+      "draft": true,
+      "updated_at": "2026-10-24T00:17:38Z",
+      "files": [
+        ".github/workflows/context-checks.yml",
+        ".gitignore",
+        "README.md",
+        "checks/steering_lint.py",
+        "istem-sablonu.md",
+        "kayit/README.md",
+        "kopru_yanitla.py",
+        "ortak_kopru/__init__.py",
+        "ortak_kopru/cli.py",
+        "ortak_kopru/context.py",
+        "ortak_kopru/reports.py",
+        "ortak_kopru/runs.py",
+        "policy/ADR-001.md",
+        "policy/README.md",
+        "policy/application-instructions.md",
+        "policy/policy.json",
+        "policy/policy.schema.json",
+        "reports/fixtures/task.txt",
+        "reports/fixtures/witnesses.json",
+        "tests/test_transparent_context.py"
+      ],
+      "review_status": "delegated_bridge_reading",
+      "reviewed_diff_sha256": "1ff2d22a79cc1951120b004e88564be3a10a5eb078df340f5dea0eae643be980",
+      "reviewed_diff_bytes": 121404,
+      "changed_file_count": 20,
+      "changed_file_methods": {
+        ".github/workflows/context-checks.yml": "delegated",
+        ".gitignore": "delegated",
+        "README.md": "delegated",
+        "checks/steering_lint.py": "delegated",
+        "istem-sablonu.md": "delegated",
+        "kayit/README.md": "delegated",
+        "kopru_yanitla.py": "delegated",
+        "ortak_kopru/__init__.py": "delegated",
+        "ortak_kopru/cli.py": "delegated",
+        "ortak_kopru/context.py": "delegated",
+        "ortak_kopru/reports.py": "delegated",
+        "ortak_kopru/runs.py": "delegated",
+        "policy/ADR-001.md": "delegated",
+        "policy/README.md": "delegated",
+        "policy/application-instructions.md": "delegated",
+        "policy/policy.json": "delegated",
+        "policy/policy.schema.json": "delegated",
+        "reports/fixtures/task.txt": "delegated",
+        "reports/fixtures/witnesses.json": "delegated",
+        "tests/test_transparent_context.py": "delegated"
+      },
+      "tests": "see_delegated_report"
+    },
+    {
+      "number": 2,
+      "title": "Add an opt-in, auditable context workflow for the bridge",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/pull/2",
+      "head": "cfb4bdc81d34a87530506ae139cbd6c18131dc53",
+      "branch": "copilot/ortak-kopru-dokumasyonu",
+      "base_at_read": "4a07287eb305f964f8c576f4cc840419443dec95",
+      "state": "open",
+      "draft": true,
+      "updated_at": "2026-10-23T23:47:09Z",
+      "files": [
+        ".github/workflows/steering-lint.yml",
+        ".gitignore",
+        "README.md",
+        "checks/steering_lint.py",
+        "docs/architecture.md",
+        "examples/approval.example.json",
+        "examples/witness-a.example.json",
+        "examples/witness-b.example.json",
+        "examples/witness-import.schema.json",
+        "istem-sablonu.md",
+        "kopru_governance/__init__.py",
+        "kopru_governance/cli.py",
+        "kopru_governance/core.py",
+        "kopru_governance/execute.py",
+        "kopru_governance/runs.py",
+        "kopru_governance/witness.py",
+        "kopru_yanitla.py",
+        "policy/approval.schema.json",
+        "policy/manifest.schema.json",
+        "policy/policy.json",
+        "policy/policy.schema.json",
+        "policy/run-event.schema.json",
+        "tests/test_governance.py"
+      ],
+      "review_status": "reviewed_by_this_agent",
+      "reviewed_diff_sha256": "752a861e4856508c86aac6b603f4ab43eeabac27adc9863dd6b8ee43348c966a",
+      "reviewed_diff_bytes": 153627,
+      "changed_file_count": 23,
+      "changed_file_methods": {
+        ".github/workflows/steering-lint.yml": "full_added_file_or_modified_hunk_read",
+        ".gitignore": "full_added_file_or_modified_hunk_read",
+        "README.md": "full_added_file_or_modified_hunk_read",
+        "checks/steering_lint.py": "full_added_file_or_modified_hunk_read",
+        "docs/architecture.md": "full_added_file_or_modified_hunk_read",
+        "examples/approval.example.json": "full_added_file_or_modified_hunk_read",
+        "examples/witness-a.example.json": "full_added_file_or_modified_hunk_read",
+        "examples/witness-b.example.json": "full_added_file_or_modified_hunk_read",
+        "examples/witness-import.schema.json": "full_added_file_or_modified_hunk_read",
+        "istem-sablonu.md": "full_added_file_or_modified_hunk_read",
+        "kopru_governance/__init__.py": "full_added_file_or_modified_hunk_read",
+        "kopru_governance/cli.py": "full_added_file_or_modified_hunk_read",
+        "kopru_governance/core.py": "full_added_file_or_modified_hunk_read",
+        "kopru_governance/execute.py": "full_added_file_or_modified_hunk_read",
+        "kopru_governance/runs.py": "full_added_file_or_modified_hunk_read",
+        "kopru_governance/witness.py": "full_added_file_or_modified_hunk_read",
+        "kopru_yanitla.py": "full_added_file_or_modified_hunk_read",
+        "policy/approval.schema.json": "full_added_file_or_modified_hunk_read",
+        "policy/manifest.schema.json": "full_added_file_or_modified_hunk_read",
+        "policy/policy.json": "full_added_file_or_modified_hunk_read",
+        "policy/policy.schema.json": "full_added_file_or_modified_hunk_read",
+        "policy/run-event.schema.json": "full_added_file_or_modified_hunk_read",
+        "tests/test_governance.py": "full_added_file_or_modified_hunk_read"
+      },
+      "tests": "source_read_not_executed"
+    },
+    {
+      "number": 1,
+      "title": "Steering incelemesi: tam analitik aktarım ve köprü okuması",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/pull/1",
+      "head": "489fd9a70eee90821f5144ad44b049caea4e5071",
+      "branch": "steering-inceleme-2026-10-24",
+      "base_at_read": "df341f17356d0369ae1385ee376aad3a94b133d8",
+      "state": "open",
+      "draft": true,
+      "updated_at": "2026-10-23T21:57:32Z",
+      "review_status": "delegated_root"
+    }
+  ],
+  "scope_limitations": [
+    "No model/provider call, repository bot or cleanup run. No PR test suite executed.",
+    "All PRs were open drafts at retrieval; unmerged code is a proposal, not current main behavior.",
+    "Private external ZIP/desktop sources mentioned in handoff documents were not retrieved or independently verified by this agent.",
+    "PR1 previous steering archive reviewed by root; PR3 reviewed by bridge_reading, not duplicated here."
+  ]
+}

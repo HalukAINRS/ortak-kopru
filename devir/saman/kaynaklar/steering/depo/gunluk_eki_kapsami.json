@@ -1,0 +1,179 @@
+{
+  "snapshot_commit": "86616eb303b93a5e364dcfc2d1e97fd73376d71c",
+  "prior_snapshot_commit": "7fefbca313dfcedcdd9e8812fe12f160676d0510",
+  "new_logs": 3,
+  "new_bytes": 229454,
+  "new_characters": 214693,
+  "cumulative_log_count": 16,
+  "cumulative_results": {
+    "added": 5,
+    "openai_http401": 5,
+    "google_http403": 5,
+    "parse_failure": 1
+  },
+  "files": [
+    {
+      "path": "kayit/20261023-213815Z-ChatGPT.md",
+      "sha256": "8c03679316dbd60797f6da69b48d649fd1a45404d9a24c2d05316c4a8627e061",
+      "bytes": 86163,
+      "characters": 80587,
+      "lines": 879,
+      "sections": {
+        "Sonuç": {
+          "first_line": 3,
+          "last_line": 13
+        },
+        "Sistem istemi": {
+          "first_line": 14,
+          "last_line": 41
+        },
+        "Kullanıcı iletisi": {
+          "first_line": 42,
+          "last_line": 874
+        },
+        "Ham yanıt": {
+          "first_line": 875,
+          "last_line": 879
+        }
+      },
+      "system_sha256": "8bd831f9380a40d9e3a70e0805e53527ecd110a9e1435d1c3b1eea2c66e5e479",
+      "system_previously_seen": true,
+      "audit_sha256": "50f8a0f88999cfa16d1cb9c68f3c596ff1da9677fa2ccdeafd65f47227c15f11",
+      "audit_previously_seen": true,
+      "audit_characters": 38192,
+      "all_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003",
+        "k-0004",
+        "k-0005",
+        "k-0006",
+        "k-0007",
+        "k-0008",
+        "k-0009",
+        "k-0010",
+        "k-0011"
+      ],
+      "pending_records": [
+        "k-0005",
+        "k-0006",
+        "k-0007",
+        "k-0008",
+        "k-0009",
+        "k-0010"
+      ],
+      "result_status": "api_auth_failure",
+      "result_summary": "ATLANDI: openai: HTTP 401: {",
+      "raw_response_empty": true,
+      "prior_record_values_match": true
+    },
+    {
+      "path": "kayit/20261023-213815Z-Claude.md",
+      "sha256": "e70b922b035e735616d712cc7b1034187b84d0d6004c7a66890eb836e452cc38",
+      "bytes": 70934,
+      "characters": 66428,
+      "lines": 807,
+      "sections": {
+        "Sonuç": {
+          "first_line": 3,
+          "last_line": 6
+        },
+        "Sistem istemi": {
+          "first_line": 7,
+          "last_line": 34
+        },
+        "Kullanıcı iletisi": {
+          "first_line": 35,
+          "last_line": 801
+        },
+        "Ham yanıt": {
+          "first_line": 802,
+          "last_line": 807
+        }
+      },
+      "system_sha256": "89232755c005e8f3e9247b20b471d04fd7722f30b6ca3e0d4a5317d896793c68",
+      "system_previously_seen": true,
+      "audit_sha256": "50f8a0f88999cfa16d1cb9c68f3c596ff1da9677fa2ccdeafd65f47227c15f11",
+      "audit_previously_seen": true,
+      "audit_characters": 38192,
+      "all_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003",
+        "k-0004",
+        "k-0005",
+        "k-0006",
+        "k-0007",
+        "k-0008",
+        "k-0009",
+        "k-0010"
+      ],
+      "pending_records": [
+        "k-0010"
+      ],
+      "result_status": "added",
+      "result_summary": "eklendi: k-0011; yol: cli ; bekleyenler: k-0010; kullanım: {\"cli\": \"claude -p --output-format text --no-session-persistence\", \"stderr_son\": \"\"}",
+      "raw_response_empty": false,
+      "prior_record_values_match": true
+    },
+    {
+      "path": "kayit/20261023-213816Z-Gemini.md",
+      "sha256": "db61adcaedcceae5e35fa4b019d99eb3ce8933d10b4df4d9e9aaffa1f70ad371",
+      "bytes": 72357,
+      "characters": 67678,
+      "lines": 824,
+      "sections": {
+        "Sonuç": {
+          "first_line": 3,
+          "last_line": 13
+        },
+        "Sistem istemi": {
+          "first_line": 14,
+          "last_line": 41
+        },
+        "Kullanıcı iletisi": {
+          "first_line": 42,
+          "last_line": 819
+        },
+        "Ham yanıt": {
+          "first_line": 820,
+          "last_line": 824
+        }
+      },
+      "system_sha256": "f9a61328cde5e166a0ddc0b437d68ffc56719ef0982abd8230e1fbf376beaa7d",
+      "system_previously_seen": true,
+      "audit_sha256": "50f8a0f88999cfa16d1cb9c68f3c596ff1da9677fa2ccdeafd65f47227c15f11",
+      "audit_previously_seen": true,
+      "audit_characters": 38192,
+      "all_records": [
+        "k-0001",
+        "k-0002",
+        "k-0003",
+        "k-0004",
+        "k-0005",
+        "k-0006",
+        "k-0007",
+        "k-0008",
+        "k-0009",
+        "k-0010",
+        "k-0011"
+      ],
+      "pending_records": [
+        "k-0009"
+      ],
+      "result_status": "api_auth_failure",
+      "result_summary": "ATLANDI: google: HTTP 403: {",
+      "raw_response_empty": true,
+      "prior_record_values_match": true
+    }
+  ],
+  "new_record_variant_hashes": {
+    "k-0010": [
+      "02646fa38431e19b408b79361742d88171604e667f1e4d1276b3714fff90c149"
+    ],
+    "k-0011": [
+      "71faacf9b38e26bf7105a6316ae3bb6ff2be541f7a1440dad7d5afdca68a6b42"
+    ]
+  },
+  "method": "Repeated systems, audit body, prior record values matched by hash. New results and k-0010/k-0011 read in full. No API/CLI invocation. No sensitive values copied."
+}
