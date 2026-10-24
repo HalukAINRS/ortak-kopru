@@ -1,14 +1,36 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "bundle_version": "2026-10-24.2",
+  "prepared_on": "2026-10-24",
   "source_file": "source.json",
-  "source_sha256": "720433b7502bee5021311c59ec75a3aeb6918c69c53a7ae65e887149eff7d29d",
-  "source_snapshot_commit": "950b76e7be8c1ef1e3cd59e099c5b988971a13f3",
-  "main_snapshot_commit": "725acf3de0bfb31bc4780787b48bf9d2a5ecac9b",
-  "repo_sources_sha256": {
-    "README.md": "9fd1c98c9d949767c9290adf1e69513e93d0da56a5a910dba4f75dbbf7120a28",
+  "source_sha256": "da2526b6cedd3eb44adc1102512c193d63302fba06e3f3f676d15bb7947578aa",
+  "source_snapshot_commit": "99dc8a37ef158ee42ee535f631f64e136fef202a",
+  "main_snapshot_commit": "52c797e4c7e7b8029c6d1aad651ada8f57b7d4b8",
+  "outputs_sha256": {
+    "handoff.txt": "693de696637027396a4653e71914ba1b32bb9b3ed2e23fa19c8f6b3c1e3eae6e",
+    "handoff.html": "5c5f57d1ff0f50d5807e03e4763d49c6f852626ff9259841f79e7b4765adffa5",
+    "handoff.json": "27cde81cb427a819a74eb67c8e17d818cc7f8835457a5a2f6b0c2197a8774d82",
+    "START_HERE.md": "9d3514d7c747ade6e7a2fae290016d1d7819b875aa8840a048420c4e4842caa4"
+  },
+  "pinned_sources_sha256": {
+    "devir/sahit/README.md": "ae4f6f4be82b61034c80774b216894edffb406cd10a5728ab5449ee583bb8ace",
+    "devir/sahit/generate.py": "808fa61b323ccf26c6640408b77839796535caf49eed891ab08b2014902162f4",
+    "devir/sahit/handoff.schema.json": "92355c25f652cffe324e02a192077231ed462ccdc5af0b4442442d04e2431e57",
+    "devir/sahit/manifest.schema.json": "03c409bb26f1ab240bcaa3c4b0e3d3722cc042de2bcc92d7ccd17c55b7a31402",
+    "deus_ex_machina/SOZLESME.md": "38dc95e4f31608fbd5eb578150d1d272ca9ed8ba2ad19574d97badc5d15c73a0",
+    "deus_ex_machina/KUYRUK.md": "bb9f34316e88c00027ddbe5cd086fa8ce1a84ea60927701d03511878918c5dd6",
+    "deus_ex_machina/task_queue.py": "443c9a79cf66a74953c2d780f96258da35c46fbbb4223fb721d2ab72fcdd802c",
+    "deus_ex_machina/task.schema.json": "ddcf3c9d0ac614bf88bfeacaf81d00be9e1682e0af19c3566895f4eb9c60258e",
+    "tests/test_deus_ex_machina_queue.py": "eb87101238c4dd62b5f762b8094cc78afc845ea7b783641438dd3cb8da94901f",
+    "tests/test_handoff_bundle.py": "aba34d9253c64a247bc4730e00d96a34e857f64482f44a1a3104006a68b98641",
+    "tests/test_sahit_launcher.ps1": "0b008eee7356a916342dacd2494b464ae35b0b08b55f4c057e780a2d08ccbf74"
+  },
+  "observed_sources_sha256": {
+    "README.md": "976f9f864b67aef058e33a2a3c31bf96d8edb3eaf9d746a096baabbbe0a2c574",
     "AGENTS-kopru.md": "bcbe2d319b3b68ef9f3a27b1f41c47bce76dbf66a7633926ec06f1e4640a9538",
     "istem-sablonu.md": "009fa6d24f18c2defbb04a8eb6edf53fb19233c7f5e04cc41089d9ab160e6dec",
-    "kopru.html": "3622a0c1ca59ecaebacd8924a76a039581b09000f20a80fbe4212e5db11cccc4",
+    "kopru.html": "c5715debf8a06ed64c81083a93440325ecae4468d4809ac3b85bc19e99a91dd8",
+    "ayna/kopru.html": "ce198e18383165d3041a091ecfce00434f439e2e22758eaafa0e9d9e86933da8",
     "ayarlar.json": "ac1344fb2765575787fcf27eb4a445509c29d8d1c2491a772c0e5349301f6ec8",
     "ayarlar-yerel.json": "126c33671b621ec33048b190a9a03ff6fa87379efc7d1c2ac2a43af5dfead4fe",
     "Kopru_Izle.cmd": "4b580609a5c792785fee261692a4aab49fb68ef802126d0d0f5da5775823f940",
@@ -19,26 +41,13 @@
     "kopru_bolum_ekle.py": "f165952ff118654de489d3fb647e7b12fa6c043e7571ac3d57a817f68981cca7",
     "kopru_ayna_uret.py": "3835c3139b7458405a34c6db5fa875c07d2d6513b557405ee9cdba48d81a6502",
     "kopru_oku.py": "485fa96f9478c3af4241e587ad05984d50dfd1bda17c8efda52fb0c6831f16f4",
-    "kopru_ekle.py": "4cb4a0d46ff0891477c71abacd9478347bf07c844e96a9415a24f10f56b16697",
+    "kopru_ekle.py": "31a22698dbec68b43bf13cf25a4d4d6b2e832460b235749f5a706ad7f8c7070a",
     "kopru_yanitla.py": "0988f3c9f1e938aa88b254b3a8dee714b218055163d1b5ea51129cc81e997d00",
-    ".github/workflows/kopru.yml": "e119ea788300cfa5c7d7becf868ba70681abc5710537c77be0523430733b0467",
-    "ayna/kopru.html": "c43e82f8c113c91c40c902171e2e13bd5f864992487589b91319374a9f00f2b2",
-    "devir/sahit/README.md": "e6f3d2e467c5619883b48fc7b912465d7bfa8ec264d058d3c8fd515142e8ad7c",
-    "devir/sahit/generate.py": "9b853ff42ca964ec5c1f8bc12b06a129cf67f25e50ce20fd1b00bcbd43eb3d60",
-    "deus_ex_machina/README.md": "1d0f02a9220bdbb57b5c212773eee9eaeae2c3c80c0bb754fda9480492521e44",
-    "deus_ex_machina/task_queue.py": "443c9a79cf66a74953c2d780f96258da35c46fbbb4223fb721d2ab72fcdd802c",
-    "deus_ex_machina/task.schema.json": "ddcf3c9d0ac614bf88bfeacaf81d00be9e1682e0af19c3566895f4eb9c60258e",
-    "tests/test_deus_ex_machina_queue.py": "4ec0489c77c44e003f9adc2ed76513ca7b1bab5e877ce6c73fe078829bc7b5b5",
-    "tests/test_handoff_bundle.py": "62c76484a8bd30d30a28ec4edfe81bb4db9e4405f8710b559f1d2a0472957a01",
-    "tests/test_sahit_launcher.ps1": "e6b0b541450cd3160f8fc13654236a9a3a083bff9bd623c71bdc00bd830629eb"
+    ".github/workflows/kopru.yml": "e119ea788300cfa5c7d7becf868ba70681abc5710537c77be0523430733b0467"
   },
-  "outputs_sha256": {
-    "handoff.txt": "1ed664cf937e1b8cdb34d9b235d5489806ff9fa7be115955aae57e4be615a137",
-    "handoff.html": "18af650ed7892d74a0093c4c82ef78557139574f8403e32c86664a5012e4d0a7",
-    "handoff.json": "720433b7502bee5021311c59ec75a3aeb6918c69c53a7ae65e887149eff7d29d",
-    "START_HERE.md": "deb962b227e0b8082c49762c46411a32d6442d4dbd6caa65c5016a9e841994c9"
-  },
+  "bundle_sha256": "cd790c256c962c9cc3c820a160191a1589631bf9bbba3bbc4a8892f7a6153ceb",
   "manifest_self_hash": "omitted: self-referential hash is not meaningful",
+  "line_endings": "hashes are computed over LF-normalized bytes",
   "privacy_boundary": "Manifest yalnız repository-relative kaynak yollarını ve içerik hash'lerini yayımlar. Makineye özgü mutlak yollar, Home/cache konumları, anahtarlar, belirteçler, oturum dosyaları ve kimlik değerleri dışarı alınmaz. Hash ve tarama, gizli veri bulunmadığını garanti etmez.",
   "scan_limit": "Hashes and pattern scans do not prove truth, authorship, or absence of every secret or personal datum."
 }

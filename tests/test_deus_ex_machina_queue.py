@@ -2,12 +2,14 @@ import contextlib
 import io
 import json
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 from unittest import mock
 
-from deus_ex_machina import task_queue as queue
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # gömülü Python (python314._pth) çalışma dizinini yola eklemez
+from deus_ex_machina import task_queue as queue  # noqa: E402
 
 
 class TaskQueueTests(unittest.TestCase):

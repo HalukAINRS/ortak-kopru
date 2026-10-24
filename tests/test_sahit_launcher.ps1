@@ -77,5 +77,6 @@ try {
 } finally {
   foreach ($key in $keys) { [Environment]::SetEnvironmentVariable($key, $before[$key], "Process") }
   Remove-Item Env:SAHIT_TEST_LOG -ErrorAction SilentlyContinue
-  Remove-Item -LiteralPath $temporary -Recurse -Force -ErrorAction SilentlyContinue
+  # Remove-Item, WinPE X: RAM diskinde Unicode adlı dizinde hata verir; .NET silme çalışır.
+  try { [System.IO.Directory]::Delete($temporary, $true) } catch { Write-Warning "Geçici dizin silinemedi: $temporary ($($_.Exception.Message))" }
 }

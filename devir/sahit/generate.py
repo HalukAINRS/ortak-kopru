@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import html
 import json
+import re
 from pathlib import Path
 
 
@@ -18,6 +19,44 @@ def sha256(data):
 
 def stable_json(value):
     return (json.dumps(value, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+
+
+def validate(value, schema, path="$"):
+    """JSON Schema alt kümesi (type, const, enum, required, properties, additionalProperties, items, minItems, minLength, minimum, pattern); yalnız stdlib."""
+    kinds = {"object": dict, "array": list, "string": str, "boolean": bool, "integer": int}
+    kind = schema.get("type")
+    if kind and (not isinstance(value, kinds[kind]) or (kind == "integer" and isinstance(value, bool))):
+        return [f"{path}: expected {kind}"]
+    errors = []
+    if "const" in schema and value != schema["const"]:
+        errors.append(f"{path}: expected {schema['const']!r}")
+    if "enum" in schema and value not in schema["enum"]:
+        errors.append(f"{path}: {value!r} not in {schema['enum']}")
+    if isinstance(value, str):
+        if len(value) < schema.get("minLength", 0):
+            errors.append(f"{path}: shorter than {schema['minLength']}")
+        if "pattern" in schema and not re.search(schema["pattern"], value):
+            errors.append(f"{path}: does not match {schema['pattern']}")
+    if isinstance(value, int) and not isinstance(value, bool) and value < schema.get("minimum", value):
+        errors.append(f"{path}: below {schema['minimum']}")
+    if isinstance(value, list):
+        if len(value) < schema.get("minItems", 0):
+            errors.append(f"{path}: fewer than {schema['minItems']} items")
+        for index, item in enumerate(value):
+            errors += validate(item, schema.get("items", {}), f"{path}[{index}]")
+    if isinstance(value, dict):
+        errors += [f"{path}: missing {key}" for key in schema.get("required", []) if key not in value]
+        properties = schema.get("properties", {})
+        for key, item in value.items():
+            if key in properties:
+                errors += validate(item, properties[key], f"{path}.{key}")
+            elif schema.get("additionalProperties") is False:
+                errors.append(f"{path}: unexpected {key}")
+    return errors
+
+
+def load_schema(name):
+    return json.loads((HERE / name).read_text(encoding="utf-8"))
 
 
 def text_lines(value, depth=0):
@@ -92,12 +131,20 @@ def generated_files(source):
     }
 
 
-def repository_source_hashes(source):
+def read_lf(path):
+    """Satır sonları LF'ye çevrilerek okunur; autocrlf açık bir checkout'ta hash'ler değişmesin."""
+    return Path(path).read_bytes().replace(b"\r\n", b"\n")
+
+
+def file_hashes(relatives, strict=True):
     hashes = {}
-    for relative in source["verified_repository"]["manifested_repository_files"]:
+    for relative in relatives:
         candidate = ROOT / relative
         if candidate.is_symlink():
             raise ValueError(f"Repository source cannot be a symlink: {relative}")
+        if not strict and not candidate.is_file():
+            hashes[relative] = None
+            continue
         path = candidate.resolve(strict=True)
         try:
             path.relative_to(ROOT)
@@ -105,41 +152,76 @@ def repository_source_hashes(source):
             raise ValueError(f"Repository source escapes root: {relative}") from None
         if not path.is_file():
             raise ValueError(f"Expected repository source file: {relative}")
-        hashes[relative] = sha256(path.read_bytes())
+        hashes[relative] = sha256(read_lf(path))
     return hashes
 
 
-def expected_outputs():
-    source_path = HERE / "source.json"
-    source_bytes = source_path.read_bytes()
+def expected_outputs(refresh_observed=False):
+    """pinned: pakete ait, sıkı denetlenen dosyalar. observed: yalnız gözlenen, anlık görüntü hash'i; sapma bilgidir (--drift)."""
+    source_bytes = (HERE / "source.json").read_bytes()
     source = json.loads(source_bytes.decode("utf-8"))
+    problems = validate(source, load_schema("handoff.schema.json"))
+    if problems:
+        raise ValueError("source.json violates handoff.schema.json: " + "; ".join(problems))
     generated = generated_files(source)
+    repository = source["verified_repository"]
+    pinned = file_hashes(repository["pinned_repository_files"])
+    manifest_path = HERE / "manifest.json"
+    previous = json.loads(manifest_path.read_text(encoding="utf-8")).get("observed_sources_sha256", {}) if manifest_path.is_file() else {}
+    if refresh_observed or set(previous) != set(repository["observed_repository_files"]):
+        observed = file_hashes(repository["observed_repository_files"])
+    else:
+        observed = previous
+    outputs = {name: sha256(data) for name, data in generated.items()}
+    source_sha256 = sha256(source_bytes)
     manifest = {
-        "schema_version": 1,
+        "schema_version": 2,
+        "bundle_version": source["bundle_version"],
+        "prepared_on": source["prepared_on"],
         "source_file": "source.json",
-        "source_sha256": sha256(source_bytes),
+        "source_sha256": source_sha256,
         "source_snapshot_commit": source["source_snapshot_commit"],
         "main_snapshot_commit": source["main_snapshot_commit"],
-        "repo_sources_sha256": repository_source_hashes(source),
-        "outputs_sha256": {name: sha256(data) for name, data in generated.items()},
+        "outputs_sha256": outputs,
+        "pinned_sources_sha256": pinned,
+        "observed_sources_sha256": observed,
+        "bundle_sha256": sha256(stable_json({"source": source_sha256, "outputs": outputs, "pinned": pinned})),
         "manifest_self_hash": "omitted: self-referential hash is not meaningful",
+        "line_endings": "hashes are computed over LF-normalized bytes",
         "privacy_boundary": source["scope"]["privacy_boundary"],
         "scan_limit": "Hashes and pattern scans do not prove truth, authorship, or absence of every secret or personal datum.",
     }
+    problems = validate(manifest, load_schema("manifest.schema.json"))
+    if problems:
+        raise ValueError("manifest violates manifest.schema.json: " + "; ".join(problems))
     generated["manifest.json"] = stable_json(manifest)
     return generated
 
 
+def drift():
+    observed = json.loads((HERE / "manifest.json").read_text(encoding="utf-8"))["observed_sources_sha256"]
+    current = file_hashes(observed, strict=False)
+    return {name: ("missing" if current[name] is None else "changed") for name, digest in observed.items() if current[name] != digest}
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--check", action="store_true", help="verify checked-in outputs without writing")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--check", action="store_true", help="verify checked-in outputs, schemas and pinned files without writing")
+    mode.add_argument("--drift", action="store_true", help="informational: list observed files that differ from the manifest snapshot")
     args = parser.parse_args(argv)
-    outputs = expected_outputs()
+    if args.drift:
+        changed = drift()
+        for name, state in changed.items():
+            print(f"DRIFT {state}: {name}")
+        print(f"{len(changed)} observed file(s) differ from the snapshot (informational; not an integrity failure)")
+        return 0
+    outputs = expected_outputs(refresh_observed=not args.check)
     mismatches = []
     for name, expected in outputs.items():
         path = HERE / name
         if args.check:
-            if not path.is_file() or path.read_bytes() != expected:
+            if not path.is_file() or read_lf(path) != expected:
                 mismatches.append(name)
         else:
             path.write_bytes(expected)
@@ -147,7 +229,8 @@ def main(argv=None):
     if mismatches:
         parser.exit(1, "Generated files differ: " + ", ".join(mismatches) + "\n")
     if args.check:
-        print(f"OK: {len(outputs)} generated files match source.json")
+        bundle = json.loads(outputs["manifest.json"].decode("utf-8"))["bundle_sha256"]
+        print(f"OK: {len(outputs)} generated files match source.json; bundle_sha256 {bundle[:12]}")
     return 0
 
 
