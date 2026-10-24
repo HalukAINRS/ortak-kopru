@@ -49,28 +49,28 @@
 <section><h3>evidence</h3><ul><li><p>commit df73d42c0ac63894617f92df7b97e5ec3cc97f78</p></li><li><p>deus-ex-machina-2026-10-24:deus_ex_machina/KAYNAK_DEVRI_20261024.md</p></li><li><p>köprü kaydı k-0111</p></li></ul></section></li><li><section><h3>id</h3><p>hacker-pr5</p></section>
 <section><h3>area</h3><p>Hacker PR #5 (claude/hacker-devri-2026-10-24)</p></section>
 <section><h3>level</h3><p>kısmi</p></section>
-<section><h3>basis</h3><p>deus_ex_machina/HACKER.md ve devir/hacker/README.md okundu; devir/hacker/CLAUDE.md ve DEVIR.md okunmadı; bu dala alınmadı.</p></section>
-<section><h3>evidence</h3><ul><li><p>commit 2a68b375a09475115d526fdb7d81d24b2c523ab1</p></li><li><p>PR #5</p></li></ul></section></li><li><section><h3>id</h3><p>prior-prs</p></section>
+<section><h3>basis</h3><p>deus_ex_machina/HACKER.md, devir/hacker/README.md, CLAUDE.md, DEVIR.md ve Hacker_Ac.ps1 okundu ve risk deseni açısından tarandı (local_verification: prior-pr-review); satır satır kod doğruluğu incelenmedi; bu dala alınmadı.</p></section>
+<section><h3>evidence</h3><ul><li><p>commit 2a68b375a09475115d526fdb7d81d24b2c523ab1</p></li><li><p>PR #5</p></li><li><p>local_verification: prior-pr-review</p></li></ul></section></li><li><section><h3>id</h3><p>prior-prs</p></section>
 <section><h3>area</h3><p>PR #1, #2, #3</p></section>
 <section><h3>level</h3><p>kısmi</p></section>
-<section><h3>basis</h3><p>Durum, taban ve dal GitHub&#x27;dan doğrulandı (üçü de açık taslak); içerikleri okunmadı ve birleştirilmedi.</p></section>
-<section><h3>evidence</h3><ul><li><p>GitHub PR listesi, gözlem tarihi 2026-10-24</p></li></ul></section></li><li><section><h3>id</h3><p>local-copilot-cli</p></section>
+<section><h3>basis</h3><p>Durum, taban ve dal GitHub&#x27;dan doğrulandı (üçü de açık taslak); içerikleri okundu ve risk deseni açısından tarandı, birleştirme çakışmaları yerel olarak hesaplandı (local_verification: prior-pr-review). Satır satır kod doğruluğu incelenmedi; birleştirilmedi.</p></section>
+<section><h3>evidence</h3><ul><li><p>GitHub PR listesi, gözlem tarihi 2026-10-24</p></li><li><p>local_verification: prior-pr-review</p></li></ul></section></li><li><section><h3>id</h3><p>local-copilot-cli</p></section>
 <section><h3>area</h3><p>Yerel Copilot CLI sürümü ve help</p></section>
 <section><h3>level</h3><p>kesin</p></section>
 <section><h3>basis</h3><p>SahitDevam -Secenek Surum ve Yardim çalıştırıldı; sürüm 1.0.103, help 354 satır. Model adı seçilmedi.</p></section>
 <section><h3>evidence</h3><ul><li><p>local_verification: copilot-version, copilot-help</p></li><li><p>kopru_yerel.ps1:75-77</p></li></ul></section></li><li><section><h3>id</h3><p>local-model-choice</p></section>
 <section><h3>area</h3><p>Geçerli model ve efor seçenekleri</p></section>
-<section><h3>level</h3><p>eksik</p></section>
-<section><h3>basis</h3><p>Help --model ve --reasoning-effort bayraklarını listeler; hesabın sunduğu model listesi doğrulanmadı. Seçim kullanıcıya aittir.</p></section>
-<section><h3>evidence</h3><ul><li><p>local_verification: copilot-help</p></li></ul></section></li><li><section><h3>id</h3><p>local-paths</p></section>
+<section><h3>level</h3><p>kısmi</p></section>
+<section><h3>basis</h3><p>Help --model ve --reasoning-effort bayraklarını listeler; hesabın model kataloğu CLI günlüğünden ayrıştırıldı (45 girdi; gemini-4-argon en üst efor high, claude-sonnet-5.5 max; local_verification: account-model-catalog). Seçim kullanıcıya aittir; katalog hesap ve zamana bağlıdır.</p></section>
+<section><h3>evidence</h3><ul><li><p>local_verification: copilot-help</p></li><li><p>local_verification: account-model-catalog</p></li></ul></section></li><li><section><h3>id</h3><p>local-paths</p></section>
 <section><h3>area</h3><p>Yerel yol bağımlılıkları (kopru_yerel.ps1:34-47 değişkenleri)</p></section>
 <section><h3>level</h3><p>kısmi</p></section>
-<section><h3>basis</h3><p>Varlık Test-Path ile doğrulandı; copilot.exe ve codex.exe SHA-256 değerleri resmî sürümle eşleşti (local_verification: binary-hashes); VM&#x27;de claude ve Windows&#x27;ta codex sürümleri salt okunur sorguyla gözlendi (vm-runtime-versions). VM&#x27;deki claude ikilisinin hash&#x27;i ve bağımsız bir claude/codex model çağrısı doğrulanmadı.</p></section>
-<section><h3>evidence</h3><ul><li><p>local_verification: local-paths</p></li><li><p>kopru_yerel.ps1:34-47</p></li></ul></section></li><li><section><h3>id</h3><p>interactive-launch</p></section>
+<section><h3>basis</h3><p>Varlık Test-Path ile doğrulandı; copilot.exe ve codex.exe SHA-256 değerleri resmî sürümle eşleşti (local_verification: binary-hashes); VM&#x27;de claude ve Windows&#x27;ta codex sürümleri salt okunur sorguyla gözlendi (vm-runtime-versions). VM&#x27;deki claude ikilisinin SHA-256 değeri resmî manifestle eşleşti (binary-hashes) ve bağımsız birer claude ve codex model çağrısı çıkış 0 ile döndü (independent-model-calls). Gerçek yeniden başlatma denenmedi.</p></section>
+<section><h3>evidence</h3><ul><li><p>local_verification: local-paths</p></li><li><p>local_verification: binary-hashes</p></li><li><p>local_verification: independent-model-calls</p></li><li><p>kopru_yerel.ps1:34-47</p></li></ul></section></li><li><section><h3>id</h3><p>interactive-launch</p></section>
 <section><h3>area</h3><p>Etkileşimli başlatma (SahitDevam -Secenek Baslat) ve WinPE davranışı</p></section>
-<section><h3>level</h3><p>eksik</p></section>
-<section><h3>basis</h3><p>Etkileşimli oturum bu denetimde açılmadı; sahte yürütülebilirle başlatıcı testi vardır ama gerçek ikili ve WinPE ortam geri yüklemesi denenmedi.</p></section>
-<section><h3>evidence</h3><ul><li><p>tests/test_sahit_launcher.ps1</p></li><li><p>kopru_yerel.ps1:103-116</p></li></ul></section></li><li><section><h3>id</h3><p>user-acceptance</p></section>
+<section><h3>level</h3><p>kısmi</p></section>
+<section><h3>basis</h3><p>SahitDevam -Secenek Baslat gerçek copilot.exe ile ConPTY altında etkileşimli açıldı: bayraksız başladı, &#x27;Interactive · Manual Approval&#x27; gösterdi, temiz çıktı (local_verification: sahitdevam-interactive). Gerçek masaüstü penceresi, bu devir oturumunun kendisiyle devam ve gerçek yeniden başlatma denenmedi.</p></section>
+<section><h3>evidence</h3><ul><li><p>local_verification: sahitdevam-interactive</p></li><li><p>tests/test_sahit_launcher.ps1</p></li><li><p>kopru_yerel.ps1:103-116</p></li></ul></section></li><li><section><h3>id</h3><p>user-acceptance</p></section>
 <section><h3>area</h3><p>Kullanıcı kabulü</p></section>
 <section><h3>level</h3><p>eksik</p></section>
 <section><h3>basis</h3><p>Tasarım gereği bekliyor: kabul yalnız kullanıcının açık beyanıyla oluşur; otomatik varsayılmaz.</p></section>
@@ -91,23 +91,11 @@
 <section><h3>source</h3><p>Üç önceki cloud task adresi (kısaltılmış; bkz. verified_repository.previous_task_references)</p></section>
 <section><h3>state</h3><p>doğrulanamadı</p></section>
 <section><h3>reason</h3><p>Cloud paketinde 404 döndüğü kayıtlı; bu oturumda GitHub görev API&#x27;si yok; tamamlanma kanıtı sayılmaz.</p></section>
-<section><h3>who_can_supply</h3><p>Kullanıcı (tam adresler PR #4 geçmişinde)</p></section></li><li><section><h3>id</h3><p>pr123-contents</p></section>
-<section><h3>source</h3><p>PR #1, #2, #3 içerikleri</p></section>
-<section><h3>state</h3><p>eksik</p></section>
-<section><h3>reason</h3><p>Yalnız durumları doğrulandı.</p></section>
-<section><h3>who_can_supply</h3><p>Şahit (kullanıcı isterse) ve kullanıcı incelemesi</p></section></li><li><section><h3>id</h3><p>hacker-docs</p></section>
-<section><h3>source</h3><p>devir/hacker/CLAUDE.md ve DEVIR.md (PR #5)</p></section>
-<section><h3>state</h3><p>eksik</p></section>
-<section><h3>reason</h3><p>Okunmadı.</p></section>
-<section><h3>who_can_supply</h3><p>Şahit (kullanıcı isterse)</p></section></li><li><section><h3>id</h3><p>bridge-records</p></section>
+<section><h3>who_can_supply</h3><p>Kullanıcı (tam adresler PR #4 geçmişinde)</p></section></li><li><section><h3>id</h3><p>bridge-records</p></section>
 <section><h3>source</h3><p>kopru.html kayıtlarının tamamı ve kayit/*.md günlükleri</p></section>
 <section><h3>state</h3><p>eksik</p></section>
 <section><h3>reason</h3><p>Yalnız yapı, iki bölüm ve son kayıtlar okundu.</p></section>
-<section><h3>who_can_supply</h3><p>Şahit (kullanıcı isterse)</p></section></li><li><section><h3>id</h3><p>vm-codex-runtime</p></section>
-<section><h3>source</h3><p>VM&#x27;deki claude ikilisinin hash&#x27;i ve bu pakette yapılmış bağımsız bir claude/codex model çağrısı</p></section>
-<section><h3>state</h3><p>doğrulanamadı</p></section>
-<section><h3>reason</h3><p>Köprü kayıtları izleyicinin claude (VM, ssh) ve codex.exe ile model çağıran işlerinin çalıştığını gösterir (local_verification: bridge-model-runs); bu pakette bağımsız bir model çağrısı yapılmadı ve VM&#x27;deki claude ikilisinin hash&#x27;i alınmadı.</p></section>
-<section><h3>who_can_supply</h3><p>Kullanıcı (Kopru_Izle.cmd Hazirlik)</p></section></li><li><section><h3>id</h3><p>cli-sdk-source</p></section>
+<section><h3>who_can_supply</h3><p>Şahit (kullanıcı isterse)</p></section></li><li><section><h3>id</h3><p>cli-sdk-source</p></section>
 <section><h3>source</h3><p>Copilot CLI SDK/kaynak ağacı</p></section>
 <section><h3>state</h3><p>erişilemez</p></section>
 <section><h3>reason</h3><p>İncelenmedi; yalnız --version, --help ve ikili hash&#x27;i (resmî sürümle eşleşti, local_verification: binary-hashes) alındı.</p></section>
@@ -141,7 +129,7 @@
 <section><h3>result</h3><p>Bağlantı kabul edildi.</p></section>
 <section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>vm-runtime-versions</p></section>
 <section><h3>check</h3><p>ssh (StrictHostKeyChecking=yes, BatchMode, kopru_yerel.ps1&#x27;deki anahtar ve known_hosts dosyaları; anahtar içeriği okunmadı) ile VM&#x27;de `uname -sm; claude --version; command -v codex`; Windows&#x27;ta Şaman npm_global altındaki codex.exe --version</p></section>
-<section><h3>result</h3><p>VM: Linux aarch64, claude 2.1.308 (Claude Code). VM&#x27;de codex yok; Codex Windows tarafındadır ve codex-cli 0.163.0 (AGENTS-kopru.md&#x27;deki sürümlerle uyumlu). Yalnız sürüm sorgusu; VM&#x27;deki claude ikilisinin hash&#x27;i yok (Windows ikilileri için bkz. binary-hashes).</p></section>
+<section><h3>result</h3><p>VM: Linux aarch64, claude 2.1.308 (Claude Code). VM&#x27;de codex yok; Codex Windows tarafındadır ve codex-cli 0.163.0 (AGENTS-kopru.md&#x27;deki sürümlerle uyumlu). Yalnız sürüm sorgusu; VM&#x27;deki claude ikilisinin hash&#x27;i ayrı kayıttadır (binary-hashes).</p></section>
 <section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>cli-resume</p></section>
 <section><h3>check</h3><p>Gerçek copilot.exe 1.0.103 ile: (1) başsız (-p, --sync-session=off) tek kullanımlık oturum, sonra --resume=&lt;kimlik&gt;; (2) bu devir oturumunun kilitsiz anlık kopyası başsız --resume (shell ve write reddi); (3) aynı kopya ConPTY (sahte konsol) altında etkileşimli TUI&#x27;de, yerel başlatıcı betikle; (4) mevcut 02 kısayolunun komutu ConPTY altında; (5) kapalı oturumu başka bir TUI tutarken başlatıcının -Bekle akışı</p></section>
 <section><h3>result</h3><p>(1) Çıkış 0; bağlam geri geldi; session.resume olayı model ve eforu kaydetti. (2) Çıkış 0; model son işleri doğru anımsadı; başsız modda izinler geri GELMEDİ (web_fetch ve view reddedildi). (3) Etkileşimli TUI&#x27;de alt çubuk &#x27;Autopilot · Allow All&#x27; gösterdi: kayıtlı kip ve izinler etkileşimli devamda geri YÜKLENİYOR (başsız sonuç bunu göstermez). --mode interactive yalnız kipi Interactive yaptı, Allow All kaldı. /permissions diyalogu &#x27;Manual Approval / Allow All ✓&#x27; sundu; manual, allow-all ve show alt komutları listelendi. Aynı iç kimlik başka süreçte açıkken TUI &#x27;Resume anyway / Go back&#x27; onay ekranı çıkardı. Kopya orijinalle aynı iç kimliği taşıdığından CLI günlüğü orijinal kimliği kaydetti ve kenar çubuğu durum dosyalarında yetim kayıtlar kaldı (temizlendi); orijinalin olay günlüğüne resume/shutdown eklenmedi. (4) Taze TUI&#x27;de alt çubuk &#x27;Gemini 4 Argon · High · 983K context&#x27; ve &#x27;Interactive · Manual Approval&#x27;. (5) --resume ile açılan oturum inuse.*.lock bırakmadı (28 sn gözlem); taze oturum yaklaşık 5 sn&#x27;de bıraktı. Bu yüzden yerel başlatıcıya aynı kimliği komut satırında taşıyan copilot.exe denetimi eklendi; bununla -Bekle açık TUI&#x27;yi bekledi, kapanınca devam etti. Orijinal oturumun kendisiyle etkileşimli devam (o oturum kapanınca) denenmedi; orijinalde &#x27;Resume anyway&#x27; onayının çıkıp çıkmayacağı doğrulanmadı.</p></section>
@@ -152,14 +140,14 @@
 <section><h3>check</h3><p>TUI /subagents ekranı (salt okuma; settings.json hash&#x27;i değişmedi), subagents altındaki anahtar adaylarının başsız denemesi, dört konumda özel ajan tanımı araması</p></section>
 <section><h3>result</h3><p>Yedi yerleşik ajanın hepsi &#x27;preferred gemini-4-argon · Overridden: Yes · On&#x27; gösterdi; ekranda ayrı bir &#x27;varsayılan&#x27; satırı yok. subagents.default, defaultModel, model, agents.default ve agents.* anahtarları çalışmadı; yalnız subagents.agents.&lt;tür&gt; çalışır. Özel ajan tanımı (agents klasörleri, *.agent.md) aranan dört konumda yok.</p></section>
 <section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>binary-hashes</p></section>
-<section><h3>check</h3><p>Get-FileHash SHA-256, Get-AuthenticodeSignature; resmî sürüm sayfalarındaki özetlerle karşılaştırma (copilot-cli v1.0.103 copilot-win32-x64.zip indirilip özeti doğrulandı ve içindeki copilot.exe ile bayt bayt karşılaştırıldı; codex rust-v0.163.0 codex-x86_64-pc-windows-msvc.exe varlığının özeti)</p></section>
-<section><h3>result</h3><p>copilot.exe b9c80f89723122bcb5a032782a9c9814fb4c903af0caca57b77d9aa11e2096bd: resmî arşivdeki ile aynı; arşiv özeti GitHub&#x27;ın yayımladığıyla aynı (e63b81a1a9e2…). codex.exe 2692c8c7bb2cf8b0aefe638741fc90236f4b824c59578ce84994f9de58200993: resmî varlıkla aynı boyut (341270320) ve özet. İkisinin Authenticode durumu Valid (GitHub, Inc.; OpenAI OpCo, LLC). VM&#x27;deki claude ikilisi bu kapsamda değil.</p></section>
+<section><h3>check</h3><p>Get-FileHash SHA-256, Get-AuthenticodeSignature; resmî sürüm sayfalarındaki özetlerle karşılaştırma (copilot-cli v1.0.103 copilot-win32-x64.zip indirilip özeti doğrulandı ve içindeki copilot.exe ile bayt bayt karşılaştırıldı; codex rust-v0.163.0 codex-x86_64-pc-windows-msvc.exe varlığının özeti; VM&#x27;deki claude 2.1.308 ELF&#x27;inin SHA-256&#x27;sı ssh ile (StrictHostKeyChecking=yes, BatchMode) hesaplanıp downloads.claude.ai/claude-code-releases/2.1.308/manifest.json&#x27;daki linux-arm64 özetiyle karşılaştırıldı)</p></section>
+<section><h3>result</h3><p>copilot.exe b9c80f89723122bcb5a032782a9c9814fb4c903af0caca57b77d9aa11e2096bd: resmî arşivdeki ile aynı; arşiv özeti GitHub&#x27;ın yayımladığıyla aynı (e63b81a1a9e2…). codex.exe 2692c8c7bb2cf8b0aefe638741fc90236f4b824c59578ce84994f9de58200993: resmî varlıkla aynı boyut (341270320) ve özet. İkisinin Authenticode durumu Valid (GitHub, Inc.; OpenAI OpCo, LLC). VM claude ELF&#x27;i /opt/halukai/runtime/claude-code/2.1.308/claude fdd22e6cbb734d580f5664c48df4294eeec850218ff07f186f9af30426396ee1: resmî manifestteki linux-arm64 özetiyle aynı (boyut 292085944 da aynı). /usr/local/bin/claude bir 488 baytlık bash sarmalayıcıdır (yapılandırma dizini, model ve efor ortam değişkenlerini ayarlayıp bu ELF&#x27;i exec eder); sarmalayıcı resmî sürüm parçası değildir ve hash eşleşmesi yalnız ELF için geçerlidir.</p></section>
 <section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>account-model-catalog</p></section>
 <section><h3>check</h3><p>copilot.exe --log-level all ile başsız tek çağrı; CLI&#x27;nin CAPI&#x27;den aldığı model kataloğu günlükte ayrıştırıldı (hesap tanımlayıcısı alınmadı)</p></section>
 <section><h3>result</h3><p>Katalogda 45 girdi. gemini-4-argon: policy enabled, model seçici açık, desteklenen efor low/medium/high (en üst high), en çok 983040 istem belirteci. claude-sonnet-5.5: low/medium/high/xhigh/max. max destekleyen: claude ailesi, gpt-5.6/gpt-6 ailesi, kimi-k3.</p></section>
 <section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>bridge-model-runs</p></section>
 <section><h3>check</h3><p>kayit/20261024-100135Z-Claude.md, 20261024-100454Z-ChatGPT.md ve 20261024-101157Z-Copilot.md başlıkları ve köprü kayıtlarının zamanları (k-0117 13:01:35, k-0118 13:04:54, k-0119 13:11:57, +03:00)</p></section>
-<section><h3>result</h3><p>Kayıt başlıkları izleyicinin claude&#x27;u VM&#x27;de ssh ile, codex&#x27;i codex.exe ile ve Copilot&#x27;u copilot.exe ile çalıştırdığını ve her çalıştırmanın bir köprü kaydı ürettiğini gösterir (dosya-kayıt eşleştirmesi zamanladır; başlıktaki &#x27;eklendi&#x27; numarası birleştirmede kayıt numarasından farklı olabilir). Bunlar izleyicinin çalıştırmalarıdır; bu paket kendi başına model çağıran claude/codex çağrısı yapmadı.</p></section>
+<section><h3>result</h3><p>Kayıt başlıkları izleyicinin claude&#x27;u VM&#x27;de ssh ile, codex&#x27;i codex.exe ile ve Copilot&#x27;u copilot.exe ile çalıştırdığını ve her çalıştırmanın bir köprü kaydı ürettiğini gösterir (dosya-kayıt eşleştirmesi zamanladır; başlıktaki &#x27;eklendi&#x27; numarası birleştirmede kayıt numarasından farklı olabilir). Bunlar izleyicinin çalıştırmalarıdır; bu paketin kendi çağrıları ayrı kayıttadır (independent-model-calls).</p></section>
 <section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>x-reset-sim</p></section>
 <section><h3>check</h3><p>Yerel başlatıcının kopyasında X: geçici ve düğüm önbelleği dizin adları test adlarıyla değiştirildi; dizinler yokken başsız --resume; işletim sistemi MiniNT anahtarı</p></section>
 <section><h3>result</h3><p>Dizinler yokken başlatıcı ikisini de yeniden oluşturdu, çıkış 0 ve oturum bağlamıyla devam etti. İşletim sistemi Windows 11 build 22621 ve MiniNT anahtarı var (WinPE). Gerçek yeniden başlatma (reboot) denenmedi.</p></section>
@@ -172,6 +160,21 @@
 <section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>deus-live-app</p></section>
 <section><h3>check</h3><p>Şaman&#x27;ın deus_ex_machina uygulamasının yerel adresine salt okunur GET (kök ve durum uç noktası), dinleyen adres, Şaman&#x27;ın doğrulama kayıtlarının okunması</p></section>
 <section><h3>result</h3><p>Uygulama yalnız yerel adreste dinliyor ve yanıt veriyor; durum yanıtında yalnız Şaman oturumu kayıtlı. Şaman&#x27;ın kayıtları gerçek HTTP turunu, yeniden başlatma sonrası aynı işi ve kaynak bağlamı alanlarının korunmasını bildirir; tıklama, sürekli CLI tüketicisi ve diğer katmanların bağlantısı sınanmadı olarak işaretli. Bu devir uygulamaya hiçbir kayıt yazmadı.</p></section>
+<section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>independent-model-calls</p></section>
+<section><h3>check</h3><p>Bu paketin kendi bağımsız çağrıları, izleyicinin komutlarından türetilen sınırlarla: (1) Codex: izleyicinin ortamı (HOME, CODEX_HOME, TEMP; API anahtarı boş), codex.exe exec --skip-git-repo-check --ephemeral -s read-only -c model_reasoning_effort=xhigh, istem stdin&#x27;den &#x27;Yalnizca tamam yaz. Arac kullanma.&#x27;; (2) Claude: VM&#x27;de ssh ile claude -p --no-session-persistence --tools &#x27;&#x27; ve aynı istem; her ikisinde oturum dosyası sayısı önce/sonra</p></section>
+<section><h3>result</h3><p>Codex: çıkış 0, 23 sn, model gpt-6.1-sol, efor xhigh, sandbox read-only, yanıt &#x27;tamam&#x27;; oturum dosyası sayısı 37 → 37 (--ephemeral iz bırakmadı); stderr&#x27;de &#x27;failed to write models cache: Access is denied&#x27; uyarısı var (modeli etkilemedi, neden araştırılmadı). Claude: çıkış 0, 37 sn, yanıt &#x27;tamam&#x27;; CLAUDE_CONFIG_DIR altındaki projects dizininde jsonl sayısı 72 → 72 (--no-session-persistence iz bırakmadı; sarmalayıcı yolunun readlink ile aynı dizine çözüldüğü doğrulandı). Hiçbir araç çalıştırılmadı, hiçbir köprü kaydı yazılmadı. Gerçek iş yükü, uzun çalışma ve izleyicinin tam komut satırı (stdin ve uzun istemler) denenmedi.</p></section>
+<section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>watcher-tool-surface</p></section>
+<section><h3>check</h3><p>İzleyicinin Copilot bayraklarıyla (ayarlar-yerel.json:57-77 düzeni: -s, --no-ask-user, --allow-all-tools, --deny-tool shell,write, --disable-builtin-mcps) yalıtılmış başsız sınamalar, zararsız sondalar, geçici çalışma dizini; yasak kuralı olmayan kontrol çağrısıyla karşılaştırma</p></section>
+<section><h3>result</h3><p>Virgüllü --deny-tool shell,write iki ayrı kural gibi çözülür (ayrı bayraklarla aynı sonuç; kontrol çağrısı başarılı). powershell, create ve edit reddedilir. Alt ajan (task → general-purpose) shell yasağını aşamaz. Çalışma dizini dışında view reddedilir. AÇIK BULGU: web_fetch, --allow-all-urls olmadan da --allow-all-tools altında BAŞARILI olur (dış ağa çıkış kanalı). Doğrulanan hafifletmeler: --deny-tool url web_fetch&#x27;i engeller; --excluded-tools web_fetch aracı kaldırır. Bayrakların altında görünen araç yüzeyi (modelin kendi bildirimi, bağımsız doğrulanmadı): create, edit, powershell, view, grep, glob, web_fetch, task, sql, session_store_sql, skill, fetch_copilot_cli_documentation, dynamic_workflows_manage, run_dynamic_workflow, search_code_subagent, semantic_code_search, list_agents, read_agent, write_agent, list_powershell, read_powershell, stop_powershell; store_memory, GitHub MCP ve ask_user yok. Üç öğeli virgüllü biçim (shell,write,url) sınanmadı. ayarlar-yerel.json değiştirilmedi.</p></section>
+<section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>sahitdevam-interactive</p></section>
+<section><h3>check</h3><p>kopru_yerel.ps1 -Mod SahitDevam -Secenek Baslat, gerçek copilot.exe ile ConPTY altında etkileşimli; ardından çıkış, test oturumunun silinmesi ve settings.json özetinin karşılaştırılması</p></section>
+<section><h3>result</h3><p>Copilot üst süreç pwsh altında bayraksız başladı; alt çubuk &#x27;Interactive · Manual Approval&#x27; ve &#x27;Claude Sonnet 5.5 · Max · 936K context&#x27; gösterdi; &#x27;izin genişletme / otomatik zincir: yok&#x27; yazdı; temiz çıktı. settings.json değişmedi. Bu yolun --model veya efor geçirmediği, dolayısıyla Argon&#x27;u kullanmadığı gözlendi (Argon yalnız Sahit_Baslat.ps1 ve Sahit_Oturum.ps1 özel başlatıcılarında).</p></section>
+<section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>prior-pr-review</p></section>
+<section><h3>check</h3><p>GitHub MCP salt okuma ile PR #1-#8 durumları, PR #1, #2, #3 ve #5 dosya içerikleri; subprocess, --allow-all, pull_request_target ve gizli veri desenleri için tarama; yerel git merge-tree --write-tree ile origin/main (fbb8310) karşısında her dal tek başına ve çiftler halinde</p></section>
+<section><h3>result</h3><p>PR #1-#8 hepsi açık taslak, hiçbiri birleşmedi. PR #2 (kopru_governance) ve PR #3 (ortak_kopru) birbirine rakip cloud-Copilot &#x27;denetlenebilir bağlam&#x27; uygulamalarıdır; ikisi de kopru_yanitla.py, README.md ve checks/steering_lint.py, policy/* dosyalarına dokunur; subprocess yalnız git için, ağ yalnız mevcut urllib çağrı yolunda; --allow-all ve pull_request_target yok. PR #5: Hacker belgeleri ve Hacker_Ac.ps1 (claude --continue/--resume, StrictHostKeyChecking=yes, izin atlatma bayrağı yok). Birleştirme: her dal tek başına temiz birleşir, istisna deus-ex-machina-2026-10-24 dalı ve PR #7 (README.md çakışması). Çiftlerde PR #2 ile PR #3 çakışır (7 dosya; .gitignore, README.md, checks/steering_lint.py ekle/ekle, istem-sablonu.md dahil) ve PR #6 ile PR #7 README.md&#x27;de çakışır; diğer çiftler temiz. Satır satır kod incelemesi ve çalıştırma yapılmadı; desen taraması yokluk kanıtı değildir.</p></section>
+<section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>known-hosts-equal</p></section>
+<section><h3>check</h3><p>known_hosts ve known_hosts_hacker_arm64_035 içindeki ana makine anahtarı parmak izlerinin karşılaştırılması (anahtar dosyası içeriği okunmadı)</p></section>
+<section><h3>result</h3><p>İkisi de aynı ED25519 ana makine anahtarını tutar (parmak izleri eşit).</p></section>
 <section><h3>status</h3><p>observed</p></section></li></ul></section>
 <section><h2>verified_repository</h2><section><h3>repository</h3><p>HalukAINRS/ortak-kopru</p></section>
 <section><h3>working_branch</h3><p>sahit/cli-devri-2026-10-24</p></section>
@@ -289,17 +292,17 @@
 <section><h3>priority</h3><p>2</p></section>
 <section><h3>owner</h3><p>user</p></section>
 <section><h3>state</h3><p>planned</p></section>
-<section><h3>item</h3><p>PR #4 (içeriği bu dalda), PR #5, Şaman dalı ve PR #1-#3 için birleştirme/kapatma kararı. k-0016 &#x27;main yalnız köprü dosyalarını taşır&#x27; kararı bu dalın main&#x27;e alınmasıyla çelişebilir: dal olarak mı tutulacak, main&#x27;e mi alınacak? Birleşmede Şaman dalının deus_ex_machina/README.md&#x27;si (bu dal KUYRUK.md kullanır, çakışmaz) ile PR #5&#x27;in kopru_yerel.ps1 ve README.md değişiklikleri elle çözülmelidir.</p></section>
+<section><h3>item</h3><p>PR #4 (içeriği bu dalda), PR #5, Şaman dalı ve PR #1-#3 için birleştirme/kapatma kararı. k-0016 &#x27;main yalnız köprü dosyalarını taşır&#x27; kararı bu dalın main&#x27;e alınmasıyla çelişebilir: dal olarak mı tutulacak, main&#x27;e mi alınacak? Birleşmede Şaman dalının deus_ex_machina/README.md&#x27;si (bu dal KUYRUK.md kullanır, çakışmaz) ile PR #5&#x27;in kopru_yerel.ps1 ve README.md değişiklikleri elle çözülmelidir. Yerel merge-tree sonucu (local_verification: prior-pr-review): PR #6 ile PR #7 README.md&#x27;de, PR #2 ile PR #3 yedi dosyada çakışır; birleştirme sırası kullanıcı kararıdır.</p></section>
 <section><h3>evidence_required</h3><p>Kullanıcının açık deposu eylemi; hiçbir dal otomatik birleştirilmez.</p></section></li><li><section><h3>id</h3><p>interactive-launch</p></section>
 <section><h3>priority</h3><p>3</p></section>
 <section><h3>owner</h3><p>user</p></section>
 <section><h3>state</h3><p>planned</p></section>
-<section><h3>item</h3><p>Kopru_Izle.cmd SahitDevam -Secenek Baslat ile etkileşimli oturumu açıp ilk istemi (START_HERE.md) vermek; WinPE&#x27;de ortam geri yükleme ve oturum davranışını gözlemek.</p></section>
-<section><h3>evidence_required</h3><p>Kullanıcının yerel gözlemi; bu denetimde etkileşimli oturum açılmadı.</p></section></li><li><section><h3>id</h3><p>permission-review</p></section>
+<section><h3>item</h3><p>Kopru_Izle.cmd SahitDevam -Secenek Baslat ile etkileşimli oturumu açıp ilk istemi (START_HERE.md) vermek; WinPE&#x27;de ortam geri yükleme ve oturum davranışını gözlemek. Şahit bu yolu ConPTY altında gerçek copilot.exe ile denedi (local_verification: sahitdevam-interactive); kullanıcının kendi masaüstünde açması ve ilk istemi vermesi kalır.</p></section>
+<section><h3>evidence_required</h3><p>Kullanıcının yerel gözlemi.</p></section></li><li><section><h3>id</h3><p>permission-review</p></section>
 <section><h3>priority</h3><p>4</p></section>
 <section><h3>owner</h3><p>user</p></section>
 <section><h3>state</h3><p>planned</p></section>
-<section><h3>item</h3><p>Köprü çağrısındaki --allow-all-tools + --deny-tool shell,write düzeninin (ayarlar-yerel.json:75-77) yasak listesi yerine izin listesine çevrilip çevrilmeyeceğine karar vermek; çalışan izleyicinin istenip istenmediğini doğrulamak.</p></section>
+<section><h3>item</h3><p>Köprü çağrısındaki --allow-all-tools + --deny-tool shell,write düzeninin (ayarlar-yerel.json:75-77) yasak listesi yerine izin listesine çevrilip çevrilmeyeceğine karar vermek; çalışan izleyicinin istenip istenmediğini doğrulamak. Sınamada web_fetch&#x27;in bu düzende açık kaldığı görüldü (local_verification: watcher-tool-surface); aday sertleştirmeler: --deny-tool url ya da --excluded-tools web_fetch.</p></section>
 <section><h3>evidence_required</h3><p>Kullanıcı kararı; bu dal bu ayarı değiştirmez.</p></section></li><li><section><h3>id</h3><p>first-real-cycle</p></section>
 <section><h3>priority</h3><p>5</p></section>
 <section><h3>owner</h3><p>user+sahit</p></section>
@@ -313,14 +316,14 @@
 <section><h3>evidence_required</h3><p>Kullanıcının sağlayacağı kaynak dosyalar (Chrome&#x27;da sayfayı Farklı Kaydet &gt; Web Sayfası, Tamamlandı ile kaydetme); özetlerden yeniden kurulmaz.</p></section></li><li><section><h3>id</h3><p>prior-pr-review</p></section>
 <section><h3>priority</h3><p>7</p></section>
 <section><h3>owner</h3><p>user+sahit</p></section>
-<section><h3>state</h3><p>unverified</p></section>
-<section><h3>item</h3><p>PR #1-#3 ve PR #5 içerikleri (devir/hacker/CLAUDE.md, DEVIR.md dahil) okunmadı; yeniden kullanma, kapatma ya da birleştirme öncesi incelenmeli.</p></section>
-<section><h3>evidence_required</h3><p>İnsan incelemesi ve açık depo eylemi; kullanıcı isterse Şahit okur.</p></section></li><li><section><h3>id</h3><p>local-runtime</p></section>
+<section><h3>state</h3><p>partial</p></section>
+<section><h3>item</h3><p>PR #1-#3 ve PR #5 içerikleri okundu ve desen taramasından geçirildi (local_verification: prior-pr-review); satır satır kod incelemesi yapılmadı. Karar bekleyenler: PR #2 ile #3 rakip uygulamalar ve birbiriyle çakışır; PR #6 ile #7 README.md&#x27;de çakışır; yeniden kullanma, kapatma ya da birleştirme öncesi insan incelemesi gerekir.</p></section>
+<section><h3>evidence_required</h3><p>İnsan incelemesi ve açık depo eylemi.</p></section></li><li><section><h3>id</h3><p>local-runtime</p></section>
 <section><h3>priority</h3><p>8</p></section>
 <section><h3>owner</h3><p>user</p></section>
 <section><h3>state</h3><p>partial</p></section>
-<section><h3>item</h3><p>Sürümler, ikili hash&#x27;leri (copilot.exe, codex.exe: resmî sürümle eşleşti), hesabın model kataloğu, TUI devamı ve X: yeniden oluşturma benzetimi gözlendi (local_verification). Doğrulanmayanlar: VM&#x27;deki claude ikilisinin hash&#x27;i, bu paketin kendi model çağıran claude/codex çağrısı, gerçek yeniden başlatma (reboot) ve orijinal oturumun kendisiyle etkileşimli devam.</p></section>
-<section><h3>evidence_required</h3><p>Kullanıcının yerel çıktıları (Kopru_Izle.cmd Hazirlik; bu devir oturumu kapandıktan sonra 02b kısayoluyla devam ve alt çubukta Argon/High görülmesi).</p></section></li><li><section><h3>id</h3><p>steering</p></section>
+<section><h3>item</h3><p>Sürümler, ikili hash&#x27;leri (copilot.exe, codex.exe ve VM&#x27;deki claude ELF&#x27;i: resmî sürümle eşleşti), hesabın model kataloğu, TUI devamı, X: yeniden oluşturma benzetimi, SahitDevam etkileşimli açılışı ve bağımsız birer claude/codex model çağrısı gözlendi (local_verification). Doğrulanmayanlar: gerçek yeniden başlatma (reboot) ve orijinal oturumun kendisiyle etkileşimli devam (o oturum açıkken denenemez).</p></section>
+<section><h3>evidence_required</h3><p>Kullanıcının yerel çıktıları (Kopru_Izle.cmd Hazirlik; bu devir oturumu kapandıktan sonra 02b kısayoluyla devam ve alt çubukta Argon/High görülmesi; gerçek yeniden başlatma sonrası aynı akış).</p></section></li><li><section><h3>id</h3><p>steering</p></section>
 <section><h3>priority</h3><p>9</p></section>
 <section><h3>owner</h3><p>user</p></section>
 <section><h3>state</h3><p>partial</p></section>
@@ -347,9 +350,9 @@
 <section><h3>evidence</h3><ul><li><p>local_verification: cli-resume</p></li></ul></section>
 <section><h3>mitigation</h3><p>Açılınca /permissions manual ile Manual Approval&#x27;a dönülür (diyalog ve alt komutlar gözlendi). --mode interactive yalnız kipi Interactive yapar, izni kaldırmaz. Devamı yapmadan önce kullanıcı bu durumu bilmelidir.</p></section></li><li><section><h3>id</h3><p>bridge-allow-all-tools</p></section>
 <section><h3>severity</h3><p>medium</p></section>
-<section><h3>risk</h3><p>Köprü çağrısı Şahit&#x27;i --allow-all-tools ile, yalnız shell ve write yasaklanarak çalıştırır: yasak listesi modelidir; açık kalan diğer araçların tam listesi doğrulanmadı.</p></section>
-<section><h3>evidence</h3><ul><li><p>ayarlar-yerel.json:75-77</p></li><li><p>kopru_yerel.ps1:321-325</p></li></ul></section>
-<section><h3>mitigation</h3><p>Bu dal değiştirmez. SahitDevam bu bayrağı geçirmez (kopru_yerel.ps1:75-77; tests/test_sahit_launcher.ps1). İzin listesine geçiş kullanıcı kararıdır.</p></section></li><li><section><h3>id</h3><p>live-watcher-autopush</p></section>
+<section><h3>risk</h3><p>Köprü çağrısı Şahit&#x27;i --allow-all-tools ile, yalnız shell ve write yasaklanarak çalıştırır: yasak listesi modelidir. Sınamada shell ve write kuralları (alt ajan dahil) tuttu, ama web_fetch --allow-all-urls olmadan da çalıştı: dış ağa çıkış kanalı açıktır. Köprü istemleri ve sayfa içeriği güvenilmeyen girdi olduğundan bu, istem enjeksiyonuyla veri sızdırma yolu olabilir.</p></section>
+<section><h3>evidence</h3><ul><li><p>ayarlar-yerel.json:75-77</p></li><li><p>kopru_yerel.ps1:321-325</p></li><li><p>local_verification: watcher-tool-surface</p></li></ul></section>
+<section><h3>mitigation</h3><p>Bu dal ayarlar-yerel.json&#x27;ı değiştirmez. SahitDevam bu bayrağı geçirmez (kopru_yerel.ps1:75-77; tests/test_sahit_launcher.ps1). Sınamada doğrulanan hafifletmeler: --deny-tool url ya da --excluded-tools web_fetch. İzin listesine geçiş ve bu eklemeler kullanıcı kararıdır.</p></section></li><li><section><h3>id</h3><p>live-watcher-autopush</p></section>
 <section><h3>severity</h3><p>medium</p></section>
 <section><h3>risk</h3><p>Çalışan izleyici (kopru_yerel.ps1 -Mod Izle) canlı depoda kirli çalışma ağacı görürse git add -A ile main&#x27;e gönderir; canlı çalışma ağacında dosya bırakmak ya da dal değiştirmek istenmeyen bir gönderime yol açabilir.</p></section>
 <section><h3>evidence</h3><ul><li><p>kopru_izle.ps1:42-44</p></li><li><p>kopru_gonder.ps1:36</p></li><li><p>kopru_gonder.ps1:76</p></li></ul></section>
