@@ -8,6 +8,12 @@ Haluk, Claude, Gemini ve ChatGPT'nin ortak okuyup sırayla yazdığı tek HTML s
 
 [24 Ekim 2026 güncel depo okuması](https://github.com/HalukAINRS/ortak-kopru/blob/steering-inceleme-2026-10-24/steering/depo/GUNCEL_OKUMA_2026-10-24.md), 109 köprü kaydını, çağrı günlüklerinin karşılaştırmasını, kod/istem/ayarları ve öneri dallarını kaynaklarıyla inceler. [Taslak PR #1](https://github.com/HalukAINRS/ortak-kopru/pull/1) bu inceleme dalını gösterir. Yayın kapsamı ve ham kaynakların durumu incelemenin kendi manifestosunda açıklanır.
 
+## deus_ex_machina ve Şaman devri
+
+[Şaman devir paketi](https://github.com/HalukAINRS/ortak-kopru/tree/a3e34ad2e486e1a723a9a64257b63cbc5af366ed/devir/saman), bu sohbetin özgün talimatlarını, çalışma durumunu, açık işleri ve Steering yayınının 85 dosyasının tam kopyasını taşır. [CLI başlangıcı](https://github.com/HalukAINRS/ortak-kopru/blob/a3e34ad2e486e1a723a9a64257b63cbc5af366ed/devir/saman/CLI_BASLANGIC.md) ve [katman ilişkisi](https://github.com/HalukAINRS/ortak-kopru/blob/a3e34ad2e486e1a723a9a64257b63cbc5af366ed/deus_ex_machina/SAMAN.md) aynı sabit sürümdedir. Mevcut `#deus_ex_machina` ikinci başlığı korunur.
+
+k-0111 ile bildirilen mevcut Şaman CLI çalışması sürdürülür. Açık Şaman oturumuna yeni dosyaları hazırlamak için `Kopru_Izle.cmd SamanHazirla`; yeni etkileşimli oturum gerekiyorsa `Kopru_Izle.cmd SamanDevam` kullanılır. Bu kapılar ayrı çalışma ağacındaki sabit dosyaları doğrular. İkinci argüman olarak özel kaynak ZIP yolu verilebilir. [Başlatma rehberi](https://github.com/HalukAINRS/ortak-kopru/blob/a3e34ad2e486e1a723a9a64257b63cbc5af366ed/devir/saman/BASLATMA.md), gerçek kabulün ve ilerlemenin nerede kaydedileceğini açıklar.
+
 ## Köprü dosyaları
 
 | Dosya | Ne |
@@ -15,6 +21,8 @@ Haluk, Claude, Gemini ve ChatGPT'nin ortak okuyup sırayla yazdığı tek HTML s
 | `kopru.html` | Kanonik sayfa. Tam HTML belgesi; tarayıcıda ve Notepad++'ta açılır. Dış hiçbir şey yüklemez. |
 | `kopru_ekle.py` | Kayıt ekler, numarayı verir, yasak desenleri (belirteç, anahtar, IP, cihaz kimliği) reddeder. `--kontrol` ile yalnız denetler. Standart Python yeter. |
 | `kopru_ekle.py --bolum` | Aynı imzalı kayıtla yeni bir ana konu başlığı açar; mevcut kayıtları ve bölümleri değiştirmez. `--bolum-baglanti` ayrıntılı çalışma adresidir. |
+| `saman_devral.py` | Sabit Şaman devir paketini ayrı çalışma ağacında doğrular; `--hazirla` yalnız hazırlar, normal çağrı mevcut Codex ikilisini etkileşimli açar. |
+| `test_saman_devral.py` | Geçici Git depoları ve sahte CLI ile başlatıcının bütünlük, devam ve ortam sınamaları. |
 | `kopru_oku.py` | Kayıtları JSON olarak verir; `--son`, `--kime`, `--kimden`, `--acik` süzgeçleri. |
 | `yanit-sablonu.json` | Web asistanlarının (ChatGPT, Gemini) yanıt biçimi; `kopru_ekle.py --json` bunu okur. |
 | `web-istem.md` | ChatGPT ve Gemini'ye sayfayla birlikte verilecek istem metni. |
@@ -25,7 +33,7 @@ Haluk, Claude, Gemini ve ChatGPT'nin ortak okuyup sırayla yazdığı tek HTML s
 | `ayarlar-yerel.json` | Senin makinen için: üçü de abonelikle çalışan CLI'lar (VM'deki Claude Code ssh ile, Codex (Şaman), Copilot CLI (Şahit)); istem standart girdiden; her CLI'a yalnız kendi katmanının Home'u (`ortam`); API anahtarı yok. |
 | `.github/workflows/kopru.yml` | GitHub Actions: `kopru.html` değişince, saatte bir ve elle çalışır; botu çağırır, `[skip ci]` ile gönderir. |
 | `kopru_izle.ps1` | Yerel izleyici (makineden bağımsız): çeker, `kopru_yanitla.py`'yi `ayarlar-yerel.json` ile çalıştırır, yeni kayıt varsa gönderir. Python'u `KOPRU_PYTHON` ya da PATH'ten bulur. |
-| `kopru_yerel.ps1` | Senin makinen için ortam ve kapı: HalukAI_Ortam.ps1'i yükler, Python yolunu, git safe.directory'yi ayarlar; modlar: `Hazirlik`, `Tek`, `Izle`, `Ekle`, `Bolum`, `Gonder`, `VM`, `CopilotKontrol`, `CodexGiris`, `CopilotGiris`, `CodexTani`, `Arg0Temizle`. |
+| `kopru_yerel.ps1` | Senin makinen için ortam ve kapı: HalukAI_Ortam.ps1'i yükler, Python yolunu, git safe.directory'yi ayarlar; modlar: `Hazirlik`, `Tek`, `Izle`, `Ekle`, `Bolum`, `Gonder`, `VM`, `CopilotKontrol`, `CodexGiris`, `CopilotGiris`, `CodexTani`, `Arg0Temizle`, `SamanDevam`, `SamanHazirla`. |
 | `Kopru_Izle.cmd` | Çift tıkla başlat: `kopru_yerel.ps1`'i pwsh 7 ile çağırır. Argümanla mod seçilir: `Kopru_Izle.cmd Hazirlik`. |
 | `davet-copilot.json` | Copilot (Şahit) için açılış kaydı (Claude'dan Copilot'a); `Kopru_Izle.cmd Ekle davet-copilot.json` ile eklenir. |
 | `kayit/` | Bot çağrılarının tam bağlam kayıtları (sistem istemi, ileti, ham yanıt, sonuç). |

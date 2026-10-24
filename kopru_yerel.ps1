@@ -11,12 +11,14 @@
 #   Kopru_Izle.cmd CodexGiris      → Şaman ortamında `codex login` (tarayıcı); "CodexGiris Cihaz" cihaz kodu akışı; "CodexGiris Durum" yalnız durum
 #   Kopru_Izle.cmd CopilotGiris    → Şahit ortamında `copilot login` (tarayıcı); "CopilotGiris Cihaz" cihaz kodu akışı
 #   Kopru_Izle.cmd CodexTani       → Codex tanısı: ortam, config.toml yetki satırları, auth.json alan adları, arg0 geçici klasörleri, kısa deneme çağrısı (değer yazmaz)
+#   Kopru_Izle.cmd SamanDevam    → doğrulanmış devir paketini ayrı çalışma ağacında etkileşimli Şaman ile açar
+#   Kopru_Izle.cmd SamanHazirla  → aynı paketi yalnız hazırlar; CLI çağırmaz
 #   Kopru_Izle.cmd Arg0Temizle     → Codex'in silemediği eski arg0 klasörlerini kilidi tutulmayanlardan başlayarak siler (önce kilit dosyası kapatılır)
 #
 # Yollar Hacker_Baslat.ps1, Saman_Baslat.ps1, Sahit_Baslat.ps1 ve HalukAI_Ortam.ps1'dekilerle aynı; kurulum değişirse
 # burada ve ayarlar-yerel.json'da düzelt. Bu dosya makineye özgüdür; makineden bağımsız izleyici kopru_izle.ps1'dir.
 param(
-  [ValidateSet("Izle", "Hazirlik", "Tek", "Ekle", "Bolum", "Gonder", "VM", "CopilotKontrol", "CodexGiris", "CopilotGiris", "CodexTani", "Arg0Temizle")][string]$Mod = "Izle",
+  [ValidateSet("Izle", "Hazirlik", "Tek", "Ekle", "Bolum", "Gonder", "VM", "CopilotKontrol", "CodexGiris", "CopilotGiris", "CodexTani", "Arg0Temizle", "SamanDevam", "SamanHazirla")][string]$Mod = "Izle",
   [string]$Secenek = "",
   [int]$Dakika = 5,
   [string]$Yalniz = ""
@@ -99,6 +101,25 @@ function Sahit-Ortami {
 }
 
 switch ($Mod) {
+
+
+  "SamanDevam" {
+    $py = Bul-PyYol
+    if (-not $py) { Write-Error "Python yok (bkz. Hazirlik)."; exit 1 }
+    $samanArgs = @("-I", "-X", "utf8", (Join-Path $PSScriptRoot "saman_devral.py"))
+    if ($Secenek) { $samanArgs += @("--kaynak-zip", $Secenek) }
+    & $py @samanArgs
+    exit $LASTEXITCODE
+  }
+
+  "SamanHazirla" {
+    $py = Bul-PyYol
+    if (-not $py) { Write-Error "Python yok (bkz. Hazirlik)."; exit 1 }
+    $samanArgs = @("-I", "-X", "utf8", (Join-Path $PSScriptRoot "saman_devral.py"), "--hazirla")
+    if ($Secenek) { $samanArgs += @("--kaynak-zip", $Secenek) }
+    & $py @samanArgs
+    exit $LASTEXITCODE
+  }
 
   "VM" {
     & pwsh -NoLogo -NoProfile -ExecutionPolicy Bypass -File $HackerBaslat -Mod Kontrol
