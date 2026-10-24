@@ -74,7 +74,11 @@
     "off",
     "--allow-all-tools",
     "--deny-tool",
-    "shell,write"
+    "shell,write",
+    "--deny-tool",
+    "url",
+    "--excluded-tools",
+    "web_fetch"
    ],
    "ortam": {
     "HOME": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\02_Copilot_Sahit\\Home",
