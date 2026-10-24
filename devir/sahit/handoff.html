@@ -65,7 +65,7 @@
 <section><h3>evidence</h3><ul><li><p>local_verification: copilot-help</p></li></ul></section></li><li><section><h3>id</h3><p>local-paths</p></section>
 <section><h3>area</h3><p>Yerel yol bağımlılıkları (kopru_yerel.ps1:34-47 değişkenleri)</p></section>
 <section><h3>level</h3><p>kısmi</p></section>
-<section><h3>basis</h3><p>Varlık Test-Path ile doğrulandı; yürütülebilir dosyaların hash&#x27;i, Hacker VM içindeki claude ve Codex çağrıları doğrulanmadı.</p></section>
+<section><h3>basis</h3><p>Varlık Test-Path ile doğrulandı; VM&#x27;de claude ve Windows&#x27;ta codex sürümleri salt okunur sorguyla gözlendi (local_verification: vm-runtime-versions). Yürütülebilir dosyaların hash&#x27;i ve model çağıran claude/codex çağrıları doğrulanmadı.</p></section>
 <section><h3>evidence</h3><ul><li><p>local_verification: local-paths</p></li><li><p>kopru_yerel.ps1:34-47</p></li></ul></section></li><li><section><h3>id</h3><p>interactive-launch</p></section>
 <section><h3>area</h3><p>Etkileşimli başlatma (SahitDevam -Secenek Baslat) ve WinPE davranışı</p></section>
 <section><h3>level</h3><p>eksik</p></section>
@@ -104,9 +104,9 @@
 <section><h3>state</h3><p>eksik</p></section>
 <section><h3>reason</h3><p>Yalnız yapı, iki bölüm ve son kayıtlar okundu.</p></section>
 <section><h3>who_can_supply</h3><p>Şahit (kullanıcı isterse)</p></section></li><li><section><h3>id</h3><p>vm-codex-runtime</p></section>
-<section><h3>source</h3><p>Hacker VM içindeki claude ve Codex çalıştırılabilirliği</p></section>
+<section><h3>source</h3><p>claude (Hacker VM) ve codex (Windows) ile model çağıran gerçek bir iş çağrısı; ikili hash&#x27;leri</p></section>
 <section><h3>state</h3><p>doğrulanamadı</p></section>
-<section><h3>reason</h3><p>Yalnız VM portunun açık olduğu gözlendi; ssh/claude/codex çağrısı yapılmadı.</p></section>
+<section><h3>reason</h3><p>Yalnız sürüm sorgusu yapıldı (local_verification: vm-runtime-versions); model çağıran çağrı yapılmadı, ikili hash&#x27;i alınmadı.</p></section>
 <section><h3>who_can_supply</h3><p>Kullanıcı (Kopru_Izle.cmd Hazirlik)</p></section></li><li><section><h3>id</h3><p>cli-sdk-source</p></section>
 <section><h3>source</h3><p>Copilot CLI SDK/kaynak ağacı ve ikili hash&#x27;i</p></section>
 <section><h3>state</h3><p>erişilemez</p></section>
@@ -132,13 +132,22 @@
 <section><h3>result</h3><p>Canlı depoda bir kopru_yerel.ps1 -Mod Izle süreci çalışıyor; bu devir ayrı çalışma ağacında yapıldı ve canlı çalışma ağacına dokunulmadı.</p></section>
 <section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>main-drift</p></section>
 <section><h3>check</h3><p>git fetch sonrası git log 52c797e..origin/main; GitHub PR #6 mergeable_state</p></section>
-<section><h3>result</h3><p>main iki kez ilerledi (95d646e: k-0111; 00a2177: Şaman SamanDevam/SamanHazirla + k-0112). İkincisi Kopru_Izle.cmd, README.md ve kopru_yerel.ps1&#x27;e dokundu; GitHub PR #6&#x27;yı çakışmalı (dirty) gösterdi ve main bu dala birleştirilerek çözüldü (verified_repository.main_merged). Paketin gözlenen anlık görüntüsü artık 00a2177&#x27;dir.</p></section>
+<section><h3>result</h3><p>main iki kez ilerledi (95d646e: k-0111; 00a2177: Şaman SamanDevam/SamanHazirla + k-0112). İkincisi Kopru_Izle.cmd, README.md ve kopru_yerel.ps1&#x27;e dokundu; GitHub PR #6&#x27;yı çakışmalı (dirty) gösterdi ve main bu dala birleştirilerek çözüldü (verified_repository.main_merged). Paketin gözlenen anlık görüntüsü artık 00a2177&#x27;dir. Sonradan GitHub mergeable_state: clean gözlendi (head 71faf76, base 00a2177); yeni origin/main (98eef53) için yerel git merge-tree --write-tree çıkış 0 (çakışma yok; main&#x27;de yalnız bot dosyaları kopru.html, ayna/kopru.html, kayit/* değişmişti).</p></section>
 <section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>tests-run</p></section>
 <section><h3>check</h3><p>python -X utf8 -m unittest discover -s tests -v; pwsh -NoProfile -File tests/test_sahit_launcher.ps1; generate.py --check; generate.py --drift; generate.py --pr-govdesi</p></section>
 <section><h3>result</h3><p>24 test OK (taşınabilir Python 3.14.9); başlatıcı testi çıkış 0 (pwsh 7.6.8); --check OK; --drift 0 sapma; --pr-govdesi çıkış 0 (yazmadı). Başka Python/pwsh sürümleri ve Windows dışı ortamlar denenmedi.</p></section>
 <section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>vm-port</p></section>
 <section><h3>check</h3><p>kopru_yerel.ps1&#x27;deki $SshOrtak içinde adı geçen yerel (loopback) VM ssh portuna TCP bağlantı denemesi</p></section>
-<section><h3>result</h3><p>Bağlantı kabul edildi. ssh, claude ve codex çağrısı yapılmadı.</p></section>
+<section><h3>result</h3><p>Bağlantı kabul edildi.</p></section>
+<section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>vm-runtime-versions</p></section>
+<section><h3>check</h3><p>ssh (StrictHostKeyChecking=yes, BatchMode, kopru_yerel.ps1&#x27;deki anahtar ve known_hosts dosyaları; anahtar içeriği okunmadı) ile VM&#x27;de `uname -sm; claude --version; command -v codex`; Windows&#x27;ta Şaman npm_global altındaki codex.exe --version</p></section>
+<section><h3>result</h3><p>VM: Linux aarch64, claude 2.1.308 (Claude Code). VM&#x27;de codex yok; Codex Windows tarafındadır ve codex-cli 0.163.0 (AGENTS-kopru.md&#x27;deki sürümlerle uyumlu). Yalnız sürüm sorgusu; model çağıran çağrı ve ikili hash&#x27;i yok.</p></section>
+<section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>cli-resume</p></section>
+<section><h3>check</h3><p>Gerçek copilot.exe 1.0.103 ile, başsız (-p, --sync-session=off, shell ve write reddi): (1) --session-id ile tek kullanımlık oturum, sonra --resume=&lt;kimlik&gt; ile devam; (2) bu devir oturumunun kilitsiz anlık kopyası (6,9 MB olay günlüğü) --resume ile; (3) kısayol tetiklendi</p></section>
+<section><h3>result</h3><p>(1) Çıkış 0; yeni oturum klasörü açılmadı; ikinci süreç ilk süreçte verilen kelimeyi doğru yanıtladı; session.resume olayı reasoningEffort xhigh ve seçili modeli kaydetti. (2) Çıkış 0, 16 sn; model son işleri doğru anımsadı. Kopyada allowAllPermissions=true ve autopilot kayıtlıydı; devamdan sonra web_fetch ve view, izin açılmamış temel oturumla aynı biçimde reddedildi ve session.permissions_changed olayı oluşmadı: allow-all geri gelmedi. Autopilot kipinin geri gelip gelmediği kanıtlanamadı. (3) Kısayol beklenen pwsh komutunu başlattı; oturum açıkken copilot çocuğu açmadı. Etkileşimli (TUI) devam ve orijinal oturumun kendisi denenmedi (açıkken ikinci süreç açılmaz).</p></section>
+<section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>mcp-pr-write-tool</p></section>
+<section><h3>check</h3><p>Gerçek CLI&#x27;da başsız çalıştırma, bayraksız ve --add-github-mcp-tool update_pull_request ile; araç çağrısı yasak (izin yok)</p></section>
+<section><h3>result</h3><p>Bayraksız: yalnız list_pull_requests, pull_request_read, search_pull_requests görünür. Bayraklı: github-mcp-server-update_pull_request görünür. Hiçbir araç çağrılmadı (tool.execution_start 0). Belirtecin yazma kapsamı doğrulanmadı: belirteç okunmadı, yazma denenmedi.</p></section>
 <section><h3>status</h3><p>observed</p></section></li></ul></section>
 <section><h2>verified_repository</h2><section><h3>repository</h3><p>HalukAINRS/ortak-kopru</p></section>
 <section><h3>working_branch</h3><p>sahit/cli-devri-2026-10-24</p></section>
@@ -286,7 +295,7 @@
 <section><h3>priority</h3><p>8</p></section>
 <section><h3>owner</h3><p>user</p></section>
 <section><h3>state</h3><p>partial</p></section>
-<section><h3>item</h3><p>Sürüm, help ve yol varlığı gözlendi. Hesabın sunduğu model listesi, ikili hash&#x27;i, VM içindeki claude ve Codex çağrıları ve WinPE ortam geri yüklemesi doğrulanmadı.</p></section>
+<section><h3>item</h3><p>Sürüm, help, yol varlığı, VM&#x27;de claude ve Windows&#x27;ta codex sürümleri gözlendi. Hesabın sunduğu model listesi, ikili hash&#x27;i, model çağıran claude/codex çağrıları ve WinPE ortam geri yüklemesi doğrulanmadı.</p></section>
 <section><h3>evidence_required</h3><p>Kullanıcının yerel çıktıları (Kopru_Izle.cmd Hazirlik, SahitDevam -Secenek Yardim ve etkileşimli model seçici).</p></section></li><li><section><h3>id</h3><p>steering</p></section>
 <section><h3>priority</h3><p>9</p></section>
 <section><h3>owner</h3><p>user</p></section>
@@ -301,7 +310,7 @@
 <section><h3>priority</h3><p>11</p></section>
 <section><h3>owner</h3><p>user</p></section>
 <section><h3>state</h3><p>planned</p></section>
-<section><h3>item</h3><p>PR gövdesini otomatik yazma yolu (A: tek MCP aracı, B: PAT&#x27;lı betik) kurulmadı. Kurulacaksa şartlar: yazıcı yalnız body kabul eder; yazmadan önce gövde ve head yeniden okunur, sonra sonuç karşılaştırılır; yedek ve fark çıktısı köprü klasörünün dışında tutulur (kopru_gonder.ps1 git add -A yapar); belirteç diske yazılmaz, kullanıcı kendi kabuğunda girer ve işten sonra iptal eder; A ve B aynı ortam değişkeni adlarını (GH_TOKEN, GITHUB_TOKEN, COPILOT_GITHUB_TOKEN) paylaşmaz; A ayrı oturumda --sync-session off ile ve izleyicinin --allow-all-tools komutuna eklenmeden çalışır; gerçek sınır kod değil belirteç iznidir; iptal sorumlusu ve okunabilir bir kayıt belirlenir.</p></section>
+<section><h3>item</h3><p>PR gövdesini otomatik yazma yolu (A: tek MCP aracı, B: PAT&#x27;lı betik) kurulmadı. Kurulacaksa şartlar: yazıcı yalnız body kabul eder; yazmadan önce gövde ve head yeniden okunur, sonra sonuç karşılaştırılır; yedek ve fark çıktısı köprü klasörünün dışında tutulur (kopru_gonder.ps1 git add -A yapar); belirteç diske yazılmaz, kullanıcı kendi kabuğunda girer ve işten sonra iptal eder; A ve B aynı ortam değişkeni adlarını (GH_TOKEN, GITHUB_TOKEN, COPILOT_GITHUB_TOKEN) paylaşmaz; A ayrı oturumda --sync-session off ile ve izleyicinin --allow-all-tools komutuna eklenmeden çalışır; gerçek sınır kod değil belirteç iznidir; iptal sorumlusu ve okunabilir bir kayıt belirlenir. Gözlem: araç adı gerçek CLI&#x27;da github-mcp-server-update_pull_request olarak yalnız --add-github-mcp-tool update_pull_request ile görünür (local_verification: mcp-pr-write-tool); DPAPI gidiş-dönüşü bu ortamda çalıştı (sahte değerle); belirtecin yazma kapsamı doğrulanmadı.</p></section>
 <section><h3>evidence_required</h3><p>Kullanıcının açık kararı ve belirteç izni; köprü kayıtları k-0116, k-0117, k-0118.</p></section></li></ul></section>
 <section><h2>known_risks</h2><ul><li><section><h3>id</h3><p>bridge-allow-all-tools</p></section>
 <section><h3>severity</h3><p>medium</p></section>

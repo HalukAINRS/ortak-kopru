@@ -3,13 +3,13 @@
   "bundle_version": "2026-10-24.2",
   "prepared_on": "2026-10-24",
   "source_file": "source.json",
-  "source_sha256": "0c26a6ac548b5e7d9598f8fe6e6b3a5ca8dc230119c788f20ccd1655be25fc63",
+  "source_sha256": "fe686405a4e8a96eeb656872a84ecce5e3d07d77909a6adc400ef4388cae0445",
   "source_snapshot_commit": "99dc8a37ef158ee42ee535f631f64e136fef202a",
   "main_snapshot_commit": "00a2177530ffc94c33c8a4df9bb8c4df172c937e",
   "outputs_sha256": {
-    "handoff.txt": "56765f03fcdfaa57dc3a5f4f8ae4e995befe81e3403c223dbf8db0fd10786777",
-    "handoff.html": "46a13bae9b894e8eeee79266077701356924c4d3724ed2be15583383fd2d946f",
-    "handoff.json": "9824c51c06b8e61c21745a7684486116b81370f4d85ca4ad34d6faf9dec57c66",
+    "handoff.txt": "15f239f7b1cc636a0b188c2cab2f39182fbc32017835473705958db2b61341a4",
+    "handoff.html": "21e09c8c64f8d1df8007b833e70221cb0a79d4520d770dc5626f7ce2202aeeaa",
+    "handoff.json": "cc68f52096796f7142ca402909936fbf3153fcc7e0b0d2c34c486c94324ffe5c",
     "START_HERE.md": "9d3514d7c747ade6e7a2fae290016d1d7819b875aa8840a048420c4e4842caa4"
   },
   "pinned_sources_sha256": {
@@ -45,7 +45,7 @@
     "kopru_yanitla.py": "0988f3c9f1e938aa88b254b3a8dee714b218055163d1b5ea51129cc81e997d00",
     ".github/workflows/kopru.yml": "e119ea788300cfa5c7d7becf868ba70681abc5710537c77be0523430733b0467"
   },
-  "bundle_sha256": "bb93e661fd0494d40ee98e52958a2a83258b59fa5440fb42a057975e120a2a83",
+  "bundle_sha256": "e9f4d63b1697987cd2d5bb1c7f0e6d9ec3557ac8d89de8a7d6c6521cd32db788",
   "manifest_self_hash": "omitted: self-referential hash is not meaningful",
   "line_endings": "hashes are computed over LF-normalized bytes",
   "privacy_boundary": "Manifest yalnız repository-relative kaynak yollarını ve içerik hash'lerini yayımlar. Makineye özgü mutlak yollar, Home/cache konumları, anahtarlar, belirteçler, oturum dosyaları ve kimlik değerleri dışarı alınmaz. Hash ve tarama, gizli veri bulunmadığını garanti etmez.",
