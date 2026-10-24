@@ -1,0 +1,89 @@
+{
+  "date": "2026-10-25",
+  "archive_bytes": 380952,
+  "archive_sha256": "3b9fb1c07df63f508651cc9b9e6295c6232d5e4fa0932730977ba381bea8a7b1",
+  "file_members": 160,
+  "distinct_member_body_hashes": 105,
+  "compared_archives": 7,
+  "identical_members_against_compared_archives": 0,
+  "selected_sources": 3,
+  "output_files": 9,
+  "all_roundtrips_exact": true,
+  "raw_originals_remain_private": true,
+  "historical_instructions_executed": false,
+  "chatgpt_candidates": 3,
+  "chatgpt_candidate_message_count": 1,
+  "new_runtime_denial_events_proven": false,
+  "sources": [
+    {
+      "ad": "masaustu_kaynak_01",
+      "katman": "chatgpt-aktarilmis",
+      "bayt": 17306,
+      "sha256": "45916cefdb2763814cdd383f208bdf957b21b1b6f343f46eb95b3097088911d2",
+      "mesaj": 13,
+      "maske_sayilari": {
+        "BELIRTEC": 1,
+        "UZUN-DEGER": 1
+      },
+      "html_icerigi": false,
+      "teknik_imza_ozgun": {
+        "statsigPayload": 1,
+        "feature_gates": 1,
+        "dynamic_configs": 1,
+        "layer_configs": 1,
+        "can_record_session": 1,
+        "isRoutingExperimentParticipant": 1,
+        "marketingEligibility": 1
+      },
+      "full_text_roundtrip_exact": true,
+      "speaker_attribution_verified": false,
+      "complete_original_conversation_verified": false,
+      "runtime_activation_verified": false,
+      "lexical_candidate_counts": {
+        "assistant|ANT-B04": 3
+      }
+    },
+    {
+      "ad": "masaustu_kaynak_02",
+      "katman": "gemini-aktarilmis",
+      "bayt": 117353,
+      "sha256": "a0dc7d43079249967fbd881946bb141fee2186cdead0f5c284381f20099f48f6",
+      "mesaj": 1,
+      "maske_sayilari": {
+        "E-POSTA": 1,
+        "UUID": 42,
+        "IPV4": 49,
+        "IPV6": 2,
+        "UZUN-DEGER": 14
+      },
+      "html_icerigi": false,
+      "teknik_imza_ozgun": {
+        "WIZ_global_data": 1
+      },
+      "full_text_roundtrip_exact": true,
+      "speaker_attribution_verified": false,
+      "complete_original_conversation_verified": false,
+      "runtime_activation_verified": false,
+      "lexical_candidate_counts": {}
+    },
+    {
+      "ad": "masaustu_kaynak_03",
+      "katman": "claude-aktarilmis",
+      "bayt": 10757,
+      "sha256": "ed1af210672583a6af30f97490c7e5d6e195c81e8b1725af67e9e0a2899e900d",
+      "mesaj": 1,
+      "maske_sayilari": {},
+      "html_icerigi": false,
+      "teknik_imza_ozgun": {
+        "vendor-flags": 1,
+        "statsig_hashing_algorithm": 1,
+        "isolated-segment": 1
+      },
+      "full_text_roundtrip_exact": true,
+      "speaker_attribution_verified": false,
+      "complete_original_conversation_verified": false,
+      "runtime_activation_verified": false,
+      "lexical_candidate_counts": {}
+    }
+  ]
+}
