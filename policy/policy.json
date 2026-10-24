@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "policy_id": "ortak-kopru-local-default",
+  "sources": [
+    {
+      "path": "policy/application-instructions.md",
+      "role": "application_instruction",
+      "max_bytes": 65536
+    },
+    {
+      "path": "kopru.html",
+      "role": "untrusted_evidence",
+      "max_bytes": 2097152
+    },
+    {
+      "path": "ayarlar.json",
+      "role": "configuration",
+      "max_bytes": 65536
+    },
+    {
+      "path": "kopru_yanitla.py",
+      "role": "configuration",
+      "max_bytes": 65536
+    }
+  ],
+  "provider": {
+    "requested": "none",
+    "model_requested": "none",
+    "reasoning_requested": "none",
+    "allowed_providers": [],
+    "allowed_models": [],
+    "allowed_reasoning": [
+      "none"
+    ],
+    "allowed_fallbacks": []
+  },
+  "permissions": {
+    "allow_provider_call": false,
+    "allow_network": false,
+    "allow_write": false,
+    "tools": []
+  },
+  "limits": {
+    "max_source_bytes": 4194304,
+    "max_rounds": 1,
+    "timeout_seconds": 180,
+    "max_output_bytes": 262144,
+    "max_output_tokens": 16000,
+    "approval_max_minutes": 30
+  },
+  "approvals_required": [
+    "provider_call",
+    "network",
+    "write"
+  ],
+  "layers": {
+    "visibility": "partial",
+    "strict": false,
+    "accepted_unknown": []
+  }
+}

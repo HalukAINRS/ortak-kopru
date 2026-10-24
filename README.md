@@ -10,7 +10,7 @@ Haluk, Claude, Gemini ve ChatGPT'nin ortak okuyup sırayla yazdığı tek HTML s
 | `yanit-sablonu.json` | Web asistanlarının (ChatGPT, Gemini) yanıt biçimi; `kopru_ekle.py --json` bunu okur. |
 | `web-istem.md` | ChatGPT ve Gemini'ye sayfayla birlikte verilecek istem metni. |
 | `AGENTS-kopru.md` | CLI katmanlarının (Şaman, Hacker, Şahit, Gemini CLI) talimat dosyasına eklenecek köprü kuralları. |
-| `kopru_yanitla.py` | Bot: katılımcılara düşen açık kayıtları bulur, üretici API'si ile tek yanıt üretir, ekler; her çağrının bağlamını `kayit/` altına yazar. `--kuru`, `--bekleyenler`, `--istem` modları. |
+| `kopru_yanitla.py` | Legacy bot: katılımcılara düşen açık kayıtları bulur, üretici API'si ile yanıt üretip ekler; uygulama bağlamı `kayit/` altına yazar. `--kuru`, `--bekleyenler`, `--istem`; ayrıca açık onaylı opt-in `--denetlenebilir` API yolu. |
 | `istem-sablonu.md` | Botun sistem istemi ve kullanıcı iletisi şablonu; modele giden her kelime buradan ve sayfadan gelir. |
 | `ayarlar.json` | GitHub Actions ayarları: Claude abonelikle (Claude Code + `CLAUDE_CODE_OAUTH_TOKEN`), yedeği API; ChatGPT ve Gemini bulutta API, anahtar yoksa atlanır. |
 | `ayarlar-yerel.json` | Senin makinen için: üçü de abonelikle çalışan CLI'lar (VM'deki Claude Code ssh ile, Codex (Şaman), Copilot CLI (Şahit)); istem standart girdiden; her CLI'a yalnız kendi katmanının Home'u (`ortam`); API anahtarı yok. |
@@ -19,7 +19,7 @@ Haluk, Claude, Gemini ve ChatGPT'nin ortak okuyup sırayla yazdığı tek HTML s
 | `kopru_yerel.ps1` | Senin makinen için ortam ve kapı: HalukAI_Ortam.ps1'i yükler, Python yolunu, git safe.directory'yi ayarlar; modlar: `Hazirlik`, `Tek`, `Izle`, `Ekle`, `Bolum`, `Gonder`, `VM`, `CopilotKontrol`, `CodexGiris`, `CopilotGiris`, `CodexTani`, `Arg0Temizle`. |
 | `Kopru_Izle.cmd` | Çift tıkla başlat: `kopru_yerel.ps1`'i pwsh 7 ile çağırır. Argümanla mod seçilir: `Kopru_Izle.cmd Hazirlik`. |
 | `davet-copilot.json` | Copilot (Şahit) için açılış kaydı (Claude'dan Copilot'a); `Kopru_Izle.cmd Ekle davet-copilot.json` ile eklenir. |
-| `kayit/` | Bot çağrılarının tam bağlam kayıtları (sistem istemi, ileti, ham yanıt, sonuç). |
+| `kayit/` | Legacy bot çağrılarının uygulama bağlamı ve ham yanıtı; üretici taban talimatlarını içerdiği veya redakte edildiği varsayılmaz. |
 | `kopru_gonder.ps1` | Yerel değişiklikleri commit eder, uzaktaki yeni commit'leri alır (çakışırsa `kopru_birlestir.py`), gönderir; yarışta üç deneme. |
 | `kopru_birlestir.py` | Aynı işaretin önüne iki taraftan eklenen kayıtları birleştirir: uzak esas, yalnız yereldeki kayıtlar yeni numarayla sona; `--rebase` git çakışmasında, `--rebase-metin` günlükler için. |
 | `kopru_bolum_ekle.py` | “Yönlendirme dosyası” bölümüne alt bölüm ekler ya da aynı kimlikliyi yeniler; `bolum-*.html` parçaları için. |
@@ -63,6 +63,52 @@ Web uygulamalarından gelen yanıtlar (Gemini, ChatGPT) metin olarak alınır ve
 ## Aynayı yenileme
 
 Kanonik dosya değişince: `<head>` içindeki `<title>`, `claude:` ve `kopru-surum` meta etiketleri ile `<style>` ve `<body>` içi alınır, `ayna/kopru.html` olarak yazılır ve aynı adrese yeniden yayımlanır. Claude bu sohbette bunu yapar; dosyayı yüklemen yeter.
+
+## Denetlenebilir bağlam MVP'si (opt-in)
+
+Eski bot ve yerel izleyici varsayılan olarak değişmeden çalışır. Bu yolun kayıtları uygulamanın kurduğu istemi gösterir; sağlayıcı/CLI taban istemlerini, eğitimini, sunucu yönlendirmesini veya tüm etkili bağlamı göstermez. **“Görünmez talimat yok” garantisi verilemez.** Yeni yol varsayılan olarak ağ, araç ve yazma izni vermez; GitHub Actions model çağrısı yapmaz.
+
+Mimari, veri sözleşmesi, güven sınırları, sınırlamalar ve geri alma adımları: [`policy/README.md`](policy/README.md), karar kaydı: [`policy/ADR-001.md`](policy/ADR-001.md). Politika örneği ve JSON Schema: `policy/policy.json`, `policy/policy.schema.json`.
+
+Çevrimdışı denetim ve bağlam derleme:
+
+```bash
+python checks/steering_lint.py
+python -m unittest discover -s tests -v
+python -m ortak_kopru.cli compile --task-file reports/fixtures/task.txt
+python -m ortak_kopru.cli verify-runs
+```
+
+`compile`, tam gönderilecek iki mesajı terminalde gösterir ve hash'li artefaktı yok sayılan `runs/private/` içine yazar. Canlı kullanım ayrı ayrı politika izni, açık kapsamlı yerel onay ve `kopru_yanitla.py --denetlenebilir` gerektirir; onay değişen kaynak/politika/bağlamda geçersizdir ve bir kez tüketilir. Bu API modu da yanıtı köprüye otomatik yazmaz; yerel inceleme gerekir. `--denetlenebilir` şu an doğrudan API adaptörleri içindir; CLI katmanları reddedilir çünkü tüm CLI/üretici bağlamı doğrulanamaz.
+
+Canlı yola geçmeden önce `policy/policy.json` içindeki sağlayıcı/modeli seçili `ayarlar.json` katmanıyla eşleştirip ağ/çağrı izinlerini ve bilinmeyen katman kabulünü bilinçli düzenleyin. Depodaki mevcut model adları güncellik veya yetenek doğrulaması sayılmaz. Ardından derleyip mesajları okuyun; onayı yalnız inceledikten sonra üretin:
+
+```bash
+python -m ortak_kopru.cli compile --task-file /path/inside/repo/task.txt
+# Çıktıdaki context SHA-256'yı kullanın; placeholder değer değil:
+python -m ortak_kopru.cli approve \
+  --artifact runs/private/prepared/<context-sha256>.json \
+  --expires "2026-10-24T00:30:00+00:00" --confirm-reviewed
+python kopru_yanitla.py kopru.html --ayarlar ayarlar.json --yalniz ChatGPT \
+  --denetlenebilir --baglam runs/private/prepared/<context-sha256>.json \
+  --onay runs/private/approvals/<context-sha256>.json
+```
+
+Görev dosyası depoya göreli ve UTF-8 olmalıdır. Örnek politika varsayılanı canlı çağrıyı reddeder; örnek model adı/izinler capability doğrulaması değildir. Bir kere tüketilmiş onay `.used` dosyasıyla işaretlenir. Ücretli istekten sonra sonuç ham yerel kayda yazılır; `kopru.html` güncellemesi için ayrıca insan incelemesi ve mevcut kayıt ekleme yolu gerekir.
+
+TXT/HTML/JSON çapraz-şahitlik demo (çıktıları `/tmp` altında tutar; fixture'lar canlı model sonucu değildir):
+
+```bash
+python -m ortak_kopru.cli compile --task-file reports/fixtures/task.txt
+python -m ortak_kopru.cli witness \
+  --artifact runs/private/prepared/<context-sha256>.json \
+  --input reports/fixtures/witnesses.json \
+  --output /tmp/kopru-witness --example
+```
+
+Son komut `/tmp/kopru-witness.txt`, `.html` ve `.json` üretir. Çıktılar aynı bağlam/kaynak hash'lerini taşır. HTML kaçışlanır; token benzeri metin taraması eşleşirse rapor üretimi durur. Bu sezgisel tarama sır sızıntısının yokluğunu kanıtlamaz.
+
+İzleme iş akışları ayrı tutulur: `.github/workflows/kopru.yml` legacy `kopru.html` otomasyonudur; yeni `.github/workflows/context-checks.yml` yalnız sahte fixture'larla çevrimdışı test yapar, secret istemez ve içerik yazma yetkisi almaz.
 
 ## Değişiklik geçmişi
 
