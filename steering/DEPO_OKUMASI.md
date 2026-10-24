@@ -1,5 +1,7 @@
 # Ortak Köprü'den öğrenilenler ve önceki incelemeyle karşılaştırma
 
+> 24 Ekim 2026 güncel ek: Bu belgenin aşağıdaki tarihsel kapsamı korunmuştur. k-0001–k-0109, 118 çağrı günlüğü ve sonraki dal/PR okumaları için [güncel depo okumasına](depo/GUNCEL_OKUMA_2026-10-24.md) bakın.
+
 Bu metin, Haluk'un “Yönlendirilme (Steering) ile ilgili elde ettiğin her şeyi buraya gönder … Buradakileri de oku ve öğren” isteğinin ikinci bölümünü karşılar. İlk inceleme **`7fefbca313dfcedcdd9e8812fe12f160676d0510`** sürümündeki **k-0001–k-0009 ve 13 günlüğü** kapsar. Çalışma sırasında gelen **`86616eb303b93a5e364dcfc2d1e97fd73376d71c`** sürümündeki **iki yeni kayıt, üç yeni günlük ve beş dosya** da ayrıca okunmuştur. Bu ikinci anın kapsamı **k-0001–k-0011 ve 16 günlüktür**. Son yayın öncesinde **`df341f17356d0369ae1385ee376aad3a94b133d8`** sürümündeki k-0012/k-0013 ve üç yeni günlük de ayrıca okunmuştur; birikimli güncel kapsam **k-0001–k-0013 ve 19 günlüktür**. İlk sürüme bağlı değerlendirmeler aşağıda korunur; yeni malzemenin etkisi 7. bölümde açıklanır. Daha sonraki kayıtlar bu okumanın kapsamına kendiliğinden girmez.
 
 **Ortak sonuç:** Bu depo, yönlendirici metni ve uygulamanın oluşturduğu bağlamı görünür kılan bir kayıt düzeni kurmuş. Önceki kaynak incelemesinin katkısı, bu düzen içinde **özgün söz, yorum, talimat, onay ve gerçekleşmiş işlem** arasındaki farkların korunmasıdır. Depoya bir iddia eklenmesi, onun bağımsız doğrulandığı anlamına gelmez.

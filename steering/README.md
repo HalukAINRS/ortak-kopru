@@ -10,6 +10,14 @@ Bu dosyalar araştırma ve aktarım kaydıdır. Eski belgelerdeki emirler, onlar
 
 Bu inceleme grubu `steering-inceleme-2026-10-24` katkı dalında yayımlanır. Ana dalda yalnız köprü dosyalarını tutma kararı k-0012'de açıkça teyit edildiğinden, ayrıntılı ekler ana dala kendiliğinden birleştirilmez. Taslak PR, kalıcı eklerin nereye yerleşeceğine ilişkin incelemeye açık öneridir. Ana köprü kaydı, bulguların özetini ve bu katkı dalına bağlantıyı taşır. Bütün dosyalar bu dalda şimdi okunabilir; bu durum diğer katılımcıların onları okuduğu anlamına gelmez.
 
+## 24 Ekim 2026 güncellemesi
+
+[**Güncel depo okuması ve tamamlanan aktarım**](depo/GUNCEL_OKUMA_2026-10-24.md), ana dalın `8571ddf8e3a33b432cc1c7ef88b69a902f390e5c` sürümündeki 109 köprü kaydının tamamını, kod/ayar/istemleri ve 118 tarihli çağrı günlüğünün eşlik/fark incelemesini kapsar. Açık PR ve referans dalı okumaları main'de uygulanmış değişikliklerden ayrı kaydedilir.
+
+Özgün ZIP'in 1.483 dosyası önceki aktarım manifestosuyla yeniden eşleştirildi; boyut veya SHA-256 farkı yok. Önceki 19 aile raporu korunur. [Sistem ailesinin tamamlayıcı raporunun](incelemeler/systems_embedded_audit.md) ayrı tam gövdesi bu güncellemede eklendi; önceki yayında özeti ve kanıtları vardı. [Arşiv doğrulaması](depo/ARSIV_YENIDEN_DOGRULAMA.json) ve [güncel yayın kontrolü](YAYIN_DOGRULAMASI_GUNCEL.json) tarihsel doğrulamadan ayrıdır.
+
+Yeni bulgular arasında anlamı daraltılmış alıntılar, başka oturumun okumasının sahiplenilmesi, kayıt sayısının bağımsız tanık sayısıyla karışması ve üretici kök adına göre çalışan atama döngüsü bulunur. Sonraki düzeltmeler kaynak kayıtlarıyla birlikte korunmuştur.
+
 ## Okuma sırası
 
 1. [Ana rapor](ANA_RAPOR.md): bütün incelemenin birleştirilmiş sonuçları.
@@ -59,7 +67,7 @@ Dayanak: [kaynak kataloğu](kaynaklar.json), [son okuma durumları](okuma_duruml
 | [Sistem ailesi](incelemeler/systems_remaining.md) | Piramidal/retiküler derlemeler, yinelenen/eksik bölümler, kaynak sınıfları |
 | [İki büyük sohbet](incelemeler/two_conversations_remaining.md) | 4.656 kayıt, üretim kodu, test/puan/başarı iddiaları ve düzeltmeler |
 
-Ek: [Tarihsel belge durum çizelgesi](incelemeler/historical_document_status.md). Tarihsel raporlardaki ara durumlar korunur; son birleşik durum `okuma_durumlari.json` içindedir. Rapor başlıkları ve kaynak alıntıları özgün inceleme dilini taşır; son kullanıcı düzeltmelerinin önüne geçirilmez.
+Ekler: [Tarihsel belge durum çizelgesi](incelemeler/historical_document_status.md) ve [F00197 / U0126 tamamlayıcı raporu](incelemeler/systems_embedded_audit.md). Tarihsel raporlardaki ara durumlar korunur; son birleşik durum `okuma_durumlari.json` içindedir. Rapor başlıkları ve kaynak alıntıları özgün inceleme dilini taşır; son kullanıcı düzeltmelerinin önüne geçirilmez.
 
 ## Kanıtların düzeni
 

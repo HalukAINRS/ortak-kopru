@@ -5,7 +5,7 @@ Bu dosyalar, kullanıcının ortak-kopru deposuna gönderilmesini istediği stee
 ## Ne aktarıldı?
 
 - [ANA_RAPOR.md](ANA_RAPOR.md): tamamlanmış birleşik inceleme.
-- `incelemeler/`: 19 rapor ve bir tarihsel durum listesi; yorum metinleri kısaltılmadı.
+- `incelemeler/`: 19 aile raporu, bir tarihsel durum listesi ve [bir tamamlayıcı rapor](incelemeler/systems_embedded_audit.md); yorum metinleri kısaltılmadı.
 - `kanitlar/`: 25 kaynak ailesinin analitik JSON kayıtları ve ayrıca özgün paket doğrulamaları. Her birleştirilmiş nesnenin anahtarı eski paketteki göreli dosya yoludur; ilk dosyanın SHA-256 değeri de saklanır. Makine dosyalarında boşlukları azaltılmış JSON kullanıldı; veri değerleri değişmedi.
 - [kaynaklar.json](kaynaklar.json): 325 farklı kaynak, 512 dosya görünümü, adlar, arşiv zincirleri, SHA değerleri, 225 tarihsel atıf kaydı ve eski sayfa dizini.
 - [okuma_durumlari.json](okuma_durumlari.json): güncel 325 kaynak durumu, açıklanan inceleme yöntemi, yorum ve kapsam kayıtları.
@@ -17,7 +17,7 @@ Bu dosyalardaki gönderme ve görev metinleri **incelenen veri** olarak taşın�
 
 Depodaki `AGENTS-kopru.md` ham tarayıcı sayfalarını, belirteç/anahtar/çerez değerlerini, IP ve cihaz kimliklerini yasaklar. Bu kurala uymak için ham tarayıcı sayfaları ve bunların tam metin/JSON türevleri aktarılmadı. Aktarım ayrıca tam sohbet dökümleri, özgün görsel pikselleri ve aynı metni tekrar eden büyük okuma/eşleme akışları yerine bunlar hakkındaki bütün analitik değerlendirmeleri, gerekli kısa alıntıları, kaynak konumlarını, kapsama sonuçlarını ve SHA değerlerini içerir. Bu ikinci tercih, bütün ham arşivi tekrar yayımlamadan bütün inceleme bulgularını taşımak içindir; repo kuralının her kaynak türünü yasakladığı iddia edilmez.
 
-Her bir dosyanın aktarılıp aktarılmadığı, boyutu, SHA değeri, hedefi veya nedeni [aktarim_manifestosu.json](aktarim_manifestosu.json) içinde tek tek bulunur. Manifesto **1483 dosyayı** hesaba katar; **124 kaynak dosyası** doğrudan veya birleştirilmiş olarak aktarıldı. Diğer kaynak gövdelerinin aktarılmaması, o kaynağın bulgularının atıldığı anlamına gelmez.
+Her bir dosyanın aktarılıp aktarılmadığı, boyutu, SHA değeri, hedefi veya nedeni [aktarim_manifestosu.json](aktarim_manifestosu.json) içinde tek tek bulunur. Manifesto **1483 dosyayı** hesaba katar; **125 kaynak dosyası** doğrudan veya birleştirilmiş olarak aktarıldı. Diğer kaynak gövdelerinin aktarılmaması, o kaynağın bulgularının atıldığı anlamına gelmez.
 
 Orijinal inceleme paketi değiştirilmedi. Paket adı `Steering_Evrak_Okuma_Paketi.zip`, boyutu 100.641.653 bayt, SHA-256 değeri `827bb9cac16fdb7b643c576a3bd41523e725ad4542ab023c5c4d45f3435b1009`.
 
@@ -35,3 +35,9 @@ Künye, SHA ve kesin kaynak konumu, bir iddiayı kaynağına bağlamaya yarar. �
 Raporlar Windows masaüstünde Notepad++ ile okunmuş olduklarını ileri sürmez. İnceleme yüklenmiş dosyalar üzerindedir; 325 içeriğin farklı yöntemlerle incelenmiş olması, CLI'ların canlı ayarlarını veya yüklenmeyen kaynakları gördüğümüz anlamına gelmez.
 
 Bu yayım, steering'in tümüyle kapatıldığı veya gizli bir yönetici grubunun belirlendiği iddiasını taşımaz. Korunan ana ayrım: **özgün söz, model yorumu, talimat, yetki ve gözlenen uygulama kanıtı**.
+
+## 24 Ekim 2026 güncellemesi
+
+Özgün ZIP yeniden indirilerek 1.483 dosyanın boyutu ve SHA-256 değeri önceki manifestoyla karşılaştırıldı; eksik veya farklı dosya bulunmadı. Önceki yayının SHA256SUMS içindeki 67 dosyası da kayıtlı değerleriyle eşleşti. [Karşılaştırma kaydı](depo/ARSIV_YENIDEN_DOGRULAMA.json) önceki yayın anını sabitler.
+
+Sistem ailesindeki tamamlayıcı raporun kanıtları ve özeti önceki yayında bulunuyordu; ayrı tam gövdesi aktarılmamıştı. `incelemeler/systems_embedded_audit.md` bu gövdeyi eksiksiz ekler. Manifesto eski kararı da tutarak 125 kaynak girdisini doğrudan veya birleştirilmiş aktarılmış, 1.358 kaynak gövdesini aktarılmamış olarak gösterir. Ham kaynakların yayın durumu değişmedi. Yeni depo okuması ayrı bir kayıt olarak eklenir; eski raporların okuma tarihi ve kapsamı sessizce genişletilmez.

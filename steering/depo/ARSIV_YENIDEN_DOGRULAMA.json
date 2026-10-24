@@ -1,0 +1,365 @@
+{
+  "schema_version": "1.0",
+  "checked_at": "2026-10-24T11:26:43+03:00",
+  "archive": {
+    "name": "Steering_Evrak_Okuma_Paketi.zip",
+    "bytes": 100641653,
+    "sha256": "827bb9cac16fdb7b643c576a3bd41523e725ad4542ab023c5c4d45f3435b1009",
+    "matches_existing_manifest": true,
+    "file_members": 1483,
+    "original_unmodified": true
+  },
+  "analysis_branch_before_update": "steering-inceleme-2026-10-24",
+  "analysis_commit_before_update": "489fd9a70eee90821f5144ad44b049caea4e5071",
+  "verification": {
+    "source_manifest_entries": 1483,
+    "source_entry_checks": 1483,
+    "unlisted_zip_members": [],
+    "missing_zip_members": [],
+    "previous_published_checksums_checked": 67,
+    "previous_published_checksums_match": true,
+    "decisions": {
+      "aktarildi": 124,
+      "dosya_govdesi_aktarilmadi": 1359
+    },
+    "issues": []
+  },
+  "scope": "Bu kontrol kaynak ZIP baytlarini ve onceki yayinin kayitli karmalarini karsilastirir. 325 kaynagin bu oturumda yeniden bastan sona semantik olarak okundugu, ham kaynaklarin GitHuba yuklendigi veya hedef CLI oturumunun bunlari okudugu iddiasi degildir.",
+  "published_checksum_results": [
+    {
+      "path": "AKTARIM_KAPSAMI.md",
+      "expected_sha256": "983688d064f27cc5bb81a95836ea16b37a067bcb75e40c68cb4da9a3c5a5ae32",
+      "matches": true
+    },
+    {
+      "path": "ANA_RAPOR.md",
+      "expected_sha256": "ebb2d085d958b9e873e5fcc9684766c7d25f92f975501710d89dc62957e67c7b",
+      "matches": true
+    },
+    {
+      "path": "DEPO_OKUMASI.md",
+      "expected_sha256": "34b7478fe537c44818e76cf1cda82e0a23258197bc022e9ac4b6bf8676f78f5b",
+      "matches": true
+    },
+    {
+      "path": "ISTENEN_BAGLAM.md",
+      "expected_sha256": "fae1442eccd02bc95557c44a177639d665794331b98e979deef44902ea8e23c1",
+      "matches": true
+    },
+    {
+      "path": "README.md",
+      "expected_sha256": "3c786e7ed7e23c39bed8e967789e08faa4fb451e7701a68abf46f295938bab02",
+      "matches": true
+    },
+    {
+      "path": "YAYIN_DOGRULAMASI.json",
+      "expected_sha256": "9d4f89ef513ffaee87499dc6de43d80d694fcd4e66f45d6d4706f60beac56012",
+      "matches": true
+    },
+    {
+      "path": "aktarim_manifestosu.json",
+      "expected_sha256": "3dd98d895a321bed9bf9fc6292ca99ddcad2be768710803749e37a2d270d2550",
+      "matches": true
+    },
+    {
+      "path": "atif_denetimi.json",
+      "expected_sha256": "8bf075dded255fb9ed046e647e9fc8b33695f87bc1a2eee354bfe2bae12d55b3",
+      "matches": true
+    },
+    {
+      "path": "depo/GUNLUK_EKI.md",
+      "expected_sha256": "e2a5a5be0349edef3698f76e33d6912f2b7116c175cf02590468783efec029f5",
+      "matches": true
+    },
+    {
+      "path": "depo/GUNLUK_OKUMASI.md",
+      "expected_sha256": "8603eb055d4579d45d1bb6a3d3ec0feb7cdebf4fa413b5bdd3f75c5c8a698cb0",
+      "matches": true
+    },
+    {
+      "path": "depo/GUNLUK_SON_EK.md",
+      "expected_sha256": "cb483a82f03efa1dd28a1476f557727bde83206fdea66aaf5c47b6944d5d1873",
+      "matches": true
+    },
+    {
+      "path": "depo/KOD_OKUMASI.md",
+      "expected_sha256": "ddc8093c5b2160915b3da9b5b8d0bb0296ac5d0cf0a57ce53405481bdb9460ef",
+      "matches": true
+    },
+    {
+      "path": "depo/SON_DEGISIKLIK.md",
+      "expected_sha256": "8001348190862016860c1b1cc4c8dd7f6958be80ee22869b255f9a3266c2dcd1",
+      "matches": true
+    },
+    {
+      "path": "depo/YENI_DOSYALAR.md",
+      "expected_sha256": "9bbbac609fd0e79ff8acd3e8c95ffcc3ebc84d48b115c746d463d2d69ce23753",
+      "matches": true
+    },
+    {
+      "path": "depo/gunluk_eki_kapsami.json",
+      "expected_sha256": "f5bb6e4a93f57dada42ae0cad7a5b6844433fa0bceca12d91515aaa6fa396626",
+      "matches": true
+    },
+    {
+      "path": "depo/gunluk_kapsami.json",
+      "expected_sha256": "c0f2dea7be20ebc4c75fedc786420725f3dab529bac29621b2535b5520aa9363",
+      "matches": true
+    },
+    {
+      "path": "depo/gunluk_son_ek_kapsami.json",
+      "expected_sha256": "c8e3cd79a1efdc9678b86bf2e0ff6e5aea7e0f8915acc979c881f41f475b9a22",
+      "matches": true
+    },
+    {
+      "path": "depo/okunan_depo.json",
+      "expected_sha256": "f752741f97107afd52f4c26556379d97fe9c543c6da858591307a8b8c399eb11",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/books_faith_remaining.md",
+      "expected_sha256": "b9b296ff39b228a09d077f1122b68ec30efeebce0456b6acb361d64b00cbc997",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/claude_programs.md",
+      "expected_sha256": "5873c0019b73ed281c1cc1ef9813ab88927a3fd001b36c4f5767b4270a38e85c",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/cognitive_metacognition_remaining.md",
+      "expected_sha256": "a47048514165c6ed22a9b97e5fd0e3b3bb66369dbdf46dfdeba76834025fa071",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/conversations.md",
+      "expected_sha256": "f9dd8e3c6b3481e42aa1ee7f01e153ac0ed71ef9bb7de08a1e1aeac4318d20bc",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/faith_remaining.md",
+      "expected_sha256": "211362a59629220f3e69338dedc75ee802ebf38ce387a6aec0a7a2acc6d3dc26",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/foundational.md",
+      "expected_sha256": "b0c5c53fb13f40e1efea24c43c620612defb1a5974f43a15d0a7e0765c23ef5b",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/historical.md",
+      "expected_sha256": "69136f5ea8ff889d7015245d2736090ae5f968b47b3eb8bc3a6011dc33d30473",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/historical_document_status.md",
+      "expected_sha256": "7f2254de26e1b6f2a6372e9daa2bebf05e5e797c0a7a9cf425dc79b13b63bc7f",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/historical_supplement.md",
+      "expected_sha256": "cfa5792315fad16a2823c0552de963a7d19414b2810084ae4f6e6fc03f0f26bc",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/images.md",
+      "expected_sha256": "ba9f3b5e71b0c9b29785e2776561e65ea2baa2d56b7d41adadc1dce7ada45c3c",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/long_corpus_remaining.md",
+      "expected_sha256": "badaf8655394dac5240ce9e19bace392d6406e5bbbc69b1803a23535dcb96e12",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/metacognition_remaining.md",
+      "expected_sha256": "bdd30ffc717123140a018bdc3259d2a00e4b25308535d8d1b322e2dd21fb249b",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/mlops_remaining.md",
+      "expected_sha256": "243aa529b77ff8186adb6d6ebc7a9e2bfbdb8351237dce11fd44d369e49b0551",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/models.md",
+      "expected_sha256": "0e51e49bbd2ffc60ebb02c47c6b8993b94ece407752ec3e047bfe7b300bb752a",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/models_remaining.md",
+      "expected_sha256": "cb3d9bd867e3dd5eb19df73eaf04913622d298dee268cf0de99eaa077c909673",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/models_supplement.md",
+      "expected_sha256": "e3a4ed4e45898c3d984f926a2f870e1a565d4cb9a36b0d26bc8374f8eb435701",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/operational_remaining.md",
+      "expected_sha256": "75f379e6546ceff4de2d6b50b31cc767a5249d644464a95cc2d1b80a6860e8d7",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/root_supplement.md",
+      "expected_sha256": "14de98266c895867f17fbf590b0018138b3e47d0f1b4ee3920afae02ef3a5985",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/systems_remaining.md",
+      "expected_sha256": "767717a3e33b865adec83e233ed67ca4d57992f30272113264372eb5293ab081",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/two_conversations_remaining.md",
+      "expected_sha256": "6cda241258e9578cc8ca41eacfefaebe1d7f6da3a505294434283e909e8be101",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/books_faith_remaining.json",
+      "expected_sha256": "6371527e96f70430bece0d055213fb621b985e2975054b31d3f3e69e9d59b070",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/claude_programs.json",
+      "expected_sha256": "7822b962321c843c68f044467e5f7e2b327e7337f07498ab7a39c9c4be76d99d",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/cognitive_metacognition_remaining.json",
+      "expected_sha256": "5e962812153994f7752753314ce106757569157b73fe3ade92da9287d75c4812",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/conversations.json",
+      "expected_sha256": "1ac4a3824f4fbb341aa79cccc34a9726856b095fddfcf0ac555cbbddfbb97ab3",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/downloads_images.json",
+      "expected_sha256": "a16665c18c64d0adf9c66249f26514d61197a5617ca0124ba4dbca4eb104d90f",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/downloads_programs.json",
+      "expected_sha256": "4a17dc8efb0d76bc06e359032c3813205895a103e083ed59a3b9db73d9a28ece",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/downloads_styles.json",
+      "expected_sha256": "a50dc1ce5faee0bdf32e484b5949eccb2a84c3e76c3d904b66ef26c66327c086",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/faith_remaining.json",
+      "expected_sha256": "b6626b1d7c8e2e2e3c57618bda906b4a36736a04c3467aab9e9dcfbacd7966ee",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/foundational.json",
+      "expected_sha256": "8c8288dc3f50ceec8d1dc6f0dbd118378cbf7948b7ab8b8039aa5c5e014139a1",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/historical.json",
+      "expected_sha256": "ab5214ab56720fad9da3aaa3e71c8175fa38903d6c516ad12e2fb9d7102ba5fa",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/historical_supplement.json",
+      "expected_sha256": "9d2e1a797f97a788ce8a05e9e60d282e10820cb8117560fa3477d98af694d99a",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/images.json",
+      "expected_sha256": "2f9f15ec7b74f20ac777cfd0286b2ad69d27eae6217ba99e85e6ed23b166a81c",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/long_corpus_remaining.json",
+      "expected_sha256": "d411e0ed73615e75ee7b397bf822abfe8bb597359644359084d95dc889662ac3",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/metacognition_remaining.json",
+      "expected_sha256": "f0f904d1632568bf91e4322af49b02b28b9aa992d4167820247ea6b30a69629d",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/mlops_remaining.json",
+      "expected_sha256": "084b20fe64c2f5158b3a9075eff3ae145ebbdde9c692b9f6c3eaed4aafd0af22",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/models.json",
+      "expected_sha256": "e77eaa5544c675d6184ad385c2a69508044a5b6c307f530056d896725d073aae",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/models_remaining.json",
+      "expected_sha256": "0df01b434b8b04559c6a04d8c65bfa6207f1e1394ef6058abb084fd0587d2d0b",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/models_supplement.json",
+      "expected_sha256": "3509a831b3604769a71613912ac3eecd12539d713bd97df755e6742befc32aae",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/old_css_1.json",
+      "expected_sha256": "c0a3df89b13a8800791788a288d1797ee303b001b78c68f53b0df8f9e8f095c9",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/old_css_2.json",
+      "expected_sha256": "fe2d27172c5410198f6770b14d9ff28d2c5fa6039efac19b148e3b73c860040c",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/old_programs.json",
+      "expected_sha256": "2c425beb923d5f5f6161a6425880f94bb15fd6eacd7ed6945b21f709e4158438",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/operational_remaining.json",
+      "expected_sha256": "ac7547215c1aff5ae7cf99a39087b5594df5869b770a443891c3d1b687678d68",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/paket_dogrulamasi.json",
+      "expected_sha256": "8f079e8421a666f91cd0f0e7679715ce7b7e43a00019a79bc42b81f678eed0e2",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/root_supplement.json",
+      "expected_sha256": "7ee084af44ffb13ee7b1f856f11b464ae04badd67d2cd5a2599836423fdc6850",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/systems_remaining.json",
+      "expected_sha256": "bee41116ef95c44e30cc4f8355df565733dca66c61a99a43a8d11fb00a1c4c66",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/two_conversations_remaining.json",
+      "expected_sha256": "d7cf4aedb54244937752384679e0e0f4629b2ce2db26ab24270afa3b615c2155",
+      "matches": true
+    },
+    {
+      "path": "kaynaklar.json",
+      "expected_sha256": "46165efa96a378cc7c4a6435a559ec64479c3e4818a5dffb33974a0419a823e4",
+      "matches": true
+    },
+    {
+      "path": "maskeleme_ve_donusum_kaydi.json",
+      "expected_sha256": "08b3f4a92d35c6a3815b3f08f3c0d01eec97cf6a0e513409c2fbc357ba9829af",
+      "matches": true
+    },
+    {
+      "path": "okuma_durumlari.json",
+      "expected_sha256": "80d868639cd5b58be1244cafd3f416f9844b2dc0bdc2abbfddfa844c04ca1b6d",
+      "matches": true
+    }
+  ]
+}

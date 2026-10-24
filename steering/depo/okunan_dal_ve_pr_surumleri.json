@@ -1,0 +1,104 @@
+{
+  "repository": "HalukAINRS/ortak-kopru",
+  "inspection_date": "2026-10-24",
+  "note": "Bu dosya okuma anindaki dal uclarini ve acik taslak PR kimliklerini sabitler. Yeni yayin commitleri bu baslangic goruntusunun kapsami disindadir; main uygulamasi ile PR oneri icerigi ayni sayilmaz.",
+  "branches": [
+    {
+      "name": "claude/hacker-devri-2026-10-24",
+      "commit": "d7f1d7d1f39d78b0690f003b8226fbf208be46fb",
+      "protected": false
+    },
+    {
+      "name": "copilot/convert-files-to-txt-html-json",
+      "commit": "c9f1c92d4c14411b470b756779245f98f5f5ea20",
+      "protected": false
+    },
+    {
+      "name": "copilot/deus-ex-machina-user-layer",
+      "commit": "99dc8a37ef158ee42ee535f631f64e136fef202a",
+      "protected": false
+    },
+    {
+      "name": "copilot/implement-transparent-architecture",
+      "commit": "3c80c8b20e1c0a9d51779c197f9188d3b750d050",
+      "protected": false
+    },
+    {
+      "name": "copilot/ortak-kopru-dokumasyonu",
+      "commit": "cfb4bdc81d34a87530506ae139cbd6c18131dc53",
+      "protected": false
+    },
+    {
+      "name": "deus-ex-machina-2026-10-24",
+      "commit": "0bf0a146eb1acae4a58a04baefc0de4465ba0858",
+      "protected": false
+    },
+    {
+      "name": "gemini-steering-gecmisi-2026-10-24",
+      "commit": "40c92c71340b7d748947b80c52072dff47734147",
+      "protected": false
+    },
+    {
+      "name": "main",
+      "commit": "8571ddf8e3a33b432cc1c7ef88b69a902f390e5c",
+      "protected": false
+    },
+    {
+      "name": "steering-inceleme-2026-10-24",
+      "commit": "489fd9a70eee90821f5144ad44b049caea4e5071",
+      "protected": false
+    }
+  ],
+  "pull_requests": [
+    {
+      "number": 5,
+      "url": "https://github.com/HalukAINRS/ortak-kopru/pull/5",
+      "title": "Claude (Hacker) devri ve deus_ex_machina payı",
+      "state": "open",
+      "draft": true,
+      "head_branch": "claude/hacker-devri-2026-10-24",
+      "head_commit": "d7f1d7d1f39d78b0690f003b8226fbf208be46fb",
+      "base_branch": "main"
+    },
+    {
+      "number": 4,
+      "url": "https://github.com/HalukAINRS/ortak-kopru/pull/4",
+      "title": "Prepare Şahit CLI handoff and deus_ex_machina task layer",
+      "state": "open",
+      "draft": true,
+      "head_branch": "copilot/deus-ex-machina-user-layer",
+      "head_commit": "99dc8a37ef158ee42ee535f631f64e136fef202a",
+      "base_branch": "main"
+    },
+    {
+      "number": 3,
+      "url": "https://github.com/HalukAINRS/ortak-kopru/pull/3",
+      "title": "Add opt-in auditable context and run records",
+      "state": "open",
+      "draft": true,
+      "head_branch": "copilot/implement-transparent-architecture",
+      "head_commit": "3c80c8b20e1c0a9d51779c197f9188d3b750d050",
+      "base_branch": "main"
+    },
+    {
+      "number": 2,
+      "url": "https://github.com/HalukAINRS/ortak-kopru/pull/2",
+      "title": "Add an opt-in, auditable context workflow for the bridge",
+      "state": "open",
+      "draft": true,
+      "head_branch": "copilot/ortak-kopru-dokumasyonu",
+      "head_commit": "cfb4bdc81d34a87530506ae139cbd6c18131dc53",
+      "base_branch": "main"
+    },
+    {
+      "number": 1,
+      "url": "https://github.com/HalukAINRS/ortak-kopru/pull/1",
+      "title": "Steering incelemesi: tam analitik aktarım ve köprü okuması",
+      "state": "open",
+      "draft": true,
+      "head_branch": "steering-inceleme-2026-10-24",
+      "head_commit": "489fd9a70eee90821f5144ad44b049caea4e5071",
+      "base_branch": "main"
+    }
+  ]
+}
