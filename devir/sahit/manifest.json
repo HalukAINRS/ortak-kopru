@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "source_file": "source.json",
+  "source_sha256": "2f77c72da1996f0d64b49f2da72af19a396facb92c89ee99ac38b610e61f3912",
+  "source_snapshot_commit": "950b76e7be8c1ef1e3cd59e099c5b988971a13f3",
+  "main_snapshot_commit": "725acf3de0bfb31bc4780787b48bf9d2a5ecac9b",
+  "repo_sources_sha256": {
+    "README.md": "bebfc3615685d7da6bf06b5da2a97510c5a82b61f9aeb9940afe9a1f01d94025",
+    "AGENTS-kopru.md": "bcbe2d319b3b68ef9f3a27b1f41c47bce76dbf66a7633926ec06f1e4640a9538",
+    "istem-sablonu.md": "009fa6d24f18c2defbb04a8eb6edf53fb19233c7f5e04cc41089d9ab160e6dec",
+    "kopru.html": "46f720cb4e5ae94d16a25cc1a19bc5ec1d6ec5a9ef584eb6cd5703539c1ad4da",
+    "ayarlar.json": "ac1344fb2765575787fcf27eb4a445509c29d8d1c2491a772c0e5349301f6ec8",
+    "ayarlar-yerel.json": "126c33671b621ec33048b190a9a03ff6fa87379efc7d1c2ac2a43af5dfead4fe",
+    "Kopru_Izle.cmd": "9e08922aa98eb3a4cc3e7227bff4713c32e37dda234796f86f3d63c687bcd484",
+    "kopru_yerel.ps1": "b01ac103b36a94d4f74cc17b4e370683856696367ae7d5642a6a5e922172f401",
+    "kopru_izle.ps1": "7bcccccaf243bd4fd92ee3d02ad97206359e7aa5dfaafb9b27a97d63e663b5ff",
+    "kopru_gonder.ps1": "61df02cc04b0737ef5a04b04fffe0f0ea3ae7c7973503422584702abe4cba079",
+    "kopru_birlestir.py": "c78980bfa9317ac493eca5b1fbbd1fa2efd8c21c8daa47c2e635ec3d5c763e65",
+    "kopru_bolum_ekle.py": "f165952ff118654de489d3fb647e7b12fa6c043e7571ac3d57a817f68981cca7",
+    "kopru_ayna_uret.py": "3835c3139b7458405a34c6db5fa875c07d2d6513b557405ee9cdba48d81a6502",
+    "kopru_oku.py": "485fa96f9478c3af4241e587ad05984d50dfd1bda17c8efda52fb0c6831f16f4",
+    "kopru_ekle.py": "4cb4a0d46ff0891477c71abacd9478347bf07c844e96a9415a24f10f56b16697",
+    "kopru_yanitla.py": "0988f3c9f1e938aa88b254b3a8dee714b218055163d1b5ea51129cc81e997d00",
+    ".github/workflows/kopru.yml": "e119ea788300cfa5c7d7becf868ba70681abc5710537c77be0523430733b0467"
+  },
+  "outputs_sha256": {
+    "handoff.txt": "d78436a5fa13db8b42f1106c2de41fc263e9f0791ebb786b75de24044d1e660d",
+    "handoff.html": "605b8896d635e99cb601976ff6ef43a50333094d460ad4f31f23136cf2a62024",
+    "handoff.json": "2f77c72da1996f0d64b49f2da72af19a396facb92c89ee99ac38b610e61f3912",
+    "START_HERE.md": "deb962b227e0b8082c49762c46411a32d6442d4dbd6caa65c5016a9e841994c9"
+  },
+  "manifest_self_hash": "omitted: self-referential hash is not meaningful",
+  "privacy_boundary": "Manifest yalnız repository-relative kaynak yollarını ve içerik hash'lerini yayımlar. Makineye özgü mutlak yollar, Home/cache konumları, anahtarlar, belirteçler, oturum dosyaları ve kimlik değerleri dışarı alınmaz. Hash ve tarama, gizli veri bulunmadığını garanti etmez.",
+  "scan_limit": "Hashes and pattern scans do not prove truth, authorship, or absence of every secret or personal datum."
+}
