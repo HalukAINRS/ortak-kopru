@@ -21,9 +21,11 @@ Bu şema hedeflenen ilişkileri gösterir. Derin erişimin her ortamda fiilen m�
 
 - [Katmanlar ve karşılıklı dönüş](KATMANLAR.md)
 - [Devir durumu ve sıradaki işler](DEVIR_DURUMU.md)
+- [Görünür mesaj ağacının devri ve dal ayrımı](KAYNAK_DEVRI_20261024.md)
 - [Ortak Köprü](https://halukainrs.github.io/ortak-kopru/kopru.html#deus_ex_machina)
 - [Steering araştırması](https://github.com/HalukAINRS/ortak-kopru/tree/steering-inceleme-2026-10-24/steering)
 - [Mevcut arayüz uygulama taslağı: PR #4](https://github.com/HalukAINRS/ortak-kopru/pull/4)
+- [Hacker devir katkısı: PR #5](https://github.com/HalukAINRS/ortak-kopru/pull/5)
 
 Ayrıntılı çalışma bu katkı dalındadır; ana dal köprü sayfasını ve araçlarını taşır. Özel sohbet kopyaları yerel devir alanında korunur. Bu başlık kaynak araştırması, uygulama ve gerçek kullanım sonuçlarıyla gelişecektir.
 
