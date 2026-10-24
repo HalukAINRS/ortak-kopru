@@ -34,6 +34,10 @@ Bu WinPE ortamında SQLite kilitleri tek başına eşzamanlı alımı ayırmadı
 
 Kaynakların baytları `reply --source` sırasında okunup boyut/SHA-256 ile kaydedilir. Bu denetim metnin semantik yorumunun doğruluğu değildir. Sonucun arayüze dönmesi kullanıcı kabulünün otomatik verilmesi sayılmaz.
 
+Arayüzdeki **Alıntı veya belge kaynağı ekle** alanı; kaynak konumu, söyleyen, statü, dal, dönüşüm, düzeltme, gerçekleşme dayanağı ve belirsizliği özgün metnin yanında taşır. Aynı bilgiler HTTP girdisindeki `source_context` nesnesiyle de verilebilir. Bunlar girişi hazırlayanın verdiği bilgilerdir; `source_context_verified` her zaman false döner. Alıntıdaki talimatlar yeni kullanıcı emri sayılmaz. CLI bu bilgileri gerçek `receive` çıktısında görür.
+
+Kaynak bağlamı kaydedildikten sonra aynı istek anahtarıyla değiştirilmez; düzeltme yeni ileti olarak aynı işe eklenir. İlk sürümün veritabanı açıldığında eski iletilere boş kaynak bağlamı eklenir; özgün metinler ve yanıtlar korunur. Yükseltme öncesi veritabanının özel bir yedeğini almak uygundur.
+
 ## Mevcut katkılarla ilişki
 
 PR #4'ün 99dc8a3 sürümündeki çevrimdışı kuyruk süreç başlatmaz; kullanıcı onayı, elle çalışma ve kabul kayıtlarını tutar. PR #5'in 2a68b37 sürümü Hacker devridir. Bu köprü, gerçek oturum teslimi ve geri dönüşü için ayrı bir yürütme yoludur; bu PR'ları veya eski kuyruğu değiştirmez, birleşmiş saymaz. Başlangıçtaki sabit Şaman devir paketine de yazmaz.
@@ -46,4 +50,4 @@ Otomatik Codex yürütücüsü için incelenen [resmî OpenAI belgesi](https://l
 python -m unittest discover -s . -p test_bridge.py -v
 ```
 
-Testler; özgün metin, yanlış oturuma teslimin reddi, eşzamanlı alım, yeniden başlatmadan devam, değişmez yanıt, kaynak karması, aynı işte düzeltme ve HTTP köken denetimini kapsar. Test karşılıkları gerçek model yanıtı diye sunulmaz; gerçek CLI çevrimi ayrıca kendi işlem kaydıyla gösterilir.
+On test; özgün metin, yanlış oturuma teslimin reddi, eşzamanlı alım, yeniden başlatmadan devam, değişmez yanıt, kaynak karması, aynı işte düzeltme, HTTP köken denetimi, kaynak/dal bilgisinin korunması ve eski veritabanının kayıpsız geçişini kapsar. Test karşılıkları gerçek model yanıtı diye sunulmaz; gerçek CLI çevrimi ayrıca kendi işlem kaydıyla gösterilir.

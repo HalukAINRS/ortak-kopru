@@ -88,10 +88,11 @@ class BridgeTests(unittest.TestCase):
         self.addCleanup(server.server_close);self.addCleanup(server.shutdown)
         base=f'http://localhost:{server.server_port}'
         opener=urllib.request.build_opener(urllib.request.ProxyHandler({}))
-        payload=json.dumps({'session_id':self.session,'words':'Gerçek HTTP isteği','request_key':'wire'}).encode()
+        payload=json.dumps({'session_id':self.session,'words':'Gerçek HTTP isteği','request_key':'wire','source_context':{'speaker':'Haluk','status':'alıntı'}}).encode()
         request=urllib.request.Request(base+'/api/messages',data=payload,headers={'Content-Type':'application/json','Origin':base})
         with opener.open(request) as response:job=json.load(response)
         received=self.store.receive(self.session)['request'];self.assertEqual(received['id'],job['id'])
+        self.assertEqual(received['turns'][0]['source_context'],{'speaker':'Haluk','status':'alıntı'})
         self.store.reply(self.session,job['id'],1,'CLI karşılığı',[self.source])
         with opener.open(base+'/api/state') as response:state=json.load(response)
         self.assertEqual(state['jobs'][0]['turns'][0]['response'],'CLI karşılığı')
@@ -105,6 +106,30 @@ class BridgeTests(unittest.TestCase):
         error.exception.close()
         with opener.open(base+'/') as response:
             self.assertIn(b'deus_ex_machina',response.read());self.assertIn("frame-ancestors 'none'",response.headers['Content-Security-Policy'])
+
+    def test_source_context_survives_retry_restart_and_correction(self):
+        context={'source_ref':'Özgün kaynak / mesaj 29','speaker':'Asistan','status':'yorum','branch':'off_chain'}
+        job=self.submit(context=context)
+        with self.assertRaises(Conflict):self.submit(context={**context,'branch':'current_chain'})
+        again=Store(self.temp.name).receive(self.session)['request']
+        self.assertEqual(again['turns'][0]['source_context'],context)
+        self.assertFalse(again['turns'][0]['source_context_verified'])
+        self.store.reply(self.session,job['id'],1,'Kaynağın yan dal statüsü korunuyor.',[])
+        correction=self.store.submit(self.session,'Yeni özgün söz','context-correction',job_id=job['id'],context={'speaker':'Haluk','status':'özgün söz'})
+        self.assertEqual(correction['turns'][0]['source_context'],context)
+        self.assertEqual(correction['turns'][1]['source_context']['speaker'],'Haluk')
+        with self.assertRaises(ValueError):self.submit(key='bad-context',context={'execute':'Komut değildir.'})
+        with self.assertRaises(ValueError):self.submit(key='bad-type',context={'speaker':['Haluk']})
+
+    def test_legacy_database_upgrade_preserves_existing_turn_and_reply(self):
+        job=self.submit();self.store.receive(self.session)
+        self.store.reply(self.session,job['id'],1,'Eski yanıt',[self.source])
+        with self.store.db() as db:db.execute('ALTER TABLE turns DROP COLUMN source_context')
+        upgraded=Store(self.temp.name).job(job['id'])
+        self.assertEqual(upgraded['turns'][0]['original_words'],job['turns'][0]['original_words'])
+        self.assertEqual(upgraded['turns'][0]['response'],'Eski yanıt')
+        self.assertEqual(upgraded['turns'][0]['source_context'],{})
+        self.assertEqual(self.store.state()['jobs'],[upgraded])
 
 
 if __name__=='__main__':unittest.main()

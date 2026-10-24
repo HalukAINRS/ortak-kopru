@@ -1,0 +1,22 @@
+{
+  "old_turns_preserved": true,
+  "old_turns_count": 2,
+  "same_job": true,
+  "same_cli_session": true,
+  "received_revision": 3,
+  "source_fields_preserved": 8,
+  "input_sha256": "2d17c8584022d440a9a96c2bf037f46b85e8a8cb4d21d7e30c5928d3fcd2da9a",
+  "source_context_verified": false,
+  "submission_actor": "Şaman quoting actual current Haluk message; not browser click",
+  "tests_passed": 10,
+  "database_backup_outside_git": true,
+  "answer_returned_over_http": true,
+  "response_sha256": "8e2ed630c466ce1e0b7372576462abe78d37051eeac5cbc2ee003c007267f332",
+  "source_hashes": [
+    "72571ebe64fe6b88acd4016d18d313a70dab7007cf77f3cb94a34b59e0683ba0",
+    "f71222711397237861480ab9b8a938e08e34615a290018c553324ef4f3941535",
+    "e6f19c44b4ccb6940af8dc1b848a1fa1af611c6cfa70465982bc5466b5a048aa"
+  ],
+  "browser_click_tested": false,
+  "automated_cli_consumer": false
+}

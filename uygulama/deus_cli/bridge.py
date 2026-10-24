@@ -26,6 +26,17 @@ def words(value):
     return value  # Özgün boşluklar ve satır sonları korunur.
 
 
+def source_context(value):
+    if value is None:
+        return {}
+    keys = {'source_ref', 'speaker', 'status', 'branch', 'transformation', 'correction', 'realization', 'uncertainty'}
+    if not isinstance(value, dict) or set(value)-keys:
+        raise ValueError('Kaynak bağlamında tanınmayan alan var.')
+    if any(not isinstance(v, str) or len(v) > 4000 for v in value.values()):
+        raise ValueError('Kaynak bağlamı alanları en çok 4000 karakterlik metin olmalı.')
+    return {k: v for k, v in value.items() if v != ''}
+
+
 @contextlib.contextmanager
 def process_lock(path):
     # WinPE'de SQLite kilitleri tek başına eşzamanlı alımı ayırmadı.
@@ -85,6 +96,8 @@ class Store:
                     seq INTEGER PRIMARY KEY AUTOINCREMENT, job_id TEXT NOT NULL,
                     revision INTEGER NOT NULL, kind TEXT NOT NULL, at TEXT NOT NULL);
             ''')
+            if 'source_context' not in {r[1] for r in db.execute('PRAGMA table_info(turns)')}:
+                db.execute("ALTER TABLE turns ADD COLUMN source_context TEXT NOT NULL DEFAULT '{}'")
 
     @contextlib.contextmanager
     def db(self):
@@ -117,8 +130,9 @@ class Store:
         return {'session_id': session, 'participant': participant, 'label': label,
                 'identity_basis': 'local_cli_registration', 'identity_verified': False}
 
-    def submit(self, session, text, request_key, source_note='', job_id=None):
+    def submit(self, session, text, request_key, source_note='', job_id=None, context=None):
         text, request_key = words(text), words(request_key)
+        context = json.dumps(source_context(context), ensure_ascii=False, sort_keys=True)
         if len(request_key) > 160 or not isinstance(source_note, str):
             raise ValueError('Geçersiz istek anahtarı veya kaynak notu.')
         with self.db() as db:
@@ -128,6 +142,7 @@ class Store:
                 target = db.execute('SELECT session_id FROM jobs WHERE id=?', (existing['job_id'],)).fetchone()
                 if (existing['original_words'] != text or target['session_id'] != session
                         or existing['source_note'] != source_note
+                        or existing['source_context'] != context
                         or (job_id is not None and existing['job_id'] != job_id)):
                     raise Conflict('Bu istek anahtarı başka bir içerikle kullanılmış.')
                 return self.job(existing['job_id'], db)
@@ -142,8 +157,8 @@ class Store:
                 job_id, revision = uuid.uuid4().hex, 1
                 db.execute('INSERT INTO jobs VALUES(?,?,?)', (job_id, session, now()))
             db.execute('''INSERT INTO turns(job_id,revision,request_key,original_words,
-                source_note,created,status) VALUES(?,?,?,?,?,?,'queued')''',
-                       (job_id, revision, request_key, text, source_note, now()))
+                source_note,created,status,source_context) VALUES(?,?,?,?,?,?,'queued',?)''',
+                       (job_id, revision, request_key, text, source_note, now(), context))
             self.event(db, job_id, revision, 'submitted')
             return self.job(job_id, db)
 
@@ -160,6 +175,8 @@ class Store:
         for turn in db.execute('SELECT * FROM turns WHERE job_id=? ORDER BY revision', (job_id,)):
             item = dict(turn)
             item['sources'] = json.loads(item['sources'] or '[]')
+            item['source_context'] = json.loads(item['source_context'])
+            item['source_context_verified'] = False  # Girişle birlikte verilen bilgi, doğrulama değildir.
             item['input_sha256'] = hashlib.sha256(item['original_words'].encode()).hexdigest()
             result['turns'].append(item)
         return result
@@ -272,7 +289,8 @@ def handler(store):
                 if not isinstance(data, dict):
                     raise ValueError('JSON nesnesi gerekli.')
                 job = store.submit(data['session_id'], data['words'], data['request_key'],
-                                   data.get('source_note','Kullanıcı arayüzünden gönderildi.'), data.get('job_id'))
+                                   data.get('source_note','Kullanıcı arayüzünden gönderildi.'), data.get('job_id'),
+                                   context=data.get('source_context'))
                 return self.send(200, job)
             except Conflict as error:
                 return self.send(409, {'error': str(error)})

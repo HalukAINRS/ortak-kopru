@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "priority": 3,
+  "saman": {
+    "cli_version": "0.163.0",
+    "default_resume_last_interactive": true,
+    "workspace_scoped": true,
+    "dry_run_modes_verified": 4,
+    "matching_interactive_session_is_current": true
+  },
+  "sahit": {
+    "cli_version": "1.0.103",
+    "pinned_handoff_session_present": true,
+    "pinned_handoff_session_live": true,
+    "new_wrapper_control_exit": 0,
+    "wrapper_uses_pinned_session_entry": true,
+    "model_setting_preserved": "gemini-4-argon",
+    "effort_setting_preserved": "high",
+    "session_id_published": false
+  },
+  "hacker": {
+    "wrapper_version_output": "2.1.308 (Claude Code)",
+    "guest_uname_m": "aarch64",
+    "strict_known_hosts_read_probe_passed": true,
+    "handoff_directory_and_instruction_present": true,
+    "handoff_project_session_files": 1,
+    "continuation_wrapper_now_uses_handoff_launcher": true,
+    "new_wrapper_uses_same_handoff_launcher": true
+  },
+  "interactive_model_sessions_started": 0,
+  "other_layers_reading_or_acceptance_claimed": false,
+  "cli_connections_to_deus_surface": [
+    "Şaman only; others not registered by this audit"
+  ],
+  "files": [
+    {
+      "file": "Saman_Baslat.ps1",
+      "install_directory": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\03_Codex_Saman",
+      "published_sha256": "b836173cb761278d54cb7bc8816071a8c0cd932ebd5f85dc89d93d79f43b5c7d",
+      "local_source_sha256": "61f7b2222f77feac31ef733d3ddeee95e2ef1314b14dba3d59d98735d86a0aac",
+      "newline_normalization": "CRLF to LF in published copy"
+    },
+    {
+      "file": "Saman_Baslat.cmd",
+      "install_directory": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\03_Codex_Saman",
+      "published_sha256": "12cd15de503c29b72f703f70e1f77c21c426bcb05b7075574d69738debbdcf16",
+      "local_source_sha256": "264af29e27c0d4af9fb2f7aaf36f095d20413a16e33c8609cd0f94eeb114183d",
+      "newline_normalization": "CRLF to LF in published copy"
+    },
+    {
+      "file": "Saman_Devam.cmd",
+      "install_directory": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\03_Codex_Saman",
+      "published_sha256": "6e16ccf672eb860e5274c1f29c69e0ab2826ddedfcfeee7e117fa4619f524b3c",
+      "local_source_sha256": "dabc0f17946edeb4ddd64060034066273a7b9301d1f63bd05be43ee7a324e95a",
+      "newline_normalization": "CRLF to LF in published copy"
+    },
+    {
+      "file": "Saman_Yeni.cmd",
+      "install_directory": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\03_Codex_Saman",
+      "published_sha256": "76e89c4a074fa68a1e0cf8b635a250290667d2e08dd23cd79d3f7417a98a707e",
+      "local_source_sha256": "8e870536006b24ea2a3e14e6a0839f6cea41064d6a2edd2f359b8286ab5717c4",
+      "newline_normalization": "CRLF to LF in published copy"
+    },
+    {
+      "file": "SAMAN_MASAUSTU.md",
+      "install_directory": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\03_Codex_Saman",
+      "published_sha256": "53f742018187b4f5ad500ded86af09423841b6a5ab78fdc5158d2840e6d499ee",
+      "local_source_sha256": "53f742018187b4f5ad500ded86af09423841b6a5ab78fdc5158d2840e6d499ee",
+      "newline_normalization": "CRLF to LF in published copy"
+    },
+    {
+      "file": "Hacker_Devam.cmd",
+      "install_directory": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\01_Claude_Code_Hacker",
+      "published_sha256": "ab47303fce7f8e0a62cdb5f3b2af2258ce1eeab3a70b3522082f90594d8cb8fc",
+      "local_source_sha256": "c99952c80e609a114ada4fc7aa43026ab74a7eb2c52e16829c144e9944c520c4",
+      "newline_normalization": "CRLF to LF in published copy"
+    },
+    {
+      "file": "Hacker_Yeni.cmd",
+      "install_directory": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\01_Claude_Code_Hacker",
+      "published_sha256": "630f3654b813789de342e69edc5e91a3eb1605419994166f5d151376b9f03f4b",
+      "local_source_sha256": "945bf93169d440b3a75c7c0138c0828b251d85ae25596fc5eddc43004c51b415",
+      "newline_normalization": "CRLF to LF in published copy"
+    },
+    {
+      "file": "Sahit_Devam.cmd",
+      "install_directory": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\02_Copilot_Sahit",
+      "published_sha256": "bec342bb7d28a1d7d1f28b67fbd7aa1b576c57ed17f6ee1dfa7d3d80c2bddcc8",
+      "local_source_sha256": "6a46d3612b65a5ea78ef1420a4ef5e87473cb0c993b501912e1975f07106282a",
+      "newline_normalization": "CRLF to LF in published copy"
+    }
+  ],
+  "private_backup_directory": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\03_Codex_Saman\\Workspace\\Kurulum_Devam_20261024\\Yedek"
+}

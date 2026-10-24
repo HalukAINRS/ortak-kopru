@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-24",
+  "authority": "Haluk current live CLI message",
+  "source_message_sha256": "2d17c8584022d440a9a96c2bf037f46b85e8a8cb4d21d7e30c5928d3fcd2da9a",
+  "priorities": [
+    {
+      "priority": 1,
+      "topic": "Steering",
+      "completed_this_turn": [
+        "local saved HTML, binary, cache and selected config checked",
+        "producer-root routing ambiguity reproduced with synthetic records",
+        "historical active-gate interpretation corrected in shared memory",
+        "CLI report and reproducible audit published as draft PR 8"
+      ],
+      "publication": "https://github.com/HalukAINRS/ortak-kopru/pull/8",
+      "open": [
+        "original 100641653-byte Steering ZIP",
+        "remaining raw sources and fresh conversation snapshots",
+        "runtime effects of saved indicators not established"
+      ]
+    },
+    {
+      "priority": 2,
+      "topic": "deus_ex_machina",
+      "completed_this_turn": [
+        "eight source-context fields carried through HTTP and actual current CLI",
+        "original two turns and replies preserved in database upgrade",
+        "real third reply returned to same HTTP job",
+        "10 tests passed"
+      ],
+      "publication": "https://github.com/HalukAINRS/ortak-kopru/pull/7",
+      "open": [
+        "automatic CLI consumer",
+        "other actual CLI connections",
+        "VM transport",
+        "integration with v11 core",
+        "legacy bridge producer-root routing"
+      ]
+    },
+    {
+      "priority": 3,
+      "topic": "Şaman–Şahit–Hacker kurulumu",
+      "completed_this_turn": [
+        "existing versions and handoff paths checked",
+        "Sahit_Devam now invokes pinned handoff entry",
+        "Hacker_Devam and Hacker_Yeni now invoke desktop handoff entry",
+        "Saman startup source copies archived"
+      ],
+      "evidence": "kurulum/20261024/DOGRULAMA.json",
+      "open": [
+        "other participants own source reading and acceptance",
+        "new surface connections remain unverified"
+      ]
+    }
+  ],
+  "source_snapshots_preserved": {
+    "original_visible_messages": 519,
+    "continuation_visible_messages": 308,
+    "share_visible_messages": 289,
+    "new_browser_refresh_this_turn": false
+  },
+  "session_bridge_javascript_downloaded": false,
+  "original_steering_zip_downloaded": false,
+  "live_surface_registered_participants": [
+    "Şaman"
+  ],
+  "other_layers_acceptance_claimed": false
+}
