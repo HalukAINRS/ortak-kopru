@@ -94,13 +94,16 @@ def generated_files(source):
 
 def repository_source_hashes(source):
     hashes = {}
-    for relative in source["verified_repository"]["files_read"]:
-        path = (ROOT / relative).resolve(strict=True)
+    for relative in source["verified_repository"]["manifested_repository_files"]:
+        candidate = ROOT / relative
+        if candidate.is_symlink():
+            raise ValueError(f"Repository source cannot be a symlink: {relative}")
+        path = candidate.resolve(strict=True)
         try:
             path.relative_to(ROOT)
         except ValueError:
             raise ValueError(f"Repository source escapes root: {relative}") from None
-        if path.is_symlink() or not path.is_file():
+        if not path.is_file():
             raise ValueError(f"Expected repository source file: {relative}")
         hashes[relative] = sha256(path.read_bytes())
     return hashes

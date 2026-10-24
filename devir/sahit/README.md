@@ -12,11 +12,12 @@ Durum: **hazır/bekliyor**. Bu paket bulut oturumunu yerel makineye taşımaz. C
 Üret ve doğrula:
 
 ```console
+python3 kopru_ayna_uret.py kopru.html ayna/kopru.html
 python3 devir/sahit/generate.py
 python3 devir/sahit/generate.py --check
 ```
 
-Python standart kütüphanesi yeterlidir; ağ veya model çağrısı yapılmaz. HTML, tek dosyalı statik sayfadır; dış betik, stil, font veya kaynak yüklemez ve metin HTML-escape edilir.
+Kanonik sayfa değiştiyse önce aynayı üret; sonra paket üreticisi repository kaynak hash'lerini alır. Python standart kütüphanesi yeterlidir; ağ veya model çağrısı yapılmaz. HTML, tek dosyalı statik sayfadır; dış betik, stil, font veya kaynak yüklemez ve metin HTML-escape edilir.
 
 ## Yerel Şahit kapısı
 

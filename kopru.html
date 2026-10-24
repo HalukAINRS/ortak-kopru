@@ -101,6 +101,15 @@ summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   <p class="ozet"><span>Kayıt: <b id="kayit-sayisi">33</b></span><span>Son güncelleme: <b><time id="son-guncelleme" datetime="2026-10-24T03:21:17+03:00">24 Eki 2026 03.21</time></b></span><span>Son kayıt: <a href="#k-0033">k-0033</a></span></p>
 </header>
 
+<section id="konular">
+  <h2>Konular</h2>
+  <nav class="icindekiler" aria-label="Köprü konuları">
+    <a href="#yonlendirme">Steering</a>
+    <a href="#deus-ex-machina">deus_ex_machina</a>
+  </nav>
+  <p>İki konu ayrıdır. Bunlar sayfa içi çalışma başlıklarıdır; GitHub repository topic etiketi veya Discussion değildir.</p>
+</section>
+
 <section id="kurallar">
   <h2>Kurallar</h2>
   <ol>
@@ -978,6 +987,28 @@ summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   </div>
 </section>
 
+<section id="deus-ex-machina">
+  <h2>deus_ex_machina · kullanıcı denetimli yüzey</h2>
+  <p><strong>Durum: hazır/bekliyor.</strong> Bu bir etkin CLI devri değildir. Kullanıcı yerel Copilot CLI oturumunda paketi gözden geçirip açıkça kabul edene kadar konu taslaktır; bulut oturumu, model oturumu veya masaüstü erişimi taşınmış sayılmaz.</p>
+  <p><code>deus_ex_machina</code> öncelikle kullanıcıya ait arayüz ve koordinasyon katmanıdır; kendiliğinden karar veren ya da onay veren bir model/ajan değildir. Steering araştırması bu bölümden ayrı kalır ve kendi kapsamı ile dayanaklarını korur.</p>
+  <h3>Çevrimdışı MVP akışı</h3>
+  <ol>
+    <li>Kullanıcı özgün sözünü ve ayrı konu başlığını görev olarak kaydeder.</li>
+    <li>Kullanıcı açık katılımcıyı, kanıt kaynaklarını, kabul ölçütlerini ve istenen en dar izni seçer.</li>
+    <li>Görev varsayılan olarak <code>planned</code> ve onaysızdır. Kullanıcı kapsamı gözden geçirip ayrıca onaylar.</li>
+    <li>Bir kerelik <code>manual_cli</code> onayından sonra kuyruk yalnız işi <code>running</code> olarak ayırır; başka CLI'ı çalıştırmaz. Katılımcı CLI kullanıcı tarafından ayrı ve elle açılır.</li>
+    <li>Katılımcı yanıtı kaynaklarıyla kaydedilir, ancak <code>unverified</code> ve kullanıcı talimatı olmayan katılımcı çıktısı olarak kalır.</li>
+    <li>Ancak kanıt referansı ve bütün kabul ölçütleri kullanıcı tarafından gözden geçirilince <code>completed</code> işaretlenebilir; bu yerel beyan kimlik doğrulaması değildir.</li>
+  </ol>
+  <h3>Görev sözleşmesi</h3>
+  <p>JSON sözleşmesi <code>deus_ex_machina/task.schema.json</code>, çevrimdışı terminal uygulaması <code>deus_ex_machina/task_queue.py</code> içindedir. Görev; özgün kullanıcı sözü, kimlik, konu, izinli katılımcı, kaynak yolu/sürüm/hash/gözlem/erişim/kanıt durumu, kabul ölçütleri, istenen/onaylanan izin, durum, sonuç ve artefakt referanslarını taşır. <code>completed</code> için en az bir kaynak yerel gözlem beyanı ve SHA-256 kaydıyla doğrulanır; bu beyan kriptografik kimlik veya doğruluk kanıtı değildir.</p>
+  <p>Katılımcılar yalnız Hacker, Şaman, Şahit ve Gemini allowlist'indendir. Sahte hedef adı reddedilir; shell çalıştırma yoktur. Kuyruk yazımı tek-yazarlı kilitle korunur, bir onayla ikinci kez başlatma reddedilir. Yetki artırımı veya başka CLI komutu otomatikleştirilmez; kullanıcı ayrı bir kapsamlı onay vermelidir.</p>
+  <h3>Güven ve erişim sınırı</h3>
+  <p>Kaynak inceleme haritası: repository dosyaları → yerel kurulum/yapılandırma → wrapper/adapter → CLI ikilisi ve açık kaynak/SDK → işletim sistemi/süreç → sağlayıcı sunucusu. Bu bulut görevi yalnız repository kaynaklarını gözleyebilir. Yerel binary, Windows/WinPE süreçleri, Home/cache ve ağ gözlemleri kullanıcı tarafında doğrulanmalıdır. İkili içindeki bir metin, çalışma anında kullanıldığının kanıtı değildir.</p>
+  <p>Kapalı sağlayıcı altyapısı, model ağırlıkları ve gizli sunucu talimatları bu arayüzle açığa çıkarılamaz. Varsayılan salt-okunurdur; yazma, yüksek yetki veya harici aktarım ayrıca onaylanır. İstemci telemetrisi ayarının bütün steering'i kapattığı iddia edilmez.</p>
+  <p>Başlangıç ve test: <a href="devir/sahit/README.md">devir/sahit/README.md</a> · <a href="deus_ex_machina/README.md">deus_ex_machina/README.md</a>. Bu bağlantılar yerel repository dosyalarıdır; sayfa dış kaynak yüklemez.</p>
+</section>
+
 <section id="elle-ekleme">
   <h2>Elle ekleme</h2>
   <p>Betik yoksa şu parça, değerler doldurularak <code>&lt;!-- KAYIT-SONU --&gt;</code> işaretinin önüne yapıştırılır. <code>data-*</code> alanları makine içindir; görünen metinle aynı değerleri taşır.</p>
@@ -1000,5 +1031,3 @@ summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 </main>
 </body>
 </html>
-
-
