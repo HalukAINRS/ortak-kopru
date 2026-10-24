@@ -41,11 +41,12 @@ Kabulün kapsamı `source.json` `acceptance.scope_of_acceptance` ile sınırlıd
 
 - Yöntem: ayrı, başsız bir Copilot çalıştırması (`--sync-session off`, `--add-github-mcp-tool update_pull_request`, yalnız `--allow-tool 'github-mcp-server(update_pull_request)'`; `--deny-tool shell,write`, `--deny-tool url`, `--excluded-tools web_fetch`; `--allow-all-*` yok). Belirteç okunmadı ve diske yazılmadı; çalıştırma CLI'ın kendi oturum kimlik bilgisini kullandı.
 - Önce: PR #6 gövdesi boştu; başı `4ae430d`, taslak, açık (GitHub MCP salt okuma). Kullanıcı düzenlemesi ezilmedi.
-- Çağrı: oturum olay günlüğünde yalnız bir araç çağrısı var; argüman anahtarları `body`, `owner`, `pullNumber`, `repo`. Başlık, durum, taslak, taban gönderilmedi.
-- Sonra (bağımsız salt okuma): taslak, açık, birleşmemiş, başı `4ae430d`, tabanı `00a2177`, başlık değişmedi. Gövde kaynak dosyayla aynı; tek fark sondaki satır sonu (23639 ve 23640 karakter).
-- Gövde = `generate.py --pr-govdesi` çıktısı + "Kabul kaydı (pakete dahil değil)" bölümü.
+- Çağrı: her çalıştırmanın oturum olay günlüğünde yalnız bir araç çağrısı var; argüman anahtarları `body`, `owner`, `pullNumber`, `repo`. Başlık, durum, taslak, taban gönderilmedi.
+- Üç yapıştırma yapıldı. (1) Gövde ilk kez yazıldı; salt okuma karşılaştırması kaynakla aynı çıktı. (2) Kabul bildirimi en üste eklenip yeniden yazıldı; çalıştırma kendisi "BASARISIZ" bildirdi ve bağımsız okuma doğruladı: model "İlgili PR'lar" bölümünü ikinci kez eklemişti (25028 karakter; kaynakta 23992). PR gövdesi bu kısa sürede hatalıydı. (3) Aynı gövde yeniden yazıldı; bağımsız okuma kaynakla aynı çıktı (tek fark sondaki satır sonu: 23991 ve 23992 karakter). Model çıktısı bayt düzeyinde güvenilir sayılmaz; her yazmadan sonra salt okuma karşılaştırması gerekir.
+- Sonra (bağımsız salt okuma, üçüncü yazmadan sonra): taslak, açık, birleşmemiş, başı `dbb1211` (bu kayıt dosyasının commit'i), tabanı `00a2177`, başlık değişmedi.
+- Gövde = `generate.py --pr-govdesi` çıktısı + en üstte kabul güncelleme notu + en altta "Kabul kaydı (pakete dahil değil)" bölümü.
 - Bu çalıştırma, bu CLI kimlik bilgisinin PR gövdesine yazabildiğini gösterir; kapsamın tamamı (başka yazma yolları) doğrulanmadı.
-- Yalıtılmış sınama oturumları (3) silindi; Şahit'in asıl oturumuna dokunulmadı.
+- Yalıtılmış sınama oturumları (5) silindi; Şahit'in asıl oturumuna dokunulmadı.
 
 ### 4. Yapılmayanlar
 
