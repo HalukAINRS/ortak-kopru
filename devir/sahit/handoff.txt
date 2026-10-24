@@ -444,6 +444,33 @@ local_verification:
       Dizinler yokken başlatıcı ikisini de yeniden oluşturdu, çıkış 0 ve oturum bağlamıyla devam etti. İşletim sistemi Windows 11 build 22621 ve MiniNT anahtarı var (WinPE). Gerçek yeniden başlatma (reboot) denenmedi.
     status:
       observed
+  -
+    id:
+      steering-scan
+    check:
+      Özel yerel araç (Git dışı): kayıtlı sayfalar, .txt, ChatGPT ana ve paylaşım sohbeti, kitaplık belgeleri (.md, .docx) ve Şahit/Şaman/Hacker oturum geçmişleri ortak mesaj modeline çevrildi, maskelendi, her kaynak txt, json ve html olarak yazıldı; üç biçim bağımsız tarandı (ANT-B01..B04 desenleri); teknik imzalar özgün ham içerikte sayıldı; araç birim testi 5/5, bilinen 15 olumlu örnekten 15'i yakalandı, 4 olumsuz örnekte yanlış alarm yok
+    result:
+      116 kaynak, 113'ü mesaj üretti, hata 0, üç biçim arasında tutarsızlık 0, html statik ihlal 0; çıktılarda belirteç, e-posta, UUID ve IP kalıntısı 0. Asistan çıktılarında (yaklaşık 123 bin kelime) B01=2, B02=0, B03=0, B04=5 ayrı olay (ChatGPT'de otomatik onay denetiminin okuma/kaydı reddetmesi, Şaman'ın Codex CLI'ında 'blocked by policy' reddi); Claude ve Copilot asistan çıktılarında B04=0. Kitaplık belgelerinde (yaklaşık 333 bin kelime) B01=2. Kaydedilmiş iki ChatGPT sayfasından biri sohbet gövdesiz boş kabuktur. Claude Code yerel kayıtlarında serverClassifierRequest (1108 asistan kaydının 1092'sinde), atis-latch ve api-request-blob kayıt türleri ölçüldü; Copilot ve Codex kayıtlarında yok. Claude ve Gemini kayıtlı sayfa DOM'larının rol ayrımı örnek sayfa olmadan doğrulanmadı.
+    status:
+      observed
+  -
+    id:
+      deus-history-index
+    check:
+      Aynı araçla deus_ex_machina anmaları katman ve rol bazında sayıldı (yalnız sayı; alıntı yok)
+    result:
+      Anma: ChatGPT sohbetleri ve belgeleri (kullanıcı 17, asistan 78, belge 14), Şahit (kullanıcı 4, asistan 4), Şaman (kullanıcı 8, asistan 16), Hacker (kullanıcı 4, asistan 4); köprü çağrı istemlerinde ayrıca Şahit 27 ve Şaman 33. Kullanıcı mesajlarında kitaplık/kütüphane sözcüğü geçmiyor. İlk anma 12 Ekim'de, Kullanıcı <--> deus_ex_machina <--> Şahit + {Hacker - Şaman} tanımı 22 Ekim'de ChatGPT ana sohbetindedir. Aynı güncel talimat Şahit, Şaman ve Hacker oturumlarına birkaç dakika arayla gitmiş.
+    status:
+      observed
+  -
+    id:
+      deus-live-app
+    check:
+      Şaman'ın deus_ex_machina uygulamasının yerel adresine salt okunur GET (kök ve durum uç noktası), dinleyen adres, Şaman'ın doğrulama kayıtlarının okunması
+    result:
+      Uygulama yalnız yerel adreste dinliyor ve yanıt veriyor; durum yanıtında yalnız Şaman oturumu kayıtlı. Şaman'ın kayıtları gerçek HTTP turunu, yeniden başlatma sonrası aynı işi ve kaynak bağlamı alanlarının korunmasını bildirir; tıklama, sürekli CLI tüketicisi ve diğer katmanların bağlantısı sınanmadı olarak işaretli. Bu devir uygulamaya hiçbir kayıt yazmadı.
+    status:
+      observed
 verified_repository:
   repository:
     HalukAINRS/ortak-kopru
@@ -876,11 +903,11 @@ open_items:
     owner:
       user
     state:
-      unverified
+      partial
     item:
-      Cloud oturumunun tam ham sohbet export'u ve masaüstü arşivleri bu pakette ve depoda yok.
+      Cloud oturumunun tam ham sohbet export'u bu pakette ve depoda yok. Kullanıcının kayıtlı sayfaları (ChatGPT; biri sohbet gövdesiz boş kabuk), Şaman'ın devir paketindeki ChatGPT ana sohbeti ile kitaplık belgeleri ve üç katmanın oturum geçmişleri yerel olarak okunup maskelenerek dönüştürüldü (local_verification: steering-scan). Özgün 100641653 baytlık Steering ZIP'i bu makinede bulunamadı.
     evidence_required:
-      Kullanıcının sağlayacağı kaynak dosyalar; özetlerden yeniden kurulmaz.
+      Kullanıcının sağlayacağı kaynak dosyalar (Chrome'da sayfayı Farklı Kaydet > Web Sayfası, Tamamlandı ile kaydetme); özetlerden yeniden kurulmaz.
   -
     id:
       prior-pr-review
@@ -915,16 +942,29 @@ open_items:
     owner:
       user
     state:
+      partial
+    item:
+      Steering araştırması kendi konusu olarak kalır (Haluk'un sırası: 1 Steering, 2 deus_ex_machina, 3 kurulum). Steering taraması yerel ve özel bir araçla yapıldı: 116 kaynak (kayıtlı sayfalar, ChatGPT ana ve paylaşım sohbeti, 32 kitaplık belgesi, Şahit/Şaman/Hacker oturum geçmişleri) txt, json ve html olarak üretilip bağımsız tarandı (local_verification: steering-scan). Eşleşme yönlendirme kanıtı değil, incelenecek adaydır. deus_ex_machina, kullanıcı kabulüne kadar taslaktır.
+    evidence_required:
+      Yerel CLI'da açık kabul; kullanıcıdan yeni kayıtlı sayfalar geldikçe aracın yeniden çalıştırılması.
+  -
+    id:
+      deus-layer-connections
+    priority:
+      10
+    owner:
+      user+sahit
+    state:
       planned
     item:
-      Steering araştırması kendi konusu olarak kalır; deus_ex_machina, kullanıcı kabulüne kadar taslaktır.
+      Şaman'ın deus_ex_machina uygulaması canlı ve yalnız yerel adreste dinliyor; yalnız Şaman kayıtlı, Şahit ve Hacker bağlı değil (local_verification: deus-live-app). Şahit'in bağlanması uygulamanın özel veritabanına kayıt yazar: Şaman'ın 'connect --participant Şahit' komutu, kullanıcı onayıyla ve kendi oturum etiketiyle çalıştırılmalıdır; bu devir bunu yapmadı.
     evidence_required:
-      Yerel CLI'da açık kabul; etkinleştirme ondan sonra.
+      Kullanıcının açık onayı; bağlantıdan sonra uygulamanın durum çıktısında Şahit oturumu.
   -
     id:
       provider-layers
     priority:
-      10
+      11
     owner:
       user
     state:
@@ -937,7 +977,7 @@ open_items:
     id:
       pr-write-path
     priority:
-      11
+      12
     owner:
       user
     state:

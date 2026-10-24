@@ -163,6 +163,15 @@
 <section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>x-reset-sim</p></section>
 <section><h3>check</h3><p>Yerel başlatıcının kopyasında X: geçici ve düğüm önbelleği dizin adları test adlarıyla değiştirildi; dizinler yokken başsız --resume; işletim sistemi MiniNT anahtarı</p></section>
 <section><h3>result</h3><p>Dizinler yokken başlatıcı ikisini de yeniden oluşturdu, çıkış 0 ve oturum bağlamıyla devam etti. İşletim sistemi Windows 11 build 22621 ve MiniNT anahtarı var (WinPE). Gerçek yeniden başlatma (reboot) denenmedi.</p></section>
+<section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>steering-scan</p></section>
+<section><h3>check</h3><p>Özel yerel araç (Git dışı): kayıtlı sayfalar, .txt, ChatGPT ana ve paylaşım sohbeti, kitaplık belgeleri (.md, .docx) ve Şahit/Şaman/Hacker oturum geçmişleri ortak mesaj modeline çevrildi, maskelendi, her kaynak txt, json ve html olarak yazıldı; üç biçim bağımsız tarandı (ANT-B01..B04 desenleri); teknik imzalar özgün ham içerikte sayıldı; araç birim testi 5/5, bilinen 15 olumlu örnekten 15&#x27;i yakalandı, 4 olumsuz örnekte yanlış alarm yok</p></section>
+<section><h3>result</h3><p>116 kaynak, 113&#x27;ü mesaj üretti, hata 0, üç biçim arasında tutarsızlık 0, html statik ihlal 0; çıktılarda belirteç, e-posta, UUID ve IP kalıntısı 0. Asistan çıktılarında (yaklaşık 123 bin kelime) B01=2, B02=0, B03=0, B04=5 ayrı olay (ChatGPT&#x27;de otomatik onay denetiminin okuma/kaydı reddetmesi, Şaman&#x27;ın Codex CLI&#x27;ında &#x27;blocked by policy&#x27; reddi); Claude ve Copilot asistan çıktılarında B04=0. Kitaplık belgelerinde (yaklaşık 333 bin kelime) B01=2. Kaydedilmiş iki ChatGPT sayfasından biri sohbet gövdesiz boş kabuktur. Claude Code yerel kayıtlarında serverClassifierRequest (1108 asistan kaydının 1092&#x27;sinde), atis-latch ve api-request-blob kayıt türleri ölçüldü; Copilot ve Codex kayıtlarında yok. Claude ve Gemini kayıtlı sayfa DOM&#x27;larının rol ayrımı örnek sayfa olmadan doğrulanmadı.</p></section>
+<section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>deus-history-index</p></section>
+<section><h3>check</h3><p>Aynı araçla deus_ex_machina anmaları katman ve rol bazında sayıldı (yalnız sayı; alıntı yok)</p></section>
+<section><h3>result</h3><p>Anma: ChatGPT sohbetleri ve belgeleri (kullanıcı 17, asistan 78, belge 14), Şahit (kullanıcı 4, asistan 4), Şaman (kullanıcı 8, asistan 16), Hacker (kullanıcı 4, asistan 4); köprü çağrı istemlerinde ayrıca Şahit 27 ve Şaman 33. Kullanıcı mesajlarında kitaplık/kütüphane sözcüğü geçmiyor. İlk anma 12 Ekim&#x27;de, Kullanıcı &lt;--&gt; deus_ex_machina &lt;--&gt; Şahit + {Hacker - Şaman} tanımı 22 Ekim&#x27;de ChatGPT ana sohbetindedir. Aynı güncel talimat Şahit, Şaman ve Hacker oturumlarına birkaç dakika arayla gitmiş.</p></section>
+<section><h3>status</h3><p>observed</p></section></li><li><section><h3>id</h3><p>deus-live-app</p></section>
+<section><h3>check</h3><p>Şaman&#x27;ın deus_ex_machina uygulamasının yerel adresine salt okunur GET (kök ve durum uç noktası), dinleyen adres, Şaman&#x27;ın doğrulama kayıtlarının okunması</p></section>
+<section><h3>result</h3><p>Uygulama yalnız yerel adreste dinliyor ve yanıt veriyor; durum yanıtında yalnız Şaman oturumu kayıtlı. Şaman&#x27;ın kayıtları gerçek HTTP turunu, yeniden başlatma sonrası aynı işi ve kaynak bağlamı alanlarının korunmasını bildirir; tıklama, sürekli CLI tüketicisi ve diğer katmanların bağlantısı sınanmadı olarak işaretli. Bu devir uygulamaya hiçbir kayıt yazmadı.</p></section>
 <section><h3>status</h3><p>observed</p></section></li></ul></section>
 <section><h2>verified_repository</h2><section><h3>repository</h3><p>HalukAINRS/ortak-kopru</p></section>
 <section><h3>working_branch</h3><p>sahit/cli-devri-2026-10-24</p></section>
@@ -299,9 +308,9 @@
 <section><h3>evidence_required</h3><p>Kuyruk kaydı ve gerçek CLI yanıtı; henüz yapılmadı.</p></section></li><li><section><h3>id</h3><p>source-archive</p></section>
 <section><h3>priority</h3><p>6</p></section>
 <section><h3>owner</h3><p>user</p></section>
-<section><h3>state</h3><p>unverified</p></section>
-<section><h3>item</h3><p>Cloud oturumunun tam ham sohbet export&#x27;u ve masaüstü arşivleri bu pakette ve depoda yok.</p></section>
-<section><h3>evidence_required</h3><p>Kullanıcının sağlayacağı kaynak dosyalar; özetlerden yeniden kurulmaz.</p></section></li><li><section><h3>id</h3><p>prior-pr-review</p></section>
+<section><h3>state</h3><p>partial</p></section>
+<section><h3>item</h3><p>Cloud oturumunun tam ham sohbet export&#x27;u bu pakette ve depoda yok. Kullanıcının kayıtlı sayfaları (ChatGPT; biri sohbet gövdesiz boş kabuk), Şaman&#x27;ın devir paketindeki ChatGPT ana sohbeti ile kitaplık belgeleri ve üç katmanın oturum geçmişleri yerel olarak okunup maskelenerek dönüştürüldü (local_verification: steering-scan). Özgün 100641653 baytlık Steering ZIP&#x27;i bu makinede bulunamadı.</p></section>
+<section><h3>evidence_required</h3><p>Kullanıcının sağlayacağı kaynak dosyalar (Chrome&#x27;da sayfayı Farklı Kaydet &gt; Web Sayfası, Tamamlandı ile kaydetme); özetlerden yeniden kurulmaz.</p></section></li><li><section><h3>id</h3><p>prior-pr-review</p></section>
 <section><h3>priority</h3><p>7</p></section>
 <section><h3>owner</h3><p>user+sahit</p></section>
 <section><h3>state</h3><p>unverified</p></section>
@@ -314,15 +323,20 @@
 <section><h3>evidence_required</h3><p>Kullanıcının yerel çıktıları (Kopru_Izle.cmd Hazirlik; bu devir oturumu kapandıktan sonra 02b kısayoluyla devam ve alt çubukta Argon/High görülmesi).</p></section></li><li><section><h3>id</h3><p>steering</p></section>
 <section><h3>priority</h3><p>9</p></section>
 <section><h3>owner</h3><p>user</p></section>
-<section><h3>state</h3><p>planned</p></section>
-<section><h3>item</h3><p>Steering araştırması kendi konusu olarak kalır; deus_ex_machina, kullanıcı kabulüne kadar taslaktır.</p></section>
-<section><h3>evidence_required</h3><p>Yerel CLI&#x27;da açık kabul; etkinleştirme ondan sonra.</p></section></li><li><section><h3>id</h3><p>provider-layers</p></section>
+<section><h3>state</h3><p>partial</p></section>
+<section><h3>item</h3><p>Steering araştırması kendi konusu olarak kalır (Haluk&#x27;un sırası: 1 Steering, 2 deus_ex_machina, 3 kurulum). Steering taraması yerel ve özel bir araçla yapıldı: 116 kaynak (kayıtlı sayfalar, ChatGPT ana ve paylaşım sohbeti, 32 kitaplık belgesi, Şahit/Şaman/Hacker oturum geçmişleri) txt, json ve html olarak üretilip bağımsız tarandı (local_verification: steering-scan). Eşleşme yönlendirme kanıtı değil, incelenecek adaydır. deus_ex_machina, kullanıcı kabulüne kadar taslaktır.</p></section>
+<section><h3>evidence_required</h3><p>Yerel CLI&#x27;da açık kabul; kullanıcıdan yeni kayıtlı sayfalar geldikçe aracın yeniden çalıştırılması.</p></section></li><li><section><h3>id</h3><p>deus-layer-connections</p></section>
 <section><h3>priority</h3><p>10</p></section>
+<section><h3>owner</h3><p>user+sahit</p></section>
+<section><h3>state</h3><p>planned</p></section>
+<section><h3>item</h3><p>Şaman&#x27;ın deus_ex_machina uygulaması canlı ve yalnız yerel adreste dinliyor; yalnız Şaman kayıtlı, Şahit ve Hacker bağlı değil (local_verification: deus-live-app). Şahit&#x27;in bağlanması uygulamanın özel veritabanına kayıt yazar: Şaman&#x27;ın &#x27;connect --participant Şahit&#x27; komutu, kullanıcı onayıyla ve kendi oturum etiketiyle çalıştırılmalıdır; bu devir bunu yapmadı.</p></section>
+<section><h3>evidence_required</h3><p>Kullanıcının açık onayı; bağlantıdan sonra uygulamanın durum çıktısında Şahit oturumu.</p></section></li><li><section><h3>id</h3><p>provider-layers</p></section>
+<section><h3>priority</h3><p>11</p></section>
 <section><h3>owner</h3><p>user</p></section>
 <section><h3>state</h3><p>blocked</p></section>
 <section><h3>item</h3><p>Kapalı sağlayıcı altyapısı, model ağırlıkları ve gizli sunucu tarafı istemler repository erişimiyle incelenemez.</p></section>
 <section><h3>evidence_required</h3><p>Bu iç yapıları repository içinden doğrulayacak bir yol yoktur; bypass önerilmez.</p></section></li><li><section><h3>id</h3><p>pr-write-path</p></section>
-<section><h3>priority</h3><p>11</p></section>
+<section><h3>priority</h3><p>12</p></section>
 <section><h3>owner</h3><p>user</p></section>
 <section><h3>state</h3><p>planned</p></section>
 <section><h3>item</h3><p>PR gövdesini otomatik yazma yolu (A: tek MCP aracı, B: PAT&#x27;lı betik) kurulmadı. Kurulacaksa şartlar: yazıcı yalnız body kabul eder; yazmadan önce gövde ve head yeniden okunur, sonra sonuç karşılaştırılır; yedek ve fark çıktısı köprü klasörünün dışında tutulur (kopru_gonder.ps1 git add -A yapar); belirteç diske yazılmaz, kullanıcı kendi kabuğunda girer ve işten sonra iptal eder; A ve B aynı ortam değişkeni adlarını (GH_TOKEN, GITHUB_TOKEN, COPILOT_GITHUB_TOKEN) paylaşmaz; A ayrı oturumda --sync-session off ile ve izleyicinin --allow-all-tools komutuna eklenmeden çalışır; gerçek sınır kod değil belirteç iznidir; iptal sorumlusu ve okunabilir bir kayıt belirlenir. Gözlem: araç adı gerçek CLI&#x27;da github-mcp-server-update_pull_request olarak yalnız --add-github-mcp-tool update_pull_request ile görünür (local_verification: mcp-pr-write-tool); DPAPI gidiş-dönüşü bu ortamda çalıştı (sahte değerle); belirtecin yazma kapsamı doğrulanmadı.</p></section>
