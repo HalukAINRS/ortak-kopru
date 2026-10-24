@@ -90,15 +90,20 @@ def main():
     from kopru_oku import Ayristirici
     # Yalnız atama fonksiyonları yürütülür. Ana akış, CLI veya API çağrısı yok.
     source = bridge/'kopru_yanitla.py'
-    names = ('ad_kok', 'kime_adlari', 'numara', 'bekleyenler')
-    nodes = [function_node(source, name) for name in names]
+    names = ('ad_kok', 'hedef_kimligi', 'kime_adlari', 'numara', 'bekleyenler')
+    available = {n.name for n in ast.parse(source.read_text(encoding='utf-8-sig')).body if isinstance(n, ast.FunctionDef)}
+    nodes = [function_node(source, name) for name in names if name in available]
     namespace = {'re': __import__('re')}
     exec(compile(ast.Module(body=nodes, type_ignores=[]), str(source), 'exec'), namespace)
     request = {'id': 'k-0001', 'kimden': 'Sen', 'kime': 'ChatGPT (Şaman)', 'durum': 'acik', 'yanit': None}
     reply = {'id': 'k-0002', 'kimden': 'ChatGPT (API)', 'kime': 'Sen', 'durum': 'kapandi', 'yanit': 'k-0001'}
     before = namespace['bekleyenler']([request], 'ChatGPT')
     after = namespace['bekleyenler']([request, reply], 'ChatGPT')
-    assert before == [request] and after == []
+    cli_after = namespace['bekleyenler']([request, reply], 'ChatGPT (Şaman)')
+    if 'hedef_kimligi' in available:
+        assert before == [] and after == [] and cli_after == [request]
+    else:
+        assert before == [request] and after == []
     page = (bridge/'kopru.html').read_bytes()
     records = Ayristirici()
     records.feed(page.decode('utf-8'))
@@ -122,7 +127,8 @@ def main():
                                       'source_sha256': sha(source.read_bytes()),
                                       'function_lines': [nodes[-1].lineno, nodes[-1].end_lineno],
                                       'role_address_accepted_by_producer_root': bool(before),
-                                      'api_label_reply_hides_cli_label_request': not after,
+                                      'api_label_reply_hides_cli_label_request': bool(before) and not after,
+                                      'explicit_cli_request_survives_api_reply': cli_after == [request],
                                       'actual_cli_delivery_proven': False},
               'binary': {'name': exe.name, 'sha256': sha(binary), 'bytes': len(binary),
                          'saved_endpoint_strings': {e: binary.count(e.encode()) for e in endpoints},

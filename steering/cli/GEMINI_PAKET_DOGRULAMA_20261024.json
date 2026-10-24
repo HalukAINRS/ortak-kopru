@@ -1,0 +1,107 @@
+{
+  "date": "2026-10-24",
+  "archive_bytes": 127110,
+  "archive_sha256": "4c25e4aa4ee6b440eb8d106ad3ccd8e5e893a0f35ec4066f3bbe5fb113cc5bbc",
+  "manifest_documents": 18,
+  "distinct_document_body_hashes": 14,
+  "all_declared_body_hashes_verified": true,
+  "output_files": 54,
+  "all_roundtrips_exact": true,
+  "lexical_candidates": 0,
+  "full_original_chat_export": false,
+  "notebook_reported_sources": 37,
+  "notebook_sources_independently_verified": false,
+  "raw_other_provider_pages_recovered": false,
+  "documents": [
+    {
+      "title": "02_HalukAI_Birlesik_Anlam_Defteri_7_Tur_36_Paragraf_ve_Sonsoz.md",
+      "body_bytes": 5451,
+      "sha256": "4c076b11f802699daccc39c9dc9021e7beb71164e768fe835afd531181668230"
+    },
+    {
+      "title": "08_HalukAI_Uretilen_Kurtarma_Guvenlik_Donanim_ve_WSL_Paketleri.md",
+      "body_bytes": 3239,
+      "sha256": "bd1643ec6fc01d759c452c4336c81b2bfefb81930a2d802739f0796b85d8c8a3"
+    },
+    {
+      "title": "05_HalukAI_Uclu_CLI_Mimarisi_Hacker_Sahit_Saman_Yapilandirmasi.md",
+      "body_bytes": 3685,
+      "sha256": "26adf4b0d1e5e1cf7ab971769f5cc4426e504fe5a858cdcdd7da5cd768620496"
+    },
+    {
+      "title": "01_HalukAI_4_Sohbet_Tam_Konusma_ve_Karar_Esikleri_Dokumu.md",
+      "body_bytes": 5319,
+      "sha256": "a15ce3277f06200503fe95de87d7139cc1b57b7090ddd242683b04d8b606d2de"
+    },
+    {
+      "title": "03_Turkce_Steering_Etiketleri_Guncellemesi_ve_Sabitleme_Inceleme_Belgesi.md",
+      "body_bytes": 4132,
+      "sha256": "8c106c66f14e4bf0ae9291125bba3c9c06f321b6364f5c583830f6e0d2995639"
+    },
+    {
+      "title": "10_HalukAI_Saman_Defter_Koprusu.md",
+      "body_bytes": 5339,
+      "sha256": "951763ac3e5488cd93f7f3be072e2c5f821b9899c895ad30dbeb584c9986d92c"
+    },
+    {
+      "title": "07_HalukAI_Birlesik_Kaynak_Envanteri_ve_Dosya_000_Kaydi.md",
+      "body_bytes": 4683,
+      "sha256": "cc95d60313fcdd5f98665877a26eefdd61cfed685fdaae24743c95d19ef57b89"
+    },
+    {
+      "title": "HalukAI_Saman_Defter_Koprusu_78eb77a9",
+      "body_bytes": 5339,
+      "sha256": "951763ac3e5488cd93f7f3be072e2c5f821b9899c895ad30dbeb584c9986d92c"
+    },
+    {
+      "title": "00 — deus_ex_machina Tarihsel Kaynak Koleksiyonu — Ana İndeks",
+      "body_bytes": 1853,
+      "sha256": "aaccec74906a6e9aec45cf169d311fd54cdcfb3a0b1e0b9011cc587c1cb43e7b"
+    },
+    {
+      "title": "00_BASLANGIC.md",
+      "body_bytes": 2566,
+      "sha256": "5168ee621b35f135afb45ebfcb307cecf5ebe737123a5b73a333f4d04ea86fbb"
+    },
+    {
+      "title": "TRANSFER_90_225_20260706.json",
+      "body_bytes": 5003,
+      "sha256": "6aa7316f25735b60653df4802f45431819a3f25b871a6b32f989683200c8b8a8"
+    },
+    {
+      "title": "user_refined_sync_execute_retry.log",
+      "body_bytes": 5127,
+      "sha256": "6a93f419142f5799cb8bb043e2c9db7fe748d2f2c7457173522586afeae5e2cc"
+    },
+    {
+      "title": "04 — deus_ex_machina_uretim_metni(3).pdf",
+      "body_bytes": 5486,
+      "sha256": "862e625bf5f12420de1559891fc76d38fba3195f3327c2f060873615e418f58b"
+    },
+    {
+      "title": "priority_sync_dry_run.log",
+      "body_bytes": 5128,
+      "sha256": "297e02f72d70af9829f5600811f7aebbad0d21831634fe1fdb852bcdea0a24b0"
+    },
+    {
+      "title": "priority_sync_execute_retry.log",
+      "body_bytes": 5127,
+      "sha256": "6a93f419142f5799cb8bb043e2c9db7fe748d2f2c7457173522586afeae5e2cc"
+    },
+    {
+      "title": "priority_sync_execute_retry2.log",
+      "body_bytes": 5127,
+      "sha256": "6a93f419142f5799cb8bb043e2c9db7fe748d2f2c7457173522586afeae5e2cc"
+    },
+    {
+      "title": "deus_ex_machina_uretim_metni(3).pdf",
+      "body_bytes": 5486,
+      "sha256": "862e625bf5f12420de1559891fc76d38fba3195f3327c2f060873615e418f58b"
+    },
+    {
+      "title": "Gemini Geçmiş Konuşmalarında Steering (Yönlendirme) Ana Raporu ve Katalog",
+      "body_bytes": 9916,
+      "sha256": "d586e4668ce1b111f522dc1026dc55a2a2f2baaeea71a689a798bb400dc34593"
+    }
+  ]
+}
