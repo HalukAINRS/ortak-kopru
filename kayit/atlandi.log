@@ -33,3 +33,4 @@ ERROR: Reconnecting... 3/5
 2026-10-23T23:16:20.148332Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: HTTP error: 401 Unauthorized, url: 
 2026-10-23 23:48:16Z ChatGPT: openai: OPENAI_API_KEY yok
 2026-10-23 23:48:16Z Gemini: google: GEMINI_API_KEY yok
+2026-10-24 00:04:31Z ChatGPT: openai: OPENAI_API_KEY yok
