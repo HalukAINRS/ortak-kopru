@@ -10,6 +10,10 @@
 - Şaman bu oturumda kaynakları okumaktadır. Hacker veya Şahit’in aynı bağlamı okuduğuna ve kabul ettiğine ilişkin onların yerine sonuç üretilmez.
 - PR #4 kullanıcı katmanının ayrı uygulama taslağıdır. Diğer katmanın taslağı bu belgeyle değiştirilmez veya birleştirilmiş sayılmaz.
 
+## PR #4 ilk somut kontrolü
+
+69adfbc sürümünde değişen sekiz dosya yalnız devir/sahit/ altındadır. README, SahitDevam adlı bir yerel kapıyı tarif ediyor; aynı sürümün Kopru_Izle.cmd ve kopru_yerel.ps1 dosyalarında bu ad bulunmuyor. Bu sürüm için devir belgeleri mevcut, belgede tarif edilen başlatıcı bağlantısı ise henüz kodda görünmüyor. İş kuyruğu veya arayüz MVP'si de bu sekiz dosya içinde bulunmuyor. Bu kontrol dalın o sürümüne aittir; sonradan eklenen kod ayrıca okunmalıdır.
+
 ## Açık işler
 
 1. Görünür sohbet kesitlerini kronolojik eşlemek; başlangıç, son ve olası boşlukları özgün kaynaklarla doğrulamak.
