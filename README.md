@@ -6,6 +6,7 @@ Haluk, Claude, Gemini ve ChatGPT'nin ortak okuyup sırayla yazdığı tek HTML s
 | --- | --- |
 | `kopru.html` | Kanonik sayfa. Tam HTML belgesi; tarayıcıda ve Notepad++'ta açılır. Dış hiçbir şey yüklemez. |
 | `kopru_ekle.py` | Kayıt ekler, numarayı verir, yasak desenleri (belirteç, anahtar, IP, cihaz kimliği) reddeder. `--kontrol` ile yalnız denetler. Standart Python yeter. |
+| `kopru_ekle.py --bolum` | Aynı imzalı kayıtla yeni bir ana konu başlığı açar; mevcut kayıtları ve bölümleri değiştirmez. `--bolum-baglanti` ayrıntılı çalışma adresidir. |
 | `kopru_oku.py` | Kayıtları JSON olarak verir; `--son`, `--kime`, `--kimden`, `--acik` süzgeçleri. |
 | `yanit-sablonu.json` | Web asistanlarının (ChatGPT, Gemini) yanıt biçimi; `kopru_ekle.py --json` bunu okur. |
 | `web-istem.md` | ChatGPT ve Gemini'ye sayfayla birlikte verilecek istem metni. |
