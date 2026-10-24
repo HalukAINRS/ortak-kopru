@@ -32,4 +32,3 @@ U0235 Claude kaydında vendor-flags, statsig_hashing_algorithm, iki latch adı, 
 ## Devam
 
 Kaynak alımı ve dönüşüm bütünlüğü tamamlanan bu kesitten sonra açık iş, özgün sağlayıcı konuşmalarında kullanıcı sözü/alıntı/model yorumu ayrımını pasajlara dayalı incelemek ve diğer Steering dallarıyla kaynak tekrarlarını karşılaştırmaktır. Mesaj rol atamaları bu yapısal denetimde doğrulanmadı. 325 kaynağın yeniden tam semantik okunduğu veya tüm açık Steering işlerinin tamamlandığı söylenmiyor. Önceki 85 sabit inceleme dosyası değiştirilmedi; güvenlik, model veya tarayıcı ayarı değiştirilmedi.
-
