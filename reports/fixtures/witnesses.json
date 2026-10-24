@@ -1,0 +1,38 @@
+{
+  "witnesses": [
+    {
+      "provider": "offline-fixture",
+      "model": "fixture-alpha",
+      "source_ids": [],
+      "output": "Sahte örnek: kaynakta açıkça yazan olgu ile yorumu ayır.",
+      "claims": [
+        "Bu çıktı yalnızca fixture verisidir."
+      ],
+      "interpretations": [
+        "Bir kaynak daha okunması belirsizliği azaltabilir."
+      ],
+      "recommendations": [
+        "Seçenek A: mevcut kaydı koru; düşük maliyet, olası eksik kapsam."
+      ],
+      "user_approvals": [],
+      "actions": []
+    },
+    {
+      "provider": "offline-fixture",
+      "model": "fixture-beta",
+      "source_ids": [],
+      "output": "Sahte örnek: aynı hash bütünlüğü doğrular, doğruluğu değil.",
+      "claims": [
+        "Bu çıktı canlı model yanıtı değildir."
+      ],
+      "interpretations": [
+        "Hash, içeriğin sonradan değişmediğini tek başına kanıtlamaz."
+      ],
+      "recommendations": [
+        "Seçenek B: bağımsız kaynakla karşılaştır; ek inceleme maliyeti ve gecikmesi vardır."
+      ],
+      "user_approvals": [],
+      "actions": []
+    }
+  ]
+}

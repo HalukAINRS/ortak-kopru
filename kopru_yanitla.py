@@ -19,9 +19,11 @@ numaraya kadar olan bütün bekleyenleri kapsar; bu yüzden her çalıştırmada
 
 Anahtarlar yalnız ortam değişkeninden okunur ve hiçbir yere yazılmaz.
 """
-import argparse, datetime, json, os, re, shutil, subprocess, sys, tempfile, urllib.error, urllib.request
+import argparse, contextvars, datetime, hashlib, json, os, re, shutil, subprocess, sys, tempfile, urllib.error, urllib.request
 
 BURASI = os.path.dirname(os.path.abspath(__file__))
+API_TIMEOUT = contextvars.ContextVar("kopru_api_timeout", default=180)
+API_RESPONSE_LIMIT = contextvars.ContextVar("kopru_api_response_limit", default=None)
 sys.path.insert(0, BURASI)
 from kopru_oku import Ayristirici  # noqa: E402
 
@@ -110,14 +112,31 @@ def istem_kur(yol, ad, bek):
 
 # ---------- üretici çağrıları ----------
 
-def http_json(url, veri, basliklar, zaman_asimi=180):
+def http_json(url, veri, basliklar, zaman_asimi=None):
     istek = urllib.request.Request(url, data=json.dumps(veri).encode("utf-8"), headers={"Content-Type": "application/json", **basliklar}, method="POST")
     try:
-        with urllib.request.urlopen(istek, timeout=zaman_asimi) as y:
-            return json.loads(y.read().decode("utf-8"))
+        with urllib.request.urlopen(istek, timeout=zaman_asimi if zaman_asimi is not None else API_TIMEOUT.get()) as y:
+            limit = API_RESPONSE_LIMIT.get()
+            if limit is None:
+                response = y.read()
+            else:
+                response = bytearray()
+                while len(response) <= limit:
+                    chunk = y.read(min(65536, limit + 1 - len(response)))
+                    if not chunk:
+                        break
+                    response.extend(chunk)
+                if len(response) > limit:
+                    raise RuntimeError("Provider response exceeded the policy byte limit")
+            return json.loads(bytes(response).decode("utf-8"))
     except urllib.error.HTTPError as e:
         govde = e.read().decode("utf-8", errors="replace")[:2000]
         raise RuntimeError(f"HTTP {e.code}: {govde}") from None
+
+
+def api_istek_hash(veri):
+    """Hash the exact UTF-8 JSON body serialization used by http_json."""
+    return hashlib.sha256(json.dumps(veri).encode("utf-8")).hexdigest()
 
 
 class KomutYok(Exception):
@@ -165,16 +184,21 @@ def cli_cagir(komut, sistem, kullanici, istem_nasil="dosya", ad="bot", zaman_asi
     return sonuc.stdout, {"cli": " ".join(komut), "stderr_son": (sonuc.stderr or "")[-300:]}
 
 
-def cagir(saglayici, model, anahtar, sistem, kullanici, en_cok_token, caba=None):
+def cagir(saglayici, model, anahtar, sistem, kullanici, en_cok_token, caba=None, allow_fallback=True,
+          return_metadata=False):
     """Üretici API'sini çağırır. Derin düşünme ayarı (caba) 400 verirse bir alt düzeyle, sonra ayarsız yeniden dener."""
-    denemeler = [caba, "high", None] if caba and caba != "high" else ([caba, None] if caba else [None])
+    if allow_fallback:
+        denemeler = [caba, "high", None] if caba and caba != "high" else ([caba, None] if caba else [None])
+    else:
+        denemeler = [caba] if caba else [None]
     son_hata = None
     for c in denemeler:
         try:
             if saglayici == "anthropic":
                 govde = {"model": model, "max_tokens": en_cok_token, "system": sistem, "messages": [{"role": "user", "content": kullanici}]}
                 y = http_json("https://api.anthropic.com/v1/messages", govde, {"x-api-key": anahtar, "anthropic-version": "2023-06-01"})
-                return "".join(p.get("text", "") for p in y.get("content", []) if p.get("type") == "text"), y.get("usage")
+                sonuc = ("".join(p.get("text", "") for p in y.get("content", []) if p.get("type") == "text"), y.get("usage"))
+                return (*sonuc, {"request_body_sha256": api_istek_hash(govde), "observed_model": y.get("model"), "reasoning_sent": None}) if return_metadata else sonuc
             if saglayici == "openai":
                 govde = {"model": model, "instructions": sistem, "input": kullanici, "max_output_tokens": en_cok_token}
                 if c:
@@ -186,7 +210,8 @@ def cagir(saglayici, model, anahtar, sistem, kullanici, en_cok_token, caba=None)
                         for par in oge.get("content", []):
                             if par.get("type") == "output_text":
                                 metin.append(par.get("text", ""))
-                return "".join(metin), y.get("usage")
+                sonuc = ("".join(metin), y.get("usage"))
+                return (*sonuc, {"request_body_sha256": api_istek_hash(govde), "observed_model": y.get("model"), "reasoning_sent": c}) if return_metadata else sonuc
             if saglayici == "google":
                 uretim = {"maxOutputTokens": en_cok_token}
                 if c:
@@ -194,11 +219,12 @@ def cagir(saglayici, model, anahtar, sistem, kullanici, en_cok_token, caba=None)
                 govde = {"system_instruction": {"parts": [{"text": sistem}]}, "contents": [{"role": "user", "parts": [{"text": kullanici}]}], "generationConfig": uretim}
                 y = http_json(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent", govde, {"x-goog-api-key": anahtar})
                 parcalar = y["candidates"][0]["content"]["parts"]
-                return "".join(p.get("text", "") for p in parcalar if not p.get("thought")), y.get("usageMetadata")
+                sonuc = ("".join(p.get("text", "") for p in parcalar if not p.get("thought")), y.get("usageMetadata"))
+                return (*sonuc, {"request_body_sha256": api_istek_hash(govde), "observed_model": y.get("modelVersion"), "reasoning_sent": c}) if return_metadata else sonuc
             raise ValueError(f"bilinmeyen sağlayıcı: {saglayici}")
         except RuntimeError as e:
             son_hata = e
-            if c is None or not str(e).startswith("HTTP 400"):
+            if not allow_fallback or c is None or not str(e).startswith("HTTP 400"):
                 raise
             print(f"  {saglayici}: düşünme ayarı '{c}' kabul edilmedi, bir alt düzey deneniyor")
     raise son_hata
@@ -231,6 +257,151 @@ def atlandi_yaz(ad, hatalar):
         fh.write(f"{zaman} {ad}: {' | '.join(hatalar)}\n")
 
 
+def denetlenebilir_cagir(kat, artifact_path, approval_path, policy_path, bridge_path=None, config_path=None):
+    """Run one explicitly approved API call; local CLI adapters are intentionally unsupported."""
+    from ortak_kopru.context import ContextError, consume_approval, load_json, validate_policy, verify_approval, verify_compiled
+    from ortak_kopru.runs import RunStore, contains_secret
+
+    compiled = load_json(artifact_path)
+    policy = validate_policy(load_json(policy_path))
+    digest = verify_compiled(compiled)
+    manifest = {source["path"]: source["role"] for source in compiled.get("sources", [])}
+    if manifest.get("kopru.html") != "untrusted_evidence":
+        raise ContextError("Audited context must include the canonical bridge as untrusted evidence")
+    if manifest.get("ayarlar.json") != "configuration":
+        raise ContextError("Audited context must include the canonical provider configuration")
+    if bridge_path is None or os.path.abspath(bridge_path) != os.path.join(BURASI, "kopru.html"):
+        raise ContextError("Audited context is bound to the canonical kopru.html path")
+    if config_path is None or os.path.abspath(config_path) != os.path.join(BURASI, "ayarlar.json"):
+        raise ContextError("Audited context is bound to the canonical ayarlar.json configuration")
+    messages = compiled.get("messages")
+    if not isinstance(messages, list) or len(messages) != 2 or [m.get("role") for m in messages] != ["system", "user"]:
+        raise ContextError("Audited context must contain exactly one system and one user message")
+    if contains_secret(messages):
+        raise ContextError("Outgoing context matched a secret-like pattern; provider call was blocked")
+    if kat["saglayici"] == "cli":
+        raise ContextError("Audited execution currently supports only direct API adapters; CLI hidden layers are not fully captured")
+    if compiled["provider"]["requested"] != kat["saglayici"] or compiled["provider"]["model_requested"] != kat.get("model"):
+        raise ContextError("Requested provider/model differs from the reviewed compiled context")
+    reasoning = kat.get("dusunme") or "none"
+    if compiled["provider"]["reasoning_requested"] != reasoning:
+        raise ContextError("Requested reasoning differs from the reviewed compiled context")
+    if kat["saglayici"] == "anthropic" and reasoning != "none":
+        raise ContextError("This Anthropic adapter does not send a reasoning setting")
+    if reasoning not in policy["provider"]["allowed_reasoning"]:
+        raise ContextError("Requested reasoning is not allowed by policy")
+
+    if not approval_path:
+        print(f"Onay yok; sağlayıcı çağrısı yapılmadı. Bağlam SHA-256: {digest}")
+        print("İncelenen gerçek mesajlar:")
+        print(json.dumps(messages, ensure_ascii=False, indent=2))
+        print(f"Onay için: python -m ortak_kopru.cli approve --artifact {artifact_path} --policy {policy_path} --expires <UTC-ISO> --confirm-reviewed")
+        return None
+    verify_approval(compiled, policy, policy_path, approval_path, BURASI)
+
+    degisken = kat.get("anahtar_degiskeni")
+    anahtar = (os.environ.get(degisken, "") or "").strip() if degisken else ""
+    if degisken and not anahtar:
+        raise ContextError(f"Required environment key is not set: {degisken}")
+    timeout = int(policy["limits"]["timeout_seconds"])
+    token_limit = int(policy["limits"].get("max_output_tokens", 0))
+    if token_limit < 1:
+        raise ContextError("Policy must set a positive max_output_tokens")
+    if int(policy["limits"]["max_rounds"]) != 1:
+        raise ContextError("This audited adapter supports exactly one request round")
+
+    run = RunStore(os.path.join(BURASI, "runs")).start(
+        compiled,
+        {
+            "provider_requested": kat["saglayici"],
+            "model_requested": kat["model"],
+            "reasoning_requested": reasoning,
+            "max_rounds": 1,
+        },
+    )
+    # Both records must exist before any network call; failure here is fail-closed.
+    try:
+        consume_approval(approval_path)
+    except ContextError:
+        run.append("skipped", {"reason": "approval_unavailable"})
+        raise
+    run.append(
+        "attempted",
+        {"provider_requested": kat["saglayici"], "model_requested": kat["model"]},
+        raw={"messages": messages, "context_sha256": digest},
+    )
+    api_token = API_TIMEOUT.set(timeout)
+    response_token = API_RESPONSE_LIMIT.set(int(policy["limits"]["max_output_bytes"]) + 65536)
+    try:
+        ham, kullanim, metadata = cagir(
+            kat["saglayici"],
+            kat["model"],
+            anahtar,
+            messages[0]["content"],
+            messages[1]["content"],
+            token_limit,
+            None if reasoning == "none" else reasoning,
+            allow_fallback=False,
+            return_metadata=True,
+        )
+    except Exception as exc:  # provider error bodies remain in the private local raw event only
+        try:
+            run.append("failed", {"error_type": type(exc).__name__}, raw={"error": str(exc)})
+        except Exception as record_error:
+            try:
+                run.append("recovery_required", {"recording_error_type": type(record_error).__name__})
+            except Exception:
+                pass
+            raise ContextError(f"Provider call failed; recovery required because run recording failed ({type(record_error).__name__})") from None
+        raise ContextError(f"Provider call failed ({type(exc).__name__}); details were kept local") from None
+    finally:
+        API_RESPONSE_LIMIT.reset(response_token)
+        API_TIMEOUT.reset(api_token)
+
+    response_hash = hashlib.sha256(ham.encode("utf-8")).hexdigest()
+    observed_model = metadata.get("observed_model")
+    if not isinstance(observed_model, str) or not re.fullmatch(r"[A-Za-z0-9._:-]{1,128}", observed_model):
+        observed_model = "unknown"
+    public_meta = {
+        "provider_requested": kat["saglayici"],
+        "provider_observed": "unknown",
+        "model_requested": kat["model"],
+        "model_observed": observed_model,
+        "reasoning_requested": reasoning,
+        "reasoning_sent": metadata.get("reasoning_sent"),
+        "reasoning_applied": "unknown",
+        "reasoning_observed": "unknown",
+        "compiled_message_sha256": compiled["message_sha256"],
+        "request_body_sha256": metadata["request_body_sha256"],
+        "response_sha256": response_hash,
+    }
+    def record_blocked(reason, raw):
+        try:
+            run.append("failed", {**public_meta, "publication": reason}, raw=raw)
+        except Exception as exc:
+            try:
+                run.append("recovery_required", {"recording_error_type": type(exc).__name__})
+            except Exception:
+                pass
+            raise ContextError(f"{reason}; run needs local recovery. Do not retry this call.") from None
+        raise ContextError(f"{reason}; response remains private")
+
+    if contains_secret(ham):
+        record_blocked("Response matched a secret-like pattern", {"response": ham, "usage": kullanim})
+    if len(ham.encode("utf-8")) > int(policy["limits"]["max_output_bytes"]):
+        record_blocked("Response exceeded the policy output-byte budget", {"response": ham, "usage": kullanim})
+    try:
+        run.append("succeeded", public_meta, raw={"response": ham, "usage": kullanim})
+    except Exception as exc:
+        try:
+            run.append("recovery_required", {"recording_error_type": type(exc).__name__})
+        except Exception:
+            pass
+        raise ContextError("Provider returned; completion record needs local recovery. Do not retry this call.") from None
+    print(f"Audited API call succeeded; run={run.run_id}; response remains in ignored local storage.")
+    return run.run_id
+
+
 def ekle(yol, veri):
     with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8", dir=BURASI) as fh:
         json.dump(veri, fh, ensure_ascii=False)
@@ -256,7 +427,15 @@ def main():
     p.add_argument("--bekleyenler", metavar="AD", help="yalnız listele")
     p.add_argument("--istem", metavar="AD", help="istem metnini yaz ve çık")
     p.add_argument("--yalniz", metavar="AD", help="ayarlardaki katılımcılardan yalnız bunu çalıştır")
+    p.add_argument("--denetlenebilir", action="store_true", help="yalnız onaylı ve hash'li bağlamla tek API çağrısı yap")
+    p.add_argument("--baglam", help="önceden derlenmiş ortak_kopru context artifact JSON dosyası")
+    p.add_argument("--onay", help="derleme/politika/işlem kapsamına bağlı yerel onay dosyası")
+    p.add_argument("--politika", default=os.path.join(BURASI, "policy", "policy.json"))
     a = p.parse_args()
+    if a.denetlenebilir and (not a.baglam or not a.yalniz or a.kuru):
+        p.error("--denetlenebilir için --baglam ve --yalniz gerekir; --kuru ile birlikte kullanılamaz")
+    if a.onay and not a.denetlenebilir:
+        p.error("--onay yalnız --denetlenebilir ile kullanılabilir")
 
     kayitlar = kayitlari_oku(a.dosya)
     if a.bekleyenler:
@@ -281,6 +460,13 @@ def main():
         bek = bekleyenler(kayitlar, ad)
         if not bek:
             print(f"{ad}: bekleyen yok")
+            continue
+        if a.denetlenebilir:
+            try:
+                denetlenebilir_cagir(kat, a.baglam, a.onay, a.politika, a.dosya, a.ayarlar)
+            except Exception as e:  # noqa: BLE001
+                print(f"{ad}: denetlenebilir çağrı reddedildi: {e}", file=sys.stderr)
+                return 2
             continue
         sistem, kullanici = istem_kur(a.dosya, ad, bek)
         if a.kuru:
