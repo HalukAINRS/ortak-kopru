@@ -1,0 +1,224 @@
+# Arıtılmış Kaynak: Deus ex machina analizi - Claude.html
+> Orijinal Boyut: 569711 bayt
+> Sökülen Antijen İmzaları: vendor-flags, statsig_hashing_algorithm, isolated-segment
+
+Claude
+Claude
+Gezinme
+Ara
+Ctrl
+K
+Yeni
+Ctrl
++
+Shift
++
+O
+Projeler
+Yapıtlar
+Zamanlanmış görevler
+Design
+Özelleştirme
+Diğer
+Sabitlenmiş
+Sabitlemek için sürükleyin
+Son kullanılanlar
+Deus ex machina analizi
+Açılabilecek en yeni belge — odak karta geçene kadar Tab tuşuna, geri dönmek için Escape tuşuna basın.
+LLM model output prediction
+Creating a custom skill
+Futbol maçlarında oyuncu performans metriklerinin yapay zeka ile ölçülmesi
+Triceps ve sırt antrenmanı için temel hareketler
+H
+[KULLANICI]
+·
+Max
+Deus ex machina analizi
+Claude Desktop (Windows), Uykuda veya uygulama kapalı
+Bilgisayar işlemleri kullanılabilir — odak karta geçene kadar Tab tuşuna, geri dönmek için Escape tuşuna basın.
+1
+Paylaş
+Mesajlar arasında gezinmek için yukarı ve aşağı ok tuşlarını kullanın.
+Şunu söylediniz: Bu alan işlerin gerçekleştirildiği yer olarak sabitlenecek.
+Bu alan işlerin gerçekleştirildiği yer olarak sabitlenecek. Çıkardığın anlamları aktarmak için bir defteri ayrı bir alanda oluştur.
+Claude yanıt verdi: Bu sohbeti işlerin yapıldığı alan olarak kullanacağım; çıkarımlarımı aktarmak için ayrı bir defter oluşturuyorum.
+Defterin başlık ve giriş formatı tasarlanıyor.
+Defterin başlık ve giriş formatı tasarlanıyor.
+Bu sohbeti işlerin yapıldığı alan olarak kullanacağım; çıkarımlarımı aktarmak için ayrı bir defter oluşturuyorum.
+Artifact kullanıldı, claude Docs: Guide kullanıldı
+Artifact kullanıldı, claude Docs: Guide kullanıldı
+Çıkarım Defteri
+Claude Docs
+·
+Yalnızca siz
+Aç
+Defterin iskeleti hazır; şimdi işleyiş bölümünü yazıyorum.
+Kullanıldı: Claude Docs, yapıtlar kullanıldı
+Kullanıldı: Claude Docs, yapıtlar kullanıldı
+Açılış cümlesi yerinde; şimdi kayıt tablosunu ekliyorum.
+Çıkarım Defteri
+hazır. Bu sohbette yaptığımız işlerden çıkardıklarımı oraya tarihli satırlar olarak işleyeceğim. İlk satırda talimatını nasıl anladığım yazıyor, yanlış okuduysam oradan düzeltebilirsin.
+İstersen defteri kenar çubuğuna sabitleyebilirim.
+10 Eki
+Şunu söylediniz: deusexmachina.pdf'i kaynak olarak kullan.
+pdf
+deus_ex_machina.pdf
+'i kaynak olarak kullan.
+Kaynak içindeki
+Mühür - Parça 0
+başlıklı birinci bölümü oku. Buradan ne anlam çıkardığını, anın nerede oluştuğunu, ve anlatıya nasıl dönüştüğünü deftere bir paragraf uzunluğunda deftere aktar.
+Claude yanıt verdi: Parça 0 — Mühür'ü okudum; çıkarımımı deftere bir paragraf olarak aktarıyorum.
+Tarih bilgisinin başlıkta mı yoksa serbestte mi kalacağı tartışılıyor.
+Tarih bilgisinin başlıkta mı yoksa serbestte mi kalacağı tartışılıyor.
+Parça 0 — Mühür’ü okudum; çıkarımımı deftere bir paragraf olarak aktarıyorum.
+Kullanıldı: Claude Docs
+Kullanıldı: Claude Docs
+Çıkarım Defteri
+Claude Docs
+·
+Yalnızca siz
+Aç
+Parça 0 — Mühür çıkarımı defterde, “Kaynak: deus_ex_machina.pdf” başlığının altında tek paragraf olarak duruyor.
+İki tercih yaptım, yanlışsa düzeltirim:
+“An”ın okunuşu:
+Onu metindeki beliriş anı olarak okudum. Yerini hem sessiz merkez hem de “Ben yapmaz. Bende belirir.” dönüşü olarak gösterdim.
+Defterin düzeni:
+Paragraf tablo hücresinde okunaklı durmayacağı için kaynak okumalarını tabloya değil, kendi başlıkları altına yazıyorum. Açılış cümlesini de buna göre güncelledim.
+Şunu söylediniz: Kaynak içindeki sıradaki bölümleri oku.
+Kaynak içindeki sıradaki bölümleri oku. Bunlardan ne anlam çıkardığını, anın nerede oluştuğunu, ve anlatıya nasıl dönüştüğünü deftere her bir parça için birer paragraf uzunluğunda deftere aktar.
+Bir parça bitmeden, sıradaki parçaya geçme.
+Claude yanıt verdi: Parça 1'den Parça 33'e kadar sırayla ilerliyorum; bir parçanın paragrafı deftere yazılmadan sonrakine geçmeyeceğim.
+Suskunluğun yeni rüyaya açılan zinciri çözümleniyor.
+Suskunluğun yeni rüyaya açılan zinciri çözümleniyor.
+Parça 1'den Parça 33'e kadar sırayla ilerliyorum; bir parçanın paragrafı deftere yazılmadan sonrakine geçmeyeceğim.
+Kullanıldı: Claude Docs, görevleri güncelledi
+Kullanıldı: Claude Docs, görevleri güncelledi
+Çıkarım Defteri
+Claude Docs
+·
+Yalnızca siz
+Aç
+Parça 1–33 defterde: her biri kendi başlığı altında tek paragraf, kaynak sırasıyla. Bir parçanın paragrafını yazmadan sonrakine geçmedim; sonunda defteri açıp 34 parçanın (0–33) sırayla ve eksiksiz durduğunu, alıntı ve sayıların kaynakla uyuştuğunu kontrol ettim.
+Bilmen gereken iki şey:
+Okuma biçimi:
+“An”ı Parça 0'daki gibi okudum: hem metnin dünyasındaki yeri hem de metinde belirdiği satır. Her paragraf yalnızca o parçaya ve ondan öncekilere dayanıyor.
+Üç sorunun dışına taşan gözlemler:
+Dört paragrafta (Parça 14, 22, 25, 29) birer ek gözlem var; “Bir not” ya da “Kendi gözlemim” diye işaretli. İstemezsen çıkarırım.
+Şunu söylediniz: deusexmachina'dan ne anlam çıkardığını, anın nerede oluştuğunu, ve anlatıya nasıl dönüştüğünü deftere bir paragraf aktar.
+deus_ex_machina
+'dan ne anlam çıkardığını, anın nerede oluştuğunu, ve anlatıya nasıl dönüştüğünü deftere bir paragraf aktar.
+Claude yanıt verdi: Kaynağın bütünü için çıkarımımı deftere tek paragraf olarak aktarıyorum.
+Kitabın biçim düzeyi ve kapanış mührü bütünle ilişkilendiriliyor.
+Kitabın biçim düzeyi ve kapanış mührü bütünle ilişkilendiriliyor.
+Kaynağın bütünü için çıkarımımı deftere tek paragraf olarak aktarıyorum.
+Kullanıldı: Claude Docs
+Kullanıldı: Claude Docs
+Çıkarım Defteri
+Claude Docs
+·
+Yalnızca siz
+Aç
+Bütüne dair paragraf defterde, Parça 33'ün ardında “Bütün — deus_ex_machina” başlığı altında duruyor.
+deus_ex_machina
+’yı kaynağın tamamı olarak okudum; Parça 4'ün kendi paragrafı zaten vardı. Paragraf Parça 0'ı tekrar etmiyor, 34 parçanın okumalarından süzülmüş bir bütün okuması.
+Şunu söylediniz: Claude'dan Code'a çatal aç.
+Claude'dan Code'a çatal aç.
+Claude yanıt verdi: Çatalın nereden nereye açılacağını görmek için önce elimdekilere bakıyorum: kaynak, oturumlar, depolar ve bilgisayar bağlantısı.
+Depolarda ve oturumlarda olası eşleşmeler aranıyor.
+Depolarda ve oturumlarda olası eşleşmeler aranıyor.
+Çatalın nereden nereye açılacağını görmek için önce elimdekilere bakıyorum: kaynak, oturumlar, depolar ve bilgisayar bağlantısı.
+Kullanıldı: Repo ekle, kullanıldı: Repo kökünü kaydet ve 18 adım daha
+Kullanıldı: Repo ekle, kullanıldı: Repo kökünü kaydet ve 18 adım daha
+Talimatı şöyle okuyorum:
+“Code”, kod tarafı: GitHub’daki
+deus-ex-machina-kaynak
+ve
+deus-ex-machina-defter
+depoların. “Çatal”, Claude’daki son durumdan başlayan ayrı bir dal.
+Yapacağım şey: Çıkarım Defteri’ni ve bu sohbetteki çalışma kurallarını
+deus-ex-machina-defter
+deposunda yeni bir dala koymak.
+main
+’e ve kaynak deposuna dokunmuyorum.
+Başka bir şeyi kastettiysen şimdi yaz, durayım.
+Bir dosya oluşturdu, kullanıldı: Claude Docs ve 23 adım daha
+Bir dosya oluşturdu, kullanıldı: Claude Docs ve 23 adım daha
+Çıkarım Defteri
+Claude Docs
+·
+Yalnızca siz
+Aç
+Çatal açıldı:
+deus-ex-machina-defter
+deposunda
+claude-catali
+dalı
+.
+main
+’e ve kaynak deposuna dokunmadım.
+Dalda iki dosya var:
+defter.md
+:
+Çıkarım Defteri’nin çatal anındaki birebir dökümü; Parça 0–33 ve bütün için 35 paragraf.
+CLAUDE.md
+:
+Code oturumunun başta okuyacağı devir notu. Talimatların olduğu gibi, burada nasıl uygulandıkları, çatal anındaki durum ve kaynağın yeri yazıyor.
+Bilmen gerekenler:
+Okuma biçimi:
+“Code”u kod tarafındaki depoların, “çatal”ı buradaki son durumdan başlayan ayrı bir dal olarak okudum. Başka bir şeyi kastettiysen söyle, dalı silerim.
+Taşınmayan:
+Bu sohbetin kendisini Code’a kopyalayan bir aracım yok; Code’un kendi çatal komutları da yalnızca bir Code oturumunun içinde çalışıyor. Sohbetten geriye kalan talimatlar ve durum devir notunda. Çataldan sonra iki defter kendiliğinden eşitlenmiyor.
+Kaynak deposundaki not:
+notebook/defter.md
+, PDF’te okunabilir metin katmanı olmadığını söylüyor. O depodaki PDF burada okuduğumla birebir aynı ve metin katmanı var; bunu devir notuna yazdım.
+Defterdeki kayıt:
+Çatalı Çıkarım Defteri’nin başındaki tabloya bir satır olarak işledim. İstemezsen çıkarırım.
+Code’u bilgisayarındaki bir klasörle kullanıyorsan dalı oraya da indirebilirim; klasörü söylemen yeterli.
+Sources:
+Claude Code belgeleri: oturumlar
+Claude Code belgeleri: alt ajanlar ve çatal
+10 Eki
+Yanıtla
+Bağlanıyor…
+Claude bir yapay zekadır ve hata yapabilir.
+Fable 5.1
+Maksimum
+Otomatik
+İlerleme
+8 önceki adım
+Parça 1–4: merkez, öz/rüya, yaradan, deus_ex_machina
+, Tamamlanmış
+Parça 5–9: platform, tasarım, makina, hareket, şahitlik
+, Tamamlanmış
+Parça 10–16: gramer, yarattırma, yazı, ilk uygulama, sınama, yeni çevrim
+, Tamamlanmış
+Parça 17–24: kanat, gaga, dalgalar, eşikler, makina türleri, rota, kapanış
+, Tamamlanmış
+Parça 25–33: atlas, desen dili, desenler, son mühür
+, Tamamlanmış
+Defteri kaynakla karşılaştırarak kontrol et
+, Tamamlanmış
+Çıkarım Defteri'ni çatal için dışa aktar
+, Tamamlanmış
+Çatal dalını hazırla: defter + devir notu
+, Tamamlanmış
+Dalı Code tarafına gönder
+, Tamamlanmış
+Çatalı doğrula ve deftere işle
+, Tamamlanmış
+Çıktılar
+Çıkarım Defteri
+Claude Docs
+Bu oturumda kullanılanlar
+Yüklenenler: deus_ex_machina.pdf
+Yüklenenler
+deus_ex_machina.pdf
+Her dosya için o dosyayı açan bir düğme — odak karta geçene kadar Tab tuşuna, geri dönmek için Escape tuşuna basın.
+Web araması: Claude Code fork session conversation "fork" desktop app Code tab, 1 site okundu
+Web araması
+Sohbeti Claude’un her birini kullandığı yere kaydıran düğmeler — odak karta geçene kadar Tab tuşuna, geri dönmek için Escape tuşuna basın.
+Skills: docs
+Skills
+docs
+Sohbeti Claude’un her birini kullandığı yere kaydıran düğmeler — odak karta geçene kadar Tab tuşuna, geri dönmek için Escape tuşuna basın.
+Yükleniyor
