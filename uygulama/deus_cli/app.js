@@ -1,6 +1,7 @@
 'use strict';
 const el = id => document.getElementById(id);
 const statuses = {queued:'CLI alımı bekleniyor', claimed:'CLI isteği aldı', answered:'Yanıt geldi'};
+const deliveryStatuses={before_queue:'Oturuma iletiliyor',queued:'Açık oturumun kuyruğunda',uncertain:'İletimin sonucu belirsiz'};
 const contextLabels={source_ref:'Kaynak',speaker:'Söyleyen',status:'Statü',branch:'Dal',transformation:'Dönüşüm',correction:'Düzeltme',realization:'Gerçekleşme',uncertainty:'Belirsizlik'};
 let active = null, state = null, sending = false;
 function node(tag, text, cls) {const n=document.createElement(tag); if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;}
@@ -19,7 +20,8 @@ function render() {
   if(!active)return;
   const view=el('conversation');view.replaceChildren(node('p',`${active.participant} · ${active.label} · İş ${active.id.slice(0,8)}`,'muted'));
   for(const turn of active.turns){
-    const input=node('article',undefined,'message user');input.append(node('small',`${turn.revision}. ileti · ${statuses[turn.status]}`),node('div',turn.original_words));
+    const status=turn.status==='claimed' && turn.delivery ? deliveryStatuses[turn.delivery.phase]||statuses[turn.status] : statuses[turn.status];
+    const input=node('article',undefined,'message user');input.append(node('small',`${turn.revision}. ileti · ${status}`),node('div',turn.original_words));
     if(turn.source_note)input.append(node('small',turn.source_note,'muted'));
     if(turn.source_context && Object.keys(turn.source_context).length){const details=node('details');details.append(node('summary','Kaynak bağlamı'));for(const [key,value] of Object.entries(turn.source_context))details.append(node('p',`${contextLabels[key]||key}: ${value}`));details.append(node('small','Bu bilgi girişle birlikte iletildi; doğrulanmış kaynak kabulü değildir.','muted'));input.append(details);}
     view.append(input);

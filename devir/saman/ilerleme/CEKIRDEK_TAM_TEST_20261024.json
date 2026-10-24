@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-24",
+  "package_sha256": "adef97d3cc4d080108605cfa186705fc3c3fe2b1e6ef15fe94bc3af732f7f479",
+  "environment": "existing Ubuntu VM / Python 3.12.3",
+  "tests_passed": 40,
+  "unittest_elapsed_seconds": 209.492,
+  "runner_elapsed_seconds": 211.894,
+  "returncode": 0,
+  "timed_out": false,
+  "original_pilot_resumed": false,
+  "original_app_code_modified": false,
+  "historical_180_second_timeout_preserved": true,
+  "instrumented_full_run": {
+    "elapsed_seconds": 246.344,
+    "returncode": -11,
+    "cause_verified": false
+  },
+  "test_result_file_sha256": "a639ba07009d02e6b2e9c287175f63f1a01514322f3f145b97ad16201a11711d"
+}

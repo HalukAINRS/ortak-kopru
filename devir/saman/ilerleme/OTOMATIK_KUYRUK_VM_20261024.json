@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-24",
+  "consumer_running": true,
+  "existing_actual_saman_thread_targeted": true,
+  "new_model_session_requested": false,
+  "native_queue_command_supported_and_tested": true,
+  "native_queue_returncode": 0,
+  "input_kind": "synthetic_transport_probe_by_current_saman",
+  "request_sent_from_vm_via_ssh_tunnel": true,
+  "request_claimed_automatically": true,
+  "queued_to_exact_existing_thread": true,
+  "new_model_turn_trigger_from_queue_verified": false,
+  "actual_current_model_reply_method": "current active CLI explicitly read receive output and replied",
+  "response_read_back_over_tunnel_in_vm": true,
+  "words_and_eight_context_fields_unchanged": true,
+  "original_four_turn_job_unchanged": true,
+  "other_real_cli_sessions_connected": false,
+  "input_sha256": "73e50a8ee152ff3adace03bd54362d6c0625cafaf4987a862a4a9e4856c41d28",
+  "response_sha256": "c2760feeb1559ee608699e94840efd6c85e73ea76f84ec802d856a9920fdcd0a",
+  "consumer_journal_sha256": "45e9b935c87348675b71e13361a32220f590662891534cd8986297df9d687fa1",
+  "bridge_and_consumer_unit_tests_passed": 16,
+  "source_context_verified": false
+}

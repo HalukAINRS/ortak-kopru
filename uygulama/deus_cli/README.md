@@ -26,6 +26,23 @@ Codex CLI'da varsa CODEX_THREAD_ID oturum girdisi kullanılır ve SHA-256 ile ye
 
 ## Devam ve düzeltme
 
+### Açık Şaman oturumuna otomatik kuyruk
+
+Deus_Kuyruk_Baslat.ps1 bu açık Codex oturumunun CODEX_THREAD_ID değerini özel state-dir içindeki bağa kaydeder ve arka planda queue_consumer.py'yi çalıştırır. Sonraki başlatmada aynı bağ kullanılabilir. Farklı oturuma sessiz geçmez; başka katmanı veya modeli kaydetmez. HTTP yüzeyinin serve komutu ayrıca çalışıyor olmalıdır.
+
+    pwsh -NoProfile -File Deus_Kuyruk_Baslat.ps1
+    pwsh -NoProfile -File Deus_Kuyruk_Baslat.ps1 -Denetle
+
+Tüketici, yalnız bağlı oturumun işini alır; özgün metin, geçmiş ve kaynak bağlamını özel bir zarf dosyasına yazar. Dosya karmasını ve yolunu, kurulu Codex'in [resmî queue komutuyla](https://learn.chatgpt.com/docs/cli/reference#codex-queue) tam oturum kimliğine iletir. Yeni exec/resume, model veya API yedeği çağırmaz. Model işi okuyup bu oturumun gerçek karşılığını mevcut reply komutuyla kaydeder.
+
+Kuyruk komutundan önce kalıcı günlük yazılır. Başarılı iletim yeniden gönderilmez. Kesintide komutun sonucu bilinmiyorsa tüketici kendiliğinden tekrar denemez; yüzey bunu belirsiz iletim olarak gösterir. Kuyruğa kabul, modelin metni okumasının kanıtı değildir. Geç gelen kuyruk iletisinin işi zaten answered ise yeniden çalıştırılmaz; eski karşılık korunur.
+
+24–25 Ekim doğrulaması: kurulu 0.163.0 ikilisinin queue desteği ve mevcut oturuma komutun başarılı dönüşü gerçek çalıştırmayla görüldü. Ubuntu'dan SSH tüneliyle sentetik girdi geldi; tüketici kendiliğinden aldı ve doğru kuyruğa iletti. Bu etkin model ayrıca receive çıktısını okudu ve gerçek karşılığını aynı işe döndürdü; VM bu yanıtı yeniden okudu. Kuyruğun kendiliğinden yeni model turunu başlatması bu ilk kayıtta henüz doğrulanmadı. Bu, Hacker veya Şahit modelinin kabulü değildir.
+
+Altı tüketici testiyle birlikte bütün köprü testleri:
+
+    python -m unittest discover -s . -p "test_*.py" -v
+
 Arayüzde aynı işe yeni ileti eklemek yeni bir revision oluşturur; özgün söz veya eski yanıt değiştirilmez. CLI aynı işi ve önceki iletileri birlikte alır. Bekleyen bir claim varken yeniden `receive` aynı claim'i verir; yeni bir teslim olayı yazmaz. Yanıt gelmeden sonraki ileti alınmaz. Aynı yanıtın yeniden kaydı değişiklik yapmaz; farklı yanıtla üzerine yazma reddedilir.
 
 HTTP gönderiminde aynı request_key aynı içerikle tekrar kullanılırsa aynı ileti döner. Farklı içerikle kullanılması reddedilir. Tarayıcı son gönderimi yanıt gelene kadar yerel saklar; bağlantı kesilirse aynı anahtarla yineler. Bu, **köprü tesliminin yinelenmesini** önler; CLI'ın dış dünyadaki bir eyleminin tam bir kez gerçekleştiğini kanıtlamaz. Yanıttan önce kesilmiş bir CLI işi mevcut claim'den, gerçekleşmiş işlemleri kontrol ederek sürdürür.

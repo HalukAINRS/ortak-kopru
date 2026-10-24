@@ -178,6 +178,14 @@ class Store:
             item['source_context'] = json.loads(item['source_context'])
             item['source_context_verified'] = False  # Girişle birlikte verilen bilgi, doğrulama değildir.
             item['input_sha256'] = hashlib.sha256(item['original_words'].encode()).hexdigest()
+            dispatch = self.directory/'queue'/result['session_id']/f"{job_id}-{item['revision']}.json"
+            if dispatch.is_file():
+                try:
+                    phase = json.loads(dispatch.read_text(encoding='utf-8')).get('phase')
+                except (ValueError,OSError):
+                    phase = 'uncertain'
+                if phase in {'before_queue','queued','uncertain'}:
+                    item['delivery'] = {'phase':phase,'model_received_verified':False}
             result['turns'].append(item)
         return result
 
