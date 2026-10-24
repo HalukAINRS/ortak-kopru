@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ortak Köprü scoped local approval",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["granted", "approved_by", "operation", "scope", "expires_at"],
+  "properties": {
+    "granted": { "const": true },
+    "approved_by": { "type": "string", "minLength": 1 },
+    "operation": { "const": "provider_call" },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy_sha256", "context_hash", "source_hashes"],
+      "properties": {
+        "policy_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "context_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "source_hashes": {
+          "type": "object",
+          "additionalProperties": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+        }
+      }
+    },
+    "expires_at": { "type": "string", "format": "date-time" }
+  }
+}
