@@ -33,7 +33,7 @@ python3 devir/sahit/generate.py --check    # yazmadan: çıktılar, şema, bağl
 python3 devir/sahit/generate.py --drift    # yalnız bilgi: gözlenen dosya sapmaları
 ```
 
-`source.json` ya da bağlı bir dosya değiştiyse önce üret, sonra `--check` çalıştır. Windows'ta `python3` yoksa `kopru_yerel.ps1:34`'teki `$PythonExe` (taşınabilir Python) kullanılır.
+`source.json` ya da bağlı bir dosya değiştiyse önce üret, sonra `--check` çalıştır. Windows'ta `python3` yoksa `kopru_yerel.ps1:36`'teki `$PythonExe` (taşınabilir Python) kullanılır.
 
 ## Devralma komutları (sırayla)
 
@@ -43,7 +43,7 @@ Depo kökünde çalışır. 1-4 salt okunur ve model çağırmaz; 5 etkileşimli
 | --- | --- | --- | --- |
 | 1 | `python3 devir/sahit/generate.py --check` | Paket bütünlüğü ve şema. Yazmaz. | Çıktıdaki `bundle_sha256` ilk 12 hanesini not al. |
 | 2 | `python3 devir/sahit/generate.py --drift` | Gözlenen dosyaların anlık görüntüden sapması. Yazmaz. | Sapma hata değildir; okunacak farkı gösterir. |
-| 3 | `Kopru_Izle.cmd SahitDevam` | Kuru önizleme: yolları gösterir. Dosya yazmaz; süreç, ssh ya da ağ başlatmaz; git yapılandırmasına dokunmaz (`kopru_yerel.ps1:60-116`). | Yürütülebilir dosya ya da depo yoksa hata verir. |
+| 3 | `Kopru_Izle.cmd SahitDevam` | Kuru önizleme: yolları gösterir. Dosya yazmaz; süreç, ssh ya da ağ başlatmaz; git yapılandırmasına dokunmaz (`kopru_yerel.ps1:62-118`). | Yürütülebilir dosya ya da depo yoksa hata verir. |
 | 4 | `Kopru_Izle.cmd SahitDevam -Secenek Surum`, sonra `... -Secenek Yardim` | Yalnız `copilot --version` / `--help` çalıştırır (Şahit Home'u, `COPILOT_AUTO_UPDATE=false`); sonra ortamı geri yükler. | Model seçimini bu sürümün gerçek help'ine göre yap. |
 | 5 | `Kopru_Izle.cmd SahitDevam -Secenek Baslat` | Etkileşimli Copilot CLI'ı açar; görev istemini sen verirsin (`START_HERE.md`). Hiçbir bayrak geçirmez. | Kabul bu adımdan sonra, [Kabul](#kabul)'e göre. |
 
@@ -54,13 +54,13 @@ pwsh -NoProfile -File kopru_yerel.ps1 -Mod SahitDevam -Secenek Surum `
   -CopilotExePath "C:\...\copilot.exe" -SahitHomePath "C:\...\Home" -DepoPath "C:\...\ortak-kopru"
 ```
 
-**`Hazirlik` ile farkı:** `Kopru_Izle.cmd Hazirlik` bütün katmanları denetler; ama git global ayarına `safe.directory` ekler (`kopru_yerel.ps1:126-129`), VM portu açıksa ssh ile `claude --version` çağırır ve `codex --version` çalıştırır. Model çağırmaz. Şahit devri için `SahitDevam` yeter; `Hazirlik` ayrı bir sağlık denetimidir.
+**`Hazirlik` ile farkı:** `Kopru_Izle.cmd Hazirlik` bütün katmanları denetler; ama git global ayarına `safe.directory` ekler (`kopru_yerel.ps1:128-131`), VM portu açıksa ssh ile `claude --version` çağırır ve `codex --version` çalıştırır. Model çağırmaz. Şahit devri için `SahitDevam` yeter; `Hazirlik` ayrı bir sağlık denetimidir.
 
 Başlatıcı tool iznini genişleten hiçbir bayrak geçirmez: `Baslat` modunda CLI'a argüman verilmez, `Surum`/`Yardim`'da yalnız `--version`/`--help` verilir (`tests/test_sahit_launcher.ps1`). Otomatik CLI zinciri ve sürekli bot döngüsü yoktur. Yerel CLI'ın kendi davranışı ve sağlayıcı katmanları bu sarmalayıcıyla tam görünür kılınamaz.
 
 ## Yerel yol bağımlılıkları
 
-Mutlak yollar `kopru_yerel.ps1:32-45` değişkenlerindedir; herkese açık pakete değerleri yazılmadı. 2026-10-24'te bu makinede yalnızca **varlık** `Test-Path` ile doğrulandı; içerik, hash ve çalıştırılabilirlik ayrıca belirtilmedikçe doğrulanmadı.
+Mutlak yollar `kopru_yerel.ps1:34-47` değişkenlerindedir; herkese açık pakete değerleri yazılmadı. 2026-10-24'te bu makinede yalnızca **varlık** `Test-Path` ile doğrulandı; içerik, hash ve çalıştırılabilirlik ayrıca belirtilmedikçe doğrulanmadı.
 
 | Değişken | Ne için | Durum |
 | --- | --- | --- |

@@ -111,6 +111,15 @@ class HandoffBundleTests(unittest.TestCase):
             for match in DOC_REF.finditer(document.read_text(encoding="utf-8")):
                 check(*match.groups(), origin=document.name)
 
+    def test_launcher_line_references_match_cited_content(self):
+        # Birleşmeler kopru_yerel.ps1 satırlarını kaydırır; kanıt başvurusu sessizce eskimesin.
+        lines = (ROOT / "kopru_yerel.ps1").read_text(encoding="utf-8").splitlines()
+        expected = {34: "$Katmanlar", 36: "$PythonExe", 47: "$DepoYolu", 62: 'if ($Mod -eq "SahitDevam")', 75: '"Baslat"',
+                    77: '"Yardim"', 103: 'if ($Secenek -eq "Baslat")', 118: "}", 128: "safe.directory",
+                    131: "git config --global --add safe.directory", 321: '"CopilotKontrol"'}
+        for number, fragment in expected.items():
+            self.assertIn(fragment, lines[number - 1], f"kopru_yerel.ps1:{number}")
+
     def test_static_html_is_script_free_and_loads_nothing_external(self):
         rendered = (HANDOFF / "handoff.html").read_text(encoding="utf-8")
         self.assertNotRegex(rendered, r"(?i)<(script|iframe|img|link|object|embed|form|base|video|audio|source)\b")
