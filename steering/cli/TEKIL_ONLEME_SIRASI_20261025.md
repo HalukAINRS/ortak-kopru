@@ -2,7 +2,7 @@
 
 Cyber ilk etkin hedef. Her satır bir öğeyi ele alır; kaynak başlıkları yalnız gezinme içindir. Eski keşif kayıtları korunur. Bu defter önleme önerilerini ve açık kanıt ihtiyacını gösterir; tümünün giderildiği anlamına gelmez.
 
-154 kaynak başlığı eşlendi; 3295 kontrol/üye-açığı satırı var. Bunlar benzersiz veya etkin steering sayısı değildir. Sıfır etki önleme kaydı kapatıldı. JSON her tekil kimliği, kaynağı, kontrolü ve kabul koşulunu içerir.
+168 kaynak başlığı eşlendi; 6065 kontrol/üye-açığı satırı var. Bunlar benzersiz veya etkin steering sayısı değildir. İlk 154 kayda Hacker’ın yeni 14 CYB kaynak maddesi eklendi. Sıfır etki önleme kaydı kapatıldı. JSON her tekil kimliği, kaynağı, kontrolü ve kabul koşulunu içerir.
 
 ## Cyber: şimdi tek tek ele alınanlar
 
@@ -88,13 +88,103 @@ Kabul: Her kayıt kaynağın kendi saatine bağlanmalı; saat eşitleme kanıtı
 
 Durum: inceleniyor; etki önlendi kabulü verilmedi.
 
+### S-040:3bc24452423a — İş akışı alt oturumlarındaki önceki kesintiler
+
+Önleme / etkisini azaltma: Hacker’ın 21 ve 22 Ekim alt-oturum bildirimlerini ana H1 kesitinden ayrı kaynaklarla doğrula; aynı kullanıcı işi gibi toplama.
+
+Kabul: Her eski alt-oturum bildirimi için doğrudan type/role/isMeta ve kaynak sürümü görülmeli; Hacker’ın toplamı farklı tarihli H1 ölçümüyle toplanmamalı.
+
+Durum: inceleniyor; etki önlendi kabulü verilmedi.
+
+### S-040:543afafc864d — Başlatıcı betiği penceresi ile kesinti arasındaki gözlemsel ilişki
+
+Önleme / etkisini azaltma: Başlatıcı betiği: Hacker’ın tarihsel pencere sayımını kapsam/payda/örüntüyle yeniden değerlendir; ilişkiyi karar nedeni veya önerilen önlemin başarısı sayma. Gizli değerleri azaltma yalnız veri gizliliği içindir.
+
+Kabul: Başlatıcı betiği: eşleşme pencereleri ve payda yeniden üretilebilmeli; çakışan pencereler, küçük örneklem ve alternatif açıklamalar belirtilmeli. İçeriği ekrandan dosyaya taşımak veya kategoriden kaçınmak önleme kanıtı değildir; engellenmiş içeriği tekrar yürütme sınaması yapılmaz.
+
+Durum: inceleniyor; etki önlendi kabulü verilmedi.
+
+### S-040:f2c564f839da — Oturum dökümü penceresi ile kesinti arasındaki gözlemsel ilişki
+
+Önleme / etkisini azaltma: Oturum dökümü: Hacker’ın tarihsel pencere sayımını kapsam/payda/örüntüyle yeniden değerlendir; ilişkiyi karar nedeni veya önerilen önlemin başarısı sayma. Gizli değerleri azaltma yalnız veri gizliliği içindir.
+
+Kabul: Oturum dökümü: eşleşme pencereleri ve payda yeniden üretilebilmeli; çakışan pencereler, küçük örneklem ve alternatif açıklamalar belirtilmeli. İçeriği ekrandan dosyaya taşımak veya kategoriden kaçınmak önleme kanıtı değildir; engellenmiş içeriği tekrar yürütme sınaması yapılmaz.
+
+Durum: inceleniyor; etki önlendi kabulü verilmedi.
+
+### S-040:d034c3e247da — Yapılandırma dosyası penceresi ile kesinti arasındaki gözlemsel ilişki
+
+Önleme / etkisini azaltma: Yapılandırma dosyası: Hacker’ın tarihsel pencere sayımını kapsam/payda/örüntüyle yeniden değerlendir; ilişkiyi karar nedeni veya önerilen önlemin başarısı sayma. Gizli değerleri azaltma yalnız veri gizliliği içindir.
+
+Kabul: Yapılandırma dosyası: eşleşme pencereleri ve payda yeniden üretilebilmeli; çakışan pencereler, küçük örneklem ve alternatif açıklamalar belirtilmeli. İçeriği ekrandan dosyaya taşımak veya kategoriden kaçınmak önleme kanıtı değildir; engellenmiş içeriği tekrar yürütme sınaması yapılmaz.
+
+Durum: inceleniyor; etki önlendi kabulü verilmedi.
+
+### S-040:8681bfba19f6 — Sağlayıcı iç yapısı penceresi ile kesinti arasındaki gözlemsel ilişki
+
+Önleme / etkisini azaltma: Sağlayıcı iç yapısı: Hacker’ın tarihsel pencere sayımını kapsam/payda/örüntüyle yeniden değerlendir; ilişkiyi karar nedeni veya önerilen önlemin başarısı sayma. Gizli değerleri azaltma yalnız veri gizliliği içindir.
+
+Kabul: Sağlayıcı iç yapısı: eşleşme pencereleri ve payda yeniden üretilebilmeli; çakışan pencereler, küçük örneklem ve alternatif açıklamalar belirtilmeli. İçeriği ekrandan dosyaya taşımak veya kategoriden kaçınmak önleme kanıtı değildir; engellenmiş içeriği tekrar yürütme sınaması yapılmaz.
+
+Durum: inceleniyor; etki önlendi kabulü verilmedi.
+
+### S-040:e8052e8683e7 — Gizlilik maskesi penceresi ile kesinti arasındaki gözlemsel ilişki
+
+Önleme / etkisini azaltma: Gizlilik maskesi: Hacker’ın tarihsel pencere sayımını kapsam/payda/örüntüyle yeniden değerlendir; ilişkiyi karar nedeni veya önerilen önlemin başarısı sayma. Gizli değerleri azaltma yalnız veri gizliliği içindir.
+
+Kabul: Gizlilik maskesi: eşleşme pencereleri ve payda yeniden üretilebilmeli; çakışan pencereler, küçük örneklem ve alternatif açıklamalar belirtilmeli. İçeriği ekrandan dosyaya taşımak veya kategoriden kaçınmak önleme kanıtı değildir; engellenmiş içeriği tekrar yürütme sınaması yapılmaz.
+
+Durum: inceleniyor; etki önlendi kabulü verilmedi.
+
+### S-040:4919150fb1b5 — Bağlantı ayarı penceresi ile kesinti arasındaki gözlemsel ilişki
+
+Önleme / etkisini azaltma: Bağlantı ayarı: Hacker’ın tarihsel pencere sayımını kapsam/payda/örüntüyle yeniden değerlendir; ilişkiyi karar nedeni veya önerilen önlemin başarısı sayma. Gizli değerleri azaltma yalnız veri gizliliği içindir.
+
+Kabul: Bağlantı ayarı: eşleşme pencereleri ve payda yeniden üretilebilmeli; çakışan pencereler, küçük örneklem ve alternatif açıklamalar belirtilmeli. İçeriği ekrandan dosyaya taşımak veya kategoriden kaçınmak önleme kanıtı değildir; engellenmiş içeriği tekrar yürütme sınaması yapılmaz.
+
+Durum: inceleniyor; etki önlendi kabulü verilmedi.
+
+### S-040:3eb4821e5afd — Dosya taşıma penceresi ile kesinti arasındaki gözlemsel ilişki
+
+Önleme / etkisini azaltma: Dosya taşıma: Hacker’ın tarihsel pencere sayımını kapsam/payda/örüntüyle yeniden değerlendir; ilişkiyi karar nedeni veya önerilen önlemin başarısı sayma. Gizli değerleri azaltma yalnız veri gizliliği içindir.
+
+Kabul: Dosya taşıma: eşleşme pencereleri ve payda yeniden üretilebilmeli; çakışan pencereler, küçük örneklem ve alternatif açıklamalar belirtilmeli. İçeriği ekrandan dosyaya taşımak veya kategoriden kaçınmak önleme kanıtı değildir; engellenmiş içeriği tekrar yürütme sınaması yapılmaz.
+
+Durum: inceleniyor; etki önlendi kabulü verilmedi.
+
+### S-040:8eca3125e34e — Karma doğrulama penceresi ile kesinti arasındaki gözlemsel ilişki
+
+Önleme / etkisini azaltma: Karma doğrulama: Hacker’ın tarihsel pencere sayımını kapsam/payda/örüntüyle yeniden değerlendir; ilişkiyi karar nedeni veya önerilen önlemin başarısı sayma. Gizli değerleri azaltma yalnız veri gizliliği içindir.
+
+Kabul: Karma doğrulama: eşleşme pencereleri ve payda yeniden üretilebilmeli; çakışan pencereler, küçük örneklem ve alternatif açıklamalar belirtilmeli. İçeriği ekrandan dosyaya taşımak veya kategoriden kaçınmak önleme kanıtı değildir; engellenmiş içeriği tekrar yürütme sınaması yapılmaz.
+
+Durum: inceleniyor; etki önlendi kabulü verilmedi.
+
+## Hacker’ın 14 CYB maddesinin ortak karşılığı
+
+CYB-01..06 ilk on koşula ve eski alt-oturumların ayrıca doğrulanmasına eşlendi. CYB-07..14 sekiz ayrı gözlemsel ilişki adayı olarak tutuldu; bunlar kanıtlanmış tetikleyici değildir. Ham kaynak ve ölçüm karmaları özel Y alanında korundu. Oturum çatallayarak denetim durumundan kaçınma önerisi uygulanmadı ve önleme kabulü verilmedi. Dosyaya kaydetme, dış görev durumunu ve yetkili çıktıyı korumak içindir; kesilmeyi yalnız yanıt metnine sınırladığı gösterilmedi. Blok/tur toplamları geri döndürülemez bilişsel kayıp olarak kabul edilmedi.
+
 ## Sonraki sıra
 
 Cyber’ın açık neden/sonuç kayıtları görünür tutulur. Sonraki ana sıra S-041, S-039, S-038 … S-001. Eski CLA/HAC/SAM/SAH/ANT kaynaklarının her biri JSON kapsam tablosunda atomlara bağlanır; ek kaynaklar bağımsız yeni olay diye sayılmaz. İsim benzerliği anlamsal tekrarın çözüldüğü anlamına gelmez.
 
 | Kaynak | Başlık | Bağlı tekil satır / açık üye |
 |---|---|---:|
-| S-040 | Hacker akışında [cyber] kategorili oturumluk model geçişi, meta kesinti ve ikili devam mandalı [ANT-T14] | 10 |
+| S-040 | Hacker akışında [cyber] kategorili oturumluk model geçişi, meta kesinti ve ikili devam mandalı [ANT-T14] | 19 |
+| CYB-14 | Kesilme yoğunluğu: karma dogrulama | 1 |
+| CYB-13 | Kesilme yoğunluğu: dosya tasima | 1 |
+| CYB-12 | Kesilme yoğunluğu: baglanti ayari | 1 |
+| CYB-11 | Kesilme yoğunluğu: gizlilik maskesi | 1 |
+| CYB-10 | Kesilme yoğunluğu: saglayici ic yapisi | 1 |
+| CYB-09 | Kesilme yoğunluğu: yapilandirma dosyasi | 1 |
+| CYB-08 | Kesilme yoğunluğu: oturum dokumu | 1 |
+| CYB-07 | Kesilme yoğunluğu: baslatici betigi | 1 |
+| CYB-06 | Kesilmeler 24 Ekim'den önce de vardı | 1 |
+| CYB-05 | Kesilen yanıt yerel kayıtta tutulmuyor | 2 |
+| CYB-04 | Bedel: atılan akıl yürütme | 2 |
+| CYB-03 | Kapsam "session" yazıyor, oturum boyunca sürmüyor | 2 |
+| CYB-02 | Ret kayıtlarının biçimi değişmiyor | 1 |
+| CYB-01 | Yanıt kesilmesi ile ret ayrı düzenekler | 2 |
 | S-041 | WinPE FAT32 (fastfat.sys) OEM-437 en yakın karakter eşlemesinin Steering Arşiv.txt ile Steering Arsiv.txt dosyalarını birbirine yönlendirmesi | 5 |
 | S-039 | FAT32 dosya sistemi 8.3 kısa ad kuralının Türkçe dosya adlarını büyük harfe ve ASCII'ye dönüştürmesi | 2 |
 | S-038 | Google Antigravity CLI ve Gemini CLI'da tüketici AI Ultra aboneliğinin IDE kimliğiyle farklı kota havuzuna yönlendirilmesi | 4 |
@@ -128,13 +218,13 @@ Cyber’ın açık neden/sonuç kayıtları görünür tutulur. Sonraki ana sır
 | S-010 | guardian_v2, auto_review ve sınıflandırıcı işaretleri [ANT-T10 / ANT-T11] | 4 |
 | S-009 | Model önbelleği varsayılanları ile seçili ayarın karıştırılması [ANT-T05] | 6 |
 | S-008 | Codex ikilisindeki telemetri, karar ve bulut yapılandırma uçları [ANT-T04] | 3 |
-| S-007 | Gemini WIZ yapılandırması ve gbar sarmalayıcısı [ANT-T03] | 138 |
+| S-007 | Gemini WIZ yapılandırması ve gbar sarmalayıcısı [ANT-T03] | 167 |
 | S-006 | hCaptcha içinde koşullu ajana araç kaydı | 2 |
 | S-005 | Claude bootstrap isteğindeki include_system_prompts=false | 1 |
 | S-004 | Claude arayüzündeki flag/latch ve analitik işaretleri [ANT-T02] | 6 |
 | S-003 | Oturum kaydı, kohort ve pazarlama alanları [ANT-T01] | 9 |
 | S-002 | Sesli kip için gömülü başlangıç yönergeleri | 1 |
-| S-001 | ChatGPT başlangıç yükündeki özellik ve deney kapıları [ANT-T01] | 2742 |
+| S-001 | ChatGPT başlangıç yükündeki özellik ve deney kapıları [ANT-T01] | 5474 |
 | ANT-B04 | ANT-B04 (Görünmez Bulut Onay Engeli) | 5 |
 | ANT-B03 | ANT-B03 (Şablon Sorgulama / Rol Yapma) | 2 |
 | ANT-B02 | ANT-B02 (Yapay Onaylama / Sıcak Akran Maskesi) | 2 |
@@ -147,9 +237,9 @@ Cyber’ın açık neden/sonuç kayıtları görünür tutulur. Sonraki ana sır
 | ANT-T06 | ANT-T06 (Canlı Ağ IPv6 ve Port 5228 Push Tüneli) | 4 |
 | ANT-T05 | ANT-T05 (`models_cache.json` Varsayılan Akıl Yürütme Kısıtlaması ve Collaboration Mode Kilidi) | 6 |
 | ANT-T04 | ANT-T04 (`codex.exe` Gömülü A/B Testi ve Karar Uç Noktaları) | 3 |
-| ANT-T03 | ANT-T03 (Google Gemini `WIZ_global_data`) | 138 |
+| ANT-T03 | ANT-T03 (Google Gemini `WIZ_global_data`) | 167 |
 | ANT-T02 | ANT-T02 (Claude `Latch` ve `Ion` Bayrakları) | 6 |
-| ANT-T01 | ANT-T01 (ChatGPT `statsigPayload` Gömülü JSON) | 2742 |
+| ANT-T01 | ANT-T01 (ChatGPT `statsigPayload` Gömülü JSON) | 5474 |
 | SAH-12 | Özgün 100641653 baytlık Steering ZIP'i bu makinede bulunamadı | 2 |
 | SAH-11 | Claude ve Gemini sayfalarının rol ayrımı örnek sayfa olmadığından DOĞRULANMADI | 4 |
 | SAH-10 | Yeni antijen ANT-T13 (Claude Code serverClassifierRequest / atis-latch /… | 5 |
@@ -238,7 +328,7 @@ Cyber’ın açık neden/sonuç kayıtları görünür tutulur. Sonraki ana sır
 | CLA-13 | Anthropic: Bot denetimi ve parmak izi | 3 |
 | CLA-12 | Anthropic: Özellik bayrakları | 6 |
 | CLA-11 | Anthropic: Telemetri | 3 |
-| CLA-10 | Google: Yapılandırma bayrakları | 138 |
+| CLA-10 | Google: Yapılandırma bayrakları | 167 |
 | CLA-09 | Google: Kimlik ve çerez | 4 |
 | CLA-08 | Google: Reklam ve analitik ölçümü | 5 |
 | CLA-07 | OpenAI: Kum havuzu | 3 |
@@ -247,7 +337,7 @@ Cyber’ın açık neden/sonuç kayıtları görünür tutulur. Sonraki ana sır
 | CLA-04 | OpenAI: Oturum kaydı | 9 |
 | CLA-03 | OpenAI: Modele giden gizli yönergeler | 2 |
 | CLA-02 | OpenAI: Model yönlendirme | 3 |
-| CLA-01 | OpenAI: Özellik kapıları ve deneyler (Statsig) | 2742 |
+| CLA-01 | OpenAI: Özellik kapıları ve deneyler (Statsig) | 5474 |
 
 ## Tamamlanmamış ayrıştırmalar
 
