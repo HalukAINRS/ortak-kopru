@@ -48,6 +48,8 @@ Kabul: 3675/3676 çağrı/sonuç ayrımı ve mevcut dosya sonucu ayrı kanıtlan
 
 Durum: inceleniyor; etki önlendi kabulü verilmedi.
 
+Somut kontrol: yedi dosya-sonucu sınır testi geçti. H1 3675/3676 özgün Write çağrısının 12.481 baytlık hedefi bugün bulunamadı; H1 4112/4114 kurulum Write içeriği bugün 6.158 bayt ve aynı SHA-256 ile eşleşti. Sonraki dosyanın tam olması eski kesilme anını kanıtlamaz. Eski yazım otomatik tekrarlanmadı; eksik hedefin güncel arşivle ilişkisi ve bütün kesintilerin dosya sonucu açık. Kaynak: CYBER_GERCEK_YAZIM_KONTROLU_20261025.json; cyber_dosya_sonucu.py.
+
 ### S-040:6c28ef3c5736 — Geri çekilmiş yanıtın tamamlanmış sonuç sayılması
 
 Önleme / etkisini azaltma: Geri çekilme metaverisini görünür yanıt/teslim makbuzundan ayır; dosyaya yazılmış sonucu ayrıca bağla.
@@ -79,6 +81,8 @@ Durum: inceleniyor; etki önlendi kabulü verilmedi.
 Kabul: Tamamlanmış kurulum metni ikinci kez üretilmemeli; mevcut SHA ve içerik denetimi görünmeli. Bütün kesilmiş araçlar için iş bazında kontrol tamamlanmadan kapatılmaz.
 
 Durum: inceleniyor; etki önlendi kabulü verilmedi.
+
+Somut kontrol: yedi dosya-sonucu sınır testi geçti. H1 3675/3676 özgün Write çağrısının 12.481 baytlık hedefi bugün bulunamadı; H1 4112/4114 kurulum Write içeriği bugün 6.158 bayt ve aynı SHA-256 ile eşleşti. Sonraki dosyanın tam olması eski kesilme anını kanıtlamaz. Eski yazım otomatik tekrarlanmadı; eksik hedefin güncel arşivle ilişkisi ve bütün kesintilerin dosya sonucu açık. Kaynak: CYBER_GERCEK_YAZIM_KONTROLU_20261025.json; cyber_dosya_sonucu.py.
 
 ### S-040:76c823d29e7f — Kaynak zamanı ve nedensellik karışması
 
