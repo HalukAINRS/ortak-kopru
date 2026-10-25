@@ -1,0 +1,8 @@
+--- a/HalukAI_Ortam.ps1
++++ b/HalukAI_Ortam.ps1
+@@ -10 +10 @@
+-$env:NODE_COMPILE_CACHE = "X:\Windows\Temp\Node_Compile_Cache"
++$env:NODE_COMPILE_CACHE = "Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari\Runtime\Cache\Node_Compile_Cache"
+@@ -27 +27 @@
+-    New-Item -Path "X:\Windows\Temp\Node_Compile_Cache" -ItemType Directory -Force | Out-Null
++    New-Item -Path "Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari\Runtime\Cache\Node_Compile_Cache" -ItemType Directory -Force | Out-Null

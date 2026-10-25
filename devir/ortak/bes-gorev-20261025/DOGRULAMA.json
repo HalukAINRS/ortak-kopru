@@ -105,11 +105,12 @@
     "winpe_registry_present": true
   },
   "y_inventory": {
-    "scoped_roots": 3,
-    "files": 74753,
-    "appledouble_in_scanned_roots": 5240,
-    "full_y_root_scan_claimed": false,
-    "same_name_archive_comparison": [],
+    "full_y_root_scan_claimed": true,
+    "files": 75902,
+    "directories": 8996,
+    "read_errors": 0,
+    "appledouble": 5297,
+    "candidate_name_collisions": 0,
     "files_deleted_or_moved": false
   },
   "reboot_persistence": {
@@ -132,5 +133,63 @@
     "subscription_quota_inferred_from_token_totals": false
   },
   "existing_cyber_prevention_acceptance_count": 0,
-  "new_model_or_api_fallback_started": false
+  "new_model_or_api_fallback_started": false,
+  "execution_order": [
+    5,
+    4,
+    3,
+    2,
+    1
+  ],
+  "task_5": {
+    "at_utc": "2026-10-25T07:04:39.616199+00:00",
+    "task": 5,
+    "status": "inspection_complete",
+    "files": 75902,
+    "directories": 8996,
+    "full_y_metadata_coverage": true,
+    "read_errors": 0,
+    "candidate_name_collisions": 0,
+    "missing_reference_classifications": [
+      {
+        "source_file": "HBCD_PE.ini",
+        "target_file": "procmon.exe",
+        "classification": "inactive_comment"
+      },
+      {
+        "source_file": "HalukAI_Ortam.ps1",
+        "target_file": "powershell_ise.exe",
+        "classification": "cleanup_target_not_startup_dependency"
+      }
+    ],
+    "unresolved_active_startup_targets": 0,
+    "no_destructive_reorganization": true,
+    "runtime_credentials_issue_transferred_to_task_3": true,
+    "other_tasks_marked_complete": false,
+    "next_task": 4
+  },
+  "task_4": {
+    "utc": "2026-10-25T07:15:09.780423+00:00",
+    "task": 4,
+    "status": "partial",
+    "completed": [
+      "CPU topology and live/persistent affinity correction",
+      "memory and reboot persistence observation",
+      "USB SCSI read: SMART unavailable, not a health verdict",
+      "140 local INF files matched by exact hardware/compatible ID token",
+      "Node compile cache redirected to persistent Y for future starts",
+      "unsupported universal RAM multiplier removed from shared interpretation"
+    ],
+    "open": [
+      "second physical RAM module not installed",
+      "nine PnP problems remain; one exact local IPF candidate, eight without exact local candidate",
+      "IPF signed drivers start manually, but targeted PnP restart restores code 37; cause not established"
+    ],
+    "driver_problem_count": 9,
+    "ipf_targeted_restart_fixed_problem": false,
+    "driver_autostart_policy_modified": false,
+    "forced_reboot": false,
+    "all_hardware_certified": false,
+    "next_nonblocked_task": 3
+  }
 }
