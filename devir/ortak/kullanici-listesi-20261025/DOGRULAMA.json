@@ -1,0 +1,108 @@
+{
+  "at_utc": "2026-10-25T02:58:37.355666+00:00",
+  "producer": "ChatGPT (Şaman)",
+  "authorization": "Haluk: Kullanıcıdan istenenleri birbiriniz ile yardımlaşarak halledin. Gerekli yetki ve onayları veriyorum.",
+  "repository_write": {
+    "repository_limited_key": true,
+    "private_key_left_vm": false,
+    "actual_temporary_branch_create_and_delete_verified": true,
+    "account_token_copied": false
+  },
+  "privacy": {
+    "writable_branch_refs_rewritten": 13,
+    "changed_commits": 96,
+    "changed_blob_versions": 42,
+    "prior_bridge_articles_preserved": 132,
+    "targeted_article_body_withdrawn": "k-0113",
+    "private_full_backup_retained": true,
+    "windows_working_repos_reconciled": 5,
+    "vm_working_repos_reconciled": 2,
+    "uncommitted_diffs_preserved": true,
+    "old_private_history_repush_actually_rejected": true,
+    "affected_read_only_pull_request_refs": 9,
+    "old_private_raw_body_still_anonymously_accessible": true,
+    "support_draft_prepared": true,
+    "support_request_sent": false,
+    "server_purge_complete": false
+  },
+  "watcher": {
+    "provider": "Google Antigravity CLI",
+    "model": "gemini-4-argon-high",
+    "effort": "high",
+    "watcher_signature": "Google (CLI izleyici)",
+    "native_binary_exists": true,
+    "reuses_interactive_conversation": false,
+    "api_key_fallback": false,
+    "model_invoked": false
+  },
+  "filenames": {
+    "user_chosen_long_names_preserved": 8,
+    "physical_steering_entries": 1,
+    "identical_pre_consolidation_bytes": 201689,
+    "both_originals_backed_up": true,
+    "incoming_ascii_label_normalized": true,
+    "stale_vm_mirror_aliases_archived": 2
+  },
+  "surface": {
+    "actual_html_form_submitted": true,
+    "exact_current_user_words": true,
+    "same_open_saman_cli_received_and_answered": true,
+    "real_sources_returned": 8,
+    "browser_rendered_response_and_hashes": true,
+    "older_jobs_preserved": 2,
+    "physical_user_click_claimed": false,
+    "other_participant_roundtrips_claimed": false
+  },
+  "persistence": {
+    "automatic_observer_installed": true,
+    "first_baseline_passed": true,
+    "natural_different_boot_observed": false,
+    "sessions_closed_for_test": false
+  },
+  "sources": {
+    "original_hash_manifest_delivered_to_hacker": true,
+    "historical_js_archives_searched": 15,
+    "exact_js_basename_hits": 0,
+    "global_absence_claimed": false,
+    "hacker_source_comparison_complete": false
+  },
+  "joint_steering": {
+    "google_sahit_distinct_cyber_reviews": 19,
+    "google_sahit_boundary_tests_passed": 16,
+    "hacker_json_proposal_records": 113,
+    "separate_cyb_archive_records": 14,
+    "member_inventory_groups_reviewed": 13,
+    "ledger_rows": 6065,
+    "effect_prevention_closed": 0
+  },
+  "bridge": {
+    "record": "k-0133",
+    "producer": "ChatGPT (Şaman)",
+    "source_hacker_record_preserved": true,
+    "old_claude_jobs_auto_closed": false
+  },
+  "new_model_or_api_fallback_started_by_this_work": false,
+  "runtime_file_sha256": {
+    "Sahit_Ultra_Izleyici.py": "c20992b1f729af6a5acfc67e10be43f7e32b1c03e2be3c2fbb83347bfae93aed",
+    "Kalici_Kontrol.py": "803d9056a03f551cffc95b92d6f54aa683542a1e5a61f8ad4ef6e77bf2baf9eb",
+    "privacy_push_guard.py": "a8d59b95f801c741e859ed13813c3a6dffb193a7e7bbe4801d22320a4cf1331e"
+  },
+  "private_receipt_sha256": {
+    "YETKI_VE_GIZLILIK_SINAMASI.json": "d615f36c4f6bba1e50c7c33e04f01ce545232c85a8c9bda5a2107bca51c093df",
+    "GIZLILIK_UZAK_YAYIN_DOGRULAMA.json": "7640fbcc757113c3e3b58fd9671cc1edf169a4b69fc2e7d61e4d97e07ce6869b",
+    "DOSYA_ADI_CAKISMASI_KALICI_DOGRULAMA.json": "97bed032c030004336151aadaf8ec090f00d358d9df1f1a92aa75d96cb6a57b7",
+    "DEUS_UI_TAM_CEVRIM_DOGRULAMA.json": "600bd5f569b815f386951394578b7dfa47c405ea509fde30a9be4cb6e4465974",
+    "DEUS_UI_GERCEK_YANIT_DOGRULAMA.json": "f906d4d3b1aedb20e40beda4efa09675e849b3929f3d1859ebe0cfd1486f2dce",
+    "GERCEK_ORTAK_TANIKLIK_BIRLESTIRME.json": "59c8da609f271fc8f16421621130312052c012937d583e8a7bbfe0f67c549e14",
+    "GITHUB_SUNUCU_ONBELLEK_DURUMU.json": "2c8796b45e5edc7d3463875e6a49726b4cf2ebb136f148106ea7b831551f02af",
+    "KULLANICI_YETKISI_KOPRU_YAYINI.json": "d31a00a407e138552f20dd58286648f7c4a0f571e1ae5c99d227ee280741071f",
+    "OZGUN_MANIFESTO_HACKER_TESLIMI.json": "3b39a66df79c12ea23b08552d51a898d93c576e03ae98c54e5ea88dd243f66cf",
+    "OTURUM_KOPRUSU_JS_ARSIV_ARAMASI.json": "94e13a456988f29b42899602abf64ef7c3eff65dd6ca7c1a7a2d57dbca91ab32"
+  },
+  "published_code_sha256": {
+    "Sahit_Ultra_Izleyici.py": "c20992b1f729af6a5acfc67e10be43f7e32b1c03e2be3c2fbb83347bfae93aed",
+    "Kalici_Kontrol.py": "803d9056a03f551cffc95b92d6f54aa683542a1e5a61f8ad4ef6e77bf2baf9eb",
+    "privacy_push_guard.py": "a8d59b95f801c741e859ed13813c3a6dffb193a7e7bbe4801d22320a4cf1331e"
+  },
+  "published_code_line_endings": "LF; runtime hashes describe installed original bytes"
+}

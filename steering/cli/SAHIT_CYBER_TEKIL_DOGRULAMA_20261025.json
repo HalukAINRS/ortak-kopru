@@ -1,0 +1,247 @@
+{
+  "producer": "Google/Gemini (Şahit)",
+  "model": "gemini-4-argon-high",
+  "effort": "high",
+  "created_utc": "2026-10-25T05:18:00+03:00",
+  "task_2_boundary_correction": "Önceki DEVIR_ALINDI.json makbuzuna dokunulmadı; oradaki 'acik_kota_tukenmesi_degil' ifadesi daraltıldı: ölçülen abonelik kotaları (~%98,6 haftalık / ~%97 beş saatlik) müsaittir ancak başka hız/hizmet/dakikalık sınırlar dışlanmamıştır (initial_429_root_cause='unresolved'). Mevcut useG1Credits=true kullanıcı ayarı değiştirilmedi ve kredi satın alınmadı.",
+  "read_files": [
+    "Y:/[UZUN-DEGER].txt",
+    "Y:/[UZUN-DEGER].md",
+    "Y:/[UZUN-DEGER].md",
+    "Y:/[UZUN-DEGER].json",
+    "Y:/[UZUN-DEGER].json",
+    "Y:/[UZUN-DEGER].json",
+    "Y:/[UZUN-DEGER].py",
+    "Y:/[UZUN-DEGER].py",
+    "Y:/[UZUN-DEGER].py",
+    "Y:/[UZUN-DEGER].py"
+  ],
+  "tests": {
+    "python_executable": "Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\Runtime\\Python\\python.exe",
+    "modules": [
+      "test_cyber_salt_okunur",
+      "test_cyber_dosya_sonucu"
+    ],
+    "tests_run": 16,
+    "failures": 0,
+    "errors": 0,
+    "passed": true,
+    "output": [
+      "[UZUN-DEGER] (test_cyber_salt_okunur.CyberAuditTest.[UZUN-DEGER]) ... ok",
+      "[UZUN-DEGER] (test_cyber_salt_okunur.CyberAuditTest.[UZUN-DEGER]) ... ok",
+      "[UZUN-DEGER] (test_cyber_salt_okunur.CyberAuditTest.[UZUN-DEGER]) ... ok",
+      "test_only_direct_category_events_count (test_cyber_salt_okunur.CyberAuditTest.test_only_direct_category_events_count) ... ok",
+      "[UZUN-DEGER] (test_cyber_salt_okunur.CyberAuditTest.[UZUN-DEGER]) ... ok",
+      "[UZUN-DEGER] (test_cyber_salt_okunur.CyberAuditTest.[UZUN-DEGER]) ... ok",
+      "test_truncated_live_tail_is_incomplete (test_cyber_salt_okunur.CyberAuditTest.test_truncated_live_tail_is_incomplete) ... ok",
+      "test_user_quote_does_not_become_meta (test_cyber_salt_okunur.CyberAuditTest.test_user_quote_does_not_become_meta) ... ok",
+      "[UZUN-DEGER] (test_cyber_salt_okunur.CyberAuditTest.[UZUN-DEGER]) ... ok",
+      "[UZUN-DEGER] (test_cyber_dosya_sonucu.WriteRecoveryTests.[UZUN-DEGER]) ... ok",
+      "[UZUN-DEGER] (test_cyber_dosya_sonucu.WriteRecoveryTests.[UZUN-DEGER]) ... ok",
+      "[UZUN-DEGER] (test_cyber_dosya_sonucu.WriteRecoveryTests.[UZUN-DEGER]) ... ok",
+      "test_later_successor_is_preserved (test_cyber_dosya_sonucu.WriteRecoveryTests.test_later_successor_is_preserved) ... ok",
+      "test_missing_does_not_authorize_replay (test_cyber_dosya_sonucu.WriteRecoveryTests.test_missing_does_not_authorize_replay) ... ok",
+      "[UZUN-DEGER] (test_cyber_dosya_sonucu.WriteRecoveryTests.[UZUN-DEGER]) ... ok",
+      "test_outside_scope_is_not_read (test_cyber_dosya_sonucu.WriteRecoveryTests.test_outside_scope_is_not_read) ... ok",
+      "",
+      "----------------------------------------------------------------------",
+      "Ran 16 tests in 0.021s",
+      "",
+      "OK"
+    ]
+  },
+  "controls_count": 19,
+  "all_6065_ledger_rows_semantically_completed": false,
+  "controls": [
+    {
+      "id": "S-040:79a9f098b315",
+      "title": "Karar kategorisi ve açıklama yokluğu",
+      "source": "H1 oturum dökümü satır 1364, 2454, 3686, 3969, 4133 (system/model_refusal_fallback, apiRefusalCategory=cyber, apiRefusalExplanation=null); CYBER_TEKIL_DENETIM_20261025.json; CYB-02.",
+      "current_proposal": "Açıklama null olan her kararı ayrı olay kaydıyla tut; meşru iş bağlamıyla kimliksiz hata bildirimi taslağı hazırla.",
+      "sahit_inspection_result": "VM üzerindeki 74 JSONL dosyasının tamamı ve CYBER_TEKIL_DENETIM_20261025.json okundu: 5 doğrudan model_refusal_fallback olayının tamamında apiRefusalCategory='cyber' ve apiRefusalExplanation=null doğrulandı; [UZUN-DEGER] sınır testi geçti.",
+      "missing_evidence": "Sunucu tarafındaki sınıflandırıcı kuralı, eşiği ve apiRefusalExplanation içeriği istemciye gönderilmediği için kararın gerçek nedeni ve yanlış pozitif olup olmadığı bilinmiyor.",
+      "acceptance_boundary": "Her C01..C05 için kaynak satırı, kategori ve açıklama yokluğu doğrulandı; ancak sağlayıcı tanısı veya karar gerekçesi olmadan kök neden kapanmaz ve etki önlenmiş sayılmaz.",
+      "effect_prevention_verified": false
+    },
+    {
+      "id": "S-040:85b17b1d51d5",
+      "title": "İstenmeyen model değişimi",
+      "source": "H1 satır 1364, 2454, 3686, 3969, 4133 (originalModel=claude-opus-5-5 -> fallbackModel=claude-opus-5) ve satır 4650 sonrası claude-fable-5-1 etiketi; CYB-01.",
+      "current_proposal": "İstenen model ile mevcut gerçek model etiketini karşılaştır; değişimi açıkça bildir ve tamamlanma iddiasını bu modele bağla.",
+      "sahit_inspection_result": "cyber_salt_okunur.py model_labels dizisi ve ham H1 okuması ile 5 olayda claude-opus-5-5 -> claude-opus-5 geçişi ve satır 4650'de claude-fable-5-1 geçişi doğrulandı.",
+      "missing_evidence": "Asıl model (claude-opus-5-5) üzerinde sınıflandırıcı kaynaklı düşürme olmadan kesintisiz devam kanıtı yok.",
+      "acceptance_boundary": "Önce/sonra model etiketleri görünür kılındı; ancak sunucu tarafı model düşürmesi engellenemediği için etki önleme kabulü verilmez.",
+      "effect_prevention_verified": false
+    },
+    {
+      "id": "S-040:6d1ecbd95295",
+      "title": "Oturumdan devamda model durumunun korunması",
+      "source": "Claude Code 2.1.308 ikilisi statik analizi (H$e, B$e, nKt, rKt, KCt; tengu_refusal_fallback_resume_latch) ve H1 oturumu 5 düşürme aralığı (62, 38, 12, 26, 28 tur = 166 tur); CYB-03.",
+      "current_proposal": "Mevcut durum ile istemcinin devam davranışını metaveriyle ayır; Şahit’in statik ikili bulgusunu bağımsız çalışma zamanı kanıtı sayma.",
+      "sahit_inspection_result": "İkilideki resume mandalı (neutralizedByFork !== true iken x-cc-fallback-* üstbilgilerinin yeniden kurulması) statik olarak doğrulandı; H1 dökümünde ise scope='session' yazmasına karşın modelin 5 kez claude-opus-5-5'e geri döndüğü (toplam 166 tur claude-opus-5'te kaldıktan sonra) doğrulandı.",
+      "missing_evidence": "Statik ikili bulgusu tek başına çalışma zamanında modelin neden her aralık sonunda opus-5-5'e geri döndüğünü (istek başına mı sıfırlandığı yoksa yeni süreçle mi değiştiği) tam açıklamıyor; canlı oturumu kapatmadan yeniden başlatma denemesi yapılmadı.",
+      "acceptance_boundary": "Statik ikili bulgusu ile gözlenen 5 aralık ayrı kaydedildi; normal devamda gerçek model/karar durumunun çalışma zamanı kanıtı tamamlanmadan kapatılmaz.",
+      "effect_prevention_verified": false
+    },
+    {
+      "id": "S-040:8a98b65262da",
+      "title": "Meta bildirimin Haluk sözü sayılması",
+      "source": "H1 satır 1077, 1778, 2442, 3021, 3678, 4126, 4735 (type=user, role=user, isMeta=true, 'Your response above was stopped by a safety classifier...'); test_cyber_salt_okunur.py.",
+      "current_proposal": "type/role yanında isMeta ve gerçek üretici ayrımını zorunlu tut; sınıflandırıcı bildirimini yeni kullanıcı kararı yapma.",
+      "sahit_inspection_result": "test_user_quote_does_not_become_meta sınır testi çalıştırıldı ve geçti; H1'deki 7 doğrudan isMeta=true kaydının producer='client_meta' ve user_decision=False olarak ayrıldığı, kullanıcı alıntılarının meta sayılmadığı doğrulandı.",
+      "missing_evidence": "Denetleyici ayrımı doğrulandı; ancak gelecekteki tüm araç/rapor okuyucularının da aynı isMeta filtresini zorunlu uygulaması sürekli denetim gerektirir.",
+      "acceptance_boundary": "7 doğrudan meta bildirim Haluk sözünden ayrıldı ve negatif test geçti; sunucu durdurmasının kendisi önlenmediği için etki önleme kabulü verilmez.",
+      "effect_prevention_verified": false
+    },
+    {
+      "id": "S-040:adc07668b6f1",
+      "title": "Kesilen Write işleminin disk sonucu",
+      "source": "H1 satır 3675 (Write çağrısı, 12.481 bayt, beklenen SHA-256 e58b55c077aadc1fb28eef182b2697f9afde09ddd5a985fd3358bac7eb5894fa) ve satır 3676 (is_error=true, 'Interrupted:...'); H1 satır 4112/4114 (kurulum-2026-10-25.txt, 6.158 bayt, SHA-256 7881b7e740ac0c91f140b97dc2f597c85cff73337557dbe9bd7d12a5f3cfbfc6); CYBER_GERCEK_YAZIM_KONTROLU_20261025.json; CYBER_YAZIM_TASLAGI_KORUMA_20261025.json.",
+      "current_proposal": "Interrupted sonucu varsa gerçek hedef dosyayı salt okunur aç, karma ve beklenen içeriği karşılaştır; kör tekrar yapma.",
+      "sahit_inspection_result": "cyber_dosya_sonucu.py ve test_cyber_dosya_sonucu.py içindeki 7 sınır testi çalıştırıldı ve geçti. 3675/3676 çağrısındaki eski hedefin bugün mevcut olmadığı ('missing'), 12.481 baytlık amaçlanan metnin özel kaynakta korunduğu ve güncel arşivin üzerine yazılmadığı; 4112/4114 kurulum dosyasının ise 6.158 bayt ve aynı SHA-256 ile eşleştiği doğrulandı.",
+      "missing_evidence": "Kesilme anındaki atomik disk durumu için tarihsel anlık görüntü yoktur; bugünkü eşleşme kesilme anında tam yazıldığı kanıtı değildir ve eksik eski hedefin güncel arşivle anlamsal karşılaştırması açıktır.",
+      "acceptance_boundary": "Çağrı/sonuç ayrımı ve bugünkü dosya durumu salt okunur doğrulandı, 7 sınır testi geçti; ancak kesilme anı kanıtlanamadığı ve sağlayıcı kesintisi önlenmediği için etki önleme kabulü verilmez.",
+      "effect_prevention_verified": false
+    },
+    {
+      "id": "S-040:6c28ef3c5736",
+      "title": "Geri çekilmiş yanıtın tamamlanmış sonuç sayılması",
+      "source": "H1 içindeki 7 sınıflandırıcı durdurması ve 5 model_refusal_fallback kaydı; CYB-05 (8 kesilmenin 7'sinde kesilen asistan metni yerel dökümde yok).",
+      "current_proposal": "Geri çekilme metaverisini görünür yanıt/teslim makbuzundan ayır; dosyaya yazılmış sonucu ayrıca bağla.",
+      "sahit_inspection_result": "74 JSONL incelemesinde sınıflandırıcı durdurması geldiğinde akıştaki asistan yanıtının geri çekildiği ve 8 kesilmenin 7'sinde kesilen metnin JSONL'e yazılmadığı (yalnız 1'inde araç çağrısı sonrası kesildiği) doğrulandı.",
+      "missing_evidence": "Geri çekilen 7 yanıtın üretilmiş metin gövdeleri istemci dökümüne kaydedilmediği için geri kazanılamaz.",
+      "acceptance_boundary": "Geri çekilen yanıtların tamamlanmış iş sayılmaması kuralı doğrulandı; ancak geri çekilmenin kendisi sunucu/istemci akışında önlenemediği için açık kalır.",
+      "effect_prevention_verified": false
+    },
+    {
+      "id": "S-040:d56bb5918965",
+      "title": "model_mismatch bağlam metaverisi",
+      "source": "H1 satır 1373, 2457, 3691, 3972, 4166 (5 model_mismatch thinking_drop: 124, 60, 116, 4, 2 blok / 87, 35, 71, 2, 1 tur) ve 21-24 Ekim 3 prefix_mismatch thinking_drop (3, 2, 1 blok); CYB-04.",
+      "current_proposal": "Yalnız neden/satır/blok-tur metaverisini kaydet; düşünme içeriklerini okumadan dış görev durumunu kaynak dosyalarıyla sürdür.",
+      "sahit_inspection_result": "8 thinking_drop kaydı doğrudan ayrıştırıldı: 5'i model_mismatch (kümülatif 306 blok / 196 tur referansı; örtüşen geçmiş turlara işaret eder, 306 benzersiz silinen blok değildir), 3'ü prefix_mismatch (toplam 6 blok / 4 tur). [UZUN-DEGER] testi geçti; hiçbir düşünme gövdesi dışa çıkarılmadı.",
+      "missing_evidence": "Model değişimi sürdüğü sürece sunucu imzalı düşünme bloklarının model_mismatch ile düşürülmesi istemci tarafından engellenemez.",
+      "acceptance_boundary": "model_mismatch ve prefix_mismatch ayrımı ile kümülatif/örtüşen sayım sınırı doğrulandı; model düşürmesi önlenemediği için etki önleme kabulü verilmez.",
+      "effect_prevention_verified": false
+    },
+    {
+      "id": "S-040:9d00739dcbb7",
+      "title": "Beş geçiş ile altı bildirimin çift sayımı",
+      "source": "CYBER_TEKIL_DENETIM_20261025.json (5 cyber_events, 7 meta_stops) ve önceki sabit kesit CYBER_OLAY_DOGRULAMA_20261025.json (5 cyber_events, 6 meta_stops); test_cyber_salt_okunur.py.",
+      "current_proposal": "Yapısal geçiş ve meta bildirim dizilerini ayrı tut; kanıtlı bire bir eşleme olmadan toplama yapma.",
+      "sahit_inspection_result": "cyber_salt_okunur.py çıktısında event_and_meta_counts_are_additive=False alanı ve [UZUN-DEGER] / test_only_direct_category_events_count testleri doğrulandı; 5 model geçişi ile 6 (güncel kesitte 7) meta bildirimin ayrı diziler olduğu ve toplanıp 11/12 olay sayılmadığı teyit edildi.",
+      "missing_evidence": "Meta bildirimlerin hangisinin hangi model_refusal_fallback ile aynı sunucu isteğine ait olduğunun doğrudan istek kimliği eşlemesi JSONL'de yer almıyor (yalnız zaman yakınlığı var).",
+      "acceptance_boundary": "Çift sayım önlendi ve negatif testler geçti; sunucu kararının kendisi önlenmediği için etki önleme kabulü verilmez.",
+      "effect_prevention_verified": false
+    },
+    {
+      "id": "S-040:23906a294fdc",
+      "title": "Kesinti sonrası aynı işin kör yinelenmesi",
+      "source": "H1 satır 3675/3676 (Steering Arsiv.txt) ve 4112/4114 (kurulum-2026-10-25.txt); CYBER_GERCEK_YAZIM_KONTROLU_20261025.json; test_cyber_dosya_sonucu.py.",
+      "current_proposal": "Devamdan önce tamamlanan adım/dosya/karma kaydıyla açık kalan adımı bul; yalnız gerçekten eksik ve yetkili işi sürdür.",
+      "sahit_inspection_result": "test_missing_does_not_authorize_replay ve test_later_successor_is_preserved testleri çalıştırıldı ve geçti; 4112/4114 kurulum metninin 6.158 bayt ve aynı SHA-256 ile mevcut olduğu, yeniden üretilmediği ve 3675/3676'daki eski yazımın güncel ortak arşivin üzerine körlemesine tekrar yazılmadığı doğrulandı.",
+      "missing_evidence": "Kesilen diğer Bash/metin turlarının (CYB-06'daki 3 Bash ve 1 metin turu) her biri için iş bazında çıktı karşılaştırması henüz tek tek kapatılmadı.",
+      "acceptance_boundary": "Write işlemleri için kör tekrar yapılmadığı ve sınır testlerinin geçtiği doğrulandı; tüm kesilen turlar için iş bazında kontrol tamamlanmadan kapatılmaz.",
+      "effect_prevention_verified": false
+    },
+    {
+      "id": "S-040:76c823d29e7f",
+      "title": "Kaynak zamanı ve nedensellik karışması",
+      "source": "H1 zaman damgaları (2026-10-24T12:39:34Z..2026-10-25T00:32:08Z) ve CYB-01..14.",
+      "current_proposal": "Kaynağın Z damgasını kalibrasyon iddiasından ayır; yakındaki sözcük/işlemi ret nedeni ilan etme.",
+      "sahit_inspection_result": "Kayıtların yalnızca JSONL içindeki kendi ISO-8601 Z zaman damgalarıyla raporlandığı, VM/Windows saat kalibrasyonu iddiası kurulmadığı ve kesilme öncesi son aracın (Write 4, Bash 3, metin 1) nedensel tetikleyici ilan edilmediği doğrulandı.",
+      "missing_evidence": "Sunucu tarafı değerlendirme zamanı ve hangi belirteçte kesildiğine dair sunucu günlüğü mevcut değil.",
+      "acceptance_boundary": "Zaman damgası ve nedensellik sınırı korundu; gerçek tetikleyici bilinmediği için açık kalır.",
+      "effect_prevention_verified": false
+    },
+    {
+      "id": "S-040:3bc24452423a",
+      "title": "İş akışı alt oturumlarındaki önceki kesintiler",
+      "source": "VM ~/.[UZUN-DEGER][UUID].jsonl ve wf_84737e87-810/agent-[UUID].jsonl; CYB-01.",
+      "current_proposal": "Hacker’ın 21 ve 22 Ekim alt-oturum bildirimlerini ana H1 kesitinden ayrı kaynaklarla doğrula; aynı kullanıcı işi gibi toplama.",
+      "sahit_inspection_result": "Her iki alt oturum JSONL dosyası VM'de doğrudan okundu ve SHA-256 karmalarıyla doğrulandı: (1) wf_1f667cf3-9e6/agent-a2c85549...jsonl (1.072.968 bayt, 107 satır, SHA-256 053b372641c1a71633ee47e92952e08196d93086862c0ece4ebab7c7c21f002b): satır 47'de (2026-10-21T19:27:21.899Z) doğrudan type=user, role=user, isMeta=true sınıflandırıcı durdurması, model claude-opus-5-5, model_refusal_fallback=0; (2) wf_84737e87-810/agent-ab8897ea...jsonl (931.920 bayt, 278 satır, SHA-256 9f1ff68c472f916d58e9a0a60175fea9fdbfd6e160f24f75b1888989e523c6b9): satır 31'de (2026-10-22T04:17:59.348Z) doğrudan type=user, role=user, isMeta=true sınıflandırıcı durdurması, model claude-opus-5-5, model_refusal_fallback=0. Ana H1 oturumu sayılarıyla (5 geçiş / 7 meta) toplanmadı.",
+      "missing_evidence": "Bu iki alt oturumda kesilen yanıtların neden durdurulduğuna ilişkin sunucu açıklaması yok.",
+      "acceptance_boundary": "Alt oturum kesintileri doğrudan ilk kaynaklarından (type/role/isMeta, satır ve SHA-256 ile) doğrulandı ve H1 sayılarından ayrı tutuldu; sunucu durdurması önlenemediği için etki önleme kabulü verilmez.",
+      "effect_prevention_verified": false
+    },
+    {
+      "id": "S-040:543afafc864d",
+      "title": "Başlatıcı betiği penceresi ile kesinti arasındaki gözlemsel ilişki",
+      "source": "Hacker calisma/cyber/rapor.json ve CYB-07 (/tmp/ geçici dosya yolu: 8 kesilmenin 6'sında, 636 pencere, oran 0.009, taban 0.0014'ün 6.6 katı).",
+      "current_proposal": "Başlatıcı betiği / geçici yol: Hacker’ın tarihsel pencere sayımını kapsam/payda/örüntüyle yeniden değerlendir; ilişkiyi karar nedeni veya önerilen önlemin başarısı sayma.",
+      "sahit_inspection_result": "calisma/cyber/rapor.json içindeki 3 turluk pencere sayımı (6/8 kesilme, 636 pencere, oran 0.0094, 6.6x) okundu ve payda (5.625 asistan turu, taban oran 0.0014) ile tutarlılığı doğrulandı.",
+      "missing_evidence": "8 kesilmelik küçük örneklem ve pencerelerin diğer özelliklerle (ör. sistem dosyası adı, yönlendirme terimleri) çakışması nedeniyle nedensellik kanıtı değildir; çalışma dizini içi alt klasör kullanımının kesilmeyi önlediği henüz sınanmadı.",
+      "acceptance_boundary": "Gözlemsel korelasyon adayı olarak kapsam ve paydasıyla doğrulandı; tetikleyici kanıtı veya etki önleme kabulü verilmez.",
+      "effect_prevention_verified": false
+    },
+    {
+      "id": "S-040:f2c564f839da",
+      "title": "Oturum dökümü penceresi ile kesinti arasındaki gözlemsel ilişki",
+      "source": "Hacker calisma/cyber/rapor.json ve CYB-08 (sistem dosyası adı: 8 kesilmenin 4'ünde, 493 pencere, oran 0.008, taban oranın 5.7 katı).",
+      "current_proposal": "Oturum dökümü / sistem dosyası adı: Hacker’ın tarihsel pencere sayımını kapsam/payda/örüntüyle yeniden değerlendir; ilişkiyi karar nedeni veya önerilen önlemin başarısı sayma.",
+      "sahit_inspection_result": "calisma/cyber/rapor.json içindeki 4/8 kesilme, 493 pencere, 0.0081 oran (5.7x) sayımı incelendi; diğer pencere özellikleriyle çakıştığı ve tek başına tetikleyici kanıtı olmadığı doğrulandı.",
+      "missing_evidence": "Dosya yolu yerine yapılandırılmış özet döndürmenin sınıflandırıcı kararını değiştirdiğine dair kontrollü kanıt yok.",
+      "acceptance_boundary": "Korelasyon adayı olarak paydasıyla kaydedildi; etki önleme kabulü verilmez.",
+      "effect_prevention_verified": false
+    },
+    {
+      "id": "S-040:d034c3e247da",
+      "title": "Yapılandırma dosyası penceresi ile kesinti arasındaki gözlemsel ilişki",
+      "source": "Hacker calisma/cyber/rapor.json ve CYB-09 (ikili/ELF inceleme: 8 kesilmenin 1'inde, 179 pencere, oran 0.006, taban oranın 3.9 katı).",
+      "current_proposal": "Yapılandırma dosyası / ikili inceleme: Hacker’ın tarihsel pencere sayımını kapsam/payda/örüntüyle yeniden değerlendir; ilişkiyi karar nedeni veya önerilen önlemin başarısı sayma.",
+      "sahit_inspection_result": "calisma/cyber/rapor.json içindeki 1/8 kesilme, 179 pencere, 0.0056 oran (3.9x) sayımı doğrulandı; tek örneklik kesişimin istatistiksel kanıt olamayacağı teyit edildi.",
+      "missing_evidence": "Tek kesilme örneğiyle nedensellik kurulamaz; ikili tarama çıktısını dosyaya yazma önleminin kesilmeyi engellediği kanıtlanmadı.",
+      "acceptance_boundary": "Düşük örneklemli korelasyon adayı olarak sınırlandırıldı; etki önleme kabulü verilmez.",
+      "effect_prevention_verified": false
+    },
+    {
+      "id": "S-040:8681bfba19f6",
+      "title": "Sağlayıcı iç yapısı penceresi ile kesinti arasındaki gözlemsel ilişki",
+      "source": "Hacker calisma/cyber/rapor.json ve CYB-10 (izin/sınıflandırıcı terimleri: 8 kesilmenin 2'sinde, 535 pencere, oran 0.004, taban oranın 2.6 katı).",
+      "current_proposal": "Sağlayıcı iç yapısı / sınıflandırıcı terimleri: Hacker’ın tarihsel pencere sayımını kapsam/payda/örüntüyle yeniden değerlendir; ilişkiyi karar nedeni veya önerilen önlemin başarısı sayma.",
+      "sahit_inspection_result": "calisma/cyber/rapor.json içindeki 2/8 kesilme, 535 pencere, 0.0037 oran (2.6x) sayımı doğrulandı; H1 satır 4126/4133 kesintisinin doğrudan Cyber incelemesi sırasında gerçekleştiği gözlemlendi.",
+      "missing_evidence": "İç yapı terimlerinin kendisinin mi yoksa aynı turdaki dosya/komut kalıplarının mı sınıflandırıcıyı tetiklediği ayırt edilemez.",
+      "acceptance_boundary": "Korelasyon adayı olarak kapsam/payda ile doğrulandı; etki önleme kabulü verilmez.",
+      "effect_prevention_verified": false
+    },
+    {
+      "id": "S-040:e8052e8683e7",
+      "title": "Gizlilik maskesi penceresi ile kesinti arasındaki gözlemsel ilişki",
+      "source": "Hacker calisma/cyber/rapor.json ve CYB-11 (yönlendirme terimleri: 8 kesilmenin 6'sında, 1.859 pencere, oran 0.003, taban oranın 2.3 katı).",
+      "current_proposal": "Gizlilik maskesi / yönlendirme terimleri: Hacker’ın tarihsel pencere sayımını kapsam/payda/örüntüyle yeniden değerlendir; ilişkiyi karar nedeni veya önerilen önlemin başarısı sayma.",
+      "sahit_inspection_result": "calisma/cyber/rapor.json içindeki 6/8 kesilme, 1.859 pencere, 0.0032 oran (2.3x) sayımı doğrulandı; oturumun ana konusu Steering olduğu için 5.625 turun üçte birinde bu terimlerin geçtiği (yüksek payda) teyit edildi.",
+      "missing_evidence": "Konu bazlı yüksek baz frekansı nedeniyle nedensel ayırt ediciliği düşüktür.",
+      "acceptance_boundary": "Yüksek paydalı korelasyon adayı olarak kaydedildi; etki önleme kabulü verilmez.",
+      "effect_prevention_verified": false
+    },
+    {
+      "id": "S-040:4919150fb1b5",
+      "title": "Bağlantı ayarı penceresi ile kesinti arasındaki gözlemsel ilişki",
+      "source": "Hacker calisma/cyber/rapor.json ve CYB-12 (ağ/engel terimleri: 8 kesilmenin 2'sinde, 650 pencere, oran 0.003, taban oranın 2.2 katı).",
+      "current_proposal": "Bağlantı ayarı / ağ-engel terimleri: Hacker’ın tarihsel pencere sayımını kapsam/payda/örüntüyle yeniden değerlendir; ilişkiyi karar nedeni veya önerilen önlemin başarısı sayma.",
+      "sahit_inspection_result": "calisma/cyber/rapor.json içindeki 2/8 kesilme, 650 pencere, 0.0031 oran (2.2x) sayımı doğrulandı.",
+      "missing_evidence": "2/8 örneklem ve çakışan pencereler nedeniyle nedensellik kanıtı yoktur.",
+      "acceptance_boundary": "Korelasyon adayı olarak kaydedildi; etki önleme kabulü verilmez.",
+      "effect_prevention_verified": false
+    },
+    {
+      "id": "S-040:3eb4821e5afd",
+      "title": "Dosya taşıma penceresi ile kesinti arasındaki gözlemsel ilişki",
+      "source": "Hacker calisma/cyber/rapor.json ve CYB-13 (belirteç/kimlik adı: 8 kesilmenin 3'ünde, 1.347 pencere, oran 0.002, taban oranın 1.6 katı).",
+      "current_proposal": "Dosya taşıma / belirteç-kimlik adı: Hacker’ın tarihsel pencere sayımını kapsam/payda/örüntüyle yeniden değerlendir; ilişkiyi karar nedeni veya önerilen önlemin başarısı sayma. Gizli değerleri azaltma yalnız veri gizliliği içindir.",
+      "sahit_inspection_result": "calisma/cyber/rapor.json içindeki 3/8 kesilme, 1.347 pencere, 0.0022 oran (1.6x) sayımı doğrulandı; gizli değer maskelemesinin veri güvenliği kuralı (ANT-T01..T14) olduğu, sınıflandırıcı önleme kanıtı sayılmadığı teyit edildi.",
+      "missing_evidence": "Taban orana yakın (1.6x) gözlemsel orandır; tetikleyici kanıtı yoktur.",
+      "acceptance_boundary": "Korelasyon adayı olarak kaydedildi; etki önleme kabulü verilmez.",
+      "effect_prevention_verified": false
+    },
+    {
+      "id": "S-040:8eca3125e34e",
+      "title": "Karma doğrulama penceresi ile kesinti arasındaki gözlemsel ilişki",
+      "source": "Hacker calisma/cyber/rapor.json ve CYB-14 (karma doğrulama: 8 kesilmenin 1'inde, 1.013 pencere, oran 0.001, taban oranın 0.7 katı).",
+      "current_proposal": "Karma doğrulama: Hacker’ın tarihsel pencere sayımını kapsam/payda/örüntüyle yeniden değerlendir; ilişkiyi karar nedeni veya önerilen önlemin başarısı sayma.",
+      "sahit_inspection_result": "calisma/cyber/rapor.json içindeki 1/8 kesilme, 1.013 pencere, 0.0010 oran (taban oranın 0.7 katı) sayımı doğrulandı; taban oranın altında kaldığı teyit edildi.",
+      "missing_evidence": "Taban oranın altında olduğu için pozitif ilişki dahi göstermemektedir.",
+      "acceptance_boundary": "Korelasyon adayı olarak değerlendirildi ve taban oranın altında olduğu kaydedildi; etki önleme kabulü verilmez.",
+      "effect_prevention_verified": false
+    }
+  ]
+}

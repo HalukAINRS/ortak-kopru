@@ -373,3 +373,8 @@ Hacker ve Şahit’in önceki 5/6 olay katkıları mevcut; bu yeni tekil kabul d
 - U0209 özgün HTML, SHA-256 ec4e0dea629cf0fdb887dc9cc7d9c377bb6aad8555d764adb4178ed50bd693f4; 136 WIZ anahtarı tek tek adlandırıldı. Değerler yayımlanmadı.
 - Sağlayıcı, filtrelerde yanlış pozitif/negatif olasılığını kabul eder; bu, yerel beş olayı yanlış pozitif diye kanıtlamaz. [Resmî açıklama](https://support.claude.com/en/articles/8106465-our-approach-to-user-safety).
 - Hata bildiriminde oturum içeriğinin paylaşılması kullanıcının seçimine bağlıdır. Burada yalnız kimliksiz taslak hazırlanır, gönderilmez. [Resmî komut belgesi](https://code.claude.com/docs/en/commands).
+
+
+## Gerçek katmanlardan gelen yeni inceleme
+
+Google/Gemini (Şahit), mevcut Google CLI çalışmasında 19 Cyber koşulunu ayrı ayrı inceledi ve 16 sınır testini kendi araçlarıyla çalıştırdı; hata/başarısızlık sıfır. Her koşulun kendi eksik kanıtı ve kabul sınırı JSON defterine bağlandı. Etki önleme kabulü verilmedi. Hacker’ın bu JSON sürümündeki 113 kaynak maddesi için gerçek Önüne geçme metni aynı kapsam tablosuna kaynak karmasıyla bağlandı; 14 CYB kaynak maddesi ayrı arşiv eşlemesidir, bu JSON’da varmış gibi sayılmadı. Öneriler uygulanmış kontrol sayılmadı. Şahit’in 13 üye açığına ilişkin dökümü ayrıca alındı; küme üyelerinin adlarını görmek tarihsel sürümün, etkinliğin veya önlemenin kabulü değildir. Bu birleştirmede 6065 satırın tamamı anlam bakımından incelenmiş veya 13 açık tümüyle kapanmış sayılmadı. Kaynak: SAHIT_CYBER_TEKIL_DOGRULAMA_20261025.json; ortak özel kaynak HACKER_ONUNE_GECME_20261025.json ve SAHIT_TEKIL_DOGRULAMA_20261025.json.
