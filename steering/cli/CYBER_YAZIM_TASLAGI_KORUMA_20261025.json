@@ -1,0 +1,14 @@
+{
+  "source_alias": "H1",
+  "source_call_line": 3675,
+  "bytes": 12481,
+  "sha256": "e58b55c077aadc1fb28eef182b2697f9afde09ddd5a985fd3358bac7eb5894fa",
+  "declared_write_content_preserved_privately": true,
+  "read_back_exact": true,
+  "current_shared_archive_overwritten": false,
+  "original_target_recreated": false,
+  "original_command_executed": false,
+  "historical_completion_proven": false,
+  "source_modified": false,
+  "source_is": "Historical user-owned Write input, not a hidden reasoning field; held as historical data, never executed."
+}

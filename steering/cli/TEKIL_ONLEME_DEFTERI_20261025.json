@@ -19141,6 +19141,11 @@
           "file": "CYBER_GERCEK_YAZIM_KONTROLU_20261025.json",
           "sha256": "5155b820374291f85525f8a518b348857c40e483bf3f94d7aa466e3914c75b48",
           "scope": "Current file compared with original declared Write; no replay or historical completion inference."
+        },
+        {
+          "file": "CYBER_YAZIM_TASLAGI_KORUMA_20261025.json",
+          "sha256": "a02e25e48b22c62fef40f5ca7a7c0ba62bb1029bffe4ac217e23eda4f4c3f5ee",
+          "scope": "Original declared Write text preserved privately; current shared archive not overwritten."
         }
       ],
       "control_verification": {
@@ -19148,7 +19153,8 @@
         "actual_call_3675_target": "missing_now",
         "actual_call_4112_target": "exact_declared_content_match_now",
         "effect_prevention_verified": false,
-        "recovery_completed": false
+        "recovery_completed": false,
+        "declared_write_3675_preserved_privately": true
       }
     },
     {
@@ -19237,6 +19243,11 @@
           "file": "CYBER_GERCEK_YAZIM_KONTROLU_20261025.json",
           "sha256": "5155b820374291f85525f8a518b348857c40e483bf3f94d7aa466e3914c75b48",
           "scope": "Current file compared with original declared Write; no replay or historical completion inference."
+        },
+        {
+          "file": "CYBER_YAZIM_TASLAGI_KORUMA_20261025.json",
+          "sha256": "a02e25e48b22c62fef40f5ca7a7c0ba62bb1029bffe4ac217e23eda4f4c3f5ee",
+          "scope": "Original declared Write text preserved privately; current shared archive not overwritten."
         }
       ],
       "control_verification": {
@@ -19244,7 +19255,8 @@
         "actual_call_3675_target": "missing_now",
         "actual_call_4112_target": "exact_declared_content_match_now",
         "effect_prevention_verified": false,
-        "recovery_completed": false
+        "recovery_completed": false,
+        "declared_write_3675_preserved_privately": true
       }
     },
     {
