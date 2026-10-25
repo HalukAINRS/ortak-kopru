@@ -1,13 +1,7 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "observation_time_utc": "2026-10-24T23:37:24.120702+00:00",
   "primary_snapshot_time_utc": "2026-10-24T23:38:22.537680+00:00",
-  "scope": {
-    "primary_sessions": 7,
-    "all_jsonl_files_including_subrecords": 74,
-    "raw_fallback_records": 4,
-    "meta_stop_records": 5
-  },
   "source_aliases": [
     {
       "bytes_read": 16203590,
@@ -240,6 +234,27 @@
           "has_tool_use": true
         }
       ]
+    },
+    {
+      "id": "C05",
+      "source": "H1",
+      "line": 4133,
+      "timestamp": "2026-10-24T23:45:14.408Z",
+      "client_version": "2.1.308",
+      "trigger": "refusal",
+      "direction": "retry",
+      "scope": "session",
+      "originalModel": "claude-opus-5-5",
+      "fallbackModel": "claude-opus-5",
+      "apiRefusalCategory": "cyber",
+      "apiRefusalExplanation": null,
+      "thinking_drop": {
+        "line": 4166,
+        "timestamp": "2026-10-24T23:45:28.109Z",
+        "reason": "model_mismatch",
+        "block_count": 2,
+        "turn_count": 1
+      }
     }
   ],
   "meta_stops": [
@@ -292,6 +307,15 @@
       "interrupted_tool_exception_present": true,
       "source": "H1",
       "cyber_category_verified": false
+    },
+    {
+      "source": "H1",
+      "line": 4126,
+      "timestamp": "2026-10-24T23:44:38.729Z",
+      "isMeta": true,
+      "role": "user",
+      "type": "user",
+      "cyber_category_verified": false
     }
   ],
   "limits": [
@@ -301,5 +325,45 @@
     "Dropped thinking metadata is not a measure of irreversible loss.",
     "Classifier decision explanation is null; false positives are not proven.",
     "Historical client model changes were observed; no new model call was made."
-  ]
+  ],
+  "initial_scope": {
+    "primary_sessions": 7,
+    "all_jsonl_files_including_subrecords": 74,
+    "raw_fallback_records": 4,
+    "meta_stop_records": 5
+  },
+  "follow_up": {
+    "observation_time_utc": "2026-10-25T00:03:21.809910+00:00",
+    "observed_fallback_records": 5,
+    "meta_stop_count_recomputed": true,
+    "source_snapshot": {
+      "alias": "H1",
+      "bytes_read": 17214154,
+      "sha256": "2650c4b6f60dcd0ad854cef95449e5bc2539ea98399b9252e10c34450d939b45",
+      "lines": 4310
+    },
+    "interrupted_tool_result": {
+      "source": "H1",
+      "tool_call_line": 3675,
+      "tool_result_line": 3676,
+      "tool_name": "Write",
+      "is_error": true,
+      "interrupted": true,
+      "partial_completion_possible": true
+    },
+    "subsequent_file_checks": [
+      {
+        "source": "H1",
+        "tool_result_line": 3687,
+        "is_error": false
+      },
+      {
+        "source": "H1",
+        "tool_result_line": 3970,
+        "is_error": false
+      }
+    ],
+    "observed_meta_stop_records": 6,
+    "meta_observation_time_utc": "2026-10-25T00:09:33.470203+00:00"
+  }
 }
