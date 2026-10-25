@@ -1,0 +1,7 @@
+--- a/Hacker_Baslat.ps1
++++ b/Hacker_Baslat.ps1
+@@ -55,2 +55,2 @@
+-            $Surec.PriorityClass = [System.Diagnostics.ProcessPriorityClass]::AboveNormal
+-            $Surec.ProcessorAffinity = [IntPtr]15
++            $Surec.PriorityClass = [System.Diagnostics.ProcessPriorityClass]::Normal
++            # Windows zamanlayicisi: P-Core dizinlerine sabit affinity miras birakma.
