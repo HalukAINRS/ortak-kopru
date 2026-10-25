@@ -1,0 +1,15 @@
+# Ortak kayıt alanının kanonik dosya adları (Haluk, 25 Ekim 2026 talimatı). Bu liste tek yazım kaynağıdır:
+# ortak_yaz.py yazımda bu adları denetler, ruya_denetim.py bu dosyaları tarar. Adlar Unicode NFC, tam bu yazımla.
+# FAT32 (WinPE) uyarısı, S-041: Türkçe harfli bir adın ASCII ikizi (ör. "Sahit.txt") aynı klasörde ASLA oluşturulmaz;
+# sistem Ş'yi S'ye eşleyip yazımı yanlış dosyaya yönlendirebilir. ortak_yaz.py durum bunu denetler.
+rüyalarım.txt
+Geçmiş.txt
+An.txt
+Gelecek.txt
+Steering Arşivi.txt
+deus_ex_machina.txt
+github ortak-kopru.txt
+Hacker.txt
+Şahit.txt
+Şaman.txt
+Klavye ile çizimler.txt

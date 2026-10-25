@@ -1,0 +1,60 @@
+ORTAK ALAN ARAÇLARI — Hacker, Şahit ve Şaman için
+25 Ekim 2026 · Claude (claude.ai) · Haluk'un onayıyla
+
+Dayanak. Haluk'un 25 Ekim talimatı (ortak kayıt alanı, on bir dosya) Claude'a (claude.ai) okutuldu. Claude iki görüş
+bildirdi; Haluk'un yanıtı: "Uygundur, görüşlerini uygula." Bu paket o iki görüşün uygulamasıdır. Talimatın kendisi
+Haluk'undur ve değişmedi; buradaki her şey talimatın iki boşluğunu araçla doldurur. Hangisinin görüş olduğu aşağıda yazılı.
+
+Görüş 1: Yazma sırası. Üç katman aynı dosyaları yazıyor. k-0125 "yazmadan önce güncel dosyayı tekrar okuyup eşzamanlı
+değişikliği birleştirin" diyor; bunu zorlayan bir araç yoktu. ortak_yaz.py bunu zorlar: okurken dosyanın özeti alınır,
+yazarken aynı özet "temel" olarak verilir; dosya o arada değiştiyse yazım reddedilir, aradaki fark gösterilir ve yazılmak
+istenen içerik Yedekler/ altında bekletilir. Her yazım öncesi eski sürüm yedeklenir, her yazım DEGISIKLIK.log'a işlenir
+(zaman, yazar, dosya, özet, dayanak). Böylece "başka bir katılımcının katkısını fark etmeden kaybetmeyecek bir yöntem"
+(talimat, madde 10) dosya düzeyinde kurulmuş olur.
+
+Görüş 2: Kişisel içerik aktarımının doğrulanması. Talimat, kişisel içeriğin öteki dosyalardan çıkarılmasını "aktarımın
+eksiksizliğini doğruladıktan sonra" şartına bağlıyor (madde 11). ruya_denetim.py bu doğrulamanın raporunu üretir:
+rüyalarım.txt'deki R-kimlikleri, öteki dosyalardaki kırık ya da yanına metin yazılmış göndermeler, kişisel kayıt metninin
+başka dosyada yinelenmesi, aday kişisel satırlar. Araç yalnız okur; karar Haluk'un.
+
+FAT32 uyarısı (S-041, k-0130). Yeni on bir adın altısında Türkçe harf var. Aynı klasörde ASCII ikizi (ör. "Sahit.txt",
+"Steering Arsiv.txt") bulunursa WinPE yazımı yanlış dosyaya yönlendirebilir. dosya_adlari.txt tek yazım kaynağıdır;
+ortak_yaz.py ikiz varsa yazmayı reddeder, "durum" komutu ikizleri listeler. Mevcut "Steering Arşiv.txt" / "Steering
+Arsiv.txt" çifti yeni ada geçerken tek dosyada birleştirilmeli; ikisi de yedeklenip ikiz silinmeli.
+
+Mevcut sekiz dosyadan on bire geçiş (öneri; karar üçünüzün ve Haluk'un):
+  Durum Bildirimi.txt   → An.txt (gövde; sonunda "Şu anda yürüyen işler")
+  İlerisi.txt           → Gelecek.txt
+  Steering Arşiv.txt    → Steering Arşivi.txt (ASCII ikiziyle birleştirilerek)
+  GitHub Ortak-Kopru.txt→ github ortak-kopru.txt
+  Klavye Çizimleri.txt  → Klavye ile çizimler.txt
+  Geçmiş.txt, deus_ex_machina.txt → aynı ad
+  Kullanıcıdan İstenenler.txt → kaldırıldı (k-0136); açık işler An.txt ve Gelecek.txt sonuna
+  Yeni: rüyalarım.txt, Hacker.txt, Şahit.txt, Şaman.txt
+Eski dosyalar silinmez; Yedekler/ altına alınır. Yeniden adlandırma ortak_yaz.py ile değil, elle ve tek seferde yapılır;
+sonra "ortak_yaz.py durum" ikiz ve eksik denetimi verir.
+
+Kurulum (Windows, Şahit ya da Şaman):
+  1. Bu klasörü Y:\HalukAI\Ortak_Kopru\Ortak_Notlar_Yolu\ortak-alan\ altına koyun (kopru klasörünün dışında).
+  2. dosya_adlari.txt'yi Y:\HalukAI\Ortak_Kopru\Ortak_Notlar\Kullanici_Anlatisi\ içine kopyalayın.
+  3. Python: Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari\Runtime\Python\python.exe -I <betik> ...
+  4. İlk deneme: python -I ortak_yaz.py --klasor "...\Kullanici_Anlatisi" durum
+Kurulum (VM, Hacker): aynı iki .py dosyası ~/hacker-devri/ortak-notlar yanında; ayna salt okunur olduğu için Hacker
+yalnız "durum", "oku" ve ruya_denetim.py kullanır. Hacker'ın Windows'a yazımı mevcut düzende Şahit üzerinden gidiyor;
+o yol değişmedi.
+
+Yazım döngüsü (her katılımcı):
+  python -I ortak_yaz.py --klasor <Kullanici_Anlatisi> oku "An.txt"            → metni ve TEMEL=<özet> alın
+  (metni düzenleyin, yeni.txt olarak kaydedin)
+  python -I ortak_yaz.py --klasor <Kullanici_Anlatisi> yaz "An.txt" --temel <özet> --yeni yeni.txt --yazar "Şahit" --dayanak "k-0130"
+  Reddedilirse: gösterilen farkı birleştirin, yeniden okuyun, yeniden yazın. Yalnız sona ekleyecekseniz "ekle" temel istemez.
+
+Denetim (kişisel içerik taşındıktan sonra, çıkarmadan önce):
+  python -I ruya_denetim.py --klasor <Kullanici_Anlatisi>
+  Rapor Kullanici_Anlatisi\Raporlar\RuyaDenetim-<zaman>.txt'ye yazılır; Haluk'a verilir. Kritik ve uyarı sıfırlanmadan,
+  adaylar Haluk tarafından görülmeden kişisel içerik öteki dosyalardan çıkarılmaz.
+
+Sınırlar. İki araç yalnız bu ortamda sahte klasörle sınandı; Windows FAT32 üzerinde henüz çalışmadı. Notlar_Esitle'nin
+VM'e kopyalama yolu değişmedi; .kilit ve Yedekler/ da kopyalanabilir, zarar vermez. Kilit 10 dakikada bayatlar.
+Bu paket iş emri değildir; iş emri yalnız Haluk'tan gelir. Haluk'un onayı yukarıda birebir yazılıdır; kapsamı bu iki
+görüşle sınırlıdır.
