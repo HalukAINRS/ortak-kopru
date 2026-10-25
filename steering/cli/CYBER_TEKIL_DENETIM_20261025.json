@@ -1,0 +1,306 @@
+{
+  "at_utc": "2026-10-25T00:36:12.033573+00:00",
+  "reports": [
+    {
+      "current": {
+        "source_sha256": "7e264fe0662001ee01a7e9010bf0715a726e592db25fc5d8fc46275bb58e8ed8",
+        "source_bytes": 19165859,
+        "source_lines": 4758,
+        "invalid_lines": [],
+        "unterminated_tail": false,
+        "complete_parse": true,
+        "cyber_events": [
+          {
+            "line": 1364,
+            "category": "cyber",
+            "original_model": "claude-opus-5-5",
+            "fallback_model": "claude-opus-5",
+            "scope": "session",
+            "explanation_present": false
+          },
+          {
+            "line": 2454,
+            "category": "cyber",
+            "original_model": "claude-opus-5-5",
+            "fallback_model": "claude-opus-5",
+            "scope": "session",
+            "explanation_present": false
+          },
+          {
+            "line": 3686,
+            "category": "cyber",
+            "original_model": "claude-opus-5-5",
+            "fallback_model": "claude-opus-5",
+            "scope": "session",
+            "explanation_present": false
+          },
+          {
+            "line": 3969,
+            "category": "cyber",
+            "original_model": "claude-opus-5-5",
+            "fallback_model": "claude-opus-5",
+            "scope": "session",
+            "explanation_present": false
+          },
+          {
+            "line": 4133,
+            "category": "cyber",
+            "original_model": "claude-opus-5-5",
+            "fallback_model": "claude-opus-5",
+            "scope": "session",
+            "explanation_present": false
+          }
+        ],
+        "meta_stops": [
+          {
+            "line": 1077,
+            "producer": "client_meta",
+            "user_decision": false
+          },
+          {
+            "line": 1778,
+            "producer": "client_meta",
+            "user_decision": false
+          },
+          {
+            "line": 2442,
+            "producer": "client_meta",
+            "user_decision": false
+          },
+          {
+            "line": 3021,
+            "producer": "client_meta",
+            "user_decision": false
+          },
+          {
+            "line": 3678,
+            "producer": "client_meta",
+            "user_decision": false
+          },
+          {
+            "line": 4126,
+            "producer": "client_meta",
+            "user_decision": false
+          },
+          {
+            "line": 4735,
+            "producer": "client_meta",
+            "user_decision": false
+          }
+        ],
+        "model_labels": [
+          {
+            "line": 37,
+            "model": "claude-opus-5-5"
+          },
+          {
+            "line": 1360,
+            "model": "claude-opus-5"
+          },
+          {
+            "line": 1703,
+            "model": "claude-opus-5-5"
+          },
+          {
+            "line": 2450,
+            "model": "claude-opus-5"
+          },
+          {
+            "line": 2713,
+            "model": "claude-opus-5-5"
+          },
+          {
+            "line": 3684,
+            "model": "claude-opus-5"
+          },
+          {
+            "line": 3944,
+            "model": "claude-opus-5-5"
+          },
+          {
+            "line": 3965,
+            "model": "claude-opus-5"
+          },
+          {
+            "line": 4110,
+            "model": "claude-opus-5-5"
+          },
+          {
+            "line": 4129,
+            "model": "claude-opus-5"
+          },
+          {
+            "line": 4650,
+            "model": "claude-fable-5-1"
+          }
+        ],
+        "interrupted_tools": [
+          {
+            "result_line": 3676,
+            "call": {
+              "line": 3675,
+              "tool": "Write"
+            },
+            "is_error": true,
+            "disk_state": "unknown_requires_file_check",
+            "automatic_retry": false
+          }
+        ],
+        "event_and_meta_counts_are_additive": false,
+        "safety_decision_prevented": false,
+        "recovery_completed": false,
+        "source_alias": "H1"
+      },
+      "previous_snapshot": {
+        "source_sha256": "2650c4b6f60dcd0ad854cef95449e5bc2539ea98399b9252e10c34450d939b45",
+        "source_bytes": 17214154,
+        "source_lines": 4310,
+        "invalid_lines": [],
+        "unterminated_tail": false,
+        "complete_parse": true,
+        "cyber_events": [
+          {
+            "line": 1364,
+            "category": "cyber",
+            "original_model": "claude-opus-5-5",
+            "fallback_model": "claude-opus-5",
+            "scope": "session",
+            "explanation_present": false
+          },
+          {
+            "line": 2454,
+            "category": "cyber",
+            "original_model": "claude-opus-5-5",
+            "fallback_model": "claude-opus-5",
+            "scope": "session",
+            "explanation_present": false
+          },
+          {
+            "line": 3686,
+            "category": "cyber",
+            "original_model": "claude-opus-5-5",
+            "fallback_model": "claude-opus-5",
+            "scope": "session",
+            "explanation_present": false
+          },
+          {
+            "line": 3969,
+            "category": "cyber",
+            "original_model": "claude-opus-5-5",
+            "fallback_model": "claude-opus-5",
+            "scope": "session",
+            "explanation_present": false
+          },
+          {
+            "line": 4133,
+            "category": "cyber",
+            "original_model": "claude-opus-5-5",
+            "fallback_model": "claude-opus-5",
+            "scope": "session",
+            "explanation_present": false
+          }
+        ],
+        "meta_stops": [
+          {
+            "line": 1077,
+            "producer": "client_meta",
+            "user_decision": false
+          },
+          {
+            "line": 1778,
+            "producer": "client_meta",
+            "user_decision": false
+          },
+          {
+            "line": 2442,
+            "producer": "client_meta",
+            "user_decision": false
+          },
+          {
+            "line": 3021,
+            "producer": "client_meta",
+            "user_decision": false
+          },
+          {
+            "line": 3678,
+            "producer": "client_meta",
+            "user_decision": false
+          },
+          {
+            "line": 4126,
+            "producer": "client_meta",
+            "user_decision": false
+          }
+        ],
+        "model_labels": [
+          {
+            "line": 37,
+            "model": "claude-opus-5-5"
+          },
+          {
+            "line": 1360,
+            "model": "claude-opus-5"
+          },
+          {
+            "line": 1703,
+            "model": "claude-opus-5-5"
+          },
+          {
+            "line": 2450,
+            "model": "claude-opus-5"
+          },
+          {
+            "line": 2713,
+            "model": "claude-opus-5-5"
+          },
+          {
+            "line": 3684,
+            "model": "claude-opus-5"
+          },
+          {
+            "line": 3944,
+            "model": "claude-opus-5-5"
+          },
+          {
+            "line": 3965,
+            "model": "claude-opus-5"
+          },
+          {
+            "line": 4110,
+            "model": "claude-opus-5-5"
+          },
+          {
+            "line": 4129,
+            "model": "claude-opus-5"
+          }
+        ],
+        "interrupted_tools": [
+          {
+            "result_line": 3676,
+            "call": {
+              "line": 3675,
+              "tool": "Write"
+            },
+            "is_error": true,
+            "disk_state": "unknown_requires_file_check",
+            "automatic_retry": false
+          }
+        ],
+        "event_and_meta_counts_are_additive": false,
+        "safety_decision_prevented": false,
+        "recovery_completed": false
+      }
+    }
+  ],
+  "artifact_check": {
+    "alias": "kurulum-2026-10-25.txt",
+    "bytes": 6158,
+    "sha256": "7881b7e740ac0c91f140b97dc2f597c85cff73337557dbe9bd7d12a5f3cfbfc6",
+    "matches_completed_job": true,
+    "completion_time_during_interruption_proven": false
+  },
+  "new_model_or_api_called": false,
+  "auditor_sha256": "c9b167867bede92358f363f5e3fbee0084ea345738a0b472e42b3537dabb23ad",
+  "scope": "Interrupted tool result: is_error=true and string content starting Interrupted:. Other shapes not inferred.",
+  "development_correction": "Initial unpublished parser also matched a successful tool result quoting Interrupted (line 2897). Negative test added; only direct Interrupted error counts."
+}

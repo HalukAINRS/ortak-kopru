@@ -1,5 +1,9 @@
 # Hacker akışındaki `[cyber]` kesintileri
 
+25 Ekim devamı: Haluk'un yeni talimatıyla bu toplu başlık on ayrı önleme/kabul konusu olarak ele alınıyor. Tekil sıra ve her birinin açık ölçütü [TEKIL_ONLEME_SIRASI_20261025.md](TEKIL_ONLEME_SIRASI_20261025.md), tüm kaynak kapsamı ve üye kimlikleri [TEKIL_ONLEME_DEFTERI_20261025.json](TEKIL_ONLEME_DEFTERI_20261025.json) içinde. Yeni salt okunur ölçüm önceki sabit kaynak kesitinin karmasını ve güncel beş/altı sayımını doğruladı; dokuz sınır testi geçti. Bu, sunucu kararının veya model değişiminin önlendiği anlamına gelmiyor. Kimliksiz hata bildirimi taslağı hazır, gönderilmedi.
+
+Yeni kaynak kesiti, 25 Ekim 00:36:12Z: beş model geçişi korunurken meta bildirim sayısı yedi oldu (yeni doğrudan bildirim H1 4735). Aşağıdaki beş/altı tablosu önceki kesitin tarihsel ölçümüdür. Yeni meta bildirimin kendi kategorisi yok; yeni bir cyber model geçişi diye eklenmedi. Güncel kaynak karması ve bütünlük sınırı yeni tekil denetim JSON'unda.
+
 Haluk'un sıradaki Steering hedefi olarak belirttiği kesinti, Hacker'ın ham Claude Code kayıtlarında doğrulandı. İlk kesitte dört, takip okumasında **beş ayrı `model_refusal_fallback` olayı** bulundu. Meta kesinti bildirimleri ilk kesitte beş, sonraki sayımda **altı**; bu küme model geçişleriyle toplanmadı. Her model geçişinde kategori `cyber`, kapsam `session`, başlangıç modeli `claude-opus-5-5`, devam modeli `claude-opus-5`. Bunlar dosya içindeki doğrudan yapısal kayıtlardır; eski bir olayı anlatan alıntılar sayılmadı.
 
 İlk olay Hacker'ın `/home/hacker/hacker-devri/calisma/taslak/antijen-taslagi.md` taslağında zaten incelenmiş. Şaman'ın bu okumadaki katkısı, yedi birincil oturum ve alt kayıtlarla toplam 74 JSONL dosyasını tarayarak dört geçişin zaman çizelgesini, beş meta bildirimi ve sonraki devam modelini karşılaştırmak. Ortak arşiv kaydı S-040; kalıcı teknik imza ANT-T14. ANT-T13, Şahit'in sınıflandırıcı istek kimliği gözlemine ayrılmış durumda.
