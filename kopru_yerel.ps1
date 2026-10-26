@@ -222,6 +222,7 @@ switch ($Mod) {
   }
 
   "Arg0Temizle" {
+    Write-Host "Uyarı: izleyici ve bütün Codex pencereleri kapalı olmalı (süreç denetimi yapılmıyor)." -ForegroundColor Yellow
     Saman-Ortami
     Arg0-Listele
     $kok = Join-Path $env:CODEX_HOME "tmp\arg0-windows"
@@ -230,13 +231,16 @@ switch ($Mod) {
     foreach ($d in Get-ChildItem -LiteralPath $kok -Directory) {
       $kilit = Join-Path $d.FullName ".lock"
       $bos = $true
-      if (Test-Path -LiteralPath $kilit) {
-        try { $fs = [System.IO.File]::Open($kilit, 'Open', 'ReadWrite', 'None'); $fs.Close() } catch { $bos = $false }   # açılamıyorsa canlı bir Codex tutuyor
-      }
+      # k-0027 / k-0108: .lock'u henüz yazılmamış yeni bir oturumla yarışmamak için
+      # .lock'u olmayan ya da 10 dakikadan genç klasörlere dokunulmaz. Süreç denetimi yok:
+      # bu mod yalnız izleyici ve Codex kapalıyken elle çalıştırılmalı.
+      if (-not (Test-Path -LiteralPath $kilit)) { $atlanan++; Write-Host "  atlandı (.lock yok, yeni olabilir): $($d.Name)"; continue }
+      if ($d.LastWriteTime -gt (Get-Date).AddMinutes(-10)) { $atlanan++; Write-Host "  atlandı (10 dakikadan genç): $($d.Name)"; continue }
+      try { $fs = [System.IO.File]::Open($kilit, 'Open', 'ReadWrite', 'None'); $fs.Close() } catch { $bos = $false }   # açılamıyorsa canlı bir Codex tutuyor
       if (-not $bos) { $atlanan++; Write-Host "  atlandı (kilit tutuluyor): $($d.Name)"; continue }
       try { Remove-Item -LiteralPath $d.FullName -Recurse -Force -ErrorAction Stop; $silinen++ } catch { Write-Warning "  silinemedi: $($d.Name): $($_.Exception.Message)" }
     }
-    Write-Host "Silinen: $silinen · atlanan (canlı): $atlanan" -ForegroundColor Green
+    Write-Host "Silinen: $silinen · atlanan (canlı, kilitsiz ya da genç): $atlanan" -ForegroundColor Green
   }
 
   "CopilotGiris" {
