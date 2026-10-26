@@ -2,7 +2,7 @@
 
 **Yön:** Haluk yereldeki işlerini mevcut araçları ve çalışma düzeniyle sürdürür. Ortak Köprü, seçilen ürünleri GitHub ve diğer harici alanlarla paylaşır; o alanlardan gereken kaynakların yerel kullanıma alınmasını sağlar.
 
-Bu belge kapının hedef davranışını ve mevcut uygulamayla ilişkisini tanımlar. Genel aktarım kaydı ve hizmet bağlayıcıları henüz uygulanmadı. Buradaki işlem adları yeni CLI komutlarının var olduğu anlamına gelmez.
+Bu belge kapının hedef davranışını ve mevcut uygulamayla ilişkisini tanımlar. İlk görevden bağımsız dosya aktarımı ve GitHub bağlayıcısı artık `kapi.py` üzerinden çalışır: seçme, planlama, yeni dal/taslak PR ile gönderme, sonucu uzlaştırma, kesin commit'ten alma ve inceleme kopyası çıkarma. [Gerçek komutlar ve ilk sürümün sınırları](KAPI_KULLANIMI.md). Diğer hizmetler, genel dış iş talebi ve yeni aktarım ekranı henüz uygulanmadı; aşağıdaki geniş mimari kapsam bunları da tarif eder.
 
 ## Yerel çalışma ve kapının ilişkisi
 
@@ -39,7 +39,7 @@ Bir aktarımın kendi kimliği olur. İş, çalıştırma ve oturum kimlikleri y
 
 Aktarım kimliğiyle içerik karması ayrı tutulur. Aynı dosya iki farklı hedefe iki farklı amaçla gönderilebilir. İçerik karması bayt bütünlüğünü gösterir; kişi kimliği, yayın yetkisi veya dış hizmetin kabulü yerine geçmez.
 
-Bu sözleşme yeni bir sürümlü veri modeli gerektirir. Mevcut iş veritabanının şema sürümü 1'dir ve yedek doğrulaması tam şema uyumu arar. Yeni aktarım tabloları mevcut veritabanına geçiş tasarlanmadan eklenmez.
+İlk aktarım modeli, özel `exchange.sqlite3` ve sabit dosya paketleriyle ayrı uygulanmıştır. Mevcut iş veritabanının şema sürümü 1'dir ve yedek doğrulaması tam şema uyumu arar. Yeni aktarım verileri mevcut görev veritabanına eklenmez. Paket sözleşmesi: [exchange-manifest.schema.json](../schemas/exchange-manifest.schema.json).
 
 ## Yerelden dışarı paylaşım
 
@@ -132,18 +132,20 @@ Kapı kaynak kodunun GitHub'da bulunması, bütün özel aktarım alanının Git
 
 Yeni aktarım kaydı ve bağlayıcılar bu temellere eklenmelidir. Bu aşamada çalışan iş API'si, veritabanı şeması, tarihsel HTML kayıtları veya yerel başlatıcılar yeniden düzenlenmedi.
 
+İlk ekleme `exchange.py` (özel kayıt ve paket), `gateway.py` (plan/gönderim/tedarik), `adapters/github.py` (gerçek GitHub REST istemcisi) ve bağımsız `kapi.py` girişidir. Mevcut `handoff`, görev veritabanı ve NT çalışma kipleri bu aktarımın ön koşulu değildir.
+
 ## GitHub ile ilk somut kapsam
 
-İlk bağlayıcı GitHub için geliştirilebilir. Başlangıç kapsamı, görev sisteminden bağımsız bir dosya aktarım çevrimi olmalıdır:
+İlk bağlayıcı GitHub için uygulandı. Çalışan dosya aktarım çevriminin kapsamı:
 
 1. Yerelde önceden hazırlanmış az sayıda dosyayı seç; hedef depo/dal/yolu ve mevcut sürümü belirle; farkı hazırla.
-2. Seçilmiş içeriği commit veya inceleme amaçlı pull request ile paylaş; dış kimliği ve sonucu kaydet.
+2. Seçilmiş içeriği yeni bir daldaki commit ve istenirse taslak pull request ile paylaş; dış kimliği ve sonucu kaydet.
 3. Belirli commit'teki bir dosya ya da değişikliği özel gelen alana al; kaynağını ve baytlarını doğrula.
-4. Gelen sürümü yerel hedefle karşılaştır; istenen kısmı uygula ve uygulama kaydını bağla.
+4. Gelen dosyaları yeni bir özel inceleme dizinine çıkar. Mevcut projeyle karşılaştırma ve uygulama yerel araçlarda yapılır; kapı bu sürümde otomatik yama veya yerel kabul makbuzu üretmez.
 
 İlk kullanımın kabul ölçütü, bütün yerel işin köprüye taşınması değildir: seçilmiş bir çıktı dışarı ulaştı mı; dışarıdan seçilmiş bir kaynak, kökeni korunarak yerelde kullanılabildi mi?
 
-Bu çevrimde hedefin ilerlemesi, yanıtın kaybolması ve aynı isteğin tekrarı ayrıca sınanmalıdır. İlk çalışan kapsam bunları dürüstçe raporladıktan sonra başka hizmetler aynı aktarım sözleşmesine bağlanabilir.
+Bu çevrimde hedefin ilerlemesi, yanıtın kaybolması ve aynı isteğin tekrarı çevrimdışı regresyonlarla sınanır. Başka hizmetler aynı aktarım sözleşmesine sonradan bağlanabilir. GitHub bağlayıcısı tek başına diğer hizmetlerin bağlantısını kurmaz.
 
 ## Diğer dış alanlar
 

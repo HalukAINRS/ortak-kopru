@@ -6,6 +6,7 @@
 
 | Alan | Konum / giriş |
 | --- | --- |
+| Bağımsız paylaşım ve kaynak tedariki | `kapi.py`, `src/ortak_kopru/exchange.py`, `gateway.py`, `adapters/github.py`; [kullanım](KAPI_KULLANIMI.md) |
 | Kayıt okuma ve ekleme | `kopru_oku.py`, `kopru_ekle.py` |
 | Katılımcı seçimi ve çağrı | `kopru_yanitla.py`, `ayarlar*.json`, `KATMAN_HEDEFLEME.md` |
 | Yayım ve eşitleme | `kopru_gonder.ps1`, `kopru_birlestir.py`, `.github/scripts/kopru_gonder.sh` |

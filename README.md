@@ -8,7 +8,9 @@ Mevcut ortak HTML sayfası, Haluk, Claude, Gemini ve ChatGPT'nin birlikte okuyup
 
 Yerelde hazırlanmış bir rapor, kod değişikliği veya dosya seçilerek belirli bir dış hedefe paylaşılabilmeli; dışarıdaki bir kaynak da kökeni ve sürümüyle alınıp yerelde kullanıma hazırlanabilmelidir. Her aktarım için yerel işi yeniden oluşturmak, atamak veya köprünün görev akışına taşımak gerekmez. Paylaşımın içeriği, hedefi ve gerçekleşme kaydı; tedarikin kaynağı, sürümü ve yerelde kullanılması ayrı izlenir.
 
-Bu genel aktarım katmanı **tasarım aşamasındadır**. Mevcut göndericiler ortak defteri eşitler; `deus.py` iş takibi, özel devir ve kurtarma sağlar. Görevden bağımsız seçici yayın paketi, genel GitHub aktarım adaptörü ve diğer dosya hizmeti adaptörleri henüz uygulanmadı. [Kapının kapsamı ve ilk aktarım akışları](docs/DIS_ALAN_KAPISI.md) · [Karar 0002](docs/kararlar/0002-dis-alan-kapisi.md).
+**İlk çalışan aktarım yolu `python kapi.py --help` girişindedir.** Seçilmiş dosyalar görev oluşturmadan hazırlanır; GitHub hedefiyle farkı planlanır; planın karmasıyla yeni bir dala gönderilir ve istenirse taslak PR açılır. GitHub'dan dosyalar kesin commit'e bağlanarak alınabilir ve inceleme için yeni bir dizine çıkarılabilir. Aktarımın özel kayıt alanı, `deus.py` görev veritabanından ayrıdır; bu yol NT aygıtı istemez. [Çalışan kapının kullanımı](docs/KAPI_KULLANIMI.md) · [Kapının kapsamı](docs/DIS_ALAN_KAPISI.md) · [Karar 0002](docs/kararlar/0002-dis-alan-kapisi.md).
+
+İlk sürüm GitHub.com üzerindeki seçilmiş düzenli dosyaları kapsar. Mevcut uzak dalın üzerine yazmaz veya PR birleştirmez; gelen dosyaları yerel projenize kendiliğinden uygulamaz. Genel gelen/giden ekranı, diğer dosya hizmeti bağlayıcıları ve yeni genel dış iş talebi akışı sonraki geliştirmelerdir. Mevcut ortak defter göndericileri ve isteğe bağlı `deus.py` iş araçları kendi kapsamlarında çalışmaya devam eder.
 
 ## deus_ex_machina — yerel bileşen ve isteğe bağlı iş takibi
 
@@ -56,6 +58,11 @@ k-0111, Şaman CLI devrinin tarihsel başlangıç kaydıdır; sonraki ilerleme v
 
 | Dosya | Ne |
 | --- | --- |
+| `kapi.py` | Görev ve NT ön koşulu olmadan seçilmiş paylaşım/tedarik için bağımsız giriş. |
+| `src/ortak_kopru/exchange.py` | Ayrı aktarım veritabanı, sabit dosya paketleri, olaylar, işlem kilidi ve yeni dizine çıkarma. |
+| `src/ortak_kopru/gateway.py` | GitHub hedef planı, yeni dala gönderim, belirsiz sonucu uzlaştırma ve kesin sürümden tedarik. |
+| `src/ortak_kopru/adapters/github.py` | Sabit GitHub REST uçları; seçilmiş Git nesneleri, yeni dal ve taslak PR işlemleri. |
+| `docs/KAPI_KULLANIMI.md` | Çalışan kapı komutları, örnekler, sınırlar ve kurtarma davranışı. |
 | `docs/DIS_ALAN_KAPISI.md` | Yerel çalışma ile harici alanlar arasındaki paylaşım/tedarik yönü; mevcut yetenekler ve uygulanacak aktarım sözleşmesi. |
 | `docs/kararlar/0002-dis-alan-kapisi.md` | Yerel işlerin bağımsızlığı, aktarımın ayrı kimliği ve NT bileşeninin bu yöndeki yeri. |
 | `kopru.html` | Kanonik sayfa. Tam HTML belgesi; tarayıcıda ve Notepad++'ta açılır. Dış hiçbir şey yüklemez. |
@@ -140,6 +147,8 @@ Web uygulamalarından gelen yanıtlar (Gemini, ChatGPT) metin olarak alınır ve
 Kanonik dosya değişince `kopru_ayna_uret.py` `<title>`, meta etiketleri, `<style>` ve `<body>` içini `ayna/kopru.html` olarak yazar; `kopru_gonder.ps1` bunu her gönderimde kendiliğinden yapar. Claude aynası (claude.ai) depodaki bu dosyadan yeniden yayımlanır; Claude bunu sohbette yapar.
 
 ## Değişiklik geçmişi
+
+- 2026-10-26: İlk bağımsız kapı çevrimi eklendi: seçilmiş dosyalar, özel aktarım kaydı, GitHub planı/yeni dal/taslak PR, belirsiz yanıt uzlaştırması, kesin commit'ten kaynak alımı ve inceleme kopyası. Görev veya NT bağlantısı gerektirmez.
 
 - 2026-10-26: Ürün yönü netleştirildi: yerel çalışmalar kendi araçlarında sürer; köprü seçilmiş içerik paylaşımı ve dış kaynak tedariki için çift yönlü kapı olur. Görevden bağımsız aktarımın tasarımı ile mevcut iş/devir araçlarının sınırları belgelendi.
 

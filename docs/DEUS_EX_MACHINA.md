@@ -149,6 +149,6 @@ node --check ui/deus/app.js
 
 Yeni sınamalar; aynı isteğin tekrarı, eşzamanlı oluşturma, yeniden açılan veritabanı, kaynak bozulması, eski oturum/sonuç, düzeltme, pause/resume/cancel, sonuçla bağlı ölçütler, HTTP origin/belirteç ve NT protokolünü kapsar. Model veya canlı sürücü çağrısı taklitleri gerçek kurulum kanıtı sayılmaz. Windows WDK derlemesi ayrı CI akışındadır; çıktısı imzasızdır, yüklenmez.
 
-Sonraki ürün aşaması, görevlerden bağımsız seçici aktarım kaydı ve GitHub ile paylaşım/tedarik akışıdır. Dosya hizmeti adaptörleri aynı aktarım sözleşmesine bağlanacaktır; kullanıcı bütün yerel işlerini bu görev veritabanına taşımak zorunda kalmaz. Ayrıntı ve kabul ölçütleri [Dış alan kapısı](DIS_ALAN_KAPISI.md) belgesindedir.
+Görevlerden bağımsız seçici aktarım kaydı ve ilk GitHub paylaşım/tedarik akışı ayrı `kapi.py` girişinde uygulanmıştır. [Kapı kullanımı](KAPI_KULLANIMI.md). Bu giriş, görev veritabanını veya NT aygıtını açmaz; kullanıcı bütün yerel işlerini bu görev akışına taşımak zorunda kalmaz. Diğer dosya hizmeti adaptörleri ve genel aktarım ekranı sonraki aşamalardır. Ayrıntı ve kabul ölçütleri [Dış alan kapısı](DIS_ALAN_KAPISI.md) belgesindedir.
 
 NT tarafında hedef Windows/WinPE sürüm ve mimarisinin doğrulanması, imzalı sürücü paketi, hedef makine testi ve süreç gözetimi için dar kapsamlı yeni kernel sözleşmesi ayrı aşamalardır. Mevcut açık CLI'a otomatik teslim ve eski HTML'yi değiştirmeden seçilmiş iş olaylarının yayın görünümü de henüz uygulanmadı. Mevcut prototip dalları otomatik birleştirilmedi.

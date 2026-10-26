@@ -111,7 +111,7 @@ Geri yüklenen durum, **yedeğin alındığı andaki kayıttır**. Yedekten sonr
 - Kaynaklar özel veri olmaya devam eder. Devir/yedek dizini kendiliğinden GitHub'a veya başka bir hizmete yüklenmez.
 - Bu çalışma, mevcut veritabanı şema sürümünü değiştirmez. Gelecekteki şemalar için ayrıca geçiş uygulaması gerekir; bilinmeyen sürüm sessizce değiştirilmez.
 
-GitHub ve diğer dosya hizmetlerine yönelik sonraki adaptörler, [görevden bağımsız aktarım sözleşmesine](DIS_ALAN_KAPISI.md) bağlanacaktır. MCP bu adaptörlere erişim yollarından biri olabilir; tek başına dosya deposu veya gerçekleşmiş aktarım kanıtı değildir. Uzak kaynak eklenirken depo/commit/blob veya hizmet dosya sürümü korunmalıdır; yerel dosya yolu tek başına uzak kaynağın kökenini açıklamaz. Yeni aktarım alanının kurtarma kapsamı ayrıca uygulanacaktır; mevcut `backup` komutu gelecekteki bağımsız aktarım kayıtlarını kapsıyor sayılmaz.
+İlk GitHub dosya aktarımı, [görevden bağımsız kapıda](KAPI_KULLANIMI.md) uygulanmıştır; diğer dosya hizmetleri aynı aktarım sözleşmesine bağlanabilir. MCP bu adaptörlere erişim yollarından biri olabilir; tek başına dosya deposu veya gerçekleşmiş aktarım kanıtı değildir. Uzak kaynakta depo/commit/blob bilgisi korunur; yerel dosya yolu tek başına uzak kaynağın kökenini açıklamaz. Mevcut `backup`, ayrı `exchange.sqlite3` veritabanını ve paketlerini **kapsamaz**. Aktarım alanı için ilk sürümün durdurulmuş tam dizin kopyası yöntemi [kapı rehberinde](KAPI_KULLANIMI.md#aktarım-alanını-korumak-ve-geri-almak) açıklanır.
 
 ### Birincil teknik kaynaklar
 
