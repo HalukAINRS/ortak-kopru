@@ -9,3 +9,12 @@ __pycache__/
 .env
 .env.*
 !.env.example
+/windows/nt/packages/
+/windows/nt/build/
+/windows/nt/.vs/
+*.sys
+*.pdb
+*.sqlite3
+*.sqlite3-journal
+*.sqlite3-wal
+*.sqlite3-shm

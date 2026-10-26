@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DEUS event v1",
+  "type": "object",
+  "required": [
+    "seq",
+    "id",
+    "task_id",
+    "revision",
+    "kind",
+    "at",
+    "data"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "seq": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "kind": {
+      "enum": [
+        "task_created",
+        "user_correction",
+        "task_pause",
+        "task_resume",
+        "task_cancel",
+        "attempt_assigned",
+        "attempt_received",
+        "result_submitted",
+        "verification_recorded",
+        "task_completed"
+      ]
+    },
+    "at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "data": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

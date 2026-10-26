@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DEUS assignment request v1",
+  "description": "POST /api/tasks/{task_id}/assign body. Existing assignment can only be superseded when expected_active_attempt_id equals the current active attempt. Omitted/null expectation is valid only when there is no active attempt.",
+  "type": "object",
+  "required": ["participant", "session_id", "expected_revision", "request_key"],
+  "properties": {
+    "participant": {"type": "string", "minLength": 1, "maxLength": 200},
+    "session_id": {"type": "string", "minLength": 1, "maxLength": 256},
+    "expected_revision": {"type": "integer", "minimum": 1},
+    "request_key": {"type": "string", "minLength": 1, "maxLength": 256},
+    "expected_active_attempt_id": {
+      "oneOf": [
+        {"type": "string", "pattern": "^[0-9a-f]{32}$"},
+        {"type": "null"}
+      ]
+    }
+  },
+  "additionalProperties": false
+}

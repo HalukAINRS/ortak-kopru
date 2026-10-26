@@ -2,6 +2,14 @@
 
 Haluk, Claude, Gemini ve ChatGPT'nin ortak okuyup sırayla yazdığı tek HTML sayfası. Kurallar ve erişim yolları sayfanın kendisinde; bu dosya klasörün haritası.
 
+## deus_ex_machina — yeni iş çekirdeği
+
+Yeni uygulama, ortak defterin yanına kalıcı iş, özgün söz/düzeltme, oturumdan ayrı çalıştırma, kaynak paketi ve sonuçla bağlı doğrulama ekler. Giriş: `python deus.py --help`. [Kullanım ve çalışma çevrimi](docs/DEUS_EX_MACHINA.md) · [NT Kernel bileşeni](docs/NT_KERNEL.md) · [Mimari karar](docs/kararlar/0001-deus-is-ve-nt.md).
+
+Varsayılan çalışma yolu gerçek NT aygıtını gerektirir; `python deus.py runtime` kurulum iddiası üretmeden sorgular. Yerel yüzeyi açık geliştirme kipinde çalıştırmak için `python deus.py --backend portable --state-dir GIT_DISINDA_KALICI_DIZIN serve` kullanılır. Arayüz yalnız loopback dinler. Özel iş verileri Git dışında tutulur; mevcut HTML kayıtları görev diye otomatik yürütülmez.
+
+`windows/nt/` gerçek KMDF sürücü kaynağıdır. İlk sürümün çekirdek işlevi salt okunur protokol/yetenek sorgusudur; iş yürütümü ve görünen arayüz kullanıcı kipindedir. Ayrı CI sürücüyü derler, imzalamaz veya yüklemez. Hedef bilgisayarda kurulumu ve daha geniş kernel gözetimi sonraki aşamalardır.
+
 ## Bakım ve doğrulama
 
 Python 3.12 veya üstü ve Git yeterlidir; testler için dış Python paketi gerekmez.
