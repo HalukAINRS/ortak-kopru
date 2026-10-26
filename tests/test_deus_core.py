@@ -1,5 +1,6 @@
 """Meaningful lifecycle regressions; no providers, personal sources or live CLI."""
 from concurrent.futures import ThreadPoolExecutor
+from contextlib import closing
 from pathlib import Path
 import hashlib
 import json
@@ -353,8 +354,11 @@ class CoreTests(unittest.TestCase):
             self.store.receive({"not": "id"}, "s", self.key())
 
     def test_unknown_database_schema_rejected(self):
-        with sqlite3.connect(self.store.path) as db:
-            db.execute("UPDATE metadata SET value='999' WHERE key='schema_version'")
+        # sqlite3.Connection.__exit__ commits/rolls back but does not close.
+        # Explicit closing is required before Windows can remove the fixture DB.
+        with closing(sqlite3.connect(self.store.path)) as db:
+            with db:
+                db.execute("UPDATE metadata SET value='999' WHERE key='schema_version'")
         with self.assertRaises(CoreError):
             Store(self.store.directory)
 
