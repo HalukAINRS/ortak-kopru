@@ -31,7 +31,9 @@ from kopru_oku import Ayristirici  # noqa: E402
 
 def kayitlari_oku(yol):
     ay = Ayristirici()
-    ay.feed(open(yol, encoding="utf-8").read())
+    with open(yol, encoding="utf-8") as dosya:
+        ay.feed(dosya.read())
+    ay.close()
     return ay.kayitlar
 
 
@@ -68,7 +70,7 @@ def yol_kimligi(ad, kat, yol):
         imza = kat.get("imza")
     imza = imza or f"{ad} ({'CLI' if cli else 'API'})"
     kok, rol = hedef_kimligi(imza)
-    if kok != hedef_kimligi(ad)[0] or (not cli and rol in {"şaman", "şahit", "hacker", "cli"}) or (cli and rol == "api"):
+    if kok != hedef_kimligi(ad)[0] or (not cli and rol in {"şaman", "şahit", "hacker", "cli", "cli izleyici"}) or (cli and rol == "api"):
         raise ValueError("Yolun sağlayıcısı ile katman imzası uyuşmuyor.")
     return imza
 
@@ -258,8 +260,18 @@ def kayit_yaz(ad, model, saglayici, sistem, kullanici, ham, sonuc):
     os.makedirs(os.path.join(BURASI, "kayit"), exist_ok=True)
     zaman = datetime.datetime.now(datetime.UTC).strftime("%Y%m%d-%H%M%SZ")
     guvenli_ad = re.sub(r"[^A-Za-z0-9]+", "-", ad).strip("-")
-    yol = os.path.join(BURASI, "kayit", f"{zaman}-{guvenli_ad}.md")
-    with open(yol, "w", encoding="utf-8") as fh:
+    # Aynı saniyedeki iki çağrı eski makbuzu ezemez; eşzamanlı süreçlerde de
+    # dosya oluşturma atomik olsun (var olan ada 'w' ile yazma).
+    sira = 0
+    while True:
+        ek = f"-{sira:03d}" if sira else ""
+        yol = os.path.join(BURASI, "kayit", f"{zaman}-{guvenli_ad}{ek}.md")
+        try:
+            fh = open(yol, "x", encoding="utf-8")
+            break
+        except FileExistsError:
+            sira += 1
+    with fh:
         fh.write(f"# {ad} · {saglayici} · {model} · {zaman}\n\n## Sonuç\n\n{sonuc}\n\n## Sistem istemi\n\n```\n{sistem}\n```\n\n## Kullanıcı iletisi\n\n```\n{kullanici}\n```\n\n## Ham yanıt\n\n```\n{ham}\n```\n")
     return yol
 
@@ -316,6 +328,7 @@ def main():
         ayar = json.load(dosya_ayar)
     en_cok = int(ayar.get("en_cok_cikti_token", 1500))
     eklenenler = []
+    hata_sayisi = 0
     for kat in ayar["katilimcilar"]:
         ad = kat["ad"]
         if a.yalniz and ad != a.yalniz:
@@ -324,11 +337,13 @@ def main():
         yollar = [kat] + ([kat["yedek"]] if kat.get("yedek") else [])
         ham, kullanim, kullanilan, hatalar = "", None, None, []
         bek_goruldu, kuru_yazildi = False, False
+        yol_hatasi = False
         for yol_ayar in yollar:
             try:
                 hedef = yol_kimligi(ad, kat, yol_ayar)
             except ValueError as e:
                 hatalar.append(str(e))
+                yol_hatasi = True
                 continue
             bek = bekleyenler(kayitlar, hedef)
             if not bek:
@@ -358,6 +373,7 @@ def main():
                 hatalar.append(f"{yol_ayar['saglayici']}: komut yok: {e}")
             except Exception as e:  # noqa: BLE001
                 hatalar.append(f"{yol_ayar['saglayici']}: {str(e)[:300]}")
+                yol_hatasi = True
         if kuru_yazildi:
             continue
         if not bek_goruldu and not hatalar:
@@ -366,6 +382,8 @@ def main():
         if kullanilan is None:
             atlandi_yaz(ad, hatalar)
             print(f"{ad}: atlandı ({' | '.join(hatalar)[:200]}) → kayit/atlandi.log")
+            if yol_hatasi:
+                hata_sayisi += 1
             continue
         try:
             veri = json_ayikla(ham)
@@ -379,9 +397,13 @@ def main():
             eklenenler.append(kid)
         except Exception as e:  # noqa: BLE001
             sonuc = f"HATA: {e}"
+            hata_sayisi += 1
         yol = kayit_yaz(ad, kullanilan.get("model", "-"), kullanilan["saglayici"], sistem, kullanici, ham, sonuc)
         print(f"{ad}: {sonuc.splitlines()[0][:200]} → {os.path.relpath(yol, BURASI)}")
     print("eklenen:", ", ".join(eklenenler) if eklenenler else "yok")
+    if hata_sayisi:
+        print(f"HATA: {hata_sayisi} katılımcının yanıtı tamamlanamadı; günlükleri inceleyin.", file=sys.stderr)
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

@@ -22,13 +22,15 @@ permissions:
 
 jobs:
   yanitla:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0     # birleştirme için geçmiş gerekir
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.12"
 
@@ -42,6 +44,8 @@ jobs:
         run: npm install -g @anthropic-ai/claude-code
 
       - name: Bekleyenleri yanıtla
+        id: yanit
+        continue-on-error: true
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -50,32 +54,10 @@ jobs:
         run: python kopru_yanitla.py kopru.html --ayarlar ayarlar.json
 
       - name: Gönder
+        run: bash .github/scripts/kopru_gonder.sh
+
+      - name: Yanıt hatasını görünür kıl
+        if: ${{ steps.yanit.outcome == 'failure' }}
         run: |
-          git config user.name "kopru-bot"
-          git config user.email "kopru-bot@users.noreply.github.com"
-          git add kopru.html kayit
-          if git diff --cached --quiet; then
-            echo "Değişiklik yok."
-          else
-            son=$(grep -o '<article class="kayit" id="k-[0-9]\{4\}"' kopru.html | tail -1 | grep -o 'k-[0-9]\{4\}')
-            git commit -m "köprü: bot yanıtları, son $son [skip ci]"
-            # Bu arada başka gönderim olduysa: uzak esas, yalnız bizim kayıtlarımız yeni numarayla eklenir (kopru_birlestir.py).
-            for deneme in 1 2 3; do
-              git fetch -q origin main
-              if ! git rebase origin/main; then
-                while cakisan=$(git diff --name-only --diff-filter=U) && [ -n "$cakisan" ]; do
-                  for f in $cakisan; do
-                    case "$f" in
-                      kopru.html)   python kopru_birlestir.py --rebase kopru.html ;;
-                      kayit/*.log)  python kopru_birlestir.py --rebase-metin "$f" ;;
-                      *)            git checkout --theirs -- "$f" ;;
-                    esac
-                    git add -- "$f"
-                  done
-                  GIT_EDITOR=true git rebase --continue || true
-                done
-              fi
-              git push origin HEAD:main && break
-              echo "Gönderim reddedildi, yeniden deneniyor ($deneme/3)"
-            done
-          fi
+          echo "En az bir katılımcı yanıtı başarısız oldu; başarılı kayıtlar ve hata günlüğü gönderildi."
+          exit 1

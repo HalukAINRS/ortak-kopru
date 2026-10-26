@@ -16,7 +16,7 @@ Kurallar (sayfadaki Kurallar bölümüyle aynı):
 import argparse, datetime, html, os, re, sys, tempfile
 
 AYLAR = ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"]
-KATILIMCILAR = ("Sen", "Claude", "Gemini", "ChatGPT", "Copilot")
+KATILIMCILAR = ("Sen", "Claude", "Gemini", "ChatGPT", "Copilot", "Google")
 DURUMLAR = ("acik", "yanitlandi", "kapandi")
 DURUM_METIN = {"acik": "açık", "yanitlandi": "yanıtlandı", "kapandi": "kapandı"}
 ISARET = "<!-- KAYIT-SONU -->"
@@ -150,7 +150,7 @@ def main():
         a.yanit = f"k-{son:04d}" if son else ""
     if a.yanit and not re.fullmatch(r"k-\d{4}", a.yanit):
         sys.exit("HATA: --yanit k-0000 biçiminde olmalı.")
-    if a.yanit and a.yanit not in belge:
+    if a.yanit and a.yanit not in {f"k-{kimlik:04d}" for kimlik in kimlikler}:
         sys.exit(f"HATA: yanıt verilen kayıt {a.yanit} sayfada yok.")
 
     yeni_metin = "\n".join([a.kimden, a.kime, a.konu, govde, a.dayanak])

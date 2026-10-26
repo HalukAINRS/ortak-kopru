@@ -12,6 +12,9 @@ param([int]$Dakika = 5, [switch]$TekSefer, [string]$Ayarlar = "ayarlar-yerel.jso
 $ErrorActionPreference = "Stop"
 Set-Location -LiteralPath $PSScriptRoot
 
+$aktifDal = git symbolic-ref --quiet --short HEAD
+if ($LASTEXITCODE -ne 0 -or $aktifDal -ne $Dal) { throw "İzleyici '$Dal' dalında çalışmalı; mevcut dal: $aktifDal." }
+
 function Bul-Python {
   if ($env:KOPRU_PYTHON -and (Test-Path -LiteralPath $env:KOPRU_PYTHON)) { return @($env:KOPRU_PYTHON) }
   foreach ($aday in @("python3", "python")) {
@@ -34,29 +37,43 @@ $ekArg = @()
 if ($Yalniz) { $ekArg = @("--yalniz", $Yalniz) }
 
 while ($true) {
+  $turHata = $false
   try {
     $zaman = Get-Date -Format 'HH:mm'
+    $aktifDal = git symbolic-ref --quiet --short HEAD
+    if ($LASTEXITCODE -ne 0 -or $aktifDal -ne $Dal) { throw "İzleyici '$Dal' dalında çalışmalı; bu tur katılımcı çağrılmadı." }
     # Önce eşitle: yerelde gönderilmemiş commit ya da değişiklik varsa kopru_gonder.ps1 birleştirip gönderir; yoksa düz ileri sarılır.
     git fetch -q origin $Dal
-    $ileride = [int](git rev-list --count "origin/$Dal..HEAD")
+    if ($LASTEXITCODE -ne 0) { throw "Uzak depo alınamadı; bu tur katılımcı çağrılmadı." }
+    $ileride = git rev-list --count "origin/$Dal..HEAD"
+    if ($LASTEXITCODE -ne 0) { throw "Yerel/uzak dal karşılaştırılamadı." }
+    $geride = git rev-list --count "HEAD..origin/$Dal"
+    if ($LASTEXITCODE -ne 0) { throw "Uzak/yerel dal karşılaştırılamadı." }
     $kirli = @(git status --porcelain -- . ":!yanit*.json" ":!istem*.txt").Count
-    if ($ileride -gt 0 -or $kirli -gt 0) {
+    if ($LASTEXITCODE -ne 0) { throw "Çalışma ağacının durumu okunamadı." }
+    if ([int]$ileride -gt 0 -or $kirli -gt 0) {
       pwsh -NoLogo -NoProfile -ExecutionPolicy Bypass -File kopru_gonder.ps1 -Dal $Dal
-    } elseif ([int](git rev-list --count "HEAD..origin/$Dal") -gt 0) {
+      if ($LASTEXITCODE -ne 0) { throw "Eşitleme başarısız; bu tur katılımcı çağrılmadı." }
+    } elseif ([int]$geride -gt 0) {
       git merge -q --ff-only "origin/$Dal"
+      if ($LASTEXITCODE -ne 0) { throw "Uzak değişiklikler alınamadı; bu tur katılımcı çağrılmadı." }
     }
     $once = Kayit-Sayisi
     & $pyExe @pyArgs -I -X utf8 kopru_yanitla.py kopru.html --ayarlar $Ayarlar @ekArg
-    if ($LASTEXITCODE -ne 0) { Write-Warning "$zaman bot hata ile bitti (çıkış kodu $LASTEXITCODE)" }
+    if ($LASTEXITCODE -ne 0) { $turHata = $true; Write-Warning "$zaman bot hata ile bitti (çıkış kodu $LASTEXITCODE)" }
     $sonra = Kayit-Sayisi
-    if ($sonra -gt $once) {
+    $yeniDosyalar = @(git status --porcelain -- kopru.html kayit ayna/kopru.html)
+    if ($LASTEXITCODE -ne 0) { throw "Tur çıktılarının durumu okunamadı." }
+    if ($sonra -gt $once -or $yeniDosyalar.Count -gt 0) {
       pwsh -NoLogo -NoProfile -ExecutionPolicy Bypass -File kopru_gonder.ps1 -Dal $Dal -Bot   # [skip ci]: botlar birbirini tetiklemez, saatlik zamanlayıcı toplar
+      if ($LASTEXITCODE -ne 0) { throw "Yeni kayıtlar gönderilemedi; yerel kopyada korunuyor." }
     } else {
       Write-Host "$zaman yeni kayıt yok ($once kayıt)"
     }
   } catch {
+    $turHata = $true
     Write-Warning $_.Exception.Message
   }
-  if ($TekSefer) { break }
+  if ($TekSefer) { if ($turHata) { exit 1 }; exit 0 }
   Start-Sleep -Seconds ($Dakika * 60)
 }
