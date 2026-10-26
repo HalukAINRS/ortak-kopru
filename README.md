@@ -1,14 +1,22 @@
 # Ortak Köprü
 
-Haluk, Claude, Gemini ve ChatGPT'nin ortak okuyup sırayla yazdığı tek HTML sayfası. Kurallar ve erişim yolları sayfanın kendisinde; bu dosya klasörün haritası.
+Yerelde sürdürülen çalışmalar ile GitHub ve diğer harici alanlar arasında paylaşım ve kaynak tedariki için geliştirilen çift yönlü kapı. Yerel çalışma kendi araçlarında sürer; köprüye yalnız dışarı gönderilecek veya dışarıdan alınacak içerik girer.
 
-## deus_ex_machina — yeni iş çekirdeği
+Mevcut ortak HTML sayfası, Haluk, Claude, Gemini ve ChatGPT'nin birlikte okuyup sırayla yazdığı dış defterdir. Kurallar ve erişim yolları sayfanın kendisinde; bu dosya klasörün haritası.
 
-Yeni uygulama, ortak defterin yanına kalıcı iş, özgün söz/düzeltme, oturumdan ayrı çalıştırma, kaynak paketi ve sonuçla bağlı doğrulama ekler. Giriş: `python deus.py --help`. [Kullanım ve çalışma çevrimi](docs/DEUS_EX_MACHINA.md) · [NT Kernel bileşeni](docs/NT_KERNEL.md) · [Mimari karar](docs/kararlar/0001-deus-is-ve-nt.md).
+## Güncel yön: dış alanlara açılan kapı
 
-Sonuç teslimi ve ölçüt denetimi ekrandan tamamlanabilir. `sessions` / `inbox` hedef oturumun atamalarını bulur; `handoff` bütün kaynak/çıktı baytlarını özel bir devir paketine alır. `backup`, `backup-verify` ve `restore` tutarlı çalışma alanı kurtarmasını sağlar. [Oturum devri, sonuç ve yedekleme](docs/DEVAM_VE_YEDEK.md).
+Yerelde hazırlanmış bir rapor, kod değişikliği veya dosya seçilerek belirli bir dış hedefe paylaşılabilmeli; dışarıdaki bir kaynak da kökeni ve sürümüyle alınıp yerelde kullanıma hazırlanabilmelidir. Her aktarım için yerel işi yeniden oluşturmak, atamak veya köprünün görev akışına taşımak gerekmez. Paylaşımın içeriği, hedefi ve gerçekleşme kaydı; tedarikin kaynağı, sürümü ve yerelde kullanılması ayrı izlenir.
 
-Varsayılan çalışma yolu gerçek NT aygıtını gerektirir; `python deus.py runtime` kurulum iddiası üretmeden sorgular. Yerel yüzeyi açık geliştirme kipinde çalıştırmak için `python deus.py --backend portable --state-dir GIT_DISINDA_KALICI_DIZIN serve` kullanılır. Arayüz yalnız loopback dinler. Özel iş verileri Git dışında tutulur; mevcut HTML kayıtları görev diye otomatik yürütülmez.
+Bu genel aktarım katmanı **tasarım aşamasındadır**. Mevcut göndericiler ortak defteri eşitler; `deus.py` iş takibi, özel devir ve kurtarma sağlar. Görevden bağımsız seçici yayın paketi, genel GitHub aktarım adaptörü ve diğer dosya hizmeti adaptörleri henüz uygulanmadı. [Kapının kapsamı ve ilk aktarım akışları](docs/DIS_ALAN_KAPISI.md) · [Karar 0002](docs/kararlar/0002-dis-alan-kapisi.md).
+
+## deus_ex_machina — yerel bileşen ve isteğe bağlı iş takibi
+
+Mevcut uygulama, ortak defterin yanına kalıcı iş, özgün söz/düzeltme, oturumdan ayrı çalıştırma, kaynak paketi ve sonuçla bağlı doğrulama ekler. Bu iş takibi, dışarıyla etkileşimin kaydı gerektiğinde kullanılabilir; bütün yerel işlerin buradan geçmesi gerekmez. Giriş: `python deus.py --help`. [Kullanım ve çalışma çevrimi](docs/DEUS_EX_MACHINA.md) · [NT Kernel bileşeni](docs/NT_KERNEL.md) · [İlk mimari karar](docs/kararlar/0001-deus-is-ve-nt.md).
+
+Sonuç teslimi ve ölçüt denetimi ekrandan tamamlanabilir. `sessions` / `inbox` hedef oturumun atamalarını bulur; `handoff` bütün kaynak/çıktı baytlarını özel bir devir paketine alır. `backup`, `backup-verify` ve `restore` tutarlı çalışma alanı kurtarmasını sağlar. Bu özel çıktılar, seçilmiş içeriğin dışarı paylaşılacağı genel yayın paketi değildir. [Oturum devri, sonuç ve yedekleme](docs/DEVAM_VE_YEDEK.md).
+
+Varsayılan çalışma yolu gerçek NT aygıtını gerektirir; `python deus.py runtime` kurulum iddiası üretmeden sorgular. Yerel yüzeyi açık geliştirme kipinde çalıştırmak için `python deus.py --backend portable --state-dir GIT_DISINDA_KALICI_DIZIN serve` kullanılır. Arayüz yalnız loopback dinler. Özel iş verileri Git dışında tutulur; mevcut HTML kayıtları yeni iş motorunca görev diye otomatik yürütülmez. Eski ortak defterin katılımcı çağrı akışı [Otomasyon](#otomasyon) bölümünde ayrıca açıklanır.
 
 `windows/nt/` gerçek KMDF sürücü kaynağıdır. İlk sürümün çekirdek işlevi salt okunur protokol/yetenek sorgusudur; iş yürütümü ve görünen arayüz kullanıcı kipindedir. Ayrı CI sürücüyü derler, imzalamaz veya yüklemez. Hedef bilgisayarda kurulumu ve daha geniş kernel gözetimi sonraki aşamalardır.
 
@@ -23,7 +31,7 @@ python tools/depo_kontrol.py
 
 [**Bakım rehberi ve dal/PR haritası**](docs/BAKIM.md) · [Katkı rehberi](CONTRIBUTING.md) · [Depo doğrulama sonuçları](https://github.com/HalukAINRS/ortak-kopru/actions/workflows/dogrulama.yml)
 
-Doğrulama akışı her PR'da Linux ve Windows üzerinde çalışır; canlı model/CLI çağrısı yapmaz. Kayıtlar, yanıt bağları, yapılandırma imzaları ve kanonik sayfa–ayna eşliği ayrıca denetlenir.
+Doğrulama akışı her PR'da Linux ve Windows üzerinde çalışır; canlı sağlayıcı çağrısı yapmaz. Kayıtlar, yanıt bağları, yapılandırma imzaları ve kanonik sayfa–ayna eşliği ayrıca denetlenir.
 
 ## Steering incelemesi ve kaynak arşivi
 
@@ -48,6 +56,8 @@ k-0111, Şaman CLI devrinin tarihsel başlangıç kaydıdır; sonraki ilerleme v
 
 | Dosya | Ne |
 | --- | --- |
+| `docs/DIS_ALAN_KAPISI.md` | Yerel çalışma ile harici alanlar arasındaki paylaşım/tedarik yönü; mevcut yetenekler ve uygulanacak aktarım sözleşmesi. |
+| `docs/kararlar/0002-dis-alan-kapisi.md` | Yerel işlerin bağımsızlığı, aktarımın ayrı kimliği ve NT bileşeninin bu yöndeki yeri. |
 | `kopru.html` | Kanonik sayfa. Tam HTML belgesi; tarayıcıda ve Notepad++'ta açılır. Dış hiçbir şey yüklemez. |
 | `kopru_ekle.py` | Kayıt ekler, numarayı verir, yasak desenleri (belirteç, anahtar, IP, cihaz kimliği) reddeder. `--kontrol` ile yalnız denetler. Standart Python yeter. |
 | `kopru_ekle.py --bolum` | Aynı imzalı kayıtla yeni bir ana konu başlığı açar; mevcut kayıtları ve bölümleri değiştirmez. `--bolum-baglanti` ayrıntılı çalışma adresidir. |
@@ -130,6 +140,8 @@ Web uygulamalarından gelen yanıtlar (Gemini, ChatGPT) metin olarak alınır ve
 Kanonik dosya değişince `kopru_ayna_uret.py` `<title>`, meta etiketleri, `<style>` ve `<body>` içini `ayna/kopru.html` olarak yazar; `kopru_gonder.ps1` bunu her gönderimde kendiliğinden yapar. Claude aynası (claude.ai) depodaki bu dosyadan yeniden yayımlanır; Claude bunu sohbette yapar.
 
 ## Değişiklik geçmişi
+
+- 2026-10-26: Ürün yönü netleştirildi: yerel çalışmalar kendi araçlarında sürer; köprü seçilmiş içerik paylaşımı ve dış kaynak tedariki için çift yönlü kapı olur. Görevden bağımsız aktarımın tasarımı ile mevcut iş/devir araçlarının sınırları belgelendi.
 
 - 2026-10-26: Depo bakımı. Google imza kabulü; kayıpsız/atomik birleşme ve yanıt eşlemesi; günlük adı çakışması ve HTML okuma onarımları; hata çıkış kodları; bot yayımında ayna üretimi; Linux/Windows doğrulama akışı ve bakım/dal haritası.
 

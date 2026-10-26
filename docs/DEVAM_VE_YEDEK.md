@@ -2,6 +2,8 @@
 
 Bu aşama, ilk iş çekirdeğinin çevrimini tamamlar: sonuç ve kabul denetimi ekrandan yapılabilir; hedef oturum kendi etkin atamalarını bulabilir; kaynak baytlarıyla taşınabilen bir devir paketi hazırlanabilir; özel çalışma alanı tutarlı biçimde yedeklenip yeni bir dizine geri yüklenebilir.
 
+Bu işlemler isteğe bağlı iş takibinin özel verilerini taşır. Güncel [dış alan kapısı](DIS_ALAN_KAPISI.md) yönünde, yerelde hazırlanmış bir dosyanın paylaşılması için bu görev çevriminden geçmesi gerekmeyecektir. `handoff` özgün söz, yetki, kaynaklar ve önceki sonuçları içerir; `export` ve `backup` daha geniş özel geçmiş taşır. Bu çıktılar kendiliğinden seçici yayın paketi olarak kullanılmaz.
+
 Hedef Windows bilgisayarındaki ilk kullanım, sürücü imzalama/yükleme ve canlı NT denemesi ayrı aşamada kalır. Aşağıdaki `portable` örnekleri açık geliştirme kipidir; kernel kurulumu veya gerçek sağlayıcı çalıştırması kanıtı üretmez. Temel kurulum ve iş sözleşmesi: [DEUS_EX_MACHINA.md](DEUS_EX_MACHINA.md).
 
 ## Sonucu ekrandan tamamlamak
@@ -109,7 +111,7 @@ Geri yüklenen durum, **yedeğin alındığı andaki kayıttır**. Yedekten sonr
 - Kaynaklar özel veri olmaya devam eder. Devir/yedek dizini kendiliğinden GitHub'a veya başka bir hizmete yüklenmez.
 - Bu çalışma, mevcut veritabanı şema sürümünü değiştirmez. Gelecekteki şemalar için ayrıca geçiş uygulaması gerekir; bilinmeyen sürüm sessizce değiştirilmez.
 
-GitHub/Drive/MCP gibi hizmetler için sonraki adaptörler, bu hazırlama–alım–sonuç ayrımına bağlanacaktır. Özellikle uzak kaynak eklenirken depo/commit/blob veya hizmet dosya sürümü korunmalıdır; yerel dosya yolu tek başına uzak kaynağın kökenini açıklamaz.
+GitHub ve diğer dosya hizmetlerine yönelik sonraki adaptörler, [görevden bağımsız aktarım sözleşmesine](DIS_ALAN_KAPISI.md) bağlanacaktır. MCP bu adaptörlere erişim yollarından biri olabilir; tek başına dosya deposu veya gerçekleşmiş aktarım kanıtı değildir. Uzak kaynak eklenirken depo/commit/blob veya hizmet dosya sürümü korunmalıdır; yerel dosya yolu tek başına uzak kaynağın kökenini açıklamaz. Yeni aktarım alanının kurtarma kapsamı ayrıca uygulanacaktır; mevcut `backup` komutu gelecekteki bağımsız aktarım kayıtlarını kapsıyor sayılmaz.
 
 ### Birincil teknik kaynaklar
 

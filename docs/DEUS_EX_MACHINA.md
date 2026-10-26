@@ -1,5 +1,7 @@
 # deus_ex_machina — iş çekirdeği ve yerel yüzey
 
+Güncel ürün yönü, yerel çalışmalar ile harici alanlar arasında **paylaşım ve tedarik kapısıdır**. Kullanıcı yerel işlerini kendi araçlarında sürdürür. Bu belgede anlatılan görev akışı, ayrıca izlenmesi istenen işler için mevcut bir yetenektir; bir dosyayı dışarı paylaşmanın veya dışarıdan kaynak almanın ön koşulu olmayacaktır. Genel aktarım katmanının tasarımı ve mevcut uygulamadan ayrımı: [Dış alan kapısı](DIS_ALAN_KAPISI.md), [Karar 0002](kararlar/0002-dis-alan-kapisi.md).
+
 Bu ilk uygulama, ortak HTML defterinin yanına **kalıcı iş / özgün ileti / çalıştırma / oturum** ayrımını ekler. Kaynaklar, yetki beyanı, düzeltmeler, sonuçlar ve kabul ölçütleri aynı işe bağlı kalır. Eski `k-XXXX` kayıtları yeni görev kuyruğuna otomatik alınmaz.
 
 İkinci uygulama aşaması, ekrandan sonuç/doğrulama, oturum gelen kutusu, bütün dosyaları taşıyan devir paketi ve tutarlı yedekleme/geri yükleme ekler. [Devam ve yedekleme rehberi](DEVAM_VE_YEDEK.md).
@@ -50,7 +52,7 @@ python deus.py --state-dir D:/DeusVeri serve
 
 Başarılı sorgu yalnız aygıt protokolünü doğrular. Bu sürümde çekirdekten görev çalıştırma, CLI süreçlerini yönetme veya boot başlangıcı yoktur.
 
-## İlk iş
+## İsteğe bağlı iş takibi örneği
 
 Yüzeyde **Yeni iş** üzerinden özgün söz, çalışma kapsamı ve tamamlanma ölçütleri girilir. İstenirse yerel kaynak dosyaları eklenir. Dosyanın o anda okunan baytları ve SHA-256 değeri özel alana alınır; özgün kaynak değiştirilmez. Bağlam paketi oluşturulurken saklanan kopyanın bütünlüğü yeniden denetlenir.
 
@@ -147,4 +149,6 @@ node --check ui/deus/app.js
 
 Yeni sınamalar; aynı isteğin tekrarı, eşzamanlı oluşturma, yeniden açılan veritabanı, kaynak bozulması, eski oturum/sonuç, düzeltme, pause/resume/cancel, sonuçla bağlı ölçütler, HTTP origin/belirteç ve NT protokolünü kapsar. Model veya canlı sürücü çağrısı taklitleri gerçek kurulum kanıtı sayılmaz. Windows WDK derlemesi ayrı CI akışındadır; çıktısı imzasızdır, yüklenmez.
 
-Sonraki ayrı aşamalar: hedef Windows/WinPE sürüm ve mimarisinin doğrulanması; imzalı sürücü paketi ve hedef makine testi; süreç gözetimi için dar kapsamlı yeni kernel sözleşmesi; mevcut açık CLI'a otomatik teslim; GitHub/dosya hizmeti adaptörleri; eski HTML'yi değiştirmeden seçilmiş iş olaylarının yayın görünümü. Mevcut prototip dalları otomatik birleştirilmedi.
+Sonraki ürün aşaması, görevlerden bağımsız seçici aktarım kaydı ve GitHub ile paylaşım/tedarik akışıdır. Dosya hizmeti adaptörleri aynı aktarım sözleşmesine bağlanacaktır; kullanıcı bütün yerel işlerini bu görev veritabanına taşımak zorunda kalmaz. Ayrıntı ve kabul ölçütleri [Dış alan kapısı](DIS_ALAN_KAPISI.md) belgesindedir.
+
+NT tarafında hedef Windows/WinPE sürüm ve mimarisinin doğrulanması, imzalı sürücü paketi, hedef makine testi ve süreç gözetimi için dar kapsamlı yeni kernel sözleşmesi ayrı aşamalardır. Mevcut açık CLI'a otomatik teslim ve eski HTML'yi değiştirmeden seçilmiş iş olaylarının yayın görünümü de henüz uygulanmadı. Mevcut prototip dalları otomatik birleştirilmedi.

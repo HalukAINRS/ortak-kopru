@@ -8,6 +8,13 @@ Bu güncel gereksinim, tarihsel orkestratör tasarımlarından ayrı tutulur.
 Uygulamada NT Kernel tarafında gerçek bir aygıt arayüzü, kullanıcı modunda da
 onunla konuşan bağlayıcı ve görünür kullanıcı yüzeyi bulunur.
 
+Sonraki ürün açıklaması, `ortak-kopru`yu yerel çalışmalar ile harici alanlar
+arasında paylaşım/tedarik kapısı olarak konumlandırır. Bu, NT hedefinin başka
+bir işletim sistemiyle değiştirilmesi değildir. Yerel `deus_ex_machina`
+bileşeni ile GitHub ve diğer sağlayıcılara bağlanan kullanıcı kipi adaptörleri
+ayrı sorumluluklardır. Sağlayıcı API çağrıları ve kimlik bilgileri çekirdek
+protokolüne taşınmaz. [Karar 0002](kararlar/0002-dis-alan-kapisi.md).
+
 ## Bileşen sınırları
 
 | Bileşen | Çalışma katmanı | Bu sürümde gerçekleşen iş |
