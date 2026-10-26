@@ -2,6 +2,8 @@
 
 Durum: İlk uygulama. Kullanıcının mimari değerlendirmeyi kabul edip gerçekleştirme istediği tur temel alınmıştır.
 
+Sonraki kapsam açıklaması: [Karar 0002 — Dış alanlara açılan kapı](0002-dis-alan-kapisi.md). Yerel çalışmalar kendi araçlarında sürer; burada tanımlanan iş çekirdeği isteğe bağlı bir yetenektir. NT bileşeninin katman sınırı korunur. Genel paylaşım/tedarik kapısı görev kaydını zorunlu tutmayacaktır.
+
 ## Güncel kullanıcı gereksinimi
 
 `deus_ex_machina`, yerel bilgisayarda CLI süreçlerinin altında, NT Kernel katmanında çalışan bir bileşene sahip olacak. Bu karar, tarihsel köprüdeki yalnız kullanıcı kipinde orkestratör önerisini güncel iş için genişletir. Tarihsel kayıtlar değişmez; güncel karar burada ayrı tutulur.
