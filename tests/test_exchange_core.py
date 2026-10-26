@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from concurrent.futures import ThreadPoolExecutor
-from contextlib import contextmanager
+from contextlib import closing, contextmanager
 import hashlib
 import json
 import os
@@ -125,7 +125,7 @@ class ExchangeStoreTests(unittest.TestCase):
         self.assertFalse((self.root / "absent").exists())
 
     def test_future_schema_is_rejected_without_mutation(self):
-        with sqlite3.connect(self.store.path) as db:
+        with closing(sqlite3.connect(self.store.path)) as db, db:
             db.execute("UPDATE metadata SET value='999' WHERE key='schema_version'")
         before = self.store.path.read_bytes()
         with self.assertRaises(ExchangeError):
