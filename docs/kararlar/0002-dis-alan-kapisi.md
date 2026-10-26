@@ -1,8 +1,10 @@
 # Karar 0002 — Yerelden harici alanlara paylaşım ve tedarik kapısı
 
 Durum: Kullanıcının 26 Ekim 2026 tarihli açıklamasıyla ürün yönü netleşti.
-Bu belge yönü ve geliştirme sınırlarını kaydeder; genel aktarım motoru ve
-sağlayıcı adaptörleri henüz uygulanmadı.
+Bu belge yönü ve geliştirme sınırlarını kaydeder. İlk görevden bağımsız dosya
+aktarımı ve GitHub bağlayıcısı `kapi.py` üzerinden uygulanmıştır. Diğer
+sağlayıcılar ve genel dış çalışma talepleri geliştirme kapsamındadır.
+[Çalışan komutlar ve sınırlar](../KAPI_KULLANIMI.md).
 
 ## Bağlam
 
@@ -44,15 +46,17 @@ aygıt temeli korunur. Bunlar bütün yerel işlerin ön koşulu yapılmaz.
 | --- | --- |
 | Yerel çalışma alanları | İşin üretildiği, kaynakların ve asıl çıktıların bulunduğu alanlar |
 | `deus_ex_machina` | Yerel erişim/arayüz bileşeni; mevcut görev takibi gerektiğinde kullanılabilir |
-| Genel aktarım katmanı — geliştirilecek | Seçilmiş gönderi, tedarik kaydı, sürüm ve aktarım sonucu |
-| Sağlayıcı adaptörleri — geliştirilecek | GitHub ve diğer dış hedeflerin gerçek okuma/yazma işlemleri |
+| İlk aktarım katmanı — `exchange.py`, `gateway.py` | Görevden bağımsız seçilmiş dosyalar, tedarik kaydı, sürüm ve aktarım sonucu |
+| GitHub bağlayıcısı — `adapters/github.py` | Kesin commit'ten okuma; yeni dal ve isteğe bağlı taslak PR oluşturma |
+| Diğer sağlayıcı adaptörleri — geliştirilecek | Diğer dış hedeflerin kendi yetenekleriyle okuma/yazma işlemleri |
 | `kopru.html` ve eski göndericiler | Ortak defter ve var olan katılımcı iletişimi |
 | `handoff`, `export`, `backup` | Özel görev devri, inceleme ve kurtarma; seçici genel yayın paketi değil |
 
 NT aygıtı yerel bileşen olarak hedefte kalır. Görünür ekran, dosya seçimi,
 sağlayıcı API çağrıları ve kimlik bilgisi kullanımı kullanıcı kipindedir.
-Bu karar mevcut `nt-kernel`/`portable` çalışma davranışını değiştirmez veya
-NT sürücüsüne yeni bir yetenek kazandırmaz.
+Mevcut `deus.py` girişindeki `nt-kernel`/`portable` davranışı korunur. Ayrı
+`kapi.py` girişi kullanıcı kipinde aktarım yapar, NT aygıtı sorgulamaz ve bir
+kernel doğrulaması iddiası üretmez.
 
 ## Veri yerleşimi
 
@@ -63,22 +67,24 @@ makbuzlar Git dışındaki özel aktarım alanında tutulur; kimlik bilgileri il
 yerel oturum veya kimlik bilgisi kaynağından kullanılır. Bir dış hizmete
 paylaşım, içeriğin ayrıca bu herkese açık depoya da girmesini gerektirmez.
 
-İlk aktarım uygulaması, görev veritabanından ayrı sürümlü bir kayıt alanı
-kullanmalıdır. Mevcut şema v1 yedek doğrulaması tablo kümesini birebir
+İlk aktarım uygulaması, görev veritabanından ayrı sürümlü `exchange.sqlite3`
+ve sabit paketler kullanır. Mevcut görev şeması v1 yedek doğrulaması tablo kümesini birebir
 denetler; yeni tablo eklemek ve eski yedeklerin çalışacağını varsaymak doğru
-değildir. Aktarım alanının kendi yedek/kurtarma kapsamı tanımlanmalıdır.
+değildir. İlk sürümde aktarım alanı, bütün yazıcılar durduktan sonra tüm dizin
+kopyalanarak korunabilir; mevcut görev yedeğinin kapsamına girmez.
 İleride birleşik veri alanı seçilirse şema geçişi ve kurtarma desteği birlikte
 uygulanır.
 
-## İlk uygulama sırası
+## Uygulama aşamaları
 
-1. Görev gerektirmeyen aktarım sözleşmesi, yalnız seçilen dosyaların sabit
-   kopyası ve özel aktarım kaydı.
-2. GitHub'dan kesin commit'e bağlı kaynak tedariki; özgün yerel dosyalara
-   uygulanmadan önce ayrı alanda inceleme.
-3. Belirli GitHub deposu, dalı ve yollarına seçilmiş paylaşım; değişiklik
-   karşılaştırması, commit/PR sonucu ve tekrar denetimi.
-4. Aynı sözleşmeyle diğer dosya hizmetleri; her hizmetin sürüm ve yetki
+1. Uygulandı: görev gerektirmeyen aktarım sözleşmesi, yalnız seçilen
+   dosyaların sabit kopyası ve özel aktarım kaydı.
+2. Uygulandı: GitHub'dan kesin commit'e bağlı kaynak tedariki; yeni bir
+   özel dizine çıkarma. Mevcut projeye uygulama kullanıcı araçlarında kalır.
+3. Uygulandı: belirli GitHub deposundaki yeni dala seçilmiş paylaşım;
+   değişiklik planı, commit/taslak PR sonucu ve tekrar denetimi. Mevcut dal
+   güncellenmez, PR otomatik birleştirilmez.
+4. Sonraki: aynı sözleşmeyle diğer dosya hizmetleri; her hizmetin sürüm ve yetki
    yetenekleri ayrıca bildirilir.
 
 `kopru.html` yazımı sağlayıcı çağrısı doğurabilen mevcut akışa bağlıdır.
