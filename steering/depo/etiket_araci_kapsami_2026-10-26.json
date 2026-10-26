@@ -1,0 +1,201 @@
+{
+  "review_date_utc": "2026-10-26",
+  "review_kind": "static ZIP member inspection and source reading; no imported or executed archive code",
+  "source_programs_executed": false,
+  "tests_executed": false,
+  "providers_called": false,
+  "zip_pair_identical_bytes": true,
+  "pyz_matches_zip_files": [
+    {
+      "pyz_member": "__main__.py",
+      "zip_member": "steering_guncelle/__main__.py",
+      "same_bytes": true
+    },
+    {
+      "pyz_member": "steering_data/__init__.py",
+      "zip_member": "steering_guncelle/steering_data/__init__.py",
+      "same_bytes": true
+    },
+    {
+      "pyz_member": "steering_data/deus_ex_machina_konusma_kaydi.json",
+      "zip_member": "steering_guncelle/steering_data/deus_ex_machina_konusma_kaydi.json",
+      "same_bytes": true
+    },
+    {
+      "pyz_member": "steering_guncelle.py",
+      "zip_member": "steering_guncelle/steering_guncelle.py",
+      "same_bytes": true
+    }
+  ],
+  "embedded_schema_only": {
+    "record_is_object": true,
+    "record_has_steering": false,
+    "record_has_son_kayit": true,
+    "has_binary_mirror": true
+  },
+  "test_definitions": 24,
+  "recorded_test_log_result": "24 passed; Linux/Python 3.13.5; historical supplied log, not reproduced",
+  "conclusion": "Local JSON label normalization/addition only. No model-internal steering configuration or external application mutation path in reviewed production source.",
+  "files": [
+    {
+      "name": "steering_kaynak_kodu.zip",
+      "bytes": 45678,
+      "sha256": "cc91b1602b132e7ea0762c6111299fbd1b318c401a1c98aab80a6be30511f417",
+      "members": [
+        {
+          "member": "steering_guncelle/README_TR.md",
+          "bytes": 6807,
+          "sha256": "713b044b40ee30572b45bdd934bf583050c0061ec9965678e0396b71d82d2863",
+          "method": "full text static read; not executed"
+        },
+        {
+          "member": "steering_guncelle/TEST_SONUCU.txt",
+          "bytes": 2607,
+          "sha256": "a7f6ea76a0446457477797d955e53e6ced14e8df9f9cbd88649d6fc8a5651aec",
+          "method": "full text static read; not executed"
+        },
+        {
+          "member": "steering_guncelle/__main__.py",
+          "bytes": 60,
+          "sha256": "81b20cc5ee2c25b193e8f048807a3bf239d03ba19366dc1062cb33403f4b45a7",
+          "method": "full text static read; not executed"
+        },
+        {
+          "member": "steering_guncelle/ornek_eski_etiketler.json",
+          "bytes": 527,
+          "sha256": "de20ac8c03524dad2004a566dae36bfa521d85287dc4b90414e510422628ab2f",
+          "method": "full text static read; not executed"
+        },
+        {
+          "member": "steering_guncelle/ornek_ingilizce_etiketler.json",
+          "bytes": 706,
+          "sha256": "7c663ac1f68776f4daf67f558e3f80c07e943738e6ee35b17f2072c85b79ac3f",
+          "method": "full text static read; not executed"
+        },
+        {
+          "member": "steering_guncelle/steering_data/__init__.py",
+          "bytes": 41,
+          "sha256": "8454df7b02a80aea3c92fccaa50cc1136cfe1d8b1157362e33d125c5fc8732c1",
+          "method": "full text static read; not executed"
+        },
+        {
+          "member": "steering_guncelle/steering_data/deus_ex_machina_konusma_kaydi.json",
+          "bytes": 222295,
+          "sha256": "f9c1cc3cbec2cda467929f3e1bc9c31ef679a96f82d3a14764e7bcd4affecb2c",
+          "method": "metadata and top-level schema only; conversation bodies not printed or semantically reviewed"
+        },
+        {
+          "member": "steering_guncelle/steering_guncelle.py",
+          "bytes": 17054,
+          "sha256": "38d352fe6598b38579fd39a9c9711e7c5f0ee7906650b413b97c9255fd294732",
+          "method": "full text static read; not executed"
+        },
+        {
+          "member": "steering_guncelle/test_steering.py",
+          "bytes": 9709,
+          "sha256": "4c02cda1a00c6ca12f0f95277317b37584b35abc5fdceac34a97f3bd6cd9f6f0",
+          "method": "full text static read; not executed"
+        }
+      ]
+    },
+    {
+      "name": "steering_kaynak_kodu(1).zip",
+      "bytes": 45678,
+      "sha256": "cc91b1602b132e7ea0762c6111299fbd1b318c401a1c98aab80a6be30511f417",
+      "members": [
+        {
+          "member": "steering_guncelle/README_TR.md",
+          "bytes": 6807,
+          "sha256": "713b044b40ee30572b45bdd934bf583050c0061ec9965678e0396b71d82d2863",
+          "method": "byte-equivalent to fully read ZIP source; not executed"
+        },
+        {
+          "member": "steering_guncelle/TEST_SONUCU.txt",
+          "bytes": 2607,
+          "sha256": "a7f6ea76a0446457477797d955e53e6ced14e8df9f9cbd88649d6fc8a5651aec",
+          "method": "byte-equivalent to fully read ZIP source; not executed"
+        },
+        {
+          "member": "steering_guncelle/__main__.py",
+          "bytes": 60,
+          "sha256": "81b20cc5ee2c25b193e8f048807a3bf239d03ba19366dc1062cb33403f4b45a7",
+          "method": "byte-equivalent to fully read ZIP source; not executed"
+        },
+        {
+          "member": "steering_guncelle/ornek_eski_etiketler.json",
+          "bytes": 527,
+          "sha256": "de20ac8c03524dad2004a566dae36bfa521d85287dc4b90414e510422628ab2f",
+          "method": "byte-equivalent to fully read ZIP source; not executed"
+        },
+        {
+          "member": "steering_guncelle/ornek_ingilizce_etiketler.json",
+          "bytes": 706,
+          "sha256": "7c663ac1f68776f4daf67f558e3f80c07e943738e6ee35b17f2072c85b79ac3f",
+          "method": "byte-equivalent to fully read ZIP source; not executed"
+        },
+        {
+          "member": "steering_guncelle/steering_data/__init__.py",
+          "bytes": 41,
+          "sha256": "8454df7b02a80aea3c92fccaa50cc1136cfe1d8b1157362e33d125c5fc8732c1",
+          "method": "byte-equivalent to fully read ZIP source; not executed"
+        },
+        {
+          "member": "steering_guncelle/steering_data/deus_ex_machina_konusma_kaydi.json",
+          "bytes": 222295,
+          "sha256": "f9c1cc3cbec2cda467929f3e1bc9c31ef679a96f82d3a14764e7bcd4affecb2c",
+          "method": "metadata and top-level schema only; conversation bodies not printed or semantically reviewed"
+        },
+        {
+          "member": "steering_guncelle/steering_guncelle.py",
+          "bytes": 17054,
+          "sha256": "38d352fe6598b38579fd39a9c9711e7c5f0ee7906650b413b97c9255fd294732",
+          "method": "byte-equivalent to fully read ZIP source; not executed"
+        },
+        {
+          "member": "steering_guncelle/test_steering.py",
+          "bytes": 9709,
+          "sha256": "4c02cda1a00c6ca12f0f95277317b37584b35abc5fdceac34a97f3bd6cd9f6f0",
+          "method": "byte-equivalent to fully read ZIP source; not executed"
+        }
+      ]
+    },
+    {
+      "name": "steering_guncelle.pyz",
+      "bytes": 38510,
+      "sha256": "797ad0dbe7b6fd50eea5c81af7a32be8b20b99c33974c8a354fe0e93b9fbf675",
+      "members": [
+        {
+          "member": "__main__.py",
+          "bytes": 60,
+          "sha256": "81b20cc5ee2c25b193e8f048807a3bf239d03ba19366dc1062cb33403f4b45a7",
+          "method": "byte-equivalent to fully read ZIP source; not executed"
+        },
+        {
+          "member": "steering_data/",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "method": "directory_entry"
+        },
+        {
+          "member": "steering_data/__init__.py",
+          "bytes": 41,
+          "sha256": "8454df7b02a80aea3c92fccaa50cc1136cfe1d8b1157362e33d125c5fc8732c1",
+          "method": "byte-equivalent to fully read ZIP source; not executed"
+        },
+        {
+          "member": "steering_data/deus_ex_machina_konusma_kaydi.json",
+          "bytes": 222295,
+          "sha256": "f9c1cc3cbec2cda467929f3e1bc9c31ef679a96f82d3a14764e7bcd4affecb2c",
+          "method": "metadata and top-level schema only; conversation bodies not printed or semantically reviewed"
+        },
+        {
+          "member": "steering_guncelle.py",
+          "bytes": 17054,
+          "sha256": "38d352fe6598b38579fd39a9c9711e7c5f0ee7906650b413b97c9255fd294732",
+          "method": "byte-equivalent to fully read ZIP source; not executed"
+        }
+      ]
+    }
+  ],
+  "scope_note": "This file records the static code subreview only. The subsequent full reading of the original /kayit body and equivalence verification of the updated record are recorded separately in son_kontrol_kapsami_2026-10-26.json. The embedded_schema_only and per-file method fields describe the earlier subreview, not the combined final scope."
+}

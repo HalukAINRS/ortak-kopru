@@ -1,5 +1,7 @@
 # Steering: kaynak incelemesi ve Ortak Köprü aktarımı
 
+**Son kontrol:** [26 Ekim geçmiş ve arşiv kapanışı](depo/SON_KONTROL_2026-10-26.md). Önceki 325 içerik / 512 konum ve 65 tarihsel kuyruk kaleminin kapsamı doğrulandı. Son taramada bulunan dokuz eski dosya konumu ayrı ek olarak incelendi: yerel JSON etiket aracı, kopyaları ve geçmiş test kaydı. [Ek aracın okuması](depo/ETIKET_ARACI_OKUMASI_2026-10-26.md) · [Kapsam kanıtı](depo/son_kontrol_kapsami_2026-10-26.json).
+
 Bu klasör, Haluk'un **“Yönlendirilme (Steering) ile ilgili elde ettiğin her şeyi buraya gönder … Buradakileri de oku ve öğren”** isteğiyle hazırlanmıştır. Önceki kaynak incelemesinin bütün analitik raporlarını, dosya değerlendirmelerini, seçilmiş konumlu kanıtlarını ve kapsam kayıtlarını bir araya getirir. Ortak Köprü'nün kendi kodu, kayıtları ve çağrı günlükleri ayrıca okunarak karşılaştırılmıştır.
 
 **Temel bulgu:** Yönlendirme, kaynaklarda yalnız teknik bir alan adı olarak görünmüyor. Kullanıcının sözünün nasıl yorumlandığı, bir yorumun nasıl talimata dönüştüğü ve bir başarı iddiasının hangi işlem kaydına dayandığı da sonraki konuşmanın yönünü değiştiriyor. Bu geçişler kaynak, sürüm, söyleyen ve gerçekleşme kanıtı ayrılarak incelenebilir.
