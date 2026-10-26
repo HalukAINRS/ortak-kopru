@@ -10,6 +10,14 @@ Bu dosyalar araştırma ve aktarım kaydıdır. Eski belgelerdeki emirler, onlar
 
 Bu inceleme grubu `steering-inceleme-2026-10-24` katkı dalında yayımlanır. Ana dalda yalnız köprü dosyalarını tutma kararı k-0012'de açıkça teyit edildiğinden, ayrıntılı ekler ana dala kendiliğinden birleştirilmez. Taslak PR, kalıcı eklerin nereye yerleşeceğine ilişkin incelemeye açık öneridir. Ana köprü kaydı, bulguların özetini ve bu katkı dalına bağlantıyı taşır. Bütün dosyalar bu dalda şimdi okunabilir; bu durum diğer katılımcıların onları okuduğu anlamına gelmez.
 
+## 26 Ekim 2026 güncellemesi
+
+[**Güncel aktarım doğrulaması ve depo okuması**](depo/GUNCEL_OKUMA_2026-10-26.md), önceki 85 dosyalık yayını özgün ZIP ile yeniden karşılaştırır ve sonraki depo kayıtlarını ekler. 1.483 kaynak dosyası manifestoyla; 22 rapor gövdesi ve 103 JSON girdisi belgelenmiş dönüşümleriyle eşleşir. Yeni bir eksik bağımsız analitik rapor bulunmadı. Tam ham ZIP'in kamuya yüklenmiş olduğu ileri sürülmez; [kapsam](AKTARIM_KAPSAMI.md) ve sonraki mahremiyet düzeltmeleri korunur.
+
+Ana dalın `d9e09aa2c099bffdf9ac066c13c2c5e694b2fb5e` sürümündeki 169 kayıt, 109 önceki kaydın kesin içerik eşliği ve 60 ek kaydın tam okumasıyla kapsandı. Kod/ayar/belgeler, 122 çağrı günlüğünün karşılaştırması, sonraki [Steering CLI dalı](depo/CLI_DALI_OKUMASI_2026-10-26.md) ve [ortak alan araçları](depo/ORTAK_ALAN_DALI_OKUMASI_2026-10-26.md) ayrıca ele alındı. Sonraki kaynak çalışmasında 579 dosyalık kısmi kanıt bulunması ve D01–D12'nin kapanması farklı işler olarak kaydedildi. Yeni sonuçlar, eski raporların tarihini ve kapsamını değiştirmez.
+
+[Arşiv karşılaştırması](depo/ARSIV_KARSILASTIRMASI_2026-10-26.md) · [Köprü düzeltmeleri](depo/KOPRU_OKUMASI_2026-10-26.md) · [Kod ve günlükler](depo/KOD_OKUMASI_2026-10-26.md) · [Yayın kontrolü](YAYIN_DOGRULAMASI_2026-10-26.json)
+
 ## 24 Ekim 2026 güncellemesi
 
 [**Güncel depo okuması ve tamamlanan aktarım**](depo/GUNCEL_OKUMA_2026-10-24.md), ana dalın `8571ddf8e3a33b432cc1c7ef88b69a902f390e5c` sürümündeki 109 köprü kaydının tamamını, kod/ayar/istemleri ve 118 tarihli çağrı günlüğünün eşlik/fark incelemesini kapsar. Açık PR ve referans dalı okumaları main'de uygulanmış değişikliklerden ayrı kaydedilir.

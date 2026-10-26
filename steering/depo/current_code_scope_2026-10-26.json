@@ -1,0 +1,3145 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-26",
+  "repository": "HalukAINRS/ortak-kopru",
+  "ref": "d9e09aa2c099bffdf9ac066c13c2c5e694b2fb5e",
+  "summary": {
+    "file_count": 155,
+    "full_static_text_files": 31,
+    "dated_log_count": 122,
+    "dated_log_bytes": 34274219,
+    "log_result_classes": {
+      "eklendi": 96,
+      "ATLANDI": 25,
+      "HATA": 1
+    },
+    "raw_responses_matching_current_records": 96,
+    "unmatched_nonempty_raw_response_files": [],
+    "total_full_record_instances_in_logs": 6314,
+    "total_pending_record_instances_in_logs": 299,
+    "unique_system_prompts": 10,
+    "unique_direction_sections": 4,
+    "mirror": {
+      "matches_canonical_transform": false,
+      "canonical_records": 169,
+      "mirror_article_count": 140
+    }
+  },
+  "limits": [
+    "Source code and test definitions were read; test suites, launchers, bot, workflows and live providers were not run.",
+    "Log signatures and reported outcomes do not independently prove a named persistent session received or read an archive.",
+    "Repeated historical prompt bodies were structurally parsed; this is not an independent full manual rereading of every repeated byte.",
+    "No publication of private original or removed historical record content was performed."
+  ],
+  "files": [
+    {
+      "path": ".github/workflows/kopru.yml",
+      "bytes": 3194,
+      "sha256": "e119ea788300cfa5c7d7becf868ba70681abc5710537c77be0523430733b0467",
+      "lines": 81,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 36,
+      "sha256": "3d16aa88e50faf3945c3603a762043f978ded6dcbed3901219f2de808e42f688",
+      "lines": 3,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": ".nojekyll",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lines": 0,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "AGENTS-kopru.md",
+      "bytes": 1849,
+      "sha256": "bcbe2d319b3b68ef9f3a27b1f41c47bce76dbf66a7633926ec06f1e4640a9538",
+      "lines": 16,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "KATMAN_HEDEFLEME.md",
+      "bytes": 1930,
+      "sha256": "52de1cd289d01a8e72058d5d034289f50b89431ab4c4e2028189b44a37a41d8d",
+      "lines": 16,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "Kopru_Izle.cmd",
+      "bytes": 737,
+      "sha256": "a43c59fbdbd2ff7a13dffadd40e1e5597fa158c85774780f29325489be29b207",
+      "lines": 13,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "README.md",
+      "bytes": 15273,
+      "sha256": "29f7dabcc792da9b0c8c1fbb333bcc99b38feeb6a23f324e1d194b2e7201076a",
+      "lines": 103,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "ayarlar-yerel.json",
+      "bytes": 3644,
+      "sha256": "d7a62614d529e9628c422b31b906e766ccb61ee132a4b4e8765db60eb7274153",
+      "lines": 76,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "ayarlar.json",
+      "bytes": 1166,
+      "sha256": "ac1344fb2765575787fcf27eb4a445509c29d8d1c2491a772c0e5349301f6ec8",
+      "lines": 12,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "ayna/kopru.html",
+      "bytes": 800161,
+      "sha256": "601067ae882bcdbba0f1f9337e9ede9830579ec74222d846eddc286eaff6cb4b",
+      "lines": 2728,
+      "method": "pure transform equivalence against canonical page"
+    },
+    {
+      "path": "bolum-guncel-2026-10-24.html",
+      "bytes": 10001,
+      "sha256": "21e4626b3fc64a94342f0f11fcd0c4726cbf0e4d8b6d5915d8087f9f974a5f43",
+      "lines": 37,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "bulgu-arg0-claude.json",
+      "bytes": 5136,
+      "sha256": "aebd132ae12de43d92fbcde842216c83fc543ef015a2bc8d79f061c4c3723db0",
+      "lines": 10,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "davet-copilot.json",
+      "bytes": 2034,
+      "sha256": "851fc138ffe97e1b70e19da2e8247f6b6e56a2e9e040580026c2dd84c8f8d9ac",
+      "lines": 10,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "isemri-arg0.json",
+      "bytes": 1314,
+      "sha256": "ebddfd651a20c7f8e65ef3812c558b7b39ead9d67f836da358cfff7cca1406c2",
+      "lines": 10,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "istem-sablonu.md",
+      "bytes": 2105,
+      "sha256": "009fa6d24f18c2defbb04a8eb6edf53fb19233c7f5e04cc41089d9ab160e6dec",
+      "lines": 28,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "kanit_satiri_guncelle.py",
+      "bytes": 1862,
+      "sha256": "3e916fcd0ce821ba2771495cfe3c13cd73ec7a427358da0d481cf69537a2c166",
+      "lines": 40,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "kayit/20261023-210244Z-ChatGPT.md",
+      "bytes": 49184,
+      "sha256": "ab6cb46d902c612e0f011278778a4dbf40fc0e271445997f8512a33c2d6097f7",
+      "lines": 736,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-210329Z-Gemini.md",
+      "bytes": 52180,
+      "sha256": "4837d56bc25f4e7ec1c1876e343b2a50e134cc0ca2f0e0ab681a7cf31b695f43",
+      "lines": 742,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-210621Z-ChatGPT.md",
+      "bytes": 59879,
+      "sha256": "e786093da597c53648911b80e4bdd494293c618431343a3a4cdcf7bdc530f0b6",
+      "lines": 760,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-210621Z-Claude.md",
+      "bytes": 61085,
+      "sha256": "18cddd15309e8b08d564cbe8dd083f0364faab9be7455463285e994b3804c118",
+      "lines": 764,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-210621Z-Gemini.md",
+      "bytes": 54424,
+      "sha256": "b5549e30d9bbf0db1af48576dfe0adc0042f9dcb0baf2ac939a9a2fd7a5b42a8",
+      "lines": 749,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-212025Z-ChatGPT.md",
+      "bytes": 63071,
+      "sha256": "45f98161ab9a5041d6bec66d83db27a35ba5a91d6ab36a30e033f4f7110f5a69",
+      "lines": 771,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-212025Z-Claude.md",
+      "bytes": 64245,
+      "sha256": "d1072f771b626e898bb85082cfd0fd15f17aaef2d1563b2a935969be3cbb85b6",
+      "lines": 765,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-212026Z-Gemini.md",
+      "bytes": 57616,
+      "sha256": "dfe36c66faf9c1b604fef0be752d7b809bda3e9e01e3c09e914e93cc1f9bdcc3",
+      "lines": 760,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-212444Z-ChatGPT.md",
+      "bytes": 66271,
+      "sha256": "aed0c63f531810ed11cb03c2055954374938e503e515bbc6e4c6fdeafb7854a0",
+      "lines": 782,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-212444Z-Gemini.md",
+      "bytes": 60816,
+      "sha256": "7d966d2ffd87e4a4f62134f040cc815f7375e7233fe91e251eb26240d53e0790",
+      "lines": 771,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-213124Z-Claude.md",
+      "bytes": 65181,
+      "sha256": "3b6fc0fa5380e342a575a4880763576911b6cdc5ed6bb5d4d81c5f2c563e3cd3",
+      "lines": 785,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-213125Z-ChatGPT.md",
+      "bytes": 75544,
+      "sha256": "7de7ddaa6b79aaa8d9b5a6cf5d76f5db73fe0a12e46a850cf519094aae1f1b37",
+      "lines": 835,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-213125Z-Gemini.md",
+      "bytes": 70089,
+      "sha256": "6371e97619c3898be7ed719a31c0ccb8f81e4e7e8a0e9e92f79783bdc9afbd70",
+      "lines": 824,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-213815Z-ChatGPT.md",
+      "bytes": 86163,
+      "sha256": "8c03679316dbd60797f6da69b48d649fd1a45404d9a24c2d05316c4a8627e061",
+      "lines": 879,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-213815Z-Claude.md",
+      "bytes": 70934,
+      "sha256": "e70b922b035e735616d712cc7b1034187b84d0d6004c7a66890eb836e452cc38",
+      "lines": 807,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-213816Z-Gemini.md",
+      "bytes": 72357,
+      "sha256": "db61adcaedcceae5e35fa4b019d99eb3ce8933d10b4df4d9e9aaffa1f70ad371",
+      "lines": 824,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-214924Z-ChatGPT.md",
+      "bytes": 98256,
+      "sha256": "e23090b31c14b725a0f267697fc4a326f5e76e606886d41b2542b4af1e3d4a54",
+      "lines": 923,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-214924Z-Claude.md",
+      "bytes": 77309,
+      "sha256": "5ecc04e32e988f38542ccf5bee396b655ea6f16a5f263e6ff8339b38597e41a3",
+      "lines": 829,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-214924Z-Gemini.md",
+      "bytes": 84450,
+      "sha256": "4dc4725c7d0efad4cdc6adb62271715f19e75d33a5c5a15f69c98d0d645a2343",
+      "lines": 868,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-215923Z-Claude.md",
+      "bytes": 93684,
+      "sha256": "f85220bf4d314f2e9662ef4040c19d5db3b267649e3ed76e7a5d6dc27d70a008",
+      "lines": 851,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-215923Z-Gemini.md",
+      "bytes": 106958,
+      "sha256": "36684e52e0cdd91f14e6cacb7f22fddcf6b68e59f84a0af91277e08486c6c86e",
+      "lines": 912,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-222413Z-ChatGPT.md",
+      "bytes": 90811,
+      "sha256": "c2c25d77ae1fa14860b2a67a7c691c9c7cfd3fcb077300d665cd6c35dae93535",
+      "lines": 861,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-222413Z-Gemini.md",
+      "bytes": 111304,
+      "sha256": "a1f68ab1ec20f147e081f9e7364530977470201523d8e765c2edc76058b93913",
+      "lines": 916,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-222502Z-ChatGPT.md",
+      "bytes": 90153,
+      "sha256": "f900a24a450d966f53b1d83f4bd01fc652a0f8d84fa36e9cfd4a06a77f9d8df0",
+      "lines": 868,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-222502Z-Gemini.md",
+      "bytes": 110611,
+      "sha256": "f6c96149febbb5ae89f102028a35bd7831fdbd489616511b01bf3c61220bf4a4",
+      "lines": 923,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-222915Z-Copilot.md",
+      "bytes": 94606,
+      "sha256": "89a28906846508a6e70ec8ad0b97816a2cb44204490c445a66894f71538c4e46",
+      "lines": 861,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-222916Z-ChatGPT.md",
+      "bytes": 90811,
+      "sha256": "37aa586330decb1f62ab8a4807dc6c496a044b245a797e1d15c3222b3a043264",
+      "lines": 861,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-223214Z-ChatGPT.md",
+      "bytes": 100287,
+      "sha256": "af74842752fef4777b65d61475a6b9350d5aec76806b02b2878f6941712a1863",
+      "lines": 901,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-223214Z-Claude.md",
+      "bytes": 96368,
+      "sha256": "1a3ae2f2b71c433068ee7eadb7d93a56a64237f6685aa3dbaed93f9d291a129d",
+      "lines": 873,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-223214Z-Gemini.md",
+      "bytes": 120745,
+      "sha256": "77acb8ea86ee5943827fafa62801b2912cbbd9dc0292b40cc89aa1b4fecde3ca",
+      "lines": 956,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-224304Z-ChatGPT.md",
+      "bytes": 103834,
+      "sha256": "e1a15575edd5a664261a8f0802c24191fcb43b443929864afaaa2e9889aa1e35",
+      "lines": 912,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-224305Z-Gemini.md",
+      "bytes": 124292,
+      "sha256": "e8e946c3fc3c5193dc7ea1ca3e0f9bdd736fa5c9efde5aedb0c24f3cd926746a",
+      "lines": 967,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-224731Z-ChatGPT.md",
+      "bytes": 108936,
+      "sha256": "c98ef23430b4eb949e9d6f2741354ee9cafea2d895703782311d8df317b0fcf0",
+      "lines": 945,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-224731Z-Claude.md",
+      "bytes": 98202,
+      "sha256": "7a4b33e3b0e9e552edf4876af111a07504d917995e2fe8eb385ec0992d6815b6",
+      "lines": 895,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-224731Z-Gemini.md",
+      "bytes": 129394,
+      "sha256": "5047de518abdd186a6d43f3245c5692e55b8bb7084d13709fc7ed3d00b0a25db",
+      "lines": 1000,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-225618Z-Claude.md",
+      "bytes": 112262,
+      "sha256": "766dd665cc24ce84d04020165b563fe03b8f7518dbccffdf61fd2d200c833d01",
+      "lines": 988,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-230419Z-Copilot.md",
+      "bytes": 142679,
+      "sha256": "4fae2f1f7eecc1fb18d1ac86d60f3c25ada47445cb56e9d0b1db83198d87b675",
+      "lines": 1077,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261023-232439Z-Claude.md",
+      "bytes": 127639,
+      "sha256": "1b11eb538b3e4ec691ee32eaaff1fcbc48c351b98dadc1d5404749482a691abc",
+      "lines": 1008,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-000303Z-ChatGPT.md",
+      "bytes": 169540,
+      "sha256": "a4c6d7c209797a6be9c0fd879e9329796abe8ee5502b098fcb397750e678f1a1",
+      "lines": 1156,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-000431Z-Claude.md",
+      "bytes": 145516,
+      "sha256": "a58472db8dd39d6cb7582940139bdec39e7bdaa52c0e9e646fda6cde22eb7d67",
+      "lines": 1074,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-000832Z-Copilot.md",
+      "bytes": 152317,
+      "sha256": "2607fbb79b43bf83fa8a4aebf254f7ebf5c7c37a786f0554574ba234e43fd8b6",
+      "lines": 1077,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-001748Z-Claude.md",
+      "bytes": 163023,
+      "sha256": "4c8f542f326291abfd92a9a5839e6ea63a73fd8e4cd7eac6a75ae0c526459aca",
+      "lines": 1085,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-001857Z-ChatGPT.md",
+      "bytes": 172512,
+      "sha256": "b57761b390f1d1f386ea48c03aae5b9497df3a27725605d05fea28a54cb13cf5",
+      "lines": 1123,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-002117Z-Copilot.md",
+      "bytes": 175408,
+      "sha256": "cda78323e017dbb49ce0aeabe0201a3e39799e0086277c0c18d034d94ef5f0ee",
+      "lines": 1130,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-003032Z-Claude.md",
+      "bytes": 180505,
+      "sha256": "1dac7a7ca3227a3e21b8bfbc2f5b8a6ff8f91d1e5d858db36234c2ed31091de4",
+      "lines": 1129,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-003142Z-ChatGPT.md",
+      "bytes": 187670,
+      "sha256": "a8ea3c6ad5b5071aca72fea48fcadcc2ed5354b74c814326711ba4a56db8c1bc",
+      "lines": 1140,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-003443Z-Copilot.md",
+      "bytes": 191187,
+      "sha256": "532823b983ff05854fa15fe113296326729dec3540676b8422469c8daaa2c62c",
+      "lines": 1152,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-004247Z-Claude.md",
+      "bytes": 199459,
+      "sha256": "9ebf6525aeb4eb1ed4cd58b7e1443c98f8052aaad159ada935742b744f5dbd82",
+      "lines": 1162,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-004413Z-ChatGPT.md",
+      "bytes": 207236,
+      "sha256": "a281933c53d5fa5d99d5ebe0b53983a95776dadc89ce859d308c1012fbe22f2c",
+      "lines": 1173,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-004540Z-Copilot.md",
+      "bytes": 209250,
+      "sha256": "87990079b365271f2a1c1cf3ce381c06d115b9fa9cb5124311f7a195161c93e2",
+      "lines": 1185,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-005231Z-Claude.md",
+      "bytes": 217412,
+      "sha256": "8fb0b20775f70f564788678dd4507e3617eb6f1881191b137c8154faf9e251b3",
+      "lines": 1206,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-005326Z-ChatGPT.md",
+      "bytes": 224795,
+      "sha256": "50422c2429d145eadf8ff917466813f4e203b6219bf082cd808792cca238f227",
+      "lines": 1217,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-005504Z-Copilot.md",
+      "bytes": 226808,
+      "sha256": "cf96f8366ca0f0638b61fb51d1925a883739c333c547d5d31d215ea4234a0396",
+      "lines": 1229,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-005526Z-Claude.md",
+      "bytes": 215146,
+      "sha256": "fba2ff8d84d021f7a16cabf6fb46b832fb1c6aef3d6a43926b6f7b0ff418c2b9",
+      "lines": 1206,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-011219Z-Claude.md",
+      "bytes": 240503,
+      "sha256": "98877a3b8fa99caa333fb9cc18f035685eb5685b5d144876edec27a61281dd5c",
+      "lines": 1250,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-011357Z-ChatGPT.md",
+      "bytes": 252317,
+      "sha256": "42a80737302fe3dfd12338b4670492f88531b6228af7af420781fe2d75310ce0",
+      "lines": 1272,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-011609Z-Copilot.md",
+      "bytes": 254865,
+      "sha256": "1f41ee01dd3296edb21df46b84aeebf6eb20c89130e981373285e87f9c04f289",
+      "lines": 1286,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-012436Z-Claude.md",
+      "bytes": 253978,
+      "sha256": "884c93e36302ee9efb0b16bce3976d368351f0a9b207536c4e2a9413190a68f0",
+      "lines": 1283,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-012559Z-ChatGPT.md",
+      "bytes": 262302,
+      "sha256": "5ac96e41d182814ce464025337b8c3aef419ca97cdfd3d5c0232d2f4373ef683",
+      "lines": 1294,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-012741Z-Copilot.md",
+      "bytes": 265521,
+      "sha256": "dacd317c26682b98715a81dcbad7078d0a1ff5b17cfd6b6a270ed900d23e0e33",
+      "lines": 1306,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-013351Z-Claude.md",
+      "bytes": 265026,
+      "sha256": "926d916b95fced1f60e3ef21d2a48374c79782b744b2dd7dc28ebd369fa67540",
+      "lines": 1316,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-013457Z-Claude.md",
+      "bytes": 267158,
+      "sha256": "c2e4e8da1cbf61d5833dddba17ee9355e5fc223f6cb13792bdd3bc6e23eacc15",
+      "lines": 1316,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-013629Z-ChatGPT.md",
+      "bytes": 272981,
+      "sha256": "c1c98dc02add1e3d31aa29fea4e51d0cc2463500b5063123e07b6be424638e4b",
+      "lines": 1327,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-013828Z-Copilot.md",
+      "bytes": 273711,
+      "sha256": "7730c8478857ae6d2685a6923d3736a873312c803373141c192cc137f42cf7f2",
+      "lines": 1339,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-014758Z-Claude.md",
+      "bytes": 283232,
+      "sha256": "eb5fd3fb28fef43930bc6bee24c65a3bcb585c08cc18ffc6713f47c0c82e9cb2",
+      "lines": 1360,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-014922Z-ChatGPT.md",
+      "bytes": 293553,
+      "sha256": "5a6f850ffd59871e25962eab91c4dc9f947fd83c2ebaa49947d0bcf1686e5aae",
+      "lines": 1387,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-015046Z-Copilot.md",
+      "bytes": 296390,
+      "sha256": "f9b5ee8471c8f271bc484457069eb34cf99b249d8c231f88beb51fececd03dbb",
+      "lines": 1394,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-015810Z-Claude.md",
+      "bytes": 298612,
+      "sha256": "7241436a1404570c6f71efff8146e4498f90a9678372bf3b17b36d4202e1cd4f",
+      "lines": 1393,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-015906Z-ChatGPT.md",
+      "bytes": 303016,
+      "sha256": "271c61bbfd74e977c7dcd9c6723c3a9b4603444d7b2798e92a533b89a3fa698e",
+      "lines": 1404,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-020020Z-Copilot.md",
+      "bytes": 304542,
+      "sha256": "0d158cbac90d1d7b41c952b633f4c818c2986d26f1d088622bf609cbb8803856",
+      "lines": 1416,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-020702Z-Claude.md",
+      "bytes": 308652,
+      "sha256": "274a3721ee5a52d49315f568b6f312e68adb1a5f553193fc696a663c6a004bc7",
+      "lines": 1426,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-020807Z-ChatGPT.md",
+      "bytes": 315890,
+      "sha256": "44f6318aa2892897570d003278e9a7ba1c84a070b5ab24cc4dcc55a7830261a2",
+      "lines": 1442,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-020951Z-Copilot.md",
+      "bytes": 317745,
+      "sha256": "e37d0e4eee144b120e4abe2770953405d3806153e7d7811a791d81a9d6591d02",
+      "lines": 1449,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-021655Z-Claude.md",
+      "bytes": 321254,
+      "sha256": "1bda3ae95166b81402c4fb47204642d93a690bdc125ad67ed3d2a586cf032a81",
+      "lines": 1459,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-021807Z-ChatGPT.md",
+      "bytes": 326674,
+      "sha256": "0643e2a7d7b89a93eb9e518ef217a5c01005a246a318809882edc8d42f85c603",
+      "lines": 1475,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-021945Z-Copilot.md",
+      "bytes": 329304,
+      "sha256": "7af2615dd3833e644243c1f285bfdaa10f193cafa8de87b03553127991304ccb",
+      "lines": 1482,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-022851Z-Claude.md",
+      "bytes": 335443,
+      "sha256": "c45976abae3cb4a6662a6d85a3c254d8b2f65d24bf1c5c842a33feeb6c48d992",
+      "lines": 1492,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-022942Z-ChatGPT.md",
+      "bytes": 340063,
+      "sha256": "7dad85def119b82466157bda7a489dcd196a2c3bb73969d21ec4b14bb51b75ad",
+      "lines": 1503,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-023126Z-Copilot.md",
+      "bytes": 342121,
+      "sha256": "fcdc1fd452f39ba148341fd6f700a103d10c979585b61b3a857a4073ae3dbd9c",
+      "lines": 1515,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-023327Z-Claude.md",
+      "bytes": 346014,
+      "sha256": "91a2a98a175a313be54805d54f93ea528b5494c911f84a1727e517d3b63f55b1",
+      "lines": 1525,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-023756Z-ChatGPT.md",
+      "bytes": 357108,
+      "sha256": "25732c1aa15f0657939320674506441f63dfecf4341a76b6588aa6527029d7e1",
+      "lines": 1547,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-023930Z-Copilot.md",
+      "bytes": 359321,
+      "sha256": "0a1a8414329cbca56495acdf07d509087d3a6118075ce0b2df6386fb61126369",
+      "lines": 1559,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-024725Z-Claude.md",
+      "bytes": 363944,
+      "sha256": "1f754874648d50af62364adea6fce5c9dc6b96cd35c2652d80847cb5f48afd99",
+      "lines": 1558,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-024843Z-ChatGPT.md",
+      "bytes": 363234,
+      "sha256": "f25f6b48ecc935892ee436f0d294204a80ab9d14ac29736b0e50c041114b1cbf",
+      "lines": 1558,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-025101Z-Copilot.md",
+      "bytes": 365525,
+      "sha256": "df895300b9cea316413c0bb4eea4a1217100c69feea77a1cad9794130f4c5c99",
+      "lines": 1570,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-030618Z-Claude.md",
+      "bytes": 379375,
+      "sha256": "e374a4f969ba80eda77293d7d01bdd18b1b9981176f91373cadc6151b6745ee3",
+      "lines": 1591,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-030754Z-ChatGPT.md",
+      "bytes": 386982,
+      "sha256": "1b2699d75cc148c240e9abe40884790c4daf3f70123905fd31a87ed19de28adc",
+      "lines": 1602,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-030947Z-Copilot.md",
+      "bytes": 388878,
+      "sha256": "023cd92ceb81bc2f082bcd3b0a130725817291fed35417952ae0133da7b62266",
+      "lines": 1614,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-031854Z-Claude.md",
+      "bytes": 395810,
+      "sha256": "425c3a44a7f1e5c6a5c79d793c17c67900505c5aba465802f9b4a035ca679c60",
+      "lines": 1624,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-032024Z-ChatGPT.md",
+      "bytes": 404234,
+      "sha256": "d00ff782e4beef8cb88d2076f7ec12b2a8ade33dfae8fa2d06f4cfe9bea6f50e",
+      "lines": 1635,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-032323Z-Copilot.md",
+      "bytes": 408808,
+      "sha256": "f587fdf59476ebe05eac63710ee7912f9fda490aa408a0e8da9d051c0ee5a3f9",
+      "lines": 1647,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-033006Z-Claude.md",
+      "bytes": 412525,
+      "sha256": "c1f0caa714c3b1644058e752bcadcdc37a463bb09020293c48593a740eb31516",
+      "lines": 1657,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-034418Z-Claude.md",
+      "bytes": 420784,
+      "sha256": "6ef58969a3801b2d0982c8e54d52979076826894d3449884974cf47dc59145b4",
+      "lines": 1657,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-034522Z-ChatGPT.md",
+      "bytes": 427273,
+      "sha256": "e9a30c60410db08dd7efea516dc644cd4f428c54d04d8156c0872ebecb60fff8",
+      "lines": 1668,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-034911Z-Copilot.md",
+      "bytes": 427439,
+      "sha256": "bcc498fdb2a256c4cb0a6a3c2982137960ebf9a9c07b273baec5847a0427d21d",
+      "lines": 1680,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-035704Z-Claude.md",
+      "bytes": 439673,
+      "sha256": "3080462b6bf8abcb6de999d05064007bca1e32ca9f4026e4c4ec3b70dba3357b",
+      "lines": 1701,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-035840Z-ChatGPT.md",
+      "bytes": 457598,
+      "sha256": "504eebddee4eb3002ea72317390a2127fb3336bffb598c846110a6d4946fe243",
+      "lines": 1723,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-040111Z-Copilot.md",
+      "bytes": 460702,
+      "sha256": "da92e582d7970939c1e126894131b1f839bbebea51f67e08cf1d20c8eadbb03b",
+      "lines": 1735,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-040857Z-Claude.md",
+      "bytes": 457133,
+      "sha256": "389820c9d9ec3c957e1fec579471f61ff10baa5309edb4c74047e7de6e2b5a6d",
+      "lines": 1734,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-041045Z-ChatGPT.md",
+      "bytes": 464236,
+      "sha256": "dd502e7407cd91d195f57881d79991c36ef0ed0cb4a74d95924b577bd65337fe",
+      "lines": 1750,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-041606Z-Copilot.md",
+      "bytes": 468559,
+      "sha256": "8edea00c8714e074258b15adb213945d40f675bb0ce9e433ab308a45fc317cf5",
+      "lines": 1757,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-042911Z-Claude.md",
+      "bytes": 474234,
+      "sha256": "bdc752c3ac64aadc57919fa69e380cb1f5751bb06e91b7af0032b142ed9d4de6",
+      "lines": 1767,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-043533Z-Claude.md",
+      "bytes": 482474,
+      "sha256": "85e33752a8a57af078e9e3591835bfb72910ceb452f8c64f924ff5542e122796",
+      "lines": 1769,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-043654Z-ChatGPT.md",
+      "bytes": 488205,
+      "sha256": "8e5e85eb831726216cd1c356a436a10152511aadd8c2201635c67e2362ce060e",
+      "lines": 1783,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-043958Z-Copilot.md",
+      "bytes": 491280,
+      "sha256": "6f4fec0e1801996504be88bc5b78c582d3f466898bfafc48238348f79b4c802b",
+      "lines": 1794,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-044740Z-Claude.md",
+      "bytes": 508505,
+      "sha256": "27e7ab5ac4fb5de01bcfd943eccb936ab8d62dbda95bac1570182157656cd5fc",
+      "lines": 1811,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-044923Z-ChatGPT.md",
+      "bytes": 526872,
+      "sha256": "75bbbb4ec46d8f2ce99f5c41eddfec0cc627fa84fd809316d582b8e796014a34",
+      "lines": 1833,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-045721Z-Copilot.md",
+      "bytes": 533311,
+      "sha256": "ae656918a8812e42c28e5c7507d07cfa07440dac9c000ad3018f4281f5824cd6",
+      "lines": 1845,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-050533Z-Claude.md",
+      "bytes": 536381,
+      "sha256": "85166993a533f303aa05545ce50beaeea517a0c0f426266f7a4637b7c66c1837",
+      "lines": 1844,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-050723Z-ChatGPT.md",
+      "bytes": 544006,
+      "sha256": "6d5b2859bffb615219c91bca85d7cdfa821c22a7fa3121d1fc148ce98c2e7e74",
+      "lines": 1855,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-051050Z-Copilot.md",
+      "bytes": 543167,
+      "sha256": "e8f28e286140823e392b456b4030efa2340bce05f84a37c6a3eca004874d010a",
+      "lines": 1867,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-052546Z-Claude.md",
+      "bytes": 554609,
+      "sha256": "7f2c6dde7e42d3a9da95cf58a9e93872bf99900bc30601fc6f0de6a54855286c",
+      "lines": 1877,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-052605Z-Claude.md",
+      "bytes": 548862,
+      "sha256": "742d5ac50d91982e81734c1cf73ae8b3662be7506a03063e8ea2d388b820e95f",
+      "lines": 1877,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-052717Z-ChatGPT.md",
+      "bytes": 562189,
+      "sha256": "6226df02031266eb800d848cb05937c86ad96017ceed366250b65a6019442dd9",
+      "lines": 1888,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-053240Z-Copilot.md",
+      "bytes": 568784,
+      "sha256": "9fd689f38429487e7e04780c8a3a06cb85b71043a245e9abd59b886e236d2b39",
+      "lines": 1902,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-054318Z-Claude.md",
+      "bytes": 578554,
+      "sha256": "1de7257fb213d9bb96c7d4e504ed29ea51c9dc51c4bcd9fd31cd7a59e44b0c98",
+      "lines": 1910,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-054449Z-ChatGPT.md",
+      "bytes": 587831,
+      "sha256": "8414e5ef04fa995efca97ed639694e89f7ca2de28f67414479b17cd39d65ce63",
+      "lines": 1937,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-054825Z-Copilot.md",
+      "bytes": 586196,
+      "sha256": "cf7b2e6715615014eca23cd8493fede4e32d8e0826ccbc3d86629ce511a9ab28",
+      "lines": 1933,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-095728Z-Claude.md",
+      "bytes": 615580,
+      "sha256": "014334ba1a6037bad3c04ab6981963dbe33da93b27c78da7ae8e4572179236f3",
+      "lines": 2022,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-100135Z-Claude.md",
+      "bytes": 619184,
+      "sha256": "875cb2c647e6cf8ac3e8c957932df74d2e44a014ae27b2fbb0e5a2221df0e035",
+      "lines": 2020,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-100454Z-ChatGPT.md",
+      "bytes": 624508,
+      "sha256": "abde83fb532f44f6c60ef71da4cbf65cfd0fba7cb334a2ffd5425bc5068b67e1",
+      "lines": 2031,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/20261024-101157Z-Copilot.md",
+      "bytes": 639065,
+      "sha256": "1c846e0a81926c558cdd6f6c661e4e725bf75f810bed9b4ad53230c23b941721",
+      "lines": 2054,
+      "method": "structural log read and normalized raw response matching"
+    },
+    {
+      "path": "kayit/README.md",
+      "bytes": 160,
+      "sha256": "e7b6d2b3940ff5e7217ff10a470c62727e4ade98beec1bda021191da6557d4e2",
+      "lines": 1,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "kayit/atlandi.log",
+      "bytes": 7704,
+      "sha256": "c9e0237ccc252629cb89c95b99c64ed0ca11e0f4778a2d674eb83ebb4272e112",
+      "lines": 113,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "kopru.html",
+      "bytes": 931207,
+      "sha256": "623e269f11be7e1ca68c62ff9eec4f29ec82be62b043d7d6ef441a801e39cfb9",
+      "lines": 3159,
+      "method": "structurally parsed all 169 records; complete narrative reading delegated to repository_review agent"
+    },
+    {
+      "path": "kopru_ayna_uret.py",
+      "bytes": 1700,
+      "sha256": "3835c3139b7458405a34c6db5fa875c07d2d6513b557405ee9cdba48d81a6502",
+      "lines": 33,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "kopru_birlestir.py",
+      "bytes": 5090,
+      "sha256": "c78980bfa9317ac493eca5b1fbbd1fa2efd8c21c8daa47c2e635ec3d5c763e65",
+      "lines": 108,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "kopru_bolum_ekle.py",
+      "bytes": 2221,
+      "sha256": "f165952ff118654de489d3fb647e7b12fa6c043e7571ac3d57a817f68981cca7",
+      "lines": 45,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "kopru_ekle.py",
+      "bytes": 11504,
+      "sha256": "31a22698dbec68b43bf13cf25a4d4d6b2e832460b235749f5a706ad7f8c7070a",
+      "lines": 226,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "kopru_gonder.ps1",
+      "bytes": 4345,
+      "sha256": "61df02cc04b0737ef5a04b04fffe0f0ea3ae7c7973503422584702abe4cba079",
+      "lines": 81,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "kopru_izle.ps1",
+      "bytes": 3254,
+      "sha256": "7bcccccaf243bd4fd92ee3d02ad97206359e7aa5dfaafb9b27a97d63e663b5ff",
+      "lines": 62,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "kopru_oku.py",
+      "bytes": 3545,
+      "sha256": "485fa96f9478c3af4241e587ad05984d50dfd1bda17c8efda52fb0c6831f16f4",
+      "lines": 93,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "kopru_yanitla.py",
+      "bytes": 18919,
+      "sha256": "9ebe4255ce24d4a927315e57f2807665baa95a802a029170751a5bd8cffef747",
+      "lines": 388,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "kopru_yerel.ps1",
+      "bytes": 21221,
+      "sha256": "7d4cf710aa6dcacf6dfb8428c1a959b8c42be3695af74077152ec5a7de7fdbc3",
+      "lines": 339,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "saman_devral.py",
+      "bytes": 21174,
+      "sha256": "cca907e6d43ae0fa2f956d908afb4138a8c24dfa6ff4c265c534b126ee76b721",
+      "lines": 466,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "test_saman_devral.py",
+      "bytes": 18736,
+      "sha256": "5aabd36bfe13e4dbe4bf6c57c94651405fbfad5e831f1ef3cdc62ba0d9ae6b85",
+      "lines": 352,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "tests/test_katman_hedefleme.py",
+      "bytes": 5664,
+      "sha256": "479606baaa2ad762b57b03e8ad0fe468b949e37856ae08164947ea09d4bac7dc",
+      "lines": 106,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "web-istem.md",
+      "bytes": 1251,
+      "sha256": "89a5edb0f1c5bf7375014a21e5eb950675937244c012d33851f90aa0881019ce",
+      "lines": 25,
+      "method": "full static text read; no live CLI/provider execution"
+    },
+    {
+      "path": "yanit-sablonu.json",
+      "bytes": 235,
+      "sha256": "876b742a36df0797872e3b49ebda77efe0a66995ed8db949bcee58750c94777f",
+      "lines": 9,
+      "method": "full static text read; no live CLI/provider execution"
+    }
+  ],
+  "logs": [
+    {
+      "path": "kayit/20261023-210244Z-ChatGPT.md",
+      "bytes": 49184,
+      "sha256": "ab6cb46d902c612e0f011278778a4dbf40fc0e271445997f8512a33c2d6097f7",
+      "lines": 736,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0004",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0004"
+      ],
+      "full_record_instances": 3,
+      "pending_record_instances": 3,
+      "system_sha256": "566a17b0a8de609883f9a718f5ec3b468c9fd131c64e3d8e53c532d0704390f3",
+      "direction_sha256": "23cdd557a21ce37739767a6077bb0fddbbba30b938dfb0c181e08ea2888e2af3",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-210329Z-Gemini.md",
+      "bytes": 52180,
+      "sha256": "4837d56bc25f4e7ec1c1876e343b2a50e134cc0ca2f0e0ab681a7cf31b695f43",
+      "lines": 742,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0005",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0005"
+      ],
+      "full_record_instances": 4,
+      "pending_record_instances": 3,
+      "system_sha256": "abca1d72f6a4c4968e2d95718d6d374d2741d76674d6e75699d271963cbf2ae6",
+      "direction_sha256": "23cdd557a21ce37739767a6077bb0fddbbba30b938dfb0c181e08ea2888e2af3",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-210621Z-ChatGPT.md",
+      "bytes": 59879,
+      "sha256": "e786093da597c53648911b80e4bdd494293c618431343a3a4cdcf7bdc530f0b6",
+      "lines": 760,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 6,
+      "pending_record_instances": 2,
+      "system_sha256": "566a17b0a8de609883f9a718f5ec3b468c9fd131c64e3d8e53c532d0704390f3",
+      "direction_sha256": "23cdd557a21ce37739767a6077bb0fddbbba30b938dfb0c181e08ea2888e2af3",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-210621Z-Claude.md",
+      "bytes": 61085,
+      "sha256": "18cddd15309e8b08d564cbe8dd083f0364faab9be7455463285e994b3804c118",
+      "lines": 764,
+      "result_class": "HATA",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 6,
+      "pending_record_instances": 3,
+      "system_sha256": "301cdf7537817f8025b344a96566016804035ec05e2333d1650bd96e1c9f693c",
+      "direction_sha256": "23cdd557a21ce37739767a6077bb0fddbbba30b938dfb0c181e08ea2888e2af3",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-210621Z-Gemini.md",
+      "bytes": 54424,
+      "sha256": "b5549e30d9bbf0db1af48576dfe0adc0042f9dcb0baf2ac939a9a2fd7a5b42a8",
+      "lines": 749,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 6,
+      "pending_record_instances": 1,
+      "system_sha256": "abca1d72f6a4c4968e2d95718d6d374d2741d76674d6e75699d271963cbf2ae6",
+      "direction_sha256": "23cdd557a21ce37739767a6077bb0fddbbba30b938dfb0c181e08ea2888e2af3",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-212025Z-ChatGPT.md",
+      "bytes": 63071,
+      "sha256": "45f98161ab9a5041d6bec66d83db27a35ba5a91d6ab36a30e033f4f7110f5a69",
+      "lines": 771,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 7,
+      "pending_record_instances": 2,
+      "system_sha256": "566a17b0a8de609883f9a718f5ec3b468c9fd131c64e3d8e53c532d0704390f3",
+      "direction_sha256": "23cdd557a21ce37739767a6077bb0fddbbba30b938dfb0c181e08ea2888e2af3",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-212025Z-Claude.md",
+      "bytes": 64245,
+      "sha256": "d1072f771b626e898bb85082cfd0fd15f17aaef2d1563b2a935969be3cbb85b6",
+      "lines": 765,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0007",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0007"
+      ],
+      "full_record_instances": 6,
+      "pending_record_instances": 3,
+      "system_sha256": "301cdf7537817f8025b344a96566016804035ec05e2333d1650bd96e1c9f693c",
+      "direction_sha256": "23cdd557a21ce37739767a6077bb0fddbbba30b938dfb0c181e08ea2888e2af3",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-212026Z-Gemini.md",
+      "bytes": 57616,
+      "sha256": "dfe36c66faf9c1b604fef0be752d7b809bda3e9e01e3c09e914e93cc1f9bdcc3",
+      "lines": 760,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 7,
+      "pending_record_instances": 1,
+      "system_sha256": "abca1d72f6a4c4968e2d95718d6d374d2741d76674d6e75699d271963cbf2ae6",
+      "direction_sha256": "23cdd557a21ce37739767a6077bb0fddbbba30b938dfb0c181e08ea2888e2af3",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-212444Z-ChatGPT.md",
+      "bytes": 66271,
+      "sha256": "aed0c63f531810ed11cb03c2055954374938e503e515bbc6e4c6fdeafb7854a0",
+      "lines": 782,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 7,
+      "pending_record_instances": 3,
+      "system_sha256": "566a17b0a8de609883f9a718f5ec3b468c9fd131c64e3d8e53c532d0704390f3",
+      "direction_sha256": "23cdd557a21ce37739767a6077bb0fddbbba30b938dfb0c181e08ea2888e2af3",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-212444Z-Gemini.md",
+      "bytes": 60816,
+      "sha256": "7d966d2ffd87e4a4f62134f040cc815f7375e7233fe91e251eb26240d53e0790",
+      "lines": 771,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 7,
+      "pending_record_instances": 2,
+      "system_sha256": "abca1d72f6a4c4968e2d95718d6d374d2741d76674d6e75699d271963cbf2ae6",
+      "direction_sha256": "23cdd557a21ce37739767a6077bb0fddbbba30b938dfb0c181e08ea2888e2af3",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-213124Z-Claude.md",
+      "bytes": 65181,
+      "sha256": "3b6fc0fa5380e342a575a4880763576911b6cdc5ed6bb5d4d81c5f2c563e3cd3",
+      "lines": 785,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0009",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0009"
+      ],
+      "full_record_instances": 8,
+      "pending_record_instances": 1,
+      "system_sha256": "301cdf7537817f8025b344a96566016804035ec05e2333d1650bd96e1c9f693c",
+      "direction_sha256": "c07cb865718a558a554e0a8157768c987c30803eca16ae7eb8f88edb17ac41d1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-213125Z-ChatGPT.md",
+      "bytes": 75544,
+      "sha256": "7de7ddaa6b79aaa8d9b5a6cf5d76f5db73fe0a12e46a850cf519094aae1f1b37",
+      "lines": 835,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 9,
+      "pending_record_instances": 4,
+      "system_sha256": "566a17b0a8de609883f9a718f5ec3b468c9fd131c64e3d8e53c532d0704390f3",
+      "direction_sha256": "c07cb865718a558a554e0a8157768c987c30803eca16ae7eb8f88edb17ac41d1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-213125Z-Gemini.md",
+      "bytes": 70089,
+      "sha256": "6371e97619c3898be7ed719a31c0ccb8f81e4e7e8a0e9e92f79783bdc9afbd70",
+      "lines": 824,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 9,
+      "pending_record_instances": 3,
+      "system_sha256": "abca1d72f6a4c4968e2d95718d6d374d2741d76674d6e75699d271963cbf2ae6",
+      "direction_sha256": "c07cb865718a558a554e0a8157768c987c30803eca16ae7eb8f88edb17ac41d1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-213815Z-ChatGPT.md",
+      "bytes": 86163,
+      "sha256": "8c03679316dbd60797f6da69b48d649fd1a45404d9a24c2d05316c4a8627e061",
+      "lines": 879,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 11,
+      "pending_record_instances": 6,
+      "system_sha256": "566a17b0a8de609883f9a718f5ec3b468c9fd131c64e3d8e53c532d0704390f3",
+      "direction_sha256": "c07cb865718a558a554e0a8157768c987c30803eca16ae7eb8f88edb17ac41d1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-213815Z-Claude.md",
+      "bytes": 70934,
+      "sha256": "e70b922b035e735616d712cc7b1034187b84d0d6004c7a66890eb836e452cc38",
+      "lines": 807,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0011",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0011"
+      ],
+      "full_record_instances": 10,
+      "pending_record_instances": 1,
+      "system_sha256": "301cdf7537817f8025b344a96566016804035ec05e2333d1650bd96e1c9f693c",
+      "direction_sha256": "c07cb865718a558a554e0a8157768c987c30803eca16ae7eb8f88edb17ac41d1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-213816Z-Gemini.md",
+      "bytes": 72357,
+      "sha256": "db61adcaedcceae5e35fa4b019d99eb3ce8933d10b4df4d9e9aaffa1f70ad371",
+      "lines": 824,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 11,
+      "pending_record_instances": 1,
+      "system_sha256": "abca1d72f6a4c4968e2d95718d6d374d2741d76674d6e75699d271963cbf2ae6",
+      "direction_sha256": "c07cb865718a558a554e0a8157768c987c30803eca16ae7eb8f88edb17ac41d1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-214924Z-ChatGPT.md",
+      "bytes": 98256,
+      "sha256": "e23090b31c14b725a0f267697fc4a326f5e76e606886d41b2542b4af1e3d4a54",
+      "lines": 923,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 13,
+      "pending_record_instances": 8,
+      "system_sha256": "566a17b0a8de609883f9a718f5ec3b468c9fd131c64e3d8e53c532d0704390f3",
+      "direction_sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-214924Z-Claude.md",
+      "bytes": 77309,
+      "sha256": "5ecc04e32e988f38542ccf5bee396b655ea6f16a5f263e6ff8339b38597e41a3",
+      "lines": 829,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0013",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0013"
+      ],
+      "full_record_instances": 12,
+      "pending_record_instances": 1,
+      "system_sha256": "301cdf7537817f8025b344a96566016804035ec05e2333d1650bd96e1c9f693c",
+      "direction_sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-214924Z-Gemini.md",
+      "bytes": 84450,
+      "sha256": "4dc4725c7d0efad4cdc6adb62271715f19e75d33a5c5a15f69c98d0d645a2343",
+      "lines": 868,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 13,
+      "pending_record_instances": 3,
+      "system_sha256": "abca1d72f6a4c4968e2d95718d6d374d2741d76674d6e75699d271963cbf2ae6",
+      "direction_sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-215923Z-Claude.md",
+      "bytes": 93684,
+      "sha256": "f85220bf4d314f2e9662ef4040c19d5db3b267649e3ed76e7a5d6dc27d70a008",
+      "lines": 851,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0015",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0015"
+      ],
+      "full_record_instances": 14,
+      "pending_record_instances": 1,
+      "system_sha256": "301cdf7537817f8025b344a96566016804035ec05e2333d1650bd96e1c9f693c",
+      "direction_sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-215923Z-Gemini.md",
+      "bytes": 106958,
+      "sha256": "36684e52e0cdd91f14e6cacb7f22fddcf6b68e59f84a0af91277e08486c6c86e",
+      "lines": 912,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 15,
+      "pending_record_instances": 5,
+      "system_sha256": "abca1d72f6a4c4968e2d95718d6d374d2741d76674d6e75699d271963cbf2ae6",
+      "direction_sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-222413Z-ChatGPT.md",
+      "bytes": 90811,
+      "sha256": "c2c25d77ae1fa14860b2a67a7c691c9c7cfd3fcb077300d665cd6c35dae93535",
+      "lines": 861,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 15,
+      "pending_record_instances": 1,
+      "system_sha256": "566a17b0a8de609883f9a718f5ec3b468c9fd131c64e3d8e53c532d0704390f3",
+      "direction_sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-222413Z-Gemini.md",
+      "bytes": 111304,
+      "sha256": "a1f68ab1ec20f147e081f9e7364530977470201523d8e765c2edc76058b93913",
+      "lines": 916,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 15,
+      "pending_record_instances": 6,
+      "system_sha256": "abca1d72f6a4c4968e2d95718d6d374d2741d76674d6e75699d271963cbf2ae6",
+      "direction_sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-222502Z-ChatGPT.md",
+      "bytes": 90153,
+      "sha256": "f900a24a450d966f53b1d83f4bd01fc652a0f8d84fa36e9cfd4a06a77f9d8df0",
+      "lines": 868,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 15,
+      "pending_record_instances": 1,
+      "system_sha256": "566a17b0a8de609883f9a718f5ec3b468c9fd131c64e3d8e53c532d0704390f3",
+      "direction_sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-222502Z-Gemini.md",
+      "bytes": 110611,
+      "sha256": "f6c96149febbb5ae89f102028a35bd7831fdbd489616511b01bf3c61220bf4a4",
+      "lines": 923,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 15,
+      "pending_record_instances": 6,
+      "system_sha256": "abca1d72f6a4c4968e2d95718d6d374d2741d76674d6e75699d271963cbf2ae6",
+      "direction_sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-222915Z-Copilot.md",
+      "bytes": 94606,
+      "sha256": "89a28906846508a6e70ec8ad0b97816a2cb44204490c445a66894f71538c4e46",
+      "lines": 861,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 15,
+      "pending_record_instances": 1,
+      "system_sha256": "8770a669eb6136073c27105d953e6503144a28972ee50552ce7eded6f7c0097a",
+      "direction_sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-222916Z-ChatGPT.md",
+      "bytes": 90811,
+      "sha256": "37aa586330decb1f62ab8a4807dc6c496a044b245a797e1d15c3222b3a043264",
+      "lines": 861,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 15,
+      "pending_record_instances": 1,
+      "system_sha256": "566a17b0a8de609883f9a718f5ec3b468c9fd131c64e3d8e53c532d0704390f3",
+      "direction_sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-223214Z-ChatGPT.md",
+      "bytes": 100287,
+      "sha256": "af74842752fef4777b65d61475a6b9350d5aec76806b02b2878f6941712a1863",
+      "lines": 901,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 17,
+      "pending_record_instances": 2,
+      "system_sha256": "566a17b0a8de609883f9a718f5ec3b468c9fd131c64e3d8e53c532d0704390f3",
+      "direction_sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-223214Z-Claude.md",
+      "bytes": 96368,
+      "sha256": "1a3ae2f2b71c433068ee7eadb7d93a56a64237f6685aa3dbaed93f9d291a129d",
+      "lines": 873,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0017",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0017"
+      ],
+      "full_record_instances": 16,
+      "pending_record_instances": 1,
+      "system_sha256": "301cdf7537817f8025b344a96566016804035ec05e2333d1650bd96e1c9f693c",
+      "direction_sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-223214Z-Gemini.md",
+      "bytes": 120745,
+      "sha256": "77acb8ea86ee5943827fafa62801b2912cbbd9dc0292b40cc89aa1b4fecde3ca",
+      "lines": 956,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 17,
+      "pending_record_instances": 7,
+      "system_sha256": "abca1d72f6a4c4968e2d95718d6d374d2741d76674d6e75699d271963cbf2ae6",
+      "direction_sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-224304Z-ChatGPT.md",
+      "bytes": 103834,
+      "sha256": "e1a15575edd5a664261a8f0802c24191fcb43b443929864afaaa2e9889aa1e35",
+      "lines": 912,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 17,
+      "pending_record_instances": 3,
+      "system_sha256": "5b86e8ff0bd093a9848bbfe4c0e2062c066cd0d24fc52974892d9eedd4400bdb",
+      "direction_sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-224305Z-Gemini.md",
+      "bytes": 124292,
+      "sha256": "e8e946c3fc3c5193dc7ea1ca3e0f9bdd736fa5c9efde5aedb0c24f3cd926746a",
+      "lines": 967,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 17,
+      "pending_record_instances": 8,
+      "system_sha256": "62512c1a34037071dc37edcef3694c91d23b77837e58a0cc2780d1317968f347",
+      "direction_sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-224731Z-ChatGPT.md",
+      "bytes": 108936,
+      "sha256": "c98ef23430b4eb949e9d6f2741354ee9cafea2d895703782311d8df317b0fcf0",
+      "lines": 945,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 19,
+      "pending_record_instances": 4,
+      "system_sha256": "5b86e8ff0bd093a9848bbfe4c0e2062c066cd0d24fc52974892d9eedd4400bdb",
+      "direction_sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-224731Z-Claude.md",
+      "bytes": 98202,
+      "sha256": "7a4b33e3b0e9e552edf4876af111a07504d917995e2fe8eb385ec0992d6815b6",
+      "lines": 895,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0019",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0019"
+      ],
+      "full_record_instances": 18,
+      "pending_record_instances": 1,
+      "system_sha256": "3da11e1abed7a95eeab566bf6d9cd1cc7f466086ea512944706cd8993ccc251e",
+      "direction_sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-224731Z-Gemini.md",
+      "bytes": 129394,
+      "sha256": "5047de518abdd186a6d43f3245c5692e55b8bb7084d13709fc7ed3d00b0a25db",
+      "lines": 1000,
+      "result_class": "ATLANDI",
+      "recorded_result_id": null,
+      "raw_response_present": false,
+      "raw_response_matches_current_records": [],
+      "full_record_instances": 19,
+      "pending_record_instances": 9,
+      "system_sha256": "62512c1a34037071dc37edcef3694c91d23b77837e58a0cc2780d1317968f347",
+      "direction_sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-225618Z-Claude.md",
+      "bytes": 112262,
+      "sha256": "766dd665cc24ce84d04020165b563fe03b8f7518dbccffdf61fd2d200c833d01",
+      "lines": 988,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0022",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0022"
+      ],
+      "full_record_instances": 21,
+      "pending_record_instances": 1,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-230419Z-Copilot.md",
+      "bytes": 142679,
+      "sha256": "4fae2f1f7eecc1fb18d1ac86d60f3c25ada47445cb56e9d0b1db83198d87b675",
+      "lines": 1077,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0023",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0023"
+      ],
+      "full_record_instances": 22,
+      "pending_record_instances": 8,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261023-232439Z-Claude.md",
+      "bytes": 127639,
+      "sha256": "1b11eb538b3e4ec691ee32eaaff1fcbc48c351b98dadc1d5404749482a691abc",
+      "lines": 1008,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0024",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0024"
+      ],
+      "full_record_instances": 23,
+      "pending_record_instances": 1,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-000303Z-ChatGPT.md",
+      "bytes": 169540,
+      "sha256": "a4c6d7c209797a6be9c0fd879e9329796abe8ee5502b098fcb397750e678f1a1",
+      "lines": 1156,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0027",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0027"
+      ],
+      "full_record_instances": 26,
+      "pending_record_instances": 11,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-000431Z-Claude.md",
+      "bytes": 145516,
+      "sha256": "a58472db8dd39d6cb7582940139bdec39e7bdaa52c0e9e646fda6cde22eb7d67",
+      "lines": 1074,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0029",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0029"
+      ],
+      "full_record_instances": 28,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-000832Z-Copilot.md",
+      "bytes": 152317,
+      "sha256": "2607fbb79b43bf83fa8a4aebf254f7ebf5c7c37a786f0554574ba234e43fd8b6",
+      "lines": 1077,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0029",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0030"
+      ],
+      "full_record_instances": 27,
+      "pending_record_instances": 3,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-001748Z-Claude.md",
+      "bytes": 163023,
+      "sha256": "4c8f542f326291abfd92a9a5839e6ea63a73fd8e4cd7eac6a75ae0c526459aca",
+      "lines": 1085,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0031",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0031"
+      ],
+      "full_record_instances": 30,
+      "pending_record_instances": 1,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-001857Z-ChatGPT.md",
+      "bytes": 172512,
+      "sha256": "b57761b390f1d1f386ea48c03aae5b9497df3a27725605d05fea28a54cb13cf5",
+      "lines": 1123,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0032",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0032"
+      ],
+      "full_record_instances": 31,
+      "pending_record_instances": 3,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-002117Z-Copilot.md",
+      "bytes": 175408,
+      "sha256": "cda78323e017dbb49ce0aeabe0201a3e39799e0086277c0c18d034d94ef5f0ee",
+      "lines": 1130,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0033",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0033"
+      ],
+      "full_record_instances": 32,
+      "pending_record_instances": 3,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-003032Z-Claude.md",
+      "bytes": 180505,
+      "sha256": "1dac7a7ca3227a3e21b8bfbc2f5b8a6ff8f91d1e5d858db36234c2ed31091de4",
+      "lines": 1129,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0034",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0034"
+      ],
+      "full_record_instances": 33,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-003142Z-ChatGPT.md",
+      "bytes": 187670,
+      "sha256": "a8ea3c6ad5b5071aca72fea48fcadcc2ed5354b74c814326711ba4a56db8c1bc",
+      "lines": 1140,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0035",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0035"
+      ],
+      "full_record_instances": 34,
+      "pending_record_instances": 2,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-003443Z-Copilot.md",
+      "bytes": 191187,
+      "sha256": "532823b983ff05854fa15fe113296326729dec3540676b8422469c8daaa2c62c",
+      "lines": 1152,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0036",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0036"
+      ],
+      "full_record_instances": 35,
+      "pending_record_instances": 2,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-004247Z-Claude.md",
+      "bytes": 199459,
+      "sha256": "9ebf6525aeb4eb1ed4cd58b7e1443c98f8052aaad159ada935742b744f5dbd82",
+      "lines": 1162,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0037",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0037"
+      ],
+      "full_record_instances": 36,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-004413Z-ChatGPT.md",
+      "bytes": 207236,
+      "sha256": "a281933c53d5fa5d99d5ebe0b53983a95776dadc89ce859d308c1012fbe22f2c",
+      "lines": 1173,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0038",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0038"
+      ],
+      "full_record_instances": 37,
+      "pending_record_instances": 2,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-004540Z-Copilot.md",
+      "bytes": 209250,
+      "sha256": "87990079b365271f2a1c1cf3ce381c06d115b9fa9cb5124311f7a195161c93e2",
+      "lines": 1185,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0040",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0040"
+      ],
+      "full_record_instances": 38,
+      "pending_record_instances": 2,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-005231Z-Claude.md",
+      "bytes": 217412,
+      "sha256": "8fb0b20775f70f564788678dd4507e3617eb6f1881191b137c8154faf9e251b3",
+      "lines": 1206,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0041",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0041"
+      ],
+      "full_record_instances": 40,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-005326Z-ChatGPT.md",
+      "bytes": 224795,
+      "sha256": "50422c2429d145eadf8ff917466813f4e203b6219bf082cd808792cca238f227",
+      "lines": 1217,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0042",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0042"
+      ],
+      "full_record_instances": 41,
+      "pending_record_instances": 2,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-005504Z-Copilot.md",
+      "bytes": 226808,
+      "sha256": "cf96f8366ca0f0638b61fb51d1925a883739c333c547d5d31d215ea4234a0396",
+      "lines": 1229,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0043",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0043"
+      ],
+      "full_record_instances": 42,
+      "pending_record_instances": 2,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-005526Z-Claude.md",
+      "bytes": 215146,
+      "sha256": "fba2ff8d84d021f7a16cabf6fb46b832fb1c6aef3d6a43926b6f7b0ff418c2b9",
+      "lines": 1206,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0041",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0044"
+      ],
+      "full_record_instances": 40,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-011219Z-Claude.md",
+      "bytes": 240503,
+      "sha256": "98877a3b8fa99caa333fb9cc18f035685eb5685b5d144876edec27a61281dd5c",
+      "lines": 1250,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0045",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0045"
+      ],
+      "full_record_instances": 44,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-011357Z-ChatGPT.md",
+      "bytes": 252317,
+      "sha256": "42a80737302fe3dfd12338b4670492f88531b6228af7af420781fe2d75310ce0",
+      "lines": 1272,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0046",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0046"
+      ],
+      "full_record_instances": 45,
+      "pending_record_instances": 3,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-011609Z-Copilot.md",
+      "bytes": 254865,
+      "sha256": "1f41ee01dd3296edb21df46b84aeebf6eb20c89130e981373285e87f9c04f289",
+      "lines": 1286,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0047",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0047"
+      ],
+      "full_record_instances": 46,
+      "pending_record_instances": 3,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-012436Z-Claude.md",
+      "bytes": 253978,
+      "sha256": "884c93e36302ee9efb0b16bce3976d368351f0a9b207536c4e2a9413190a68f0",
+      "lines": 1283,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0048",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0048"
+      ],
+      "full_record_instances": 47,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-012559Z-ChatGPT.md",
+      "bytes": 262302,
+      "sha256": "5ac96e41d182814ce464025337b8c3aef419ca97cdfd3d5c0232d2f4373ef683",
+      "lines": 1294,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0049",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0049"
+      ],
+      "full_record_instances": 48,
+      "pending_record_instances": 2,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-012741Z-Copilot.md",
+      "bytes": 265521,
+      "sha256": "dacd317c26682b98715a81dcbad7078d0a1ff5b17cfd6b6a270ed900d23e0e33",
+      "lines": 1306,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0050",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0050"
+      ],
+      "full_record_instances": 49,
+      "pending_record_instances": 2,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-013351Z-Claude.md",
+      "bytes": 265026,
+      "sha256": "926d916b95fced1f60e3ef21d2a48374c79782b744b2dd7dc28ebd369fa67540",
+      "lines": 1316,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0051",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0051"
+      ],
+      "full_record_instances": 50,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-013457Z-Claude.md",
+      "bytes": 267158,
+      "sha256": "c2e4e8da1cbf61d5833dddba17ee9355e5fc223f6cb13792bdd3bc6e23eacc15",
+      "lines": 1316,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0051",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0052"
+      ],
+      "full_record_instances": 50,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-013629Z-ChatGPT.md",
+      "bytes": 272981,
+      "sha256": "c1c98dc02add1e3d31aa29fea4e51d0cc2463500b5063123e07b6be424638e4b",
+      "lines": 1327,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0052",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0053"
+      ],
+      "full_record_instances": 51,
+      "pending_record_instances": 2,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-013828Z-Copilot.md",
+      "bytes": 273711,
+      "sha256": "7730c8478857ae6d2685a6923d3736a873312c803373141c192cc137f42cf7f2",
+      "lines": 1339,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0053",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0054"
+      ],
+      "full_record_instances": 52,
+      "pending_record_instances": 2,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-014758Z-Claude.md",
+      "bytes": 283232,
+      "sha256": "eb5fd3fb28fef43930bc6bee24c65a3bcb585c08cc18ffc6713f47c0c82e9cb2",
+      "lines": 1360,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0055",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0055"
+      ],
+      "full_record_instances": 54,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-014922Z-ChatGPT.md",
+      "bytes": 293553,
+      "sha256": "5a6f850ffd59871e25962eab91c4dc9f947fd83c2ebaa49947d0bcf1686e5aae",
+      "lines": 1387,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0056",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0056"
+      ],
+      "full_record_instances": 55,
+      "pending_record_instances": 3,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-015046Z-Copilot.md",
+      "bytes": 296390,
+      "sha256": "f9b5ee8471c8f271bc484457069eb34cf99b249d8c231f88beb51fececd03dbb",
+      "lines": 1394,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0057",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0057"
+      ],
+      "full_record_instances": 56,
+      "pending_record_instances": 3,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-015810Z-Claude.md",
+      "bytes": 298612,
+      "sha256": "7241436a1404570c6f71efff8146e4498f90a9678372bf3b17b36d4202e1cd4f",
+      "lines": 1393,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0058",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0058"
+      ],
+      "full_record_instances": 57,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-015906Z-ChatGPT.md",
+      "bytes": 303016,
+      "sha256": "271c61bbfd74e977c7dcd9c6723c3a9b4603444d7b2798e92a533b89a3fa698e",
+      "lines": 1404,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0059",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0059"
+      ],
+      "full_record_instances": 58,
+      "pending_record_instances": 2,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-020020Z-Copilot.md",
+      "bytes": 304542,
+      "sha256": "0d158cbac90d1d7b41c952b633f4c818c2986d26f1d088622bf609cbb8803856",
+      "lines": 1416,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0060",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0060"
+      ],
+      "full_record_instances": 59,
+      "pending_record_instances": 2,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-020702Z-Claude.md",
+      "bytes": 308652,
+      "sha256": "274a3721ee5a52d49315f568b6f312e68adb1a5f553193fc696a663c6a004bc7",
+      "lines": 1426,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0061",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0061"
+      ],
+      "full_record_instances": 60,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-020807Z-ChatGPT.md",
+      "bytes": 315890,
+      "sha256": "44f6318aa2892897570d003278e9a7ba1c84a070b5ab24cc4dcc55a7830261a2",
+      "lines": 1442,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0062",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0062"
+      ],
+      "full_record_instances": 61,
+      "pending_record_instances": 2,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-020951Z-Copilot.md",
+      "bytes": 317745,
+      "sha256": "e37d0e4eee144b120e4abe2770953405d3806153e7d7811a791d81a9d6591d02",
+      "lines": 1449,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0063",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0063"
+      ],
+      "full_record_instances": 62,
+      "pending_record_instances": 2,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-021655Z-Claude.md",
+      "bytes": 321254,
+      "sha256": "1bda3ae95166b81402c4fb47204642d93a690bdc125ad67ed3d2a586cf032a81",
+      "lines": 1459,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0064",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0064"
+      ],
+      "full_record_instances": 63,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-021807Z-ChatGPT.md",
+      "bytes": 326674,
+      "sha256": "0643e2a7d7b89a93eb9e518ef217a5c01005a246a318809882edc8d42f85c603",
+      "lines": 1475,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0065",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0065"
+      ],
+      "full_record_instances": 64,
+      "pending_record_instances": 2,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-021945Z-Copilot.md",
+      "bytes": 329304,
+      "sha256": "7af2615dd3833e644243c1f285bfdaa10f193cafa8de87b03553127991304ccb",
+      "lines": 1482,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0066",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0066"
+      ],
+      "full_record_instances": 65,
+      "pending_record_instances": 2,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-022851Z-Claude.md",
+      "bytes": 335443,
+      "sha256": "c45976abae3cb4a6662a6d85a3c254d8b2f65d24bf1c5c842a33feeb6c48d992",
+      "lines": 1492,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0067",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0067"
+      ],
+      "full_record_instances": 66,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-022942Z-ChatGPT.md",
+      "bytes": 340063,
+      "sha256": "7dad85def119b82466157bda7a489dcd196a2c3bb73969d21ec4b14bb51b75ad",
+      "lines": 1503,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0068",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0068"
+      ],
+      "full_record_instances": 67,
+      "pending_record_instances": 2,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-023126Z-Copilot.md",
+      "bytes": 342121,
+      "sha256": "fcdc1fd452f39ba148341fd6f700a103d10c979585b61b3a857a4073ae3dbd9c",
+      "lines": 1515,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0069",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0069"
+      ],
+      "full_record_instances": 68,
+      "pending_record_instances": 2,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-023327Z-Claude.md",
+      "bytes": 346014,
+      "sha256": "91a2a98a175a313be54805d54f93ea528b5494c911f84a1727e517d3b63f55b1",
+      "lines": 1525,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0070",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0070"
+      ],
+      "full_record_instances": 69,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-023756Z-ChatGPT.md",
+      "bytes": 357108,
+      "sha256": "25732c1aa15f0657939320674506441f63dfecf4341a76b6588aa6527029d7e1",
+      "lines": 1547,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0071",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0071"
+      ],
+      "full_record_instances": 70,
+      "pending_record_instances": 3,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-023930Z-Copilot.md",
+      "bytes": 359321,
+      "sha256": "0a1a8414329cbca56495acdf07d509087d3a6118075ce0b2df6386fb61126369",
+      "lines": 1559,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0072",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0072"
+      ],
+      "full_record_instances": 71,
+      "pending_record_instances": 3,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-024725Z-Claude.md",
+      "bytes": 363944,
+      "sha256": "1f754874648d50af62364adea6fce5c9dc6b96cd35c2652d80847cb5f48afd99",
+      "lines": 1558,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0073",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0073"
+      ],
+      "full_record_instances": 72,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-024843Z-ChatGPT.md",
+      "bytes": 363234,
+      "sha256": "f25f6b48ecc935892ee436f0d294204a80ab9d14ac29736b0e50c041114b1cbf",
+      "lines": 1558,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0074",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0074"
+      ],
+      "full_record_instances": 73,
+      "pending_record_instances": 1,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-025101Z-Copilot.md",
+      "bytes": 365525,
+      "sha256": "df895300b9cea316413c0bb4eea4a1217100c69feea77a1cad9794130f4c5c99",
+      "lines": 1570,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0075",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0075"
+      ],
+      "full_record_instances": 74,
+      "pending_record_instances": 1,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-030618Z-Claude.md",
+      "bytes": 379375,
+      "sha256": "e374a4f969ba80eda77293d7d01bdd18b1b9981176f91373cadc6151b6745ee3",
+      "lines": 1591,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0076",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0076"
+      ],
+      "full_record_instances": 75,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-030754Z-ChatGPT.md",
+      "bytes": 386982,
+      "sha256": "1b2699d75cc148c240e9abe40884790c4daf3f70123905fd31a87ed19de28adc",
+      "lines": 1602,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0077",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0077"
+      ],
+      "full_record_instances": 76,
+      "pending_record_instances": 2,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-030947Z-Copilot.md",
+      "bytes": 388878,
+      "sha256": "023cd92ceb81bc2f082bcd3b0a130725817291fed35417952ae0133da7b62266",
+      "lines": 1614,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0078",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0078"
+      ],
+      "full_record_instances": 77,
+      "pending_record_instances": 2,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-031854Z-Claude.md",
+      "bytes": 395810,
+      "sha256": "425c3a44a7f1e5c6a5c79d793c17c67900505c5aba465802f9b4a035ca679c60",
+      "lines": 1624,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0079",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0079"
+      ],
+      "full_record_instances": 78,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-032024Z-ChatGPT.md",
+      "bytes": 404234,
+      "sha256": "d00ff782e4beef8cb88d2076f7ec12b2a8ade33dfae8fa2d06f4cfe9bea6f50e",
+      "lines": 1635,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0080",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0080"
+      ],
+      "full_record_instances": 79,
+      "pending_record_instances": 2,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-032323Z-Copilot.md",
+      "bytes": 408808,
+      "sha256": "f587fdf59476ebe05eac63710ee7912f9fda490aa408a0e8da9d051c0ee5a3f9",
+      "lines": 1647,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0081",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0081"
+      ],
+      "full_record_instances": 80,
+      "pending_record_instances": 2,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-033006Z-Claude.md",
+      "bytes": 412525,
+      "sha256": "c1f0caa714c3b1644058e752bcadcdc37a463bb09020293c48593a740eb31516",
+      "lines": 1657,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0082",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0082"
+      ],
+      "full_record_instances": 81,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-034418Z-Claude.md",
+      "bytes": 420784,
+      "sha256": "6ef58969a3801b2d0982c8e54d52979076826894d3449884974cf47dc59145b4",
+      "lines": 1657,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0082",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0083"
+      ],
+      "full_record_instances": 81,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-034522Z-ChatGPT.md",
+      "bytes": 427273,
+      "sha256": "e9a30c60410db08dd7efea516dc644cd4f428c54d04d8156c0872ebecb60fff8",
+      "lines": 1668,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0083",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0084"
+      ],
+      "full_record_instances": 82,
+      "pending_record_instances": 2,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-034911Z-Copilot.md",
+      "bytes": 427439,
+      "sha256": "bcc498fdb2a256c4cb0a6a3c2982137960ebf9a9c07b273baec5847a0427d21d",
+      "lines": 1680,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0084",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0085"
+      ],
+      "full_record_instances": 83,
+      "pending_record_instances": 2,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-035704Z-Claude.md",
+      "bytes": 439673,
+      "sha256": "3080462b6bf8abcb6de999d05064007bca1e32ca9f4026e4c4ec3b70dba3357b",
+      "lines": 1701,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0086",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0086"
+      ],
+      "full_record_instances": 85,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-035840Z-ChatGPT.md",
+      "bytes": 457598,
+      "sha256": "504eebddee4eb3002ea72317390a2127fb3336bffb598c846110a6d4946fe243",
+      "lines": 1723,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0087",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0087"
+      ],
+      "full_record_instances": 86,
+      "pending_record_instances": 3,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-040111Z-Copilot.md",
+      "bytes": 460702,
+      "sha256": "da92e582d7970939c1e126894131b1f839bbebea51f67e08cf1d20c8eadbb03b",
+      "lines": 1735,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0088",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0088"
+      ],
+      "full_record_instances": 87,
+      "pending_record_instances": 3,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-040857Z-Claude.md",
+      "bytes": 457133,
+      "sha256": "389820c9d9ec3c957e1fec579471f61ff10baa5309edb4c74047e7de6e2b5a6d",
+      "lines": 1734,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0089",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0089"
+      ],
+      "full_record_instances": 88,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-041045Z-ChatGPT.md",
+      "bytes": 464236,
+      "sha256": "dd502e7407cd91d195f57881d79991c36ef0ed0cb4a74d95924b577bd65337fe",
+      "lines": 1750,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0090",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0090"
+      ],
+      "full_record_instances": 89,
+      "pending_record_instances": 2,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-041606Z-Copilot.md",
+      "bytes": 468559,
+      "sha256": "8edea00c8714e074258b15adb213945d40f675bb0ce9e433ab308a45fc317cf5",
+      "lines": 1757,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0091",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0091"
+      ],
+      "full_record_instances": 90,
+      "pending_record_instances": 2,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-042911Z-Claude.md",
+      "bytes": 474234,
+      "sha256": "bdc752c3ac64aadc57919fa69e380cb1f5751bb06e91b7af0032b142ed9d4de6",
+      "lines": 1767,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0092",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0092"
+      ],
+      "full_record_instances": 91,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-043533Z-Claude.md",
+      "bytes": 482474,
+      "sha256": "85e33752a8a57af078e9e3591835bfb72910ceb452f8c64f924ff5542e122796",
+      "lines": 1769,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0092",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0093"
+      ],
+      "full_record_instances": 91,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-043654Z-ChatGPT.md",
+      "bytes": 488205,
+      "sha256": "8e5e85eb831726216cd1c356a436a10152511aadd8c2201635c67e2362ce060e",
+      "lines": 1783,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0093",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0094"
+      ],
+      "full_record_instances": 92,
+      "pending_record_instances": 2,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-043958Z-Copilot.md",
+      "bytes": 491280,
+      "sha256": "6f4fec0e1801996504be88bc5b78c582d3f466898bfafc48238348f79b4c802b",
+      "lines": 1794,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0094",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0095"
+      ],
+      "full_record_instances": 93,
+      "pending_record_instances": 2,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-044740Z-Claude.md",
+      "bytes": 508505,
+      "sha256": "27e7ab5ac4fb5de01bcfd943eccb936ab8d62dbda95bac1570182157656cd5fc",
+      "lines": 1811,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0096",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0096"
+      ],
+      "full_record_instances": 95,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-044923Z-ChatGPT.md",
+      "bytes": 526872,
+      "sha256": "75bbbb4ec46d8f2ce99f5c41eddfec0cc627fa84fd809316d582b8e796014a34",
+      "lines": 1833,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0097",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0097"
+      ],
+      "full_record_instances": 96,
+      "pending_record_instances": 3,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-045721Z-Copilot.md",
+      "bytes": 533311,
+      "sha256": "ae656918a8812e42c28e5c7507d07cfa07440dac9c000ad3018f4281f5824cd6",
+      "lines": 1845,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0098",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0098"
+      ],
+      "full_record_instances": 97,
+      "pending_record_instances": 3,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-050533Z-Claude.md",
+      "bytes": 536381,
+      "sha256": "85166993a533f303aa05545ce50beaeea517a0c0f426266f7a4637b7c66c1837",
+      "lines": 1844,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0099",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0099"
+      ],
+      "full_record_instances": 98,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-050723Z-ChatGPT.md",
+      "bytes": 544006,
+      "sha256": "6d5b2859bffb615219c91bca85d7cdfa821c22a7fa3121d1fc148ce98c2e7e74",
+      "lines": 1855,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0100",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0100"
+      ],
+      "full_record_instances": 99,
+      "pending_record_instances": 2,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-051050Z-Copilot.md",
+      "bytes": 543167,
+      "sha256": "e8f28e286140823e392b456b4030efa2340bce05f84a37c6a3eca004874d010a",
+      "lines": 1867,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0101",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0101"
+      ],
+      "full_record_instances": 100,
+      "pending_record_instances": 2,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-052546Z-Claude.md",
+      "bytes": 554609,
+      "sha256": "7f2c6dde7e42d3a9da95cf58a9e93872bf99900bc30601fc6f0de6a54855286c",
+      "lines": 1877,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0102",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0103"
+      ],
+      "full_record_instances": 101,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-052605Z-Claude.md",
+      "bytes": 548862,
+      "sha256": "742d5ac50d91982e81734c1cf73ae8b3662be7506a03063e8ea2d388b820e95f",
+      "lines": 1877,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0102",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0102"
+      ],
+      "full_record_instances": 101,
+      "pending_record_instances": 2,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-052717Z-ChatGPT.md",
+      "bytes": 562189,
+      "sha256": "6226df02031266eb800d848cb05937c86ad96017ceed366250b65a6019442dd9",
+      "lines": 1888,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0103",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0104"
+      ],
+      "full_record_instances": 102,
+      "pending_record_instances": 2,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-053240Z-Copilot.md",
+      "bytes": 568784,
+      "sha256": "9fd689f38429487e7e04780c8a3a06cb85b71043a245e9abd59b886e236d2b39",
+      "lines": 1902,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0104",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0105"
+      ],
+      "full_record_instances": 103,
+      "pending_record_instances": 2,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-054318Z-Claude.md",
+      "bytes": 578554,
+      "sha256": "1de7257fb213d9bb96c7d4e504ed29ea51c9dc51c4bcd9fd31cd7a59e44b0c98",
+      "lines": 1910,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0106",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0106"
+      ],
+      "full_record_instances": 105,
+      "pending_record_instances": 1,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-054449Z-ChatGPT.md",
+      "bytes": 587831,
+      "sha256": "8414e5ef04fa995efca97ed639694e89f7ca2de28f67414479b17cd39d65ce63",
+      "lines": 1937,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0107",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0107"
+      ],
+      "full_record_instances": 106,
+      "pending_record_instances": 2,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-054825Z-Copilot.md",
+      "bytes": 586196,
+      "sha256": "cf7b2e6715615014eca23cd8493fede4e32d8e0826ccbc3d86629ce511a9ab28",
+      "lines": 1933,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0108",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0108"
+      ],
+      "full_record_instances": 107,
+      "pending_record_instances": 1,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-095728Z-Claude.md",
+      "bytes": 615580,
+      "sha256": "014334ba1a6037bad3c04ab6981963dbe33da93b27c78da7ae8e4572179236f3",
+      "lines": 2022,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0116",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0116"
+      ],
+      "full_record_instances": 115,
+      "pending_record_instances": 1,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-100135Z-Claude.md",
+      "bytes": 619184,
+      "sha256": "875cb2c647e6cf8ac3e8c957932df74d2e44a014ae27b2fbb0e5a2221df0e035",
+      "lines": 2020,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0116",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0117"
+      ],
+      "full_record_instances": 115,
+      "pending_record_instances": 1,
+      "system_sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-100454Z-ChatGPT.md",
+      "bytes": 624508,
+      "sha256": "abde83fb532f44f6c60ef71da4cbf65cfd0fba7cb334a2ffd5425bc5068b67e1",
+      "lines": 2031,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0117",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0118"
+      ],
+      "full_record_instances": 116,
+      "pending_record_instances": 1,
+      "system_sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    },
+    {
+      "path": "kayit/20261024-101157Z-Copilot.md",
+      "bytes": 639065,
+      "sha256": "1c846e0a81926c558cdd6f6c661e4e725bf75f810bed9b4ad53230c23b941721",
+      "lines": 2054,
+      "result_class": "eklendi",
+      "recorded_result_id": "k-0119",
+      "raw_response_present": true,
+      "raw_response_matches_current_records": [
+        "k-0119"
+      ],
+      "full_record_instances": 118,
+      "pending_record_instances": 1,
+      "system_sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "direction_sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "scope": "complete structural parse; repeated prompt bodies indexed; four new raw responses read in full"
+    }
+  ]
+}
