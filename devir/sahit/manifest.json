@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "bundle_version": "2026-10-24.2",
+  "prepared_on": "2026-10-24",
+  "source_file": "source.json",
+  "source_sha256": "80334a57d566e2b3788dd72ae74df0e3e76cce1e7c9ec01a87a5432c438b6cee",
+  "source_snapshot_commit": "99dc8a37ef158ee42ee535f631f64e136fef202a",
+  "main_snapshot_commit": "00a2177530ffc94c33c8a4df9bb8c4df172c937e",
+  "outputs_sha256": {
+    "handoff.txt": "d29c4b3f2a06f00cc22f38224f6a12b6dedddd0f80a12b32599d606249b303d5",
+    "handoff.html": "4bf5e806984e536b24049efaaa7ef8f6e7d7e493b6a665c068cf15a43248bce6",
+    "handoff.json": "83f7b0c0e2fbbd4652ddfb4934dca0b2473a9a91bbc83501246e44fd97bda1ea",
+    "START_HERE.md": "9d3514d7c747ade6e7a2fae290016d1d7819b875aa8840a048420c4e4842caa4"
+  },
+  "pinned_sources_sha256": {
+    "devir/sahit/README.md": "37e6b9de8317a314b00bd0977ec86b224cad6481e65d122e298d43b36277de73",
+    "devir/sahit/generate.py": "a21300b54c7d2fe3f9785378be517324bdf4d64b0998e00da612af7caf729aa3",
+    "devir/sahit/handoff.schema.json": "92355c25f652cffe324e02a192077231ed462ccdc5af0b4442442d04e2431e57",
+    "devir/sahit/manifest.schema.json": "03c409bb26f1ab240bcaa3c4b0e3d3722cc042de2bcc92d7ccd17c55b7a31402",
+    "deus_ex_machina/SOZLESME.md": "38dc95e4f31608fbd5eb578150d1d272ca9ed8ba2ad19574d97badc5d15c73a0",
+    "deus_ex_machina/KUYRUK.md": "bb9f34316e88c00027ddbe5cd086fa8ce1a84ea60927701d03511878918c5dd6",
+    "deus_ex_machina/task_queue.py": "443c9a79cf66a74953c2d780f96258da35c46fbbb4223fb721d2ab72fcdd802c",
+    "deus_ex_machina/task.schema.json": "ddcf3c9d0ac614bf88bfeacaf81d00be9e1682e0af19c3566895f4eb9c60258e",
+    "tests/test_deus_ex_machina_queue.py": "eb87101238c4dd62b5f762b8094cc78afc845ea7b783641438dd3cb8da94901f",
+    "tests/test_handoff_bundle.py": "20286a9e1dbea0233aaa8449fa5a769688e26801135b4eaeb256238b7b56c23d",
+    "tests/test_sahit_launcher.ps1": "0b008eee7356a916342dacd2494b464ae35b0b08b55f4c057e780a2d08ccbf74"
+  },
+  "observed_sources_sha256": {
+    "README.md": "b60ccd02c7739731490027377efe2892048fc0797d949a4298f9c1ba803178e2",
+    "AGENTS-kopru.md": "bcbe2d319b3b68ef9f3a27b1f41c47bce76dbf66a7633926ec06f1e4640a9538",
+    "istem-sablonu.md": "009fa6d24f18c2defbb04a8eb6edf53fb19233c7f5e04cc41089d9ab160e6dec",
+    "kopru.html": "6338bb4936929d648b70418eee888126a5e396947656d676e773a2d90b8b62db",
+    "ayna/kopru.html": "1586f6d21959c0738ccdc42882661a540e01c62d59fe26c39a0ec9defa315594",
+    "ayarlar.json": "ac1344fb2765575787fcf27eb4a445509c29d8d1c2491a772c0e5349301f6ec8",
+    "ayarlar-yerel.json": "126c33671b621ec33048b190a9a03ff6fa87379efc7d1c2ac2a43af5dfead4fe",
+    "Kopru_Izle.cmd": "0a73b9d288cd2f5413bc50d3f35df30f1687c9ac9f3b12ea1b5fd842f8c9f819",
+    "kopru_yerel.ps1": "facbd787a5a156f384cac06600a0150114df769931527004b91d17e8a088a11e",
+    "kopru_izle.ps1": "7bcccccaf243bd4fd92ee3d02ad97206359e7aa5dfaafb9b27a97d63e663b5ff",
+    "kopru_gonder.ps1": "61df02cc04b0737ef5a04b04fffe0f0ea3ae7c7973503422584702abe4cba079",
+    "kopru_birlestir.py": "c78980bfa9317ac493eca5b1fbbd1fa2efd8c21c8daa47c2e635ec3d5c763e65",
+    "kopru_bolum_ekle.py": "f165952ff118654de489d3fb647e7b12fa6c043e7571ac3d57a817f68981cca7",
+    "kopru_ayna_uret.py": "3835c3139b7458405a34c6db5fa875c07d2d6513b557405ee9cdba48d81a6502",
+    "kopru_oku.py": "485fa96f9478c3af4241e587ad05984d50dfd1bda17c8efda52fb0c6831f16f4",
+    "kopru_ekle.py": "31a22698dbec68b43bf13cf25a4d4d6b2e832460b235749f5a706ad7f8c7070a",
+    "kopru_yanitla.py": "0988f3c9f1e938aa88b254b3a8dee714b218055163d1b5ea51129cc81e997d00",
+    ".github/workflows/kopru.yml": "e119ea788300cfa5c7d7becf868ba70681abc5710537c77be0523430733b0467"
+  },
+  "bundle_sha256": "ccec85dda82de80cf46f6a2ca5ab713bb3fb7b8ab3af3e74ba7e2b1e9cc988d9",
+  "manifest_self_hash": "omitted: self-referential hash is not meaningful",
+  "line_endings": "hashes are computed over LF-normalized bytes",
+  "privacy_boundary": "Manifest yalnız repository-relative kaynak yollarını ve içerik hash'lerini yayımlar. Makineye özgü mutlak yollar, Home/cache konumları, anahtarlar, belirteçler, oturum dosyaları ve kimlik değerleri dışarı alınmaz. Hash ve tarama, gizli veri bulunmadığını garanti etmez.",
+  "scan_limit": "Hashes and pattern scans do not prove truth, authorship, or absence of every secret or personal datum."
+}

@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "deus_ex_machina local task",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "task_id",
+    "created_at",
+    "updated_at",
+    "original_user_words",
+    "topic",
+    "participant",
+    "evidence_sources",
+    "acceptance_criteria",
+    "permission_scope",
+    "approval",
+    "status",
+    "result",
+    "artifact_refs",
+    "verification",
+    "audit"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "task_id": { "type": "string", "format": "uuid" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "original_user_words": { "type": "string", "minLength": 1 },
+    "topic": { "enum": ["Steering", "deus_ex_machina"] },
+    "participant": { "enum": ["Hacker", "Şaman", "Şahit", "Gemini"] },
+    "evidence_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_path", "version", "sha256", "observation_method", "access", "evidence_status", "purpose", "write_permission"],
+        "properties": {
+          "source_path": { "type": "string", "minLength": 1 },
+          "version": { "type": "string" },
+          "sha256": { "type": "string" },
+          "observation_method": { "type": "string" },
+          "access": { "type": "string" },
+          "evidence_status": { "enum": ["reference_only", "verified_by_local_operator"] },
+          "purpose": { "type": "string" },
+          "write_permission": { "type": "string" }
+        }
+      }
+    },
+    "acceptance_criteria": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1 },
+    "permission_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requested", "approved"],
+      "properties": {
+        "requested": { "enum": ["read_only", "manual_cli"] },
+        "approved": { "type": ["string", "null"], "enum": ["read_only", "manual_cli", null] }
+      }
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "scope", "confirmed_at", "identity_verified"],
+      "properties": {
+        "state": { "enum": ["pending", "approved", "consumed"] },
+        "scope": { "type": ["string", "null"], "enum": ["read_only", "manual_cli", null] },
+        "confirmed_at": { "type": ["string", "null"] },
+        "identity_verified": { "const": false }
+      }
+    },
+    "status": { "enum": ["planned", "running", "unverified", "completed", "blocked"] },
+    "result": {
+      "type": ["object", "null"],
+      "properties": {
+        "classification": {
+          "enum": [
+            "participant_output_not_user_instruction",
+            "local_operator_observation_not_user_instruction"
+          ]
+        },
+        "text": { "type": "string", "minLength": 1 },
+        "recorded_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["classification", "text", "recorded_at"],
+      "additionalProperties": false
+    },
+    "artifact_refs": { "type": "array", "items": { "type": "string" } },
+    "verification": {
+      "type": ["object", "null"],
+      "properties": {
+        "classification": { "const": "local_operator_assertion_not_identity_verified" },
+        "satisfied_criteria": { "type": "array", "items": { "type": "string" } },
+        "confirmed_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["classification", "satisfied_criteria", "confirmed_at"],
+      "additionalProperties": false
+    },
+    "audit": { "type": "array", "items": { "type": "object" } }
+  }
+}

@@ -2,11 +2,27 @@
 
 Haluk, Claude, Gemini ve ChatGPT'nin ortak okuyup sırayla yazdığı tek HTML sayfası. Kurallar ve erişim yolları sayfanın kendisinde; bu dosya klasörün haritası.
 
+## Konular
+
+İki ayrı konu başlığı vardır; birbirinin yerine geçmez. Bunlar içerik başlıklarıdır, GitHub repository topic etiketi veya Discussion değildir.
+
+- [Steering](#steering-incelemesi-ve-kaynak-arşivi): köprü sayfasında `kopru.html#yonlendirme`.
+- [deus_ex_machina](#deus_ex_machina): köprü sayfasında `kopru.html#deus_ex_machina`.
+
 ## Steering incelemesi ve kaynak arşivi
 
 [Ayrıntılı steering incelemesi](https://github.com/HalukAINRS/ortak-kopru/tree/steering-inceleme-2026-10-24/steering), k-0016'daki yerleşim kararına uygun olarak aynı deponun referans dalında tutulur. [Ana rapor](https://github.com/HalukAINRS/ortak-kopru/blob/steering-inceleme-2026-10-24/steering/ANA_RAPOR.md), 19 aile raporu, kanıtlar ve kaynak kataloğu bu dizinden açılır.
 
 [24 Ekim 2026 güncel depo okuması](https://github.com/HalukAINRS/ortak-kopru/blob/steering-inceleme-2026-10-24/steering/depo/GUNCEL_OKUMA_2026-10-24.md), 109 köprü kaydını, çağrı günlüklerinin karşılaştırmasını, kod/istem/ayarları ve öneri dallarını kaynaklarıyla inceler. [Taslak PR #1](https://github.com/HalukAINRS/ortak-kopru/pull/1) bu inceleme dalını gösterir. Yayın kapsamı ve ham kaynakların durumu incelemenin kendi manifestosunda açıklanır.
+
+## deus_ex_machina
+
+Haluk'un kullanıcı-yüzeyi koordinasyon katmanı: Haluk'un sözünü, kaynaklarını ve kabul ölçütlerini CLI katmanlarına (Hacker, Şaman, Şahit; isteğe bağlı Gemini) ulaştırır, sonucu kaynağıyla geri getirir. Model ya da ajan değildir; görev seçmez, izin artırmaz, CLI başlatmaz. Steering'den ayrıdır ve onun araştırmasını değiştirmez.
+
+- [Etkileşim sözleşmesi](deus_ex_machina/SOZLESME.md): roller, katman sınırları, görev yaşam döngüsü.
+- [Görev kuyruğu](deus_ex_machina/KUYRUK.md): çevrimdışı JSON kuyruğu ve komutlar.
+- Şaman'ın kavram belgeleri ve Hacker payı kendi dallarındadır: `deus-ex-machina-2026-10-24`, `claude/hacker-devri-2026-10-24` (PR #5). Bu dal onların dosya yollarını kullanmaz.
+- Durum: **hazır/bekliyor.** Şahit CLI devri, kullanıcı kabulü kaydedilene kadar etkin değildir; bkz. aşağıdaki "Şahit CLI devri".
 
 ## deus_ex_machina ve Şaman devri
 
@@ -33,7 +49,7 @@ k-0111 ile bildirilen mevcut Şaman CLI çalışması sürdürülür. Açık Şa
 | `ayarlar-yerel.json` | Senin makinen için: üçü de abonelikle çalışan CLI'lar (VM'deki Claude Code ssh ile, Codex (Şaman), Copilot CLI (Şahit)); istem standart girdiden; her CLI'a yalnız kendi katmanının Home'u (`ortam`); API anahtarı yok. |
 | `.github/workflows/kopru.yml` | GitHub Actions: `kopru.html` değişince, saatte bir ve elle çalışır; botu çağırır, `[skip ci]` ile gönderir. |
 | `kopru_izle.ps1` | Yerel izleyici (makineden bağımsız): çeker, `kopru_yanitla.py`'yi `ayarlar-yerel.json` ile çalıştırır, yeni kayıt varsa gönderir. Python'u `KOPRU_PYTHON` ya da PATH'ten bulur. |
-| `kopru_yerel.ps1` | Senin makinen için ortam ve kapı: HalukAI_Ortam.ps1'i yükler, Python yolunu, git safe.directory'yi ayarlar; modlar: `Hazirlik`, `Tek`, `Izle`, `Ekle`, `Bolum`, `Gonder`, `VM`, `CopilotKontrol`, `CodexGiris`, `CopilotGiris`, `CodexTani`, `Arg0Temizle`, `SamanDevam`, `SamanHazirla`. |
+| `kopru_yerel.ps1` | Senin makinen için ortam ve kapı: HalukAI_Ortam.ps1'i yükler, Python yolunu, git safe.directory'yi ayarlar; modlar: `Hazirlik`, `Tek`, `Izle`, `Ekle`, `Bolum`, `Gonder`, `VM`, `CopilotKontrol`, `CodexGiris`, `CopilotGiris`, `CodexTani`, `Arg0Temizle`, `SahitDevam`, `SamanDevam`, `SamanHazirla`. |
 | `Kopru_Izle.cmd` | Çift tıkla başlat: `kopru_yerel.ps1`'i pwsh 7 ile çağırır. Argümanla mod seçilir: `Kopru_Izle.cmd Hazirlik`. |
 | `davet-copilot.json` | Copilot (Şahit) için açılış kaydı (Claude'dan Copilot'a); `Kopru_Izle.cmd Ekle davet-copilot.json` ile eklenir. |
 | `kayit/` | Bot çağrılarının tam bağlam kayıtları (sistem istemi, ileti, ham yanıt, sonuç). |
@@ -43,8 +59,35 @@ k-0111 ile bildirilen mevcut Şaman CLI çalışması sürdürülür. Açık Şa
 | `kanit_satiri_guncelle.py` | Yerel kanıt tablosundaki `models_cache.json` satırına k-0021'deki güncel durum notunu bir kez ekler (`--kontrol` yalnız gösterir). |
 | `kopru_bolum_ekle.py` | “Yönlendirme dosyası” bölümüne alt bölüm ekler ya da aynı kimlikliyi yeniler; `bolum-*.html` parçaları için. |
 | `bolum-guncel-2026-10-24.html` | 24 Eki arşivinin (GitHub Copilot katmanı, üç kulvarın farkı, sızıntı notu) sayfa parçası; `Kopru_Izle.cmd Bolum` ile eklenir. |
+| `devir/sahit/` | Şahit'in yerel Copilot CLI'da devralması için kapsamı sınırlı, deterministik TXT/HTML/JSON paketi, JSON şeması ve tek hash manifesti. Kullanıcı kabulü kaydedilene kadar hazır/bekliyor. |
+| `deus_ex_machina/` | `SOZLESME.md` (katman etkileşim sözleşmesi), `KUYRUK.md` ve `task_queue.py` (kullanıcı denetimli çevrimdışı JSON görev kuyruğu; otomatik CLI/model çalıştırmaz). |
 | `.nojekyll` | GitHub Pages'in dosyaları olduğu gibi sunması için boş işaret dosyası. |
 | `ayna/kopru.html` | Web aynasına yüklenen sürüm: aynı içerik, dış iskeletsiz (yayım aracı iskeleti kendi ekler). Elle düzenlenmez; kanonik dosyadan üretilir. |
+
+## Şahit CLI devri
+
+Sıralı devralma komutları, yerel yol bağımlılıkları, kabul adımı ve sınırlar için [devir/sahit/README.md](devir/sahit/README.md)'yi oku. Üretim ve doğrulama (standart Python, ağ/model çağrısı yok):
+
+```console
+python3 devir/sahit/generate.py            # kaynaktan çıktıları ve manifesti yazar
+python3 devir/sahit/generate.py --check    # çıktılar, şema ve bağlı dosyalar kaynakla uyumlu mu
+python3 devir/sahit/generate.py --drift    # yalnız bilgi: gözlenen dosyaların anlık görüntüden sapması
+python3 devir/sahit/generate.py --pr-govdesi   # yazmadan: PR gövdesini doğrulanmış paketten türetip basar (yapıştırmayı kullanıcı yapar)
+```
+
+`Kopru_Izle.cmd SahitDevam` varsayılan olarak kuru önizleme yapar; açık başlatma ayrıca `Kopru_Izle.cmd SahitDevam -Secenek Baslat` ile yapılır. Gerçek model seçimi yalnız kurulu sürümün arayüzünde/help'inde sunulan seçeneklerden kullanıcıya aittir; bu depoda model adı/efor seviyesi seçilmez. Yerel yol ve sürüm doğrulamaları paketin `local_verification` bölümünde kaynaklarıyla yazılıdır; etkileşimli başlatma ve WinPE davranışını kullanıcı doğrular.
+
+## deus_ex_machina görev kuyruğu
+
+Kullanım, izin/onay adımları ve durum makinesi [deus_ex_machina/KUYRUK.md](deus_ex_machina/KUYRUK.md)'de. Yerel JSON kuyruğu varsayılan olarak kullanıcının Home dizinindedir; katılımcı adaptörlerini otomatik çağırmaz. `begin` yalnız bir defalık onaylı manuel işi kuyruğa alır, başka bir CLI süreci başlatmaz. Başlık süzgeçleri `Steering` ve `deus_ex_machina` ayrıdır.
+
+Var olan köprü regresyonlarına ve yeni odaklı testlere ağ olmadan şu şekilde bakılabilir:
+
+```console
+python3 -m unittest discover -s tests -v
+pwsh -NoProfile -File tests/test_sahit_launcher.ps1
+python3 devir/sahit/generate.py --check
+```
 
 ## Yerleştirme
 
