@@ -1,0 +1,53 @@
+name: Depo doğrulama
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dogrulama-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  cevrimdisi:
+    name: Çevrimdışı kontroller (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Regresyon testleri (CLI ve API çağrısı yok)
+        run: python -m unittest discover -v
+      - name: Köprü ve ayna bütünlüğü
+        run: python tools/depo_kontrol.py
+      - name: Gönderim betiğinin Bash sözdizimi
+        if: runner.os == 'Linux'
+        run: bash -n .github/scripts/kopru_gonder.sh
+      - name: PowerShell sözdizimi
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $bozuk = $false
+          Get-ChildItem -LiteralPath . -Filter *.ps1 | ForEach-Object {
+            $ayristirmaHatalari = $null
+            $sozcukler = $null
+            [void][System.Management.Automation.Language.Parser]::ParseFile($_.FullName, [ref]$sozcukler, [ref]$ayristirmaHatalari)
+            if ($ayristirmaHatalari.Count -gt 0) {
+              $ayristirmaHatalari | ForEach-Object { Write-Host $_ }
+              $bozuk = $true
+            }
+          }
+          if ($bozuk) { exit 1 }

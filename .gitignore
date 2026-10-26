@@ -1,3 +1,11 @@
 yanit*.json
+!yanit-sablonu.json
 istem*.txt
 __pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.coverage
+.env
+.env.*
+!.env.example

@@ -10,6 +10,9 @@ Kullanım:
 import argparse, json, re, sys
 from html.parser import HTMLParser
 
+YALIN_ETIKETLER = frozenset({"area", "base", "br", "col", "embed", "hr", "img",
+                           "input", "link", "meta", "param", "source", "track", "wbr"})
+
 
 class Ayristirici(HTMLParser):
     def __init__(self):
@@ -23,7 +26,8 @@ class Ayristirici(HTMLParser):
 
     def handle_starttag(self, etiket, attrs):
         a = dict(attrs)
-        if etiket == "article" and "kayit" in (a.get("class") or "") and "sablon" not in (a.get("class") or ""):
+        siniflar = (a.get("class") or "").split()
+        if etiket == "article" and "kayit" in siniflar and "sablon" not in siniflar:
             self.k = {"id": a.get("id"), "kimden": a.get("data-kimden"), "kime": a.get("data-kime"),
                       "zaman": a.get("data-zaman"), "yanit": a.get("data-yanit") or None, "durum": a.get("data-durum"),
                       "konu": "", "govde": "", "dayanak": ""}
@@ -31,10 +35,15 @@ class Ayristirici(HTMLParser):
             return
         if self.k is None:
             return
+        # HTML'de bu etiketlerin kapanışı yoktur; alan/kayıt derinliğini değiştirmezler.
+        if etiket in YALIN_ETIKETLER:
+            if self.alan == "govde" and etiket in {"br", "hr"}:
+                self.metin.append("\n" if etiket == "br" else "\n\n")
+            return
         self.derinlik += 1
         if etiket == "h3":
             self.alan, self.alan_derinlik, self.metin = "konu", self.derinlik, []
-        elif etiket == "div" and "govde" in (a.get("class") or ""):
+        elif etiket == "div" and "govde" in siniflar:
             self.alan, self.alan_derinlik, self.metin = "govde", self.derinlik, []
         elif etiket == "footer":
             self.alan, self.alan_derinlik, self.metin = "dayanak", self.derinlik, []
@@ -44,7 +53,7 @@ class Ayristirici(HTMLParser):
             self.metin.append("\n- ")
 
     def handle_endtag(self, etiket):
-        if self.k is None:
+        if self.k is None or etiket in YALIN_ETIKETLER:
             return
         if self.alan and self.derinlik == self.alan_derinlik:
             deger = "".join(self.metin)
@@ -61,6 +70,11 @@ class Ayristirici(HTMLParser):
             self.kayitlar.append(self.k)
             self.k = None
 
+    def handle_startendtag(self, etiket, attrs):
+        self.handle_starttag(etiket, attrs)
+        if etiket not in YALIN_ETIKETLER:
+            self.handle_endtag(etiket)
+
     def handle_data(self, veri):
         if self.k is not None and self.alan:
             self.metin.append(veri)
@@ -75,7 +89,9 @@ def main():
     p.add_argument("--acik", action="store_true")
     a = p.parse_args()
     ay = Ayristirici()
-    ay.feed(open(a.dosya, encoding="utf-8").read())
+    with open(a.dosya, encoding="utf-8") as dosya:
+        ay.feed(dosya.read())
+    ay.close()
     k = ay.kayitlar
     if a.kime:
         k = [x for x in k if a.kime.lower() in (x["kime"] or "").lower()]
