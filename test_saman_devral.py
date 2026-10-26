@@ -26,7 +26,9 @@ spec.loader.exec_module(launcher)
 class SamanLauncherTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix="saman-devir-test-")
-        self.root = Path(self.temp.name)
+        # Windows TEMP may use an 8.3 alias; the launcher resolves paths before
+        # dispatch and recording. Build every fixture from that same full path.
+        self.root = Path(self.temp.name).resolve()
         self.origin = self.root / "origin.git"
         self.seed = self.root / "seed"
         self.repo = self.root / "kaynak Şaman"
@@ -262,7 +264,12 @@ class SamanLauncherTests(unittest.TestCase):
         self.assertEqual(result, 2)
         self.assertIn("eski worktree kaydı", err)
         self.assertFalse(self.target.exists())
-        self.assertIn(str(self.target), self.git(self.repo, "worktree", "list", "--porcelain"))
+        registered_paths = [
+            Path(field[len("worktree "):]).resolve()
+            for field in self.git(self.repo, "worktree", "list", "--porcelain", "-z").split("\0")
+            if field.startswith("worktree ")
+        ]
+        self.assertIn(self.target.resolve(), registered_paths)
         self.assert_source_unchanged()
 
     def test_wrong_branch_is_not_checked_out(self):

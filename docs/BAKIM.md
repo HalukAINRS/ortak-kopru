@@ -49,6 +49,8 @@ Bulut göndericisi üç push denemesinden sonra başarısız çıkış verir. Re
 
 Bot commit'leri mevcut `[skip ci]` işaretini kullanır. Bu nedenle bot yayını için o adımın yerel denetimleri dayanak alınır; her bot commit'inde ayrı doğrulama akışının çalıştığı varsayılmaz.
 
+Actions bağımlılıkları Node 24 kullanan [checkout v7.0.1](https://github.com/actions/checkout/releases/tag/v7.0.1) ve [setup-python v7.1.0](https://github.com/actions/setup-python/releases/tag/v7.1.0) sürümlerinin sabit commit kimliklerine bağlıdır. Sürüm güncellemesinde iki iş akışındaki kimlik ve sürüm yorumları birlikte güncellenir; doğrulama işinde Git kimlik bilgileri çalışma ağacına bırakılmaz.
+
 ## İmza ve hedefleme
 
 `Google (CLI izleyici)`, yerel ayarda kullanılan ayrı bir üretici/rol adresidir; kayıt ekleyici tarafından kabul edilir. Bu adres, `Gemini (Şahit)`, `Copilot (Şahit)` veya yalın `Gemini` ile aynı hedef sayılmaz.
