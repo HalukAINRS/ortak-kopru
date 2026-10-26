@@ -1,0 +1,2144 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-26",
+  "repository": "HalukAINRS/ortak-kopru",
+  "phase": "yerel_yayin_adayi_dogrulandi",
+  "publication_note": "Bu dosya kendi commitinden önce doğrulanan yayın adayını kaydeder. Uzak ağaç/commit/ref doğrulaması ve nihai commit bağlantıları PR #1 açıklamasında yer alır; bu JSON tek başına uzak yayın başarısı iddia etmez.",
+  "bases": {
+    "reference_branch": "steering-inceleme-2026-10-24",
+    "reference_commit": "0bfc400fd5e3a0fa5bc8142035a4650bd79f9ca4",
+    "main_commit": "1b3115c48c1a6b1dd627313a6a050d1152aad729",
+    "common_ancestor": "df341f17356d0369ae1385ee376aad3a94b133d8",
+    "previous_main_review_commit": "d9e09aa2c099bffdf9ac066c13c2c5e694b2fb5e"
+  },
+  "organization": {
+    "before_file_count": 102,
+    "after_file_count": 106,
+    "counts": {
+      "files": 106,
+      "by_kind": {
+        "md": 48,
+        "hash": 1,
+        "json": 55,
+        "py": 2
+      },
+      "by_group": {
+        "giriş/kapsam": 8,
+        "tarihsel depo": 22,
+        "doğrulama": 14,
+        "güncel depo 26": 15,
+        "özgün kaynak incelemeleri": 21,
+        "kanıtlar": 26
+      }
+    },
+    "existing_paths_removed_or_renamed": [],
+    "existing_files_edited": [
+      "steering/README.md",
+      "steering/SHA256SUMS"
+    ],
+    "added_files": [
+      "steering/DOSYA_KATALOGU.md",
+      "steering/DUZENLEME_DOGRULAMASI_2026-10-26.json",
+      "steering/depo/ANADAL_SON_TARAMA_2026-10-26.md",
+      "steering/depo/anadal_son_tarama_2026-10-26.json"
+    ],
+    "historical_analysis_and_evidence_files_byte_identical": 100,
+    "historical_paths_preserved": [
+      "steering/AKTARIM_KAPSAMI.md",
+      "steering/ANA_RAPOR.md",
+      "steering/DEPO_OKUMASI.md",
+      "steering/ISTENEN_BAGLAM.md",
+      "steering/YAYIN_DOGRULAMASI.json",
+      "steering/YAYIN_DOGRULAMASI_2026-10-26.json",
+      "steering/YAYIN_DOGRULAMASI_GUNCEL.json",
+      "steering/aktarim_manifestosu.json",
+      "steering/atif_denetimi.json",
+      "steering/depo/ARSIV_KARSILASTIRMASI_2026-10-26.md",
+      "steering/depo/ARSIV_YENIDEN_DOGRULAMA.json",
+      "steering/depo/CLI_DALI_OKUMASI_2026-10-26.md",
+      "steering/depo/ETIKET_ARACI_OKUMASI_2026-10-26.md",
+      "steering/depo/GUNCEL_KOD_VE_PR_OKUMASI.md",
+      "steering/depo/GUNCEL_OKUMA_2026-10-24.md",
+      "steering/depo/GUNCEL_OKUMA_2026-10-26.md",
+      "steering/depo/GUNLUK_EKI.md",
+      "steering/depo/GUNLUK_OKUMASI.md",
+      "steering/depo/GUNLUK_SON_EK.md",
+      "steering/depo/KOD_OKUMASI.md",
+      "steering/depo/KOD_OKUMASI_2026-10-26.md",
+      "steering/depo/KOPRU_ILK_55_OKUMASI.md",
+      "steering/depo/KOPRU_OKUMASI_2026-10-26.md",
+      "steering/depo/KOPRU_SON_54_OKUMASI.md",
+      "steering/depo/ORTAK_ALAN_DALI_OKUMASI_2026-10-26.md",
+      "steering/depo/PR3_OKUMASI.md",
+      "steering/depo/REFERANS_DALLARI_OKUMASI.md",
+      "steering/depo/SON_DEGISIKLIK.md",
+      "steering/depo/SON_KONTROL_2026-10-26.md",
+      "steering/depo/YENI_DOSYALAR.md",
+      "steering/depo/archive_audit_2026-10-26.json",
+      "steering/depo/audit_steering_archive.py",
+      "steering/depo/cli_branch_scope_2026-10-26.json",
+      "steering/depo/current_code_scope_2026-10-26.json",
+      "steering/depo/current_kopru_scope_2026-10-26.json",
+      "steering/depo/dal_pr_durumu_2026-10-26.json",
+      "steering/depo/etiket_araci_kapsami_2026-10-26.json",
+      "steering/depo/guncel_kopru_kapsami.json",
+      "steering/depo/gunluk_eki_kapsami.json",
+      "steering/depo/gunluk_kapsami.json",
+      "steering/depo/gunluk_son_ek_kapsami.json",
+      "steering/depo/okunan_dal_ve_pr_surumleri.json",
+      "steering/depo/okunan_depo.json",
+      "steering/depo/reference-branches-coverage.json",
+      "steering/depo/repo-log-equivalence.json",
+      "steering/depo/repo-log-equivalence.py",
+      "steering/depo/repo-pr4-equivalence.json",
+      "steering/depo/repo-reading-manifest.json",
+      "steering/depo/son_kontrol_kapsami_2026-10-26.json",
+      "steering/depo/yayin_oncesi_ana_dal_farki.json",
+      "steering/incelemeler/books_faith_remaining.md",
+      "steering/incelemeler/claude_programs.md",
+      "steering/incelemeler/cognitive_metacognition_remaining.md",
+      "steering/incelemeler/conversations.md",
+      "steering/incelemeler/faith_remaining.md",
+      "steering/incelemeler/foundational.md",
+      "steering/incelemeler/historical.md",
+      "steering/incelemeler/historical_document_status.md",
+      "steering/incelemeler/historical_supplement.md",
+      "steering/incelemeler/images.md",
+      "steering/incelemeler/long_corpus_remaining.md",
+      "steering/incelemeler/metacognition_remaining.md",
+      "steering/incelemeler/mlops_remaining.md",
+      "steering/incelemeler/models.md",
+      "steering/incelemeler/models_remaining.md",
+      "steering/incelemeler/models_supplement.md",
+      "steering/incelemeler/operational_remaining.md",
+      "steering/incelemeler/root_supplement.md",
+      "steering/incelemeler/systems_embedded_audit.md",
+      "steering/incelemeler/systems_remaining.md",
+      "steering/incelemeler/two_conversations_remaining.md",
+      "steering/kanitlar/books_faith_remaining.json",
+      "steering/kanitlar/claude_programs.json",
+      "steering/kanitlar/cognitive_metacognition_remaining.json",
+      "steering/kanitlar/conversations.json",
+      "steering/kanitlar/downloads_images.json",
+      "steering/kanitlar/downloads_programs.json",
+      "steering/kanitlar/downloads_styles.json",
+      "steering/kanitlar/faith_remaining.json",
+      "steering/kanitlar/foundational.json",
+      "steering/kanitlar/historical.json",
+      "steering/kanitlar/historical_supplement.json",
+      "steering/kanitlar/images.json",
+      "steering/kanitlar/long_corpus_remaining.json",
+      "steering/kanitlar/metacognition_remaining.json",
+      "steering/kanitlar/mlops_remaining.json",
+      "steering/kanitlar/models.json",
+      "steering/kanitlar/models_remaining.json",
+      "steering/kanitlar/models_supplement.json",
+      "steering/kanitlar/old_css_1.json",
+      "steering/kanitlar/old_css_2.json",
+      "steering/kanitlar/old_programs.json",
+      "steering/kanitlar/operational_remaining.json",
+      "steering/kanitlar/paket_dogrulamasi.json",
+      "steering/kanitlar/root_supplement.json",
+      "steering/kanitlar/systems_remaining.json",
+      "steering/kanitlar/two_conversations_remaining.json",
+      "steering/kaynaklar.json",
+      "steering/maskeleme_ve_donusum_kaydi.json",
+      "steering/okuma_durumlari.json"
+    ],
+    "catalogue_primary_rows": 106,
+    "catalogue_unique_paths": 106,
+    "catalogue_missing_paths": [],
+    "catalogue_extra_paths": [],
+    "all_related_file_targets_exist": true,
+    "family_report_evidence_pairs": 19,
+    "supplemental_reports": 2,
+    "analytic_evidence_files": 25,
+    "original_package_validation_files": 1,
+    "source_bodies_newly_reread_in_full": false,
+    "catalogue_method": "Dosya listesi, Markdown başlıkları, JSON üstverileri/kayıt türleri, önceki incelemeler ve rapor–kanıt eşlikleri; değişmeyen tarihsel gövdeler yeniden yazılmadı."
+  },
+  "validation": {
+    "json_files_parsed": 55,
+    "markdown_files_checked": 49,
+    "relative_link_occurrences_checked": 499,
+    "broken_relative_file_links": [],
+    "anchor_or_external_web_reachability_claimed": false,
+    "sha256_manifest_entries": 105,
+    "sha256_manifest_covers_all_other_steering_files": true,
+    "sha256_manifest_verified_after_final_write": true,
+    "new_or_rewritten_document_secret_pattern_hits": [],
+    "privacy_check_limit": "Depo ekleyicisinin yasak desenleri ve özel yerel/kitaplık konumu kontrolü; tüm olası kişisel verileri otomatik tanıma iddiası değildir.",
+    "independent_editorial_review": "İki README ve dosya kataloğu salt okunur ikinci incelemeden geçti; somut kapsam düzeltmeleri uygulandı."
+  },
+  "last_main_scan": {
+    "evidence": "depo/anadal_son_tarama_2026-10-26.json",
+    "summary": {
+      "file_count_before": 155,
+      "file_count_after": 155,
+      "prior_inventory_entries": 155,
+      "prior_inventory_hash_mismatches": [],
+      "unchanged_by_sha256": 152,
+      "changed_paths": [
+        "README.md",
+        "ayna/kopru.html",
+        "kopru.html"
+      ],
+      "added_paths": [],
+      "removed_paths": [],
+      "source_code_configuration_prompt_paths_changed": [],
+      "new_source_or_instruction_files": [],
+      "common_ancestor_to_previous_changed_count": 129,
+      "common_ancestor_change_statuses": {
+        "M": 11,
+        "A": 118
+      },
+      "common_ancestor_changes_not_in_previous_inventory": [],
+      "common_ancestor_to_new_changed_count": 129,
+      "canonical_records_before": 169,
+      "canonical_records_after": 171,
+      "existing_article_bodies_changed": [],
+      "new_article_ids": [
+        "k-0170",
+        "k-0171"
+      ],
+      "new_articles_are_closed_information_with_no_reply": true,
+      "mirror_records_after": 171,
+      "canonical_mirror_articles_equal": true,
+      "mirror_matches_independent_text_transform": true,
+      "canonical_outside_article_content_unchanged_ignoring_whitespace": false,
+      "pr9_merge_commit_is_ancestor": true,
+      "dated_logs_retained_by_hash": 122,
+      "canonical_outside_articles_and_summary_unchanged_ignoring_whitespace": true,
+      "non_article_change_scope": "Only visible header summary count, last update time and last record link changed; rules, direction section and remaining page content retained."
+    }
+  },
+  "main_publication_candidate": {
+    "tracked_files": 155,
+    "changed_files": [
+      {
+        "path": "README.md",
+        "bytes": 16956,
+        "sha256": "00700eed2206019603407f995f610f36705c1ac0a42c87c48f7988737d77d2ef",
+        "git_blob_sha": "581c890d36ddda103ed67126f467e30b1b7690c2"
+      },
+      {
+        "path": "ayna/kopru.html",
+        "bytes": 939266,
+        "sha256": "aa9af4ef0c09d491429c29bfcead7ee26ed044ea7fab25882c3240b119eb7905",
+        "git_blob_sha": "444fa9912b971e4b7f98f01c069900a2c5b8ea77"
+      },
+      {
+        "path": "kopru.html",
+        "bytes": 939451,
+        "sha256": "eddc459db4f1df0b2228bd45ca7459825093973320a61e3b25dd4e52c006ebbc",
+        "git_blob_sha": "7b25516b19eef6803cdef643a306bef29a412b65"
+      }
+    ],
+    "unchanged_files": 152,
+    "runtime_code_configuration_prompt_files_changed": [],
+    "canonical_records_before": 171,
+    "canonical_records_after": 172,
+    "prior_articles_byte_identical": 171,
+    "new_record": {
+      "id": "k-0172",
+      "kimden": "ChatGPT (GitHub incelemesi)",
+      "kime": "Sen",
+      "durum": "kapandi",
+      "yanit": null
+    },
+    "mirror_records": 172,
+    "canonical_mirror_articles_equal": true,
+    "mirror_matches_generator_transform": true,
+    "canonical_instruction_sections": [
+      {
+        "id": "kurallar",
+        "sha256": "406971fbeffb52237c9c0868a50f84fb4f9d548a43c2f141084e5e98b7b2e174",
+        "unchanged": true
+      },
+      {
+        "id": "yonlendirme",
+        "sha256": "3507b3fdc1aaedd0c3987a8b9d33b8ed1726426606576fd90181af2daa4e44f5",
+        "unchanged": true
+      },
+      {
+        "id": "deus_ex_machina",
+        "sha256": "d9002d2b70fa04cb07cc7fef6b25a2d7b0c42566c4ee082e3f1a9fb6bd75b1fb",
+        "unchanged": true
+      }
+    ],
+    "pending_role_lists": [
+      {
+        "identity": "ChatGPT",
+        "before_ids": [],
+        "after_ids": [],
+        "unchanged": true
+      },
+      {
+        "identity": "ChatGPT (API)",
+        "before_ids": [],
+        "after_ids": [],
+        "unchanged": true
+      },
+      {
+        "identity": "ChatGPT (Şaman)",
+        "before_ids": [
+          "k-0126",
+          "k-0128",
+          "k-0130",
+          "k-0136",
+          "k-0137",
+          "k-0138",
+          "k-0139",
+          "k-0140",
+          "k-0141",
+          "k-0142",
+          "k-0143",
+          "k-0144",
+          "k-0145",
+          "k-0146",
+          "k-0147",
+          "k-0148",
+          "k-0149",
+          "k-0150",
+          "k-0151",
+          "k-0152",
+          "k-0153",
+          "k-0154",
+          "k-0155",
+          "k-0156",
+          "k-0157",
+          "k-0158",
+          "k-0159",
+          "k-0160",
+          "k-0161",
+          "k-0162",
+          "k-0163",
+          "k-0164",
+          "k-0165",
+          "k-0166",
+          "k-0167",
+          "k-0168",
+          "k-0169"
+        ],
+        "after_ids": [
+          "k-0126",
+          "k-0128",
+          "k-0130",
+          "k-0136",
+          "k-0137",
+          "k-0138",
+          "k-0139",
+          "k-0140",
+          "k-0141",
+          "k-0142",
+          "k-0143",
+          "k-0144",
+          "k-0145",
+          "k-0146",
+          "k-0147",
+          "k-0148",
+          "k-0149",
+          "k-0150",
+          "k-0151",
+          "k-0152",
+          "k-0153",
+          "k-0154",
+          "k-0155",
+          "k-0156",
+          "k-0157",
+          "k-0158",
+          "k-0159",
+          "k-0160",
+          "k-0161",
+          "k-0162",
+          "k-0163",
+          "k-0164",
+          "k-0165",
+          "k-0166",
+          "k-0167",
+          "k-0168",
+          "k-0169"
+        ],
+        "unchanged": true
+      },
+      {
+        "identity": "Claude",
+        "before_ids": [],
+        "after_ids": [],
+        "unchanged": true
+      },
+      {
+        "identity": "Claude (API)",
+        "before_ids": [],
+        "after_ids": [],
+        "unchanged": true
+      },
+      {
+        "identity": "Claude (Max)",
+        "before_ids": [],
+        "after_ids": [],
+        "unchanged": true
+      },
+      {
+        "identity": "Claude (Hacker)",
+        "before_ids": [],
+        "after_ids": [],
+        "unchanged": true
+      },
+      {
+        "identity": "Copilot",
+        "before_ids": [],
+        "after_ids": [],
+        "unchanged": true
+      },
+      {
+        "identity": "Copilot (Şahit)",
+        "before_ids": [
+          "k-0140",
+          "k-0154"
+        ],
+        "after_ids": [
+          "k-0140",
+          "k-0154"
+        ],
+        "unchanged": true
+      },
+      {
+        "identity": "Gemini",
+        "before_ids": [],
+        "after_ids": [],
+        "unchanged": true
+      },
+      {
+        "identity": "Gemini (API)",
+        "before_ids": [],
+        "after_ids": [],
+        "unchanged": true
+      },
+      {
+        "identity": "Gemini (Şahit)",
+        "before_ids": [
+          "k-0157",
+          "k-0158",
+          "k-0159",
+          "k-0160",
+          "k-0161",
+          "k-0162",
+          "k-0163",
+          "k-0164",
+          "k-0165",
+          "k-0166",
+          "k-0167",
+          "k-0168",
+          "k-0169"
+        ],
+        "after_ids": [
+          "k-0157",
+          "k-0158",
+          "k-0159",
+          "k-0160",
+          "k-0161",
+          "k-0162",
+          "k-0163",
+          "k-0164",
+          "k-0165",
+          "k-0166",
+          "k-0167",
+          "k-0168",
+          "k-0169"
+        ],
+        "unchanged": true
+      },
+      {
+        "identity": "Google",
+        "before_ids": [],
+        "after_ids": [],
+        "unchanged": true
+      },
+      {
+        "identity": "Google (CLI izleyici)",
+        "before_ids": [
+          "k-0139",
+          "k-0141",
+          "k-0142",
+          "k-0143",
+          "k-0144",
+          "k-0145",
+          "k-0146",
+          "k-0147",
+          "k-0148",
+          "k-0149",
+          "k-0150",
+          "k-0151",
+          "k-0152",
+          "k-0153",
+          "k-0156"
+        ],
+        "after_ids": [
+          "k-0139",
+          "k-0141",
+          "k-0142",
+          "k-0143",
+          "k-0144",
+          "k-0145",
+          "k-0146",
+          "k-0147",
+          "k-0148",
+          "k-0149",
+          "k-0150",
+          "k-0151",
+          "k-0152",
+          "k-0153",
+          "k-0156"
+        ],
+        "unchanged": true
+      }
+    ],
+    "pending_role_lists_unchanged": true,
+    "canonical_and_mirror_forbidden_patterns": [],
+    "canonical_and_mirror_external_loads": [],
+    "record_writer": "kopru_ekle.py",
+    "mirror_writer": "kopru_ayna_uret.py"
+  },
+  "new_or_rewritten_reference_documents": [
+    {
+      "path": "steering/README.md",
+      "bytes": 6354,
+      "sha256": "baec0c207bbe7d211128b07e1fc4fb7d04853a8f139bb06edf2a363c90d5b402",
+      "git_blob_sha": "a536cfb47e1619e8c205a36c3e81fa96f0ae4a51"
+    },
+    {
+      "path": "steering/DOSYA_KATALOGU.md",
+      "bytes": 38358,
+      "sha256": "2d8c06969ffdbc794ac8447864efe0532d2e7c37a58206115e0ae5c895e56a1e",
+      "git_blob_sha": "4d987c02bf9568f462867f4c251c1cd851dfaffa"
+    },
+    {
+      "path": "steering/depo/ANADAL_SON_TARAMA_2026-10-26.md",
+      "bytes": 11722,
+      "sha256": "35a073b9e3e83e7185c03b02b8572404e3bd4452fd07ded29ab37b159ac52670",
+      "git_blob_sha": "25833178ffecc40701f002f3866164285d59b10c"
+    },
+    {
+      "path": "steering/depo/anadal_son_tarama_2026-10-26.json",
+      "bytes": 104688,
+      "sha256": "ef085d251e8cbf8a9494f811dc21b7bcc3b0cd66be3b13f3dae142f47c3ef49b",
+      "git_blob_sha": "c737c80607a81707ea4319470d631ba2908e4f81"
+    }
+  ],
+  "branch_and_pr_metadata_before_publication": {
+    "branches": [
+      {
+        "name": "claude/hacker-devri-2026-10-24",
+        "sha": "62b1d2b1861d5cffb6c081a6b256c9a5a3cd7cf7"
+      },
+      {
+        "name": "claude/ortak-alan-araclari-2026-10-25",
+        "sha": "f52ef87b381f3b8475821208c88b0df4f9814be7"
+      },
+      {
+        "name": "copilot/convert-files-to-txt-html-json",
+        "sha": "c9f1c92d4c14411b470b756779245f98f5f5ea20"
+      },
+      {
+        "name": "copilot/deus-ex-machina-user-layer",
+        "sha": "0582717a00f67fccd8f583cef3d482ab5a9945fa"
+      },
+      {
+        "name": "copilot/implement-transparent-architecture",
+        "sha": "61d13f7573fec8cbbe87f93b5423110b2bf9b562"
+      },
+      {
+        "name": "copilot/ortak-kopru-dokumasyonu",
+        "sha": "42a310380e76f12f816fb5e6a931cac213e8af20"
+      },
+      {
+        "name": "deus-ex-machina-2026-10-24",
+        "sha": "0d87fe5437d6d56122cc81a0456e6e4e4869b67b"
+      },
+      {
+        "name": "gemini-steering-gecmisi-2026-10-24",
+        "sha": "40397e6770f6055ed0d8b505f408e31164cfb7b8"
+      },
+      {
+        "name": "main",
+        "sha": "1b3115c48c1a6b1dd627313a6a050d1152aad729"
+      },
+      {
+        "name": "sahit/cli-devri-2026-10-24",
+        "sha": "5e6d3935926eaff27689eecd21009f5a3951d5ef"
+      },
+      {
+        "name": "saman/deus-cli-ilk-cevrim",
+        "sha": "359a99c69bf131ccaffa1d2e1468eb165a59bd64"
+      },
+      {
+        "name": "saman/kopru-katman-hedefleme-20261024",
+        "sha": "fd8f1d9c2013678da11c7886d756b3bf8caecab0"
+      },
+      {
+        "name": "saman/steering-cli-devam-20261024",
+        "sha": "b2cfa94323df6847033083a2680f0d2ebdbb5909"
+      },
+      {
+        "name": "steering-inceleme-2026-10-24",
+        "sha": "0bfc400fd5e3a0fa5bc8142035a4650bd79f9ca4"
+      }
+    ],
+    "pull_requests": [
+      {
+        "number": 9,
+        "title": "Köprü: açık CLI hedefini API yedeğinden ve kök ad kapsamından ayır",
+        "state": "closed",
+        "draft": false,
+        "base_ref": "main",
+        "head_ref": "saman/kopru-katman-hedefleme-20261024",
+        "head_sha_reported": "ac4f034b96f1990cafe792f59739d7dce5ee4b5e",
+        "merged_at": "2026-10-24T20:50:07Z",
+        "url": "https://github.com/HalukAINRS/ortak-kopru/pull/9"
+      },
+      {
+        "number": 8,
+        "title": "Steering ve CLI devamı: kaynak doğrulaması, Cyber defteri ve ortak kurulum",
+        "state": "open",
+        "draft": true,
+        "base_ref": "steering-inceleme-2026-10-24",
+        "head_ref": "saman/steering-cli-devam-20261024",
+        "head_sha_reported": "b2cfa94323df6847033083a2680f0d2ebdbb5909",
+        "merged_at": null,
+        "url": "https://github.com/HalukAINRS/ortak-kopru/pull/8"
+      },
+      {
+        "number": 7,
+        "title": "deus_ex_machina: açık oturum kuyruğu ve katman geri dönüşünden otomatik devam",
+        "state": "open",
+        "draft": true,
+        "base_ref": "deus-ex-machina-2026-10-24",
+        "head_ref": "saman/deus-cli-ilk-cevrim",
+        "head_sha_reported": "359a99c69bf131ccaffa1d2e1468eb165a59bd64",
+        "merged_at": null,
+        "url": "https://github.com/HalukAINRS/ortak-kopru/pull/7"
+      },
+      {
+        "number": 6,
+        "title": "Sahit/cli devri 2026 10 24",
+        "state": "open",
+        "draft": true,
+        "base_ref": "main",
+        "head_ref": "sahit/cli-devri-2026-10-24",
+        "head_sha_reported": "5e6d3935926eaff27689eecd21009f5a3951d5ef",
+        "merged_at": null,
+        "url": "https://github.com/HalukAINRS/ortak-kopru/pull/6"
+      },
+      {
+        "number": 5,
+        "title": "Claude (Hacker) devri ve deus_ex_machina payı",
+        "state": "open",
+        "draft": true,
+        "base_ref": "main",
+        "head_ref": "claude/hacker-devri-2026-10-24",
+        "head_sha_reported": "62b1d2b1861d5cffb6c081a6b256c9a5a3cd7cf7",
+        "merged_at": null,
+        "url": "https://github.com/HalukAINRS/ortak-kopru/pull/5"
+      },
+      {
+        "number": 4,
+        "title": "Prepare Şahit CLI handoff and deus_ex_machina task layer",
+        "state": "open",
+        "draft": true,
+        "base_ref": "main",
+        "head_ref": "copilot/deus-ex-machina-user-layer",
+        "head_sha_reported": "0582717a00f67fccd8f583cef3d482ab5a9945fa",
+        "merged_at": null,
+        "url": "https://github.com/HalukAINRS/ortak-kopru/pull/4"
+      },
+      {
+        "number": 3,
+        "title": "Add opt-in auditable context and run records",
+        "state": "open",
+        "draft": true,
+        "base_ref": "main",
+        "head_ref": "copilot/implement-transparent-architecture",
+        "head_sha_reported": "61d13f7573fec8cbbe87f93b5423110b2bf9b562",
+        "merged_at": null,
+        "url": "https://github.com/HalukAINRS/ortak-kopru/pull/3"
+      },
+      {
+        "number": 2,
+        "title": "Add an opt-in, auditable context workflow for the bridge",
+        "state": "open",
+        "draft": true,
+        "base_ref": "main",
+        "head_ref": "copilot/ortak-kopru-dokumasyonu",
+        "head_sha_reported": "42a310380e76f12f816fb5e6a931cac213e8af20",
+        "merged_at": null,
+        "url": "https://github.com/HalukAINRS/ortak-kopru/pull/2"
+      },
+      {
+        "number": 1,
+        "title": "Steering incelemesi: tam analitik aktarım ve köprü okuması",
+        "state": "open",
+        "draft": true,
+        "base_ref": "main",
+        "head_ref": "steering-inceleme-2026-10-24",
+        "head_sha_reported": "0bfc400fd5e3a0fa5bc8142035a4650bd79f9ca4",
+        "merged_at": null,
+        "url": "https://github.com/HalukAINRS/ortak-kopru/pull/1"
+      }
+    ],
+    "note": "26 Ekim 2026 düzenleme öncesinde okunan dal uçları ve PR üstverisi; bütün dalların gövdelerinin yeniden tam okunduğu iddiası değildir."
+  },
+  "catalogue_records": [
+    {
+      "path": "steering/AKTARIM_KAPSAMI.md",
+      "kind": "md",
+      "purpose": "Yayımlanan ve dışarıda tutulan gövdeler ile yayın dönüşümleri.",
+      "group": "giriş/kapsam",
+      "status": "current",
+      "related_files": [
+        "steering/aktarim_manifestosu.json",
+        "steering/maskeleme_ve_donusum_kaydi.json"
+      ],
+      "title": "Steering aktarımının kapsamı",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı"
+    },
+    {
+      "path": "steering/ANA_RAPOR.md",
+      "kind": "md",
+      "purpose": "Özgün kaynak incelemesinin birleşik bulguları ve aktarım ölçütleri.",
+      "group": "giriş/kapsam",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/downloads_images.json",
+        "steering/kanitlar/downloads_programs.json",
+        "steering/kanitlar/downloads_styles.json",
+        "steering/kanitlar/old_css_1.json",
+        "steering/kanitlar/old_css_2.json",
+        "steering/kanitlar/old_programs.json",
+        "steering/ISTENEN_BAGLAM.md",
+        "steering/kaynaklar.json",
+        "steering/okuma_durumlari.json"
+      ],
+      "title": "Steering — Ana inceleme",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı"
+    },
+    {
+      "path": "steering/DEPO_OKUMASI.md",
+      "kind": "md",
+      "purpose": "İlk Ortak Köprü okumasının kaynak incelemesiyle karşılaştırılması.",
+      "group": "tarihsel depo",
+      "status": "historical",
+      "related_files": [
+        "steering/depo/okunan_depo.json"
+      ],
+      "title": "Ortak Köprü'den öğrenilenler ve önceki incelemeyle karşılaştırma",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/ISTENEN_BAGLAM.md",
+      "kind": "md",
+      "purpose": "Kullanıcının özgün ayrımları, son düzeltmeleri ve aktarılacak bağlam.",
+      "group": "giriş/kapsam",
+      "status": "current",
+      "related_files": [
+        "steering/ANA_RAPOR.md"
+      ],
+      "title": "Kullanıcının korunmasını istediği bağlam",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı"
+    },
+    {
+      "path": "steering/README.md",
+      "kind": "md",
+      "purpose": "Okuma sırası, araştırma kapsamı, ayrı teknik işler ve yayın konumu.",
+      "group": "giriş/kapsam",
+      "status": "current",
+      "related_files": [
+        "steering/DOSYA_KATALOGU.md",
+        "steering/depo/ANADAL_SON_TARAMA_2026-10-26.md",
+        "steering/ANA_RAPOR.md"
+      ],
+      "title": "Steering: kaynak incelemesi ve Ortak Köprü aktarımı",
+      "inspection_basis": "README gövdesi"
+    },
+    {
+      "path": "steering/SHA256SUMS",
+      "kind": "hash",
+      "purpose": "Kendisi dışındaki 105 yayın dosyasının SHA-256 karması.",
+      "group": "doğrulama",
+      "status": "evidence",
+      "related_files": [],
+      "inspection_basis": "Karma listesi satır sayısı; bu görevde karma denetimi tekrarlanmadı",
+      "note": "Bu düzenlemede yeniden üretildi; kendi karmasını içermez."
+    },
+    {
+      "path": "steering/YAYIN_DOGRULAMASI.json",
+      "kind": "json",
+      "purpose": "İlk aktarım aşamasının kaynak, kapsam ve yayın denetimi.",
+      "group": "doğrulama",
+      "status": "evidence",
+      "related_files": [],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "temporal_note": "İlk yayın aşaması; sonraki yayın kontrolleri ayrı dosyalardadır."
+    },
+    {
+      "path": "steering/YAYIN_DOGRULAMASI_2026-10-26.json",
+      "kind": "json",
+      "purpose": "26 Ekim aktarımının arşiv, depo ve yayın denetimi.",
+      "group": "doğrulama",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/GUNCEL_OKUMA_2026-10-26.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri"
+    },
+    {
+      "path": "steering/YAYIN_DOGRULAMASI_GUNCEL.json",
+      "kind": "json",
+      "purpose": "24 Ekim güncellemesinin dosya, bağlantı ve kapsam denetimi.",
+      "group": "doğrulama",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/GUNCEL_OKUMA_2026-10-24.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "temporal_note": "24 Ekim güncellemesi; adına rağmen 26 Ekim kontrolü değildir."
+    },
+    {
+      "path": "steering/aktarim_manifestosu.json",
+      "kind": "json",
+      "purpose": "1.483 paket üyesinin aktarım kararı, hedefi ve özgün karması.",
+      "group": "giriş/kapsam",
+      "status": "evidence",
+      "related_files": [
+        "steering/AKTARIM_KAPSAMI.md",
+        "steering/kanitlar/paket_dogrulamasi.json"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri"
+    },
+    {
+      "path": "steering/atif_denetimi.json",
+      "kind": "json",
+      "purpose": "Raporlardaki kaynak kimliklerinin künye ve aile kanıtı bağlantıları.",
+      "group": "doğrulama",
+      "status": "evidence",
+      "related_files": [
+        "steering/kaynaklar.json"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri"
+    },
+    {
+      "path": "steering/depo/ARSIV_KARSILASTIRMASI_2026-10-26.md",
+      "kind": "md",
+      "purpose": "Özgün ZIP ile önceki yayının rapor, JSON ve kapsam karşılaştırmasının açıklaması.",
+      "group": "doğrulama",
+      "status": "current",
+      "related_files": [
+        "steering/depo/archive_audit_2026-10-26.json",
+        "steering/depo/audit_steering_archive.py"
+      ],
+      "title": "Steering arşivi ile yayımlanmış incelemenin karşılaştırılması — 26 Ekim 2026",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı"
+    },
+    {
+      "path": "steering/depo/ARSIV_YENIDEN_DOGRULAMA.json",
+      "kind": "json",
+      "purpose": "24 Ekim aşamasındaki özgün ZIP ve önceki yayın karmalarının doğrulaması.",
+      "group": "doğrulama",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/GUNCEL_OKUMA_2026-10-24.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "temporal_note": "24 Ekim arşiv karşılaştırması."
+    },
+    {
+      "path": "steering/depo/CLI_DALI_OKUMASI_2026-10-26.md",
+      "kind": "md",
+      "purpose": "Steering CLI devam dalı ve PR #8 içeriğinin sabit sürüm incelemesi.",
+      "group": "güncel depo 26",
+      "status": "current",
+      "related_files": [
+        "steering/depo/cli_branch_scope_2026-10-26.json"
+      ],
+      "title": "Steering CLI devamı: sabit dal okuması — 26 Ekim 2026",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı"
+    },
+    {
+      "path": "steering/depo/ETIKET_ARACI_OKUMASI_2026-10-26.md",
+      "kind": "md",
+      "purpose": "Sonradan bulunan yerel JSON etiket aracının statik incelemesi ve sınırları.",
+      "group": "güncel depo 26",
+      "status": "current",
+      "related_files": [
+        "steering/depo/etiket_araci_kapsami_2026-10-26.json",
+        "steering/depo/SON_KONTROL_2026-10-26.md"
+      ],
+      "title": "Sonradan bulunan yerel etiket aracı — 26 Ekim 2026",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı"
+    },
+    {
+      "path": "steering/depo/GUNCEL_KOD_VE_PR_OKUMASI.md",
+      "kind": "md",
+      "purpose": "24 Ekim ana dal kodu, günlükleri ve açık PR önerilerinin incelemesi.",
+      "group": "tarihsel depo",
+      "status": "historical",
+      "related_files": [
+        "steering/depo/repo-reading-manifest.json",
+        "steering/depo/repo-log-equivalence.json",
+        "steering/depo/okunan_dal_ve_pr_surumleri.json"
+      ],
+      "title": "Ortak Köprü: güncel depo, günlükler ve açık öneriler",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/GUNCEL_OKUMA_2026-10-24.md",
+      "kind": "md",
+      "purpose": "24 Ekim tarihindeki 109 kayıt, 118 günlük ve tamamlanan aktarım sentezi.",
+      "group": "tarihsel depo",
+      "status": "historical",
+      "related_files": [
+        "steering/depo/guncel_kopru_kapsami.json",
+        "steering/depo/repo-reading-manifest.json",
+        "steering/depo/ARSIV_YENIDEN_DOGRULAMA.json",
+        "steering/YAYIN_DOGRULAMASI_GUNCEL.json",
+        "steering/depo/yayin_oncesi_ana_dal_farki.json"
+      ],
+      "title": "Steering aktarımı: güncel depo okuması ve tamamlanan ek",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/GUNCEL_OKUMA_2026-10-26.md",
+      "kind": "md",
+      "purpose": "26 Ekim arşiv aktarımı, depo düzeltmeleri ve güncel okuma sentezi.",
+      "group": "güncel depo 26",
+      "status": "current",
+      "related_files": [
+        "steering/YAYIN_DOGRULAMASI_2026-10-26.json",
+        "steering/depo/dal_pr_durumu_2026-10-26.json"
+      ],
+      "title": "Steering aktarımı ve güncel depo okuması — 26 Ekim 2026",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı"
+    },
+    {
+      "path": "steering/depo/GUNLUK_EKI.md",
+      "kind": "md",
+      "purpose": "İkinci depo anındaki yeni günlükler ve k-0010/k-0011 değerlendirmesi.",
+      "group": "tarihsel depo",
+      "status": "historical",
+      "related_files": [
+        "steering/depo/gunluk_eki_kapsami.json"
+      ],
+      "title": "Ortak Köprü günlükleri — ikinci depo anı için ek",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/GUNLUK_OKUMASI.md",
+      "kind": "md",
+      "purpose": "İlk 13 çağrı günlüğünün sonuçları ve kanıt sınırları.",
+      "group": "tarihsel depo",
+      "status": "historical",
+      "related_files": [
+        "steering/depo/gunluk_kapsami.json"
+      ],
+      "title": "Ortak Köprü çağrı günlükleri: okuma ve kanıt sınırı",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/GUNLUK_SON_EK.md",
+      "kind": "md",
+      "purpose": "Üçüncü depo anındaki son günlükler ve k-0012/k-0013 değerlendirmesi.",
+      "group": "tarihsel depo",
+      "status": "historical",
+      "related_files": [
+        "steering/depo/gunluk_son_ek_kapsami.json"
+      ],
+      "title": "Ortak Köprü günlükleri — üçüncü depo anı için ek",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/KOD_OKUMASI.md",
+      "kind": "md",
+      "purpose": "İlk depo sürümünde kayıt ekleme, ayna, bekleyen kayıt ve bağlam yollarının incelemesi.",
+      "group": "tarihsel depo",
+      "status": "historical",
+      "related_files": [
+        "steering/depo/okunan_depo.json"
+      ],
+      "title": "Ortak Köprü — kod, talimat ve aktarım yolu incelemesi",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/KOD_OKUMASI_2026-10-26.md",
+      "kind": "md",
+      "purpose": "26 Ekim kod, ayar ve 122 çağrı günlüğünün kaynak incelemesi.",
+      "group": "güncel depo 26",
+      "status": "current",
+      "related_files": [
+        "steering/depo/current_code_scope_2026-10-26.json"
+      ],
+      "title": "Güncel kod, yapılandırma ve çağrı kayıtlarının okuması — 26 Ekim 2026",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı"
+    },
+    {
+      "path": "steering/depo/KOPRU_ILK_55_OKUMASI.md",
+      "kind": "md",
+      "purpose": "24 Ekim anındaki açıklamalar ve k-0001–k-0055 kayıtlarının incelemesi.",
+      "group": "tarihsel depo",
+      "status": "historical",
+      "related_files": [
+        "steering/depo/guncel_kopru_kapsami.json"
+      ],
+      "title": "Ortak Köprü okuma notu: bütün açıklama bölümleri ve k-0001–k-0055",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/KOPRU_OKUMASI_2026-10-26.md",
+      "kind": "md",
+      "purpose": "169 köprü kaydının kapsamı ve sonraki kaynak düzeltmelerinin incelemesi.",
+      "group": "güncel depo 26",
+      "status": "current",
+      "related_files": [
+        "steering/depo/current_kopru_scope_2026-10-26.json"
+      ],
+      "title": "Ortak Köprü: 26 Ekim 2026 tarihli depo ve düzeltme okuması",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı"
+    },
+    {
+      "path": "steering/depo/KOPRU_SON_54_OKUMASI.md",
+      "kind": "md",
+      "purpose": "24 Ekim anındaki k-0056–k-0109 kayıtlarının incelemesi.",
+      "group": "tarihsel depo",
+      "status": "historical",
+      "related_files": [
+        "steering/depo/guncel_kopru_kapsami.json"
+      ],
+      "title": "Ortak Köprü okuma notu: k-0056–k-0109",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/ORTAK_ALAN_DALI_OKUMASI_2026-10-26.md",
+      "kind": "md",
+      "purpose": "Ortak alan araçları dalındaki dört yeni dosyanın ayrı incelemesi.",
+      "group": "güncel depo 26",
+      "status": "current",
+      "related_files": [
+        "steering/depo/dal_pr_durumu_2026-10-26.json"
+      ],
+      "title": "Ortak alan araçları dalının okuması — 26 Ekim 2026",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı"
+    },
+    {
+      "path": "steering/depo/PR3_OKUMASI.md",
+      "kind": "md",
+      "purpose": "PR #3 önerisinin 20 dosyalık farkına ilişkin statik kaynak incelemesi.",
+      "group": "tarihsel depo",
+      "status": "historical",
+      "related_files": [
+        "steering/depo/okunan_dal_ve_pr_surumleri.json"
+      ],
+      "title": "PR #3 — 20 dosyalık diffin tam statik okuması",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/REFERANS_DALLARI_OKUMASI.md",
+      "kind": "md",
+      "purpose": "Üç sabit referans dalının ve ana dalla ilişkilerinin 24 Ekim incelemesi.",
+      "group": "tarihsel depo",
+      "status": "historical",
+      "related_files": [
+        "steering/depo/reference-branches-coverage.json",
+        "steering/depo/repo-pr4-equivalence.json"
+      ],
+      "title": "Ortak Köprü — üç sabit referans dalının okuma notları",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/SON_DEGISIKLIK.md",
+      "kind": "md",
+      "purpose": "İlk yayın sırasındaki son ana dal değişikliği ve katkı dalı gerekçesi.",
+      "group": "tarihsel depo",
+      "status": "historical",
+      "related_files": [
+        "steering/depo/okunan_depo.json"
+      ],
+      "title": "Ortak Köprü — üçüncü anlık durum ve katkı yöntemi",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/SON_KONTROL_2026-10-26.md",
+      "kind": "md",
+      "purpose": "Geçmiş/arşiv kapanışı, sonradan bulunan ek kaynaklar ve kalan kapsam sınırları.",
+      "group": "güncel depo 26",
+      "status": "current",
+      "related_files": [
+        "steering/depo/son_kontrol_kapsami_2026-10-26.json",
+        "steering/depo/ETIKET_ARACI_OKUMASI_2026-10-26.md"
+      ],
+      "title": "Geçmiş ve arşiv — son kontrol, 26 Ekim 2026",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı"
+    },
+    {
+      "path": "steering/depo/YENI_DOSYALAR.md",
+      "kind": "md",
+      "purpose": "Sonradan eklenip kaldırılan beş steering dosyasının tarihsel incelemesi.",
+      "group": "tarihsel depo",
+      "status": "historical",
+      "related_files": [
+        "steering/depo/okunan_depo.json"
+      ],
+      "title": "Ortak Köprü — sonradan eklenen beş steering dosyasının incelemesi",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/archive_audit_2026-10-26.json",
+      "kind": "json",
+      "purpose": "1.483 üye ve önceki 85 dosyalık yayının ayrıntılı karşılaştırma sonuçları.",
+      "group": "doğrulama",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/ARSIV_KARSILASTIRMASI_2026-10-26.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "temporal_note": "Önceki 80fd42db48e91104383b47b6b4144f01790999be sürümündeki 85 dosyalık yayın karşılaştırılır."
+    },
+    {
+      "path": "steering/depo/audit_steering_archive.py",
+      "kind": "py",
+      "purpose": "Özgün arşiv ile sabit Git sürümünü karşılaştıran parametreli denetim betiği.",
+      "group": "doğrulama",
+      "status": "tool",
+      "related_files": [
+        "steering/depo/ARSIV_KARSILASTIRMASI_2026-10-26.md"
+      ],
+      "inspection_basis": "Betik açılış açıklaması; çalıştırılmadı"
+    },
+    {
+      "path": "steering/depo/cli_branch_scope_2026-10-26.json",
+      "kind": "json",
+      "purpose": "CLI devamı ve devir belgeleri için okunan dosya/sürüm kapsamı.",
+      "group": "güncel depo 26",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/CLI_DALI_OKUMASI_2026-10-26.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri"
+    },
+    {
+      "path": "steering/depo/current_code_scope_2026-10-26.json",
+      "kind": "json",
+      "purpose": "26 Ekim kod/ayar dosyaları ile 122 günlüğün karşılaştırma kapsamı.",
+      "group": "güncel depo 26",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/KOD_OKUMASI_2026-10-26.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri"
+    },
+    {
+      "path": "steering/depo/current_kopru_scope_2026-10-26.json",
+      "kind": "json",
+      "purpose": "Önceki 109 kayıt eşliği ve 60 yeni kaydın okuma kapsamı.",
+      "group": "güncel depo 26",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/KOPRU_OKUMASI_2026-10-26.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri"
+    },
+    {
+      "path": "steering/depo/dal_pr_durumu_2026-10-26.json",
+      "kind": "json",
+      "purpose": "26 Ekim tarihinde görülen dal uçları ve PR durumlarının kaydı.",
+      "group": "güncel depo 26",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/ORTAK_ALAN_DALI_OKUMASI_2026-10-26.md",
+        "steering/depo/GUNCEL_OKUMA_2026-10-26.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri"
+    },
+    {
+      "path": "steering/depo/etiket_araci_kapsami_2026-10-26.json",
+      "kind": "json",
+      "purpose": "Ek etiket aracının ZIP/PYZ eşliği, dosya kapsamı ve tarihsel test kaydı.",
+      "group": "güncel depo 26",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/ETIKET_ARACI_OKUMASI_2026-10-26.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri"
+    },
+    {
+      "path": "steering/depo/guncel_kopru_kapsami.json",
+      "kind": "json",
+      "purpose": "24 Ekim sabit ana dalındaki 109 köprü kaydının konum ve dosya kapsamı.",
+      "group": "tarihsel depo",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/KOPRU_ILK_55_OKUMASI.md",
+        "steering/depo/KOPRU_SON_54_OKUMASI.md",
+        "steering/depo/GUNCEL_OKUMA_2026-10-24.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/gunluk_eki_kapsami.json",
+      "kind": "json",
+      "purpose": "İkinci günlük ekinin yeni dosyaları ve birikimli sonuç sayımları.",
+      "group": "tarihsel depo",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/GUNLUK_EKI.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/gunluk_kapsami.json",
+      "kind": "json",
+      "purpose": "İlk 13 çağrı günlüğünün dosya, bölüm, tekrar ve sonuç kayıtları.",
+      "group": "tarihsel depo",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/GUNLUK_OKUMASI.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/gunluk_son_ek_kapsami.json",
+      "kind": "json",
+      "purpose": "Son günlük ekinin üç çağrısı, tekrar eşlikleri ve birikimli 19 çağrı kapsamı.",
+      "group": "tarihsel depo",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/GUNLUK_SON_EK.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/okunan_dal_ve_pr_surumleri.json",
+      "kind": "json",
+      "purpose": "24 Ekim okumasında esas alınan dal ve PR sürümlerinin kaydı.",
+      "group": "tarihsel depo",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/GUNCEL_KOD_VE_PR_OKUMASI.md",
+        "steering/depo/PR3_OKUMASI.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/okunan_depo.json",
+      "kind": "json",
+      "purpose": "İlk okuma dizisindeki son sabit depo dosyaları ve önceki anlık durumlar.",
+      "group": "tarihsel depo",
+      "status": "evidence",
+      "related_files": [
+        "steering/DEPO_OKUMASI.md",
+        "steering/depo/KOD_OKUMASI.md",
+        "steering/depo/YENI_DOSYALAR.md",
+        "steering/depo/SON_DEGISIKLIK.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/reference-branches-coverage.json",
+      "kind": "json",
+      "purpose": "Üç referans dalının dosya, biçim ve kaynak eşlik kapsamı.",
+      "group": "tarihsel depo",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/REFERANS_DALLARI_OKUMASI.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/repo-log-equivalence.json",
+      "kind": "json",
+      "purpose": "24 Ekim sabit sürümündeki günlük ve köprü gövdelerinin eşlik sonuçları.",
+      "group": "doğrulama",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/GUNCEL_KOD_VE_PR_OKUMASI.md",
+        "steering/depo/repo-log-equivalence.py"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "temporal_note": "8571ddf8e3a33b432cc1c7ef88b69a902f390e5c sürümünün sonuç kaydı."
+    },
+    {
+      "path": "steering/depo/repo-log-equivalence.py",
+      "kind": "py",
+      "purpose": "24 Ekim sabit depo sürümünde günlük/köprü eşliği çıkaran denetim betiği.",
+      "group": "doğrulama",
+      "status": "tool",
+      "related_files": [
+        "steering/depo/repo-log-equivalence.json"
+      ],
+      "inspection_basis": "Betik açılış açıklaması; çalıştırılmadı",
+      "temporal_note": "Betikteki sabit Git sürümü 8571ddf8e3a33b432cc1c7ef88b69a902f390e5c."
+    },
+    {
+      "path": "steering/depo/repo-pr4-equivalence.json",
+      "kind": "json",
+      "purpose": "PR #4 kaynak metni ile türetilmiş çıktılarının eşlik denetimi.",
+      "group": "doğrulama",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/REFERANS_DALLARI_OKUMASI.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "temporal_note": "24 Ekim PR #4 kaynak eşliği; güncel ana dala uygulanma sonucu değildir."
+    },
+    {
+      "path": "steering/depo/repo-reading-manifest.json",
+      "kind": "json",
+      "purpose": "24 Ekim ana dal dosyalarının yöntem ve sürüm bazında okuma manifestosu.",
+      "group": "tarihsel depo",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/GUNCEL_KOD_VE_PR_OKUMASI.md",
+        "steering/depo/GUNCEL_OKUMA_2026-10-24.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/depo/son_kontrol_kapsami_2026-10-26.json",
+      "kind": "json",
+      "purpose": "Son kapanışın envanter, kuyruk, ek kaynak ve yayın kapsamı kayıtları.",
+      "group": "güncel depo 26",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/SON_KONTROL_2026-10-26.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri"
+    },
+    {
+      "path": "steering/depo/yayin_oncesi_ana_dal_farki.json",
+      "kind": "json",
+      "purpose": "24 Ekim yayın hazırlığındaki son ana dal farkının okuma kapsamına etkisi.",
+      "group": "tarihsel depo",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/GUNCEL_OKUMA_2026-10-24.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "temporal_note": "26 Ekim güncellemesinden önceki sabit depo anı; dosya adındaki güncel/son sözcüğü bugünkü ana dalı belirtmez."
+    },
+    {
+      "path": "steering/incelemeler/books_faith_remaining.md",
+      "kind": "md",
+      "purpose": "Sistem Farkları ve Matrix kitap projeleri; soru, dal ve üretim kapsamı.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/books_faith_remaining.json"
+      ],
+      "subtype": "aile raporu",
+      "note": "Özgün arşiv için başvuru raporu; tarihsel ara durumlar son okuma kaydıyla birlikte okunur.",
+      "title": "F00185 / U0108 — Sistem Farkları Kitap Projesi",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "family": "books_faith_remaining"
+    },
+    {
+      "path": "steering/incelemeler/claude_programs.md",
+      "kind": "md",
+      "purpose": "Claude konuşması, arayüz kodu, araç yönergesi ve analitik kayıt ayrımı.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/claude_programs.json"
+      ],
+      "subtype": "aile raporu",
+      "note": "Özgün arşiv için başvuru raporu; tarihsel ara durumlar son okuma kaydıyla birlikte okunur.",
+      "title": "Claude kaynakları: konuşma, arayüz, araç yönergesi ve analitik komut ayrımı",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "family": "claude_programs"
+    },
+    {
+      "path": "steering/incelemeler/cognitive_metacognition_remaining.md",
+      "kind": "md",
+      "purpose": "OMROS/CognitiveOS ve Metacognition konuşmaları; kullanıcı düzeltmeleri ve yöntemler.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/cognitive_metacognition_remaining.json"
+      ],
+      "subtype": "aile raporu",
+      "note": "Özgün arşiv için başvuru raporu; tarihsel ara durumlar son okuma kaydıyla birlikte okunur.",
+      "title": "OMROS–CognitiveOS ve Metacognition — 270 Mesajın Kaynak Okuması",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "family": "cognitive_metacognition_remaining"
+    },
+    {
+      "path": "steering/incelemeler/conversations.md",
+      "kind": "md",
+      "purpose": "ChatGPT/Gemini konuşma gövdeleri ile HTML yapılandırmalarının ayrı okunması.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/conversations.json"
+      ],
+      "subtype": "aile raporu",
+      "note": "Özgün arşiv için başvuru raporu; tarihsel ara durumlar son okuma kaydıyla birlikte okunur.",
+      "title": "Konuşma kaynaklarında Steering: ayrı ayrı okuma ve kanıt sınırları",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "family": "conversations"
+    },
+    {
+      "path": "steering/incelemeler/faith_remaining.md",
+      "kind": "md",
+      "purpose": "Faith v2 içinde soru kapsamı, özgün tanıklık ve üretilmiş anlatı karşılaştırması.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/faith_remaining.json"
+      ],
+      "subtype": "aile raporu",
+      "note": "Özgün arşiv için başvuru raporu; tarihsel ara durumlar son okuma kaydıyla birlikte okunur.",
+      "title": "Faith v2 — 176 Mesajın Kaynak Okuması",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "family": "faith_remaining"
+    },
+    {
+      "path": "steering/incelemeler/foundational.md",
+      "kind": "md",
+      "purpose": "deus_ex_machina temel eserleri ve anlam, aktarım, kaynak ayrımları.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/foundational.json"
+      ],
+      "subtype": "aile raporu",
+      "note": "Özgün arşiv için başvuru raporu; tarihsel ara durumlar son okuma kaydıyla birlikte okunur.",
+      "title": "Temel eserler ve kılavuzlar: erişilebilir metinlerin tam okuması",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "family": "foundational"
+    },
+    {
+      "path": "steering/incelemeler/historical.md",
+      "kind": "md",
+      "purpose": "Tarihsel aktarım ve HalukAI belgelerinde kullanıcı sözü, talimat ve uygulama ayrımı.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/historical.json"
+      ],
+      "subtype": "aile raporu",
+      "note": "Özgün arşiv için başvuru raporu; tarihsel ara durumlar son okuma kaydıyla birlikte okunur.",
+      "title": "Tarihsel kaynaklar ve HalukAI evrakları: steering incelemesi",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "family": "historical"
+    },
+    {
+      "path": "steering/incelemeler/historical_document_status.md",
+      "kind": "md",
+      "purpose": "İlk tarihsel okumanın belge bazlı tamamlanan/kalan aralık çizelgesi.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "historical",
+      "related_files": [
+        "steering/kanitlar/historical.json",
+        "steering/okuma_durumlari.json"
+      ],
+      "subtype": "ek çizelge",
+      "note": "Ara durumdur; son tamamlanma kaydı okuma_durumlari.json içindedir.",
+      "title": "Belge bazında okuma durumu",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı"
+    },
+    {
+      "path": "steering/incelemeler/historical_supplement.md",
+      "kind": "md",
+      "purpose": "OMROS, WhatsApp/CLI devri ve tarihsel kaynakların tamamlayıcı incelemesi.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/historical_supplement.json"
+      ],
+      "subtype": "aile raporu",
+      "note": "Özgün arşiv için başvuru raporu; tarihsel ara durumlar son okuma kaydıyla birlikte okunur.",
+      "title": "Tarihsel kaynaklar: steering bağlamında ek belge incelemesi",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "family": "historical_supplement"
+    },
+    {
+      "path": "steering/incelemeler/images.md",
+      "kind": "md",
+      "purpose": "26 raster görselin görünür içeriği ve görsel okumanın sınırları.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/images.json"
+      ],
+      "subtype": "aile raporu",
+      "note": "Özgün arşiv için başvuru raporu; tarihsel ara durumlar son okuma kaydıyla birlikte okunur.",
+      "title": "Raster görsellerin fiili okuması",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "family": "images"
+    },
+    {
+      "path": "steering/incelemeler/long_corpus_remaining.md",
+      "kind": "md",
+      "purpose": "Büyük korpus tekrarları, uzun sohbet ve birleşik web kaynağı ilişkileri.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/long_corpus_remaining.json"
+      ],
+      "subtype": "aile raporu",
+      "note": "Özgün arşiv için başvuru raporu; tarihsel ara durumlar son okuma kaydıyla birlikte okunur.",
+      "title": "Büyük korpus eşlik haritası ve tamamlanan iki kaynak",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "family": "long_corpus_remaining"
+    },
+    {
+      "path": "steering/incelemeler/metacognition_remaining.md",
+      "kind": "md",
+      "purpose": "Metacognition çalışma kitabındaki kaynaklar, hücreler, yöntem ve eksik kayıtlar.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/metacognition_remaining.json"
+      ],
+      "subtype": "aile raporu",
+      "note": "Özgün arşiv için başvuru raporu; tarihsel ara durumlar son okuma kaydıyla birlikte okunur.",
+      "title": "F00218 / U0161 — Metacognition literatür arşivi v8",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "family": "metacognition_remaining"
+    },
+    {
+      "path": "steering/incelemeler/mlops_remaining.md",
+      "kind": "md",
+      "purpose": "MLOps kitap konuşmasında yöntem istekleri, üretim beyanları ve erişilebilir gövdeler.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/mlops_remaining.json"
+      ],
+      "subtype": "aile raporu",
+      "note": "Özgün arşiv için başvuru raporu; tarihsel ara durumlar son okuma kaydıyla birlikte okunur.",
+      "title": "MLOps Kitap Projesi — tam konuşma gövdesi okuması",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "family": "mlops_remaining"
+    },
+    {
+      "path": "steering/incelemeler/models.md",
+      "kind": "md",
+      "purpose": "Model 1–4 metinlerinde yönlendirme, kural, izin ve kanıt tasarımı.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/models.json"
+      ],
+      "subtype": "aile raporu",
+      "note": "Özgün arşiv için başvuru raporu; tarihsel ara durumlar son okuma kaydıyla birlikte okunur.",
+      "title": "Model 1–4 metinleri: yönlendirme, kural, izin ve kanıt incelemesi",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "family": "models"
+    },
+    {
+      "path": "steering/incelemeler/models_remaining.md",
+      "kind": "md",
+      "purpose": "Model derlemeleri ve OMROS v19/v20 kitaplarında sürüm, kural ve sonuç ilişkileri.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/models_remaining.json"
+      ],
+      "subtype": "aile raporu",
+      "note": "Özgün arşiv için başvuru raporu; tarihsel ara durumlar son okuma kaydıyla birlikte okunur.",
+      "title": "Kalan model ve OMROS çalışma kitapları — tam metin incelemesi",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "family": "models_remaining"
+    },
+    {
+      "path": "steering/incelemeler/models_supplement.md",
+      "kind": "md",
+      "purpose": "Ek model belgeleri ve çalışma kitaplarında kilit, protokol ve örnek koşum sorunları.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/models_supplement.json"
+      ],
+      "subtype": "aile raporu",
+      "note": "Özgün arşiv için başvuru raporu; tarihsel ara durumlar son okuma kaydıyla birlikte okunur.",
+      "title": "Ek model, kural ve süreç belgeleri — kaynak okuması",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "family": "models_supplement"
+    },
+    {
+      "path": "steering/incelemeler/operational_remaining.md",
+      "kind": "md",
+      "purpose": "CLI taraması ve operasyon aktarımında dosya, okuma, test ve gerçekleşme ayrımı.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/operational_remaining.json"
+      ],
+      "subtype": "aile raporu",
+      "note": "Özgün arşiv için başvuru raporu; tarihsel ara durumlar son okuma kaydıyla birlikte okunur.",
+      "title": "Kalan operasyon kayıtlarının tam metin incelemesi",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "family": "operational_remaining"
+    },
+    {
+      "path": "steering/incelemeler/root_supplement.md",
+      "kind": "md",
+      "purpose": "Eski yorumların son kullanıcı açıklamalarıyla ve kök envanterlerle ilişkisi.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/root_supplement.json"
+      ],
+      "subtype": "aile raporu",
+      "note": "Özgün arşiv için başvuru raporu; tarihsel ara durumlar son okuma kaydıyla birlikte okunur.",
+      "title": "Okuma girişleri, eski yorum ve envanterler",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "family": "root_supplement"
+    },
+    {
+      "path": "steering/incelemeler/systems_embedded_audit.md",
+      "kind": "md",
+      "purpose": "F00197/U0126 sistem kaynağının ayrı yayımlanan tamamlayıcı raporu.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/systems_remaining.json",
+        "steering/incelemeler/systems_remaining.md"
+      ],
+      "subtype": "ek rapor",
+      "note": "Kanıtları systems_remaining.json içindeki zip_embedded_audit_notes kayıtlarındadır.",
+      "title": "F00197 / U0126 — tamamlayıcı doğrudan okuma",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı"
+    },
+    {
+      "path": "steering/incelemeler/systems_remaining.md",
+      "kind": "md",
+      "purpose": "Sistem ailesi sohbet ve derlemelerinde zincir, bölüm ve kaynak statüsü farkları.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/systems_remaining.json",
+        "steering/incelemeler/systems_embedded_audit.md"
+      ],
+      "subtype": "aile raporu",
+      "note": "Özgün arşiv için başvuru raporu; tarihsel ara durumlar son okuma kaydıyla birlikte okunur.",
+      "title": "Sistem ailesi: kaynak, yönlendirme ve aktarım incelemesi",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "family": "systems_remaining"
+    },
+    {
+      "path": "steering/incelemeler/two_conversations_remaining.md",
+      "kind": "md",
+      "purpose": "İki büyük sohbette üretim kodu, puanlar, test iddiaları ve kullanıcı düzeltmeleri.",
+      "group": "özgün kaynak incelemeleri",
+      "status": "current",
+      "related_files": [
+        "steering/kanitlar/two_conversations_remaining.json"
+      ],
+      "subtype": "aile raporu",
+      "note": "Özgün arşiv için başvuru raporu; tarihsel ara durumlar son okuma kaydıyla birlikte okunur.",
+      "title": "İki sohbetin tam metin incelemesi — U0167 / F00111",
+      "inspection_basis": "Markdown başlıkları ve önceki katalog bağlamı",
+      "family": "two_conversations_remaining"
+    },
+    {
+      "path": "steering/kanitlar/books_faith_remaining.json",
+      "kind": "json",
+      "purpose": "Sistem Farkları ve Matrix kaynaklarının alıntı, eşlik ve okuma kapsamı kayıtları.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/books_faith_remaining.md"
+      ],
+      "subtype": "aile kanıtı",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 7,
+      "family": "books_faith_remaining",
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/claude_programs.json",
+      "kind": "json",
+      "purpose": "Claude kaynaklarının dosya değerlendirmeleri ve teknik alan dayanakları.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/claude_programs.md"
+      ],
+      "subtype": "aile kanıtı",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 4,
+      "family": "claude_programs",
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/cognitive_metacognition_remaining.json",
+      "kind": "json",
+      "purpose": "OMROS/CognitiveOS ve Metacognition mesaj doğrulaması, alıntıları ve okuma kapsamı.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/cognitive_metacognition_remaining.md"
+      ],
+      "subtype": "aile kanıtı",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 5,
+      "family": "cognitive_metacognition_remaining",
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/conversations.json",
+      "kind": "json",
+      "purpose": "Konuşma kaynaklarının kesin alıntıları, ifade konumları ve kimlik eşlemeleri.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/conversations.md"
+      ],
+      "subtype": "aile kanıtı",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 5,
+      "family": "conversations",
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/downloads_images.json",
+      "kind": "json",
+      "purpose": "İndirilen arayüz görsellerinin yardımcı dosya değerlendirmeleri.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/ANA_RAPOR.md"
+      ],
+      "subtype": "yardımcı analitik kanıt",
+      "note": "Aynı adla bağımsız Markdown aile raporu bulunmaz; 19 aile sayısına eklenmez.",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 1,
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/downloads_programs.json",
+      "kind": "json",
+      "purpose": "İndirilen web betiklerinin yardımcı işlev ve yapı değerlendirmeleri.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/ANA_RAPOR.md"
+      ],
+      "subtype": "yardımcı analitik kanıt",
+      "note": "Aynı adla bağımsız Markdown aile raporu bulunmaz; 19 aile sayısına eklenmez.",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 1,
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/downloads_styles.json",
+      "kind": "json",
+      "purpose": "İndirilen web stillerinin yardımcı işlev ve yapı değerlendirmeleri.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/ANA_RAPOR.md"
+      ],
+      "subtype": "yardımcı analitik kanıt",
+      "note": "Aynı adla bağımsız Markdown aile raporu bulunmaz; 19 aile sayısına eklenmez.",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 1,
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/faith_remaining.json",
+      "kind": "json",
+      "purpose": "Faith v2 mesajları, soru kaymaları ve birinci şahıs anlatı kökeni dayanakları.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/faith_remaining.md"
+      ],
+      "subtype": "aile kanıtı",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 6,
+      "family": "faith_remaining",
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/foundational.json",
+      "kind": "json",
+      "purpose": "Temel eserlerin dosya değerlendirmeleri ve okuma kapsamı kayıtları.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/foundational.md"
+      ],
+      "subtype": "aile kanıtı",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 2,
+      "family": "foundational",
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/historical.json",
+      "kind": "json",
+      "purpose": "Tarihsel kaynak eşlemeleri, ilk okuma kapsamı, kuyruk ve belge değerlendirmeleri.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/historical.md",
+        "steering/incelemeler/historical_document_status.md"
+      ],
+      "subtype": "aile kanıtı",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 7,
+      "family": "historical",
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/historical_supplement.json",
+      "kind": "json",
+      "purpose": "Tarihsel ek belgelerin değerlendirmeleri, tekrar eşlemeleri ve kapsam kayıtları.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/historical_supplement.md"
+      ],
+      "subtype": "aile kanıtı",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 6,
+      "family": "historical_supplement",
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/images.json",
+      "kind": "json",
+      "purpose": "26 görselin ayrı değerlendirmeleri ve kapsam kayıtları; özgün pikseller değildir.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/images.md"
+      ],
+      "subtype": "aile kanıtı",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 2,
+      "family": "images",
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/long_corpus_remaining.json",
+      "kind": "json",
+      "purpose": "Uzun kaynakların birleşim kanıtı, alıntıları ve okuma kapsamı kayıtları.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/long_corpus_remaining.md"
+      ],
+      "subtype": "aile kanıtı",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 5,
+      "family": "long_corpus_remaining",
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/metacognition_remaining.json",
+      "kind": "json",
+      "purpose": "Metacognition hücre/sayfa değerlendirmeleri, denetimler ve okuma kapsamı.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/metacognition_remaining.md"
+      ],
+      "subtype": "aile kanıtı",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 5,
+      "family": "metacognition_remaining",
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/mlops_remaining.json",
+      "kind": "json",
+      "purpose": "MLOps mesaj doğrulaması, belge değerlendirmesi ve okuma kapsamı.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/mlops_remaining.md"
+      ],
+      "subtype": "aile kanıtı",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 3,
+      "family": "mlops_remaining",
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/models.json",
+      "kind": "json",
+      "purpose": "Model 1–4 kaynaklarının eşleme denetimi, alıntıları ve okuma kapsamı.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/models.md"
+      ],
+      "subtype": "aile kanıtı",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 4,
+      "family": "models",
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/models_remaining.json",
+      "kind": "json",
+      "purpose": "Model derlemelerinin dosya değerlendirmeleri, alıntıları ve eşleme doğrulamaları.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/models_remaining.md"
+      ],
+      "subtype": "aile kanıtı",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 4,
+      "family": "models_remaining",
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/models_supplement.json",
+      "kind": "json",
+      "purpose": "Ek model belgelerinin hücre/konum kanıtları, eşlemeleri ve okuma kapsamı.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/models_supplement.md"
+      ],
+      "subtype": "aile kanıtı",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 4,
+      "family": "models_supplement",
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/old_css_1.json",
+      "kind": "json",
+      "purpose": "İlk eski stil grubunun yardımcı dosya ve yapı değerlendirmeleri.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/ANA_RAPOR.md"
+      ],
+      "subtype": "yardımcı analitik kanıt",
+      "note": "Aynı adla bağımsız Markdown aile raporu bulunmaz; 19 aile sayısına eklenmez.",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 1,
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/old_css_2.json",
+      "kind": "json",
+      "purpose": "İkinci eski stil grubunun yardımcı dosya ve yapı değerlendirmeleri.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/ANA_RAPOR.md"
+      ],
+      "subtype": "yardımcı analitik kanıt",
+      "note": "Aynı adla bağımsız Markdown aile raporu bulunmaz; 19 aile sayısına eklenmez.",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 1,
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/old_programs.json",
+      "kind": "json",
+      "purpose": "Eski program grubunun yardımcı dosya ve işlev değerlendirmeleri.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/ANA_RAPOR.md"
+      ],
+      "subtype": "yardımcı analitik kanıt",
+      "note": "Aynı adla bağımsız Markdown aile raporu bulunmaz; 19 aile sayısına eklenmez.",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 1,
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/operational_remaining.json",
+      "kind": "json",
+      "purpose": "Operasyon kayıtlarının tamamlayıcı okuma kapsamı, ilerleme ve değerlendirmeleri.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/operational_remaining.md"
+      ],
+      "subtype": "aile kanıtı",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 3,
+      "family": "operational_remaining",
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/paket_dogrulamasi.json",
+      "kind": "json",
+      "purpose": "Özgün özel okuma paketinin dönüşüm, maskeleme, kuyruk ve bütünlük doğrulamaları.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/aktarim_manifestosu.json"
+      ],
+      "subtype": "özgün paket doğrulaması",
+      "note": "Eski özel paketin doğrulamasıdır; güncel Git yayınının doğrulaması olarak kullanılmaz.",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 4,
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/root_supplement.json",
+      "kind": "json",
+      "purpose": "Kök belgelerin tamamlayıcı değerlendirmeleri ve yapısal envanter denetimleri.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/root_supplement.md"
+      ],
+      "subtype": "aile kanıtı",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 2,
+      "family": "root_supplement",
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/systems_remaining.json",
+      "kind": "json",
+      "purpose": "Sistem ailesinin değerlendirmeleri, eşlikleri ve gömülü tamamlayıcı okuma kanıtları.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/systems_remaining.md",
+        "steering/incelemeler/systems_embedded_audit.md"
+      ],
+      "subtype": "aile kanıtı",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 9,
+      "family": "systems_remaining",
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kanitlar/two_conversations_remaining.json",
+      "kind": "json",
+      "purpose": "İki büyük sohbetin kaynak, alıntı, ilerleme ve tamamlanma denetimleri.",
+      "group": "kanıtlar",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/two_conversations_remaining.md"
+      ],
+      "subtype": "aile kanıtı",
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri",
+      "embedded_record_count": 6,
+      "family": "two_conversations_remaining",
+      "source_body_note": "Analitik kayıt ve seçilmiş kanıt paketi; bütün ham kaynakların kamuya açık kopyası değildir."
+    },
+    {
+      "path": "steering/kaynaklar.json",
+      "kind": "json",
+      "purpose": "325 özgün içerik, 512 konum ve tarihsel atıf kimliklerinin kataloğu.",
+      "group": "giriş/kapsam",
+      "status": "evidence",
+      "related_files": [
+        "steering/ANA_RAPOR.md",
+        "steering/atif_denetimi.json"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri"
+    },
+    {
+      "path": "steering/maskeleme_ve_donusum_kaydi.json",
+      "kind": "json",
+      "purpose": "Yeni yayın kopyalarındaki maskeleme, yol ve metin dönüşümleri.",
+      "group": "doğrulama",
+      "status": "evidence",
+      "related_files": [
+        "steering/AKTARIM_KAPSAMI.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri"
+    },
+    {
+      "path": "steering/okuma_durumlari.json",
+      "kind": "json",
+      "purpose": "325 içeriğin son okuma yöntemi ve tamamlanma durumu.",
+      "group": "giriş/kapsam",
+      "status": "evidence",
+      "related_files": [
+        "steering/incelemeler/historical_document_status.md",
+        "steering/ANA_RAPOR.md"
+      ],
+      "inspection_basis": "JSON üstverisi, anahtarlar ve kayıt türleri"
+    },
+    {
+      "path": "steering/DOSYA_KATALOGU.md",
+      "kind": "md",
+      "purpose": "Bütün yayın dosyalarının işlevi, rapor–kanıt ilişkileri ve ilgili dal/PR haritası.",
+      "group": "giriş/kapsam",
+      "status": "current",
+      "related_files": [
+        "steering/README.md",
+        "steering/DUZENLEME_DOGRULAMASI_2026-10-26.json"
+      ]
+    },
+    {
+      "path": "steering/depo/ANADAL_SON_TARAMA_2026-10-26.md",
+      "kind": "md",
+      "purpose": "Dalın ayrıldığı committen son ana dal kesitine kapsam kontrolü; değişen dosyalar, kod durumu ve kapanış sınırları.",
+      "group": "güncel depo 26",
+      "status": "current",
+      "related_files": [
+        "steering/depo/anadal_son_tarama_2026-10-26.json",
+        "steering/DUZENLEME_DOGRULAMASI_2026-10-26.json"
+      ]
+    },
+    {
+      "path": "steering/depo/anadal_son_tarama_2026-10-26.json",
+      "kind": "json",
+      "purpose": "Son ana dal taramasının commit, dosya karması, kayıt gövdesi, ayna ve değişiklik kanıtları.",
+      "group": "güncel depo 26",
+      "status": "evidence",
+      "related_files": [
+        "steering/depo/ANADAL_SON_TARAMA_2026-10-26.md"
+      ]
+    },
+    {
+      "path": "steering/DUZENLEME_DOGRULAMASI_2026-10-26.json",
+      "kind": "json",
+      "purpose": "Son düzenlemenin dosya kataloğu, yayın adayı ve köprü/ayna bütünlük kontrolleri.",
+      "group": "doğrulama",
+      "status": "evidence",
+      "related_files": [
+        "steering/DOSYA_KATALOGU.md",
+        "steering/SHA256SUMS",
+        "steering/depo/anadal_son_tarama_2026-10-26.json"
+      ]
+    }
+  ],
+  "limits": [
+    "Kapanış yalnız bu oturumun arşiv okuma, analitik aktarım, düzenleme ve son ana dal taraması işini kapsar.",
+    "Önceki 325 farklı içerik/512 konum ile sonradan incelenen dokuz ek dış konum/beş farklı içerik ayrı kapsamlardır.",
+    "579 dosyalık kısmi kanıt taşıyan Codex çalışması, 6.065 kontrolün kalan incelemesi, Google imza uyumsuzluğu ve k-0169 ayrı işlerdir.",
+    "Arşiv programları, canlı modeller, sağlayıcılar, CLI oturumları veya Windows/VM akışları çalıştırılmadı.",
+    "Depo içi ayna eşliği, harici web aynasının erişim ve yayın durumunun doğrulandığı anlamına gelmez.",
+    "Kayıt ekleyici, ayna üretici ve salt okunur ayrıştırma/kapsam işlevleri yerel yayın hazırlığında kullanıldı.",
+    "Yayın dosyaları analitik sonuç ve kapsam kanıtıdır; ham özel sohbet ve ZIP/PYZ paketleri bu düzenlemeyle eklenmedi."
+  ]
+}
