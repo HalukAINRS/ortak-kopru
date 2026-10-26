@@ -8,7 +8,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 import re
 import secrets
-from urllib.parse import urlsplit
+from urllib.parse import unquote, urlsplit
 
 from .core import Conflict, CoreError, NotFound, Store
 
@@ -152,6 +152,16 @@ class Handler(BaseHTTPRequestHandler):
                     return
                 if path == "/api/tasks":
                     self._send(200, {"tasks": self.server.store.list_tasks()})
+                    return
+                if path == "/api/sessions":
+                    from .handoff import list_sessions
+                    self._send(200, list_sessions(self.server.store))
+                    return
+                session_match = re.fullmatch(r"/api/sessions/([^/]+)/inbox", path)
+                if session_match:
+                    from .handoff import inbox
+                    session = unquote(session_match.group(1), encoding="utf-8", errors="strict")
+                    self._send(200, inbox(self.server.store, session))
                     return
                 match = re.fullmatch(r"/api/tasks/([A-Za-z0-9_-]+)(?:/(context|events))?", path)
                 if not match:

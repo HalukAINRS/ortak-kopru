@@ -51,6 +51,15 @@ def parser():
     make.add_argument("--sources-file", type=Path)
     _write_args(make)
     sub.add_parser("list", help="Güncel işleri listele.")
+    sub.add_parser("sessions", help="Atamalarda kayıtlı oturumları listele; canlılık veya kimlik kanıtı değildir.")
+    p = sub.add_parser("inbox", help="Bir oturumun güncel etkin atamalarını bul.")
+    p.add_argument("--session", dest="session_id", required=True)
+    p = sub.add_parser("handoff", help="Etkin çalıştırmayı tüm kaynak baytlarıyla özel bir devir dizinine hazırla.")
+    p.add_argument("attempt_id")
+    p.add_argument("--session", dest="session_id", required=True)
+    p.add_argument("--output", type=Path, required=True, help="Henüz bulunmayan, Git dışındaki özel hedef dizin.")
+    p = sub.add_parser("handoff-verify", help="Devir paketinin bütünlüğünü denetle; alım veya çalışma başlatmaz.")
+    p.add_argument("package", type=Path)
     for name in ("get", "context"):
         p = sub.add_parser(name)
         p.add_argument("task_id")
@@ -88,6 +97,12 @@ def parser():
     _write_args(p, revision=True)
     p = sub.add_parser("export", help="Özel kayıtları yerel JSON olarak dışa aktar.")
     p.add_argument("--output", type=Path)
+    p = sub.add_parser("backup", help="Veritabanı ve başvurulan dosyaların tutarlı özel yedeğini oluştur.")
+    p.add_argument("--output", type=Path, required=True, help="Henüz bulunmayan, Git dışındaki yedek dizini.")
+    p = sub.add_parser("backup-verify", help="Yedek manifestini, veritabanını ve dosyalarını denetle.")
+    p.add_argument("backup_dir", type=Path)
+    p = sub.add_parser("restore", help="Doğrulanmış yedeği yeni --state-dir dizinine geri yükle; mevcut alanı ezmez.")
+    p.add_argument("backup_dir", type=Path)
     p = sub.add_parser("serve", help="Yalnız loopback üzerinde yerel yüzeyi aç.")
     p.add_argument("--port", type=int, default=8765)
     return root
@@ -137,14 +152,38 @@ def main(argv=None):
             stream.reconfigure(encoding="utf-8")
     ap = parser()
     args = ap.parse_args(argv)
-    if args.command != "runtime" and args.state_dir is None:
+    if args.command not in {"runtime", "backup-verify", "handoff-verify"} and args.state_dir is None:
         ap.error("Bu komut --state-dir gerektirir.")
     try:
+        command = args.command
         metadata_stop = args.command == "control" and args.action in {"pause", "cancel"}
-        runtime = runtime_status(args.backend, strict=args.command != "runtime" and not metadata_stop)
+        maintenance = command in {"backup", "backup-verify", "restore", "handoff-verify"}
+        runtime = runtime_status(args.backend, strict=command != "runtime" and not metadata_stop and not maintenance)
         if args.command == "runtime":
             print_json({"runtime": runtime})
             return 0 if runtime["ready"] else 1
+        # Recovery and offline integrity checks must remain available after a
+        # driver failure. They never execute a task or silently change backend.
+        # Do not instantiate Store here: a missing source must not become an
+        # empty database, and restore must only publish a complete new target.
+        if maintenance:
+            if command == "handoff-verify":
+                from .handoff import verify_handoff
+                result = {"package_path": str(args.package.resolve()),
+                          "manifest": verify_handoff(args.package)}
+            else:
+                from .backup import create_backup, restore_backup, verify_backup
+                if command == "backup":
+                    result = {"backup_path": str(args.output.resolve()),
+                              "manifest": create_backup(args.state_dir, args.output)}
+                elif command == "backup-verify":
+                    result = {"backup_path": str(args.backup_dir.resolve()),
+                              "manifest": verify_backup(args.backup_dir)}
+                else:
+                    result = {"state_dir": str(args.state_dir.resolve()),
+                              "manifest": restore_backup(args.backup_dir, args.state_dir)}
+            print_json({"runtime": runtime, "operation_scope": "private_data_maintenance", "result": result})
+            return 0
         if args.command == "serve":
             server = create_server(args.state_dir, backend=args.backend, port=args.port)
             base_url = f"http://127.0.0.1:{server.server_address[1]}"
@@ -160,7 +199,6 @@ def main(argv=None):
                 server.server_close()
             return 0
         store = Store(args.state_dir)
-        command = args.command
         if command == "create":
             result = store.create_task(read_words(args),
                 {"actor": args.actor, "source": args.authority_source, "scope": args.authority_scope},
@@ -168,6 +206,15 @@ def main(argv=None):
                 args.request_key, sources=refs(args.source, args.sources_file))
         elif command == "list":
             result = {"tasks": store.list_tasks()}
+        elif command in {"sessions", "inbox", "handoff"}:
+            from .handoff import create_handoff, inbox, list_sessions
+            if command == "sessions":
+                result = list_sessions(store)
+            elif command == "inbox":
+                result = inbox(store, args.session_id)
+            else:
+                result = {"package_path": str(args.output.resolve()),
+                          "manifest": create_handoff(store, args.attempt_id, args.session_id, args.output)}
         elif command == "get":
             result = store.get_task(args.task_id)
         elif command == "context":

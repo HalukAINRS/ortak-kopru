@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DEUS private handoff manifest v1",
+  "description": "A complete file snapshot bound to a task, revision, attempt and declared session. Integrity is not identity, authorization, delivery or current eligibility. A live receive is still required; no task database or authority is imported.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "classification", "created_at", "task_id", "revision", "attempt_id", "session_id", "participant", "preparation", "context", "objects"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "kind": {"const": "deus_handoff"},
+    "classification": {"const": "private"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "task_id": {"type": "string", "pattern": "^[0-9a-f]{32}$"},
+    "revision": {"type": "integer", "minimum": 1},
+    "attempt_id": {"type": "string", "pattern": "^[0-9a-f]{32}$"},
+    "session_id": {"type": "string", "minLength": 1, "maxLength": 256},
+    "participant": {"type": "string", "minLength": 1, "maxLength": 200},
+    "preparation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["task_status", "attempt_status", "delivery_receipt", "live_receive_required"],
+      "properties": {
+        "task_status": {"enum": ["ready", "running"]},
+        "attempt_status": {"enum": ["assigned", "received"]},
+        "delivery_receipt": {"const": false},
+        "live_receive_required": {"const": true}
+      },
+      "oneOf": [
+        {"properties": {"task_status": {"const": "ready"}, "attempt_status": {"const": "assigned"}}},
+        {"properties": {"task_status": {"const": "running"}, "attempt_status": {"const": "received"}}}
+      ]
+    },
+    "context": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"const": "context.json"},
+        "bytes": {"type": "integer", "minimum": 0, "maximum": 67108864},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "objects": {
+      "type": "array", "maxItems": 8192,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["path", "bytes", "sha256"],
+        "properties": {
+          "path": {"type": "string", "pattern": "^objects/[0-9a-f]{64}$"},
+          "bytes": {"type": "integer", "minimum": 0, "maximum": 8388608},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    }
+  }
+}

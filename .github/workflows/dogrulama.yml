@@ -31,7 +31,7 @@ jobs:
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.12"
-      - name: Regresyon testleri (CLI ve API çağrısı yok)
+      - name: Regresyon testleri (canlı sağlayıcı çağrısı yok)
         run: python -m unittest discover -v
       - name: Köprü ve ayna bütünlüğü
         run: python tools/depo_kontrol.py

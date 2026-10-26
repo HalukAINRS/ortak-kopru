@@ -30,9 +30,50 @@
           <article class="card"><h3>Güncel istek</h3><p id="current-words" class="prose"></p><p id="revision-note" class="muted"></p></article>
           <article class="card"><h3>Tamamlanma ölçütleri</h3><ul id="criteria"></ul></article>
           <article class="card"><h3>Sonuç ve devam</h3><div id="progress"></div></article>
+          <article id="receive-card" class="card">
+            <h3>Oturum alımı</h3>
+            <p id="receive-state" class="muted"></p>
+            <form id="receive-form" hidden>
+              <p id="receive-target" class="binding"></p>
+              <details class="binding-details"><summary>Alım kaydının kimlikleri</summary><p id="receive-binding" class="binding"></p></details>
+              <label class="choice"><input id="receive-confirm" type="checkbox" required><span>Gösterilen oturumun bu işi aldığını beyan ediyorum.</span></label>
+              <p class="muted">Bu işlem alım beyanını kaydeder. Oturum kimliğini veya modelin anlayışını doğrulamaz; bir model ya da CLI başlatmaz.</p>
+              <p id="receive-error" class="error" role="alert" hidden></p>
+              <button id="receive-submit" type="submit">Alımı beyan et</button>
+            </form>
+          </article>
+          <details id="result-card" class="card">
+            <summary>Sonuç teslim et</summary>
+            <p id="result-guide" class="muted"></p>
+            <p id="result-target" class="binding"></p>
+            <details class="binding-details"><summary>Sonuç kaydının kimlikleri</summary><p id="result-binding" class="binding"></p></details>
+            <p id="result-stale" class="notice error" role="alert" hidden></p>
+            <button id="load-current-attempt" type="button" hidden>Güncel atama için yeni taslak aç</button>
+            <form id="result-form">
+              <label>Sonuç özeti<textarea id="result-summary" required rows="5" placeholder="Ne yapıldı, hangi çıktı oluştu, neler eksik kaldı?"></textarea></label>
+              <label>Yerel çıktı dosyalarının tam yolları<textarea id="result-artifacts" rows="3" placeholder="Her satıra bu sonuca ait bir dosyanın tam yolu"></textarea></label>
+              <p class="muted">Dosya yoksa yolları boş bırakabilirsin. Seçtiğin dosyaların kopyaları bu sonuçla birlikte özel çalışma alanında saklanır. Teslim, işi kendiliğinden tamamlamaz.</p>
+              <p id="result-error" class="error" role="alert" hidden></p>
+              <button id="result-submit" class="primary" type="submit">Sonucu teslim et</button>
+            </form>
+          </details>
+          <details id="verify-card" class="card">
+            <summary>Sonucu ölçütlere göre doğrula</summary>
+            <p id="verify-guide" class="muted"></p>
+            <p id="verify-target" class="binding"></p>
+            <details class="binding-details"><summary>Denetimin bağlı olduğu sonuç</summary><p id="verify-binding" class="binding"></p></details>
+            <p id="verify-stale" class="notice error" role="alert" hidden></p>
+            <button id="load-current-result" type="button" hidden>Güncel sonuç için yeni denetim aç</button>
+            <form id="verify-form">
+              <div id="verification-fields"></div>
+              <p class="muted">Her ölçüt için açık bir karar, somut kanıt ve denetleyen adı gerekir. Bunlar denetleyenin beyanı olarak kaydedilir. Tüm ölçütler geçerse iş tamamlanır; bir ölçüt kalırsa iş engelde kalır.</p>
+              <p id="verify-error" class="error" role="alert" hidden></p>
+              <button id="verify-submit" class="primary" type="submit">Denetimleri kaydet</button>
+            </form>
+          </details>
           <div class="actions"><button id="pause-task" type="button">Duraklat</button><button id="resume-task" type="button">Devam et</button><button id="cancel-task" class="danger" type="button">İşi durdur</button></div>
           <details class="card"><summary>İsteği düzelt</summary><form id="revise-form"><label>Güncel sözün<textarea id="revised-words" required rows="5"></textarea></label><p class="muted">Önceki söz ve sonuçlar geçmişte kalır. Yeni sürüm, önceki çalıştırmanın sonucu ile kapanmaz.</p><button class="primary" type="submit">Düzeltmeyi kaydet</button></form></details>
-          <details class="card"><summary>Bir CLI oturumuna ata</summary><form id="assign-form"><div class="form-row"><label>Katılımcı<input id="participant" list="participants" required placeholder="ChatGPT (Şaman)"></label><label>Gerçek oturum etiketi<input id="session" required autocomplete="off"></label></div><datalist id="participants"><option value="ChatGPT (Şaman)"></option><option value="Claude (Hacker)"></option><option value="Gemini (Şahit)"></option></datalist><p class="muted">Atama, teslim kaydı oluşturur. Hedef oturum işi CLI üzerinden alıp kendi sonucunu bildirir; atama tek başına model çağrısı yapmaz.</p><button type="submit">Atamayı kaydet</button></form></details>
+          <details class="card"><summary>Bir CLI oturumuna ata</summary><form id="assign-form"><div class="form-row"><label>Katılımcı<input id="participant" list="participants" required placeholder="ChatGPT (Şaman)"></label><label>Gerçek oturum etiketi<input id="session" required autocomplete="off"></label></div><datalist id="participants"><option value="ChatGPT (Şaman)"></option><option value="Claude (Hacker)"></option><option value="Gemini (Şahit)"></option></datalist><p class="muted">Atama, teslim kaydı oluşturur. Alım ve sonuç CLI üzerinden veya bu ekranda açık beyanla kaydedilebilir; atama tek başına model çağrısı yapmaz.</p><button type="submit">Atamayı kaydet</button></form></details>
         </div>
         <div id="sources-view" hidden>
           <article class="card"><h3>Özgün söz</h3><p id="original-words" class="prose"></p></article>

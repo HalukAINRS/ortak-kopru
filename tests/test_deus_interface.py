@@ -12,7 +12,7 @@ import tempfile
 import threading
 import unittest
 from unittest import mock
-from urllib.parse import parse_qs, urlsplit
+from urllib.parse import parse_qs, quote, urlsplit
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -132,6 +132,25 @@ class LocalHTTPTests(unittest.TestCase):
         self.assertEqual(400, self.request("POST", "/api/tasks", {}, headers={"Content-Length": str(MAX_BODY_BYTES + 1)})[0])
         self.assertEqual(400, self.request("POST", "/api/tasks", {}, headers={"Content-Type": "text/plain"})[0])
         self.assertEqual([], self.request("GET", "/api/tasks")[1]["tasks"])
+
+    def test_session_inbox_is_private_read_only_and_accepts_encoded_session_id(self):
+        _, task = self.task()
+        session = "Özel oturum / test"
+        task = self.server.store.assign(task["id"], "Test", session, 1, "inbox-assignment")
+        route = "/api/sessions/" + quote(session, safe="") + "/inbox"
+        before_events = self.server.store.events(task["id"])
+        self.assertEqual(403, self.request("GET", "/api/sessions", token=False)[0])
+        self.assertEqual(403, self.request("GET", route, token=False)[0])
+        status, sessions, _ = self.request("GET", "/api/sessions")
+        self.assertEqual(200, status, sessions)
+        self.assertEqual(session, sessions["sessions"][0]["session_id"])
+        self.assertFalse(sessions["sessions"][0]["identity_verified"])
+        status, received, _ = self.request("GET", route)
+        self.assertEqual(200, status, received)
+        self.assertEqual(task["active_attempt_id"], received["items"][0]["attempt_id"])
+        self.assertEqual(before_events, self.server.store.events(task["id"]))
+        self.server.store.control_task(task["id"], "pause", 1, "inbox-pause")
+        self.assertEqual([], self.request("GET", route)[1]["items"])
 
     def test_real_task_cycle_preserves_original_and_uses_result_bound_checks(self):
         body, task = self.task()
