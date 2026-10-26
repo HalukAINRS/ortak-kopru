@@ -2,6 +2,8 @@
 
 Bu ilk uygulama, ortak HTML defterinin yanına **kalıcı iş / özgün ileti / çalıştırma / oturum** ayrımını ekler. Kaynaklar, yetki beyanı, düzeltmeler, sonuçlar ve kabul ölçütleri aynı işe bağlı kalır. Eski `k-XXXX` kayıtları yeni görev kuyruğuna otomatik alınmaz.
 
+İkinci uygulama aşaması, ekrandan sonuç/doğrulama, oturum gelen kutusu, bütün dosyaları taşıyan devir paketi ve tutarlı yedekleme/geri yükleme ekler. [Devam ve yedekleme rehberi](DEVAM_VE_YEDEK.md).
+
 Kullanıcının güncel mimari gereksinimi, `deus_ex_machina` için CLI süreçlerinin altında çalışan bir **NT Kernel bileşenidir**. Bu gereksinim `windows/nt/` içindeki gerçek KMDF sürücü kaynağıyla başlatıldı. Sürücünün bu ilk sürümü yalnız sabit protokol / yetenek sorgusu sunar. Görev veritabanı, HTTP yüzeyi, kaynak okuma ve CLI işlemleri kullanıcı kipindedir. Sürücünün derlenmesi, imzalanması, yüklenmesi ve hedef makinede çalışmasının doğrulanması ayrı aşamalardır. [NT bileşeninin kapsamı ve derlenmesi](NT_KERNEL.md).
 
 ## Yerleşim
@@ -12,6 +14,9 @@ Kullanıcının güncel mimari gereksinimi, `deus_ex_machina` için CLI süreçl
 | `src/ortak_kopru/core.py` | SQLite iş/ileti/çalıştırma/sonuç ilişkileri ve olaylar |
 | `src/ortak_kopru/cli.py` | Yerel komutlar ve özel JSON dışa aktarımı |
 | `src/ortak_kopru/server.py` | Loopback HTTP yüzeyi; kaynak yollarını dışarıya açmaz |
+| `src/ortak_kopru/handoff.py` | Oturum/gelen kutusu ve tam dosyalı özel devir paketi |
+| `src/ortak_kopru/backup.py` | Tutarlı SQLite/nesne yedeği ve yeni alana geri yükleme |
+| `src/ortak_kopru/local_files.py` | Özel dizin, dosya bütünlüğü ve hedefi ezmeyen atomik yayım |
 | `src/ortak_kopru/adapters/windows_nt.py` | Gerçek Windows aygıtını `DeviceIoControl` ile sorgulayan istemci |
 | `ui/deus/` | İş, kaynak/karar, geçmiş/devir görünümleri |
 | `schemas/` | Veri sözleşmelerinin sürümlü açıklamaları |
@@ -22,7 +27,7 @@ Python 3.12+ yeterlidir; çalışma kodunda dış Python paketi yoktur. Veritaba
 
 ## Çalışma kipi: açık seçim ve gerçek durum
 
-Varsayılan `nt-kernel` kipidir. `python deus.py runtime` gerçek aygıtı sorgular; aygıt bulunamadığında, platform desteklenmediğinde veya protokol uyuşmadığında başarısız sonuç verir. Normal iş komutları bu durumda veri dizini açıp sessizce başka kipe geçmez. Sunucu da yeni çalışma doğuran değişikliklerde NT uç noktasını yeniden denetler. Tek istisna `pause` ve `cancel`: sürücü kaybolduğunda da iş kaydını durdurabilmek için bu iki kontrol kullanılabilir; runtime yine `ready=false`, `kernel_verified=false` bildirir ve hiçbir dış süreç başlatılmaz.
+Varsayılan `nt-kernel` kipidir. `python deus.py runtime` gerçek aygıtı sorgular; aygıt bulunamadığında, platform desteklenmediğinde veya protokol uyuşmadığında başarısız sonuç verir. Normal iş komutları bu durumda veri dizini açıp sessizce başka kipe geçmez. Sunucu da yeni çalışma doğuran değişikliklerde NT uç noktasını yeniden denetler. `pause` ve `cancel`, sürücü kaybolduğunda da iş kaydını durdurabilmek için kullanılabilir. `backup`, `backup-verify`, `restore` ve `handoff-verify` özel veriyi kurtarma/denetleme amacıyla sürücü yokken de çalışır. Bu işlemlerde runtime yine gerçek `ready=false`, `kernel_verified=false` durumunu bildirir; dış süreç başlatılmaz.
 
 Geliştirme ve çevrimdışı sınama için **açıkça** `--backend portable` seçilir. Bu kipte `kernel_verified` false ve `task_execution` user-mode olarak bildirilir. NT kurulumu veya model çalıştırma kanıtı üretmez.
 
@@ -130,7 +135,7 @@ Bu ilk sürümde durdurma **iş protokolünü** durdurur; bağlı olmayan dış 
 python deus.py --backend portable --state-dir D:/DeusVeri export --output D:/DeusYedek/olaylar.json
 ```
 
-Hedef dosya önceden bulunmamalı ve Git çalışma ağacının dışında olmalı. Dışa aktarım özel iş metinlerini taşır; otomatik yayın veya tam veritabanı geri yükleme aracı değildir. Kaynak baytları için `objects/`, iş durumu için SQLite birlikte korunmalıdır. Çalışma alanının yedeği hizmet durdurulduğunda ya da SQLite'ın tutarlı yedekleme yöntemiyle alınmalıdır.
+Hedef dosya önceden bulunmamalı ve Git çalışma ağacının dışında olmalı. Dışa aktarım özel iş metinlerini taşır; otomatik yayın veya tam veritabanı geri yükleme aracı değildir. SQLite ile kaynak/çıktı baytlarını birlikte korumak için `backup`, doğrulamak için `backup-verify`, yeni bir çalışma alanına almak için `restore` kullanılır. [Tam yedek ve kurtarma akışı](DEVAM_VE_YEDEK.md#tutarlı-yedekleme).
 
 ## Doğrulama ve açık kapsam
 

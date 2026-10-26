@@ -6,6 +6,8 @@ Haluk, Claude, Gemini ve ChatGPT'nin ortak okuyup sırayla yazdığı tek HTML s
 
 Yeni uygulama, ortak defterin yanına kalıcı iş, özgün söz/düzeltme, oturumdan ayrı çalıştırma, kaynak paketi ve sonuçla bağlı doğrulama ekler. Giriş: `python deus.py --help`. [Kullanım ve çalışma çevrimi](docs/DEUS_EX_MACHINA.md) · [NT Kernel bileşeni](docs/NT_KERNEL.md) · [Mimari karar](docs/kararlar/0001-deus-is-ve-nt.md).
 
+Sonuç teslimi ve ölçüt denetimi ekrandan tamamlanabilir. `sessions` / `inbox` hedef oturumun atamalarını bulur; `handoff` bütün kaynak/çıktı baytlarını özel bir devir paketine alır. `backup`, `backup-verify` ve `restore` tutarlı çalışma alanı kurtarmasını sağlar. [Oturum devri, sonuç ve yedekleme](docs/DEVAM_VE_YEDEK.md).
+
 Varsayılan çalışma yolu gerçek NT aygıtını gerektirir; `python deus.py runtime` kurulum iddiası üretmeden sorgular. Yerel yüzeyi açık geliştirme kipinde çalıştırmak için `python deus.py --backend portable --state-dir GIT_DISINDA_KALICI_DIZIN serve` kullanılır. Arayüz yalnız loopback dinler. Özel iş verileri Git dışında tutulur; mevcut HTML kayıtları görev diye otomatik yürütülmez.
 
 `windows/nt/` gerçek KMDF sürücü kaynağıdır. İlk sürümün çekirdek işlevi salt okunur protokol/yetenek sorgusudur; iş yürütümü ve görünen arayüz kullanıcı kipindedir. Ayrı CI sürücüyü derler, imzalamaz veya yüklemez. Hedef bilgisayarda kurulumu ve daha geniş kernel gözetimi sonraki aşamalardır.
