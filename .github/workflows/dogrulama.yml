@@ -35,6 +35,8 @@ jobs:
         run: python -m unittest discover -v
       - name: Köprü ve ayna bütünlüğü
         run: python tools/depo_kontrol.py
+      - name: Yerel arayüz JavaScript sözdizimi
+        run: node --check ui/deus/app.js
       - name: Gönderim betiğinin Bash sözdizimi
         if: runner.os == 'Linux'
         run: bash -n .github/scripts/kopru_gonder.sh

@@ -1,0 +1,416 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DEUS task projection v1",
+  "description": "Current task projection. Original messages, revisions and events preserve history. Authority and checks are locally submitted declarations, not independent identity or truth proofs.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "original_words",
+    "current_words",
+    "authority",
+    "criteria",
+    "revision",
+    "status",
+    "active_attempt_id",
+    "current_result_id",
+    "created_at",
+    "updated_at",
+    "revisions",
+    "sources",
+    "attempts",
+    "results",
+    "verification",
+    "identity_verified"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "original_words": {
+      "type": "string",
+      "minLength": 1
+    },
+    "current_words": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority": {
+      "$ref": "#/$defs/authority"
+    },
+    "criteria": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 100,
+      "items": {
+        "$ref": "#/$defs/criterion"
+      }
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "enum": [
+        "ready",
+        "running",
+        "paused",
+        "awaiting_verification",
+        "blocked",
+        "completed",
+        "cancelled"
+      ]
+    },
+    "active_attempt_id": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{32}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "current_result_id": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{32}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "updated_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revisions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/revision"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "attempts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/attempt"
+      }
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/result"
+      }
+    },
+    "verification": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/check"
+      }
+    },
+    "identity_verified": {
+      "const": false
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "authority": {
+      "type": "object",
+      "required": [
+        "actor",
+        "source",
+        "scope",
+        "kind",
+        "verification"
+      ],
+      "properties": {
+        "actor": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "const": "direct_user"
+        },
+        "verification": {
+          "const": "local_owner_declaration"
+        }
+      },
+      "additionalProperties": false
+    },
+    "criterion": {
+      "type": "object",
+      "required": [
+        "id",
+        "description"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,79}$"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "revision": {
+      "type": "object",
+      "required": [
+        "revision",
+        "original_words",
+        "created_at"
+      ],
+      "properties": {
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "original_words": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "id",
+        "path",
+        "role",
+        "note",
+        "kind",
+        "bytes",
+        "sha256",
+        "snapshot",
+        "observed_at",
+        "observation",
+        "instruction_authority"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "enum": [
+            "evidence",
+            "reference"
+          ]
+        },
+        "note": {
+          "type": "string"
+        },
+        "kind": {
+          "const": "local_file"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "snapshot": {
+          "type": "string",
+          "pattern": "^objects/[0-9a-f]{64}$"
+        },
+        "observed_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observation": {
+          "const": "file_bytes_captured"
+        },
+        "instruction_authority": {
+          "const": false
+        }
+      }
+    },
+    "attempt": {
+      "type": "object",
+      "required": [
+        "id",
+        "task_id",
+        "revision",
+        "participant",
+        "session_id",
+        "status",
+        "delivery_status",
+        "created_at",
+        "updated_at"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{32}$"
+        },
+        "task_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{32}$"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "participant": {
+          "type": "string",
+          "minLength": 1
+        },
+        "session_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "assigned",
+            "received",
+            "result_submitted",
+            "superseded",
+            "interrupted"
+          ]
+        },
+        "delivery_status": {
+          "enum": [
+            "pending",
+            "received"
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "updated_at": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "result": {
+      "type": "object",
+      "required": [
+        "id",
+        "task_id",
+        "attempt_id",
+        "revision",
+        "summary",
+        "artifacts",
+        "created_at"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{32}$"
+        },
+        "task_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{32}$"
+        },
+        "attempt_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{32}$"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source"
+          }
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "check": {
+      "type": "object",
+      "required": [
+        "criterion_id",
+        "result_id",
+        "passed",
+        "evidence",
+        "verifier"
+      ],
+      "properties": {
+        "criterion_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "result_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{32}$"
+        },
+        "passed": {
+          "type": "boolean"
+        },
+        "evidence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verifier": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{32}$"
+        },
+        "at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verification": {
+          "const": "submitted_receipt"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
