@@ -2,7 +2,7 @@
   "schema_version": 1,
   "validation_date_utc": "2026-10-26",
   "repository": "HalukAINRS/ortak-kopru",
-  "stage": "local_publication_candidate",
+  "stage": "remote_publication_verified",
   "reference_branch": "steering-inceleme-2026-10-24",
   "base_commits": {
     "reference": "80fd42db48e91104383b47b6b4144f01790999be",
@@ -315,8 +315,113 @@
     "previous_privacy_withdrawals_restored": false
   },
   "remote_publication": {
-    "status": "pending",
-    "note": "Yerel aday doğrulaması; uzak commit ve Git blob eşliği yayın sonrasında bu alana işlenir."
+    "reference_commit": "cdbdf6d24978b12a3155d484a50e0f1cba2311bf",
+    "reference_tree": "b6700476d63c7f01bc1b91e64c84491c6048d215",
+    "reference_files_checked": 98,
+    "reference_blobs_and_sizes_match": true,
+    "main_commit": "c0a517674c2de9b8992479065e1373b816692e9c",
+    "main_tree": "5869d567ebed33aac54d266b1332c9891c299919",
+    "main_files_checked": 3,
+    "main_blobs_and_sizes_match": true,
+    "reference_ref_matches": true,
+    "main_ref_matches": true,
+    "reference_changed_files": [
+      {
+        "path": "steering/README.md",
+        "sha": "abaaf851199c662fedfa217126bde48ac0771b28",
+        "bytes": 12412
+      },
+      {
+        "path": "steering/SHA256SUMS",
+        "sha": "fc04f09cc10a1efe84163f1847923ad9393df307",
+        "bytes": 9345
+      },
+      {
+        "path": "steering/YAYIN_DOGRULAMASI_2026-10-26.json",
+        "sha": "484c58e30fce76ee7576f9c099f0639dc173775a",
+        "bytes": 8578
+      },
+      {
+        "path": "steering/depo/ARSIV_KARSILASTIRMASI_2026-10-26.md",
+        "sha": "32ce881559321a9bf10252a12bd553436c8dc342",
+        "bytes": 13116
+      },
+      {
+        "path": "steering/depo/CLI_DALI_OKUMASI_2026-10-26.md",
+        "sha": "b2499d31991ef3f9cfd7d54512259357764bb7ad",
+        "bytes": 20908
+      },
+      {
+        "path": "steering/depo/GUNCEL_OKUMA_2026-10-26.md",
+        "sha": "858b1901e4807044448968b77a63fa0e5b1e02f0",
+        "bytes": 10922
+      },
+      {
+        "path": "steering/depo/KOD_OKUMASI_2026-10-26.md",
+        "sha": "6cce8272232565016419962f3931bb74e8bcb9e7",
+        "bytes": 14961
+      },
+      {
+        "path": "steering/depo/KOPRU_OKUMASI_2026-10-26.md",
+        "sha": "3feddb8160425030a117bf87a3a9489022cc7417",
+        "bytes": 31031
+      },
+      {
+        "path": "steering/depo/ORTAK_ALAN_DALI_OKUMASI_2026-10-26.md",
+        "sha": "4ea7f93cac992a68206204a08485ddcae284a4de",
+        "bytes": 4073
+      },
+      {
+        "path": "steering/depo/archive_audit_2026-10-26.json",
+        "sha": "33174fc34fc5ec6bed35a928c2c6c7f7d73933d5",
+        "bytes": 108611
+      },
+      {
+        "path": "steering/depo/audit_steering_archive.py",
+        "sha": "463eae9b7b18094e794528c90073cd7bd9c4a607",
+        "bytes": 15106
+      },
+      {
+        "path": "steering/depo/cli_branch_scope_2026-10-26.json",
+        "sha": "745219f84f4319a9f054b9ed383a10621bf84b25",
+        "bytes": 17147
+      },
+      {
+        "path": "steering/depo/current_code_scope_2026-10-26.json",
+        "sha": "b773173a77b8a11c4042a1a5dd514cdf1f263019",
+        "bytes": 131575
+      },
+      {
+        "path": "steering/depo/current_kopru_scope_2026-10-26.json",
+        "sha": "df3f270e37276128ad7ff29469843730cc57f59c",
+        "bytes": 126679
+      },
+      {
+        "path": "steering/depo/dal_pr_durumu_2026-10-26.json",
+        "sha": "cc2491e8fd99a973571bda444d4fdb7219e7f783",
+        "bytes": 6627
+      }
+    ],
+    "main_changed_files": [
+      {
+        "path": "README.md",
+        "sha": "d9013da23d93f76bd6080233dbf5291dd5173758",
+        "bytes": 15916
+      },
+      {
+        "path": "ayna/kopru.html",
+        "sha": "0fcf82d9d69b7891ada78b11025283d335d9c52d",
+        "bytes": 933192
+      },
+      {
+        "path": "kopru.html",
+        "sha": "9f086f46ab57860395a944eb15396c47e078a7a9",
+        "bytes": 933377
+      }
+    ],
+    "status": "verified",
+    "verified_at_utc": "2026-10-26 10:54:00 UTC",
+    "note": "Bu kanıt ilk yayın commitini doğrular. İzleyen doğrulama commitinde yalnız bu JSON ve SHA256SUMS güncellenir; o commitin kimliği kendi içeriğine döngüsel olarak gömülmez."
   },
   "limitations": [
     "Özgün 325 ham içeriğin bu turda yeniden tam semantik okuması iddia edilmez.",
