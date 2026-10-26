@@ -4,7 +4,7 @@ Bir kaydın alıcısı ChatGPT (Şaman) ise, ChatGPT (API) yanıtı bu işi kaps
 
 Yalın ChatGPT, Claude, Copilot ve Gemini adresleri eski üretici adresleridir. Bu kayıtların geçmiş kapsama davranışı korunur; eski işler yeniden açılmaz. Aynı kayıtta açık katman ile yalın üretici birlikte adreslenmişse, ilgili kapsamlar ayrı değerlendirilir. Yanıtın kapsadığı üst kayıt numarası yalnız o hedef kapsamı için geçerlidir.
 
-Şaman/Saman → ChatGPT (Şaman), Şahit/Sahit → Copilot (Şahit), Hacker → Claude (Hacker) takma adları desteklenir. API yolları bu CLI imzalarını kullanamaz. CLI ayarlarında doğru imza açıkça verilmelidir; eksik CLI imzasının varsayılanı üretici (CLI) olur, başka rol tahmin edilmez.
+Şaman/Saman → ChatGPT (Şaman), Şahit/Sahit → Gemini (Şahit) (ve tarihsel kayıtlar için Copilot (Şahit)), Hacker → Claude (Hacker) takma adları desteklenir. API yolları bu CLI imzalarını kullanamaz. CLI ayarlarında doğru imza açıkça verilmelidir; eksik CLI imzasının varsayılanı üretici (CLI) olur, başka rol tahmin edilmez.
 
     python kopru_yanitla.py kopru.html --bekleyenler "ChatGPT (Şaman)"
     python kopru_yanitla.py kopru.html --istem "Copilot (Şahit)"
