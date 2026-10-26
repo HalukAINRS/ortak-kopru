@@ -1,0 +1,2125 @@
+{
+  "schema_version": 1,
+  "repository": "HalukAINRS/ortak-kopru",
+  "commit": "8571ddf8e3a33b432cc1c7ef88b69a902f390e5c",
+  "tree": "74d07c46a8ac73838b51ca04a410ed4ad7eee214",
+  "method": {
+    "log_split": "## Sonuç\\n\\n(.*?)\\n\\n## Sistem istemi\\n\\n\\x60{3}\\n(.*?)\\n\\x60{3}\\n\\n## Kullanıcı iletisi\\n\\n\\x60{3}\\n(.*?)\\n\\x60{3}\\n\\n## Ham yanıt\\n\\n\\x60{3}\\n(.*?)\\n\\x60{3}\\n?$",
+    "source_text_decoding": "UTF-8 with universal-newline normalization; file hashes and sizes remain original blob bytes",
+    "identity": [
+      "kimden",
+      "zaman",
+      "whitespace_normalized_konu"
+    ],
+    "body_comparison": "canonical parser text; raw JSON rendered by pinned govde_html then parsed by pinned Ayristirici; collapse whitespace only",
+    "input_comparison": "all historical full-list and pending-list identities and body/evidence/recipient/state/id/reply fields compared with canonical records",
+    "scope_limit": "This is text equivalence, not proof of factual truth, origin, successful tools, model identity or live provider behavior.",
+    "execution_limit": "Read-only git object reads and reviewed pure parser/render definitions; no bot, cleanup, provider request, script entrypoint or test suite executed.",
+    "code_file": "repo-log-equivalence.py",
+    "code_sha256": "e897e263280dd2efb5c729a5cf4c0a6abc75293d835112e332c962e7a23dc887",
+    "pinned_parser_files": {
+      "kopru_oku.py": "485fa96f9478c3af4241e587ad05984d50dfd1bda17c8efda52fb0c6831f16f4",
+      "kopru_ekle.py": "31a22698dbec68b43bf13cf25a4d4d6b2e832460b235749f5a706ad7f8c7070a",
+      "kopru_yanitla.py": "0988f3c9f1e938aa88b254b3a8dee714b218055163d1b5ea51129cc81e997d00"
+    }
+  },
+  "counts": {
+    "tracked_files": 147,
+    "canonical_records": 109,
+    "dated_logs": 118,
+    "dated_log_bytes": 31775882,
+    "distinct_system_prompts": 10,
+    "distinct_steering_sections": 4,
+    "distinct_raw_strings_including_empty": 93,
+    "distinct_raw_characters_total": 438973,
+    "status_eklendi": 92,
+    "all_record_occurrences": 5850,
+    "pending_record_occurrences": 295,
+    "nonempty_raw": 92,
+    "raw_matched_to_canonical": 92,
+    "status_ATLANDI": 25,
+    "empty_raw": 26,
+    "status_HATA": 1,
+    "all_dayanak_different": 12,
+    "all_id_different": 12,
+    "all_unmatched_identity": 0,
+    "pending_unmatched_identity": 0,
+    "all_govde_different": 0,
+    "pending_govde_different": 0,
+    "all_kime_different": 0,
+    "pending_kime_different": 0,
+    "all_durum_different": 0,
+    "pending_durum_different": 0,
+    "all_yanit_different": 0,
+    "pending_yanit_different": 0,
+    "pending_id_different": 0,
+    "pending_dayanak_different": 0
+  },
+  "system_versions": [
+    {
+      "id": "system-1",
+      "sha256": "566a17b0a8de609883f9a718f5ec3b468c9fd131c64e3d8e53c532d0704390f3",
+      "characters": 2573,
+      "first_log": "kayit/20261023-210244Z-ChatGPT.md",
+      "log_count": 11
+    },
+    {
+      "id": "system-2",
+      "sha256": "abca1d72f6a4c4968e2d95718d6d374d2741d76674d6e75699d271963cbf2ae6",
+      "characters": 2572,
+      "first_log": "kayit/20261023-210329Z-Gemini.md",
+      "log_count": 11
+    },
+    {
+      "id": "system-3",
+      "sha256": "301cdf7537817f8025b344a96566016804035ec05e2333d1650bd96e1c9f693c",
+      "characters": 2572,
+      "first_log": "kayit/20261023-210621Z-Claude.md",
+      "log_count": 7
+    },
+    {
+      "id": "system-4",
+      "sha256": "8770a669eb6136073c27105d953e6503144a28972ee50552ce7eded6f7c0097a",
+      "characters": 2573,
+      "first_log": "kayit/20261023-222915Z-Copilot.md",
+      "log_count": 1
+    },
+    {
+      "id": "system-5",
+      "sha256": "5b86e8ff0bd093a9848bbfe4c0e2062c066cd0d24fc52974892d9eedd4400bdb",
+      "characters": 2642,
+      "first_log": "kayit/20261023-224304Z-ChatGPT.md",
+      "log_count": 2
+    },
+    {
+      "id": "system-6",
+      "sha256": "62512c1a34037071dc37edcef3694c91d23b77837e58a0cc2780d1317968f347",
+      "characters": 2641,
+      "first_log": "kayit/20261023-224305Z-Gemini.md",
+      "log_count": 2
+    },
+    {
+      "id": "system-7",
+      "sha256": "3da11e1abed7a95eeab566bf6d9cd1cc7f466086ea512944706cd8993ccc251e",
+      "characters": 2641,
+      "first_log": "kayit/20261023-224731Z-Claude.md",
+      "log_count": 1
+    },
+    {
+      "id": "system-8",
+      "sha256": "d7b7d8a73cb4da42b084dfa5c56e4fa6d2b65cbf04d1cc4b9ad9a95a5c355657",
+      "characters": 2765,
+      "first_log": "kayit/20261023-225618Z-Claude.md",
+      "log_count": 32
+    },
+    {
+      "id": "system-9",
+      "sha256": "80d3a75a94eb94fc7f938ebd599fe2e50d886235e7f6d54857b8006738eaf826",
+      "characters": 2766,
+      "first_log": "kayit/20261023-230419Z-Copilot.md",
+      "log_count": 26
+    },
+    {
+      "id": "system-10",
+      "sha256": "cfb25dc694d635531441f5347e7b8c05e7441c908de74b255422e24c103a8e99",
+      "characters": 2766,
+      "first_log": "kayit/20261024-000303Z-ChatGPT.md",
+      "log_count": 25
+    }
+  ],
+  "steering_section_versions": [
+    {
+      "id": "section-1",
+      "sha256": "23cdd557a21ce37739767a6077bb0fddbbba30b938dfb0c181e08ea2888e2af3",
+      "characters": 35668,
+      "first_log": "kayit/20261023-210244Z-ChatGPT.md",
+      "log_count": 10
+    },
+    {
+      "id": "section-2",
+      "sha256": "c07cb865718a558a554e0a8157768c987c30803eca16ae7eb8f88edb17ac41d1",
+      "characters": 38191,
+      "first_log": "kayit/20261023-213124Z-Claude.md",
+      "log_count": 6
+    },
+    {
+      "id": "section-3",
+      "sha256": "296a5cf83eb3115812e48e4a7dbc7a361b89b0af81938596346937f77a59d8f1",
+      "characters": 38179,
+      "first_log": "kayit/20261023-214924Z-ChatGPT.md",
+      "log_count": 19
+    },
+    {
+      "id": "section-4",
+      "sha256": "520ee0365f69eac66ceb07aff72646f27e0e89d624154f6cc7727824e3feed49",
+      "characters": 45583,
+      "first_log": "kayit/20261023-225618Z-Claude.md",
+      "log_count": 83
+    }
+  ],
+  "latest_section_equals_canonical": true,
+  "mirror_exactly_matches_current_generator": true,
+  "metadata_differences": [
+    {
+      "log": "kayit/20261024-013629Z-ChatGPT.md",
+      "scope": "all",
+      "record": "k-0052",
+      "field": "dayanak",
+      "only_trailing_period_count": true,
+      "before_sha256": "4921fe099d60cb179110f63fe48e05a02cf3a0ad1f9ae613a240390bbb61ac4b",
+      "after_sha256": "0c5fb41fa356637b9dfe9375941f0bbb44dcdd6badb1fa282cff2f523c940fb7",
+      "before_trailing_periods": 2,
+      "after_trailing_periods": 3
+    },
+    {
+      "log": "kayit/20261024-013629Z-ChatGPT.md",
+      "scope": "all",
+      "record": "k-0052",
+      "field": "id",
+      "before": "k-0051",
+      "after": "k-0052"
+    },
+    {
+      "log": "kayit/20261024-013828Z-Copilot.md",
+      "scope": "all",
+      "record": "k-0052",
+      "field": "dayanak",
+      "only_trailing_period_count": true,
+      "before_sha256": "4921fe099d60cb179110f63fe48e05a02cf3a0ad1f9ae613a240390bbb61ac4b",
+      "after_sha256": "0c5fb41fa356637b9dfe9375941f0bbb44dcdd6badb1fa282cff2f523c940fb7",
+      "before_trailing_periods": 2,
+      "after_trailing_periods": 3
+    },
+    {
+      "log": "kayit/20261024-013828Z-Copilot.md",
+      "scope": "all",
+      "record": "k-0052",
+      "field": "id",
+      "before": "k-0051",
+      "after": "k-0052"
+    },
+    {
+      "log": "kayit/20261024-013828Z-Copilot.md",
+      "scope": "all",
+      "record": "k-0053",
+      "field": "dayanak",
+      "only_trailing_period_count": true,
+      "before_sha256": "90ed2466f6ee865029d1ee0f31d12e43d26a1e6653b48324b44a8a51493d5ce7",
+      "after_sha256": "eb8e2ffb521a07a11279746f289202b0e1e275fabfe2e7baff3dc8259cbf45b4",
+      "before_trailing_periods": 2,
+      "after_trailing_periods": 3
+    },
+    {
+      "log": "kayit/20261024-013828Z-Copilot.md",
+      "scope": "all",
+      "record": "k-0053",
+      "field": "id",
+      "before": "k-0052",
+      "after": "k-0053"
+    },
+    {
+      "log": "kayit/20261024-034522Z-ChatGPT.md",
+      "scope": "all",
+      "record": "k-0083",
+      "field": "dayanak",
+      "only_trailing_period_count": true,
+      "before_sha256": "221d69528ac503e0c58962d6c71ee0ffe897ff429a916ab4a3026758a3244b4a",
+      "after_sha256": "4ad2e37587afbd92bfa2375a7d716176ee8c17b4cc575c58c47ce090113dbd9d",
+      "before_trailing_periods": 2,
+      "after_trailing_periods": 3
+    },
+    {
+      "log": "kayit/20261024-034522Z-ChatGPT.md",
+      "scope": "all",
+      "record": "k-0083",
+      "field": "id",
+      "before": "k-0082",
+      "after": "k-0083"
+    },
+    {
+      "log": "kayit/20261024-034911Z-Copilot.md",
+      "scope": "all",
+      "record": "k-0083",
+      "field": "dayanak",
+      "only_trailing_period_count": true,
+      "before_sha256": "221d69528ac503e0c58962d6c71ee0ffe897ff429a916ab4a3026758a3244b4a",
+      "after_sha256": "4ad2e37587afbd92bfa2375a7d716176ee8c17b4cc575c58c47ce090113dbd9d",
+      "before_trailing_periods": 2,
+      "after_trailing_periods": 3
+    },
+    {
+      "log": "kayit/20261024-034911Z-Copilot.md",
+      "scope": "all",
+      "record": "k-0083",
+      "field": "id",
+      "before": "k-0082",
+      "after": "k-0083"
+    },
+    {
+      "log": "kayit/20261024-034911Z-Copilot.md",
+      "scope": "all",
+      "record": "k-0084",
+      "field": "dayanak",
+      "only_trailing_period_count": true,
+      "before_sha256": "b8a897dfa853a1d4a3a130043f417c4aeed0216fd1578bc34c89b5d2ebe3f826",
+      "after_sha256": "510d60bf3e37221eb13df901b38e36a547cc97b0904551e864e1b008f9a9ee42",
+      "before_trailing_periods": 2,
+      "after_trailing_periods": 3
+    },
+    {
+      "log": "kayit/20261024-034911Z-Copilot.md",
+      "scope": "all",
+      "record": "k-0084",
+      "field": "id",
+      "before": "k-0083",
+      "after": "k-0084"
+    },
+    {
+      "log": "kayit/20261024-043654Z-ChatGPT.md",
+      "scope": "all",
+      "record": "k-0093",
+      "field": "dayanak",
+      "only_trailing_period_count": true,
+      "before_sha256": "dd296f4708bdb33dfe2b6caa6d45537c3b62cc4eba733cd1d470edc4e8d5635f",
+      "after_sha256": "a612507839eb04ffa38a2b067743e74815293d84d7e6430c3a807e11f395a2a5",
+      "before_trailing_periods": 2,
+      "after_trailing_periods": 3
+    },
+    {
+      "log": "kayit/20261024-043654Z-ChatGPT.md",
+      "scope": "all",
+      "record": "k-0093",
+      "field": "id",
+      "before": "k-0092",
+      "after": "k-0093"
+    },
+    {
+      "log": "kayit/20261024-043958Z-Copilot.md",
+      "scope": "all",
+      "record": "k-0093",
+      "field": "dayanak",
+      "only_trailing_period_count": true,
+      "before_sha256": "dd296f4708bdb33dfe2b6caa6d45537c3b62cc4eba733cd1d470edc4e8d5635f",
+      "after_sha256": "a612507839eb04ffa38a2b067743e74815293d84d7e6430c3a807e11f395a2a5",
+      "before_trailing_periods": 2,
+      "after_trailing_periods": 3
+    },
+    {
+      "log": "kayit/20261024-043958Z-Copilot.md",
+      "scope": "all",
+      "record": "k-0093",
+      "field": "id",
+      "before": "k-0092",
+      "after": "k-0093"
+    },
+    {
+      "log": "kayit/20261024-043958Z-Copilot.md",
+      "scope": "all",
+      "record": "k-0094",
+      "field": "dayanak",
+      "only_trailing_period_count": true,
+      "before_sha256": "b596574dddba41f36b2df3c60acf39b3a8e22b25cd73f2513f8812d80a00aba8",
+      "after_sha256": "9b0fe7f419eea8a94767bd5eeeb16e29e3e964e4b326ff5d79bf922048c14ca9",
+      "before_trailing_periods": 2,
+      "after_trailing_periods": 3
+    },
+    {
+      "log": "kayit/20261024-043958Z-Copilot.md",
+      "scope": "all",
+      "record": "k-0094",
+      "field": "id",
+      "before": "k-0093",
+      "after": "k-0094"
+    },
+    {
+      "log": "kayit/20261024-052717Z-ChatGPT.md",
+      "scope": "all",
+      "record": "k-0103",
+      "field": "dayanak",
+      "only_trailing_period_count": true,
+      "before_sha256": "efc1feef7674bd7e6bb1e54d02b4a868500066097105907226e8c9eeb5371c5d",
+      "after_sha256": "d291262c612f85b494df585c27b3ab7b89ef33f5572e7a5cc7d6bb9eba7d4cd0",
+      "before_trailing_periods": 2,
+      "after_trailing_periods": 3
+    },
+    {
+      "log": "kayit/20261024-052717Z-ChatGPT.md",
+      "scope": "all",
+      "record": "k-0103",
+      "field": "id",
+      "before": "k-0102",
+      "after": "k-0103"
+    },
+    {
+      "log": "kayit/20261024-053240Z-Copilot.md",
+      "scope": "all",
+      "record": "k-0103",
+      "field": "dayanak",
+      "only_trailing_period_count": true,
+      "before_sha256": "efc1feef7674bd7e6bb1e54d02b4a868500066097105907226e8c9eeb5371c5d",
+      "after_sha256": "d291262c612f85b494df585c27b3ab7b89ef33f5572e7a5cc7d6bb9eba7d4cd0",
+      "before_trailing_periods": 2,
+      "after_trailing_periods": 3
+    },
+    {
+      "log": "kayit/20261024-053240Z-Copilot.md",
+      "scope": "all",
+      "record": "k-0103",
+      "field": "id",
+      "before": "k-0102",
+      "after": "k-0103"
+    },
+    {
+      "log": "kayit/20261024-053240Z-Copilot.md",
+      "scope": "all",
+      "record": "k-0104",
+      "field": "dayanak",
+      "only_trailing_period_count": true,
+      "before_sha256": "f4b059e17160c8478b84b73ed87e606474108cacb511b4c1fae54695b8c546ba",
+      "after_sha256": "d930b733719b07bdc00b1463f9c05f44e7b29c9a1a6565f0c6d95e8f2556986f",
+      "before_trailing_periods": 2,
+      "after_trailing_periods": 3
+    },
+    {
+      "log": "kayit/20261024-053240Z-Copilot.md",
+      "scope": "all",
+      "record": "k-0104",
+      "field": "id",
+      "before": "k-0103",
+      "after": "k-0104"
+    }
+  ],
+  "log_row_fields": [
+    "path",
+    "sha256",
+    "bytes",
+    "status",
+    "canonical_raw_matches",
+    "all_record_occurrences",
+    "pending_record_occurrences",
+    "unmatched_identities",
+    "different_bodies",
+    "system_version",
+    "steering_section_version"
+  ],
+  "logs": [
+    [
+      "kayit/20261023-210244Z-ChatGPT.md",
+      "ab6cb46d902c612e0f011278778a4dbf40fc0e271445997f8512a33c2d6097f7",
+      49184,
+      "eklendi",
+      [
+        "k-0004"
+      ],
+      3,
+      3,
+      0,
+      0,
+      "system-1",
+      "section-1"
+    ],
+    [
+      "kayit/20261023-210329Z-Gemini.md",
+      "4837d56bc25f4e7ec1c1876e343b2a50e134cc0ca2f0e0ab681a7cf31b695f43",
+      52180,
+      "eklendi",
+      [
+        "k-0005"
+      ],
+      4,
+      3,
+      0,
+      0,
+      "system-2",
+      "section-1"
+    ],
+    [
+      "kayit/20261023-210621Z-ChatGPT.md",
+      "e786093da597c53648911b80e4bdd494293c618431343a3a4cdcf7bdc530f0b6",
+      59879,
+      "ATLANDI",
+      [],
+      6,
+      2,
+      0,
+      0,
+      "system-1",
+      "section-1"
+    ],
+    [
+      "kayit/20261023-210621Z-Claude.md",
+      "18cddd15309e8b08d564cbe8dd083f0364faab9be7455463285e994b3804c118",
+      61085,
+      "HATA",
+      [],
+      6,
+      3,
+      0,
+      0,
+      "system-3",
+      "section-1"
+    ],
+    [
+      "kayit/20261023-210621Z-Gemini.md",
+      "b5549e30d9bbf0db1af48576dfe0adc0042f9dcb0baf2ac939a9a2fd7a5b42a8",
+      54424,
+      "ATLANDI",
+      [],
+      6,
+      1,
+      0,
+      0,
+      "system-2",
+      "section-1"
+    ],
+    [
+      "kayit/20261023-212025Z-ChatGPT.md",
+      "45f98161ab9a5041d6bec66d83db27a35ba5a91d6ab36a30e033f4f7110f5a69",
+      63071,
+      "ATLANDI",
+      [],
+      7,
+      2,
+      0,
+      0,
+      "system-1",
+      "section-1"
+    ],
+    [
+      "kayit/20261023-212025Z-Claude.md",
+      "d1072f771b626e898bb85082cfd0fd15f17aaef2d1563b2a935969be3cbb85b6",
+      64245,
+      "eklendi",
+      [
+        "k-0007"
+      ],
+      6,
+      3,
+      0,
+      0,
+      "system-3",
+      "section-1"
+    ],
+    [
+      "kayit/20261023-212026Z-Gemini.md",
+      "dfe36c66faf9c1b604fef0be752d7b809bda3e9e01e3c09e914e93cc1f9bdcc3",
+      57616,
+      "ATLANDI",
+      [],
+      7,
+      1,
+      0,
+      0,
+      "system-2",
+      "section-1"
+    ],
+    [
+      "kayit/20261023-212444Z-ChatGPT.md",
+      "aed0c63f531810ed11cb03c2055954374938e503e515bbc6e4c6fdeafb7854a0",
+      66271,
+      "ATLANDI",
+      [],
+      7,
+      3,
+      0,
+      0,
+      "system-1",
+      "section-1"
+    ],
+    [
+      "kayit/20261023-212444Z-Gemini.md",
+      "7d966d2ffd87e4a4f62134f040cc815f7375e7233fe91e251eb26240d53e0790",
+      60816,
+      "ATLANDI",
+      [],
+      7,
+      2,
+      0,
+      0,
+      "system-2",
+      "section-1"
+    ],
+    [
+      "kayit/20261023-213124Z-Claude.md",
+      "3b6fc0fa5380e342a575a4880763576911b6cdc5ed6bb5d4d81c5f2c563e3cd3",
+      65181,
+      "eklendi",
+      [
+        "k-0009"
+      ],
+      8,
+      1,
+      0,
+      0,
+      "system-3",
+      "section-2"
+    ],
+    [
+      "kayit/20261023-213125Z-ChatGPT.md",
+      "7de7ddaa6b79aaa8d9b5a6cf5d76f5db73fe0a12e46a850cf519094aae1f1b37",
+      75544,
+      "ATLANDI",
+      [],
+      9,
+      4,
+      0,
+      0,
+      "system-1",
+      "section-2"
+    ],
+    [
+      "kayit/20261023-213125Z-Gemini.md",
+      "6371e97619c3898be7ed719a31c0ccb8f81e4e7e8a0e9e92f79783bdc9afbd70",
+      70089,
+      "ATLANDI",
+      [],
+      9,
+      3,
+      0,
+      0,
+      "system-2",
+      "section-2"
+    ],
+    [
+      "kayit/20261023-213815Z-ChatGPT.md",
+      "8c03679316dbd60797f6da69b48d649fd1a45404d9a24c2d05316c4a8627e061",
+      86163,
+      "ATLANDI",
+      [],
+      11,
+      6,
+      0,
+      0,
+      "system-1",
+      "section-2"
+    ],
+    [
+      "kayit/20261023-213815Z-Claude.md",
+      "e70b922b035e735616d712cc7b1034187b84d0d6004c7a66890eb836e452cc38",
+      70934,
+      "eklendi",
+      [
+        "k-0011"
+      ],
+      10,
+      1,
+      0,
+      0,
+      "system-3",
+      "section-2"
+    ],
+    [
+      "kayit/20261023-213816Z-Gemini.md",
+      "db61adcaedcceae5e35fa4b019d99eb3ce8933d10b4df4d9e9aaffa1f70ad371",
+      72357,
+      "ATLANDI",
+      [],
+      11,
+      1,
+      0,
+      0,
+      "system-2",
+      "section-2"
+    ],
+    [
+      "kayit/20261023-214924Z-ChatGPT.md",
+      "e23090b31c14b725a0f267697fc4a326f5e76e606886d41b2542b4af1e3d4a54",
+      98256,
+      "ATLANDI",
+      [],
+      13,
+      8,
+      0,
+      0,
+      "system-1",
+      "section-3"
+    ],
+    [
+      "kayit/20261023-214924Z-Claude.md",
+      "5ecc04e32e988f38542ccf5bee396b655ea6f16a5f263e6ff8339b38597e41a3",
+      77309,
+      "eklendi",
+      [
+        "k-0013"
+      ],
+      12,
+      1,
+      0,
+      0,
+      "system-3",
+      "section-3"
+    ],
+    [
+      "kayit/20261023-214924Z-Gemini.md",
+      "4dc4725c7d0efad4cdc6adb62271715f19e75d33a5c5a15f69c98d0d645a2343",
+      84450,
+      "ATLANDI",
+      [],
+      13,
+      3,
+      0,
+      0,
+      "system-2",
+      "section-3"
+    ],
+    [
+      "kayit/20261023-215923Z-Claude.md",
+      "f85220bf4d314f2e9662ef4040c19d5db3b267649e3ed76e7a5d6dc27d70a008",
+      93684,
+      "eklendi",
+      [
+        "k-0015"
+      ],
+      14,
+      1,
+      0,
+      0,
+      "system-3",
+      "section-3"
+    ],
+    [
+      "kayit/20261023-215923Z-Gemini.md",
+      "36684e52e0cdd91f14e6cacb7f22fddcf6b68e59f84a0af91277e08486c6c86e",
+      106958,
+      "ATLANDI",
+      [],
+      15,
+      5,
+      0,
+      0,
+      "system-2",
+      "section-3"
+    ],
+    [
+      "kayit/20261023-222413Z-ChatGPT.md",
+      "c2c25d77ae1fa14860b2a67a7c691c9c7cfd3fcb077300d665cd6c35dae93535",
+      90811,
+      "ATLANDI",
+      [],
+      15,
+      1,
+      0,
+      0,
+      "system-1",
+      "section-3"
+    ],
+    [
+      "kayit/20261023-222413Z-Gemini.md",
+      "a1f68ab1ec20f147e081f9e7364530977470201523d8e765c2edc76058b93913",
+      111304,
+      "ATLANDI",
+      [],
+      15,
+      6,
+      0,
+      0,
+      "system-2",
+      "section-3"
+    ],
+    [
+      "kayit/20261023-222502Z-ChatGPT.md",
+      "f900a24a450d966f53b1d83f4bd01fc652a0f8d84fa36e9cfd4a06a77f9d8df0",
+      90153,
+      "ATLANDI",
+      [],
+      15,
+      1,
+      0,
+      0,
+      "system-1",
+      "section-3"
+    ],
+    [
+      "kayit/20261023-222502Z-Gemini.md",
+      "f6c96149febbb5ae89f102028a35bd7831fdbd489616511b01bf3c61220bf4a4",
+      110611,
+      "ATLANDI",
+      [],
+      15,
+      6,
+      0,
+      0,
+      "system-2",
+      "section-3"
+    ],
+    [
+      "kayit/20261023-222915Z-Copilot.md",
+      "89a28906846508a6e70ec8ad0b97816a2cb44204490c445a66894f71538c4e46",
+      94606,
+      "ATLANDI",
+      [],
+      15,
+      1,
+      0,
+      0,
+      "system-4",
+      "section-3"
+    ],
+    [
+      "kayit/20261023-222916Z-ChatGPT.md",
+      "37aa586330decb1f62ab8a4807dc6c496a044b245a797e1d15c3222b3a043264",
+      90811,
+      "ATLANDI",
+      [],
+      15,
+      1,
+      0,
+      0,
+      "system-1",
+      "section-3"
+    ],
+    [
+      "kayit/20261023-223214Z-ChatGPT.md",
+      "af74842752fef4777b65d61475a6b9350d5aec76806b02b2878f6941712a1863",
+      100287,
+      "ATLANDI",
+      [],
+      17,
+      2,
+      0,
+      0,
+      "system-1",
+      "section-3"
+    ],
+    [
+      "kayit/20261023-223214Z-Claude.md",
+      "1a3ae2f2b71c433068ee7eadb7d93a56a64237f6685aa3dbaed93f9d291a129d",
+      96368,
+      "eklendi",
+      [
+        "k-0017"
+      ],
+      16,
+      1,
+      0,
+      0,
+      "system-3",
+      "section-3"
+    ],
+    [
+      "kayit/20261023-223214Z-Gemini.md",
+      "77acb8ea86ee5943827fafa62801b2912cbbd9dc0292b40cc89aa1b4fecde3ca",
+      120745,
+      "ATLANDI",
+      [],
+      17,
+      7,
+      0,
+      0,
+      "system-2",
+      "section-3"
+    ],
+    [
+      "kayit/20261023-224304Z-ChatGPT.md",
+      "e1a15575edd5a664261a8f0802c24191fcb43b443929864afaaa2e9889aa1e35",
+      103834,
+      "ATLANDI",
+      [],
+      17,
+      3,
+      0,
+      0,
+      "system-5",
+      "section-3"
+    ],
+    [
+      "kayit/20261023-224305Z-Gemini.md",
+      "e8e946c3fc3c5193dc7ea1ca3e0f9bdd736fa5c9efde5aedb0c24f3cd926746a",
+      124292,
+      "ATLANDI",
+      [],
+      17,
+      8,
+      0,
+      0,
+      "system-6",
+      "section-3"
+    ],
+    [
+      "kayit/20261023-224731Z-ChatGPT.md",
+      "c98ef23430b4eb949e9d6f2741354ee9cafea2d895703782311d8df317b0fcf0",
+      108936,
+      "ATLANDI",
+      [],
+      19,
+      4,
+      0,
+      0,
+      "system-5",
+      "section-3"
+    ],
+    [
+      "kayit/20261023-224731Z-Claude.md",
+      "7a4b33e3b0e9e552edf4876af111a07504d917995e2fe8eb385ec0992d6815b6",
+      98202,
+      "eklendi",
+      [
+        "k-0019"
+      ],
+      18,
+      1,
+      0,
+      0,
+      "system-7",
+      "section-3"
+    ],
+    [
+      "kayit/20261023-224731Z-Gemini.md",
+      "5047de518abdd186a6d43f3245c5692e55b8bb7084d13709fc7ed3d00b0a25db",
+      129394,
+      "ATLANDI",
+      [],
+      19,
+      9,
+      0,
+      0,
+      "system-6",
+      "section-3"
+    ],
+    [
+      "kayit/20261023-225618Z-Claude.md",
+      "766dd665cc24ce84d04020165b563fe03b8f7518dbccffdf61fd2d200c833d01",
+      112262,
+      "eklendi",
+      [
+        "k-0022"
+      ],
+      21,
+      1,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261023-230419Z-Copilot.md",
+      "4fae2f1f7eecc1fb18d1ac86d60f3c25ada47445cb56e9d0b1db83198d87b675",
+      142679,
+      "eklendi",
+      [
+        "k-0023"
+      ],
+      22,
+      8,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261023-232439Z-Claude.md",
+      "1b11eb538b3e4ec691ee32eaaff1fcbc48c351b98dadc1d5404749482a691abc",
+      127639,
+      "eklendi",
+      [
+        "k-0024"
+      ],
+      23,
+      1,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-000303Z-ChatGPT.md",
+      "a4c6d7c209797a6be9c0fd879e9329796abe8ee5502b098fcb397750e678f1a1",
+      169540,
+      "eklendi",
+      [
+        "k-0027"
+      ],
+      26,
+      11,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-000431Z-Claude.md",
+      "a58472db8dd39d6cb7582940139bdec39e7bdaa52c0e9e646fda6cde22eb7d67",
+      145516,
+      "eklendi",
+      [
+        "k-0029"
+      ],
+      28,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-000832Z-Copilot.md",
+      "2607fbb79b43bf83fa8a4aebf254f7ebf5c7c37a786f0554574ba234e43fd8b6",
+      152317,
+      "eklendi",
+      [
+        "k-0030"
+      ],
+      27,
+      3,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-001748Z-Claude.md",
+      "4c8f542f326291abfd92a9a5839e6ea63a73fd8e4cd7eac6a75ae0c526459aca",
+      163023,
+      "eklendi",
+      [
+        "k-0031"
+      ],
+      30,
+      1,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-001857Z-ChatGPT.md",
+      "b57761b390f1d1f386ea48c03aae5b9497df3a27725605d05fea28a54cb13cf5",
+      172512,
+      "eklendi",
+      [
+        "k-0032"
+      ],
+      31,
+      3,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-002117Z-Copilot.md",
+      "cda78323e017dbb49ce0aeabe0201a3e39799e0086277c0c18d034d94ef5f0ee",
+      175408,
+      "eklendi",
+      [
+        "k-0033"
+      ],
+      32,
+      3,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-003032Z-Claude.md",
+      "1dac7a7ca3227a3e21b8bfbc2f5b8a6ff8f91d1e5d858db36234c2ed31091de4",
+      180505,
+      "eklendi",
+      [
+        "k-0034"
+      ],
+      33,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-003142Z-ChatGPT.md",
+      "a8ea3c6ad5b5071aca72fea48fcadcc2ed5354b74c814326711ba4a56db8c1bc",
+      187670,
+      "eklendi",
+      [
+        "k-0035"
+      ],
+      34,
+      2,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-003443Z-Copilot.md",
+      "532823b983ff05854fa15fe113296326729dec3540676b8422469c8daaa2c62c",
+      191187,
+      "eklendi",
+      [
+        "k-0036"
+      ],
+      35,
+      2,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-004247Z-Claude.md",
+      "9ebf6525aeb4eb1ed4cd58b7e1443c98f8052aaad159ada935742b744f5dbd82",
+      199459,
+      "eklendi",
+      [
+        "k-0037"
+      ],
+      36,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-004413Z-ChatGPT.md",
+      "a281933c53d5fa5d99d5ebe0b53983a95776dadc89ce859d308c1012fbe22f2c",
+      207236,
+      "eklendi",
+      [
+        "k-0038"
+      ],
+      37,
+      2,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-004540Z-Copilot.md",
+      "87990079b365271f2a1c1cf3ce381c06d115b9fa9cb5124311f7a195161c93e2",
+      209250,
+      "eklendi",
+      [
+        "k-0040"
+      ],
+      38,
+      2,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-005231Z-Claude.md",
+      "8fb0b20775f70f564788678dd4507e3617eb6f1881191b137c8154faf9e251b3",
+      217412,
+      "eklendi",
+      [
+        "k-0041"
+      ],
+      40,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-005326Z-ChatGPT.md",
+      "50422c2429d145eadf8ff917466813f4e203b6219bf082cd808792cca238f227",
+      224795,
+      "eklendi",
+      [
+        "k-0042"
+      ],
+      41,
+      2,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-005504Z-Copilot.md",
+      "cf96f8366ca0f0638b61fb51d1925a883739c333c547d5d31d215ea4234a0396",
+      226808,
+      "eklendi",
+      [
+        "k-0043"
+      ],
+      42,
+      2,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-005526Z-Claude.md",
+      "fba2ff8d84d021f7a16cabf6fb46b832fb1c6aef3d6a43926b6f7b0ff418c2b9",
+      215146,
+      "eklendi",
+      [
+        "k-0044"
+      ],
+      40,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-011219Z-Claude.md",
+      "98877a3b8fa99caa333fb9cc18f035685eb5685b5d144876edec27a61281dd5c",
+      240503,
+      "eklendi",
+      [
+        "k-0045"
+      ],
+      44,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-011357Z-ChatGPT.md",
+      "42a80737302fe3dfd12338b4670492f88531b6228af7af420781fe2d75310ce0",
+      252317,
+      "eklendi",
+      [
+        "k-0046"
+      ],
+      45,
+      3,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-011609Z-Copilot.md",
+      "1f41ee01dd3296edb21df46b84aeebf6eb20c89130e981373285e87f9c04f289",
+      254865,
+      "eklendi",
+      [
+        "k-0047"
+      ],
+      46,
+      3,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-012436Z-Claude.md",
+      "884c93e36302ee9efb0b16bce3976d368351f0a9b207536c4e2a9413190a68f0",
+      253978,
+      "eklendi",
+      [
+        "k-0048"
+      ],
+      47,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-012559Z-ChatGPT.md",
+      "5ac96e41d182814ce464025337b8c3aef419ca97cdfd3d5c0232d2f4373ef683",
+      262302,
+      "eklendi",
+      [
+        "k-0049"
+      ],
+      48,
+      2,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-012741Z-Copilot.md",
+      "dacd317c26682b98715a81dcbad7078d0a1ff5b17cfd6b6a270ed900d23e0e33",
+      265521,
+      "eklendi",
+      [
+        "k-0050"
+      ],
+      49,
+      2,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-013351Z-Claude.md",
+      "926d916b95fced1f60e3ef21d2a48374c79782b744b2dd7dc28ebd369fa67540",
+      265026,
+      "eklendi",
+      [
+        "k-0051"
+      ],
+      50,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-013457Z-Claude.md",
+      "c2e4e8da1cbf61d5833dddba17ee9355e5fc223f6cb13792bdd3bc6e23eacc15",
+      267158,
+      "eklendi",
+      [
+        "k-0052"
+      ],
+      50,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-013629Z-ChatGPT.md",
+      "c1c98dc02add1e3d31aa29fea4e51d0cc2463500b5063123e07b6be424638e4b",
+      272981,
+      "eklendi",
+      [
+        "k-0053"
+      ],
+      51,
+      2,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-013828Z-Copilot.md",
+      "7730c8478857ae6d2685a6923d3736a873312c803373141c192cc137f42cf7f2",
+      273711,
+      "eklendi",
+      [
+        "k-0054"
+      ],
+      52,
+      2,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-014758Z-Claude.md",
+      "eb5fd3fb28fef43930bc6bee24c65a3bcb585c08cc18ffc6713f47c0c82e9cb2",
+      283232,
+      "eklendi",
+      [
+        "k-0055"
+      ],
+      54,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-014922Z-ChatGPT.md",
+      "5a6f850ffd59871e25962eab91c4dc9f947fd83c2ebaa49947d0bcf1686e5aae",
+      293553,
+      "eklendi",
+      [
+        "k-0056"
+      ],
+      55,
+      3,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-015046Z-Copilot.md",
+      "f9b5ee8471c8f271bc484457069eb34cf99b249d8c231f88beb51fececd03dbb",
+      296390,
+      "eklendi",
+      [
+        "k-0057"
+      ],
+      56,
+      3,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-015810Z-Claude.md",
+      "7241436a1404570c6f71efff8146e4498f90a9678372bf3b17b36d4202e1cd4f",
+      298612,
+      "eklendi",
+      [
+        "k-0058"
+      ],
+      57,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-015906Z-ChatGPT.md",
+      "271c61bbfd74e977c7dcd9c6723c3a9b4603444d7b2798e92a533b89a3fa698e",
+      303016,
+      "eklendi",
+      [
+        "k-0059"
+      ],
+      58,
+      2,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-020020Z-Copilot.md",
+      "0d158cbac90d1d7b41c952b633f4c818c2986d26f1d088622bf609cbb8803856",
+      304542,
+      "eklendi",
+      [
+        "k-0060"
+      ],
+      59,
+      2,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-020702Z-Claude.md",
+      "274a3721ee5a52d49315f568b6f312e68adb1a5f553193fc696a663c6a004bc7",
+      308652,
+      "eklendi",
+      [
+        "k-0061"
+      ],
+      60,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-020807Z-ChatGPT.md",
+      "44f6318aa2892897570d003278e9a7ba1c84a070b5ab24cc4dcc55a7830261a2",
+      315890,
+      "eklendi",
+      [
+        "k-0062"
+      ],
+      61,
+      2,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-020951Z-Copilot.md",
+      "e37d0e4eee144b120e4abe2770953405d3806153e7d7811a791d81a9d6591d02",
+      317745,
+      "eklendi",
+      [
+        "k-0063"
+      ],
+      62,
+      2,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-021655Z-Claude.md",
+      "1bda3ae95166b81402c4fb47204642d93a690bdc125ad67ed3d2a586cf032a81",
+      321254,
+      "eklendi",
+      [
+        "k-0064"
+      ],
+      63,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-021807Z-ChatGPT.md",
+      "0643e2a7d7b89a93eb9e518ef217a5c01005a246a318809882edc8d42f85c603",
+      326674,
+      "eklendi",
+      [
+        "k-0065"
+      ],
+      64,
+      2,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-021945Z-Copilot.md",
+      "7af2615dd3833e644243c1f285bfdaa10f193cafa8de87b03553127991304ccb",
+      329304,
+      "eklendi",
+      [
+        "k-0066"
+      ],
+      65,
+      2,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-022851Z-Claude.md",
+      "c45976abae3cb4a6662a6d85a3c254d8b2f65d24bf1c5c842a33feeb6c48d992",
+      335443,
+      "eklendi",
+      [
+        "k-0067"
+      ],
+      66,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-022942Z-ChatGPT.md",
+      "7dad85def119b82466157bda7a489dcd196a2c3bb73969d21ec4b14bb51b75ad",
+      340063,
+      "eklendi",
+      [
+        "k-0068"
+      ],
+      67,
+      2,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-023126Z-Copilot.md",
+      "fcdc1fd452f39ba148341fd6f700a103d10c979585b61b3a857a4073ae3dbd9c",
+      342121,
+      "eklendi",
+      [
+        "k-0069"
+      ],
+      68,
+      2,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-023327Z-Claude.md",
+      "91a2a98a175a313be54805d54f93ea528b5494c911f84a1727e517d3b63f55b1",
+      346014,
+      "eklendi",
+      [
+        "k-0070"
+      ],
+      69,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-023756Z-ChatGPT.md",
+      "25732c1aa15f0657939320674506441f63dfecf4341a76b6588aa6527029d7e1",
+      357108,
+      "eklendi",
+      [
+        "k-0071"
+      ],
+      70,
+      3,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-023930Z-Copilot.md",
+      "0a1a8414329cbca56495acdf07d509087d3a6118075ce0b2df6386fb61126369",
+      359321,
+      "eklendi",
+      [
+        "k-0072"
+      ],
+      71,
+      3,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-024725Z-Claude.md",
+      "1f754874648d50af62364adea6fce5c9dc6b96cd35c2652d80847cb5f48afd99",
+      363944,
+      "eklendi",
+      [
+        "k-0073"
+      ],
+      72,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-024843Z-ChatGPT.md",
+      "f25f6b48ecc935892ee436f0d294204a80ab9d14ac29736b0e50c041114b1cbf",
+      363234,
+      "eklendi",
+      [
+        "k-0074"
+      ],
+      73,
+      1,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-025101Z-Copilot.md",
+      "df895300b9cea316413c0bb4eea4a1217100c69feea77a1cad9794130f4c5c99",
+      365525,
+      "eklendi",
+      [
+        "k-0075"
+      ],
+      74,
+      1,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-030618Z-Claude.md",
+      "e374a4f969ba80eda77293d7d01bdd18b1b9981176f91373cadc6151b6745ee3",
+      379375,
+      "eklendi",
+      [
+        "k-0076"
+      ],
+      75,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-030754Z-ChatGPT.md",
+      "1b2699d75cc148c240e9abe40884790c4daf3f70123905fd31a87ed19de28adc",
+      386982,
+      "eklendi",
+      [
+        "k-0077"
+      ],
+      76,
+      2,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-030947Z-Copilot.md",
+      "023cd92ceb81bc2f082bcd3b0a130725817291fed35417952ae0133da7b62266",
+      388878,
+      "eklendi",
+      [
+        "k-0078"
+      ],
+      77,
+      2,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-031854Z-Claude.md",
+      "425c3a44a7f1e5c6a5c79d793c17c67900505c5aba465802f9b4a035ca679c60",
+      395810,
+      "eklendi",
+      [
+        "k-0079"
+      ],
+      78,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-032024Z-ChatGPT.md",
+      "d00ff782e4beef8cb88d2076f7ec12b2a8ade33dfae8fa2d06f4cfe9bea6f50e",
+      404234,
+      "eklendi",
+      [
+        "k-0080"
+      ],
+      79,
+      2,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-032323Z-Copilot.md",
+      "f587fdf59476ebe05eac63710ee7912f9fda490aa408a0e8da9d051c0ee5a3f9",
+      408808,
+      "eklendi",
+      [
+        "k-0081"
+      ],
+      80,
+      2,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-033006Z-Claude.md",
+      "c1f0caa714c3b1644058e752bcadcdc37a463bb09020293c48593a740eb31516",
+      412525,
+      "eklendi",
+      [
+        "k-0082"
+      ],
+      81,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-034418Z-Claude.md",
+      "6ef58969a3801b2d0982c8e54d52979076826894d3449884974cf47dc59145b4",
+      420784,
+      "eklendi",
+      [
+        "k-0083"
+      ],
+      81,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-034522Z-ChatGPT.md",
+      "e9a30c60410db08dd7efea516dc644cd4f428c54d04d8156c0872ebecb60fff8",
+      427273,
+      "eklendi",
+      [
+        "k-0084"
+      ],
+      82,
+      2,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-034911Z-Copilot.md",
+      "bcc498fdb2a256c4cb0a6a3c2982137960ebf9a9c07b273baec5847a0427d21d",
+      427439,
+      "eklendi",
+      [
+        "k-0085"
+      ],
+      83,
+      2,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-035704Z-Claude.md",
+      "3080462b6bf8abcb6de999d05064007bca1e32ca9f4026e4c4ec3b70dba3357b",
+      439673,
+      "eklendi",
+      [
+        "k-0086"
+      ],
+      85,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-035840Z-ChatGPT.md",
+      "504eebddee4eb3002ea72317390a2127fb3336bffb598c846110a6d4946fe243",
+      457598,
+      "eklendi",
+      [
+        "k-0087"
+      ],
+      86,
+      3,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-040111Z-Copilot.md",
+      "da92e582d7970939c1e126894131b1f839bbebea51f67e08cf1d20c8eadbb03b",
+      460702,
+      "eklendi",
+      [
+        "k-0088"
+      ],
+      87,
+      3,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-040857Z-Claude.md",
+      "389820c9d9ec3c957e1fec579471f61ff10baa5309edb4c74047e7de6e2b5a6d",
+      457133,
+      "eklendi",
+      [
+        "k-0089"
+      ],
+      88,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-041045Z-ChatGPT.md",
+      "dd502e7407cd91d195f57881d79991c36ef0ed0cb4a74d95924b577bd65337fe",
+      464236,
+      "eklendi",
+      [
+        "k-0090"
+      ],
+      89,
+      2,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-041606Z-Copilot.md",
+      "8edea00c8714e074258b15adb213945d40f675bb0ce9e433ab308a45fc317cf5",
+      468559,
+      "eklendi",
+      [
+        "k-0091"
+      ],
+      90,
+      2,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-042911Z-Claude.md",
+      "bdc752c3ac64aadc57919fa69e380cb1f5751bb06e91b7af0032b142ed9d4de6",
+      474234,
+      "eklendi",
+      [
+        "k-0092"
+      ],
+      91,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-043533Z-Claude.md",
+      "85e33752a8a57af078e9e3591835bfb72910ceb452f8c64f924ff5542e122796",
+      482474,
+      "eklendi",
+      [
+        "k-0093"
+      ],
+      91,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-043654Z-ChatGPT.md",
+      "8e5e85eb831726216cd1c356a436a10152511aadd8c2201635c67e2362ce060e",
+      488205,
+      "eklendi",
+      [
+        "k-0094"
+      ],
+      92,
+      2,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-043958Z-Copilot.md",
+      "6f4fec0e1801996504be88bc5b78c582d3f466898bfafc48238348f79b4c802b",
+      491280,
+      "eklendi",
+      [
+        "k-0095"
+      ],
+      93,
+      2,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-044740Z-Claude.md",
+      "27e7ab5ac4fb5de01bcfd943eccb936ab8d62dbda95bac1570182157656cd5fc",
+      508505,
+      "eklendi",
+      [
+        "k-0096"
+      ],
+      95,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-044923Z-ChatGPT.md",
+      "75bbbb4ec46d8f2ce99f5c41eddfec0cc627fa84fd809316d582b8e796014a34",
+      526872,
+      "eklendi",
+      [
+        "k-0097"
+      ],
+      96,
+      3,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-045721Z-Copilot.md",
+      "ae656918a8812e42c28e5c7507d07cfa07440dac9c000ad3018f4281f5824cd6",
+      533311,
+      "eklendi",
+      [
+        "k-0098"
+      ],
+      97,
+      3,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-050533Z-Claude.md",
+      "85166993a533f303aa05545ce50beaeea517a0c0f426266f7a4637b7c66c1837",
+      536381,
+      "eklendi",
+      [
+        "k-0099"
+      ],
+      98,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-050723Z-ChatGPT.md",
+      "6d5b2859bffb615219c91bca85d7cdfa821c22a7fa3121d1fc148ce98c2e7e74",
+      544006,
+      "eklendi",
+      [
+        "k-0100"
+      ],
+      99,
+      2,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-051050Z-Copilot.md",
+      "e8f28e286140823e392b456b4030efa2340bce05f84a37c6a3eca004874d010a",
+      543167,
+      "eklendi",
+      [
+        "k-0101"
+      ],
+      100,
+      2,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-052546Z-Claude.md",
+      "7f2c6dde7e42d3a9da95cf58a9e93872bf99900bc30601fc6f0de6a54855286c",
+      554609,
+      "eklendi",
+      [
+        "k-0103"
+      ],
+      101,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-052605Z-Claude.md",
+      "742d5ac50d91982e81734c1cf73ae8b3662be7506a03063e8ea2d388b820e95f",
+      548862,
+      "eklendi",
+      [
+        "k-0102"
+      ],
+      101,
+      2,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-052717Z-ChatGPT.md",
+      "6226df02031266eb800d848cb05937c86ad96017ceed366250b65a6019442dd9",
+      562189,
+      "eklendi",
+      [
+        "k-0104"
+      ],
+      102,
+      2,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-053240Z-Copilot.md",
+      "9fd689f38429487e7e04780c8a3a06cb85b71043a245e9abd59b886e236d2b39",
+      568784,
+      "eklendi",
+      [
+        "k-0105"
+      ],
+      103,
+      2,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-054318Z-Claude.md",
+      "1de7257fb213d9bb96c7d4e504ed29ea51c9dc51c4bcd9fd31cd7a59e44b0c98",
+      578554,
+      "eklendi",
+      [
+        "k-0106"
+      ],
+      105,
+      1,
+      0,
+      0,
+      "system-8",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-054449Z-ChatGPT.md",
+      "8414e5ef04fa995efca97ed639694e89f7ca2de28f67414479b17cd39d65ce63",
+      587831,
+      "eklendi",
+      [
+        "k-0107"
+      ],
+      106,
+      2,
+      0,
+      0,
+      "system-10",
+      "section-4"
+    ],
+    [
+      "kayit/20261024-054825Z-Copilot.md",
+      "cf7b2e6715615014eca23cd8493fede4e32d8e0826ccbc3d86629ce511a9ab28",
+      586196,
+      "eklendi",
+      [
+        "k-0108"
+      ],
+      107,
+      1,
+      0,
+      0,
+      "system-9",
+      "section-4"
+    ]
+  ]
+}

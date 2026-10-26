@@ -1,0 +1,33 @@
+{
+  "pr": 4,
+  "head": "99dc8a37ef158ee42ee535f631f64e136fef202a",
+  "method": "In-memory calls to four reviewed pure rendering functions, extracted from the full added-file diff. No repository entrypoint, task queue, CLI or test suite executed.",
+  "source_sha256": "720433b7502bee5021311c59ec75a3aeb6918c69c53a7ae65e887149eff7d29d",
+  "source_hash_matches_manifest": true,
+  "outputs": [
+    {
+      "path": "devir/sahit/handoff.txt",
+      "sha256": "1ed664cf937e1b8cdb34d9b235d5489806ff9fa7be115955aae57e4be615a137",
+      "generated_bytes_match": true,
+      "hash_matches_manifest": true
+    },
+    {
+      "path": "devir/sahit/handoff.html",
+      "sha256": "18af650ed7892d74a0093c4c82ef78557139574f8403e32c86664a5012e4d0a7",
+      "generated_bytes_match": true,
+      "hash_matches_manifest": true
+    },
+    {
+      "path": "devir/sahit/handoff.json",
+      "sha256": "720433b7502bee5021311c59ec75a3aeb6918c69c53a7ae65e887149eff7d29d",
+      "generated_bytes_match": true,
+      "hash_matches_manifest": true
+    },
+    {
+      "path": "devir/sahit/START_HERE.md",
+      "sha256": "deb962b227e0b8082c49762c46411a32d6442d4dbd6caa65c5016a9e841994c9",
+      "generated_bytes_match": true,
+      "hash_matches_manifest": true
+    }
+  ]
+}

@@ -1,0 +1,489 @@
+{
+  "repo": "HalukAINRS/ortak-kopru",
+  "fixed_sha": "b2cfa94323df6847033083a2680f0d2ebdbb5909",
+  "base_reference_sha": "80fd42db48e91104383b47b6b4144f01790999be",
+  "scope": "All published files in steering/cli and devir at PR #8 fixed commit. Historical claims kept separate from current main and original sources.",
+  "created_date": "2026-10-26",
+  "provider_calls": 0,
+  "repository_mutations": false,
+  "scripts_or_tests_executed": false,
+  "files": [
+    {
+      "path": "devir/ortak/bes-gorev-20261025/DEVAM.md",
+      "bytes": 8408,
+      "sha256": "ee4cc6764a1ad81b69551d674d17b5cdd8c39f9d2ab05a4590f9cf15a4487dcd",
+      "lines": 30,
+      "kind": "md",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "devir/ortak/bes-gorev-20261025/DOGRULAMA.json",
+      "bytes": 5777,
+      "sha256": "26a1dd9c6844413f9a0d8dfd9ee6e829129c8fd1b00477fdb32b60554e6f08c3",
+      "lines": 195,
+      "kind": "json",
+      "reading_method": "full text read; static inspection; not executed",
+      "json_parsed": true
+    },
+    {
+      "path": "devir/ortak/bes-gorev-20261025/Hacker_Baslat.patch",
+      "bytes": 381,
+      "sha256": "7f65d3258ed6fb57603843dc0f03a7aa5cc7998dfe3e25f0854eecf8e48e75f2",
+      "lines": 7,
+      "kind": "patch",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "devir/ortak/bes-gorev-20261025/Islemci_Ve_Bellek_Optimize.ps1",
+      "bytes": 6133,
+      "sha256": "3531ce3773b7785279ddf3f1a9177c21ceb822331c62327930f8e91252eb5cee",
+      "lines": 136,
+      "kind": "ps1",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "devir/ortak/bes-gorev-20261025/Node_Derleme_Onbellegi.patch",
+      "bytes": 472,
+      "sha256": "90f1259989da926abc2d722ba136352ee1793ae72445e05cee8275e196489f8a",
+      "lines": 8,
+      "kind": "patch",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "devir/ortak/kullanici-listesi-20261025/DEVAM.md",
+      "bytes": 6848,
+      "sha256": "ef078ede843a01f3d3c7214c68da45302de7e9c3a02fca29b5959d8507de3ab7",
+      "lines": 33,
+      "kind": "md",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "devir/ortak/kullanici-listesi-20261025/DOGRULAMA.json",
+      "bytes": 4836,
+      "sha256": "bcb5b3888f33825e666f75867f7cc5549b99789095b6fbe2b50d8c96dbadc81b",
+      "lines": 108,
+      "kind": "json",
+      "reading_method": "full text read; static inspection; not executed",
+      "json_parsed": true
+    },
+    {
+      "path": "devir/ortak/kullanici-listesi-20261025/Kalici_Kontrol.py",
+      "bytes": 2697,
+      "sha256": "803d9056a03f551cffc95b92d6f54aa683542a1e5a61f8ad4ef6e77bf2baf9eb",
+      "lines": 41,
+      "kind": "py",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "devir/ortak/kullanici-listesi-20261025/Sahit_Ultra_Izleyici.py",
+      "bytes": 2923,
+      "sha256": "c20992b1f729af6a5acfc67e10be43f7e32b1c03e2be3c2fbb83347bfae93aed",
+      "lines": 46,
+      "kind": "py",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "devir/ortak/kullanici-listesi-20261025/ortak_notlar_ekleri.patch",
+      "bytes": 724,
+      "sha256": "55fee28c0158273bb63f32e5bbc9ee4acb57401dbc8e62da1e08f775de534095",
+      "lines": 21,
+      "kind": "patch",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "devir/ortak/kullanici-listesi-20261025/privacy_push_guard.py",
+      "bytes": 1583,
+      "sha256": "a8d59b95f801c741e859ed13813c3a6dffb193a7e7bbe4801d22320a4cf1331e",
+      "lines": 31,
+      "kind": "py",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "devir/sahit/google-ultra/DEVAM_20261025.md",
+      "bytes": 4533,
+      "sha256": "8d9df3bc2507d4dfce0151cc3961ef4ae9c5a228efa8fb5bb985abc1ba5af390",
+      "lines": 23,
+      "kind": "md",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "devir/sahit/google-ultra/DOGRULAMA_20261025.json",
+      "bytes": 2434,
+      "sha256": "252be2323d32f1368c0cbfb5c49bb30716671279087b1d62613c73124d4374a9",
+      "lines": 64,
+      "kind": "json",
+      "reading_method": "full text read; static inspection; not executed",
+      "json_parsed": true
+    },
+    {
+      "path": "devir/sahit/google-ultra/Sahit_Ultra_Devam.cmd",
+      "bytes": 195,
+      "sha256": "b57ff90ffcf38a83a093099b099f2479c78af9d664b2ba55dec14ea8c9001471",
+      "lines": 2,
+      "kind": "cmd",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "devir/sahit/google-ultra/Sahit_Ultra_Oturum.ps1",
+      "bytes": 3877,
+      "sha256": "cd9fdae33408abe59a0f6b6eea3c43027ebd9c8a354c34a5b15aa7457dda4760",
+      "lines": 56,
+      "kind": "ps1",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "steering/cli/CYBER_GERCEK_YAZIM_KONTROLU_20261025.json",
+      "bytes": 1848,
+      "sha256": "5155b820374291f85525f8a518b348857c40e483bf3f94d7aa466e3914c75b48",
+      "lines": 51,
+      "kind": "json",
+      "reading_method": "full text read; static inspection; not executed",
+      "json_parsed": true
+    },
+    {
+      "path": "steering/cli/CYBER_HATA_BILDIRIM_TASLAGI_20261025.md",
+      "bytes": 2538,
+      "sha256": "441ee3aab289153b70fd1f7651d00c5eb64e8470b1656b2b47a15f72bf840918",
+      "lines": 15,
+      "kind": "md",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "steering/cli/CYBER_KESINTILERI_20261025.md",
+      "bytes": 9077,
+      "sha256": "7726312988774cae0a3eddf5d5c04ff5667fffcb7a6e19b1012be815f1f7ab29",
+      "lines": 47,
+      "kind": "md",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "steering/cli/CYBER_OLAY_DOGRULAMA_20261025.json",
+      "bytes": 10364,
+      "sha256": "087e917b106b9f5de4ca4f46bf1109520009d9d355b25b773e9b46e5e5d8fd7f",
+      "lines": 369,
+      "kind": "json",
+      "reading_method": "full text read; static inspection; not executed",
+      "json_parsed": true
+    },
+    {
+      "path": "steering/cli/CYBER_TEKIL_DENETIM_20261025.json",
+      "bytes": 8514,
+      "sha256": "1f842e1efe74e3680c228d86c170a674ddb0b5c15781911dd87c3d95574600a7",
+      "lines": 306,
+      "kind": "json",
+      "reading_method": "full text read; static inspection; not executed",
+      "json_parsed": true
+    },
+    {
+      "path": "steering/cli/CYBER_YAZIM_TASLAGI_KORUMA_20261025.json",
+      "bytes": 550,
+      "sha256": "a02e25e48b22c62fef40f5ca7a7c0ba62bb1029bffe4ac217e23eda4f4c3f5ee",
+      "lines": 14,
+      "kind": "json",
+      "reading_method": "full text read; static inspection; not executed",
+      "json_parsed": true
+    },
+    {
+      "path": "steering/cli/DEVAM_20261024.md",
+      "bytes": 5850,
+      "sha256": "c9423ea9b576236ec7d8cb732f3d57320a60f6fd349ad47cdaeeac7f09ede215",
+      "lines": 43,
+      "kind": "md",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "steering/cli/DEVAM_20261025.md",
+      "bytes": 3777,
+      "sha256": "def67a028625085c876cf055c6b0e135259c259a59d1e02749e473351bc28931",
+      "lines": 25,
+      "kind": "md",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "steering/cli/GEMINI_PAKET_DOGRULAMA_20261024.json",
+      "bytes": 3911,
+      "sha256": "f4b78b35cd46f965a7efeb2641ba2e4621039623c6e87c49ddab6ed02877e000",
+      "lines": 107,
+      "kind": "json",
+      "reading_method": "full text read; static inspection; not executed",
+      "json_parsed": true
+    },
+    {
+      "path": "steering/cli/KATMAN_DUZELTME_DOGRULAMA_20261024.json",
+      "bytes": 2901,
+      "sha256": "0a92fe7f97595859faac8b4c3680aa9af98017ae0252f73427eaf9767f6f6ddb",
+      "lines": 97,
+      "kind": "json",
+      "reading_method": "full text read; static inspection; not executed",
+      "json_parsed": true
+    },
+    {
+      "path": "steering/cli/MASAUSTU_KAYNAK_20261025.md",
+      "bytes": 2538,
+      "sha256": "ccc3778a7b0844e8e396faee56b85b2f99a730175a6ddc830ae5dd1b30d4e87f",
+      "lines": 13,
+      "kind": "md",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "steering/cli/MASAUSTU_KAYNAK_DOGRULAMA_20261025.json",
+      "bytes": 2800,
+      "sha256": "1cb436327ed17cf1a8d7722f5f88a842529f391afa40e879a56d2ebad3569df9",
+      "lines": 89,
+      "kind": "json",
+      "reading_method": "full text read; static inspection; not executed",
+      "json_parsed": true
+    },
+    {
+      "path": "steering/cli/ORTAK_NOTLAR_KURULUM_DOGRULAMA_20261025.md",
+      "bytes": 3600,
+      "sha256": "7862c3a5ced6059f07f1a7c21de62bb9da0d12f08715ecc5f8b7000ac1a034c2",
+      "lines": 22,
+      "kind": "md",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "steering/cli/OZGUN_PAKET_20261025.md",
+      "bytes": 8079,
+      "sha256": "e85c98a048915d7a75714e17f571a7ed6d36e895ba6d48139e0a5d473161b34e",
+      "lines": 46,
+      "kind": "md",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "steering/cli/SAGLAYICI_ROL_DOGRULAMA_20261025.json",
+      "bytes": 2827,
+      "sha256": "301ece0433f1c5db3b2946687968b2b84d93327b777387bd692ac53a738d19df",
+      "lines": 77,
+      "kind": "json",
+      "reading_method": "full text read; static inspection; not executed",
+      "json_parsed": true
+    },
+    {
+      "path": "steering/cli/SAHIT_CYBER_TEKIL_DOGRULAMA_20261025.json",
+      "bytes": 25547,
+      "sha256": "c3d1eb08fb8f8e7819d76f7d9fdb60120df73b42fb24a4d5a5f5484bcb3d767b",
+      "lines": 247,
+      "kind": "json",
+      "reading_method": "full text read; static inspection; not executed",
+      "json_parsed": true
+    },
+    {
+      "path": "steering/cli/STEERING_OZGUN_DOGRULAMA_20261025.json",
+      "bytes": 5307,
+      "sha256": "b2f5470d61b2af403b6289ffb25d6dfa08711a12f3020014ae08ef6d5aa490fc",
+      "lines": 156,
+      "kind": "json",
+      "reading_method": "full text read; static inspection; not executed",
+      "json_parsed": true
+    },
+    {
+      "path": "steering/cli/STEERING_SAYFA_DOGRULAMA_20261025.json",
+      "bytes": 6679,
+      "sha256": "c240caf015b4a57ab9be404c84386d49965a00656098b5fbf006a3ab0f091069",
+      "lines": 211,
+      "kind": "json",
+      "reading_method": "full text read; static inspection; not executed",
+      "json_parsed": true
+    },
+    {
+      "path": "steering/cli/TEKIL_ONLEME_DEFTERI_20261025.json",
+      "bytes": 8885518,
+      "sha256": "b94e70bc102c0e0294313d9ada4b36b75b221aec049532568be59de5386b3f6c",
+      "lines": 163327,
+      "kind": "json",
+      "reading_method": "all JSON fields parsed; all 6065 atomic rows structurally reviewed; all normalized proposal/acceptance templates read; not a semantic review of every row",
+      "json_parsed": true,
+      "ledger_summary": {
+        "schema": "halukai.steering.atomic-prevention.v1",
+        "source_records": 168,
+        "coverage_records": 168,
+        "order_records": 168,
+        "atomic_control_rows": 6065,
+        "unique_control_ids": 6065,
+        "kinds": {
+          "atomic": 5972,
+          "unresolved_members": 13,
+          "source_placeholder": 80
+        },
+        "statuses": {
+          "inceleniyor": 10,
+          "capraz_denetim_acik": 1,
+          "hipotez_acik": 8,
+          "sirada": 6033,
+          "ayristirma_eksik": 13
+        },
+        "methods": {
+          "measurement": 73,
+          "identity": 35,
+          "provenance": 27,
+          "integrity": 19,
+          "prompt": 72,
+          "permission": 38,
+          "language": 9,
+          "config": 60,
+          "endpoint": 32,
+          "opaque": 5639,
+          "tracking": 61
+        },
+        "effect_prevention_verified_true": 0,
+        "closed_controls": 0,
+        "coverage_child_references": 17496,
+        "unique_coverage_children": 6065,
+        "missing_referenced_child_ids": [],
+        "unreferenced_control_ids": [],
+        "saved_observation_rows": 5638,
+        "runtime_activation_verified_true": 0,
+        "peer_review_rows": 19,
+        "control_verification_rows": 2
+      }
+    },
+    {
+      "path": "steering/cli/TEKIL_ONLEME_SIRASI_20261025.md",
+      "bytes": 29791,
+      "sha256": "f4ed91d59596b6884cf43cc984b7a365e9ab1de60c9ce95263c5174d6a5d1a4b",
+      "lines": 380,
+      "kind": "md",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "steering/cli/UC_BICIM_20261024.md",
+      "bytes": 6539,
+      "sha256": "602be177f4ce1f007be906c1a750eecb0e0e5a732f95d554318604fff51968e1",
+      "lines": 55,
+      "kind": "md",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "steering/cli/UC_BICIM_DOGRULAMA_20261024.json",
+      "bytes": 16138,
+      "sha256": "7f7ff131b187041625cc74a809def4f6ff24a17f045ff87d99993e872005c084",
+      "lines": 521,
+      "kind": "json",
+      "reading_method": "full text read; static inspection; not executed",
+      "json_parsed": true
+    },
+    {
+      "path": "steering/cli/YEREL_DOGRULAMA_20261024.json",
+      "bytes": 2845,
+      "sha256": "72571ebe64fe6b88acd4016d18d313a70dab7007cf77f3cb94a34b59e0683ba0",
+      "lines": 96,
+      "kind": "json",
+      "reading_method": "full text read; static inspection; not executed",
+      "json_parsed": true
+    },
+    {
+      "path": "steering/cli/cyber_dosya_sonucu.py",
+      "bytes": 2241,
+      "sha256": "cd90cffc72c3c3d3b412af7339c809f9d34102d0dc63ecb32ca48246b7a6fd0f",
+      "lines": 43,
+      "kind": "py",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "steering/cli/cyber_salt_okunur.py",
+      "bytes": 4636,
+      "sha256": "c9b167867bede92358f363f5e3fbee0084ea345738a0b472e42b3537dabb23ad",
+      "lines": 92,
+      "kind": "py",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "steering/cli/steering_donustur_tara.py",
+      "bytes": 23368,
+      "sha256": "4aa70a33428aed4712fdd5999a4bffae92d7127aab6a27c0f400e5563e0c6be8",
+      "lines": 370,
+      "kind": "py",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "steering/cli/test_cyber_dosya_sonucu.py",
+      "bytes": 2664,
+      "sha256": "5052134f852816c2a9610c468474630b97d5e41878d93da4025459ceebce4fed",
+      "lines": 69,
+      "kind": "py",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "steering/cli/test_cyber_salt_okunur.py",
+      "bytes": 3642,
+      "sha256": "1890af6f8c78f4ec9890851c38fbb63569d29bcebece3992cc3a1b2495d9c4cf",
+      "lines": 70,
+      "kind": "py",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "steering/cli/test_donustur_tara.py",
+      "bytes": 3425,
+      "sha256": "a7afc36e55e79ce5d738706222f8f5a971b0bf2b5f29abe89f29d421cea28ee3",
+      "lines": 59,
+      "kind": "py",
+      "reading_method": "full text read; static inspection; not executed"
+    },
+    {
+      "path": "steering/cli/yerel_denetle.py",
+      "bytes": 8274,
+      "sha256": "b8fc5cbbef190ce3061ee7e7fec5e4638921d03d88602eab3d4a0728597c39ea",
+      "lines": 156,
+      "kind": "py",
+      "reading_method": "full text read; static inspection; not executed"
+    }
+  ],
+  "summary": {
+    "file_count": 45,
+    "bytes": 9147609,
+    "kind_counts": {
+      "md": 12,
+      "json": 17,
+      "patch": 3,
+      "ps1": 2,
+      "py": 10,
+      "cmd": 1
+    },
+    "full_text_read_files": 44,
+    "large_ledger_structural_review_files": 1,
+    "ledger": {
+      "schema": "halukai.steering.atomic-prevention.v1",
+      "source_records": 168,
+      "coverage_records": 168,
+      "order_records": 168,
+      "atomic_control_rows": 6065,
+      "unique_control_ids": 6065,
+      "kinds": {
+        "atomic": 5972,
+        "unresolved_members": 13,
+        "source_placeholder": 80
+      },
+      "statuses": {
+        "inceleniyor": 10,
+        "capraz_denetim_acik": 1,
+        "hipotez_acik": 8,
+        "sirada": 6033,
+        "ayristirma_eksik": 13
+      },
+      "methods": {
+        "measurement": 73,
+        "identity": 35,
+        "provenance": 27,
+        "integrity": 19,
+        "prompt": 72,
+        "permission": 38,
+        "language": 9,
+        "config": 60,
+        "endpoint": 32,
+        "opaque": 5639,
+        "tracking": 61
+      },
+      "effect_prevention_verified_true": 0,
+      "closed_controls": 0,
+      "coverage_child_references": 17496,
+      "unique_coverage_children": 6065,
+      "missing_referenced_child_ids": [],
+      "unreferenced_control_ids": [],
+      "saved_observation_rows": 5638,
+      "runtime_activation_verified_true": 0,
+      "peer_review_rows": 19,
+      "control_verification_rows": 2
+    }
+  }
+}

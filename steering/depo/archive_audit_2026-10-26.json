@@ -1,0 +1,2562 @@
+{
+  "schema_version": "1.0",
+  "audit_date": "2026-10-26",
+  "repository": "HalukAINRS/ortak-kopru",
+  "publication_ref": "80fd42db48e91104383b47b6b4144f01790999be",
+  "archive": {
+    "name": "Steering_Evrak_Okuma_Paketi.zip",
+    "bytes": 100641653,
+    "sha256": "827bb9cac16fdb7b643c576a3bd41523e725ad4542ab023c5c4d45f3435b1009",
+    "file_members": 1483,
+    "uncompressed_bytes": 460800693,
+    "all_members_decompressed_and_crc_checked": true,
+    "matches_declared_archive_size_and_sha256": true
+  },
+  "source_manifest": {
+    "entries": 1483,
+    "unique_paths": 1483,
+    "checked_entries": 1483,
+    "matching_entries": 1483,
+    "missing_zip_members": [],
+    "unlisted_zip_members": [],
+    "decisions": {
+      "aktarildi": 125,
+      "dosya_govdesi_aktarilmadi": 1358
+    },
+    "excluded_reasons": {
+      "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini": 69,
+      "ozgun_paket_isletim_dizini_veya_yinelenen_kopya": 1,
+      "ham_kaynak_tam_metin_veya_tam_sohbet_turevi; kisa kanitlar ve kunyesi aktarildi": 1199,
+      "ozgun_piksel; tum gorsel inceleme bulgulari aktarildi": 26,
+      "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi": 63
+    }
+  },
+  "publication": {
+    "files": 85,
+    "sha256sum_entries": 84,
+    "sha256sum_matches": 84,
+    "files_not_listed_in_sha256sums": [
+      "SHA256SUMS"
+    ],
+    "json_files_parsed": 45,
+    "relative_markdown_links_checked": 201,
+    "relative_markdown_links_resolved": 201,
+    "included_source_records": 125,
+    "included_roles": {
+      "tam_kaynak_kunyesi": 3,
+      "ozgun_paket_dogrulamasi": 4,
+      "tam_guncel_okuma_durumu": 1,
+      "tam_analitik_rapor": 21,
+      "analiz_kanit_ve_kapsam_kaydi": 95,
+      "tam_tamamlayici_rapor": 1
+    },
+    "exact_report_bodies_with_optional_publication_note": 18,
+    "all_report_bodies_checked": 22,
+    "report_bodies_preserved_after_documented_transforms": 22,
+    "json_source_records_compared": 103,
+    "json_source_records_preserved_after_documented_transforms": 103
+  },
+  "included_source_records": [
+    {
+      "source_path": "Atif_Kaynaklari.json",
+      "target": "kaynaklar.json",
+      "role": "tam_kaynak_kunyesi",
+      "target_exists": true,
+      "catalog_section": "citation_registry",
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "Donusum_Dogrulamasi.json",
+      "target": "kanitlar/paket_dogrulamasi.json",
+      "role": "ozgun_paket_dogrulamasi",
+      "target_exists": true,
+      "object_key": "Donusum_Dogrulamasi.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "Envanter.json",
+      "target": "kaynaklar.json",
+      "role": "tam_kaynak_kunyesi",
+      "target_exists": true,
+      "catalog_section": "source_inventory",
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "Kalan_Okuma_Kuyrugu.json",
+      "target": "kanitlar/paket_dogrulamasi.json",
+      "role": "ozgun_paket_dogrulamasi",
+      "target_exists": true,
+      "object_key": "Kalan_Okuma_Kuyrugu.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "Maskeleme_Kaydi.json",
+      "target": "kanitlar/paket_dogrulamasi.json",
+      "role": "ozgun_paket_dogrulamasi",
+      "target_exists": true,
+      "object_key": "Maskeleme_Kaydi.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "Okuma_Durumlari.json",
+      "target": "okuma_durumlari.json",
+      "role": "tam_guncel_okuma_durumu",
+      "target_exists": true,
+      "added_publication_metadata": {
+        "publication_notice": "Raporlarda gecen onceki kismi durumlarin yerine son kapsam icin bu belge esas alinir. Inceleme yontemleri farklidir; her dosya icin ayni inceleme turu iddia edilmez."
+      },
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "Paket_Dogrulamasi.json",
+      "target": "kanitlar/paket_dogrulamasi.json",
+      "role": "ozgun_paket_dogrulamasi",
+      "target_exists": true,
+      "object_key": "Paket_Dogrulamasi.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "Sayfa_Dizini.json",
+      "target": "kaynaklar.json",
+      "role": "tam_kaynak_kunyesi",
+      "target_exists": true,
+      "catalog_section": "original_page_directory",
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "Steering_Incelemesi.txt",
+      "target": "ANA_RAPOR.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/books_faith_remaining/U0108_coverage.json",
+      "target": "kanitlar/books_faith_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/books_faith_remaining/U0108_coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/books_faith_remaining/U0108_quote_evidence.json",
+      "target": "kanitlar/books_faith_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/books_faith_remaining/U0108_quote_evidence.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/books_faith_remaining/U0130_coverage.json",
+      "target": "kanitlar/books_faith_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/books_faith_remaining/U0130_coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/books_faith_remaining/U0130_final_checks.json",
+      "target": "kanitlar/books_faith_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/books_faith_remaining/U0130_final_checks.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/books_faith_remaining/U0130_quote_evidence.json",
+      "target": "kanitlar/books_faith_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/books_faith_remaining/U0130_quote_evidence.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/books_faith_remaining/coverage.json",
+      "target": "kanitlar/books_faith_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/books_faith_remaining/coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/books_faith_remaining/report.md",
+      "target": "incelemeler/books_faith_remaining.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/books_faith_remaining/reviews.json",
+      "target": "kanitlar/books_faith_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/books_faith_remaining/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/claude_programs/claude_concat_verified.json",
+      "target": "kanitlar/claude_programs.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/claude_programs/claude_concat_verified.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/claude_programs/keyword_reference_scan.json",
+      "target": "kanitlar/claude_programs.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/claude_programs/keyword_reference_scan.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/claude_programs/report.md",
+      "target": "incelemeler/claude_programs.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/claude_programs/reviews.json",
+      "target": "kanitlar/claude_programs.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/claude_programs/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/claude_programs/system_prompt_reference.json",
+      "target": "kanitlar/claude_programs.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/claude_programs/system_prompt_reference.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/cognitive_metacognition_remaining/U0077_raw_validation.json",
+      "target": "kanitlar/cognitive_metacognition_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/cognitive_metacognition_remaining/U0077_raw_validation.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/cognitive_metacognition_remaining/U0106_raw_validation.json",
+      "target": "kanitlar/cognitive_metacognition_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/cognitive_metacognition_remaining/U0106_raw_validation.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/cognitive_metacognition_remaining/quote_evidence.json",
+      "target": "kanitlar/cognitive_metacognition_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/cognitive_metacognition_remaining/quote_evidence.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/cognitive_metacognition_remaining/reading_coverage.json",
+      "target": "kanitlar/cognitive_metacognition_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/cognitive_metacognition_remaining/reading_coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/cognitive_metacognition_remaining/report.md",
+      "target": "incelemeler/cognitive_metacognition_remaining.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/cognitive_metacognition_remaining/reviews.json",
+      "target": "kanitlar/cognitive_metacognition_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/cognitive_metacognition_remaining/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/conversations/exact_evidences.json",
+      "target": "kanitlar/conversations.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/conversations/exact_evidences.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/conversations/phrase_occurrences.json",
+      "target": "kanitlar/conversations.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/conversations/phrase_occurrences.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/conversations/quote_evidence.json",
+      "target": "kanitlar/conversations.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/conversations/quote_evidence.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/conversations/report.md",
+      "target": "incelemeler/conversations.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/conversations/reviews.json",
+      "target": "kanitlar/conversations.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/conversations/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/conversations/source_aliases.json",
+      "target": "kanitlar/conversations.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/conversations/source_aliases.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/downloads_images/reviews.json",
+      "target": "kanitlar/downloads_images.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/downloads_images/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/downloads_programs/reviews.json",
+      "target": "kanitlar/downloads_programs.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/downloads_programs/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/downloads_styles/reviews.json",
+      "target": "kanitlar/downloads_styles.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/downloads_styles/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/faith_remaining/first_person_provenance_checks.json",
+      "target": "kanitlar/faith_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/faith_remaining/first_person_provenance_checks.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/faith_remaining/question_scope_comparison.json",
+      "target": "kanitlar/faith_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/faith_remaining/question_scope_comparison.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/faith_remaining/quote_evidence.json",
+      "target": "kanitlar/faith_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/faith_remaining/quote_evidence.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/faith_remaining/raw_validation.json",
+      "target": "kanitlar/faith_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/faith_remaining/raw_validation.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/faith_remaining/reading_coverage.json",
+      "target": "kanitlar/faith_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/faith_remaining/reading_coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/faith_remaining/report.md",
+      "target": "incelemeler/faith_remaining.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/faith_remaining/reviews.json",
+      "target": "kanitlar/faith_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/faith_remaining/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/foundational/read_coverage.json",
+      "target": "kanitlar/foundational.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/foundational/read_coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/foundational/report.md",
+      "target": "incelemeler/foundational.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/foundational/reviews.json",
+      "target": "kanitlar/foundational.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/foundational/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/historical/all_distinct_text_coverage.json",
+      "target": "kanitlar/historical.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/historical/all_distinct_text_coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/historical/coverage.json",
+      "target": "kanitlar/historical.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/historical/coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/historical/document_status.md",
+      "target": "incelemeler/historical_document_status.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/historical/halukai_mapping_checks.json",
+      "target": "kanitlar/historical.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/historical/halukai_mapping_checks.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/historical/mapping_checks.json",
+      "target": "kanitlar/historical.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/historical/mapping_checks.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/historical/reading_queue.json",
+      "target": "kanitlar/historical.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/historical/reading_queue.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/historical/redaction_locations.json",
+      "target": "kanitlar/historical.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/historical/redaction_locations.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/historical/report.md",
+      "target": "incelemeler/historical.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/historical/reviews.json",
+      "target": "kanitlar/historical.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/historical/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/historical_supplement/blocks_F00179_to_F00180.json",
+      "target": "kanitlar/historical_supplement.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/historical_supplement/blocks_F00179_to_F00180.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/historical_supplement/blocks_F00180_to_F00073.json",
+      "target": "kanitlar/historical_supplement.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/historical_supplement/blocks_F00180_to_F00073.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/historical_supplement/coverage.json",
+      "target": "kanitlar/historical_supplement.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/historical_supplement/coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/historical_supplement/manifest.json",
+      "target": "kanitlar/historical_supplement.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/historical_supplement/manifest.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/historical_supplement/notes.json",
+      "target": "kanitlar/historical_supplement.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/historical_supplement/notes.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/historical_supplement/report.md",
+      "target": "incelemeler/historical_supplement.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/historical_supplement/reviews.json",
+      "target": "kanitlar/historical_supplement.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/historical_supplement/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/images/coverage.json",
+      "target": "kanitlar/images.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/images/coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/images/report.md",
+      "target": "incelemeler/images.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/images/visual_reviews.json",
+      "target": "kanitlar/images.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/images/visual_reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0194_concat_proof.json",
+      "target": "kanitlar/long_corpus_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/long_corpus_remaining/U0194_concat_proof.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/quote_evidence.json",
+      "target": "kanitlar/long_corpus_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/long_corpus_remaining/quote_evidence.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/reading_coverage.json",
+      "target": "kanitlar/long_corpus_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/long_corpus_remaining/reading_coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/report.md",
+      "target": "incelemeler/long_corpus_remaining.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/reviews.json",
+      "target": "kanitlar/long_corpus_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/long_corpus_remaining/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/summary.json",
+      "target": "kanitlar/long_corpus_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/long_corpus_remaining/summary.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/metacognition_remaining/checks.json",
+      "target": "kanitlar/metacognition_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/metacognition_remaining/checks.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/metacognition_remaining/quote_evidence.json",
+      "target": "kanitlar/metacognition_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/metacognition_remaining/quote_evidence.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/metacognition_remaining/reading_coverage.json",
+      "target": "kanitlar/metacognition_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/metacognition_remaining/reading_coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/metacognition_remaining/report.md",
+      "target": "incelemeler/metacognition_remaining.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/metacognition_remaining/reviews.json",
+      "target": "kanitlar/metacognition_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/metacognition_remaining/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/metacognition_remaining/sheet_reviews.json",
+      "target": "kanitlar/metacognition_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/metacognition_remaining/sheet_reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/mlops_remaining/raw_message_validation.json",
+      "target": "kanitlar/mlops_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/mlops_remaining/raw_message_validation.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/mlops_remaining/reading_coverage.json",
+      "target": "kanitlar/mlops_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/mlops_remaining/reading_coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/mlops_remaining/report.md",
+      "target": "incelemeler/mlops_remaining.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/mlops_remaining/reviews.json",
+      "target": "kanitlar/mlops_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/mlops_remaining/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/models/mapping_checks.json",
+      "target": "kanitlar/models.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/models/mapping_checks.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/models/quote_evidence.json",
+      "target": "kanitlar/models.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/models/quote_evidence.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/models/reading_coverage.json",
+      "target": "kanitlar/models.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/models/reading_coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/models/report.md",
+      "target": "incelemeler/models.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/models/reviews.json",
+      "target": "kanitlar/models.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/models/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/models_remaining/coverage.json",
+      "target": "kanitlar/models_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/models_remaining/coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/models_remaining/mapping_verification.json",
+      "target": "kanitlar/models_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/models_remaining/mapping_verification.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/models_remaining/quote_evidence.json",
+      "target": "kanitlar/models_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/models_remaining/quote_evidence.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/models_remaining/report.md",
+      "target": "incelemeler/models_remaining.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/models_remaining/reviews.json",
+      "target": "kanitlar/models_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/models_remaining/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/models_supplement/mapping_checks.json",
+      "target": "kanitlar/models_supplement.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/models_supplement/mapping_checks.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/models_supplement/quote_evidence.json",
+      "target": "kanitlar/models_supplement.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/models_supplement/quote_evidence.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/models_supplement/reading_coverage.json",
+      "target": "kanitlar/models_supplement.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/models_supplement/reading_coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/models_supplement/report.md",
+      "target": "incelemeler/models_supplement.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/models_supplement/reviews.json",
+      "target": "kanitlar/models_supplement.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/models_supplement/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/old_css_1/reviews.json",
+      "target": "kanitlar/old_css_1.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/old_css_1/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/old_css_2/reviews.json",
+      "target": "kanitlar/old_css_2.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/old_css_2/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/old_programs/reviews.json",
+      "target": "kanitlar/old_programs.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/old_programs/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/operational_remaining/coverage.json",
+      "target": "kanitlar/operational_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/operational_remaining/coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/operational_remaining/progress.json",
+      "target": "kanitlar/operational_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/operational_remaining/progress.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/operational_remaining/report.md",
+      "target": "incelemeler/operational_remaining.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/operational_remaining/reviews.json",
+      "target": "kanitlar/operational_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/operational_remaining/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/root_supplement/metadata_checks.json",
+      "target": "kanitlar/root_supplement.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/root_supplement/metadata_checks.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/root_supplement/report.md",
+      "target": "incelemeler/root_supplement.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/root_supplement/reviews.json",
+      "target": "kanitlar/root_supplement.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/root_supplement/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/F00184_reuse.json",
+      "target": "kanitlar/systems_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/systems_remaining/F00184_reuse.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/coverage.json",
+      "target": "kanitlar/systems_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/systems_remaining/coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/evidence.json",
+      "target": "kanitlar/systems_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/systems_remaining/evidence.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/reading_notes.json",
+      "target": "kanitlar/systems_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/systems_remaining/reading_notes.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/report.md",
+      "target": "incelemeler/systems_remaining.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/reviews.json",
+      "target": "kanitlar/systems_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/systems_remaining/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/sources.json",
+      "target": "kanitlar/systems_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/systems_remaining/sources.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/zip_embedded_audit_notes/completion.json",
+      "target": "kanitlar/systems_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/systems_remaining/zip_embedded_audit_notes/completion.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/zip_embedded_audit_notes/quote_evidence.json",
+      "target": "kanitlar/systems_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/systems_remaining/zip_embedded_audit_notes/quote_evidence.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/zip_embedded_audit_notes/reading_coverage.json",
+      "target": "kanitlar/systems_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/systems_remaining/zip_embedded_audit_notes/reading_coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/zip_embedded_audit_notes/report.md",
+      "target": "incelemeler/systems_embedded_audit.md",
+      "role": "tam_tamamlayici_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/two_conversations_remaining/checks.json",
+      "target": "kanitlar/two_conversations_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/two_conversations_remaining/checks.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/two_conversations_remaining/coverage.json",
+      "target": "kanitlar/two_conversations_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/two_conversations_remaining/coverage.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/two_conversations_remaining/evidence.json",
+      "target": "kanitlar/two_conversations_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/two_conversations_remaining/evidence.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/two_conversations_remaining/progress.json",
+      "target": "kanitlar/two_conversations_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/two_conversations_remaining/progress.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": true,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/two_conversations_remaining/report.md",
+      "target": "incelemeler/two_conversations_remaining.md",
+      "role": "tam_analitik_rapor",
+      "target_exists": true
+    },
+    {
+      "source_path": "incelemeler/two_conversations_remaining/reviews.json",
+      "target": "kanitlar/two_conversations_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/two_conversations_remaining/reviews.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    },
+    {
+      "source_path": "incelemeler/two_conversations_remaining/source.json",
+      "target": "kanitlar/two_conversations_remaining.json",
+      "role": "analiz_kanit_ve_kapsam_kaydi",
+      "target_exists": true,
+      "object_key": "incelemeler/two_conversations_remaining/source.json",
+      "object_exists": true,
+      "recorded_original_sha256_matches": true,
+      "parsed_json_equal_before_documented_transforms": false,
+      "parsed_json_equal_after_documented_transforms": true
+    }
+  ],
+  "duplicate_report_container_checks": [
+    {
+      "source_json": "Steering_Incelemesi.json",
+      "source_text": "Steering_Incelemesi.txt",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/books_faith_remaining/report.json",
+      "source_text": "incelemeler/books_faith_remaining/report.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/claude_programs/report.json",
+      "source_text": "incelemeler/claude_programs/report.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/cognitive_metacognition_remaining/report.json",
+      "source_text": "incelemeler/cognitive_metacognition_remaining/report.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/conversations/report.json",
+      "source_text": "incelemeler/conversations/report.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/faith_remaining/report.json",
+      "source_text": "incelemeler/faith_remaining/report.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/foundational/report.json",
+      "source_text": "incelemeler/foundational/report.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/historical/document_status.json",
+      "source_text": "incelemeler/historical/document_status.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/historical/report.json",
+      "source_text": "incelemeler/historical/report.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/historical_supplement/report.json",
+      "source_text": "incelemeler/historical_supplement/report.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/images/report.json",
+      "source_text": "incelemeler/images/report.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/long_corpus_remaining/report.json",
+      "source_text": "incelemeler/long_corpus_remaining/report.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/metacognition_remaining/report.json",
+      "source_text": "incelemeler/metacognition_remaining/report.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/mlops_remaining/report.json",
+      "source_text": "incelemeler/mlops_remaining/report.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/models/report.json",
+      "source_text": "incelemeler/models/report.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/models_remaining/report.json",
+      "source_text": "incelemeler/models_remaining/report.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/models_supplement/report.json",
+      "source_text": "incelemeler/models_supplement/report.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/operational_remaining/report.json",
+      "source_text": "incelemeler/operational_remaining/report.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/root_supplement/report.json",
+      "source_text": "incelemeler/root_supplement/report.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/systems_remaining/report.json",
+      "source_text": "incelemeler/systems_remaining/report.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/systems_remaining/zip_embedded_audit_notes/report.json",
+      "source_text": "incelemeler/systems_remaining/zip_embedded_audit_notes/report.md",
+      "text_field_exactly_equal": true
+    },
+    {
+      "source_json": "incelemeler/two_conversations_remaining/report.json",
+      "source_text": "incelemeler/two_conversations_remaining/report.md",
+      "text_field_exactly_equal": true
+    }
+  ],
+  "report_body_comparison": [
+    {
+      "source_path": "Steering_Incelemesi.txt",
+      "target": "ANA_RAPOR.md",
+      "source_chars": 26416,
+      "published_chars": 25847,
+      "source_body_exact_substring": false,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "body_preserved_with_documented_path_or_link_transforms"
+    },
+    {
+      "source_path": "incelemeler/books_faith_remaining/report.md",
+      "target": "incelemeler/books_faith_remaining.md",
+      "source_chars": 13783,
+      "published_chars": 14292,
+      "source_body_exact_substring": true,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "exact_source_body_with_publication_note"
+    },
+    {
+      "source_path": "incelemeler/claude_programs/report.md",
+      "target": "incelemeler/claude_programs.md",
+      "source_chars": 29913,
+      "published_chars": 30422,
+      "source_body_exact_substring": true,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "exact_source_body_with_publication_note"
+    },
+    {
+      "source_path": "incelemeler/cognitive_metacognition_remaining/report.md",
+      "target": "incelemeler/cognitive_metacognition_remaining.md",
+      "source_chars": 9614,
+      "published_chars": 10123,
+      "source_body_exact_substring": true,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "exact_source_body_with_publication_note"
+    },
+    {
+      "source_path": "incelemeler/conversations/report.md",
+      "target": "incelemeler/conversations.md",
+      "source_chars": 28794,
+      "published_chars": 29303,
+      "source_body_exact_substring": true,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "exact_source_body_with_publication_note"
+    },
+    {
+      "source_path": "incelemeler/faith_remaining/report.md",
+      "target": "incelemeler/faith_remaining.md",
+      "source_chars": 18522,
+      "published_chars": 19031,
+      "source_body_exact_substring": true,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "exact_source_body_with_publication_note"
+    },
+    {
+      "source_path": "incelemeler/foundational/report.md",
+      "target": "incelemeler/foundational.md",
+      "source_chars": 27469,
+      "published_chars": 27978,
+      "source_body_exact_substring": true,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "exact_source_body_with_publication_note"
+    },
+    {
+      "source_path": "incelemeler/historical/document_status.md",
+      "target": "incelemeler/historical_document_status.md",
+      "source_chars": 39817,
+      "published_chars": 40326,
+      "source_body_exact_substring": true,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "exact_source_body_with_publication_note"
+    },
+    {
+      "source_path": "incelemeler/historical/report.md",
+      "target": "incelemeler/historical.md",
+      "source_chars": 18345,
+      "published_chars": 18835,
+      "source_body_exact_substring": false,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "body_preserved_with_documented_path_or_link_transforms"
+    },
+    {
+      "source_path": "incelemeler/historical_supplement/report.md",
+      "target": "incelemeler/historical_supplement.md",
+      "source_chars": 18491,
+      "published_chars": 19000,
+      "source_body_exact_substring": true,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "exact_source_body_with_publication_note"
+    },
+    {
+      "source_path": "incelemeler/images/report.md",
+      "target": "incelemeler/images.md",
+      "source_chars": 19862,
+      "published_chars": 20371,
+      "source_body_exact_substring": true,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "exact_source_body_with_publication_note"
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/report.md",
+      "target": "incelemeler/long_corpus_remaining.md",
+      "source_chars": 7283,
+      "published_chars": 7792,
+      "source_body_exact_substring": true,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "exact_source_body_with_publication_note"
+    },
+    {
+      "source_path": "incelemeler/metacognition_remaining/report.md",
+      "target": "incelemeler/metacognition_remaining.md",
+      "source_chars": 8513,
+      "published_chars": 9022,
+      "source_body_exact_substring": true,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "exact_source_body_with_publication_note"
+    },
+    {
+      "source_path": "incelemeler/mlops_remaining/report.md",
+      "target": "incelemeler/mlops_remaining.md",
+      "source_chars": 7501,
+      "published_chars": 8010,
+      "source_body_exact_substring": true,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "exact_source_body_with_publication_note"
+    },
+    {
+      "source_path": "incelemeler/models/report.md",
+      "target": "incelemeler/models.md",
+      "source_chars": 11385,
+      "published_chars": 11894,
+      "source_body_exact_substring": true,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "exact_source_body_with_publication_note"
+    },
+    {
+      "source_path": "incelemeler/models_remaining/report.md",
+      "target": "incelemeler/models_remaining.md",
+      "source_chars": 21639,
+      "published_chars": 21996,
+      "source_body_exact_substring": false,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "body_preserved_with_documented_path_or_link_transforms"
+    },
+    {
+      "source_path": "incelemeler/models_supplement/report.md",
+      "target": "incelemeler/models_supplement.md",
+      "source_chars": 18380,
+      "published_chars": 18889,
+      "source_body_exact_substring": true,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "exact_source_body_with_publication_note"
+    },
+    {
+      "source_path": "incelemeler/operational_remaining/report.md",
+      "target": "incelemeler/operational_remaining.md",
+      "source_chars": 19191,
+      "published_chars": 19764,
+      "source_body_exact_substring": false,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "body_preserved_with_documented_path_or_link_transforms"
+    },
+    {
+      "source_path": "incelemeler/root_supplement/report.md",
+      "target": "incelemeler/root_supplement.md",
+      "source_chars": 5899,
+      "published_chars": 6408,
+      "source_body_exact_substring": true,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "exact_source_body_with_publication_note"
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/report.md",
+      "target": "incelemeler/systems_remaining.md",
+      "source_chars": 25151,
+      "published_chars": 25660,
+      "source_body_exact_substring": true,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "exact_source_body_with_publication_note"
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/zip_embedded_audit_notes/report.md",
+      "target": "incelemeler/systems_embedded_audit.md",
+      "source_chars": 6478,
+      "published_chars": 7095,
+      "source_body_exact_substring": true,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "exact_source_body_with_publication_note"
+    },
+    {
+      "source_path": "incelemeler/two_conversations_remaining/report.md",
+      "target": "incelemeler/two_conversations_remaining.md",
+      "source_chars": 17045,
+      "published_chars": 17554,
+      "source_body_exact_substring": true,
+      "source_body_preserved_after_documented_transforms": true,
+      "body_status": "exact_source_body_with_publication_note"
+    }
+  ],
+  "excluded_analysis_directory_candidates": [
+    {
+      "source_path": "incelemeler/books_faith_remaining/U0108_message_index.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 25939
+    },
+    {
+      "source_path": "incelemeler/books_faith_remaining/U0108_messages.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 690905
+    },
+    {
+      "source_path": "incelemeler/books_faith_remaining/U0108_reading_plan.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 952732
+    },
+    {
+      "source_path": "incelemeler/books_faith_remaining/U0130_message_index.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 86868
+    },
+    {
+      "source_path": "incelemeler/books_faith_remaining/U0130_messages.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 1887028
+    },
+    {
+      "source_path": "incelemeler/books_faith_remaining/U0130_reading_plan.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 959680
+    },
+    {
+      "source_path": "incelemeler/books_faith_remaining/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 15291
+    },
+    {
+      "source_path": "incelemeler/claude_programs/messages.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 42126
+    },
+    {
+      "source_path": "incelemeler/claude_programs/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 33157
+    },
+    {
+      "source_path": "incelemeler/cognitive_metacognition_remaining/U0077_message_map.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 58793
+    },
+    {
+      "source_path": "incelemeler/cognitive_metacognition_remaining/U0106_message_map.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 148290
+    },
+    {
+      "source_path": "incelemeler/cognitive_metacognition_remaining/reading_plan.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 285656
+    },
+    {
+      "source_path": "incelemeler/cognitive_metacognition_remaining/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 10779
+    },
+    {
+      "source_path": "incelemeler/conversations/chatgpt_source_messages.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 575644
+    },
+    {
+      "source_path": "incelemeler/conversations/gemini_activity_source.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 71673
+    },
+    {
+      "source_path": "incelemeler/conversations/gemini_source_messages.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 209800
+    },
+    {
+      "source_path": "incelemeler/conversations/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 32239
+    },
+    {
+      "source_path": "incelemeler/faith_remaining/citation_map.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 426450
+    },
+    {
+      "source_path": "incelemeler/faith_remaining/message_map.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 72867
+    },
+    {
+      "source_path": "incelemeler/faith_remaining/reading_plan.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 991727
+    },
+    {
+      "source_path": "incelemeler/faith_remaining/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 20727
+    },
+    {
+      "source_path": "incelemeler/foundational/exact_line_plan.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 4681790
+    },
+    {
+      "source_path": "incelemeler/foundational/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 30557
+    },
+    {
+      "source_path": "incelemeler/historical/document_status.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 42601
+    },
+    {
+      "source_path": "incelemeler/historical/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 20397
+    },
+    {
+      "source_path": "incelemeler/historical/structure.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 2805769
+    },
+    {
+      "source_path": "incelemeler/historical_supplement/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 20587
+    },
+    {
+      "source_path": "incelemeler/images/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 22009
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0077_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 21593
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0096_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 263333
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0097_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 63838
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0106_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 114116
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0108_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 28666
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0111_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 231002
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0122_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 41753
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0126_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 1668917
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0130_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 113839
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0131_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 181487
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0131_message_structure.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 47291
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0131_reading_plan.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 53472
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0138_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 19313
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0142_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 98734
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0144_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 16317
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0153_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 90862
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0159_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 320233
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0161_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 80219
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0165_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 111792
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0167_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 2909186
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0173_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 1380721
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0301_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 36641
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/U0323_matches.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 52304
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/basis.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 958484
+    },
+    {
+      "source_path": "incelemeler/long_corpus_remaining/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 7998
+    },
+    {
+      "source_path": "incelemeler/metacognition_remaining/reading_plan.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 2459632
+    },
+    {
+      "source_path": "incelemeler/metacognition_remaining/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 9408
+    },
+    {
+      "source_path": "incelemeler/mlops_remaining/message_map.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 304160
+    },
+    {
+      "source_path": "incelemeler/mlops_remaining/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 8406
+    },
+    {
+      "source_path": "incelemeler/models/architecture_diff_mapping.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 533324
+    },
+    {
+      "source_path": "incelemeler/models/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 12729
+    },
+    {
+      "source_path": "incelemeler/models_remaining/exact_block_mapping.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 24073920
+    },
+    {
+      "source_path": "incelemeler/models_remaining/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 23832
+    },
+    {
+      "source_path": "incelemeler/models_supplement/exact_block_mapping.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 96611
+    },
+    {
+      "source_path": "incelemeler/models_supplement/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 20345
+    },
+    {
+      "source_path": "incelemeler/models_supplement/workbook_cells.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 2515678
+    },
+    {
+      "source_path": "incelemeler/operational_remaining/exact_block_mapping.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 3054083
+    },
+    {
+      "source_path": "incelemeler/operational_remaining/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 21523
+    },
+    {
+      "source_path": "incelemeler/root_supplement/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 6675
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/F00177_reading_plan.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 2065884
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/F00197_message_index.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 211700
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/F00197_reading_plan.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 2148948
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/F00200_message_index.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 71354
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/F00219_reading_plan.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 701883
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/exact_block_mapping.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 2886003
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 27903
+    },
+    {
+      "source_path": "incelemeler/systems_remaining/zip_embedded_audit_notes/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 7283
+    },
+    {
+      "source_path": "incelemeler/two_conversations_remaining/exact_block_mapping.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 6294436
+    },
+    {
+      "source_path": "incelemeler/two_conversations_remaining/exact_block_mapping_verified.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 10814486
+    },
+    {
+      "source_path": "incelemeler/two_conversations_remaining/external_read_basis.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 36580
+    },
+    {
+      "source_path": "incelemeler/two_conversations_remaining/message_coverage.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 2466163
+    },
+    {
+      "source_path": "incelemeler/two_conversations_remaining/messages.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 3662260
+    },
+    {
+      "source_path": "incelemeler/two_conversations_remaining/range_classes.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 841347
+    },
+    {
+      "source_path": "incelemeler/two_conversations_remaining/reading_plan.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 1711264
+    },
+    {
+      "source_path": "incelemeler/two_conversations_remaining/report.json",
+      "reason": "ayni_icerigin_yinelenen_sunum_bicimi_veya_ozgun_paket_dizini",
+      "bytes": 19081
+    },
+    {
+      "source_path": "incelemeler/two_conversations_remaining/streaming_read_log.json",
+      "reason": "tam_kaynak_govdesi_veya_yinelenen_okuma_esleme_akisi; analitik rapor ve kapsam kaydi aktarildi",
+      "bytes": 2754805
+    }
+  ],
+  "published_checksum_results": [
+    {
+      "path": "AKTARIM_KAPSAMI.md",
+      "expected_sha256": "1f94f850121531e259abbe39c7fdfa0d2f96431faad3a30f15b2ebd2674c52bb",
+      "actual_sha256": "1f94f850121531e259abbe39c7fdfa0d2f96431faad3a30f15b2ebd2674c52bb",
+      "matches": true
+    },
+    {
+      "path": "ANA_RAPOR.md",
+      "expected_sha256": "ebb2d085d958b9e873e5fcc9684766c7d25f92f975501710d89dc62957e67c7b",
+      "actual_sha256": "ebb2d085d958b9e873e5fcc9684766c7d25f92f975501710d89dc62957e67c7b",
+      "matches": true
+    },
+    {
+      "path": "DEPO_OKUMASI.md",
+      "expected_sha256": "77f5a434cd64308c4eecbed8267d8a21935edf231ee6b1227d7b9408aead4a4f",
+      "actual_sha256": "77f5a434cd64308c4eecbed8267d8a21935edf231ee6b1227d7b9408aead4a4f",
+      "matches": true
+    },
+    {
+      "path": "ISTENEN_BAGLAM.md",
+      "expected_sha256": "fae1442eccd02bc95557c44a177639d665794331b98e979deef44902ea8e23c1",
+      "actual_sha256": "fae1442eccd02bc95557c44a177639d665794331b98e979deef44902ea8e23c1",
+      "matches": true
+    },
+    {
+      "path": "README.md",
+      "expected_sha256": "b09ec697cd9d8cb786f014201a626eea21d18f4b684af39c303eed8f1aa59141",
+      "actual_sha256": "b09ec697cd9d8cb786f014201a626eea21d18f4b684af39c303eed8f1aa59141",
+      "matches": true
+    },
+    {
+      "path": "YAYIN_DOGRULAMASI.json",
+      "expected_sha256": "9d4f89ef513ffaee87499dc6de43d80d694fcd4e66f45d6d4706f60beac56012",
+      "actual_sha256": "9d4f89ef513ffaee87499dc6de43d80d694fcd4e66f45d6d4706f60beac56012",
+      "matches": true
+    },
+    {
+      "path": "YAYIN_DOGRULAMASI_GUNCEL.json",
+      "expected_sha256": "8517020e50e4bcd28dcbb4cc841ac3b1c2371c2d7f41067244125b91dc3377b0",
+      "actual_sha256": "8517020e50e4bcd28dcbb4cc841ac3b1c2371c2d7f41067244125b91dc3377b0",
+      "matches": true
+    },
+    {
+      "path": "aktarim_manifestosu.json",
+      "expected_sha256": "0f7dcfd0bc7b098840b4adc78fc78f051f44b17e7957eea3ab7d1d63c35d4299",
+      "actual_sha256": "0f7dcfd0bc7b098840b4adc78fc78f051f44b17e7957eea3ab7d1d63c35d4299",
+      "matches": true
+    },
+    {
+      "path": "atif_denetimi.json",
+      "expected_sha256": "8bf075dded255fb9ed046e647e9fc8b33695f87bc1a2eee354bfe2bae12d55b3",
+      "actual_sha256": "8bf075dded255fb9ed046e647e9fc8b33695f87bc1a2eee354bfe2bae12d55b3",
+      "matches": true
+    },
+    {
+      "path": "depo/ARSIV_YENIDEN_DOGRULAMA.json",
+      "expected_sha256": "cb79b82e9d02cf76f4d66414a95e6cb9263f76c2133ff2ca9ca2543acb96a38c",
+      "actual_sha256": "cb79b82e9d02cf76f4d66414a95e6cb9263f76c2133ff2ca9ca2543acb96a38c",
+      "matches": true
+    },
+    {
+      "path": "depo/GUNCEL_KOD_VE_PR_OKUMASI.md",
+      "expected_sha256": "9f61e74ccfc39f2ecb63ab468e5aca8c7a2f7b37a6f22da4ed22dad6dd362d9f",
+      "actual_sha256": "9f61e74ccfc39f2ecb63ab468e5aca8c7a2f7b37a6f22da4ed22dad6dd362d9f",
+      "matches": true
+    },
+    {
+      "path": "depo/GUNCEL_OKUMA_2026-10-24.md",
+      "expected_sha256": "5ecdc1027531bb0ecb823b184a3de1da5ae89e9cb2c5505eefa90a6428d81bda",
+      "actual_sha256": "5ecdc1027531bb0ecb823b184a3de1da5ae89e9cb2c5505eefa90a6428d81bda",
+      "matches": true
+    },
+    {
+      "path": "depo/GUNLUK_EKI.md",
+      "expected_sha256": "e2a5a5be0349edef3698f76e33d6912f2b7116c175cf02590468783efec029f5",
+      "actual_sha256": "e2a5a5be0349edef3698f76e33d6912f2b7116c175cf02590468783efec029f5",
+      "matches": true
+    },
+    {
+      "path": "depo/GUNLUK_OKUMASI.md",
+      "expected_sha256": "8603eb055d4579d45d1bb6a3d3ec0feb7cdebf4fa413b5bdd3f75c5c8a698cb0",
+      "actual_sha256": "8603eb055d4579d45d1bb6a3d3ec0feb7cdebf4fa413b5bdd3f75c5c8a698cb0",
+      "matches": true
+    },
+    {
+      "path": "depo/GUNLUK_SON_EK.md",
+      "expected_sha256": "cb483a82f03efa1dd28a1476f557727bde83206fdea66aaf5c47b6944d5d1873",
+      "actual_sha256": "cb483a82f03efa1dd28a1476f557727bde83206fdea66aaf5c47b6944d5d1873",
+      "matches": true
+    },
+    {
+      "path": "depo/KOD_OKUMASI.md",
+      "expected_sha256": "ddc8093c5b2160915b3da9b5b8d0bb0296ac5d0cf0a57ce53405481bdb9460ef",
+      "actual_sha256": "ddc8093c5b2160915b3da9b5b8d0bb0296ac5d0cf0a57ce53405481bdb9460ef",
+      "matches": true
+    },
+    {
+      "path": "depo/KOPRU_ILK_55_OKUMASI.md",
+      "expected_sha256": "cfb7c8592a2707f620cc52475d870dc3c5934f70d9e183b1d2aa742db2205f87",
+      "actual_sha256": "cfb7c8592a2707f620cc52475d870dc3c5934f70d9e183b1d2aa742db2205f87",
+      "matches": true
+    },
+    {
+      "path": "depo/KOPRU_SON_54_OKUMASI.md",
+      "expected_sha256": "dedc8c5474ce91ccc60e35fe2b9c0a36814d71d877af3d580679c38a3866348e",
+      "actual_sha256": "dedc8c5474ce91ccc60e35fe2b9c0a36814d71d877af3d580679c38a3866348e",
+      "matches": true
+    },
+    {
+      "path": "depo/PR3_OKUMASI.md",
+      "expected_sha256": "b000fa2d1deaf74f649e95cbaec6f47510338aba4f30a5df69a3543d572710fc",
+      "actual_sha256": "b000fa2d1deaf74f649e95cbaec6f47510338aba4f30a5df69a3543d572710fc",
+      "matches": true
+    },
+    {
+      "path": "depo/REFERANS_DALLARI_OKUMASI.md",
+      "expected_sha256": "8a6fa3b9201c853638ab053f1ca0c01613121744a7a226f9813eb8e13388ae4e",
+      "actual_sha256": "8a6fa3b9201c853638ab053f1ca0c01613121744a7a226f9813eb8e13388ae4e",
+      "matches": true
+    },
+    {
+      "path": "depo/SON_DEGISIKLIK.md",
+      "expected_sha256": "8001348190862016860c1b1cc4c8dd7f6958be80ee22869b255f9a3266c2dcd1",
+      "actual_sha256": "8001348190862016860c1b1cc4c8dd7f6958be80ee22869b255f9a3266c2dcd1",
+      "matches": true
+    },
+    {
+      "path": "depo/YENI_DOSYALAR.md",
+      "expected_sha256": "9bbbac609fd0e79ff8acd3e8c95ffcc3ebc84d48b115c746d463d2d69ce23753",
+      "actual_sha256": "9bbbac609fd0e79ff8acd3e8c95ffcc3ebc84d48b115c746d463d2d69ce23753",
+      "matches": true
+    },
+    {
+      "path": "depo/guncel_kopru_kapsami.json",
+      "expected_sha256": "afdac5c999b1f4ac80769e309ea905ebff92bccd416e230c1d6a0c1682c728fe",
+      "actual_sha256": "afdac5c999b1f4ac80769e309ea905ebff92bccd416e230c1d6a0c1682c728fe",
+      "matches": true
+    },
+    {
+      "path": "depo/gunluk_eki_kapsami.json",
+      "expected_sha256": "f5bb6e4a93f57dada42ae0cad7a5b6844433fa0bceca12d91515aaa6fa396626",
+      "actual_sha256": "f5bb6e4a93f57dada42ae0cad7a5b6844433fa0bceca12d91515aaa6fa396626",
+      "matches": true
+    },
+    {
+      "path": "depo/gunluk_kapsami.json",
+      "expected_sha256": "c0f2dea7be20ebc4c75fedc786420725f3dab529bac29621b2535b5520aa9363",
+      "actual_sha256": "c0f2dea7be20ebc4c75fedc786420725f3dab529bac29621b2535b5520aa9363",
+      "matches": true
+    },
+    {
+      "path": "depo/gunluk_son_ek_kapsami.json",
+      "expected_sha256": "c8e3cd79a1efdc9678b86bf2e0ff6e5aea7e0f8915acc979c881f41f475b9a22",
+      "actual_sha256": "c8e3cd79a1efdc9678b86bf2e0ff6e5aea7e0f8915acc979c881f41f475b9a22",
+      "matches": true
+    },
+    {
+      "path": "depo/okunan_dal_ve_pr_surumleri.json",
+      "expected_sha256": "154b3d58977be6fd7f818c353f5a099dd9eab728320b3725bac0fbe633f9b330",
+      "actual_sha256": "154b3d58977be6fd7f818c353f5a099dd9eab728320b3725bac0fbe633f9b330",
+      "matches": true
+    },
+    {
+      "path": "depo/okunan_depo.json",
+      "expected_sha256": "f752741f97107afd52f4c26556379d97fe9c543c6da858591307a8b8c399eb11",
+      "actual_sha256": "f752741f97107afd52f4c26556379d97fe9c543c6da858591307a8b8c399eb11",
+      "matches": true
+    },
+    {
+      "path": "depo/reference-branches-coverage.json",
+      "expected_sha256": "d2b3a5e28be36898d556b1fcb28e6ae189cc3e874116f976308b92de815c9498",
+      "actual_sha256": "d2b3a5e28be36898d556b1fcb28e6ae189cc3e874116f976308b92de815c9498",
+      "matches": true
+    },
+    {
+      "path": "depo/repo-log-equivalence.json",
+      "expected_sha256": "a9d3e75e97e686fcb5f4de4204f18be0783356906e19dd6266520303e8bb089e",
+      "actual_sha256": "a9d3e75e97e686fcb5f4de4204f18be0783356906e19dd6266520303e8bb089e",
+      "matches": true
+    },
+    {
+      "path": "depo/repo-log-equivalence.py",
+      "expected_sha256": "e897e263280dd2efb5c729a5cf4c0a6abc75293d835112e332c962e7a23dc887",
+      "actual_sha256": "e897e263280dd2efb5c729a5cf4c0a6abc75293d835112e332c962e7a23dc887",
+      "matches": true
+    },
+    {
+      "path": "depo/repo-pr4-equivalence.json",
+      "expected_sha256": "ba21b3c5c1fa98c8b6726c28dc41bff4aee5cb2e4d76093fb4742229c1c6ecb8",
+      "actual_sha256": "ba21b3c5c1fa98c8b6726c28dc41bff4aee5cb2e4d76093fb4742229c1c6ecb8",
+      "matches": true
+    },
+    {
+      "path": "depo/repo-reading-manifest.json",
+      "expected_sha256": "3b161327af7f8725de67f827dde24a96f7555a3f953a8c8d7f232e87a617a804",
+      "actual_sha256": "3b161327af7f8725de67f827dde24a96f7555a3f953a8c8d7f232e87a617a804",
+      "matches": true
+    },
+    {
+      "path": "depo/yayin_oncesi_ana_dal_farki.json",
+      "expected_sha256": "067f76d8876b55265d2f7bff40c3f7c55ab79e02d8a653a28805cb3f84d5a26d",
+      "actual_sha256": "067f76d8876b55265d2f7bff40c3f7c55ab79e02d8a653a28805cb3f84d5a26d",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/books_faith_remaining.md",
+      "expected_sha256": "b9b296ff39b228a09d077f1122b68ec30efeebce0456b6acb361d64b00cbc997",
+      "actual_sha256": "b9b296ff39b228a09d077f1122b68ec30efeebce0456b6acb361d64b00cbc997",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/claude_programs.md",
+      "expected_sha256": "5873c0019b73ed281c1cc1ef9813ab88927a3fd001b36c4f5767b4270a38e85c",
+      "actual_sha256": "5873c0019b73ed281c1cc1ef9813ab88927a3fd001b36c4f5767b4270a38e85c",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/cognitive_metacognition_remaining.md",
+      "expected_sha256": "a47048514165c6ed22a9b97e5fd0e3b3bb66369dbdf46dfdeba76834025fa071",
+      "actual_sha256": "a47048514165c6ed22a9b97e5fd0e3b3bb66369dbdf46dfdeba76834025fa071",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/conversations.md",
+      "expected_sha256": "f9dd8e3c6b3481e42aa1ee7f01e153ac0ed71ef9bb7de08a1e1aeac4318d20bc",
+      "actual_sha256": "f9dd8e3c6b3481e42aa1ee7f01e153ac0ed71ef9bb7de08a1e1aeac4318d20bc",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/faith_remaining.md",
+      "expected_sha256": "211362a59629220f3e69338dedc75ee802ebf38ce387a6aec0a7a2acc6d3dc26",
+      "actual_sha256": "211362a59629220f3e69338dedc75ee802ebf38ce387a6aec0a7a2acc6d3dc26",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/foundational.md",
+      "expected_sha256": "b0c5c53fb13f40e1efea24c43c620612defb1a5974f43a15d0a7e0765c23ef5b",
+      "actual_sha256": "b0c5c53fb13f40e1efea24c43c620612defb1a5974f43a15d0a7e0765c23ef5b",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/historical.md",
+      "expected_sha256": "69136f5ea8ff889d7015245d2736090ae5f968b47b3eb8bc3a6011dc33d30473",
+      "actual_sha256": "69136f5ea8ff889d7015245d2736090ae5f968b47b3eb8bc3a6011dc33d30473",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/historical_document_status.md",
+      "expected_sha256": "7f2254de26e1b6f2a6372e9daa2bebf05e5e797c0a7a9cf425dc79b13b63bc7f",
+      "actual_sha256": "7f2254de26e1b6f2a6372e9daa2bebf05e5e797c0a7a9cf425dc79b13b63bc7f",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/historical_supplement.md",
+      "expected_sha256": "cfa5792315fad16a2823c0552de963a7d19414b2810084ae4f6e6fc03f0f26bc",
+      "actual_sha256": "cfa5792315fad16a2823c0552de963a7d19414b2810084ae4f6e6fc03f0f26bc",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/images.md",
+      "expected_sha256": "ba9f3b5e71b0c9b29785e2776561e65ea2baa2d56b7d41adadc1dce7ada45c3c",
+      "actual_sha256": "ba9f3b5e71b0c9b29785e2776561e65ea2baa2d56b7d41adadc1dce7ada45c3c",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/long_corpus_remaining.md",
+      "expected_sha256": "badaf8655394dac5240ce9e19bace392d6406e5bbbc69b1803a23535dcb96e12",
+      "actual_sha256": "badaf8655394dac5240ce9e19bace392d6406e5bbbc69b1803a23535dcb96e12",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/metacognition_remaining.md",
+      "expected_sha256": "bdd30ffc717123140a018bdc3259d2a00e4b25308535d8d1b322e2dd21fb249b",
+      "actual_sha256": "bdd30ffc717123140a018bdc3259d2a00e4b25308535d8d1b322e2dd21fb249b",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/mlops_remaining.md",
+      "expected_sha256": "243aa529b77ff8186adb6d6ebc7a9e2bfbdb8351237dce11fd44d369e49b0551",
+      "actual_sha256": "243aa529b77ff8186adb6d6ebc7a9e2bfbdb8351237dce11fd44d369e49b0551",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/models.md",
+      "expected_sha256": "0e51e49bbd2ffc60ebb02c47c6b8993b94ece407752ec3e047bfe7b300bb752a",
+      "actual_sha256": "0e51e49bbd2ffc60ebb02c47c6b8993b94ece407752ec3e047bfe7b300bb752a",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/models_remaining.md",
+      "expected_sha256": "cb3d9bd867e3dd5eb19df73eaf04913622d298dee268cf0de99eaa077c909673",
+      "actual_sha256": "cb3d9bd867e3dd5eb19df73eaf04913622d298dee268cf0de99eaa077c909673",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/models_supplement.md",
+      "expected_sha256": "e3a4ed4e45898c3d984f926a2f870e1a565d4cb9a36b0d26bc8374f8eb435701",
+      "actual_sha256": "e3a4ed4e45898c3d984f926a2f870e1a565d4cb9a36b0d26bc8374f8eb435701",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/operational_remaining.md",
+      "expected_sha256": "75f379e6546ceff4de2d6b50b31cc767a5249d644464a95cc2d1b80a6860e8d7",
+      "actual_sha256": "75f379e6546ceff4de2d6b50b31cc767a5249d644464a95cc2d1b80a6860e8d7",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/root_supplement.md",
+      "expected_sha256": "14de98266c895867f17fbf590b0018138b3e47d0f1b4ee3920afae02ef3a5985",
+      "actual_sha256": "14de98266c895867f17fbf590b0018138b3e47d0f1b4ee3920afae02ef3a5985",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/systems_embedded_audit.md",
+      "expected_sha256": "1ebbb68b68877a360d15f9cc301b2f7c9dff34f855ad9d4662a58d09a26b4eb3",
+      "actual_sha256": "1ebbb68b68877a360d15f9cc301b2f7c9dff34f855ad9d4662a58d09a26b4eb3",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/systems_remaining.md",
+      "expected_sha256": "767717a3e33b865adec83e233ed67ca4d57992f30272113264372eb5293ab081",
+      "actual_sha256": "767717a3e33b865adec83e233ed67ca4d57992f30272113264372eb5293ab081",
+      "matches": true
+    },
+    {
+      "path": "incelemeler/two_conversations_remaining.md",
+      "expected_sha256": "6cda241258e9578cc8ca41eacfefaebe1d7f6da3a505294434283e909e8be101",
+      "actual_sha256": "6cda241258e9578cc8ca41eacfefaebe1d7f6da3a505294434283e909e8be101",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/books_faith_remaining.json",
+      "expected_sha256": "6371527e96f70430bece0d055213fb621b985e2975054b31d3f3e69e9d59b070",
+      "actual_sha256": "6371527e96f70430bece0d055213fb621b985e2975054b31d3f3e69e9d59b070",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/claude_programs.json",
+      "expected_sha256": "7822b962321c843c68f044467e5f7e2b327e7337f07498ab7a39c9c4be76d99d",
+      "actual_sha256": "7822b962321c843c68f044467e5f7e2b327e7337f07498ab7a39c9c4be76d99d",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/cognitive_metacognition_remaining.json",
+      "expected_sha256": "5e962812153994f7752753314ce106757569157b73fe3ade92da9287d75c4812",
+      "actual_sha256": "5e962812153994f7752753314ce106757569157b73fe3ade92da9287d75c4812",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/conversations.json",
+      "expected_sha256": "1ac4a3824f4fbb341aa79cccc34a9726856b095fddfcf0ac555cbbddfbb97ab3",
+      "actual_sha256": "1ac4a3824f4fbb341aa79cccc34a9726856b095fddfcf0ac555cbbddfbb97ab3",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/downloads_images.json",
+      "expected_sha256": "a16665c18c64d0adf9c66249f26514d61197a5617ca0124ba4dbca4eb104d90f",
+      "actual_sha256": "a16665c18c64d0adf9c66249f26514d61197a5617ca0124ba4dbca4eb104d90f",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/downloads_programs.json",
+      "expected_sha256": "4a17dc8efb0d76bc06e359032c3813205895a103e083ed59a3b9db73d9a28ece",
+      "actual_sha256": "4a17dc8efb0d76bc06e359032c3813205895a103e083ed59a3b9db73d9a28ece",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/downloads_styles.json",
+      "expected_sha256": "a50dc1ce5faee0bdf32e484b5949eccb2a84c3e76c3d904b66ef26c66327c086",
+      "actual_sha256": "a50dc1ce5faee0bdf32e484b5949eccb2a84c3e76c3d904b66ef26c66327c086",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/faith_remaining.json",
+      "expected_sha256": "b6626b1d7c8e2e2e3c57618bda906b4a36736a04c3467aab9e9dcfbacd7966ee",
+      "actual_sha256": "b6626b1d7c8e2e2e3c57618bda906b4a36736a04c3467aab9e9dcfbacd7966ee",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/foundational.json",
+      "expected_sha256": "8c8288dc3f50ceec8d1dc6f0dbd118378cbf7948b7ab8b8039aa5c5e014139a1",
+      "actual_sha256": "8c8288dc3f50ceec8d1dc6f0dbd118378cbf7948b7ab8b8039aa5c5e014139a1",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/historical.json",
+      "expected_sha256": "ab5214ab56720fad9da3aaa3e71c8175fa38903d6c516ad12e2fb9d7102ba5fa",
+      "actual_sha256": "ab5214ab56720fad9da3aaa3e71c8175fa38903d6c516ad12e2fb9d7102ba5fa",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/historical_supplement.json",
+      "expected_sha256": "9d2e1a797f97a788ce8a05e9e60d282e10820cb8117560fa3477d98af694d99a",
+      "actual_sha256": "9d2e1a797f97a788ce8a05e9e60d282e10820cb8117560fa3477d98af694d99a",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/images.json",
+      "expected_sha256": "2f9f15ec7b74f20ac777cfd0286b2ad69d27eae6217ba99e85e6ed23b166a81c",
+      "actual_sha256": "2f9f15ec7b74f20ac777cfd0286b2ad69d27eae6217ba99e85e6ed23b166a81c",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/long_corpus_remaining.json",
+      "expected_sha256": "d411e0ed73615e75ee7b397bf822abfe8bb597359644359084d95dc889662ac3",
+      "actual_sha256": "d411e0ed73615e75ee7b397bf822abfe8bb597359644359084d95dc889662ac3",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/metacognition_remaining.json",
+      "expected_sha256": "f0f904d1632568bf91e4322af49b02b28b9aa992d4167820247ea6b30a69629d",
+      "actual_sha256": "f0f904d1632568bf91e4322af49b02b28b9aa992d4167820247ea6b30a69629d",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/mlops_remaining.json",
+      "expected_sha256": "084b20fe64c2f5158b3a9075eff3ae145ebbdde9c692b9f6c3eaed4aafd0af22",
+      "actual_sha256": "084b20fe64c2f5158b3a9075eff3ae145ebbdde9c692b9f6c3eaed4aafd0af22",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/models.json",
+      "expected_sha256": "e77eaa5544c675d6184ad385c2a69508044a5b6c307f530056d896725d073aae",
+      "actual_sha256": "e77eaa5544c675d6184ad385c2a69508044a5b6c307f530056d896725d073aae",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/models_remaining.json",
+      "expected_sha256": "0df01b434b8b04559c6a04d8c65bfa6207f1e1394ef6058abb084fd0587d2d0b",
+      "actual_sha256": "0df01b434b8b04559c6a04d8c65bfa6207f1e1394ef6058abb084fd0587d2d0b",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/models_supplement.json",
+      "expected_sha256": "3509a831b3604769a71613912ac3eecd12539d713bd97df755e6742befc32aae",
+      "actual_sha256": "3509a831b3604769a71613912ac3eecd12539d713bd97df755e6742befc32aae",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/old_css_1.json",
+      "expected_sha256": "c0a3df89b13a8800791788a288d1797ee303b001b78c68f53b0df8f9e8f095c9",
+      "actual_sha256": "c0a3df89b13a8800791788a288d1797ee303b001b78c68f53b0df8f9e8f095c9",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/old_css_2.json",
+      "expected_sha256": "fe2d27172c5410198f6770b14d9ff28d2c5fa6039efac19b148e3b73c860040c",
+      "actual_sha256": "fe2d27172c5410198f6770b14d9ff28d2c5fa6039efac19b148e3b73c860040c",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/old_programs.json",
+      "expected_sha256": "2c425beb923d5f5f6161a6425880f94bb15fd6eacd7ed6945b21f709e4158438",
+      "actual_sha256": "2c425beb923d5f5f6161a6425880f94bb15fd6eacd7ed6945b21f709e4158438",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/operational_remaining.json",
+      "expected_sha256": "ac7547215c1aff5ae7cf99a39087b5594df5869b770a443891c3d1b687678d68",
+      "actual_sha256": "ac7547215c1aff5ae7cf99a39087b5594df5869b770a443891c3d1b687678d68",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/paket_dogrulamasi.json",
+      "expected_sha256": "8f079e8421a666f91cd0f0e7679715ce7b7e43a00019a79bc42b81f678eed0e2",
+      "actual_sha256": "8f079e8421a666f91cd0f0e7679715ce7b7e43a00019a79bc42b81f678eed0e2",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/root_supplement.json",
+      "expected_sha256": "7ee084af44ffb13ee7b1f856f11b464ae04badd67d2cd5a2599836423fdc6850",
+      "actual_sha256": "7ee084af44ffb13ee7b1f856f11b464ae04badd67d2cd5a2599836423fdc6850",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/systems_remaining.json",
+      "expected_sha256": "bee41116ef95c44e30cc4f8355df565733dca66c61a99a43a8d11fb00a1c4c66",
+      "actual_sha256": "bee41116ef95c44e30cc4f8355df565733dca66c61a99a43a8d11fb00a1c4c66",
+      "matches": true
+    },
+    {
+      "path": "kanitlar/two_conversations_remaining.json",
+      "expected_sha256": "d7cf4aedb54244937752384679e0e0f4629b2ce2db26ab24270afa3b615c2155",
+      "actual_sha256": "d7cf4aedb54244937752384679e0e0f4629b2ce2db26ab24270afa3b615c2155",
+      "matches": true
+    },
+    {
+      "path": "kaynaklar.json",
+      "expected_sha256": "46165efa96a378cc7c4a6435a559ec64479c3e4818a5dffb33974a0419a823e4",
+      "actual_sha256": "46165efa96a378cc7c4a6435a559ec64479c3e4818a5dffb33974a0419a823e4",
+      "matches": true
+    },
+    {
+      "path": "maskeleme_ve_donusum_kaydi.json",
+      "expected_sha256": "08b3f4a92d35c6a3815b3f08f3c0d01eec97cf6a0e513409c2fbc357ba9829af",
+      "actual_sha256": "08b3f4a92d35c6a3815b3f08f3c0d01eec97cf6a0e513409c2fbc357ba9829af",
+      "matches": true
+    },
+    {
+      "path": "okuma_durumlari.json",
+      "expected_sha256": "80d868639cd5b58be1244cafd3f416f9844b2dc0bdc2abbfddfa844c04ca1b6d",
+      "actual_sha256": "80d868639cd5b58be1244cafd3f416f9844b2dc0bdc2abbfddfa844c04ca1b6d",
+      "matches": true
+    }
+  ],
+  "issues": [],
+  "limits": [
+    "This is byte, metadata, target-existence and representation reconciliation. It does not re-read 460800693 uncompressed source bytes semantically.",
+    "Source strings can differ from public strings because recorded redactions, path substitutions and link relocation were applied. No private source bodies or removed bridge content were restored.",
+    "Earlier report dates and scope remain historical; newer main-branch corrections must qualify current interpretation."
+  ]
+}

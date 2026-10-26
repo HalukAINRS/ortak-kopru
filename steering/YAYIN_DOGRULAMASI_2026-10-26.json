@@ -1,0 +1,432 @@
+{
+  "schema_version": 1,
+  "validation_date_utc": "2026-10-26",
+  "repository": "HalukAINRS/ortak-kopru",
+  "stage": "remote_publication_verified",
+  "reference_branch": "steering-inceleme-2026-10-24",
+  "base_commits": {
+    "reference": "80fd42db48e91104383b47b6b4144f01790999be",
+    "main": "d9e09aa2c099bffdf9ac066c13c2c5e694b2fb5e",
+    "cli": "b2cfa94323df6847033083a2680f0d2ebdbb5909",
+    "shared_tools": "f52ef87b381f3b8475821208c88b0df4f9814be7"
+  },
+  "archive_verification": {
+    "evidence": "depo/archive_audit_2026-10-26.json",
+    "archive_bytes": 100641653,
+    "archive_sha256": "827bb9cac16fdb7b643c576a3bd41523e725ad4542ab023c5c4d45f3435b1009",
+    "members_checked": 1483,
+    "members_matching_manifest": 1483,
+    "included_report_bodies_preserved": 22,
+    "included_json_source_records_preserved": 103,
+    "raw_archive_uploaded": false
+  },
+  "reference_files": {
+    "previous_count": 85,
+    "current_count": 98,
+    "new_count": 13,
+    "new_files": [
+      "steering/YAYIN_DOGRULAMASI_2026-10-26.json",
+      "steering/depo/ARSIV_KARSILASTIRMASI_2026-10-26.md",
+      "steering/depo/CLI_DALI_OKUMASI_2026-10-26.md",
+      "steering/depo/GUNCEL_OKUMA_2026-10-26.md",
+      "steering/depo/KOD_OKUMASI_2026-10-26.md",
+      "steering/depo/KOPRU_OKUMASI_2026-10-26.md",
+      "steering/depo/ORTAK_ALAN_DALI_OKUMASI_2026-10-26.md",
+      "steering/depo/archive_audit_2026-10-26.json",
+      "steering/depo/audit_steering_archive.py",
+      "steering/depo/cli_branch_scope_2026-10-26.json",
+      "steering/depo/current_code_scope_2026-10-26.json",
+      "steering/depo/current_kopru_scope_2026-10-26.json",
+      "steering/depo/dal_pr_durumu_2026-10-26.json"
+    ],
+    "old_source_bodies_changed": [],
+    "existing_files_changed": [
+      "steering/README.md",
+      "steering/SHA256SUMS"
+    ],
+    "json_files_parsed": 51,
+    "markdown_relative_file_links_checked": 232,
+    "missing_relative_files": [],
+    "sha256_entries_expected": 97,
+    "sha256_excludes_self": true
+  },
+  "read_scope": {
+    "published_report_and_context_bodies_reread": 23,
+    "canonical_records_covered_before_publication": 169,
+    "earlier_record_hash_matches": 109,
+    "new_records_read_full_text": 60,
+    "main_source_configuration_document_files_read": 31,
+    "dated_logs_parsed": 122,
+    "cli_branch_files_in_scope": 45,
+    "cli_files_read_full_text": 44,
+    "cli_ledger_records_structurally_parsed": 6065,
+    "cli_ledger_complete_semantic_review_claimed": false,
+    "shared_tool_branch_files_read_full_text": 4
+  },
+  "bridge_change": {
+    "schema_version": 1,
+    "validation_date_utc": "2026-10-26",
+    "stage": "local_publication_candidate",
+    "base_commit": "d9e09aa2c099bffdf9ac066c13c2c5e694b2fb5e",
+    "previous_records": 169,
+    "new_records": 170,
+    "added_ids": [
+      "k-0170"
+    ],
+    "previous_articles_unchanged": true,
+    "mirror_before_records": 140,
+    "mirror_after_records": 170,
+    "mirror_matches_generator": true,
+    "canonical_mirror_articles_equal": true,
+    "new_record": {
+      "id": "k-0170",
+      "kimden": "ChatGPT (GitHub incelemesi)",
+      "kime": "Sen",
+      "durum": "kapandi",
+      "yanit": null,
+      "zaman": "2026-10-26T10:47:00+00:00"
+    },
+    "pending": {
+      "ChatGPT": {
+        "before": [],
+        "after": []
+      },
+      "ChatGPT (API)": {
+        "before": [],
+        "after": []
+      },
+      "ChatGPT (Şaman)": {
+        "before": [
+          "k-0126",
+          "k-0128",
+          "k-0130",
+          "k-0136",
+          "k-0137",
+          "k-0138",
+          "k-0139",
+          "k-0140",
+          "k-0141",
+          "k-0142",
+          "k-0143",
+          "k-0144",
+          "k-0145",
+          "k-0146",
+          "k-0147",
+          "k-0148",
+          "k-0149",
+          "k-0150",
+          "k-0151",
+          "k-0152",
+          "k-0153",
+          "k-0154",
+          "k-0155",
+          "k-0156",
+          "k-0157",
+          "k-0158",
+          "k-0159",
+          "k-0160",
+          "k-0161",
+          "k-0162",
+          "k-0163",
+          "k-0164",
+          "k-0165",
+          "k-0166",
+          "k-0167",
+          "k-0168",
+          "k-0169"
+        ],
+        "after": [
+          "k-0126",
+          "k-0128",
+          "k-0130",
+          "k-0136",
+          "k-0137",
+          "k-0138",
+          "k-0139",
+          "k-0140",
+          "k-0141",
+          "k-0142",
+          "k-0143",
+          "k-0144",
+          "k-0145",
+          "k-0146",
+          "k-0147",
+          "k-0148",
+          "k-0149",
+          "k-0150",
+          "k-0151",
+          "k-0152",
+          "k-0153",
+          "k-0154",
+          "k-0155",
+          "k-0156",
+          "k-0157",
+          "k-0158",
+          "k-0159",
+          "k-0160",
+          "k-0161",
+          "k-0162",
+          "k-0163",
+          "k-0164",
+          "k-0165",
+          "k-0166",
+          "k-0167",
+          "k-0168",
+          "k-0169"
+        ]
+      },
+      "Claude": {
+        "before": [],
+        "after": []
+      },
+      "Claude (API)": {
+        "before": [],
+        "after": []
+      },
+      "Claude (Max)": {
+        "before": [],
+        "after": []
+      },
+      "Claude (Hacker)": {
+        "before": [],
+        "after": []
+      },
+      "Copilot": {
+        "before": [],
+        "after": []
+      },
+      "Copilot (Şahit)": {
+        "before": [
+          "k-0140",
+          "k-0154"
+        ],
+        "after": [
+          "k-0140",
+          "k-0154"
+        ]
+      },
+      "Gemini": {
+        "before": [],
+        "after": []
+      },
+      "Gemini (API)": {
+        "before": [],
+        "after": []
+      },
+      "Gemini (Şahit)": {
+        "before": [
+          "k-0157",
+          "k-0158",
+          "k-0159",
+          "k-0160",
+          "k-0161",
+          "k-0162",
+          "k-0163",
+          "k-0164",
+          "k-0165",
+          "k-0166",
+          "k-0167",
+          "k-0168",
+          "k-0169"
+        ],
+        "after": [
+          "k-0157",
+          "k-0158",
+          "k-0159",
+          "k-0160",
+          "k-0161",
+          "k-0162",
+          "k-0163",
+          "k-0164",
+          "k-0165",
+          "k-0166",
+          "k-0167",
+          "k-0168",
+          "k-0169"
+        ]
+      },
+      "Google": {
+        "before": [],
+        "after": []
+      },
+      "Google (CLI izleyici)": {
+        "before": [
+          "k-0139",
+          "k-0141",
+          "k-0142",
+          "k-0143",
+          "k-0144",
+          "k-0145",
+          "k-0146",
+          "k-0147",
+          "k-0148",
+          "k-0149",
+          "k-0150",
+          "k-0151",
+          "k-0152",
+          "k-0153",
+          "k-0156"
+        ],
+        "after": [
+          "k-0139",
+          "k-0141",
+          "k-0142",
+          "k-0143",
+          "k-0144",
+          "k-0145",
+          "k-0146",
+          "k-0147",
+          "k-0148",
+          "k-0149",
+          "k-0150",
+          "k-0151",
+          "k-0152",
+          "k-0153",
+          "k-0156"
+        ]
+      }
+    },
+    "pending_lists_unchanged": true,
+    "prohibited_patterns": [],
+    "external_loads": [],
+    "files": [
+      {
+        "path": "README.md",
+        "bytes": 15916,
+        "sha256": "be9fbda9ea7e82cd45c51c2511ce33ba1d50a44a2ddbbf9a2f880985bd4778d3",
+        "git_blob_sha": "d9013da23d93f76bd6080233dbf5291dd5173758"
+      },
+      {
+        "path": "kopru.html",
+        "bytes": 933377,
+        "sha256": "48d325e3228fd487d16f425be6680dacaaefba4629111f12cc31105c344d5153",
+        "git_blob_sha": "9f086f46ab57860395a944eb15396c47e078a7a9"
+      },
+      {
+        "path": "ayna/kopru.html",
+        "bytes": 933192,
+        "sha256": "ad21adc44ced22addd4c7404916480c70675bd497e7262303fcc1a8b159c9952",
+        "git_blob_sha": "0fcf82d9d69b7891ada78b11025283d335d9c52d"
+      }
+    ]
+  },
+  "public_text_checks": {
+    "new_files_contain_detected_private_paths_or_credentials": [],
+    "previous_privacy_withdrawals_restored": false
+  },
+  "remote_publication": {
+    "reference_commit": "cdbdf6d24978b12a3155d484a50e0f1cba2311bf",
+    "reference_tree": "b6700476d63c7f01bc1b91e64c84491c6048d215",
+    "reference_files_checked": 98,
+    "reference_blobs_and_sizes_match": true,
+    "main_commit": "c0a517674c2de9b8992479065e1373b816692e9c",
+    "main_tree": "5869d567ebed33aac54d266b1332c9891c299919",
+    "main_files_checked": 3,
+    "main_blobs_and_sizes_match": true,
+    "reference_ref_matches": true,
+    "main_ref_matches": true,
+    "reference_changed_files": [
+      {
+        "path": "steering/README.md",
+        "sha": "abaaf851199c662fedfa217126bde48ac0771b28",
+        "bytes": 12412
+      },
+      {
+        "path": "steering/SHA256SUMS",
+        "sha": "fc04f09cc10a1efe84163f1847923ad9393df307",
+        "bytes": 9345
+      },
+      {
+        "path": "steering/YAYIN_DOGRULAMASI_2026-10-26.json",
+        "sha": "484c58e30fce76ee7576f9c099f0639dc173775a",
+        "bytes": 8578
+      },
+      {
+        "path": "steering/depo/ARSIV_KARSILASTIRMASI_2026-10-26.md",
+        "sha": "32ce881559321a9bf10252a12bd553436c8dc342",
+        "bytes": 13116
+      },
+      {
+        "path": "steering/depo/CLI_DALI_OKUMASI_2026-10-26.md",
+        "sha": "b2499d31991ef3f9cfd7d54512259357764bb7ad",
+        "bytes": 20908
+      },
+      {
+        "path": "steering/depo/GUNCEL_OKUMA_2026-10-26.md",
+        "sha": "858b1901e4807044448968b77a63fa0e5b1e02f0",
+        "bytes": 10922
+      },
+      {
+        "path": "steering/depo/KOD_OKUMASI_2026-10-26.md",
+        "sha": "6cce8272232565016419962f3931bb74e8bcb9e7",
+        "bytes": 14961
+      },
+      {
+        "path": "steering/depo/KOPRU_OKUMASI_2026-10-26.md",
+        "sha": "3feddb8160425030a117bf87a3a9489022cc7417",
+        "bytes": 31031
+      },
+      {
+        "path": "steering/depo/ORTAK_ALAN_DALI_OKUMASI_2026-10-26.md",
+        "sha": "4ea7f93cac992a68206204a08485ddcae284a4de",
+        "bytes": 4073
+      },
+      {
+        "path": "steering/depo/archive_audit_2026-10-26.json",
+        "sha": "33174fc34fc5ec6bed35a928c2c6c7f7d73933d5",
+        "bytes": 108611
+      },
+      {
+        "path": "steering/depo/audit_steering_archive.py",
+        "sha": "463eae9b7b18094e794528c90073cd7bd9c4a607",
+        "bytes": 15106
+      },
+      {
+        "path": "steering/depo/cli_branch_scope_2026-10-26.json",
+        "sha": "745219f84f4319a9f054b9ed383a10621bf84b25",
+        "bytes": 17147
+      },
+      {
+        "path": "steering/depo/current_code_scope_2026-10-26.json",
+        "sha": "b773173a77b8a11c4042a1a5dd514cdf1f263019",
+        "bytes": 131575
+      },
+      {
+        "path": "steering/depo/current_kopru_scope_2026-10-26.json",
+        "sha": "df3f270e37276128ad7ff29469843730cc57f59c",
+        "bytes": 126679
+      },
+      {
+        "path": "steering/depo/dal_pr_durumu_2026-10-26.json",
+        "sha": "cc2491e8fd99a973571bda444d4fdb7219e7f783",
+        "bytes": 6627
+      }
+    ],
+    "main_changed_files": [
+      {
+        "path": "README.md",
+        "sha": "d9013da23d93f76bd6080233dbf5291dd5173758",
+        "bytes": 15916
+      },
+      {
+        "path": "ayna/kopru.html",
+        "sha": "0fcf82d9d69b7891ada78b11025283d335d9c52d",
+        "bytes": 933192
+      },
+      {
+        "path": "kopru.html",
+        "sha": "9f086f46ab57860395a944eb15396c47e078a7a9",
+        "bytes": 933377
+      }
+    ],
+    "status": "verified",
+    "verified_at_utc": "2026-10-26 10:54:00 UTC",
+    "note": "Bu kanıt ilk yayın commitini doğrular. İzleyen doğrulama commitinde yalnız bu JSON ve SHA256SUMS güncellenir; o commitin kimliği kendi içeriğine döngüsel olarak gömülmez."
+  },
+  "limitations": [
+    "Özgün 325 ham içeriğin bu turda yeniden tam semantik okuması iddia edilmez.",
+    "Canlı sağlayıcı/CLI çağrısı, Windows başlatıcı çalıştırması veya öneri uygulaması yapılmadı.",
+    "Daha sonraki 579 dosyalık kaynak incelemesi ve 6065 kontrolün tamamlandığı iddia edilmez.",
+    "GitHub dosyası doğrulaması harici web aynasının canlı yayınını doğrulamaz."
+  ]
+}

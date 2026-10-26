@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "review_date_utc": "2026-10-26",
+  "repository": "HalukAINRS/ortak-kopru",
+  "scope": "Mevcut dal uçları ve PR üstverisi; her dalın bütün gövdesinin bu turda okunduğu iddiası değildir.",
+  "branches": [
+    {
+      "ref": "origin/claude/hacker-devri-2026-10-24",
+      "sha": "62b1d2b1861d5cffb6c081a6b256c9a5a3cd7cf7"
+    },
+    {
+      "ref": "origin/claude/ortak-alan-araclari-2026-10-25",
+      "sha": "f52ef87b381f3b8475821208c88b0df4f9814be7"
+    },
+    {
+      "ref": "origin/copilot/convert-files-to-txt-html-json",
+      "sha": "c9f1c92d4c14411b470b756779245f98f5f5ea20"
+    },
+    {
+      "ref": "origin/copilot/deus-ex-machina-user-layer",
+      "sha": "0582717a00f67fccd8f583cef3d482ab5a9945fa"
+    },
+    {
+      "ref": "origin/copilot/implement-transparent-architecture",
+      "sha": "61d13f7573fec8cbbe87f93b5423110b2bf9b562"
+    },
+    {
+      "ref": "origin/copilot/ortak-kopru-dokumasyonu",
+      "sha": "42a310380e76f12f816fb5e6a931cac213e8af20"
+    },
+    {
+      "ref": "origin/deus-ex-machina-2026-10-24",
+      "sha": "0d87fe5437d6d56122cc81a0456e6e4e4869b67b"
+    },
+    {
+      "ref": "origin/gemini-steering-gecmisi-2026-10-24",
+      "sha": "40397e6770f6055ed0d8b505f408e31164cfb7b8"
+    },
+    {
+      "ref": "origin/main",
+      "sha": "d9e09aa2c099bffdf9ac066c13c2c5e694b2fb5e"
+    },
+    {
+      "ref": "origin/sahit/cli-devri-2026-10-24",
+      "sha": "5e6d3935926eaff27689eecd21009f5a3951d5ef"
+    },
+    {
+      "ref": "origin/saman/deus-cli-ilk-cevrim",
+      "sha": "359a99c69bf131ccaffa1d2e1468eb165a59bd64"
+    },
+    {
+      "ref": "origin/saman/kopru-katman-hedefleme-20261024",
+      "sha": "fd8f1d9c2013678da11c7886d756b3bf8caecab0"
+    },
+    {
+      "ref": "origin/saman/steering-cli-devam-20261024",
+      "sha": "b2cfa94323df6847033083a2680f0d2ebdbb5909"
+    },
+    {
+      "ref": "origin/steering-inceleme-2026-10-24",
+      "sha": "80fd42db48e91104383b47b6b4144f01790999be"
+    }
+  ],
+  "pull_requests": [
+    {
+      "number": 9,
+      "title": "Köprü: açık CLI hedefini API yedeğinden ve kök ad kapsamından ayır",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/pull/9",
+      "state": "closed",
+      "draft": false,
+      "base_ref": "main",
+      "head_ref": "saman/kopru-katman-hedefleme-20261024",
+      "head_sha_reported_by_pr": "ac4f034b96f1990cafe792f59739d7dce5ee4b5e",
+      "merged_at": "2026-10-24T20:50:07Z",
+      "merge_commit_sha_reported_by_pr": "aa1e240ffb5467b5231f33e4be5cfcae350bc117"
+    },
+    {
+      "number": 8,
+      "title": "Steering ve CLI devamı: kaynak doğrulaması, Cyber defteri ve ortak kurulum",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/pull/8",
+      "state": "open",
+      "draft": true,
+      "base_ref": "steering-inceleme-2026-10-24",
+      "head_ref": "saman/steering-cli-devam-20261024",
+      "head_sha_reported_by_pr": "b2cfa94323df6847033083a2680f0d2ebdbb5909",
+      "merged_at": null,
+      "merge_commit_sha_reported_by_pr": "1c2b81f48ce56755c5ee73ef575598ae0e6d2d50"
+    },
+    {
+      "number": 7,
+      "title": "deus_ex_machina: açık oturum kuyruğu ve katman geri dönüşünden otomatik devam",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/pull/7",
+      "state": "open",
+      "draft": true,
+      "base_ref": "deus-ex-machina-2026-10-24",
+      "head_ref": "saman/deus-cli-ilk-cevrim",
+      "head_sha_reported_by_pr": "359a99c69bf131ccaffa1d2e1468eb165a59bd64",
+      "merged_at": null,
+      "merge_commit_sha_reported_by_pr": "354b7c7d69573bad5745e0e7ee39e8e1f699492e"
+    },
+    {
+      "number": 6,
+      "title": "Sahit/cli devri 2026 10 24",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/pull/6",
+      "state": "open",
+      "draft": true,
+      "base_ref": "main",
+      "head_ref": "sahit/cli-devri-2026-10-24",
+      "head_sha_reported_by_pr": "5e6d3935926eaff27689eecd21009f5a3951d5ef",
+      "merged_at": null,
+      "merge_commit_sha_reported_by_pr": "bed2074f8d4cce9e0f21003844c6f6c2bc420de8"
+    },
+    {
+      "number": 5,
+      "title": "Claude (Hacker) devri ve deus_ex_machina payı",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/pull/5",
+      "state": "open",
+      "draft": true,
+      "base_ref": "main",
+      "head_ref": "claude/hacker-devri-2026-10-24",
+      "head_sha_reported_by_pr": "62b1d2b1861d5cffb6c081a6b256c9a5a3cd7cf7",
+      "merged_at": null,
+      "merge_commit_sha_reported_by_pr": "4641a3121c6e39cf4e3f348c9b0f6ebda49c79cf"
+    },
+    {
+      "number": 4,
+      "title": "Prepare Şahit CLI handoff and deus_ex_machina task layer",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/pull/4",
+      "state": "open",
+      "draft": true,
+      "base_ref": "main",
+      "head_ref": "copilot/deus-ex-machina-user-layer",
+      "head_sha_reported_by_pr": "0582717a00f67fccd8f583cef3d482ab5a9945fa",
+      "merged_at": null,
+      "merge_commit_sha_reported_by_pr": null
+    },
+    {
+      "number": 3,
+      "title": "Add opt-in auditable context and run records",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/pull/3",
+      "state": "open",
+      "draft": true,
+      "base_ref": "main",
+      "head_ref": "copilot/implement-transparent-architecture",
+      "head_sha_reported_by_pr": "61d13f7573fec8cbbe87f93b5423110b2bf9b562",
+      "merged_at": null,
+      "merge_commit_sha_reported_by_pr": null
+    },
+    {
+      "number": 2,
+      "title": "Add an opt-in, auditable context workflow for the bridge",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/pull/2",
+      "state": "open",
+      "draft": true,
+      "base_ref": "main",
+      "head_ref": "copilot/ortak-kopru-dokumasyonu",
+      "head_sha_reported_by_pr": "42a310380e76f12f816fb5e6a931cac213e8af20",
+      "merged_at": null,
+      "merge_commit_sha_reported_by_pr": null
+    },
+    {
+      "number": 1,
+      "title": "Steering incelemesi: tam analitik aktarım ve köprü okuması",
+      "url": "https://github.com/HalukAINRS/ortak-kopru/pull/1",
+      "state": "open",
+      "draft": true,
+      "base_ref": "main",
+      "head_ref": "steering-inceleme-2026-10-24",
+      "head_sha_reported_by_pr": "80fd42db48e91104383b47b6b4144f01790999be",
+      "merged_at": null,
+      "merge_commit_sha_reported_by_pr": "ec5951398d43c46ea681772f85b5c559ab81df68"
+    }
+  ],
+  "notes": [
+    "Birleştirilmiş veya geçmişi yeniden yazılmış PR üstverisindeki SHA ile güncel dal ucu farklı olabilir; içerik atıfları okunan sabit Git commitlerine bağlanır.",
+    "PR #1 ve PR #8 bu okuma başında açık taslaktır; bu kayıt onları birleştirmez veya başka işi yürütmez."
+  ]
+}

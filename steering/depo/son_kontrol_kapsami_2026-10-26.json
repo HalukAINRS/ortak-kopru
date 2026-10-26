@@ -1,0 +1,1079 @@
+{
+  "schema_version": 1,
+  "review_date_utc": "2026-10-26",
+  "task": "Son kez geçmişin ve arşivin üzerinden geçelim. Tamamsa, başka bir görevimiz olacak.",
+  "checked_remote_heads_before_new_publication": {
+    "main": "c0a517674c2de9b8992479065e1373b816692e9c",
+    "reference": "ac33638a57ce95e2e640f23ab25db0f092db4a4d"
+  },
+  "history_access": {
+    "visible_conversation_and_archive_reviewed": true,
+    "separate_personal_context_search_available": false,
+    "all_unseen_conversations_claimed_read": false
+  },
+  "original_archive_scope_review": {
+    "scope": "Final semantic coverage reconciliation of existing source review; no new full reading of all original source bodies.",
+    "method": [
+      "Joined inventory content IDs, SHA-256 identities, occurrence IDs and final reading records without rehashing the source archive.",
+      "Traced all 65 entries of the historical reading queue to final source records or the separately scoped S002 context supplement.",
+      "Checked final review metadata for positive unread ranges/counts and inspected representative closure evidence.",
+      "Compared targeted reported user corrections against ANA_RAPOR.md and ISTENEN_BAGLAM.md; did not export private raw source bodies."
+    ],
+    "identity_coverage": {
+      "contents": 325,
+      "distinct_content_sha256": 325,
+      "occurrences": 512,
+      "final_status_records": 325,
+      "content_status_id_sets_equal": true,
+      "mapping_errors": []
+    },
+    "final_methods": {
+      "archive_indexed": 11,
+      "conversation_read": 7,
+      "code_structure_review": 81,
+      "visual_read": 26,
+      "full_text_read": 197,
+      "structured_data_review": 3
+    },
+    "review_backing": {
+      "review_records": 446,
+      "distinct_review_files": 36,
+      "missing_archive_review_files": [],
+      "records_with_historical_structure_or_partial_status": 86,
+      "historical_status_entries": {
+        "structure_only": 105,
+        "partial_text_read": 1
+      },
+      "matching_final_review_missing": []
+    },
+    "historical_queue": {
+      "entries": 65,
+      "entries_with_final_U_mapping": 64,
+      "entries_with_separate_context_supplement": 1,
+      "entries_with_closure_evidence": 65,
+      "items": [
+        {
+          "queue_number": 1,
+          "source_ids": [
+            "F00046",
+            "F00061",
+            "F00153"
+          ],
+          "final_content_ids": [
+            "U0170",
+            "U0294"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 2,
+          "source_ids": [
+            "F00041"
+          ],
+          "final_content_ids": [
+            "U0289"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 3,
+          "source_ids": [
+            "S002"
+          ],
+          "final_content_ids": [],
+          "previous_context_supplement_ids": [
+            "S002"
+          ],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 4,
+          "source_ids": [
+            "F00058"
+          ],
+          "final_content_ids": [
+            "U0278"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 5,
+          "source_ids": [
+            "F00029"
+          ],
+          "final_content_ids": [
+            "U0301"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 6,
+          "source_ids": [
+            "F00111"
+          ],
+          "final_content_ids": [
+            "U0167"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 7,
+          "source_ids": [
+            "H021"
+          ],
+          "final_content_ids": [
+            "U0323"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 8,
+          "source_ids": [
+            "F00159"
+          ],
+          "final_content_ids": [
+            "U0156"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 9,
+          "source_ids": [
+            "F00160"
+          ],
+          "final_content_ids": [
+            "U0133"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 10,
+          "source_ids": [
+            "F00104"
+          ],
+          "final_content_ids": [
+            "U0143"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 11,
+          "source_ids": [
+            "F00113"
+          ],
+          "final_content_ids": [
+            "U0071"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 12,
+          "source_ids": [
+            "F00158"
+          ],
+          "final_content_ids": [
+            "U0082"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 13,
+          "source_ids": [
+            "F00116"
+          ],
+          "final_content_ids": [
+            "U0147"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 14,
+          "source_ids": [
+            "F00102",
+            "F00103"
+          ],
+          "final_content_ids": [
+            "U0139"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 15,
+          "source_ids": [
+            "F00115"
+          ],
+          "final_content_ids": [
+            "U0107"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 16,
+          "source_ids": [
+            "F00136"
+          ],
+          "final_content_ids": [
+            "U0128"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 17,
+          "source_ids": [
+            "F00179"
+          ],
+          "final_content_ids": [
+            "U0103"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 18,
+          "source_ids": [
+            "F00093"
+          ],
+          "final_content_ids": [
+            "U0051"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 19,
+          "source_ids": [
+            "F00220"
+          ],
+          "final_content_ids": [
+            "U0164"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 20,
+          "source_ids": [
+            "F00166"
+          ],
+          "final_content_ids": [
+            "U0102"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 21,
+          "source_ids": [
+            "F00064",
+            "F00110"
+          ],
+          "final_content_ids": [
+            "U0057"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 22,
+          "source_ids": [
+            "F00063",
+            "F00168",
+            "F00169"
+          ],
+          "final_content_ids": [
+            "U0059"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 23,
+          "source_ids": [
+            "F00124"
+          ],
+          "final_content_ids": [
+            "U0116"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 24,
+          "source_ids": [
+            "F00128"
+          ],
+          "final_content_ids": [
+            "U0169"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 25,
+          "source_ids": [
+            "F00119"
+          ],
+          "final_content_ids": [
+            "U0160"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 26,
+          "source_ids": [
+            "F00106"
+          ],
+          "final_content_ids": [
+            "U0174"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 27,
+          "source_ids": [
+            "F00033"
+          ],
+          "final_content_ids": [
+            "U0281"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 28,
+          "source_ids": [
+            "F00152"
+          ],
+          "final_content_ids": [
+            "U0149"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 29,
+          "source_ids": [
+            "F00167"
+          ],
+          "final_content_ids": [
+            "U0168"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 30,
+          "source_ids": [
+            "F00134"
+          ],
+          "final_content_ids": [
+            "U0094"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 31,
+          "source_ids": [
+            "F00059",
+            "F00151"
+          ],
+          "final_content_ids": [
+            "U0076"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 32,
+          "source_ids": [
+            "F00099",
+            "F00138"
+          ],
+          "final_content_ids": [
+            "U0119"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 33,
+          "source_ids": [
+            "F00180"
+          ],
+          "final_content_ids": [
+            "U0100"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 34,
+          "source_ids": [
+            "F00090"
+          ],
+          "final_content_ids": [
+            "U0262"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 35,
+          "source_ids": [
+            "F00089"
+          ],
+          "final_content_ids": [
+            "U0272"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 36,
+          "source_ids": [
+            "F00015"
+          ],
+          "final_content_ids": [
+            "U0189"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 37,
+          "source_ids": [
+            "F00073",
+            "F00181"
+          ],
+          "final_content_ids": [
+            "U0112"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 38,
+          "source_ids": [
+            "F00012"
+          ],
+          "final_content_ids": [
+            "U0186"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 39,
+          "source_ids": [
+            "F00122",
+            "F00135"
+          ],
+          "final_content_ids": [
+            "U0122"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 40,
+          "source_ids": [
+            "F00218"
+          ],
+          "final_content_ids": [
+            "U0161"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 41,
+          "source_ids": [
+            "F00203"
+          ],
+          "final_content_ids": [
+            "U0097"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 42,
+          "source_ids": [
+            "F00074",
+            "F00212"
+          ],
+          "final_content_ids": [
+            "U0077"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 43,
+          "source_ids": [
+            "F00216"
+          ],
+          "final_content_ids": [
+            "U0111"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 44,
+          "source_ids": [
+            "F00209"
+          ],
+          "final_content_ids": [
+            "U0131"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 45,
+          "source_ids": [
+            "F00191"
+          ],
+          "final_content_ids": [
+            "U0106"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 46,
+          "source_ids": [
+            "F00014"
+          ],
+          "final_content_ids": [
+            "U0188"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 47,
+          "source_ids": [
+            "F00200"
+          ],
+          "final_content_ids": [
+            "U0096"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 48,
+          "source_ids": [
+            "F00184"
+          ],
+          "final_content_ids": [
+            "U0153"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 49,
+          "source_ids": [
+            "F00182"
+          ],
+          "final_content_ids": [
+            "U0138"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 50,
+          "source_ids": [
+            "F00183"
+          ],
+          "final_content_ids": [
+            "U0144"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 51,
+          "source_ids": [
+            "F00185"
+          ],
+          "final_content_ids": [
+            "U0108"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 52,
+          "source_ids": [
+            "F00176"
+          ],
+          "final_content_ids": [
+            "U0165"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 53,
+          "source_ids": [
+            "F00177"
+          ],
+          "final_content_ids": [
+            "U0173"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 54,
+          "source_ids": [
+            "F00219"
+          ],
+          "final_content_ids": [
+            "U0159"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 55,
+          "source_ids": [
+            "F00197"
+          ],
+          "final_content_ids": [
+            "U0126"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 56,
+          "source_ids": [
+            "F00188"
+          ],
+          "final_content_ids": [
+            "U0142"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 57,
+          "source_ids": [
+            "F00194"
+          ],
+          "final_content_ids": [
+            "U0130"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 58,
+          "source_ids": [
+            "F00067",
+            "F00123"
+          ],
+          "final_content_ids": [
+            "U0127"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 59,
+          "source_ids": [
+            "F00069",
+            "F00127"
+          ],
+          "final_content_ids": [
+            "U0123"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 60,
+          "source_ids": [
+            "F00065",
+            "F00118"
+          ],
+          "final_content_ids": [
+            "U0055"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 61,
+          "source_ids": [
+            "F00071",
+            "F00105"
+          ],
+          "final_content_ids": [
+            "U0073"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 62,
+          "source_ids": [
+            "F00072",
+            "F00108"
+          ],
+          "final_content_ids": [
+            "U0114"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 63,
+          "source_ids": [
+            "F00068",
+            "F00126"
+          ],
+          "final_content_ids": [
+            "U0117"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 64,
+          "source_ids": [
+            "F00070",
+            "F00130"
+          ],
+          "final_content_ids": [
+            "U0113"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        },
+        {
+          "queue_number": 65,
+          "source_ids": [
+            "F00066",
+            "F00121"
+          ],
+          "final_content_ids": [
+            "U0056"
+          ],
+          "previous_context_supplement_ids": [],
+          "closure_evidence_available": true
+        }
+      ]
+    },
+    "concrete_closure": {
+      "S002": {
+        "scope": "previous_context_artifact; outside the 325 uploaded contents",
+        "source": "steering/kanitlar/root_supplement.json records[incelemeler/root_supplement/reviews.json]",
+        "chars": 69588,
+        "read_ranges": [
+          [
+            1,
+            909
+          ]
+        ],
+        "remaining_ranges": []
+      },
+      "H021_U0323": {
+        "text_chars": 525087,
+        "line_count": 4467,
+        "direct_read_chars": 401246,
+        "exact_internal_duplicate_only_chars": 123841,
+        "covered_chars": 525087,
+        "covered_line_ranges": [
+          [
+            1,
+            4467
+          ]
+        ],
+        "remaining_chars": 0,
+        "remaining_line_ranges": []
+      }
+    },
+    "correction_reconciliation": [
+      {
+        "topic": "> display without flow; -> flow",
+        "evidence": "steering/incelemeler/root_supplement.md; steering/ANA_RAPOR.md; steering/ISTENEN_BAGLAM.md",
+        "result": "Later user distinction is preserved; older uncertainty is explicitly historical."
+      },
+      {
+        "topic": "OMROS/CognitiveOS ownership and intended meaning of suç",
+        "evidence": "steering/incelemeler/cognitive_metacognition_remaining.md; steering/ANA_RAPOR.md",
+        "result": "User correction supersedes the assistant framing in the main report."
+      },
+      {
+        "topic": "Matrix question-to-character mapping after reconstructed questions",
+        "evidence": "steering/incelemeler/books_faith_remaining.md; steering/ANA_RAPOR.md",
+        "result": "Later user correction and branch distinctions are preserved."
+      },
+      {
+        "topic": "User source wording versus literary first-person model additions",
+        "evidence": "steering/incelemeler/faith_remaining.md; steering/ANA_RAPOR.md; steering/ISTENEN_BAGLAM.md",
+        "result": "Original account and assistant production remain distinct."
+      }
+    ],
+    "remaining_scope_limits": [
+      "Notepad++/Windows desktop method was not performed and is explicitly recorded as incomplete.",
+      "Unuploaded attachments, unseen original conversations and current runtime installation/behavior are not claimed complete.",
+      "Historical pending implementation or book-production tasks are distinct from completion of reading the available archive."
+    ],
+    "conclusion": "No newly identified archive-reading or transfer closure blocker within the declared source scope."
+  },
+  "primary_archive_recheck": {
+    "bytes": 100641653,
+    "sha256": "827bb9cac16fdb7b643c576a3bd41523e725ad4542ab023c5c4d45f3435b1009",
+    "file_members": 1483,
+    "crc_test_bad_member": null
+  },
+  "extra_source_scope": {
+    "outer_file_locations": 9,
+    "distinct_outer_file_contents": 5,
+    "files": [
+      {
+        "filename": "steering_kaynak_kodu.zip",
+        "bytes": 45678,
+        "sha256": "cc91b1602b132e7ea0762c6111299fbd1b318c401a1c98aab80a6be30511f417",
+        "source_date_utc": "2026-10-15"
+      },
+      {
+        "filename": "steering_kaynak_kodu(1).zip",
+        "bytes": 45678,
+        "sha256": "cc91b1602b132e7ea0762c6111299fbd1b318c401a1c98aab80a6be30511f417",
+        "source_date_utc": "2026-10-15"
+      },
+      {
+        "filename": "steering_guncelle.pyz",
+        "bytes": 38510,
+        "sha256": "797ad0dbe7b6fd50eea5c81af7a32be8b20b99c33974c8a354fe0e93b9fbf675",
+        "source_date_utc": "2026-10-15"
+      },
+      {
+        "filename": "steering_calistirma_ve_test_kaydi.txt",
+        "bytes": 7426,
+        "sha256": "b3ff06e23e6f32bb8446e83b440de23ba5e197369cfd86697ceffa5ea8de6038",
+        "source_date_utc": "2026-10-15"
+      },
+      {
+        "filename": "deus_ex_machina_konusma_kaydi.json",
+        "bytes": 222295,
+        "sha256": "f9c1cc3cbec2cda467929f3e1bc9c31ef679a96f82d3a14764e7bcd4affecb2c",
+        "source_date_utc": "2026-10-15"
+      },
+      {
+        "filename": "deus_ex_machina_konusma_kaydi(1).json",
+        "bytes": 222295,
+        "sha256": "f9c1cc3cbec2cda467929f3e1bc9c31ef679a96f82d3a14764e7bcd4affecb2c",
+        "source_date_utc": "2026-10-15"
+      },
+      {
+        "filename": "deus_ex_machina_guncellenmis.json",
+        "bytes": 227618,
+        "sha256": "196938de5e7cbe9d2d621c49a03132763695d49988a390c01ecb5102b59771ee",
+        "source_date_utc": "2026-10-15"
+      },
+      {
+        "filename": "deus_ex_machina_guncellenmis(1).json",
+        "bytes": 227618,
+        "sha256": "196938de5e7cbe9d2d621c49a03132763695d49988a390c01ecb5102b59771ee",
+        "source_date_utc": "2026-10-15"
+      },
+      {
+        "filename": "deus_ex_machina_guncellenmis(2).json",
+        "bytes": 227618,
+        "sha256": "196938de5e7cbe9d2d621c49a03132763695d49988a390c01ecb5102b59771ee",
+        "source_date_utc": "2026-10-15"
+      }
+    ],
+    "duplicate_groups": [
+      {
+        "sha256": "cc91b1602b132e7ea0762c6111299fbd1b318c401a1c98aab80a6be30511f417",
+        "filenames": [
+          "steering_kaynak_kodu.zip",
+          "steering_kaynak_kodu(1).zip"
+        ]
+      },
+      {
+        "sha256": "797ad0dbe7b6fd50eea5c81af7a32be8b20b99c33974c8a354fe0e93b9fbf675",
+        "filenames": [
+          "steering_guncelle.pyz"
+        ]
+      },
+      {
+        "sha256": "b3ff06e23e6f32bb8446e83b440de23ba5e197369cfd86697ceffa5ea8de6038",
+        "filenames": [
+          "steering_calistirma_ve_test_kaydi.txt"
+        ]
+      },
+      {
+        "sha256": "f9c1cc3cbec2cda467929f3e1bc9c31ef679a96f82d3a14764e7bcd4affecb2c",
+        "filenames": [
+          "deus_ex_machina_konusma_kaydi.json",
+          "deus_ex_machina_konusma_kaydi(1).json"
+        ]
+      },
+      {
+        "sha256": "196938de5e7cbe9d2d621c49a03132763695d49988a390c01ecb5102b59771ee",
+        "filenames": [
+          "deus_ex_machina_guncellenmis.json",
+          "deus_ex_machina_guncellenmis(1).json",
+          "deus_ex_machina_guncellenmis(2).json"
+        ]
+      }
+    ],
+    "sha_matches_in_old_inventory_or_manifest": [],
+    "old_325_content_count_changed": false,
+    "combined_content_count_invented": false,
+    "note": "Dış ZIP/PYZ dosyaları ile onların üyeleri farklı envanter düzeyleridir. Ek küme, önceki 325 sayısına doğrudan eklenmez."
+  },
+  "independent_read_only_json_checks": {
+    "original": {
+      "record_keys": 15,
+      "canonical_bytes": 23202,
+      "bits": 185616,
+      "canonical_sha256": "ef7b8044b0caef0290a07a64f649d8be44bcc5eeea48dcd3a04af0c9c2cc9bf9",
+      "decoded_binary_equals_canonical_utf8": true,
+      "decoded_json_equals_record": true,
+      "recorded_byte_count_matches": true,
+      "recorded_bit_count_matches": true,
+      "recorded_sha256_matches": true
+    },
+    "updated": {
+      "record_keys": 16,
+      "canonical_bytes": 23745,
+      "bits": 189960,
+      "canonical_sha256": "d96e03a186db8a3ebe1005941e6e502ebe7b1879c4ac579ca3112ed1c65728f6",
+      "decoded_binary_equals_canonical_utf8": true,
+      "decoded_json_equals_record": true,
+      "recorded_byte_count_matches": true,
+      "recorded_bit_count_matches": true,
+      "recorded_sha256_matches": true
+    },
+    "record_delta": {
+      "added_keys": [
+        "steering"
+      ],
+      "removed_keys": [],
+      "changed_existing_keys": [],
+      "label_count": 6,
+      "labels_equal_declared_S4": true,
+      "preserves_greater_than_and_arrow_distinction": true
+    }
+  },
+  "reading_methods": {
+    "main_python_source": "full static reading, 368 lines",
+    "readme": "full text reading, 191 lines",
+    "test_source": "full static reading, 24 definitions; no execution",
+    "example_json_and_entrypoints": "full static reading",
+    "original_human_readable_record": "full /kayit body reading; 15 top-level record fields",
+    "updated_record": "same 15 fields proven unchanged; added steering field and six labels read",
+    "bit_blocks": "decoded and compared with canonical UTF-8 JSON, not separately semantic text",
+    "standalone_test_log": "full text reading, 151 lines",
+    "duplicate_files": "exact byte/hash equivalence, not independent events"
+  },
+  "historical_execution_evidence": {
+    "source": "steering_calistirma_ve_test_kaydi.txt",
+    "reported_unit_tests_passed": 24,
+    "reported_labels_added_on_original": 6,
+    "reported_renames_on_original": 0,
+    "reported_changes_on_already_updated_json": 0,
+    "recorded_output_sha256_matches_retrieved_updated_json": true,
+    "source_programs_executed_in_this_turn": false,
+    "unit_tests_executed_in_this_turn": false,
+    "provider_or_model_runtime_called_in_this_turn": false
+  },
+  "corrections_preserved": [
+    "The older JSON leaves > unresolved; the later user explanation in ISTENEN_BAGLAM.md specifies display without flow, while -> has flow.",
+    "The code updates local JSON labels and does not establish provider/model internal steering changes.",
+    "The source JSON is a descriptive conversation transfer, not a complete message/tool export.",
+    "The terminal success text does not prove the original conversation occurrence came from this program."
+  ],
+  "still_open_separate_technical_work": [
+    "Later 579-file Codex source study: only one of 19 groups completed.",
+    "6065 controls: structural reading does not mean effect prevention or full implementation.",
+    "Google sender root mismatch in current bridge settings/addition code.",
+    "k-0169 historical open items: measurement copy identity, 47 unhashed source files, OKUBENI read/write race."
+  ],
+  "publication_scope": {
+    "raw_zip_pyz_or_conversation_json_uploaded": false,
+    "only_analysis_and_metadata": true,
+    "source_files_modified": false
+  },
+  "conclusion": "Declared archive/history review plus the newly discovered label-tool sources are covered; no remaining review/transfer blocker within this scope. Separate implementation tasks remain open.",
+  "publication_validation": {
+    "phase": "local_publication_candidate",
+    "previous_reference_commit": "ac33638a57ce95e2e640f23ab25db0f092db4a4d",
+    "files": 102,
+    "new_files": 4,
+    "json_files": 53,
+    "relative_markdown_file_links": 251,
+    "missing_links": [],
+    "new_file_prohibited_patterns": {
+      "depo/ETIKET_ARACI_OKUMASI_2026-10-26.md": [],
+      "depo/SON_KONTROL_2026-10-26.md": [],
+      "depo/etiket_araci_kapsami_2026-10-26.json": [],
+      "depo/son_kontrol_kapsami_2026-10-26.json": []
+    },
+    "sha256_entries": 101
+  },
+  "bridge_publication_validation": {
+    "phase": "local_publication_candidate",
+    "base_main_commit": "c0a517674c2de9b8992479065e1373b816692e9c",
+    "before_records": 170,
+    "after_records": 171,
+    "new_record": "k-0171",
+    "all_previous_articles_unchanged": true,
+    "canonical_mirror_articles_identical": true,
+    "mirror_matches_generator": true,
+    "pending_addresses_checked": 14,
+    "pending_lists_unchanged": true,
+    "prohibited_patterns": [],
+    "files": [
+      {
+        "path": "README.md",
+        "bytes": 16267,
+        "sha256": "55fb884885eaf01df76d07bacd9e04901f83283b212159819d8c0404f4617637",
+        "git_blob_sha": "a0c7c36146aea8fe14c0d238d283ab972db5469b"
+      },
+      {
+        "path": "kopru.html",
+        "bytes": 936192,
+        "sha256": "9533557313ca55e03ab80c13d8e6aba5f71967f73d75664272df4c87fc028c9f",
+        "git_blob_sha": "d7eba6eae12ca91df5a89e4fa8d355ff6b06c712"
+      },
+      {
+        "path": "ayna/kopru.html",
+        "bytes": 936007,
+        "sha256": "92b4f875a8c3249dca7139ea14ae4f6c5c22a40abd1a3516e7a4570d19a2d0ad",
+        "git_blob_sha": "cca0894c15c3273865015e7ca509f2fabdcad6d9"
+      }
+    ]
+  }
+}
