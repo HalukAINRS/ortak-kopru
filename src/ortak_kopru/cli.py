@@ -63,6 +63,34 @@ def parser():
     for name in ("get", "context"):
         p = sub.add_parser(name)
         p.add_argument("task_id")
+    p = sub.add_parser("joint", help="Aynı işe bağlı oturum katkılarını ve işlem makbuzlarını göster.")
+    p.add_argument("task_id")
+    p = sub.add_parser("contribute", help="Mevcut oturumdan aktarılan katkıyı kaydet; yeni model oturumu açmaz.")
+    p.add_argument("task_id")
+    p.add_argument("--author", required=True)
+    p.add_argument("--session", dest="session_id", required=True)
+    p.add_argument("--relayed-by", required=True)
+    p.add_argument("--stage", type=int, choices=(16, 32, 64, 128), required=True,
+                   help="Üçlünün ortak dışavurum düzeyi; katılımcının iç işleyişini ölçmez.")
+    _words(p, "body")
+    p.add_argument("--reference", dest="references", action="append", default=[],
+                   help="Katkının kaynak başvurusu; tekrarlanabilir, dosya olarak açılmaz.")
+    _write_args(p, revision=True)
+    p = sub.add_parser("operate", help="İzin verilen yerel tanı işlemini çalıştır ve aynı işe makbuzunu kaydet.")
+    p.add_argument("task_id")
+    p.add_argument("--operation", choices=("repo_revision", "repo_status", "python_version"), required=True)
+    p.add_argument("--cwd", type=Path, required=True)
+    p.add_argument("--stage", type=int, choices=(16, 32, 64, 128), default=64,
+                   help="Ortak dışavurum düzeyi; varsayılan 64.")
+    _write_args(p, revision=True)
+    p = sub.add_parser("github-fetch", help="Seçilmiş GitHub kaynaklarını kesin sürümüyle aynı işe al.")
+    p.add_argument("task_id")
+    p.add_argument("--repository", required=True)
+    p.add_argument("--ref", required=True)
+    p.add_argument("--path", dest="paths", action="append", required=True)
+    p.add_argument("--stage", type=int, choices=(16, 32, 64, 128), default=32,
+                   help="Ortak dışavurum düzeyi; varsayılan 32.")
+    _write_args(p, revision=True)
     p = sub.add_parser("events")
     p.add_argument("--task", dest="task_id")
     p = sub.add_parser("revise", help="Özgün geçmişi koruyarak yeni kullanıcı düzeltmesi ekle.")
@@ -219,6 +247,25 @@ def main(argv=None):
             result = store.get_task(args.task_id)
         elif command == "context":
             result = store.context_bundle(args.task_id)
+        elif command in {"joint", "contribute", "operate", "github-fetch"}:
+            from .collaboration import JointService
+            joint = JointService(store)
+            if command == "joint":
+                result = joint.view(args.task_id)
+            elif command == "contribute":
+                result = joint.contribute(
+                    task_id=args.task_id, author=args.author, session_id=args.session_id,
+                    relayed_by=args.relayed_by, stage=args.stage, body=read_words(args, "body"),
+                    expected_revision=args.revision, request_key=args.request_key,
+                    references=args.references)
+            elif command == "operate":
+                result = joint.operate(
+                    task_id=args.task_id, operation=args.operation, cwd=str(args.cwd),
+                    expected_revision=args.revision, request_key=args.request_key, stage=args.stage)
+            else:
+                result = joint.fetch_github(
+                    task_id=args.task_id, repository=args.repository, ref=args.ref, paths=args.paths,
+                    expected_revision=args.revision, request_key=args.request_key, stage=args.stage)
         elif command == "events":
             result = {"events": store.events(args.task_id)}
         elif command == "revise":
@@ -243,6 +290,10 @@ def main(argv=None):
         else:
             raise ValueError("Bilinmeyen komut.")
         print_json({"runtime": runtime, "result": result})
+        if command in {"operate", "github-fetch"}:
+            # A persisted receipt can describe a failed or uncertain operation.
+            # Keep that receipt on stdout while making the shell outcome honest.
+            return 0 if result.get("status") == "completed" else 1
         return 0
     except Exception as error:
         _, code, message = error_response(error)

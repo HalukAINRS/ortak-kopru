@@ -163,7 +163,7 @@ class Handler(BaseHTTPRequestHandler):
                     session = unquote(session_match.group(1), encoding="utf-8", errors="strict")
                     self._send(200, inbox(self.server.store, session))
                     return
-                match = re.fullmatch(r"/api/tasks/([A-Za-z0-9_-]+)(?:/(context|events))?", path)
+                match = re.fullmatch(r"/api/tasks/([A-Za-z0-9_-]+)(?:/(context|events|joint))?", path)
                 if not match:
                     self._error(404, "not_found", "Uç nokta bulunamadı.")
                     return
@@ -173,6 +173,9 @@ class Handler(BaseHTTPRequestHandler):
                 elif action == "events":
                     self.server.store.get_task(task_id)
                     value = {"events": self.server.store.events(task_id)}
+                elif action == "joint":
+                    from .collaboration import JointService
+                    value = JointService(self.server.store).view(task_id)
                 else:
                     value = self.server.store.get_task(task_id)
                 self._send(200, value)
@@ -244,6 +247,17 @@ class Handler(BaseHTTPRequestHandler):
                     ("attempts", "receive"): (store.receive, "attempt_id", {"session_id", "request_key"}, set()),
                     ("attempts", "result"): (store.submit_result, "attempt_id", {"session_id", "summary", "artifacts", "request_key"}, set()),
                 }
+                if group == "tasks" and action in {"contribute", "operate", "github"}:
+                    from .collaboration import JointService
+                    joint = JointService(store)
+                    routes.update({
+                        ("tasks", "contribute"): (joint.contribute, "task_id",
+                            {"author", "session_id", "relayed_by", "stage", "body", "expected_revision", "request_key"}, {"references"}),
+                        ("tasks", "operate"): (joint.operate, "task_id",
+                            {"operation", "cwd", "expected_revision", "request_key"}, {"stage"}),
+                        ("tasks", "github"): (joint.fetch_github, "task_id",
+                            {"repository", "ref", "paths", "expected_revision", "request_key"}, {"stage"}),
+                    })
                 if (group, action) not in routes:
                     self._error(404, "not_found", "İşlem bulunamadı.")
                     return

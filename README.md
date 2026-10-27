@@ -4,6 +4,12 @@ Yerelde sürdürülen çalışmalar ile GitHub ve diğer harici alanlar arasınd
 
 Mevcut ortak HTML sayfası, Haluk, Claude, Gemini ve ChatGPT'nin birlikte okuyup sırayla yazdığı dış defterdir. Kurallar ve erişim yolları sayfanın kendisinde; bu dosya klasörün haritası.
 
+## Tek nokta: aynı işte ortak çalışma
+
+`deus.py` arayüzündeki **Ortak çalışma** görünümü, mevcut ChatGPT, Claude ve Gemini oturumlarından aktarılan katkıları; seçili GitHub dosyalarını ve gerçek yerel CLI işlemlerinin makbuzlarını aynı işe bağlar. Katkının yazarı, oturumu ve aktaranı ayrı görünür. İlk CLI işlemleri depo sürümü, depo durumu ve Python sürümü okumadır.
+
+Windows'ta `Ortak_Nokta.cmd`, Python 3.12+ denetiminden sonra özel çalışma alanıyla yerel sunucuyu açık `portable` kipinde başlatır. Bağlantı başlatan kullanıcıya özeldir. Mevcut web sohbetlerinin katkıları aktarım olarak kaydedilir; bu görünüm otomatik sağlayıcı oturumu veya hedef bilgisayarda doğrulanmış çalışma iddiası üretmez. [**Başlatma ve günlük kullanım**](docs/TEK_NOKTA.md).
+
 ## Güncel yön: dış alanlara açılan kapı
 
 Yerelde hazırlanmış bir rapor, kod değişikliği veya dosya seçilerek belirli bir dış hedefe paylaşılabilmeli; dışarıdaki bir kaynak da kökeni ve sürümüyle alınıp yerelde kullanıma hazırlanabilmelidir. Her aktarım için yerel işi yeniden oluşturmak, atamak veya köprünün görev akışına taşımak gerekmez. Paylaşımın içeriği, hedefi ve gerçekleşme kaydı; tedarikin kaynağı, sürümü ve yerelde kullanılması ayrı izlenir.

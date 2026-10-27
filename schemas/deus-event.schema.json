@@ -42,7 +42,10 @@
         "attempt_received",
         "result_submitted",
         "verification_recorded",
-        "task_completed"
+        "task_completed",
+        "contribution_recorded",
+        "operation_prepared",
+        "operation_finished"
       ]
     },
     "at": {
