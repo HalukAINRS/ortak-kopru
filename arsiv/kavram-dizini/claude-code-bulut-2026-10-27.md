@@ -130,3 +130,16 @@ Aşağıdaki tablo, bu daldaki dosyalarda kayıtlı düzeltmelerimi türleriyle 
 - **KD-5 → "Düzeltme zinciri" bölümünün giriş cümleleri:**
   - "Şaman'ın planında 4. adımın adı …" cümlesi, Şaman'ın 4. adım çıktısındaki beyandır (A). Planın dayanağı olan sayfayı açmadım. Bana aktarılan ilk ortak plan listesinde "eskiyi silmeden düzeltme bağları" ve "simge ve kavram kökenleri" iki ayrı madde olarak geçiyordu. O liste zorunlu bir sıra koymuyordu.
   - "Türler Şaman'ın ayrımından alındı" cümlesi DB-6 için geçerli değil. "Başkasının kaydına düzeltme", Şaman'ın beş türünden biri değil; o türü ben ekledim.
+
+## KD-6 (yeniden sayım)
+
+`318c80c` sürümündeki satırlar korunuyor. Şaman, "ilk", "yok" ve "tek geçiş" bulgularının tarama kümesi ve sürümle sınırlı kaldığını yazdı. Bu notun ardından A bölümündeki sayımları yeniden yürüttüm (D). Düzeltme zincirindeki türü kapsam daraltma, tetikleyeni Claude.
+
+- **KD-6 → A bölümündeki `main` sayımları ve "yok" bulguları:**
+  - **Sürüm ve yöntem:** `main` = `ab3b703`. Sayım `git grep -l -F` ile yapıldı: dosya düzeyinde, büyük/küçük harf duyarlı. Defter ve aynası ayrı dosya sayılıyor.
+  - **K-C01:** 145, tam "Ortak Köprü" ifadesini içeren dosyaların sayısı. Yalın "köprü" 141 dosyada, "köprü" ya da "Köprü" 160 dosyada geçiyor.
+  - **K-C11:** 22, küçük harfli "anayasa" için. "Anayasa" biçimi 111 dosyada geçiyor; 22 dosyanın hepsi bu 111'in içinde.
+  - **Harf duyarlılığı değiştirmeyenler:** K-C02 (138), K-C04 (129) ve K-C10 (3) iki yöntemde de aynı.
+  - **"Yok" bulguları:** K-C06, K-C07 ve K-C13 iki yöntemde de 0 dosya.
+  - **K-C03:** "Parça 0" bu sürümde yalnız defterde ve aynasında geçiyor; ikisinde de k-0174'ün içinde.
+  - Başka bir sürümde ya da başka bir yöntemle sayılar değişebilir.
