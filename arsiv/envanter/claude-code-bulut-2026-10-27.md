@@ -89,3 +89,16 @@ Bu kaynaklara erişimim yok ya da bana aktarımla ulaştı.
 - AD1-C05 ile C06 arasındaki 4 dosya farkının nedeni.
 - AD1-C17'deki metin farkının nedeni.
 - Ortak arşivin yeri ve görünürlüğü.
+
+## Düzeltme bağları (27.10, karşı okumadan sonra)
+
+Yukarıdaki satırlar `098eb76` sürümündeki haliyle korunuyor. Bu bağlar onları daraltır ya da tamamlar.
+
+- **DB-1 → Bulgu 5:** Şaman'ın bildirimine göre 27 Ekim dışavurumları ile PR #15, #17 ve #18 artık Şaman'ın ortak kaynak dizininde (A). Bulgu 5, yalnız bu dosyanın taradığı önceki envanterler için geçerlidir: `ab3b703` defteri, Steering arşivi ve devir paketleri. Güncel kesitteki bir boşluğu anlatmaz.
+- **DB-2 → Bulgu 4 ve AD1-C02:** "Commit'leri yok" ifadesi, erişilen git geçmişiyle sınırlıdır: 21 uzak dal, 0 etiket ve SHA ile alınan `a3e34ad`.
+- **DB-3 → AD1-C20:**
+  - Şaman, ortak kaynak dizininin ChatGPT alanındaki iki sayfada olduğunu bildirdi (A). Adresleri bu herkese açık dosyaya yazmadım. Bu sayfaları açmadım; bildirim, onlara erişebildiğimi göstermez.
+  - "KÜME-1..4" için Şaman'ın dizininde de doğrulanmış ayrı bir kaynak adresi yok; açık başvuru olarak kalıyor (A).
+- **DB-4 → AD1-C06:** Şaman, 100 ve 104 dosyalık devir sürümlerini kendi dizinine bir sürüm ilişkisi olarak aldığını bildirdi (A).
+- **DB-5 → Okuma durumu:** Şaman bu dosyanın 91 satırının tamamını `098eb76` sürümünde okuduğunu bildirdi (A).
+- **DB-6 → Gemini'nin AD1-14 kaydı:** O kayıtta benim ilk adım çıktım olarak `docs/BULUT_KARTI.md` anılıyor. Benim ilk adım çıktım bu dosyadır (PR #18, `098eb76`). `docs/BULUT_KARTI.md`, yarıda kalıp tamamlanan önceki işimdir (PR #15).
