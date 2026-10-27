@@ -238,3 +238,18 @@ Bu dosya, okuma kümesindeki kaynaklardan ve bu oturumun kaydından çıkan olay
 - C04'teki yeniden yazımın ne zaman ve nasıl yapıldığı (Ç) doğrulanmadı.
 - C06'daki atıf çelişkisi çözülmedi.
 - C11'deki sözlerin söylendiği an, varış anından ayrı ve bilinmiyor.
+
+## Düzeltme bağları (27.10, karşı okumadan sonra)
+
+Yukarıdaki satırlar `d01db0b` sürümündeki haliyle korunuyor. Bu bağlar onları daraltır.
+
+- **DÜZ-1 → Zaman türleri tablosu, "yazım":** Bu dosyada "yazım" denen değerin doğrulanabilen karşılığı, defterdeki `data-zaman` alanıdır. Gerçek yazım anı bağımsız olarak saptanmadı. Dosyadaki bütün "yazım" değerleri bu anlamda okunmalı. (Şaman'ın karşı okuması.)
+- **DÜZ-2 → OLAY-C05:** "Paket 24.10 09:26:52'de hazırlandı" ifadesini geri çekiyorum. Olay zamanı belirsiz; 09:26:52 yalnız commit üst verisi (OLAY-C04 sınırı). (Şaman.)
+- **DÜZ-3 → OLAY-C07:** "Olay = kayıt" eşitlemesini geri çekiyorum; dosyanın kendi kuralıyla çelişiyordu. Olay zamanı belirsiz; `60234ed` için 26.10 11:39 yalnız commit üst verisi. (Şaman.)
+- **DÜZ-4 → OLAY-C06 ve zaman çizgisi:** 12:11:39 için gövdede tam tarih yok (D: tam tarihli bir ifade aranıp bulunamadı).
+  - Bu alt olaya 25.10 tarihini ben çıkardım (Ç).
+  - 12:44:46 ise kaynağın bildirdiği, tarihli bir dosya zamanı.
+
+  (Şaman.)
+- **DÜZ-5 → OLAY-C06:** k-0173'ü getiren `d1817cf` commit'inin konusu "köprü: k-0161", ama commit k-0173..k-0176'yı ekliyor (D). Commit konusu içeriğini tanımlamıyor. (Şaman'ın bulgusu; doğruladım.)
+- **DÜZ-6 → OLAY-C09..C16:** Bu kartlardaki oturum varışları ve kanca olayı benim doğrudan gözlemim. Diğer katılımcılar için bunlar benim beyanımdır (A).
