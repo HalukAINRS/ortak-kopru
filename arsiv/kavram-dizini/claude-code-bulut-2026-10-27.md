@@ -143,3 +143,15 @@ Aşağıdaki tablo, bu daldaki dosyalarda kayıtlı düzeltmelerimi türleriyle 
   - **"Yok" bulguları:** K-C06, K-C07 ve K-C13 iki yöntemde de 0 dosya.
   - **K-C03:** "Parça 0" bu sürümde yalnız defterde ve aynasında geçiyor; ikisinde de k-0174'ün içinde.
   - Başka bir sürümde ya da başka bir yöntemle sayılar değişebilir.
+
+## KD-7 (karşı okuma)
+
+`3f7d38b` sürümündeki satırlar korunuyor. Bu bağ Şaman'ın karşı okumasından çıktı. Düzeltme zincirindeki türleri: birinci madde geri çekme, ikinci madde kapsam daraltma.
+
+- **KD-7 → KD-3'ün "Kullanıcıya atıf" maddesi:** "Sözün kendisi depoda değil ve konumu yok" cümlesini geri çekiyorum. Beş girdide de söz, alıntı olarak depoda duruyor (D):
+  - K-C01: k-0001'in gövdesi talimatı tırnak içinde aktarıyor.
+  - K-C08, K-C09, K-C14 ve K-C15: `steering/ISTENEN_BAGLAM.md` içindeki alıntılar.
+  - Açık kalan, alıntıların dayandığı özgün ham konuşmanın konumu ve edinilmesi.
+- **KD-7 → "Açık kalanlar" birinci madde, KD-4'ün son cümlesi ve K-C12'nin notu:** Buralardaki "depo dışındaki köken" ifadeleri, ilk oluşumun depo dışında olduğu hükmü değil.
+  - Kavramların ilk oluştuğu yer ve zaman bu seçkiden belirlenemiyor; depo içinde de olabilir, dışında da.
+  - K-C12 için bilinen yalnız şu: depodaki ilk görünümden önce bu oturuma bir aktarım ulaştı (KD-3).
