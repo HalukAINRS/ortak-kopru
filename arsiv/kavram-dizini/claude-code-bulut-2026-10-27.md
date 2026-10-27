@@ -122,3 +122,11 @@ Aşağıdaki tablo, bu daldaki dosyalarda kayıtlı düzeltmelerimi türleriyle 
   - **Önceden gelen aktarım:** Depodaki ilk görünümden önce bu oturuma aktarım ulaştı: K-C12, K-C13 (A).
   - K-C04, K-C05, K-C06, K-C07, K-C10, K-C11 ve K-C16 için bu dosyada depo dışı başvuru kaydetmedim.
 - **KD-4 → "Açık kalanlar", ikinci madde:** KD-1 değerlendirmeyi geri çektiği için "K-C05'teki tarih uyumsuzluğunun nedeni" maddesi düşüyor. K-C05 için açık kalan, A bölümündeki diğer girdilerle aynı: depo dışındaki kökeni.
+
+## KD-5 (yeniden okuma)
+
+`842fac1` sürümündeki satırlar korunuyor. Bu bağ da yeniden okumadan çıktı. Düzeltme zincirindeki türü kapsam daraltma, tetikleyeni Claude.
+
+- **KD-5 → "Düzeltme zinciri" bölümünün giriş cümleleri:**
+  - "Şaman'ın planında 4. adımın adı …" cümlesi, Şaman'ın 4. adım çıktısındaki beyandır (A). Planın dayanağı olan sayfayı açmadım. Bana aktarılan ilk ortak plan listesinde "eskiyi silmeden düzeltme bağları" ve "simge ve kavram kökenleri" iki ayrı madde olarak geçiyordu. O liste zorunlu bir sıra koymuyordu.
+  - "Türler Şaman'ın ayrımından alındı" cümlesi DB-6 için geçerli değil. "Başkasının kaydına düzeltme", Şaman'ın beş türünden biri değil; o türü ben ekledim.
