@@ -34,6 +34,9 @@ OPERATIONS = {
     "repo_status": ("git", *_GIT_OPTIONS, "status", "--porcelain=v1", "--branch"),
     "python_version": ("python", "--version"),
 }
+# Names only (never the command values) of filter commands, with their config scope.
+_FILTER_QUERY = ("config", "--null", "--show-scope", "--name-only", "--get-regexp",
+                 r"^filter\..+\.(clean|process)$")
 # Only what git and Python need to start. GIT_* routing, tokens and keys stay out.
 _INHERITED_ENV = frozenset({
     "PATH", "PATHEXT", "SYSTEMROOT", "SYSTEMDRIVE", "WINDIR",
@@ -194,37 +197,55 @@ def _stream(record):
             "truncated": record["truncated"] or record.get("incomplete", False)}
 
 
-def run_local(operation, cwd, *, timeout_seconds=10, output_limit=MAX_OUTPUT_BYTES):
-    """Run one named operation and return its receipt; invalid input starts nothing."""
-    name = _operation(operation)
-    root = _repository_root(cwd)
-    timeout = _timeout(timeout_seconds)
-    limit = _limit(output_limit)
-    env = _environment()
-    argv, problem = _argv(name, env)
-    receipt = {
-        "format_version": FORMAT_VERSION, "operation": name,
-        "argv": argv if argv is not None else list(OPERATIONS[name]),
-        "cwd": str(root), "platform": _platform(),
-        "timeout_seconds": timeout, "output_limit": limit,
-        "execution_scope": "user_mode", "kernel_scope": "not_requested",
-    }
+def _not_run(status, error):
+    at = _now()
+    empty = {"buffer": bytearray(), "truncated": False}
+    return {"started_at": at, "finished_at": at, "duration_ms": 0, "exit_code": None,
+            "status": status, "stdout": _stream(empty), "stderr": _stream(empty), "error": error}
+
+
+def _filter_refusal(executable, root, env, timeout):
+    """Bounded config check before repo_status: (preflight record, None or (status, error)).
+
+    git status runs filter.<driver>.clean/process commands for attributed paths.
+    The repository's own config (local/worktree scope, include files too) must
+    not make this observation run a command. Machine-wide system/global config
+    is the owner's, e.g. Git LFS, and stays allowed. Anything unclear refuses.
+    """
+    argv = [executable, *_GIT_OPTIONS, *_FILTER_QUERY]
+    probe = _execute(argv, root, env, timeout, MAX_OUTPUT_BYTES)
+    record = {"argv": argv, "status": probe["status"], "exit_code": probe["exit_code"]}
+    found = probe["stdout"]["text"]
+    if probe["status"] == "spawn_error":
+        return record, ("spawn_error", probe["error"])
+    if probe["status"] == "failed" and probe["exit_code"] == 1 and not found:
+        return record, None  # git config found no filter definition at all
+    if probe["status"] != "completed":
+        return record, ("failed", "repo_status çalıştırılmadı: depo ayarlarının sınırlı filtre denetimi "
+                                  f"tamamlanamadı ({probe['status']}, çıkış kodu {probe['exit_code']}).")
+    fields = found.split("\0")
+    names = [name for scope, name in zip(fields[0::2], fields[1::2]) if scope in ("local", "worktree")]
+    if not names:
+        return record, None
+    shown = ", ".join(name[:100] for name in names[:5])
+    if len(names) > 5:
+        shown += f" ve {len(names) - 5} tanım daha"
+    return record, ("failed", f"repo_status çalıştırılmadı: deponun kendi ayarları komut çalıştıran filtre "
+                              f"tanımlıyor ({shown}). Bu salt gözlem profili filtre komutu yürütmez.")
+
+
+def _execute(argv, root, env, timeout, limit):
+    """Start one fixed argv and return its timing, exit code, status and capped output."""
     outputs = {key: {"buffer": bytearray(), "truncated": False} for key in ("stdout", "stderr")}
     started_at, started = _now(), time.monotonic()
-    process = None
-    if problem is None:
-        try:
-            process = subprocess.Popen(
-                argv, cwd=root, env=env, shell=False, stdin=subprocess.DEVNULL,
-                stdout=subprocess.PIPE, stderr=subprocess.PIPE, bufsize=0,
-                start_new_session=os.name != "nt")
-        except OSError as exc:
-            problem = f"Süreç başlatılamadı: {exc.strerror or type(exc).__name__}."
-    if process is None:
-        return {**receipt, "started_at": started_at, "finished_at": _now(),
-                "duration_ms": _elapsed(started), "exit_code": None, "status": "spawn_error",
-                "stdout": _stream(outputs["stdout"]), "stderr": _stream(outputs["stderr"]),
-                "error": problem}
+    try:
+        process = subprocess.Popen(
+            argv, cwd=root, env=env, shell=False, stdin=subprocess.DEVNULL,
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE, bufsize=0,
+            start_new_session=os.name != "nt")
+    except OSError as exc:
+        return {**_not_run("spawn_error", f"Süreç başlatılamadı: {exc.strerror or type(exc).__name__}."),
+                "started_at": started_at, "duration_ms": _elapsed(started)}
 
     overflow = threading.Event()
     readers = [threading.Thread(target=_capture, args=(stream, limit, outputs[key], overflow), daemon=True)
@@ -286,7 +307,31 @@ def run_local(operation, cwd, *, timeout_seconds=10, output_limit=MAX_OUTPUT_BYT
     if incomplete:
         # A clean exit code never makes a partial capture a full success.
         notes.append("Çıktı eksik kaydedildi.")
-    return {**receipt, "started_at": started_at, "finished_at": _now(),
+    return {"started_at": started_at, "finished_at": _now(),
             "duration_ms": _elapsed(started), "exit_code": exit_code, "status": status,
             "stdout": _stream(outputs["stdout"]), "stderr": _stream(outputs["stderr"]),
             "error": " ".join(notes) or None}
+
+
+def run_local(operation, cwd, *, timeout_seconds=10, output_limit=MAX_OUTPUT_BYTES):
+    """Run one named operation and return its receipt; invalid input starts nothing."""
+    name = _operation(operation)
+    root = _repository_root(cwd)
+    timeout = _timeout(timeout_seconds)
+    limit = _limit(output_limit)
+    env = _environment()
+    argv, problem = _argv(name, env)
+    receipt = {
+        "format_version": FORMAT_VERSION, "operation": name,
+        "argv": argv if argv is not None else list(OPERATIONS[name]),
+        "cwd": str(root), "platform": _platform(),
+        "timeout_seconds": timeout, "output_limit": limit,
+        "execution_scope": "user_mode", "kernel_scope": "not_requested",
+    }
+    if problem is not None:
+        return {**receipt, **_not_run("spawn_error", problem)}
+    if name == "repo_status":
+        receipt["preflight"], refusal = _filter_refusal(argv[0], root, env, timeout)
+        if refusal is not None:
+            return {**receipt, **_not_run(*refusal)}
+    return {**receipt, **_execute(argv, root, env, timeout, limit)}

@@ -163,6 +163,43 @@ class RepositoryOperationTests(unittest.TestCase):
         self.assertNotEqual(before, index.read_bytes(), "Kontrol: olağan status bu dizinde index'i yeniler.")
         assert_json_ready(self, receipt)
 
+    def test_repository_filter_commands_are_refused_before_status_runs(self):
+        sentinel = self.base / "filtre-calisti"
+        script = self.base / "filtre.py"
+        script.write_text("import pathlib, sys\n"
+                          f"pathlib.Path({str(sentinel)!r}).write_text('calisti', encoding='utf-8')\n"
+                          "sys.stdout.buffer.write(sys.stdin.buffer.read())\n", encoding="utf-8")
+        command = f'"{Path(sys.executable).as_posix()}" "{script.as_posix()}"'
+        (self.repo / ".gitattributes").write_text("sabit.txt filter=probe\n", encoding="utf-8")
+        git(self.repo, "add", ".gitattributes")
+        git(self.repo, "commit", "-q", "-m", "sentetik öznitelik")
+        # Same size, newer mtime: status must re-read the file through its clean filter.
+        filtered = self.repo / "sabit.txt"
+        stamp = filtered.stat().st_mtime_ns + 5_000_000_000
+        os.utime(filtered, ns=(stamp, stamp))
+        for kind in ("clean", "process"):
+            with self.subTest(kind=kind):
+                git(self.repo, "config", f"filter.probe.{kind}", command)
+                receipt = run_local("repo_status", self.repo)
+                git(self.repo, "config", "--unset", f"filter.probe.{kind}")
+                self.assertEqual(("failed", None), (receipt["status"], receipt["exit_code"]))
+                self.assertIn(f"filter.probe.{kind}", receipt["error"])
+                self.assertEqual(0, receipt["stdout"]["captured_bytes"])
+                self.assertEqual(0, receipt["preflight"]["exit_code"])
+                self.assertFalse(sentinel.exists(), "Depo ayarındaki filtre komutu çalışmamalı.")
+                assert_json_ready(self, receipt)
+        # Control: in this repository an ordinary status does run the clean filter.
+        git(self.repo, "config", "filter.probe.clean", command)
+        git(self.repo, "status", "--porcelain")
+        self.assertTrue(sentinel.exists())
+
+    def test_machine_level_filter_definitions_do_not_block_status(self):
+        (self.home / ".gitconfig").write_text(
+            '[filter "lfs"]\n\tclean = git-lfs clean -- %f\n\tprocess = git-lfs filter-process\n', encoding="utf-8")
+        receipt = run_local("repo_status", self.repo)
+        self.assertEqual(("completed", 0), (receipt["preflight"]["status"], receipt["preflight"]["exit_code"]))
+        self.assertEqual("completed", receipt["status"])
+
     def test_failure_keeps_the_real_exit_code_and_stderr(self):
         empty = self.make_repo("bos", {})
         receipt = run_local("repo_revision", empty)
@@ -252,7 +289,7 @@ class BoundedProcessTests(unittest.TestCase):
 
     def test_stdout_is_bounded_while_the_process_still_writes(self):
         self.fake_git("chunk = b'x' * 65536\nwhile True:\n    sys.stdout.buffer.write(chunk)\n    sys.stdout.buffer.flush()")
-        receipt = run_local("repo_status", self.repo, timeout_seconds=30, output_limit=1024)
+        receipt = run_local("repo_revision", self.repo, timeout_seconds=30, output_limit=1024)
         self.assertEqual("output_limit", receipt["status"])
         self.assertEqual({"text": "x" * 1024, "captured_bytes": 1024,
                           "sha256": hashlib.sha256(b"x" * 1024).hexdigest(), "truncated": True}, receipt["stdout"])
@@ -277,7 +314,7 @@ class BoundedProcessTests(unittest.TestCase):
             "time.sleep(60)")
         # Without a group kill the helper keeps the pipes open until this drain limit.
         with mock.patch.object(operations, "_DRAIN_SECONDS", 30):
-            receipt = run_local("repo_status", self.repo, timeout_seconds=2)
+            receipt = run_local("repo_revision", self.repo, timeout_seconds=2)
         self.assertEqual("timeout", receipt["status"])
         self.assertLess(receipt["exit_code"], 0)
         self.assertLess(receipt["duration_ms"], 10_000)
@@ -297,7 +334,7 @@ class BoundedProcessTests(unittest.TestCase):
             "print('ust surec bitti', flush=True)\n"
             "sys.exit(0)")
         with mock.patch.object(operations, "_DRAIN_SECONDS", 0.5):
-            receipt = run_local("repo_status", self.repo)
+            receipt = run_local("repo_revision", self.repo)
         self.assertEqual((0, "failed"), (receipt["exit_code"], receipt["status"]))
         self.assertEqual("ust surec bitti\n", receipt["stdout"]["text"])
         self.assertEqual((True, True), (receipt["stdout"]["truncated"], receipt["stderr"]["truncated"]))
@@ -312,7 +349,7 @@ class BoundedProcessTests(unittest.TestCase):
 
     def test_invalid_utf8_and_exit_code_are_preserved(self):
         self.fake_git("sys.stdout.buffer.write(b'ok\\xff\\xfe\\n')\nsys.stderr.buffer.write(b'hata\\xc3(\\n')\nsys.exit(3)")
-        receipt = run_local("repo_status", self.repo)
+        receipt = run_local("repo_revision", self.repo)
         self.assertEqual(("failed", 3), (receipt["status"], receipt["exit_code"]))
         self.assertEqual(hashlib.sha256(b"ok\xff\xfe\n").hexdigest(), receipt["stdout"]["sha256"])
         self.assertEqual(5, receipt["stdout"]["captured_bytes"])
@@ -327,14 +364,17 @@ class BoundedProcessTests(unittest.TestCase):
         self.assertIsNone(operations._find("git", ""))
 
     def test_the_child_receives_only_the_fixed_argv(self):
-        seen = self.base / "seen.json"
-        self.fake_git(f"open({str(seen)!r}, 'w').write(json.dumps({{'argv': sys.argv[1:], "
-                      "'locks': os.environ.get('GIT_OPTIONAL_LOCKS'), 'git_dir': os.environ.get('GIT_DIR')}))")
+        seen = self.base / "seen.jsonl"
+        self.fake_git(f"open({str(seen)!r}, 'a').write(json.dumps({{'argv': sys.argv[1:], "
+                      "'locks': os.environ.get('GIT_OPTIONAL_LOCKS'), 'git_dir': os.environ.get('GIT_DIR')}) + '\\n')")
         with mock.patch.dict(os.environ, {"GIT_DIR": str(self.base)}):
             receipt = run_local("repo_status", self.repo)
         self.assertEqual("completed", receipt["status"])
-        self.assertEqual({"argv": list(OPERATIONS["repo_status"][1:]), "locks": "0", "git_dir": None},
-                         json.loads(seen.read_text(encoding="utf-8")))
+        preflight = [*operations._GIT_OPTIONS, *operations._FILTER_QUERY]
+        self.assertEqual(preflight, receipt["preflight"]["argv"][1:])
+        calls = [json.loads(line) for line in seen.read_text(encoding="utf-8").splitlines()]
+        self.assertEqual([{"argv": preflight, "locks": "0", "git_dir": None},
+                          {"argv": list(OPERATIONS["repo_status"][1:]), "locks": "0", "git_dir": None}], calls)
 
 
 if __name__ == "__main__":
