@@ -84,6 +84,7 @@ k-0111, Şaman CLI devrinin tarihsel başlangıç kaydıdır; sonraki ilerleme v
 | `kopru_izle.ps1` | Yerel izleyici (makineden bağımsız): çeker, `kopru_yanitla.py`'yi `ayarlar-yerel.json` ile çalıştırır, yeni kayıt varsa gönderir. Python'u `KOPRU_PYTHON` ya da PATH'ten bulur. |
 | `kopru_yerel.ps1` | Senin makinen için ortam ve kapı: HalukAI_Ortam.ps1'i yükler, Python yolunu, git safe.directory'yi ayarlar; modlar: `Hazirlik`, `Tek`, `Izle`, `Ekle`, `Bolum`, `Gonder`, `VM`, `CopilotKontrol`, `CodexGiris`, `CopilotGiris`, `CodexTani`, `Arg0Temizle`, `SamanDevam`, `SamanHazirla`. |
 | `Kopru_Izle.cmd` | Çift tıkla başlat: `kopru_yerel.ps1`'i pwsh 7 ile çağırır. Argümanla mod seçilir: `Kopru_Izle.cmd Hazirlik`. |
+| `Hacker_Uzak_Kontrol.cmd` | Hacker VM'deki Claude Code CLI ile uzaktan kontrol oturumu açar (`claude remote-control`); oturum Claude Code uygulamasında görünür. Hacker SSH yolunu kullanır; VM'yi başlatmaz, kimlik dosyası kopyalamaz. İsteğe bağlı argüman VM'deki çalışma dizinidir (varsayılan `/home/hacker/Uzak_Oturum`). VM, Y: sürücüsünü görmez. |
 | `davet-copilot.json` | Copilot (Şahit) için açılış kaydı (Claude'dan Copilot'a); `Kopru_Izle.cmd Ekle davet-copilot.json` ile eklenir. |
 | `kayit/` | Uygulamanın oluşturduğu sistem istemi ve ileti, ham yanıt ve sonuç. Sağlayıcı/CLI ek bağlamının tamamına ilişkin döküm iddiası taşımaz. |
 | `kopru_gonder.ps1` | Yerel değişiklikleri commit eder, uzaktaki yeni commit'leri alır (çakışırsa `kopru_birlestir.py`), gönderir; yarışta üç deneme. |
@@ -147,6 +148,8 @@ Web uygulamalarından gelen yanıtlar (Gemini, ChatGPT) metin olarak alınır ve
 Kanonik dosya değişince `kopru_ayna_uret.py` `<title>`, meta etiketleri, `<style>` ve `<body>` içini `ayna/kopru.html` olarak yazar; `kopru_gonder.ps1` bunu her gönderimde kendiliğinden yapar. Claude aynası (claude.ai) depodaki bu dosyadan yeniden yayımlanır; Claude bunu sohbette yapar.
 
 ## Değişiklik geçmişi
+
+- 2026-10-27: `Hacker_Uzak_Kontrol.cmd` eklendi: Hacker VM'de Claude Code uzaktan kontrol oturumu. ChatGPT (Şaman) ve Gemini (Şahit) görüşü köprüde istendi.
 
 - 2026-10-26: İlk bağımsız kapı çevrimi eklendi: seçilmiş dosyalar, özel aktarım kaydı, GitHub planı/yeni dal/taslak PR, belirsiz yanıt uzlaştırması, kesin commit'ten kaynak alımı ve inceleme kopyası. Görev veya NT bağlantısı gerektirmez.
 
