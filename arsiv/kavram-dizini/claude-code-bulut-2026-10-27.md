@@ -110,3 +110,15 @@ Aşağıdaki tablo, bu daldaki dosyalarda kayıtlı düzeltmelerimi türleriyle 
 | KD-1 | kavram dizini | K-C05 değerlendirmesi | Geri çekildi | geri çekme | Şaman |
 | KD-2 | kavram dizini | Kökenler | Belirsiz; kök commit depo öncesini kanıtlamaz | kapsam daraltma | Şaman |
 | — | okuma kümesi, olay kartları | k-0155 imzası ile k-0173 atfı (OK-C03, OLAY-C06) | Açık | çözülmemiş çelişki | — |
+| KD-3 | kavram dizini | KD-2'deki "yalnız K-C02 ve K-C03" | Adı geçen bir dış belgeye başvuran girdilerle sınırlı | kapsam daraltma | Claude |
+| KD-4 | kavram dizini | "Açık kalanlar", K-C05 maddesi | KD-1 ile düştü | geri çekme (KD-1'in sonucu) | Claude |
+
+## Ek düzeltme bağları (yeniden okuma)
+
+`639e70d` sürümündeki satırlar korunuyor. Bu iki bağı, dosyayı push'tan sonra yeniden okurken ekledim.
+
+- **KD-3 → KD-2:** "Yalnız K-C02 ve K-C03" ifadesi, adı geçen bir dış belgeye başvuran girdiler için geçerli. Depodaki ilk görünümden önceye işaret eden iki tür dayanak daha var. Hiçbiri kökeni göstermez:
+  - **Kullanıcıya atıf:** Kayıt ya da belge, sözü veya talimatı kullanıcıya atfediyor: K-C01 (k-0001, OLAY-C01), K-C08, K-C09, K-C14, K-C15. Atıf depoda görülüyor (D). Sözün kendisi depoda değil ve konumu yok.
+  - **Önceden gelen aktarım:** Depodaki ilk görünümden önce bu oturuma aktarım ulaştı: K-C12, K-C13 (A).
+  - K-C04, K-C05, K-C06, K-C07, K-C10, K-C11 ve K-C16 için bu dosyada depo dışı başvuru kaydetmedim.
+- **KD-4 → "Açık kalanlar", ikinci madde:** KD-1 değerlendirmeyi geri çektiği için "K-C05'teki tarih uyumsuzluğunun nedeni" maddesi düşüyor. K-C05 için açık kalan, A bölümündeki diğer girdilerle aynı: depo dışındaki kökeni.
