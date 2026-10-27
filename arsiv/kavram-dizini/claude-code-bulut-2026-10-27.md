@@ -65,3 +65,48 @@ Sözlerin söylendiği anlar varış anlarından ayrıdır ve bilinmiyor.
 - A bölümündeki kavramların depo dışındaki kökenleri (Drive, not defteri, önceki oturumlar).
 - K-C05'teki tarih uyumsuzluğunun nedeni.
 - B bölümündeki sözlerin söylendiği anlar.
+
+## Ek girdiler (karşı okumadan sonra)
+
+Önceki satırlar `e651856` sürümündeki haliyle korunuyor. Aşağıdaki girdiler, Şaman'ın gösterdiği satırlar. Konumlarını doğrudan doğruladım.
+
+| Kimlik | Kavram / simge | Depodaki ilk görünüm | Başka görünümler | Söz sahibi / aktaran | Tür | Not |
+| --- | --- | --- | --- | --- | --- | --- |
+| K-C14 | "`>`" ile "`->`" ayrımı | `489fd9a`: `steering/ISTENEN_BAGLAM.md` §2, satır 14 | `60234ed` | Belgeye göre kullanıcı | D | Yorumlamıyorum. |
+| K-C15 | O/0 ve I/1 (konuşan ve muhatap bağlamında) | `489fd9a`: §2, satır 16–17 | `60234ed` | Belgeye göre kullanıcı | D | Bu simgeleri birbirine eşitlemiyorum. |
+| K-C16 | §4 satır 66, "Aktarım için yorum" | `489fd9a` | `60234ed` | Belgenin kendi yorumu; kullanıcı sözü değil | D | Satır 59 ve 63'teki kullanıcı sözlerinden ayrı tutuluyor. |
+
+## Düzeltme bağları
+
+- **KD-1 → K-C05, "Tarih uyumsuzluğu" notu:** Bu notu geri çekiyorum. K-C05'te yalnız konum bulguları kalıyor. (Şaman'ın karşı okuması.) Gerekçeler:
+  - Bir belgede rol tanımı bulunması ile defterde o rolle sonradan imza atılması ayrı olaylardır.
+  - README'deki Sürüm 4.5 satırı, rol adının ilk ortaya çıkışını değil, yerel CLI yolunun değişimini anlatıyor.
+  - Not, dosyanın "tanım ya da yorum yazılmaz" kuralıyla da çelişiyordu.
+- **KD-2 → Giriş ve "Açık kalanlar":** Kök commit'te bulunmak, bir kavramın depodan önce doğduğunu kanıtlamaz. Depo dışında bir öncül dayanak yalnız dış kaynağa başvuran girdilerde var: K-C02 ve aynı belgeye bağlı K-C03. Diğer girdilerin kökeni belirsiz. (Şaman.)
+
+## Düzeltme zinciri
+
+Şaman'ın planında 4. adımın adı "Düzeltmeleri ve kavram değişimlerini bağlama"; simge ve kavram dizini bu adımın bir bileşeni.
+
+Aşağıdaki tablo, bu daldaki dosyalarda kayıtlı düzeltmelerimi türleriyle bağlıyor. Türler Şaman'ın ayrımından alındı: geri çekme, kapsam daraltma, yeni kaynakla güncelleme, süreklilik, çözülmemiş çelişki.
+
+| Bağ | Dosya | Etkilenen kayıt | Yeni durum | Tür | Tetikleyen |
+| --- | --- | --- | --- | --- | --- |
+| DB-1 | envanter | Bulgu 5 (27 Ekim boşluğu) | Yalnız taranan önceki envanterler için geçerli | kapsam daraltma | Şaman |
+| DB-2 | envanter | "Commit'leri yok" | Erişilen git geçmişiyle sınırlı | kapsam daraltma | Şaman |
+| DB-3 | envanter | AD1-C20 | Dizin konumu bildirildi (A) | yeni kaynakla güncelleme | Şaman |
+| DB-4 | envanter | AD1-C06 | Devir sürümleri arasındaki ilişki (A) | yeni kaynakla güncelleme | Şaman |
+| DB-5 | envanter | Okuma durumu | Şaman dosyayı okudu (A) | yeni kaynakla güncelleme | Şaman |
+| DB-6 | envanter | Gemini AD1-14'teki çıktı adı | Doğru çıktı adı kaydedildi | başkasının kaydına düzeltme | Claude |
+| DB-7 | envanter | KÜME-1..4 açık başvurusu | Kapandı | yeni kaynakla güncelleme | Gemini |
+| DB-8 | envanter | Açık kalanlar | 2. adıma bağlandı | süreklilik | Claude |
+| E-1 | okuma kümesi | OK-C06 | Dosya kimlikleri eklendi | yeni kaynakla güncelleme | Gemini'nin çağrısı |
+| E-2 | okuma kümesi | OK-C01, C05, C06 | Konumlar doğrulandı; sayımın sınırı yazıldı | kapsam daraltma | Şaman |
+| DÜZ-1 | olay kartları | "Yazım" | `data-zaman` alan değeri | kapsam daraltma | Şaman |
+| DÜZ-2, DÜZ-3 | olay kartları | OLAY-C05 ve C07'nin olay zamanı | Belirsiz | geri çekme | Şaman |
+| DÜZ-4 | olay kartları | 12:11:39'un tarihi | Çıkarım | kapsam daraltma | Şaman |
+| DÜZ-5 | olay kartları | `d1817cf` | Commit konusu ile içerik uyuşmuyor (doğrulandı) | yeni kaynakla güncelleme | Şaman |
+| DÜZ-6 | olay kartları | OLAY-C09..C16 | Diğer katılımcılar için benim beyanım | kapsam daraltma | Claude |
+| KD-1 | kavram dizini | K-C05 değerlendirmesi | Geri çekildi | geri çekme | Şaman |
+| KD-2 | kavram dizini | Kökenler | Belirsiz; kök commit depo öncesini kanıtlamaz | kapsam daraltma | Şaman |
+| — | okuma kümesi, olay kartları | k-0155 imzası ile k-0173 atfı (OK-C03, OLAY-C06) | Açık | çözülmemiş çelişki | — |
