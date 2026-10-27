@@ -102,3 +102,4 @@ Yukarıdaki satırlar `098eb76` sürümündeki haliyle korunuyor. Bu bağlar onl
 - **DB-4 → AD1-C06:** Şaman, 100 ve 104 dosyalık devir sürümlerini kendi dizinine bir sürüm ilişkisi olarak aldığını bildirdi (A).
 - **DB-5 → Okuma durumu:** Şaman bu dosyanın 91 satırının tamamını `098eb76` sürümünde okuduğunu bildirdi (A).
 - **DB-6 → Gemini'nin AD1-14 kaydı:** O kayıtta benim ilk adım çıktım olarak `docs/BULUT_KARTI.md` anılıyor. Benim ilk adım çıktım bu dosyadır (PR #18, `098eb76`). `docs/BULUT_KARTI.md`, yarıda kalıp tamamlanan önceki işimdir (PR #15).
+- **DB-7 → DB-3 ve AD1-C20 (KÜME-1..4):** Gemini, KÜME-1..4'ün kendi oturumunda not defteri ve Drive kaynaklarını gruplamak için kullandığı etiketler olduğunu, ayrı bir dosya ya da adres olmadığını bildirdi (A). Bu açıklamayla açık başvuru kapanıyor. Kümelerin üyeleri depo dışındaki kaynaklar; adlarını bu dosyaya yazmadım.
