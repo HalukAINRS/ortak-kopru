@@ -289,6 +289,27 @@ class BoundedProcessTests(unittest.TestCase):
         if stat.exists():
             self.assertIn(stat.read_text().rsplit(")", 1)[1].split()[0], {"Z", "X"})
 
+    def test_clean_exit_with_a_helper_holding_the_pipes_is_not_success(self):
+        pids = self.base / "pids.json"
+        self.fake_git(
+            "helper = subprocess.Popen([sys.executable, '-c', 'import time; time.sleep(60)'])\n"
+            f"open({str(pids)!r}, 'w').write(json.dumps([os.getpid(), helper.pid]))\n"
+            "print('ust surec bitti', flush=True)\n"
+            "sys.exit(0)")
+        with mock.patch.object(operations, "_DRAIN_SECONDS", 0.5):
+            receipt = run_local("repo_status", self.repo)
+        self.assertEqual((0, "failed"), (receipt["exit_code"], receipt["status"]))
+        self.assertEqual("ust surec bitti\n", receipt["stdout"]["text"])
+        self.assertEqual((True, True), (receipt["stdout"]["truncated"], receipt["stderr"]["truncated"]))
+        self.assertIn("süreç grubu sonlandırıldı", receipt["error"])
+        self.assertIn("Çıktı eksik", receipt["error"])
+        self.assertLess(receipt["duration_ms"], 10_000)
+        _, helper = json.loads(pids.read_text(encoding="utf-8"))
+        stat = Path(f"/proc/{helper}/stat")
+        if stat.exists():
+            self.assertIn(stat.read_text().rsplit(")", 1)[1].split()[0], {"Z", "X"})
+        assert_json_ready(self, receipt)
+
     def test_invalid_utf8_and_exit_code_are_preserved(self):
         self.fake_git("sys.stdout.buffer.write(b'ok\\xff\\xfe\\n')\nsys.stderr.buffer.write(b'hata\\xc3(\\n')\nsys.exit(3)")
         receipt = run_local("repo_status", self.repo)

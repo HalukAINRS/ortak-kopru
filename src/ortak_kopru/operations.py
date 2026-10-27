@@ -169,11 +169,29 @@ def _terminate(process):
             pass
 
 
+def _exited(process):
+    """True once the child exited; POSIX keeps the zombie so its group id stays reserved."""
+    if os.name != "nt" and hasattr(os, "waitid") and hasattr(os, "WNOWAIT"):
+        try:
+            return os.waitid(os.P_PID, process.pid, os.WEXITED | os.WNOHANG | os.WNOWAIT) is not None
+        except ChildProcessError:
+            return True
+    return process.poll() is not None
+
+
+def _drain(readers):
+    """Wait a bounded time for both readers; report which pipes are still open."""
+    drained_by = time.monotonic() + _DRAIN_SECONDS
+    for reader in readers:
+        reader.join(max(0.0, drained_by - time.monotonic()))
+    return [reader.is_alive() for reader in readers]
+
+
 def _stream(record):
     data = bytes(record["buffer"])
     return {"text": data.decode("utf-8", errors="backslashreplace"),
             "captured_bytes": len(data), "sha256": hashlib.sha256(data).hexdigest(),
-            "truncated": record["truncated"]}
+            "truncated": record["truncated"] or record.get("incomplete", False)}
 
 
 def run_local(operation, cwd, *, timeout_seconds=10, output_limit=MAX_OUTPUT_BYTES):
@@ -215,7 +233,7 @@ def run_local(operation, cwd, *, timeout_seconds=10, output_limit=MAX_OUTPUT_BYT
     try:
         for reader in readers:
             reader.start()
-        while process.poll() is None:
+        while not _exited(process):
             if overflow.is_set():
                 stopped = "output_limit"
             elif time.monotonic() >= deadline:
@@ -224,35 +242,50 @@ def run_local(operation, cwd, *, timeout_seconds=10, output_limit=MAX_OUTPUT_BYT
                 _terminate(process)
                 break
             overflow.wait(min(_POLL_SECONDS, max(0.0, deadline - time.monotonic())))
+        lingering = _drain(readers)
+        if any(lingering):
+            # The process ended but a helper it started still holds a pipe open.
+            if os.name == "nt":
+                notes.append("Süreç çıktıktan sonra bir yardımcı süreç çıktı akışını açık tuttu; "
+                             "Windows'ta süreç grubu kullanılmadığından yardımcı süreç sonlandırılamadı.")
+            else:
+                _terminate(process)
+                notes.append("Süreç çıktıktan sonra bir yardımcı süreç çıktı akışını açık tuttu; "
+                             "süreç grubu sonlandırıldı.")
+                _drain(readers)
         try:
             exit_code = process.wait(timeout=_DRAIN_SECONDS)
         except subprocess.TimeoutExpired:
             notes.append("Süreç sonlandırılamadı; çıkış kodu alınamadı.")
-    finally:
-        if process.poll() is None:
-            _terminate(process)
-    drained_by = time.monotonic() + _DRAIN_SECONDS
-    for reader in readers:
-        reader.join(max(0.0, drained_by - time.monotonic()))
-    for reader, stream in zip(readers, (process.stdout, process.stderr)):
+    except BaseException:
+        _terminate(process)
+        raise
+    for key, reader, stream, was_open in zip(("stdout", "stderr"), readers,
+                                             (process.stdout, process.stderr), lingering):
+        if was_open or outputs[key].get("read_error"):
+            outputs[key]["incomplete"] = True
         if reader.is_alive():
-            notes.append("Bir çıktı akışı süreç bittikten sonra açık kaldı; okuma bırakıldı.")
+            notes.append(f"{key} akışı kapanmadı; okuma bırakıldı.")
         else:
             stream.close()
     if any(record.get("read_error") for record in outputs.values()):
-        notes.append("Çıktı akışı okunurken hata oluştu; kayıt eksik olabilir.")
+        notes.append("Çıktı akışı okunurken hata oluştu.")
 
-    truncated = outputs["stdout"]["truncated"] or outputs["stderr"]["truncated"]
+    limited = outputs["stdout"]["truncated"] or outputs["stderr"]["truncated"]
+    incomplete = any(record.get("incomplete") for record in outputs.values())
     if stopped == "timeout":
         status = "timeout"
         notes.insert(0, f"Süre sınırı ({timeout:g} sn) aşıldı; süreç sonlandırıldı.")
-    elif stopped == "output_limit" or truncated:
+    elif stopped == "output_limit" or limited:
         status = "output_limit"
         notes.insert(0, f"Çıktı sınırı ({limit} bayt) aşıldı; fazlası kaydedilmedi.")
-    elif exit_code == 0:
+    elif exit_code == 0 and not incomplete:
         status = "completed"
     else:
         status = "failed"
+    if incomplete:
+        # A clean exit code never makes a partial capture a full success.
+        notes.append("Çıktı eksik kaydedildi.")
     return {**receipt, "started_at": started_at, "finished_at": _now(),
             "duration_ms": _elapsed(started), "exit_code": exit_code, "status": status,
             "stdout": _stream(outputs["stdout"]), "stderr": _stream(outputs["stderr"]),
