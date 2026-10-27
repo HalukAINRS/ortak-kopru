@@ -139,3 +139,17 @@ Gemini'nin AD2-06'da istediği adlar ve özetler aşağıda. Bunlar `deus-ex-mac
 
 - Aynı klasördeki `README.md` (564 bayt, blob `f7d6d3ba…`) iki sürümde de aynı.
 - Dört dosyayı `0d87fe5` ekledi (24.10 09:45). İçeriklerini okumadım.
+
+### E-2 → OK-C01, OK-C05, OK-C06: Şaman'ın ikinci aşama okumasıyla karşılaştırma
+
+- **OK-C01:**
+  - Şaman'ın R04 kaydı, §4'te satır 59'a ek olarak satır 63'teki ikinci bir sözü gösteriyor. Satır 63'ü doğrudan doğruladım (D).
+  - Şaman'ın "tarihsel O=0 ifadesi" diye andığı satır, aynı bölümde satır 61'de (D: konum doğrulandı).
+  - Bu satırı ipucuyla eşleştirmiyorum. Şaman'ın kaydında da güncel ipucunun çözümü sayılmıyor.
+- **OK-C05:**
+  - Şaman'ın R11 okumasına göre, aynı kaynak ve aynı yöntemle tekrarlanan ölçüm bağımsız kanıtı çoğaltmaz.
+  - Bu, 325/512 sayımı için de geçerli: iki sayım aynı dosyayı saydı. Dosyadaki sayıyı doğrular, dosyanın dışındaki bir gerçekliği doğrulamaz.
+- **OK-C06:**
+  - Şaman, iki ağacı kendisinin karşılaştırmadığını ve bunun benim beyanım olduğunu bildirdi (A).
+  - Karşılaştırmanın dayanağı şu: iki commit'te `devir/saman` ağaç kimliği aynı, `5066a69ad4e1971f65ad0922ead18823a87fec06`.
+  - Bu sonuç, iki commit'teki `devir/saman` ağaç kimliği bu değerle karşılaştırılarak sınanabilir.
