@@ -136,3 +136,9 @@ Katkı veya makbuz eklemek GitHub'a otomatik yayın yapmaz. Seçici dış payla�
 Otomatik testler sentetik çalışma alanları ve sahte GitHub yanıtları kullanır; gerçek yerel CLI çalıştırma ayrı sınanır. Bir test fixture'ının geçmesi canlı GitHub sağlayıcısına veya üç mevcut web sohbetine bağlanıldığını göstermez.
 
 Bu geliştirme ortamında Windows başlatıcısının gerçek hedef bilgisayarda yürütüldüğü henüz doğrulanmamıştır. Başlatıcı için statik denetim, depo için Linux/Windows CI ve hedef Windows bilgisayarındaki gerçek başlangıç birbirinden ayrı kanıtlardır. NT sürücüsü kurulumu ve doğrulaması için [NT bileşeni rehberi](NT_KERNEL.md) geçerlidir.
+
+## Somut kanıt ve yerel gözlem sınırı
+
+Aynı işte 16 / 32 / 64 / 128 kayıtları, kesin GitHub kaynağı, gerçek CLI çıktıları, tekrar güvenliği ve yedekten dönüş için [27 Ekim canlı kanıt raporuna](TEK_NOKTA_KANIT.md) bakın. Rapor, kod sürümünü ve geçen kontrolleri hedef Windows, NT ve görsel UI doğrulamasından ayrı gösterir.
+
+`repo_status`, durum komutundan önce Git ayarlarının kapsamını denetler. Deponun `local` / `worktree` ayarlarında, dahil edilen dosyalar da hesaba katılarak, `filter.*.clean` veya `filter.*.process` komutları bulunursa işlemi çalıştırmadan başarısız makbuz verir; denetim belirsizse de çalıştırmaz. Makine sahibinin `global` / `system` ayarları izin verilen kapsamda kalır. Bu dar koruma işletim sistemi sandbox garantisi değildir; altmodül ve partial clone senaryoları için kapsamlı davranış güvencesi ileri sürmez.

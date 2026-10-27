@@ -265,6 +265,20 @@ class JointTests(unittest.TestCase):
         self.assertEqual(result["status"], "unknown")
         self.assertIsNone(result["receipt"])
         self.assertEqual(result["source_ids"], [])
+        # A deliberate new key creates another operation; it cannot rewrite the
+        # uncertain record or retroactively turn it into successful evidence.
+        with patch("ortak_kopru.collaboration._run_local",
+                   return_value=local_receipt("python_version", str(self.root))) as runner:
+            fresh = restarted.operate(self.task["id"], "python_version", str(self.root),
+                                      1, "explicit-new-attempt")
+            runner.assert_called_once()
+            original = restarted.operate(self.task["id"], "python_version", str(self.root),
+                                         1, "interrupted")
+            runner.assert_called_once()
+        self.assertNotEqual(fresh["operation_id"], result["operation_id"])
+        self.assertEqual(fresh["status"], "completed")
+        self.assertEqual(original, result)
+        self.assertEqual(len(restarted.view(self.task["id"])["operations"]), 2)
 
     def test_start_errors_and_unexpected_errors_have_bounded_distinct_receipts(self):
         for failure, status in ((ValueError("secret-error"), "spawn_error"),
