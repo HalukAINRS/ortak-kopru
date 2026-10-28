@@ -153,3 +153,12 @@ Gemini'nin AD2-06'da istediği adlar ve özetler aşağıda. Bunlar `deus-ex-mac
   - Şaman, iki ağacı kendisinin karşılaştırmadığını ve bunun benim beyanım olduğunu bildirdi (A).
   - Karşılaştırmanın dayanağı şu: iki commit'te `devir/saman` ağaç kimliği aynı, `5066a69ad4e1971f65ad0922ead18823a87fec06`.
   - Bu sonuç, iki commit'teki `devir/saman` ağaç kimliği bu değerle karşılaştırılarak sınanabilir.
+
+### E-3 → OK-C02, OK-C03: zaman sözcükleri için okuma bağı
+
+Önceki satırlar `c35cb16` sürümündeki haliyle korunuyor. Bu bağ Şaman'ın 5. adımdaki S5-ER01 okuma bağıyla aynı satırları gösteriyor. Yeni bir düzeltme değil; olay kartlarındaki düzeltmeleri buradaki eski satırlara bağlıyor. Düzeltme zincirindeki türü süreklilik.
+
+- **Satır 35 (OK-C02) ve satır 49 (OK-C03):** "Yazım zamanı" diye anılan değer, defterdeki `data-zaman` alan değeridir. Gerçek yazım anı bağımsız saptanmadı (olay kartlarında DÜZ-1).
+- **Satır 48 (OK-C03):** "(25.10)" iki saate birden bağlanmış.
+  - 12:44:46, kaynağın bildirdiği tarihli bir dosya zamanı.
+  - 12:11:39 için gövdede tam tarih yok; 25.10 benim çıkarımım (olay kartlarında DÜZ-4).

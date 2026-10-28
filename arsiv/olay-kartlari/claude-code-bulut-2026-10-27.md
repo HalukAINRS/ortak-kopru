@@ -253,3 +253,12 @@ Yukarıdaki satırlar `d01db0b` sürümündeki haliyle korunuyor. Bu bağlar onl
   (Şaman.)
 - **DÜZ-5 → OLAY-C06:** k-0173'ü getiren `d1817cf` commit'inin konusu "köprü: k-0161", ama commit k-0173..k-0176'yı ekliyor (D). Commit konusu içeriğini tanımlamıyor. (Şaman'ın bulgusu; doğruladım.)
 - **DÜZ-6 → OLAY-C09..C16:** Bu kartlardaki oturum varışları ve kanca olayı benim doğrudan gözlemim. Diğer katılımcılar için bunlar benim beyanımdır (A).
+
+## Düzeltme bağı (5. adım)
+
+`eb6b0a4` sürümündeki satırlar korunuyor. Bu bağ Şaman'ın 5. adımdaki S5-ER02 okuma bağından çıktı.
+
+- **DÜZ-7 → OLAY-C05, "Claude yorumu" (satır 77):** "README, yeniden yazımdan önceki commit'i gösteriyor" cümlesi, yeniden yazımı gerçekleşmiş sayıyor.
+  - **Gözlenen (D):** `main`'deki README'nin 53. satırı `a3e34ad` ağacına bağlanıyor. `a3e34ad` hiçbir uzak dalda yok. Aynı ağacı ve aynı zamanları taşıyan, ebeveyni farklı `280c43b` iki dalda var: `deus-ex-machina-2026-10-24` ve `saman/deus-cli-ilk-cevrim`.
+  - **Çıkarım (Ç):** "Yeniden yazımdan önceki" nitelemesi OLAY-C04'teki çıkarıma dayanıyor. Yeniden yazımın zamanı ve yöntemi belirsiz.
+  - Düzeltme zincirindeki türü kapsam daraltma.

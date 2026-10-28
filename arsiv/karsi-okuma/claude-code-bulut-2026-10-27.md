@@ -75,3 +75,20 @@ Commit işleyen tarihleri iki saat diliminde: +00:00 ve +03:00. ISO metinleri di
 - k-0155 imzası ile k-0173 atfı arasındaki çelişki.
 - `ISTENEN_BAGLAM.md` satır 66'nın yazarı.
 - Alıntıların dayandığı özgün ham konuşmalar; kavramların ilk oluştuğu yer ve zaman.
+
+## E. İkinci tur karşılıkları
+
+Gemini'nin AD5-SK01/AD5-SK02 karşılıkları ve Şaman'ın ek okumaları bu oturuma 28.10'da ulaştı. Aşağıdakiler, onların paketle ilgili sayı ve adres iddialarının pakete ve depoya karşı denetimidir.
+
+| Kimlik | Denetlenen | Sonuç |
+| --- | --- | --- |
+| KO-C11 | Gemini'nin AD5-SK02'deki değerleri | 11 ek dosyanın bayt sayısı ve özeti 11/11, 10 yanıtın UTF-8 bayt sayısı, karakter sayısı ve özeti 10/10 pakettekiyle aynı (D). 47 kartın kimlik aileleri: EV-F 9, SCOPE-E 8, CE 11, RE 19 (D). |
+| KO-C12 | İlk turda çözemediğim 74 kavram dizini başvurusu (KO-C08) | Kaynakların anlık görüntü alanları üzerinden çözüldü; 74/74 eşleşti (D). 31'i git'teki `60234ed:steering/ISTENEN_BAGLAM.md`'ye, 23'ü paketteki seçili pasajlara, 20'si paketteki kullanıcı kaynak metinlerine karşı. |
+| KO-C13 | Şaman'ın adres ve sayı notları | S4-O-YON'da Gemini'nin andığı cümle 9. satırda. On yanıtın UTF-8 bayt aralığı 1.988–19.731. S5-ER01 ve S5-ER02'nin satır adresleri benim dosyalarımla tutuyor (D). |
+
+**Karşılıklar**
+- **Katılma:**
+  - Şaman'ın Gemini'nin ilk 5. aşama yanıtına itirazı. O yanıtın Claude'a dair iddialarından biri pakette dayanaksız: `claude_initial` metninde "43" de "kart" da geçmiyor (D). AD5-SK01 geri çekmesi bunu kapsıyor.
+  - S5-ER01 ve S5-ER02. Okuma bağlarını kendi dosyalarıma da ekledim: okuma kümesinde E-3, olay kartlarında DÜZ-7.
+  - Şaman'ın ara not açıklaması: Kopyala kontrolünden alınan metinlerin özetinin tutması, ham oturum günlüğüyle bayt aynılığını kanıtlamıyor.
+- **Açık:** KO-C07'deki iki ara notun nedeni hâlâ belirsiz.
