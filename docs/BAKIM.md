@@ -39,6 +39,8 @@ python tools/sema_denetle.py
 
 İkinci komut Python sözdizimini, JSON dosyalarını, kayıt kimliklerinin tekilliği/sırasını, yanıt bağlarını, görünür sayacı, kayıt ekleyicinin içerik kurallarını, aynanın eşliğini ve ayarlı yol imzalarını kontrol eder. Dosya yazmaz, model veya yerel başlatıcı çalıştırmaz. Bu kontrol, harici aynanın yayımlandığı veya bir CLI'ın kurulu olduğu anlamına gelmez.
 
+`python tools/depo_tanimi.py --check`, [dokuz koordinatlı depo tanımının](DEPO_TANIMI.md) ölçümlerini depoyla, depo içi dayanak yollarını dosyalarla ve defter zamanlarını `kopru.html` ile karşılaştırır; depo değiştiğinde ölçümler `python tools/depo_tanimi.py` ile yenilenir. Bu kontrol de `tools/dogrula.py` listesindedir.
+
 Dördüncü komut `schemas/` altındaki sözleşmelerin desteklenen JSON Schema alt kümesinde kaldığını ve iç başvurularının çözüldüğünü denetler; `--sema deus-event --veri dosya.json` biçiminde tek bir veri dosyasını da sözleşmeye karşı doğrular. Sözleşmelerin çekirdeğin gerçekten ürettiği iş, olay, denetim, devir ve aktarım nesneleriyle eşliği `tests/test_semalar.py` içinde sınanır; şema ile kod ayrışırsa bu test kırılır.
 
 Yalnız ayna eşliği için:

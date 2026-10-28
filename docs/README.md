@@ -8,6 +8,7 @@ Depodaki her dosyanın işlevi aynı değildir. Kaynak kodu, işleme uygun JSON,
 
 | Belge | Ne sağlar? |
 | --- | --- |
+| [Dokuz koordinatla tanım](DEPO_TANIMI.md) | Depoyu Ne, Nerede, Ne zaman, Ne kadar, Nereden, Neden, Nasıl, Ne için ve Nereye sorularıyla tanımlar; ölçümleri depoya karşı denetlenen [makine kaydıyla](depo-tanimi.json) birlikte. |
 | [Ortak Mimari Defteri](ORTAK_MIMARI_DEFTERI.md) | 33×8 yerleşimini, serbest döngüleri ve 16/32/64/128 dışavurumun tek noktada birlikte çalışmasını açıklar. |
 | [Anlam not defteri](ANLAM_NOT_DEFTERI.md) | Ortak çalışmanın aktarılabilir anlamını; kaynak sözü, yorum ve değişen anlayış ilişkisini anlatır. |
 | [Son durum](SON_DURUM.md) | Son gözlemi, tamamlanan işin kapsamını ve açık kalanları gösterir. |

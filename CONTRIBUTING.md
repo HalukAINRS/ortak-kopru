@@ -40,6 +40,8 @@ python kopru_ayna_uret.py kopru.html ayna/kopru.html
 python tools/depo_kontrol.py
 ```
 
+Dosya ekleyen, silen veya kod satırı değiştiren bir katkıdan sonra `python tools/depo_tanimi.py` ölçümleri yeniler; `--check` aynı denetimi yazmadan yapar ve CI'da koşar.
+
 `schemas/` altındaki bir sözleşmeyi veya onu üreten kodu değiştirirken `python tools/sema_denetle.py` ile şemanın desteklenen alt kümede kaldığını, `python -m unittest tests.test_semalar` ile de çekirdeğin ürettiği nesnelerin sözleşmeye hâlâ uyduğunu kontrol edin; ikisi de dış paket istemez.
 
 `ayna/kopru.html` üretilen dosyadır. Tarihli `kayit/` dosyaları geçmiş çağrıların kanıtıdır; bakım için topluca taşınmaz, yeniden biçimlendirilmez veya silinmez. Ham özel sayfalar, belirteçler ve kişisel kimlik değerleri depoya eklenmez; ayrıntı `AGENTS-kopru.md` içindedir.

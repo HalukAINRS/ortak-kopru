@@ -42,6 +42,12 @@ En önemli iki konu, bu oturumda çalıştırılamayan PowerShell tarafındadır
 
 Diğer açık konular kullanıcı kararı bekliyor. On altı açık kayıt, yapılandırılmış hiçbir yolun cevaplayamayacağı adreslere gidiyor: on ikisi Gemini (Şahit), üçü Copilot (Şahit), biri Gemini (CLI). Hedefleme sözleşmesi yeni işleri Gemini (Şahit) adresine yönlendiriyor, ama bu adrese giden bir çağrı yolu tanımlı değil. Çağrı kayıtları her seferinde defterin tamamını kopyaladığı için `kayit/` alanı 33 MB'a ulaştı ve anahtarı olmayan bir yolun her saatlik atlanması bir commit üretiyor; kanıt değeri ile depo büyümesi arasındaki denge bir tercih meselesi. Sayfanın sürüm etiketi (4.2) ile README'deki sürüm numaralarının (4.6.5) neyi saydığı da açıklanmayı bekliyor.
 
+## Rafine edilmiş deponun tanımı
+
+Aynı gün ikinci bir istekle, rafine edilmiş depo dokuz koordinatla tanımlandı: Ne, Nerede, Ne zaman, Ne kadar, Nereden, Neden, Nasıl, Ne için ve Nereye. [Dokuz koordinatla tanım](DEPO_TANIMI.md) her koordinatı paragraflarla anlatır ve her cümlenin gözlem mi, beyan mı, yorum mu, açık iş mi olduğunu ayırır. Tanımın sayısal kısmı elle yazılmadı; [makine kaydındaki](depo-tanimi.json) ölçümleri bir araç depodan üretiyor ve her doğrulamada yeniden denetliyor. Böylece rafine turunun ilkesi tanımın kendisine de uygulandı: depo hakkında söylenen sayı, depo değiştiğinde sessizce eskiyemiyor.
+
+Tanım sırasında iki şey öne çıktı. İlk kayıt, GitHub deposundan 25 dakika önce yerelde yazılmış; "kanonik kopya yereldir" kuralı deponun doğuş sırasının kaydıdır. Defterin kayıt biçimi ise dokuz koordinatın altısını alanlarla taşıyor; Ne kadar, Ne için ve Nerede alan olarak yok. Bu üçünün kayıt düzeyinde de tutulup tutulmayacağı kullanıcının kararıdır.
+
 ## Nasıl sınanır?
 
 Depo kökünde `python tools/dogrula.py` bütün çevrimdışı kontrolleri koşar. Bu oturumun bulut ortamında 254 test geçti; altısı yalnız PowerShell bulunmadığı için atlandı. Bu altı test ve PowerShell sözdizimi denetimi, PR #23'ün CI koşusunda hem Windows'ta hem Ubuntu'da geçti. Aynı koşunun ilk denemesi, bu turda eklenen doğrulama aracının Windows konsolunda iki kusurunu da ortaya çıkardı; düzeltilip kayda geçirildi. Kendi eklediğimiz bir aracın da sınanmadan güvenilmez olduğu, bu turun en somut derslerinden biri oldu. Bir bulguya itiraz ya da düzeltme getirmek için bulgunun kimliğini (`R-17` gibi) belirterek [GitHub Issues](https://github.com/HalukAINRS/ortak-kopru/issues) kullanılabilir. Yanıt gelmemesi kabul sayılmaz; gelen karşılık ilgili bulgunun yanına bağlanır.
