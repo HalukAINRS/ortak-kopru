@@ -1,6 +1,7 @@
 # Keep generated reader pages deterministic across Linux and Windows checkouts.
 /index.html text eol=lf
 /acilis.html text eol=lf
+/yol.html text eol=lf
 /mimari.html text eol=lf
 /not-defteri.html text eol=lf
 /durum.html text eol=lf

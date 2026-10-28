@@ -10,23 +10,39 @@ Depo kökünden bakınca alanlar şöyle görünür. Sol sütun klasör ya da do
 
 ```text
 ortak-kopru/
-├── README.md, CONTRIBUTING.md … (6 dosya)  Giriş
-├── kapi.py, deus.py, Kopru_Izle.cmd        Çalıştırma girişleri
-├── index.html, acilis.html … (7 dosya)     Web kapısı
-├── kopru.html, ayna/, defter/              Ortak defter
-├── kayit/                                  Çağrı kayıtları
-├── katilimcilar/                           Katılımcılar
-├── yerel/                                  Yerel betikler
-├── src/                                    Python paketi
-├── ui/                                     Yerel arayüz
-├── windows/                                Windows sürücüsü
-├── docs/                                   Belgeler: ilk temas ve harita
-│   ├── teknik/                             Teknik ayrıntılar
-│   └── gecmis/                             Geçmiş işler
-├── schemas/                                Sözleşmeler
-├── tools/                                  Bakım araçları
-├── tests/                                  Testler
-└── .github/                                Otomasyon
+├── README.md         Giriş
+├── CONTRIBUTING.md
+├── CITATION.cff
+├── .gitignore
+├── .gitattributes
+├── .nojekyll
+├── kapi.py           Çalıştırma girişleri
+├── deus.py
+├── Kopru_Izle.cmd
+├── index.html        Web kapısı
+├── acilis.html
+├── yol.html
+├── mimari.html
+├── not-defteri.html
+├── durum.html
+├── kaynaklar.html
+├── okuma.css
+├── kopru.html        Ortak defter
+├── ayna/
+├── defter/
+├── kayit/            Çağrı kayıtları
+├── katilimcilar/     Katılımcılar
+├── yerel/            Yerel betikler
+├── src/              Python paketi
+├── ui/               Yerel arayüz
+├── windows/          Windows sürücüsü
+├── docs/             Belgeler: ilk temas ve harita
+│   ├── teknik/       Teknik ayrıntılar
+│   └── gecmis/       Geçmiş işler
+├── schemas/          Sözleşmeler
+├── tools/            Bakım araçları
+├── tests/            Testler
+└── .github/          Otomasyon
 ```
 
 ## Kurallar
@@ -74,6 +90,7 @@ Web'de yayımlanan okuma sayfaları. Adresleri değişmesin diye kökte dururlar
 | --- | --- | --- | --- |
 | `index.html` | sayfa | Web girişi. | — |
 | `acilis.html` | sayfa | Açılış: niyet ve altı ilke. | — |
+| `yol.html` | sayfa | Açılıştan gerçeğe: yol. | — |
 | `mimari.html` | sayfa | Ortak Mimari Defteri. | — |
 | `not-defteri.html` | sayfa | Anlam ve Dönüş Defteri. | — |
 | `durum.html` | sayfa | Son durum. | — |
@@ -154,6 +171,8 @@ Bu alandaki dosyalar tek tek tanımlanmaz; alanın açıklaması hepsi için ge�
 | `docs/README.md` | belge | Belgelerin üç yeri: ilk temas, teknik ayrıntılar ve geçmiş işler. | — |
 | `docs/acilis.md` | belge | Açılış: niyet ve altı ilke, ilk kez gelen okuyucu için paragraflarla. | `docs/ACILIS.md` |
 | `docs/acilis.json` | kayit | Açılışın makine kaydı: niyet, tanım, dokuz soru, yirmi kesişim, altı ilke ve sade metinler. | — |
+| `docs/yol.md` | belge | Açılıştan gerçeğe giden yol: adımlar, durumları, kararlar ve klavye çizimleri; ilk kez gelen okuyucu için. | — |
+| `docs/yol.json` | kayit | Yolun makine kaydı: adımlar, ilkelere bağları, ön koşullar, kararlar, ölçütler ve çizimler. | — |
 | `docs/web-girisi.md` | belge | Web girişinin kaynak metni; index.html bundan üretilir. | `docs/WEB_GIRISI.md` |
 | `docs/harita.md` | belge | Bu harita: alanlar, dosyalar, eski adlar ve kurallar. | — |
 | `docs/harita.json` | kayit | Haritanın makine kaydı: her dosyanın alanı, türü, eski adları ve künyesi. | — |
@@ -166,6 +185,7 @@ Araçlar, kurulum, doğrulama, otomasyon ve kararlar. Açılışı anlamak için
 | --- | --- | --- | --- |
 | `docs/teknik/README.md` | belge | Teknik ayrıntıların dizini ve eski README'nin teknik bölümleri. | `docs/TEKNIK.md` |
 | `docs/teknik/acilis-teknik.md` | belge | Açılışın teknik eki: tanımın tam hâli, beşli ve dörtlü, yirmi kesişim, ilkelerin taşıyıcıları. | `docs/ACILIS_TEKNIK.md` |
+| `docs/teknik/yol-teknik.md` | belge | Yolun teknik eki: adım tablosu, ölçütler ve bugünkü değerleri, dokunacağı yerler, geri alma, akış çizimleri. | — |
 | `docs/teknik/kapi-kullanimi.md` | belge | Kapının komutları, örnekleri, sınırları ve kurtarma davranışı. | `docs/KAPI_KULLANIMI.md` |
 | `docs/teknik/dis-alan-kapisi.md` | belge | Kapının kapsamı: yerel çalışma ile dış alanlar arasında paylaşım ve tedarik. | `docs/DIS_ALAN_KAPISI.md` |
 | `docs/teknik/deus-ex-machina.md` | belge | Yerel iş bileşeni: iş, söz, kaynak, sonuç ve doğrulama. | `docs/DEUS_EX_MACHINA.md` |
@@ -209,6 +229,7 @@ Makine kayıtlarının JSON Schema sözleşmeleri; araçlar ve testler kayıtlar
 | `schemas/acilis.schema.json` | sozlesme | Açılış kaydı. | — |
 | `schemas/depo-tanimi.schema.json` | sozlesme | Dokuz koordinatlı depo tanımı. | — |
 | `schemas/simdi-ve-sonrasi.schema.json` | sozlesme | Şimdi ve sonrası kaydı. | `schemas/rafine-sorulari.schema.json` |
+| `schemas/yol.schema.json` | sozlesme | Açılıştan gerçeğe yol kaydı. | — |
 | `schemas/rafine-bulgu.schema.json` | sozlesme | Gözden geçirme bulguları. | — |
 | `schemas/harita.schema.json` | sozlesme | Depo haritası. | — |
 | `schemas/exchange-manifest.schema.json` | sozlesme | Kapı aktarım paketi. | — |
@@ -229,6 +250,8 @@ Deponun kendini denetleyen ve üreten araçları. Hepsi çevrimdışı, yalnız 
 | `tools/sema_denetle.py` | arac | Sözleşmelerin desteklenen JSON Schema alt kümesinde kaldığını denetler; tek veriyi doğrular. | — |
 | `tools/okuma_yayini_uret.py` | arac | Web kapısı sayfalarını docs altındaki kaynaklardan üretir; --check sapmayı denetler. | — |
 | `tools/acilis.py` | arac | Açılış kaydını denetler; README, Web girişi, açılış ve teknik ek bloklarını üretir; yapı ve okunabilirlik denetimi. | — |
+| `tools/yol.py` | arac | Yolun ölçütlerini depoya karşı hesaplar, açılışla tutarlılığı denetler, yol sayfasını ve teknik eki üretir. | — |
+| `tools/cizim.py` | arac | Klavye çizimlerinin ortak kuralları: tek genişlikli karakterler, en çok 64 sütun, sekme ve satır sonu boşluğu yok. | — |
 | `tools/harita.py` | arac | Haritayı denetler: her dosya tek alanda, eski adlar, künyeler, komutlar; harita belgesini üretir. | — |
 | `tools/depo_tanimi.py` | arac | Depo tanımının ölçümlerini depodan üretir ve denetler. | — |
 | `tools/simdi_ve_sonrasi.py` | arac | Şimdi ve sonrası kaydını denetler; senaryo sırasını ve ölçümleri verir. | `tools/rafine_sorulari.py` |
@@ -275,6 +298,7 @@ Aşağıdaki komutlar depo kökünden çalışır ve Python'un standart kütüph
 | `tools/sema_denetle.py` | `python tools/sema_denetle.py` | evet |
 | `tools/okuma_yayini_uret.py` | `python tools/okuma_yayini_uret.py --check` | evet |
 | `tools/acilis.py` | `python tools/acilis.py --check` | evet |
+| `tools/yol.py` | `python tools/yol.py --check` | evet |
 | `tools/harita.py` | `python tools/harita.py --check` | evet |
 | `tools/depo_tanimi.py` | `python tools/depo_tanimi.py --check` | evet |
 | `tools/simdi_ve_sonrasi.py` | `python tools/simdi_ve_sonrasi.py --check` | evet |
@@ -348,10 +372,13 @@ Yeni belgeler ve kayıtlar künyeleriyle kaynak gösterilebilir. Deponun tamamı
 | `docs/README.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/harita.json` | belgeleri arayan okuyucu |
 | `docs/acilis.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/acilis.json` | ilk kez gelen okuyucu |
 | `docs/acilis.json` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `kopru.html` | araçlar ve kaynak gösterecek alanlar |
+| `docs/yol.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/yol.json`, `docs/acilis.json` | açılışın nasıl gerçeğe döneceğini merak eden okuyucu |
+| `docs/yol.json` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/acilis.json`, `docs/gecmis/simdi-ve-sonrasi.json`, `docs/gecmis/rafine/claude-code-bulut-2026-10-28-bulgular.json` | araçlar ve yolu temel alacak alanlar |
 | `docs/harita.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/harita.json` | depoda yolunu arayan okuyucu |
 | `docs/harita.json` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `README.md` | araçlar ve depoyu temel alacak alanlar |
 | `docs/teknik/README.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/harita.json` | kurulum ya da katkı için gelen okuyucu |
 | `docs/teknik/acilis-teknik.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/acilis.json` | açılışın dayanağını arayan okuyucu |
+| `docs/teknik/yol-teknik.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/yol.json` | adımı atacak ya da denetleyecek kişi |
 | `docs/gecmis/README.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/gecmis/rafine/claude-code-bulut-2026-10-28-surec.md` | geçmişi arayan okuyucu |
 
 <!-- /uretilen:harita -->

@@ -1,0 +1,406 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ortak Köprü yolu v1: açılıştan gerçeğe",
+  "description": "Açılıştaki niyeti ve altı ilkeyi gerçeğe dönüştürecek adımlar. Her adım bağlandığı ilkeleri, ön koşullarını, gerekiyorsa sahibinin vereceği kararı, sade ve teknik anlatımını, geri alma yolunu ve makinece sınanan ölçütlerini taşır. Adımların durumu yazılmaz; tools/yol.py ölçütleri depoya karşı hesaplar, açılıştaki ilke durumlarıyla tutarlılığı denetler ve docs/yol.md ile docs/teknik/yol-teknik.md belgelerini bu kayıttan üretir.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "hazirlayan",
+    "hazirlandi",
+    "amac",
+    "giris",
+    "varilacak_yer",
+    "plan",
+    "izleme",
+    "okur",
+    "teknik_giris",
+    "cizimler",
+    "adimlar"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "kind": {
+      "const": "ortak_kopru_yol"
+    },
+    "hazirlayan": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "hazirlandi": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "amac": {
+      "type": "string",
+      "minLength": 1
+    },
+    "giris": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "varilacak_yer": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "plan": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "izleme": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "okur": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "teknik_giris": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "cizimler": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/cizim"
+      }
+    },
+    "adimlar": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/adim"
+      }
+    }
+  },
+  "$defs": {
+    "cizim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kimlik",
+        "tur",
+        "yer",
+        "bolum",
+        "baslik",
+        "metin"
+      ],
+      "description": "Klavye çizimi: ressam (manzara), mimar (plan, kesit), mühendis (akış, durum, ölçü). Kuralları tools/cizim.py denetler.",
+      "properties": {
+        "kimlik": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "tur": {
+          "enum": [
+            "ressam",
+            "mimar",
+            "muhendis"
+          ]
+        },
+        "yer": {
+          "enum": [
+            "belge",
+            "teknik"
+          ]
+        },
+        "bolum": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baslik": {
+          "type": "string",
+          "minLength": 1
+        },
+        "metin": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "adim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "no",
+        "kimlik",
+        "ad",
+        "ilkeler",
+        "zorunlu",
+        "onkosul",
+        "karar",
+        "buyukluk",
+        "sade",
+        "teknik",
+        "olcutler"
+      ],
+      "properties": {
+        "no": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "kimlik": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "ad": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ilkeler": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          }
+        },
+        "zorunlu": {
+          "type": "boolean",
+          "description": "Yanlışsa adım ufuktadır; ilkelerin tam işlemesi bu adımı beklemez."
+        },
+        "onkosul": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$"
+          }
+        },
+        "bulgular": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^R-[0-9]{2}$"
+          }
+        },
+        "senaryolar": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^S[0-9]{2}$"
+          }
+        },
+        "karar": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/karar"
+            }
+          ]
+        },
+        "buyukluk": {
+          "enum": [
+            "küçük",
+            "orta",
+            "büyük"
+          ]
+        },
+        "sade": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ne",
+            "neden",
+            "nerede",
+            "yon",
+            "nasil",
+            "sonra"
+          ],
+          "description": "İlk kez gelen okuyucu için dokuz sorunun sade yanıtları (ne, neden, nerede, nereden nereye, nasıl, bitince); ne zaman, ne için ve ne kadar alanlardan üretilir. Okunabilirlik denetiminden geçer.",
+          "properties": {
+            "ne": {
+              "type": "string",
+              "minLength": 1
+            },
+            "neden": {
+              "type": "string",
+              "minLength": 1
+            },
+            "nerede": {
+              "type": "string",
+              "minLength": 1
+            },
+            "yon": {
+              "type": "string",
+              "minLength": 1
+            },
+            "nasil": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sonra": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "teknik": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "nerede",
+            "yon",
+            "nasil",
+            "geri_alma"
+          ],
+          "properties": {
+            "nerede": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "yon": {
+              "type": "string",
+              "minLength": 1
+            },
+            "nasil": {
+              "type": "string",
+              "minLength": 1
+            },
+            "geri_alma": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "olcutler": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/olcut"
+          }
+        }
+      }
+    },
+    "karar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kim",
+        "soru",
+        "verildi"
+      ],
+      "properties": {
+        "kim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "soru": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verildi": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "tarih",
+                "yanit"
+              ],
+              "properties": {
+                "tarih": {
+                  "type": "string",
+                  "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                },
+                "yanit": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "olcut": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tur"
+      ],
+      "description": "dosya_var (yol), dosya_icerir ve dosya_icermez (yol, desen), test_var (yol, ad), bulgu_kapali (kimlik), elle (aciklama, en_az, kanit).",
+      "properties": {
+        "tur": {
+          "enum": [
+            "dosya_var",
+            "dosya_icerir",
+            "dosya_icermez",
+            "test_var",
+            "bulgu_kapali",
+            "elle"
+          ]
+        },
+        "yol": {
+          "type": "string",
+          "minLength": 1
+        },
+        "desen": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ad": {
+          "type": "string",
+          "pattern": "^test_[a-z0-9_]+$"
+        },
+        "kimlik": {
+          "type": "string",
+          "pattern": "^R-[0-9]{2}$"
+        },
+        "aciklama": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en_az": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "kanit": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^https://\\S+$"
+          }
+        }
+      }
+    }
+  }
+}

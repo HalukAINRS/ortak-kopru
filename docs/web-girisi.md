@@ -2,7 +2,7 @@
 
 <!-- uretilen:acilis -->
 
-Bu bölüm açılışın kısa hâlidir. İlk kez geliyorsanız uzun ve sade anlatım [açılış sayfasındadır](acilis.md).
+Bu bölüm açılışın kısa hâlidir. İlk kez geliyorsanız uzun ve sade anlatım [açılış sayfasındadır](acilis.md). Niyetin adım adım nasıl gerçeğe döneceği [yol sayfasındadır](yol.md).
 
 ## Niyet
 

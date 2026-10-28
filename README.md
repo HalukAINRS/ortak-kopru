@@ -2,7 +2,7 @@
 
 <!-- uretilen:acilis -->
 
-Bu bölüm açılışın kısa hâlidir. İlk kez geliyorsanız uzun ve sade anlatım [açılış sayfasındadır](docs/acilis.md).
+Bu bölüm açılışın kısa hâlidir. İlk kez geliyorsanız uzun ve sade anlatım [açılış sayfasındadır](docs/acilis.md). Niyetin adım adım nasıl gerçeğe döneceği [yol sayfasındadır](docs/yol.md).
 
 ## Niyet
 
@@ -41,5 +41,7 @@ Ortak Köprü iki şeydir. Bir kapı: bir bilgisayardaki çalışma ile internet
 İlk kez geliyorsanız [Açılış: Kapı ve Köprü](docs/acilis.md) sayfasını okuyun. Önceden bir şey bilmeniz gerekmez. Aynı sayfa [Web'de de](https://halukainrs.github.io/ortak-kopru/acilis.html) okunabilir.
 
 Bir sorunuz, kaynağınız ya da düzeltmeniz varsa GitHub'da [bir konu açın](https://github.com/HalukAINRS/ortak-kopru/issues/new); GitHub buna Issue der. Hangi yazıya karşılık verdiğinizi belirtmeniz yeter. Doğrudan değişiklik önermek için [katkı rehberine](CONTRIBUTING.md) bakın.
+
+Açılıştaki niyetin adım adım nasıl gerçeğe döneceğini, hangi adımın karar beklediğini ve hangisinin atılabileceğini [yol sayfası](docs/yol.md) gösterir.
 
 Bu yerin dosyaları alanlara ayrılmıştır. Hangi klasörün ne taşıdığını ve dosyaların birbirine nasıl bağlandığını [depo haritası](docs/harita.md) gösterir. Araçlar, kurulum ve denetimler [teknik ayrıntılar](docs/teknik/README.md) bölümünde, bugüne kadarki işler ve kayıtlar [geçmiş işler](docs/gecmis/README.md) bölümündedir.

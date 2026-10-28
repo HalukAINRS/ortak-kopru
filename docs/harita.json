@@ -122,6 +122,7 @@
       "kapsam": [
         "index.html",
         "acilis.html",
+        "yol.html",
         "mimari.html",
         "not-defteri.html",
         "durum.html",
@@ -145,6 +146,16 @@
           "ne": "Açılış: niyet ve altı ilke.",
           "uretilir": {
             "kaynak": "docs/acilis.md",
+            "arac": "tools/okuma_yayini_uret.py"
+          },
+          "denetim": "python tools/okuma_yayini_uret.py --check"
+        },
+        {
+          "yol": "yol.html",
+          "tur": "sayfa",
+          "ne": "Açılıştan gerçeğe: yol.",
+          "uretilir": {
+            "kaynak": "docs/yol.md",
             "arac": "tools/okuma_yayini_uret.py"
           },
           "denetim": "python tools/okuma_yayini_uret.py --check"
@@ -465,7 +476,9 @@
         "docs/acilis.json",
         "docs/web-girisi.md",
         "docs/harita.md",
-        "docs/harita.json"
+        "docs/harita.json",
+        "docs/yol.md",
+        "docs/yol.json"
       ],
       "dosyalar": [
         {
@@ -517,6 +530,43 @@
               "kopru.html"
             ],
             "okur": "araçlar ve kaynak gösterecek alanlar"
+          }
+        },
+        {
+          "yol": "docs/yol.md",
+          "tur": "belge",
+          "ne": "Açılıştan gerçeğe giden yol: adımlar, durumları, kararlar ve klavye çizimleri; ilk kez gelen okuyucu için.",
+          "uretilir": {
+            "kaynak": "docs/yol.json",
+            "arac": "tools/yol.py"
+          },
+          "denetim": "python tools/yol.py --check",
+          "kunye": {
+            "sahibi": "Haluk",
+            "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+            "tarih": "2026-10-28",
+            "kaynaklar": [
+              "docs/yol.json",
+              "docs/acilis.json"
+            ],
+            "okur": "açılışın nasıl gerçeğe döneceğini merak eden okuyucu"
+          }
+        },
+        {
+          "yol": "docs/yol.json",
+          "tur": "kayit",
+          "ne": "Yolun makine kaydı: adımlar, ilkelere bağları, ön koşullar, kararlar, ölçütler ve çizimler.",
+          "denetim": "python tools/yol.py --check",
+          "kunye": {
+            "sahibi": "Haluk",
+            "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+            "tarih": "2026-10-28",
+            "kaynaklar": [
+              "docs/acilis.json",
+              "docs/gecmis/simdi-ve-sonrasi.json",
+              "docs/gecmis/rafine/claude-code-bulut-2026-10-28-bulgular.json"
+            ],
+            "okur": "araçlar ve yolu temel alacak alanlar"
           }
         },
         {
@@ -610,6 +660,25 @@
               "docs/acilis.json"
             ],
             "okur": "açılışın dayanağını arayan okuyucu"
+          }
+        },
+        {
+          "yol": "docs/teknik/yol-teknik.md",
+          "tur": "belge",
+          "ne": "Yolun teknik eki: adım tablosu, ölçütler ve bugünkü değerleri, dokunacağı yerler, geri alma, akış çizimleri.",
+          "uretilir": {
+            "kaynak": "docs/yol.json",
+            "arac": "tools/yol.py"
+          },
+          "denetim": "python tools/yol.py --check",
+          "kunye": {
+            "sahibi": "Haluk",
+            "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+            "tarih": "2026-10-28",
+            "kaynaklar": [
+              "docs/yol.json"
+            ],
+            "okur": "adımı atacak ya da denetleyecek kişi"
           }
         },
         {
@@ -878,6 +947,12 @@
           "denetim": "python tools/sema_denetle.py"
         },
         {
+          "yol": "schemas/yol.schema.json",
+          "tur": "sozlesme",
+          "ne": "Açılıştan gerçeğe yol kaydı.",
+          "denetim": "python tools/sema_denetle.py"
+        },
+        {
           "yol": "schemas/rafine-bulgu.schema.json",
           "tur": "sozlesme",
           "ne": "Gözden geçirme bulguları.",
@@ -971,6 +1046,18 @@
           "ne": "Açılış kaydını denetler; README, Web girişi, açılış ve teknik ek bloklarını üretir; yapı ve okunabilirlik denetimi.",
           "calistir": "python tools/acilis.py --check",
           "yan_etkisiz": true
+        },
+        {
+          "yol": "tools/yol.py",
+          "tur": "arac",
+          "ne": "Yolun ölçütlerini depoya karşı hesaplar, açılışla tutarlılığı denetler, yol sayfasını ve teknik eki üretir.",
+          "calistir": "python tools/yol.py --check",
+          "yan_etkisiz": true
+        },
+        {
+          "yol": "tools/cizim.py",
+          "tur": "arac",
+          "ne": "Klavye çizimlerinin ortak kuralları: tek genişlikli karakterler, en çok 64 sütun, sekme ve satır sonu boşluğu yok."
         },
         {
           "yol": "tools/harita.py",

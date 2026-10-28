@@ -1,0 +1,405 @@
+{
+  "schema_version": 1,
+  "kind": "ortak_kopru_yol",
+  "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+  "hazirlandi": "2026-10-28T15:15:00Z",
+  "amac": "Açılıştaki niyeti ve altı ilkeyi, her adımı ölçülebilir bir yolla gerçeğe dönüştürmek.",
+  "giris": [
+    "Açılış, Ortak Köprü'nün ne olmak istediğini söylüyor. Bu sayfa, oraya nasıl varılacağını adım adım gösteriyor. Her adım için neyin değişeceği, neden gerektiği, ne zaman atılabileceği ve bitince sizin için neyin değişeceği yazılı.",
+    "Bu yol kendini denetler. Her adımın ölçütü var ve ölçütler her değişiklikte yeniden sınanıyor. Bir adım bitince bu sayfa da, açılıştaki durum yazısı da değişmek zorunda. Ölçütler ve dosyalar [yolun teknik ekinde](teknik/yol-teknik.md), bu yolun nasıl ortaya çıktığı [geçmiş işler](gecmis/README.md) bölümünde duruyor."
+  ],
+  "varilacak_yer": [
+    "Yolun sonunda Ortak Köprü, açılışta söylediği şey olur. Yerel kullanıcı neyi paylaşacağını seçer ve seçtiği şey kaynağıyla dışarı çıkar. Dışarıdaki biri bir paragrafı okur, aklına takılanı o paragrafın yanına yazar. Yazdığı şey yerel kullanıcının önüne düşer, karşılığı aynı yoldan geri döner. Her adım kayda geçer ve hiçbir şey olduğundan fazla gösterilmez.",
+    "Aşağıdaki resim bunu bir manzara gibi gösteriyor. Solda yerel kullanıcının çalışma yeri ve kapısı var. Ortada iki yöne taşıyan köprü, sağda dışarıdaki insanlar duruyor. Aşağıdan kapıya uzanan kesik çizgi, bugünden oraya giden yol."
+  ],
+  "plan": [
+    "Aşağıdaki plan, Ortak Köprü'yü üstten görülen bir yapı gibi gösterir. Solda yerel kullanıcının odası, sağda dış avlu var. Aradaki duvarda tek bir kapı bulunuyor. Oklar neyin hangi yönde geçtiğini, parantez içindeki sayılar o geçişi koruyan ilkeyi gösteriyor.",
+    "Plan bugün yarı yarıya gerçek. Seçilen dosyaların dışarı çıkışı ve kaynakların sürümüyle içeri girişi çalışıyor. Soruların gelen kutusuna inmesi ve yanıtın aynı yoldan dönmesi henüz yok. Yol, eksik okları tek tek çiziyor."
+  ],
+  "izleme": [
+    "Her adımın yanında bir durum yazar: tamam, atılabilir, karar bekliyor, ön koşul bekliyor, dışarıdan bekleniyor ya da ufukta. Bu durumlar elle yazılmaz; ölçütlerden hesaplanır. Bir adımın bütün ölçütleri karşılandığında adım tamam olur.",
+    "Bir ilkeye bağlı bütün zorunlu adımlar bitince, açılışta o ilkenin durumu güncellenmek zorundadır. Güncellenmezse denetim kırılır. Tersine, bir ilke tam işliyor diye yazılmışsa ona bağlı açık bir adım kalamaz."
+  ],
+  "okur": [
+    "Bu yolun en kısa adımı sizin elinizde. Açılışı ya da bu sayfayı okuyup bir soru sorar, bir kaynak ya da düzeltme getirirseniz dışarıdan gelen ilk katkı gerçekleşmiş olur. Bunun için [GitHub'da bir konu açın](https://github.com/HalukAINRS/ortak-kopru/issues/new); GitHub buna Issue der.",
+    "Hangi yazıya ve hangi adıma karşılık verdiğinizi yazmanız yeter. Bir adımın nasıl atılacağına dair öneriniz varsa onu da yazabilirsiniz. Öneriler yerel kullanıcının kararına sunulur, kendiliğinden uygulanmaz."
+  ],
+  "teknik_giris": [
+    "Bu ek, açılıştan gerçeğe giden yolun teknik karşılığıdır. Her adımın bağlantıları, ölçütleri, ölçütlerin bugünkü değerleri, dokunacağı yerler ve geri alma yolu burada durur. Sade anlatım yol sayfasındadır.",
+    "Kayıt `docs/yol.json`, sözleşmesi `schemas/yol.schema.json`, aracı `tools/yol.py`. `python tools/yol.py --check` ölçütleri depoya karşı hesaplar, adımların ön koşul sırasını ve ilkelerle açılış arasındaki tutarlılığı denetler, iki belgenin kayıtla eşliğini sınar. `python tools/yol.py --durum` her adımın hesaplanan durumunu JSON olarak verir."
+  ],
+  "cizimler": [
+    {
+      "kimlik": "varilacak-yer",
+      "tur": "ressam",
+      "yer": "belge",
+      "bolum": "varilacak_yer",
+      "baslik": "Varılacak yer",
+      "metin": "                \\   |   /\n              ─   .───.   ─        varılacak yer\n   ____________  (     )  ______________________________\n               \\__`───'__/\n  ┌─────────┐                                o    o\n  │ yerel   │    ╔═════════════════════╗    /|\\  /|\\\n  │ çalışma ├════╣ ← soru, katkı       ╠════ / \\  / \\\n  │  ┌──┐   │    ║        yanıt, kayıt →║   dışarıdaki\n  └──┤░░├───┘    ╚═════════════════════╝   insanlar\n     └┬─┘ kapı ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n      :\n      :  yol: altı adım\n      :\n      x  bugün buradayız"
+    },
+    {
+      "kimlik": "yapinin-plani",
+      "tur": "mimar",
+      "yer": "belge",
+      "bolum": "plan",
+      "baslik": "Yapının planı",
+      "metin": "  PLAN · üstten görünüş                     ölçek: yok\n  ┌────────────────────────────┬──────┬──────────────────────┐\n  │ YEREL ODA                  │      │ DIŞ AVLU · Web       │\n  │                            │      │                      │\n  │ [çalışma]─▶[seçilen]────────────────▶[yayın]        (3)  │\n  │              (2)           │  K   │                      │\n  │ [gelen kutusu]◀──────────────────────[kaynak]       (3)  │\n  │      │ (1)                 │  A   │                      │\n  │      ▼                     │  P   │                      │\n  │ [yerel kullanıcı]◀───────────────────[soru, katkı]  (5)  │\n  │      └──────────────────────────────▶[yanıt]        (1)  │\n  │                            │  I   │                      │\n  │ duvar (4): gizli olan      │      │        [okur]        │\n  │ bu odadan çıkmaz           │      │                      │\n  └────────────────────────────┴──────┴──────────────────────┘\n   (6) her ok bir kayıt bırakır; hiçbir ok iz silmez"
+    },
+    {
+      "kimlik": "katkinin-yasami",
+      "tur": "muhendis",
+      "yer": "teknik",
+      "bolum": "akis",
+      "baslik": "Gelen bir katkının yaşamı",
+      "metin": "  GELEN BİR KATKININ YAŞAMI · durum makinesi\n\n  ┌───────────┐ konu     ┌───────────┐ kapı     ┌───────────┐\n  │ dışarıda  ├─────────▶│ Web'de    ├─────────▶│ gelen     │\n  │ bir fikir │ açılır   │ yayımda   │ çeker    │ kutusunda │\n  └───────────┘          └───────────┘          └──┬────────┘\n                                                   │ yerel\n                                                   │ kullanıcı\n                                                   ▼ okur\n  ┌───────────┐ yanıt    ┌───────────┐ karar    ┌───────────┐\n  │ bağlandı  │◀─────────┤ yanıtlandı│◀─────────┤ okundu    │\n  │ (5)       │ döner    │ (1)       │ verilir  │ (2)       │\n  └───────────┘          └───────────┘          └───────────┘\n  (6) her geçiş ayrı bir olaydır ve kayda geçer. Hiçbir\n  durum atlanmaz; yanıt gelmemesi kabul sayılmaz, katkı\n  'bekliyor' olarak görünür kalır."
+    },
+    {
+      "kimlik": "gelen-kutusu-sirasi",
+      "tur": "muhendis",
+      "yer": "teknik",
+      "bolum": "akis",
+      "baslik": "Gelen kutusu ve yanıt",
+      "metin": "  GELEN KUTUSU VE YANIT · sıra çizimi\n\n okur            Web           kapı      yerel kullanıcı\n   │              │              │              │\n   │ konu açar    │              │              │\n   ├─────────────▶│              │              │\n   │              │ kapı okur    │              │\n   │              │◀─────────────┤              │\n   │              ├─────────────▶│              │\n   │              │              │ kutuya koyar │\n   │              │              │ yazar, zaman │\n   │              │              │ ve yer ile   │\n   │              │              ├─────────────▶│\n   │              │              │              │ okur, karar\n   │              │              │              │ verir\n   │              │              │◀─────────────┤\n   │              │              │ yanıtı yazar │\n   │              │◀─────────────┤              │\n   │◀─────────────┤              │              │\n   │ yanıtı görür │              │              │\n   │              │              │              │\n  Her ok ayrı bir olaydır. Belirsiz kalan bir yazma,\n  gönderimde olduğu gibi uzlaştırılmadan yapıldı sayılmaz."
+    }
+  ],
+  "adimlar": [
+    {
+      "no": 0,
+      "kimlik": "zemin",
+      "ad": "Zemin",
+      "ilkeler": [
+        3,
+        6
+      ],
+      "zorunlu": true,
+      "onkosul": [],
+      "karar": null,
+      "buyukluk": "orta",
+      "sade": {
+        "ne": "Açılış yazıldı, depo alanlarına ayrıldı ve kendini denetleyen bir harita kuruldu.",
+        "neden": "Bir yerin gerçeğe dönüştüğünü görebilmek için önce neyin söz verildiğini ve neyin bugün işlediğini ayırmak gerekir.",
+        "nerede": "Deponun kendisinde: açılışta, haritada ve denetimlerde.",
+        "yon": "İçeride kalır; dışarıya bir şey taşımaz.",
+        "nasil": "Niyet, altı ilke ve her ilkenin bugünkü durumu bir kayda yazıldı. Sayfalar o kayıttan üretiliyor ve her değişiklikte yeniden sınanıyor.",
+        "sonra": "Okuduğunuz her durum yazısı bir denetime dayanıyor. Bir şey değişirse yazı da değişmek zorunda."
+      },
+      "teknik": {
+        "nerede": [
+          "docs/acilis.json",
+          "docs/harita.json",
+          "tools/dogrula.py"
+        ],
+        "yon": "depo içi",
+        "nasil": "Açılış, harita ve tanım kayıtları; `tools/acilis.py`, `tools/harita.py` ve `tools/dogrula.py` ile üretim ve denetim.",
+        "geri_alma": "İlgili commit'ler geri alınır; kayıtlar ve belgeler önceki hâline döner."
+      },
+      "olcutler": [
+        {
+          "tur": "dosya_var",
+          "yol": "docs/acilis.json"
+        },
+        {
+          "tur": "dosya_var",
+          "yol": "docs/harita.json"
+        },
+        {
+          "tur": "dosya_icerir",
+          "yol": "tools/dogrula.py",
+          "desen": "tools/harita.py"
+        }
+      ]
+    },
+    {
+      "no": 1,
+      "kimlik": "sinir",
+      "ad": "Gönderici yalnız seçileni gönderir",
+      "ilkeler": [
+        2,
+        4
+      ],
+      "zorunlu": true,
+      "onkosul": [
+        "zemin"
+      ],
+      "bulgular": [
+        "R-17"
+      ],
+      "senaryolar": [
+        "S02"
+      ],
+      "buyukluk": "küçük",
+      "karar": {
+        "kim": "Haluk",
+        "soru": "Yerel gönderici, defter ve çağrı kayıtları dışındaki dosyaları göndermeyi bıraksın mı? Bırakırsa öteki dosyalar kapıdan, seçilerek gider.",
+        "verildi": null
+      },
+      "sade": {
+        "ne": "Yerel bilgisayardaki eski paylaşım aracı, yalnız ortak defteri ve çağrı kayıtlarını gönderecek biçimde daraltılır.",
+        "neden": "Bu araç bugün çalışma klasöründe unutulmuş herhangi bir dosyayı da herkese açık yere gönderebiliyor. Bu, yerel kullanıcının seçmediği bir şeyin dışarı çıkabilmesi demek.",
+        "nerede": "Yerel bilgisayardaki eski paylaşım aracında.",
+        "yon": "Yerel bilgisayardan Web'e giden çıkışta.",
+        "nasil": "Araç, bulut tarafındaki eşi gibi yalnız belirli dosyaları hazırlar. Başka bir dosyayı paylaşmak isteyen kapıyı kullanır; kapı yalnız seçileni taşır.",
+        "sonra": "Dışarı çıkan her şey bir seçimden geçmiş olur. Yerel merkez ve sınır ilkeleri bu açıdan tam işler."
+      },
+      "teknik": {
+        "nerede": [
+          "yerel/kopru_gonder.ps1",
+          "tests/test_powershell.py",
+          "docs/gecmis/rafine/claude-code-bulut-2026-10-28-bulgular.json"
+        ],
+        "yon": "yerel → Web",
+        "nasil": "`git add -A -- .` yerine, `.github/scripts/kopru_gonder.sh` gibi yalnız `kopru.html`, `ayna/kopru.html` ve `kayit/` hazırlanır; başka değişiklik varsa uyarı yazılır, o değişiklik gönderilmez. Sınama: izlenmeyen ilgisiz bir dosya yerelde kalır, uzak dala gitmez. R-17 kaydı `düzeltildi` olur.",
+        "geri_alma": "Değişikliği getiren commit geri alınır; gönderici eski kapsamına döner. Defter ve kayıtlar etkilenmez."
+      },
+      "olcutler": [
+        {
+          "tur": "dosya_icermez",
+          "yol": "yerel/kopru_gonder.ps1",
+          "desen": "git add -A"
+        },
+        {
+          "tur": "test_var",
+          "yol": "tests/test_powershell.py",
+          "ad": "test_sender_leaves_unselected_files_local"
+        },
+        {
+          "tur": "bulgu_kapali",
+          "kimlik": "R-17"
+        }
+      ]
+    },
+    {
+      "no": 2,
+      "kimlik": "katki-kalibi",
+      "ad": "Katkı kalıbı",
+      "ilkeler": [
+        5
+      ],
+      "zorunlu": true,
+      "onkosul": [
+        "zemin"
+      ],
+      "karar": null,
+      "buyukluk": "küçük",
+      "sade": {
+        "ne": "Her yazının her bölümünün yanında bir karşılık bağlantısı olur. Bağlantı, hangi yazıya ve hangi bölüme karşılık verildiğini kendiliğinden yazan bir katkı kalıbı açar.",
+        "neden": "Bugün bir soru sormak mümkün, ama sorunun hangi yazıya ait olduğunu soranın kendisi anlatmak zorunda. Getirilen şeyin etkilediği yere bağlanması kişinin dikkatine kalıyor.",
+        "nerede": "Web'deki okuma sayfalarında ve GitHub'daki konu açma ekranında.",
+        "yon": "Okurdan, okuduğu yazının yanına.",
+        "nasil": "GitHub'a bir katkı kalıbı eklenir: soru, kaynak ya da düzeltme seçilir, ilgili yerin adresi hazır gelir. Web sayfaları her bölüm için bu adresi taşıyan bağlantıyı üretir.",
+        "sonra": "Bir paragrafı okurken aklınıza takılanı tek tıkla yazabilirsiniz. Yazdığınız şey o paragrafa bağlı olarak görünür."
+      },
+      "teknik": {
+        "nerede": [
+          ".github/ISSUE_TEMPLATE/karsilik.yml",
+          "tools/okuma_yayini_uret.py",
+          "tests/test_okuma_yayini_uret.py"
+        ],
+        "yon": "Web → Web (okurdan yazıya)",
+        "nasil": "GitHub konu formu `karsilik.yml`: tür (soru, kaynak, düzeltme), `yer` (sayfa ve bölüm adresi) ve metin alanları. Okuma sayfası üreticisi her `h2` bölümüne `issues/new?template=karsilik.yml&yer=<sayfa#bölüm>` bağlantısı ekler. Markdown kaynakları değişmez; yalnız üretici ve sayfalar değişir.",
+        "geri_alma": "Form dosyası ve üretici değişikliği geri alınır, sayfalar yeniden üretilir. Açılmış konular GitHub'da kalır."
+      },
+      "olcutler": [
+        {
+          "tur": "dosya_var",
+          "yol": ".github/ISSUE_TEMPLATE/karsilik.yml"
+        },
+        {
+          "tur": "dosya_icerir",
+          "yol": "tools/okuma_yayini_uret.py",
+          "desen": "template=karsilik"
+        },
+        {
+          "tur": "test_var",
+          "yol": "tests/test_okuma_yayini_uret.py",
+          "ad": "test_each_section_offers_a_linked_reply"
+        }
+      ]
+    },
+    {
+      "no": 3,
+      "kimlik": "gelen-kutusu",
+      "ad": "Gelen kutusu",
+      "ilkeler": [
+        1,
+        2
+      ],
+      "zorunlu": true,
+      "onkosul": [
+        "katki-kalibi"
+      ],
+      "senaryolar": [
+        "S09"
+      ],
+      "buyukluk": "orta",
+      "karar": {
+        "kim": "Haluk",
+        "soru": "GitHub'a hangi yetkiyle bakılsın: yalnız herkese açık okumayla mı, kişisel bir anahtarla mı? Gelen kutusu bilgisayarda nerede dursun?",
+        "verildi": null
+      },
+      "sade": {
+        "ne": "Dışarıdan gelen sorular ve katkılar, yerel kullanıcının bilgisayarındaki ayrı bir gelen kutusuna iner.",
+        "neden": "Bugün dışarıdaki birinin sorusu yerel kullanıcıya ancak GitHub'ın kendi bildirimleriyle ulaşıyor. Köprünün dış ucu açık, ama iç ucu kapıya bağlı değil.",
+        "nerede": "Kapıda ve yerel kullanıcının bilgisayarında.",
+        "yon": "Web'den yerel bilgisayara.",
+        "nasil": "Kapıya yeni bir iş eklenir. Açık konuları okur ve her birini kimin, ne zaman yazdığıyla ve hangi yazıya bağlı olduğuyla gelen kutusuna koyar. Gelen kutusu yerel çalışmaya kendiliğinden karışmaz; yerel kullanıcı önce bakar.",
+        "sonra": "Sorunuz bir bildirime takılıp kalmaz. Yerel kullanıcının önüne, kaynağıyla birlikte düşer."
+      },
+      "teknik": {
+        "nerede": [
+          "src/ortak_kopru/gateway_cli.py",
+          "src/ortak_kopru/adapters/github.py",
+          "src/ortak_kopru/exchange.py",
+          "tests/test_gateway_inbox.py"
+        ],
+        "yon": "Web → yerel",
+        "nasil": "`kapi.py inbox`: GitHub REST `GET /repos/{owner}/{repo}/issues` (çekme istekleri hariç); her konu yazarı, `updated_at`, gövde karması ve formdaki `yer` alanıyla aktarım veritabanına gelen kayıt olarak yazılır. İçerik özel aktarım dizinindeki gelen kutusuna çıkarılır; depo çalışma ağacına yazılmaz. Kimliksiz okuma mümkün; oran sınırı ve belirteç kararı Haluk'ta.",
+        "geri_alma": "Komut kaldırılır. Gelen kutusu özel dizinde kalır; depoya hiçbir şey yazılmamıştır."
+      },
+      "olcutler": [
+        {
+          "tur": "dosya_icerir",
+          "yol": "src/ortak_kopru/gateway_cli.py",
+          "desen": "\"inbox\""
+        },
+        {
+          "tur": "test_var",
+          "yol": "tests/test_gateway_inbox.py",
+          "ad": "test_issue_lands_in_private_inbox_with_provenance"
+        }
+      ]
+    },
+    {
+      "no": 4,
+      "kimlik": "yanit-donusu",
+      "ad": "Yanıt geri döner",
+      "ilkeler": [
+        1
+      ],
+      "zorunlu": true,
+      "onkosul": [
+        "gelen-kutusu"
+      ],
+      "buyukluk": "orta",
+      "karar": {
+        "kim": "Haluk",
+        "soru": "Yanıtlar GitHub'a hangi hesapla yazılsın?",
+        "verildi": null
+      },
+      "sade": {
+        "ne": "Yerel kullanıcının gelen kutusundaki bir şeye verdiği karşılık, kapıdan geçerek soranın yanına döner.",
+        "neden": "Karşılıklılık yalnız gelmekle tamamlanmaz. Yanıtın da aynı yoldan, kaydıyla birlikte geri dönmesi gerekir.",
+        "nerede": "Kapıda ve GitHub'daki konunun altında.",
+        "yon": "Yerel bilgisayardan Web'e, soranın yanına.",
+        "nasil": "Kapıya bir iş daha eklenir. Yerel kullanıcının seçtiği yanıtı ilgili konuya yazar ve bunu ayrı bir olay olarak kaydeder. Yanıt yazılmadan gönderilmiş sayılmaz.",
+        "sonra": "Sorduğunuz şeyin karşılığını, sorduğunuz yerde görürsünüz. Karşılıklılık ilkesi tam işler."
+      },
+      "teknik": {
+        "nerede": [
+          "src/ortak_kopru/gateway_cli.py",
+          "src/ortak_kopru/adapters/github.py",
+          "tests/test_gateway_inbox.py"
+        ],
+        "yon": "yerel → Web",
+        "nasil": "`kapi.py reply`: gelen kutusundaki bir kaydın yanıtı `POST /repos/{owner}/{repo}/issues/{n}/comments` ile yazılır. İstek, yanıt ve belirsiz sonuç ayrı olaylardır; belirsiz sonuç gönderimdeki gibi `reconcile` ile uzlaştırılır.",
+        "geri_alma": "Komut kaldırılır. Yazılmış yorumlar GitHub'da silinmez; düzeltme yeni yorumla yapılır."
+      },
+      "olcutler": [
+        {
+          "tur": "dosya_icerir",
+          "yol": "src/ortak_kopru/gateway_cli.py",
+          "desen": "\"reply\""
+        },
+        {
+          "tur": "test_var",
+          "yol": "tests/test_gateway_inbox.py",
+          "ad": "test_reply_returns_to_issue_and_records_event"
+        }
+      ]
+    },
+    {
+      "no": 5,
+      "kimlik": "ilk-dis-katki",
+      "ad": "İlk dış katkı",
+      "ilkeler": [
+        5
+      ],
+      "zorunlu": true,
+      "onkosul": [
+        "katki-kalibi"
+      ],
+      "karar": null,
+      "buyukluk": "küçük",
+      "sade": {
+        "ne": "Haluk dışından biri bir soru, kaynak ya da düzeltme getirir ve bu katkı karşılık bulur.",
+        "neden": "Açık katılım ilkesi, yollar açık olduğu için değil, biri gerçekten geldiği için işler. Bugüne kadar dışarıdan kimse yazmadı.",
+        "nerede": "GitHub'da, herkese açık konular arasında.",
+        "yon": "Dışarıdaki birinden yerel kullanıcıya ve geri.",
+        "nasil": "Bu adım bir yazılımla atılmaz. Katkı kalıbı hazır olduktan sonra ilk dış katkının adresi ve ona verilen yanıtın adresi kayda yazılır.",
+        "sonra": "İlk katkı sizinki olabilir. O gün bu sayfadaki durum da değişir."
+      },
+      "teknik": {
+        "nerede": [
+          "docs/yol.json"
+        ],
+        "yon": "Web → yerel → Web",
+        "nasil": "Ölçüt elle doldurulur: `kanit` alanına Haluk dışından birinin açtığı konunun ve ona verilen yanıtın adresleri yazılır. Araç adreslerin biçimini denetler, içeriğini denetleyemez.",
+        "geri_alma": "Kanıt adresleri kayıttan çıkarılır; adım yeniden açık görünür."
+      },
+      "olcutler": [
+        {
+          "tur": "elle",
+          "aciklama": "Haluk dışından birinin açtığı konu ve ona verilen yanıtın adresi",
+          "en_az": 2,
+          "kanit": []
+        }
+      ]
+    },
+    {
+      "no": 6,
+      "kimlik": "kapinin-genislemesi",
+      "ad": "Kapı GitHub dışına açılır",
+      "ilkeler": [
+        1
+      ],
+      "zorunlu": false,
+      "onkosul": [
+        "yanit-donusu"
+      ],
+      "senaryolar": [
+        "S08"
+      ],
+      "buyukluk": "büyük",
+      "karar": {
+        "kim": "Haluk",
+        "soru": "Kapı hangi dış alana açılsın: bir dosya hizmetine mi, başka bir siteye mi?",
+        "verildi": null
+      },
+      "sade": {
+        "ne": "Kapı, GitHub'ın yanında ikinci bir dış alana da açılır; örneğin bir dosya hizmetine.",
+        "neden": "Niyet, Web ile yerel bilgisayar arasında bir kapıdan söz ediyor. Bugün Web tarafında yalnız GitHub var.",
+        "nerede": "Kapıda ve yeni dış alanda.",
+        "yon": "Yerel bilgisayar ile ikinci bir dış alan arasında, iki yönde.",
+        "nasil": "Kapının aktarım kuralları aynı kalır; yalnız yeni alan için bir bağlantı parçası eklenir. Seçim, kayıt ve sınırlar değişmez.",
+        "sonra": "Bu adım zorunlu değil. Altı ilke bu adım atılmadan da tam işleyebilir; bu adım ufuktadır."
+      },
+      "teknik": {
+        "nerede": [
+          "src/ortak_kopru/adapters/",
+          "src/ortak_kopru/gateway_cli.py"
+        ],
+        "yon": "yerel ↔ ikinci dış alan",
+        "nasil": "Yeni bir bağdaştırıcı GitHub bağdaştırıcısının sözleşmesini (plan, gönderim, uzlaştırma, kesin sürümden alma) aynen uygular; aktarım paketi ve olay kaydı değişmez.",
+        "geri_alma": "Bağdaştırıcı kaldırılır; GitHub yolu etkilenmez."
+      },
+      "olcutler": [
+        {
+          "tur": "elle",
+          "aciklama": "Kapının ikinci dış alana yaptığı bir aktarımın kaydı",
+          "en_az": 1,
+          "kanit": []
+        }
+      ]
+    }
+  ]
+}

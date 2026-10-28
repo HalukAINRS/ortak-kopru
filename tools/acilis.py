@@ -42,6 +42,7 @@ KAYIT = KOK / "docs" / "acilis.json"
 sys.dont_write_bytecode = True
 sys.path.insert(0, str(KOK / "tools"))
 
+import cizim  # noqa: E402
 import depo_tanimi  # noqa: E402
 import sema_denetle  # noqa: E402
 
@@ -167,9 +168,10 @@ def _durum_ozeti(veri: dict) -> str:
     return cumle + " Her ilke aşağıda kendi başlığında anlatılıyor."
 
 
-def _kisa_acilis(veri: dict, acilis_yolu: str) -> str:
+def _kisa_acilis(veri: dict, acilis_yolu: str, yol_yolu: str) -> str:
     """README ve Web girişi için aynı iskelet: 'Niyet', sonra altı ilke; her biri birer paragraf."""
-    parcalar = [f"Bu bölüm açılışın kısa hâlidir. İlk kez geliyorsanız uzun ve sade anlatım [açılış sayfasındadır]({acilis_yolu}).",
+    parcalar = [f"Bu bölüm açılışın kısa hâlidir. İlk kez geliyorsanız uzun ve sade anlatım [açılış sayfasındadır]({acilis_yolu}). "
+                f"Niyetin adım adım nasıl gerçeğe döneceği [yol sayfasındadır]({yol_yolu}).",
                 "## Niyet",
                 f"{veri['niyet']['sahibi']}, {_tarih(veri)}: **“{veri['niyet']['soz']}”**",
                 veri["sade_tanim"]]
@@ -180,11 +182,11 @@ def _kisa_acilis(veri: dict, acilis_yolu: str) -> str:
 
 
 def readme_blogu(veri: dict) -> str:
-    return _kisa_acilis(veri, "docs/acilis.md")
+    return _kisa_acilis(veri, "docs/acilis.md", "docs/yol.md")
 
 
 def web_blogu(veri: dict) -> str:
-    return _kisa_acilis(veri, "acilis.md")
+    return _kisa_acilis(veri, "acilis.md", "yol.md")
 
 
 def acilis_belgesi(veri: dict) -> str:
@@ -194,6 +196,10 @@ def acilis_belgesi(veri: dict) -> str:
              "sözleriyle şöyle yazdı:", f"**“{veri['niyet']['soz']}”**"]
     niyet += [_soru_paragrafi(veri, kok) for kok in belge["niyet"]["sorular"]]
     niyet += belge["niyet"]["paragraflar"]
+    if "cizim" in belge["niyet"]:
+        c = belge["niyet"]["cizim"]
+        tur = {"ressam": "ressam çizimi", "mimar": "mimar çizimi", "muhendis": "mühendis çizimi"}[c["tur"]]
+        niyet += [c["aciklama"], f"**{c['baslik']}** · {tur}", "```text\n" + c["metin"].rstrip("\n") + "\n```"]
     ilkeler = []
     for ilke in veri["ilkeler"]:
         ilkeler += [f"## {_baslik(ilke)}", f"**{ilke['ilke']}**", ilke["sade"]]
@@ -290,8 +296,11 @@ def _gorunen(metin: str) -> str:
 
 
 def okunabilirlik(ad: str, metin: str, sozluk_terimleri: list[str], ayrim_bagi: bool = False) -> list[str]:
-    """İlk kez gelen okuyucu için yazılmış metnin sade kalıp kalmadığını denetler."""
+    """İlk kez gelen okuyucu için yazılmış metnin sade kalıp kalmadığını denetler.
+
+    Klavye çizimleri (```text blokları) metin sayılmaz; onların kuralları tools/cizim.py'dedir."""
     hatalar = []
+    metin = cizim.cizimsiz(metin)
     if "`" in metin:
         hatalar.append(f"{ad}: kod biçimi (`) kullanılmış")
     gorunen = _gorunen(metin)
@@ -315,7 +324,7 @@ def okunabilirlik(ad: str, metin: str, sozluk_terimleri: list[str], ayrim_bagi: 
         hatalar.append(f"{ad}: ortalama cümle {sum(uzunluklar) / len(uzunluklar):.1f} kelime (en çok {ORTALAMA_CUMLE})")
     if ayrim_bagi:
         for hedef, adi in (("teknik", "teknik ayrıntılar"), ("gecmis", "geçmiş işler")):
-            if not re.search(r"\]\((?:docs/)?" + hedef + r"/(?:README\.md)?(?:#[^)]*)?\)", metin):
+            if not re.search(r"\]\((?:docs/)?" + hedef + r"/[^)\s]*\)", metin):
                 hatalar.append(f"{ad}: {adi} yerine ({hedef}/) bağlantı yok")
     return hatalar
 
@@ -323,7 +332,7 @@ def okunabilirlik(ad: str, metin: str, sozluk_terimleri: list[str], ayrim_bagi: 
 def yapi(ad: str, metin: str, beklenen: list[str]) -> list[str]:
     """Açılış metni paragraflardan oluşur: başlıklar 'Niyet' ve altı ilke, sırayla; liste, tablo, alıntı yok."""
     hatalar = []
-    duz = re.sub(r"<!--.*?-->", "", metin, flags=re.S)
+    duz = re.sub(r"<!--.*?-->", "", cizim.cizimsiz(metin), flags=re.S)
     bulunan = [m.group(1) for m in re.finditer(r"(?m)^## (.+)$", duz)]
     if bulunan[:len(beklenen)] != beklenen:
         hatalar.append(f"{ad}: başlık sırası {bulunan} (beklenen: {beklenen})")
@@ -344,6 +353,7 @@ def okunabilirlik_denetle(veri: dict) -> list[str]:
         metin = acilis.read_text(encoding="utf-8")
         hatalar += okunabilirlik("docs/acilis.md", metin, terimler, ayrim_bagi=True)
         hatalar += yapi("docs/acilis.md", metin, basliklar(veri))
+        hatalar += cizim.denetle("docs/acilis.md", metin)
     readme = KOK / "README.md"
     if readme.is_file():
         # README, GitHub'da ilk görülen sayfadır: açılış bloğuyla birlikte bütünü sade kalır ve iki ayrı yere yönlendirir.

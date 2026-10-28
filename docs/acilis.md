@@ -20,6 +20,24 @@ Ortak Köprü'yü kuran kişi Haluk. Bu yerin amacını 28 Ekim 2026 günü kend
 
 Bir kapıyı düşünün. İki odayı birbirine bağlar, ama ne zaman açılacağına ve içeri kimin gireceğine ev sahibi karar verir. Bir köprüyü düşünün. İki kıyıdaki insanların birbirine ulaşmasını sağlar. Ortak Köprü bu ikisini birlikte yapmaya çalışır. Bir yanda bir bilgisayar ve onun sahibi var, öbür yanda dış dünya ve oradaki insanlar.
 
+Aşağıdaki resim bu benzetmeyi çiziyor. Solda yerel kullanıcının bilgisayarı ve duvarındaki kapı, ortada ırmağın üstündeki köprü, sağda dışarıdaki insanlar var.
+
+**Kapı ve köprü** · ressam çizimi
+
+```text
+  ·   ·   ·   ·   ·   Web: dış dünya   ·   ·   ·   ·   ·   ·
+                                                o    o    o
+  ┌───────────────────┐                        /|\  /|\  /|\
+  │ yerel kullanıcının│                        / \  / \  / \
+  │    bilgisayarı    │   ╔═══════════════════╗ ─────────────
+  │                   │   ║ köprü: sorular,   ║  dışarıdaki
+  │  ┌──┐             ├═══╣ katkılar, yanıtlar╠═ insanlar
+  │  │░░│ kapı        │   ╚═══════════════════╝
+  └──┴──┴─────────────┘ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    duvar: gizli olan     ırmak: iki kıyı arasındaki mesafe
+    içeride kalır
+```
+
 Bu sayfada geçen birkaç kelime: **İnternet ve Web:** Bu sayfada ikisi aynı anlamda kullanılıyor: herkesin bir tarayıcıyla ulaşabildiği dış dünya. **Yerel kullanıcı:** Ortak Köprü'nün öbür ucundaki bilgisayarın sahibi. Bugün bu kişi Haluk. **GitHub:** Yazıların ve dosyaların herkese açık durduğu, insanların birlikte çalışmak için kullandığı bir internet sitesi. Ortak Köprü'nün dış yüzü orada. **Issue:** GitHub'da bir depoya soru, öneri ya da hata bildirimi yazmanın yolu. Okumak için hesap gerekmez; yazmak için ücretsiz bir GitHub hesabı yeter. **Sürüm:** Bir dosyanın belirli bir andaki hâli. Dosya sonradan değişse de alınan sürüm aynı kalır.
 
 Bu niyet altı ilkeyle işler. Bugün altısının ikisi tam olarak işliyor, dördü kısmen işliyor. Her ilke aşağıda kendi başlığında anlatılıyor.
@@ -96,7 +114,7 @@ Bir şeyin hazırlanmış olması, gönderildiği ya da okunduğu anlamına gelm
 
 **Nasıl?** Yerel kullanıcı paylaşmak istediği şeyi seçer. Kapı onu olduğu gibi saklar ve dışarı taşır. Dışarıdan bir şey alınırken hangi sürümün alındığı not edilir. Dışarıdaki biri yazılanı okur ve bir soru ya da katkı bırakır. Her adım ayrı ayrı kayda geçer.
 
-Bu sayfa da bu ilkeye uyar. Burada yazan her durum, her değişiklikte yeniden denetlenen bir kayda dayanır. Bir şey değişirse durum yazısı da değişir. Kısmen işleyen ilkeler için yapılacak iş belli: eski bir paylaşım aracının daraltılması ve dışarıdan gelen soruların yerel kullanıcıya kendiliğinden ulaşması.
+Bu sayfa da bu ilkeye uyar. Burada yazan her durum, her değişiklikte yeniden denetlenen bir kayda dayanır. Bir şey değişirse durum yazısı da değişir. Kısmen işleyen ilkeler için yapılacak iş belli: eski bir paylaşım aracının daraltılması ve dışarıdan gelen soruların yerel kullanıcıya kendiliğinden ulaşması. Bu işlerin hangi sırayla, kimin kararıyla ve nasıl ölçülerek yapılacağı [açılıştan gerçeğe giden yol](yol.md) sayfasında adım adım yazılı.
 
 **Bugün:** Tam olarak işliyor.
 

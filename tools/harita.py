@@ -10,7 +10,8 @@ nasıl çalıştırılıp denetlendiğini ve yeni belgelerin künyesini taşır.
   - eski adların tekil olması ve hiçbirinin bugün bir dosya olarak durmaması;
   - üretim kaynağının ve aracının, çalıştırma ve denetim komutlarının gösterdiği dosyaların var olması;
   - künyeli dosyalarda kaynakların var olması; künyeli belgelerin ilk paragrafının sade olması
-    (kod biçimi ve dosya adı yok, cümle en çok 30, ortalama en çok 18 kelime);
+    (kod biçimi ve dosya adı yok, cümle en çok 30, ortalama en çok 18 kelime) ve klavye
+    çizimlerinin tools/cizim.py kurallarına uyması;
   - CITATION.cff'nin var olması ve başlığı ile depo adresinin README ile uyuşması;
   - docs/harita.md içindeki üretilen bloğun kayıtla eşliği.
 
@@ -37,6 +38,7 @@ sys.dont_write_bytecode = True
 sys.path.insert(0, str(KOK / "tools"))
 
 import acilis  # noqa: E402
+import cizim  # noqa: E402
 import sema_denetle  # noqa: E402
 
 EN_UZUN_CUMLE = 30
@@ -153,7 +155,8 @@ def denetle(harita: dict, dosyalar: list[str] | None = None) -> list[str]:
             if not (KOK / hedef).exists():
                 hatalar.append(f"{yol}: gösterdiği dosya yok ({hedef})")
         if "kunye" in dosya and dosya["tur"] == "belge" and (KOK / yol).is_file():
-            hatalar += sade_paragraf(yol, ilk_paragraf((KOK / yol).read_text(encoding="utf-8")))
+            metin = (KOK / yol).read_text(encoding="utf-8")
+            hatalar += sade_paragraf(yol, ilk_paragraf(metin)) + cizim.denetle(yol, metin)
     for alan in harita["alanlar"]:
         if alan["her_dosya_tanimli"]:
             for yol in dosyalar:
@@ -183,11 +186,12 @@ def nerede(harita: dict, ad: str) -> list[str]:
 
 
 def _kok_agaci(harita: dict) -> str:
-    """Kökten görünen ağaç: her satır bir alanın kökteki dosyaları ya da klasörü; iç içe alanlar üst klasörün altında."""
-    kok, alt = [], {}
+    """Kökten görünen ağaç: kökteki her dosya ve klasör kendi satırında, alanın adı grubunun ilk satırında;
+    iç içe alanlar (docs/teknik/ gibi) üst klasörlerinin altında."""
+    gruplar, alt = [], {}
     for alan in harita["alanlar"]:
         parcalar = [d[:-2] if d.endswith("/**") else d for d in alan["kapsam"]]
-        if len(parcalar) == 1 and parcalar[0].count("/") >= 2:      # docs/teknik/ gibi iç içe alan
+        if len(parcalar) == 1 and parcalar[0].count("/") >= 2:
             ust = parcalar[0].split("/", 1)[0] + "/"
             alt.setdefault(ust, []).append((parcalar[0][len(ust):], alan["ad"]))
             continue
@@ -196,17 +200,17 @@ def _kok_agaci(harita: dict) -> str:
             ilk = oge.split("/", 1)[0] + ("/" if "/" in oge else "")
             if ilk not in ogeler:
                 ogeler.append(ilk)
-        gorunen = ", ".join(ogeler) if len(ogeler) <= 3 else f"{ogeler[0]}, {ogeler[1]} … ({len(ogeler)} dosya)"
-        kok.append((gorunen, alan["ad"], ogeler))
-    genislik = max([len(g) for g, _, _ in kok] + [len(a) + 4 for c in alt.values() for a, _ in c]) + 2
+        gruplar.append((alan["ad"], ogeler))
+    genislik = max(len(o) for _, ogeler in gruplar for o in ogeler) + 2
     satirlar = ["ortak-kopru/"]
-    for i, (gorunen, ad, ogeler) in enumerate(kok):
-        son = i == len(kok) - 1
-        satirlar.append(f"{'└──' if son else '├──'} {gorunen.ljust(genislik)}{ad}")
-        cocuklar = [c for oge in ogeler for c in alt.get(oge, [])]
+    duz = [(o, ad if i == 0 else "") for ad, ogeler in gruplar for i, o in enumerate(ogeler)]
+    for i, (oge, ad) in enumerate(duz):
+        son = i == len(duz) - 1
+        satirlar.append(f"{'└──' if son else '├──'} {oge.ljust(genislik)}{ad}".rstrip())
+        cocuklar = alt.get(oge, [])
         for j, (cocuk, cad) in enumerate(cocuklar):
             satirlar.append(f"{'    ' if son else '│   '}{'└──' if j == len(cocuklar) - 1 else '├──'} "
-                            f"{cocuk.ljust(genislik - 4)}{cad}")
+                            f"{cocuk.ljust(genislik - 4)}{cad}".rstrip())
     return "```text\n" + "\n".join(satirlar) + "\n```"
 
 

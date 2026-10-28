@@ -48,7 +48,7 @@ class HaritaTests(unittest.TestCase):
         self.assertEqual(dosyalar, sorted([
             ".gitattributes", ".gitignore", ".nojekyll", "CITATION.cff", "CONTRIBUTING.md", "README.md",
             "kapi.py", "deus.py", "Kopru_Izle.cmd", "kopru.html",
-            "index.html", "acilis.html", "mimari.html", "not-defteri.html", "durum.html", "kaynaklar.html", "okuma.css"]))
+            "index.html", "acilis.html", "yol.html", "mimari.html", "not-defteri.html", "durum.html", "kaynaklar.html", "okuma.css"]))
         agac = harita._kok_agaci(self.veri)
         for klasor in sorted(k for k in kok if k.endswith("/")):
             with self.subTest(klasor=klasor):

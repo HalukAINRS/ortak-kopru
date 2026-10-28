@@ -9,12 +9,13 @@ Bu sayfa, Ortak Köprü'nün teknik ayrıntılarını bir arada tutar: kapının
 | Kapının kullanımı: paylaşım ve kaynak alma komutları | [Kapı kullanımı](kapi-kullanimi.md) |
 | Kapının kapsamı ve kararı | [Dış alan kapısı](dis-alan-kapisi.md) · [Karar 0002](kararlar/0002-dis-alan-kapisi.md) |
 | Açılışın teknik karşılıkları: kesişimler, ilkelerin taşıyıcıları, denetim | [Açılışın teknik eki](acilis-teknik.md) |
+| Açılıştan gerçeğe yol: adımlar, ölçütler, kararlar, geri alma | [Yolun teknik eki](yol-teknik.md) · [Yol sayfası](../yol.md) |
 | Yerel iş bileşeni, devir ve yedek, NT sürücüsü | [deus_ex_machina](deus-ex-machina.md) · [Devam ve yedek](devam-ve-yedek.md) · [NT Kernel](nt-kernel.md) · [Karar 0001](kararlar/0001-deus-is-ve-nt.md) |
 | Bakım, doğrulama, iş akışları ve dal haritası | [Bakım rehberi](bakim.md) |
 | Depodaki alanlar, dosyalar, eski adlar ve dallar | [Depo haritası](../harita.md) · [Depo rehberi](depo-rehberi.md) · [Belge dizini](../README.md) |
 | Katılımcı hedefleme ve CLI talimatı | [Katman hedefleme](../../katilimcilar/katman-hedefleme.md) · [CLI talimat parçası](../../katilimcilar/AGENTS-kopru.md) |
 | Kod veya belge katkısı | [Katkı rehberi: teknik katkı](../../CONTRIBUTING.md#teknik-katkı) |
-| Makine kayıtları ve kaynak gösterme | [Harita](../harita.json) · [Açılış](../acilis.json) · [Depo tanımı](../gecmis/depo-tanimi.json) · [Senaryolar](../gecmis/simdi-ve-sonrasi.json) · [Künye](../../CITATION.cff) |
+| Makine kayıtları ve kaynak gösterme | [Harita](../harita.json) · [Açılış](../acilis.json) · [Yol](../yol.json) · [Depo tanımı](../gecmis/depo-tanimi.json) · [Senaryolar](../gecmis/simdi-ve-sonrasi.json) · [Künye](../../CITATION.cff) |
 
 ## Genel harita
 

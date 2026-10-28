@@ -114,7 +114,8 @@ class AcilisTests(unittest.TestCase):
 
     def test_first_contact_pages_pass_the_readability_check(self):
         self.assertEqual(acilis.okunabilirlik_denetle(self.veri), [])
-        acilis_metni = (ROOT / "docs" / "acilis.md").read_text(encoding="utf-8")
+        # Klavye çizimleri metin sayılmaz; çizimin dışında kod, iç kimlik ya da dosya adı yoktur.
+        acilis_metni = acilis.cizim.cizimsiz((ROOT / "docs" / "acilis.md").read_text(encoding="utf-8"))
         for yasak in ("`", "R-17", "S09", ".py", ".json"):
             with self.subTest(yasak=yasak):
                 self.assertNotIn(yasak, acilis_metni)

@@ -344,6 +344,38 @@
                 "type": "string",
                 "minLength": 1
               }
+            },
+            "cizim": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "baslik",
+                "tur",
+                "aciklama",
+                "metin"
+              ],
+              "description": "'Niyet' bölümünü destekleyen klavye çizimi; açıklama paragrafından sonra gelir. Kuralları tools/cizim.py denetler.",
+              "properties": {
+                "baslik": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "tur": {
+                  "enum": [
+                    "ressam",
+                    "mimar",
+                    "muhendis"
+                  ]
+                },
+                "aciklama": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "metin": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
             }
           }
         }

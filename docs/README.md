@@ -7,6 +7,7 @@ Bu klasör, Ortak Köprü'nün yazılı belgelerini üç yerde toplar. İlk kez 
 | Belge | Ne sağlar? |
 | --- | --- |
 | [Açılış: Kapı ve Köprü](acilis.md) | Deponun niyeti ve altı ilkesi, ilk kez gelen okuyucu için paragraflarla. Makine kaydı: [açılış kaydı](acilis.json). [Web'de oku](../acilis.html). |
+| [Açılıştan gerçeğe: yol](yol.md) | Niyetin adım adım gerçeğe dönüşmesi: her adımın durumu, kararı ve ölçütü; ressam, mimar ve mühendis çizimleriyle. Makine kaydı: [yol kaydı](yol.json). [Web'de oku](../yol.html). |
 | [Web girişi](web-girisi.md) | Web kapısının ilk sayfasının kaynak metni. [Web'de oku](../index.html). |
 | [Depo haritası](harita.md) | Her dosyanın alanı, tanımı, eski adı, çalıştırma komutu ve künyesi. Makine kaydı: [harita kaydı](harita.json). |
 
@@ -16,6 +17,7 @@ Araçlar, kurulum, doğrulama, otomasyon ve kararlar `teknik/` klasöründedir. 
 
 | Belge | Ne sağlar? |
 | --- | --- |
+| [Yolun teknik eki](teknik/yol-teknik.md) | Adım tablosu, ölçütler ve bugünkü değerleri, dokunacağı yerler, geri alma, akış çizimleri. |
 | [Açılışın teknik eki](teknik/acilis-teknik.md) | Tanımın tam hâli, beşli ve dörtlü sorular, 20 kesişim, ilkelerin taşıyıcıları ve açılışın denetimi. |
 | [Kapı kullanımı](teknik/kapi-kullanimi.md) · [Dış alan kapısı](teknik/dis-alan-kapisi.md) | Kapının komutları, sınırları ve kapsamı. |
 | [deus_ex_machina](teknik/deus-ex-machina.md) · [Devam ve yedek](teknik/devam-ve-yedek.md) · [NT Kernel](teknik/nt-kernel.md) | Yerel iş bileşeni, devir, yedek ve NT aygıt kapısı. |

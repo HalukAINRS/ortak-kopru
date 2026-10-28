@@ -22,6 +22,7 @@ REPO = 'https://github.com/HalukAINRS/ortak-kopru'
 PAGES = {
     'web-girisi.md': ('index.html', 'Ortak Köprü'),
     'acilis.md': ('acilis.html', 'Açılış: Kapı ve Köprü'),
+    'yol.md': ('yol.html', 'Açılıştan gerçeğe: yol'),
     'gecmis/ortak-mimari-defteri.md': ('mimari.html', 'Ortak Mimari Defteri'),
     'gecmis/anlam-not-defteri.md': ('not-defteri.html', 'Anlam ve Dönüş Defteri'),
     'gecmis/son-durum.md': ('durum.html', 'Son durum'),
@@ -147,7 +148,7 @@ def render(source: str, folder: str = '') -> tuple[str, list[tuple[str, str]]]:
 
 def page(filename: str, output_name: str, label: str) -> str:
     body, headings = render((ROOT / 'docs' / filename).read_text(encoding='utf-8'), posixpath.dirname(filename))
-    nav = ''.join(f'<a href="{target}"' + (' aria-current="page"' if target == output_name else '') + f'>{html.escape(name)}</a>' for target, name in [('index.html', 'Başlangıç'), ('acilis.html', 'Açılış'), ('mimari.html', 'Mimari defteri'), ('not-defteri.html', 'Not defteri'), ('durum.html', 'Son durum'), ('kaynaklar.html', 'Kaynaklar')])
+    nav = ''.join(f'<a href="{target}"' + (' aria-current="page"' if target == output_name else '') + f'>{html.escape(name)}</a>' for target, name in [('index.html', 'Başlangıç'), ('acilis.html', 'Açılış'), ('yol.html', 'Yol'), ('mimari.html', 'Mimari defteri'), ('not-defteri.html', 'Not defteri'), ('durum.html', 'Son durum'), ('kaynaklar.html', 'Kaynaklar')])
     contents = ''.join(f'<li><a href="#{anchor}">{html.escape(title)}</a></li>' for anchor, title in headings)
     title = label if output_name == 'index.html' else label + ' · Ortak Köprü'
     return f'''<!doctype html>

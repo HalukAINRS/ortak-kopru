@@ -51,6 +51,8 @@ KONTROLLER: list[tuple[str, str, list[str], str | None]] = [
      [sys.executable, str(KOK / "tools/simdi_ve_sonrasi.py"), "--check"], None),
     ("acilis", "Açılış: niyet ve altı ilke, kayıtla eşlik, yapı ve okunabilirlik",
      [sys.executable, str(KOK / "tools/acilis.py"), "--check"], None),
+    ("yol", "Açılıştan gerçeğe yol: ölçütler, ön koşullar, açılışla tutarlılık ve iki belge",
+     [sys.executable, str(KOK / "tools/yol.py"), "--check"], None),
     ("harita", "Depo haritası: her dosya tek alanda, eski adlar, künyeler ve harita belgesi",
      [sys.executable, str(KOK / "tools/harita.py"), "--check"], None),
     ("arayuz", "Yerel arayüz JavaScript sözdizimi",

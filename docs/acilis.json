@@ -447,7 +447,7 @@
         "nasil"
       ],
       "anlatim": [
-        "Bu sayfa da bu ilkeye uyar. Burada yazan her durum, her değişiklikte yeniden denetlenen bir kayda dayanır. Bir şey değişirse durum yazısı da değişir. Kısmen işleyen ilkeler için yapılacak iş belli: eski bir paylaşım aracının daraltılması ve dışarıdan gelen soruların yerel kullanıcıya kendiliğinden ulaşması."
+        "Bu sayfa da bu ilkeye uyar. Burada yazan her durum, her değişiklikte yeniden denetlenen bir kayda dayanır. Bir şey değişirse durum yazısı da değişir. Kısmen işleyen ilkeler için yapılacak iş belli: eski bir paylaşım aracının daraltılması ve dışarıdan gelen soruların yerel kullanıcıya kendiliğinden ulaşması. Bu işlerin hangi sırayla, kimin kararıyla ve nasıl ölçülerek yapılacağı [açılıştan gerçeğe giden yol](yol.md) sayfasında adım adım yazılı."
       ]
     }
   ],
@@ -495,7 +495,13 @@
       ],
       "paragraflar": [
         "Bir kapıyı düşünün. İki odayı birbirine bağlar, ama ne zaman açılacağına ve içeri kimin gireceğine ev sahibi karar verir. Bir köprüyü düşünün. İki kıyıdaki insanların birbirine ulaşmasını sağlar. Ortak Köprü bu ikisini birlikte yapmaya çalışır. Bir yanda bir bilgisayar ve onun sahibi var, öbür yanda dış dünya ve oradaki insanlar."
-      ]
+      ],
+      "cizim": {
+        "baslik": "Kapı ve köprü",
+        "tur": "ressam",
+        "aciklama": "Aşağıdaki resim bu benzetmeyi çiziyor. Solda yerel kullanıcının bilgisayarı ve duvarındaki kapı, ortada ırmağın üstündeki köprü, sağda dışarıdaki insanlar var.",
+        "metin": "  ·   ·   ·   ·   ·   Web: dış dünya   ·   ·   ·   ·   ·   ·\n                                                o    o    o\n  ┌───────────────────┐                        /|\\  /|\\  /|\\\n  │ yerel kullanıcının│                        / \\  / \\  / \\\n  │    bilgisayarı    │   ╔═══════════════════╗ ─────────────\n  │                   │   ║ köprü: sorular,   ║  dışarıdaki\n  │  ┌──┐             ├═══╣ katkılar, yanıtlar╠═ insanlar\n  │  │░░│ kapı        │   ╚═══════════════════╝\n  └──┴──┴─────────────┘ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    duvar: gizli olan     ırmak: iki kıyı arasındaki mesafe\n    içeride kalır"
+      }
     }
   }
 }

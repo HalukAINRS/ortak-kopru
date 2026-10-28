@@ -461,7 +461,7 @@ Bu turda tamamlanan ortak iş, üç açıklamanın aynı mimari tarifte buluşma
 
 Bu defter, 33×8 yerleşimini, serbest döngü ilişkilerini, dört dışavurum işlevini ve tek noktada buluşma biçimini birlikte tarif eder. Çekirdek açıklamanın tamamlanması, yeni varyantların veya yeni anlamların sona ermesi anlamına gelmez. Kullanıcının sonraki sözü ve uygulamadan gelen karşılık, ilgili açıklamayı geliştirebilir.
 
-Bu defterin Web görünümü, ana kaynak metinden üretilen altı ortak okuma sayfasından biridir. Yayın denetimi, kaynak değişince sayfanın da değişmesini kontrol eder. Kaynak metin, değişiklik geçmişi ve okuyucunun katkı yolu aynı ortak depoda birbirine bağlıdır.
+Bu defterin Web görünümü, ana kaynak metinden üretilen yedi ortak okuma sayfasından biridir. Yayın denetimi, kaynak değişince sayfanın da değişmesini kontrol eder. Kaynak metin, değişiklik geçmişi ve okuyucunun katkı yolu aynı ortak depoda birbirine bağlıdır.
 
 Hedef bilgisayardaki canlı CLI bağlantısı, kendi ortamında gözlenebilir bir denemeyle doğrulanacak uygulama işidir. Önümüzdeki küçük denemede aynı işin girdisi, yerel sonucu ve ortak kaydı birbirine bağlanabilir. Bu sayfanın yayımlanmış olması, hedef bilgisayarda o denemenin yapılmış olduğunu göstermez.
 
