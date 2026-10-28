@@ -67,7 +67,7 @@
           "ad": "Kanonik yerel kopya",
           "aciklama": "Y:\\HalukAI\\Ortak_Kopru\\kopru\\ klasörü deponun kökü olarak tanımlanır; bu oturumdan görülemez.",
           "durum": "beyan",
-          "dayanak": "README.md#yerleştirme"
+          "dayanak": "docs/TEKNIK.md#yerleştirme"
         },
         {
           "ad": "Özel çalışma alanı",
@@ -112,7 +112,7 @@
           "ad": "Bakım, iş çekirdeği ve kapı birleşmeleri",
           "aciklama": "PR #10, #12, #13 ve #14 ana dala girdi.",
           "durum": "gözlendi",
-          "dayanak": "README.md#değişiklik-geçmişi",
+          "dayanak": "docs/GECMIS.md#değişiklik-geçmişi",
           "zaman": "2026-10-26T16:00:45Z"
         },
         {
@@ -162,18 +162,18 @@
         }
       ],
       "olcumler": {
-        "izlenen_dosya": 257,
+        "izlenen_dosya": 261,
         "python_dosyasi": 54,
-        "python_satiri": 12485,
+        "python_satiri": 12664,
         "paket_modulu": 13,
         "paket_satiri": 3831,
         "test_dosyasi": 23,
-        "test_yontemi": 291,
+        "test_yontemi": 296,
         "json_sozlesmesi": 10,
         "is_akisi": 3,
         "powershell_betigi": 4,
-        "belge": 21,
-        "okuma_sayfasi": 5,
+        "belge": 24,
+        "okuma_sayfasi": 6,
         "dogrulama_kontrolu": 10,
         "kopru_kaydi": 179,
         "acik_durumlu_kayit": 167,
@@ -215,7 +215,7 @@
           "ad": "Kayıtların giriş yolları",
           "aciklama": "Web asistanlarının JSON yanıtları, yerel CLI katmanları, GitHub Actions botu ve Haluk'un kendi eklemeleri; hepsi kayıt ekleyiciden geçer.",
           "durum": "gözlendi",
-          "dayanak": "README.md#chatgpt-ve-gemini-nasıl-bağlanır"
+          "dayanak": "docs/TEKNIK.md#chatgpt-ve-gemini-nasıl-bağlanır"
         },
         {
           "ad": "Dış kaynak tedariki",
@@ -365,7 +365,7 @@
           "ad": "Kapının genişlemesi",
           "aciklama": "Genel gelen/giden ekranı, GitHub dışı dosya hizmeti bağlayıcıları ve genel dış iş talebi akışı sonraki geliştirmeler olarak tanımlı.",
           "durum": "beyan",
-          "dayanak": "README.md#güncel-yön-dış-alanlara-açılan-kapı"
+          "dayanak": "docs/TEKNIK.md#güncel-yön-dış-alanlara-açılan-kapı"
         },
         {
           "ad": "Açık taslak PR'lar",

@@ -1,4 +1,4 @@
-"""Açılış kaydı (docs/acilis.json): niyet, beşli ve dörtlü, 20 kesişim, altı ilke ve üç yüzün eşliği.
+"""Açılış kaydı (docs/acilis.json): niyet, beşli ve dörtlü, 20 kesişim, altı ilke, dört yüzün eşliği ve sade açılışın okunabilirliği.
 
 Gerçek kayıt ve sentetik bozulmalar kullanılır; ağ, sağlayıcı veya kanonik defter yazımı yoktur.
 """
@@ -110,6 +110,67 @@ class AcilisTests(unittest.TestCase):
         satirlar = acilis.matris(self.veri).strip().splitlines()
         self.assertEqual(len(satirlar), 2 + 5)
         self.assertTrue(all(satir.count(" | ") == 4 for satir in satirlar[2:]))
+
+    def test_first_contact_pages_pass_the_readability_check(self):
+        self.assertEqual(acilis.okunabilirlik_denetle(self.veri), [])
+        acilis_metni = (ROOT / "docs" / "ACILIS.md").read_text(encoding="utf-8")
+        for yasak in ("`", "R-17", "S09", ".py", ".json"):
+            with self.subTest(yasak=yasak):
+                self.assertNotIn(yasak, acilis_metni)
+        self.assertNotIn("|", acilis_metni, "sade açılış belgesi tablo taşımaz")
+
+    def test_readability_rejects_code_files_ids_and_unexplained_jargon(self):
+        terimler = [madde["terim"] for madde in self.veri["sozluk"]]
+        temiz = "Bu yer bir kapıdır. Dosyalar buradan geçer."
+        self.assertEqual(acilis.okunabilirlik("örnek", temiz, terimler), [])
+        hatalar = acilis.okunabilirlik("örnek", "Kapıyı `kapi.py` açar.", terimler)
+        self.assertTrue(any("kod biçimi" in h for h in hatalar), hatalar)
+        hatalar = acilis.okunabilirlik("örnek", "Ayrıntı docs/kapi.json içinde.", terimler)
+        self.assertTrue(any("dosya adı" in h for h in hatalar), hatalar)
+        hatalar = acilis.okunabilirlik("örnek", "Bu iş 47066cc ile geldi.", terimler)
+        self.assertTrue(any("commit kimliği" in h for h in hatalar), hatalar)
+        for kimlik in ("R-17", "S09", "k-0179"):
+            with self.subTest(kimlik=kimlik):
+                hatalar = acilis.okunabilirlik("örnek", f"Açık iş {kimlik} olarak duruyor.", terimler)
+                self.assertTrue(any("iç kimlik" in h for h in hatalar), hatalar)
+        hatalar = acilis.okunabilirlik("örnek", "Her gönderimde CI çalışır.", terimler)
+        self.assertTrue(any("'CI'" in h for h in hatalar), hatalar)
+        # Sözlükte açıklanan terim serbesttir; açıklama kalkarsa yeniden yakalanır.
+        self.assertEqual(acilis.okunabilirlik("örnek", "Bir Issue yazın.", terimler), [])
+        self.assertTrue(acilis.okunabilirlik("örnek", "Bir Issue yazın.", [t for t in terimler if t != "Issue"]))
+
+    def test_readability_limits_sentence_length_but_not_the_quoted_intent(self):
+        uzun = " ".join(["kelime"] * (acilis.EN_UZUN_CUMLE + 1)) + "."
+        hatalar = acilis.okunabilirlik("örnek", uzun, [])
+        self.assertTrue(any("kelimelik cümle" in h for h in hatalar), hatalar)
+        orta = ". ".join([" ".join(["kelime"] * (acilis.ORTALAMA_CUMLE + 2))] * 3) + "."
+        self.assertTrue(any("ortalama cümle" in h for h in acilis.okunabilirlik("örnek", orta, [])))
+        alinti = "Niyet şöyle yazıldı: “" + " ".join(["söz"] * 60) + "” Kısa bir cümle."
+        self.assertEqual(acilis.okunabilirlik("örnek", alinti, []), [])
+
+    def test_opening_must_point_to_technical_and_history_pages(self):
+        terimler = [madde["terim"] for madde in self.veri["sozluk"]]
+        metin = "Bu yer bir kapıdır. Teknik konular [teknik ayrıntılar](TEKNIK.md) sayfasında."
+        hatalar = acilis.okunabilirlik("örnek", metin, terimler, ayrim_bagi=True)
+        self.assertEqual(hatalar, ["örnek: geçmiş işler sayfasına (GECMIS.md) bağlantı yok"])
+        metin += " Eski işler [geçmiş işler](docs/GECMIS.md) sayfasında."
+        self.assertEqual(acilis.okunabilirlik("örnek", metin, terimler, ayrim_bagi=True), [])
+        for sayfa in ("TEKNIK.md", "GECMIS.md"):
+            with self.subTest(sayfa=sayfa):
+                self.assertTrue((ROOT / "docs" / sayfa).is_file())
+
+    def test_readme_moves_technical_and_historical_sections_out(self):
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        basliklar = [satir[3:] for satir in readme.splitlines() if satir.startswith("## ")]
+        self.assertEqual(basliklar, ["Buradan başlayın"])
+        teknik = (ROOT / "docs" / "TEKNIK.md").read_text(encoding="utf-8")
+        gecmis = (ROOT / "docs" / "GECMIS.md").read_text(encoding="utf-8")
+        for baslik in ("## Köprü dosyaları", "## Yerleştirme", "## Otomasyon", "## Bakım ve doğrulama"):
+            with self.subTest(teknik=baslik):
+                self.assertIn(baslik, teknik)
+        for baslik in ("## Açılışa giden yol", "## Değişiklik geçmişi", "## deus_ex_machina ve Şaman devri"):
+            with self.subTest(gecmis=baslik):
+                self.assertIn(baslik, gecmis)
 
     def test_command_line_check(self):
         sonuc = subprocess.run([sys.executable, str(ROOT / "tools/acilis.py"), "--check"],

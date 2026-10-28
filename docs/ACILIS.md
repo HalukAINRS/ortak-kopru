@@ -1,186 +1,162 @@
 # Açılış: Kapı ve Köprü
 
-Bu belge Ortak Köprü'nün açılışıdır: deponun niyeti, o niyetten kurulan tanım ve altı ana ilke. Niyeti Haluk, 28 Ekim 2026 13.21 UTC'de koydu. Tanımı ve ilkeleri, aynı gün Claude Code Bulut, Hacker odağıyla, dokuz soruyu iki grupta ve birbirleriyle birleştirerek kurdu. README'nin ve Web girişinin başındaki açılış bölümü de bu belgenin dayandığı [makine kaydından](acilis.json) üretilir. Üç yüz aynı kayıttan beslendiği için birbirinden ayrışamaz.
+Bu sayfa, Ortak Köprü'yü ilk kez gören biri için yazıldı. Önceden bir şey bilmeniz gerekmiyor. Birkaç dakikada bu yerin ne olduğunu, ne işe yaradığını ve burada neler yapabileceğinizi okuyabilirsiniz. Bilmediğiniz bir kelimeyle karşılaşırsanız sayfanın sonundaki küçük sözlüğe bakabilirsiniz.
 
-## Niyet
+## Kısaca
 
-> “Bu GitHub Reposu'nun Niyeti = Dış Dünya (Web) ile Yerel (Bilgisayarım) arasındaki kapı ve aynı zamanda Harici bireyler ile yerel kullanıcı arasındaki bağı sağlayacak köprü olarak karşılıklı aktarımı ve bağlantıları sağlamaktır.” — Haluk, 28 Ekim 2026
+<!-- uretilen:acilis_kisaca -->
 
-Niyette iki imge ve iki eksen var. Kapı bir yer eksenidir: bir yanda Web, öbür yanda bilgisayar. Köprü bir kişi eksenidir: bir yanda dışarıdaki bireyler, öbür yanda yerel kullanıcı. İşlev de ikiye ayrılıyor: karşılıklı aktarım, kapıdan geçen içeriktir; bağlantılar ise köprünün kurduğu ilişkilerdir. Bu yüzden tanım hem bir geçidi hem bir buluşma yerini anlatmak zorunda.
+Ortak Köprü'yü kuran kişi Haluk. Bu yerin amacını 28 Ekim 2026 günü kendi sözleriyle şöyle yazdı:
 
-Bu niyet, depoyu bugüne kadar tanıtan çerçeveyi kökten değiştiriyor. Depo şimdiye kadar ilk cümlesinde kendini, Haluk ile yapay zekâ katılımcılarının ortak çalışmasının kaynaklı geçmişi olarak sunuyordu; aynı günün öğle saatlerinde yazılan tanımlar da "Ne?" sorusunu bu geçmişle yanıtlıyordu. Niyet bu sırayı tersine çeviriyor. Depo bir kapı ve bir köprüdür. Ortak çalışmanın geçmişi ise bu kapıdan bugüne kadar geçenlerin en büyüğüdür; değerli bir iz, ama deponun kimliği değil.
+**“Bu GitHub Reposu'nun Niyeti = Dış Dünya (Web) ile Yerel (Bilgisayarım) arasındaki kapı ve aynı zamanda Harici bireyler ile yerel kullanıcı arasındaki bağı sağlayacak köprü olarak karşılıklı aktarımı ve bağlantıları sağlamaktır.”**
 
-## Tanım
+Daha sade söylersek:
 
-Ortak Köprü, yerel kullanıcının bilgisayarındaki çalışma ile Web arasında bir kapı, yerel kullanıcı ile dışarıdaki bireyler arasında bir köprüdür. Kapıdan, yerel kullanıcının seçtiği içerik kaynağı ve sürümüyle dışarı çıkar; Web'deki kaynaklar kesin sürümleriyle içeri alınır. Köprüden, dışarıdaki biri önceki konuşmaları bilmeden okuyabilir, sorabilir ve katkı getirebilir; yerel kullanıcının karşılığı ona geri döner. Her geçiş, nereden geldiği, nereye gittiği, ne kadar olduğu ve neden yapıldığıyla izlenebilir kalır.
+Ortak Köprü iki şeydir. Bir kapı: bir bilgisayardaki çalışma ile internet arasında. Bir köprü: o bilgisayarın sahibi ile dışarıdaki insanlar arasında. Kapıdan dosyalar ve bilgiler geçer; köprüden sorular, katkılar ve yanıtlar.
 
-Bu tanım hazırlayanın sözüdür; niyetin yerine geçmez, onu açar. Bir okuyucu tanımla niyet arasında bir sapma görürse, bağlayıcı olan niyettir.
+<!-- /uretilen:acilis_kisaca -->
 
-## Beşli ve dörtlü: kapı ve geçiş
+Bir kapıyı düşünün. İki odayı birbirine bağlar, ama ne zaman açılacağına ve içeri kimin gireceğine ev sahibi karar verir. Bir köprüyü düşünün. İki kıyıdaki insanların birbirine ulaşmasını sağlar. Ortak Köprü bu ikisini birlikte yapmaya çalışır. Bir yanda bir bilgisayar ve onun sahibi var, öbür yanda dış dünya ve oradaki insanlar.
 
-Dokuz soru iki gruba ayrıldı. Beşli (Ne, Nerede, Nasıl, Ne zaman, Ne için) kapının kendisini tanımlıyor: ne olduğunu, nerede durduğunu, nasıl işlediğini, ne zaman açıldığını ve ne için var olduğunu. Dörtlü (Nereden, Nereye, Ne kadar, Neden) kapıdan geçeni tanımlıyor. Bu ayrım bir yapı ile bir hareketi ayırıyor. Dörtlünün bir özelliği daha var: dört soru, her geçişin yanında taşınması gereken dört bilginin adı. Bir geçiş kökenini, varışını, ölçüsünü ve gerekçesini kaybederse izlenemez hâle gelir. Tanımın son cümlesi bu yüzden dörtlüyle kuruldu.
+## Burada neler yapabilirsiniz?
 
-Her soru iki şekilde yanıtlandı: niyete göre kapının ne olması gerektiği ve bugün depoda gözlenen karşılığı.
+- Okuyabilirsiniz. Buradaki yazıların hepsi herkese açık. Okumak için bir hesaba ihtiyacınız yok.
+- Soru sorabilir, bir kaynak ya da düzeltme önerebilirsiniz. Bunun için GitHub'da bir Issue yazmanız yeter.
+- Yazdığınız şey kaybolmaz. İlgili olduğu yazının yanına bağlanır ve nasıl karşılandığı görünür kalır.
+- Yanıt gecikebilir. Yanıt gelmemesi, önerinizin kabul edildiği anlamına gelmez; bekleyen olarak görünür kalır.
 
-<!-- uretilen:acilis_sorular -->
+Bir şey yazmak için önceki konuşmaları bilmeniz ya da her şeyi anlamış olmanız gerekmez. Bir paragrafı okuyup aklınıza takılanı yazmanız yeterli bir başlangıçtır.
 
-| Soru | Grup | Niyete göre | Bugün depoda | Durum |
-| --- | --- | --- | --- | --- |
-| Ne? | Kapının kendisi | İki yönlü bir geçit: bilgisayardaki yerel çalışma ile Web arasında bir kapı, yerel kullanıcı ile harici bireyler arasında bir köprü. Kapı içerik taşır, köprü insanları birbirine bağlar. | Kapı dosyalar için var: kapi.py seçilmiş dosyaları GitHub'a gönderir ve GitHub'dan kesin sürümle alır. Köprü yalnız GitHub'ın kendi araçlarıyla (Pages, Issues, PR) var; dışarıdan gelen bir katkıyı yerel kullanıcıya getiren bir araç yok. | kısmen |
-| Nerede? | Kapının kendisi | İki kenarda ve aralarında. Bir kenar yerel kullanıcının bilgisayarı, öbür kenar Web. Kapının kendisi bu GitHub deposudur: kod, kayıt ve herkese açık yüz. Geçişlerin özel kaydı ise bilgisayarda, Git'in dışında durur. | Herkese açık yüz github.com/HalukAINRS/ortak-kopru ve onun Pages yayını. Yerel kenar, README'ye göre Y:\HalukAI\Ortak_Kopru\kopru\ klasörü. Aktarımların özel kaydı kapi.py'ye verilen --exchange-dir dizininde. | var |
-| Nasıl? | Kapının kendisi | Kapıda: seç, sabitle, planla, gönder, uzlaştır; ya da al, sabitle, incele. Köprüde: oku, sor, getir, karşılık ver. Her adım ayrı kaydedilir ve hiçbiri bir öncekinin yerine geçmez. | Kapının adımları kapi.py'nin on alt komutudur (prepare, plan, send, reconcile, fetch, materialize ve kayıt komutları). Köprünün adımları GitHub arayüzünde elle atılır. | kısmen |
-| Ne zaman? | Kapının kendisi | Yerel kullanıcı istediğinde. Kapı kendiliğinden açılmaz. Her geçiş kendi zamanıyla kaydedilir ve o ana ait bir gözlem olarak okunur. | kapi.py yalnız komutla çalışır. Saatlik bulut otomasyonu yalnız kopru.html kayıtlarına yanıt verir, dosya taşımaz; 24 Ekim'den beri modeli de çağırmıyor. | var |
-| Ne için? | Kapının kendisi | Yerel çalışmanın sonucunu dünyayla paylaşmak, dünyadaki kaynağı yerele getirmek ve dışarıdaki bir bireyin yerel kullanıcıyla, aradaki bağlam kaybolmadan bağ kurabilmesi için. | Paylaşma ve getirme dosya düzeyinde çalışıyor. Bireylerle bağ için okuma sayfaları ve Issues açık, ama bugüne kadar dışarıdan bir Issue ya da yorum gelmedi; tek Issue (#16) yerel kullanıcının kendi kaydı. | kısmen |
-| Nereden? | Geçişin kendisi | İki kaynaktan. Yerelden: yerel kullanıcının açıkça seçtiği dosya, rapor ya da söz. Dışarıdan: Web'deki bir kaynak, kesin bir commit'e bağlı olarak; ya da harici bir bireyin sorusu, kaynağı, düzeltmesi. | Yerel seçim prepare ile, dış kaynak fetch ile sabitleniyor. Bireylerin katkısı Issues ve PR'dan gelebiliyor, ama onu yerel tarafa taşıyan bir adım yok. | kısmen |
-| Nereye? | Geçişin kendisi | Dışarıya: GitHub'da yeni bir dala ve istenirse taslak bir PR'a. İçeriye: yerel kullanıcının inceleyeceği yeni bir dizine. Bireyin katkısı yerel kullanıcıya; yerel kullanıcının karşılığı o bireye ve etkilediği metnin yanına. | Dosya yönleri kodda var: mevcut dalın üzerine yazılmaz, PR birleştirilmez, alınan dosya projeye kendiliğinden uygulanmaz. Karşılığın bireye ve ilgili metne dönmesi elle yapılıyor. | kısmen |
-| Ne kadar? | Geçişin kendisi | Yalnız seçilen kadar ve sınırlı: bir aktarımda en çok 64 dosya, dosya başına 8 MiB, toplam 64 MiB. Geçen her bayt SHA-256 ile sabitlenir; sayılmayan bir şey geçmiş sayılmaz. | Sınırlar src/ortak_kopru/exchange.py'de. Ama yerel gönderici kopru_gonder.ps1 kapının dışından çalışıyor ve çalışma klasöründe kalan izlenmeyen her dosyayı gönderebiliyor (R-17). | kısmen |
-| Neden? | Geçişin kendisi | Yerel çalışma kendi yerinde ve kendi araçlarında kalsın, ama sonucu ile dünyadaki karşılığı birbirinden kopmasın; söz sahibiyle, kaynak sürümüyle taşınsın ve önceki söz kaybolmasın. | Karar 0002 yerel ile dış alan arasındaki sınırı, kayıt defteri sözün sahibiyle korunmasını taşıyor. | var |
+## Dokuz soruda Ortak Köprü
 
-<!-- /uretilen:acilis_sorular -->
+Bu yer dokuz basit soruyla anlatılabilir. İlk beşi kapının kendisini, son dördü kapıdan geçen şeyi anlatır.
 
-Dokuz yanıttan üçü bugün niyetle örtüşüyor: kapının nerede durduğu, ne zaman açıldığı ve neden var olduğu. Diğer altısı kısmen örtüşüyor. Bu altı kısmi yanıtın arkasında yalnız iki ayrı eksik var. Birincisi köprünün kişiler arası ucu: dışarıdan gelen bir katkıyı yerel kullanıcıya getiren ve karşılığını geri götüren bir adım yok. Ne, Nasıl, Ne için, Nereden ve Nereye yanıtlarının kısmi kalması bundan. İkincisi yerel gönderici: kapının dışından çalışıp seçilmemiş dosyaları da gönderebiliyor ve Ne kadar yanıtını kısmi bırakıyor. Altı kısmi yanıtın iki eksikten doğması, niyet ile bugünkü depo arasındaki mesafenin sanıldığından kısa olduğunu gösteriyor.
+<!-- uretilen:acilis_sade_sorular -->
 
-Her sorunun bir de gölgesi soruldu. Varyantların çoğu olumsuz, çünkü bir kapıyı tanımlamanın yarısı neyin geçmediğini söylemektir:
+### Ne?
 
-<!-- uretilen:acilis_varyantlar -->
+Ortak Köprü iki şeydir. Birincisi bir kapı: bir bilgisayardaki çalışma ile internet arasında. İkincisi bir köprü: o bilgisayarın sahibi ile dışarıdaki insanlar arasında. Kapıdan dosyalar ve bilgiler geçer. Köprüden sorular, katkılar ve yanıtlar geçer.
 
-| Soru | Varyant | Yanıt |
-| --- | --- | --- |
-| Ne? | Ne değildir? | Bir eşitleme ya da aynalama aracı değildir: yerel klasörü dışarı açmaz, dışarıdakini yerelde kendiliğinden uygulamaz. Bir arşiv de değildir; arşiv, kapıdan geçmiş olanın izidir. |
-| Nerede? | Nerede durmaz? | Kişisel dosyalar, gizli değerler ve özel çalışma alanı kapının herkese açık tarafında durmaz. |
-| Nasıl? | Nasıl geri alınır? | Gönderim yeni bir dala gider ve PR birleştirilmez; geri almak dalı silmektir. Alınan dosya yeni bir dizine çıkar; geri almak dizini silmektir. Herkese açık geçmişe girmiş bir dosya ise geri alınamaz; bu yüzden en sıkı denetim çıkış yönündedir. |
-| Ne zaman? | Ne zamana kadar geçerlidir? | Bir geçişin kaydı kendi anına aittir. Alınan bir kaynak, alındığı commit'te sabit kalır; daha yeni sürüm yeniden alınır, eski kayıt silinmez. |
-| Ne için? | Kimin için? | Yerel kullanıcı için: neyin çıkıp gireceğine o karar verir. Harici birey için: girişin kapısı ve karşılığın adresi. Katılımcı modeller için: işin kaynağını ve devrini taşıyan ortak yer; bağı taşırlar, yerine geçmezler. |
-| Ne için? | Ne için değildir? | Bütün yerel işin buradan geçmesi için değildir; bir Issue açılması yerel bir aracı çalıştırmaz. |
-| Nereden? | Nereden gelmez? | Kendiliğinden hiçbir yerden: ne yerel klasörün tamamı ne bir dış hizmetin otomatik akışı kapıdan seçimsiz geçer. |
-| Nereye? | Nereye gitmez? | Belirteç, anahtar, IP adresi, cihaz kimliği ve özel çalışma alanı dışarıya gitmez; dışarıdan alınan dosya yerel projenin içine kendiliğinden gitmez. |
-| Ne kadar? | Ne kadarı bekliyor? | Dışarıdan gelip cevap bekleyen bir Issue yok. Defterde ise 16 kayıt, cevap verebilecek bir yolu olmayan adreslerde bekliyor. |
-| Neden? | Neden başka türlü değil? | Bir bulut eşitlemesi yerel klasörü bütünüyle dışarı açardı; bir sohbet geçmişi sözün sahibini ve sürümünü kaybettirirdi. Kapı seçer, köprü bağlar, ikisi de iz bırakır. |
+### Nerede?
 
-<!-- /uretilen:acilis_varyantlar -->
+Herkesin görebildiği yüzü internette, GitHub adlı sitede durur. Öbür ucu yerel kullanıcının kendi bilgisayarıdır. Özel çalışmalar o bilgisayarda kalır. Dışarı yalnız paylaşılmak üzere seçilen şeyler çıkar.
 
-## Yirmi kesişim
+### Nasıl?
 
-Beşlinin her sorusu dörtlünün her sorusuyla birleştirildiğinde yirmi soru çıkıyor. Satırlar kapının bir yönünü, sütunlar geçişin bir yönünü taşıyor:
+Yerel kullanıcı paylaşmak istediği şeyi seçer. Kapı onu olduğu gibi saklar ve dışarı taşır. Dışarıdan bir şey alınırken hangi sürümün alındığı not edilir. Dışarıdaki biri yazılanı okur ve bir soru ya da katkı bırakır. Her adım ayrı ayrı kayda geçer.
 
-<!-- uretilen:acilis_matris -->
+### Ne zaman?
 
-| Kapı \ Geçiş | Nereden | Nereye | Ne kadar | Neden |
-| --- | --- | --- | --- | --- |
-| **Ne** | Ne nereden gelir? | Ne nereye gider? | Ne kadarı geçer? | Bu şey neden geçer? |
-| **Nerede** | Kapının hangi tarafından girilir? | Geçen şey nerede durur? | Nerede ne kadar iz kalır? | Neden iki ayrı yer? |
-| **Nasıl** | Nasıl alınır? | Nasıl gönderilir? | Nasıl sınırlanır? | Neden bu yolla? |
-| **Ne zaman** | Dışarıdan ne zaman alınır? | Dışarıya ne zaman gider? | Bir geçiş ne zamana kadar geçerlidir? | Neden şimdi? |
-| **Ne için** | Kimden ne için gelir? | Kime ne için gider? | Bir katkı için ne kadarı yeter? | Amaç ile gerekçe nasıl ayrılır? |
+Kapı kendiliğinden açılmaz. Yerel kullanıcı istediğinde açılır. Köprü ise her zaman açıktır: dışarıdaki biri istediği an okuyabilir ve yazabilir. Her geçişin tarihi saklanır.
 
-<!-- /uretilen:acilis_matris -->
+### Ne için?
 
-<!-- uretilen:acilis_kesisimler -->
+Bir bilgisayarda yapılan çalışma dünyayla paylaşılabilsin diye. Dünyadaki bilgi o çalışmaya katılabilsin diye. Dışarıdaki biri yerel kullanıcıyla bağ kurabilsin diye.
 
-| Kesişim | Soru | Yanıt |
-| --- | --- | --- |
-| Ne × Nereden | Ne nereden gelir? | Dışarıdan kesin commit'e bağlı kaynak dosyalar ve bireylerin soruları, kaynakları, düzeltmeleri gelir; yerelden kullanıcının seçtiği çıktı ve karşılığı. |
-| Ne × Nereye | Ne nereye gider? | Seçilmiş yerel dosya GitHub'da yeni bir dala, alınan kaynak yerelde yeni bir inceleme dizinine gider; bireyin katkısı yerel kullanıcıya, kullanıcının karşılığı bireye. |
-| Ne × Ne kadar | Ne kadarı geçer? | Yalnız seçilen: aktarım başına en çok 64 dosya ve 64 MiB. Seçilmeyen hiçbir dosya pakete girmez. |
-| Ne × Neden | Bu şey neden geçer? | Yerel kullanıcı onu bir amaçla seçtiği ya da bir birey onu bir soruya karşılık getirdiği için; amaçsız ve sahipsiz geçiş yoktur. |
-| Nerede × Nereden | Kapının hangi tarafından girilir? | Dış taraftan, Web'den: Pages'te okunur, Issues ve PR'da yazılır. İç taraftan, bilgisayardan: kapi.py ve yerel araçlarla. |
-| Nerede × Nereye | Geçen şey nerede durur? | Dışarıda yeni bir dalda ve taslak PR'da, mevcut dala dokunmadan; içeride yeni bir dizinde, yerel projeye dokunmadan. |
-| Nerede × Ne kadar | Nerede ne kadar iz kalır? | Herkese açık tarafta yalnız seçilmiş içerik ve kamusal kayıt kalır; aktarımın amacı, yerel yolları ve makbuzları bilgisayardaki özel kayıtta durur. |
-| Nerede × Neden | Neden iki ayrı yer? | Kamuya açılan ile özel kalan karışmasın diye: kapının herkese açık yüzü ile geçişlerin özel kaydı ayrı tutulur. |
-| Nasıl × Nereden | Nasıl alınır? | Dış kaynak kesin bir commit'e bağlanır, baytları SHA-256 ile sabitlenir ve inceleme için yeni bir dizine çıkarılır. |
-| Nasıl × Nereye | Nasıl gönderilir? | Uzak sürüm okunup fark planlanır, yalnız o planın karmasıyla yeni bir dala gönderilir, istenirse taslak PR açılır. Sonucu belirsiz kalan bir gönderim uzlaştırılmadan gerçekleşmiş sayılmaz. |
-| Nasıl × Ne kadar | Nasıl sınırlanır? | Boyut ve sayı sınırları, yasak desen denetimi, dış yükleme denetimi ve gönderim kapsamıyla. Sınırı aşan istek reddedilir, kesilerek geçirilmez. |
-| Nasıl × Neden | Neden bu yolla? | Hazırlanmak, gönderilmek, alınmak, okunmak ve kullanılmak ayrı olaylardır. Her biri ayrı kaydedildiğinde hiçbir geçiş olduğundan fazla gösterilmez. |
-| Ne zaman × Nereden | Dışarıdan ne zaman alınır? | Yerel kullanıcı istediğinde ve belirli bir sürümde; kaynak, alındığı commit'in anında sabit kalır. |
-| Ne zaman × Nereye | Dışarıya ne zaman gider? | Yalnız yerel kullanıcının komutuyla. Saatlik otomasyon yalnız defter kayıtlarına yanıt verir, dosya göndermez. |
-| Ne zaman × Ne kadar | Bir geçiş ne zamana kadar geçerlidir? | Her geçiş ve her gözlem kendi anına aittir; daha yeni sürüm yeniden alınır, eski kayıt silinmez. |
-| Ne zaman × Neden | Neden şimdi? | Bir istek ya da katkı geldiğinde. Yanıt gelmemesi kabul sayılmaz; bekleyen her şey bekleyen olarak görünür kalır. |
-| Ne için × Nereden | Kimden ne için gelir? | Harici bireyden soru sormak, kaynak ya da düzeltme getirmek için; dış kaynaktan yerel işi beslemek için. |
-| Ne için × Nereye | Kime ne için gider? | Dış dünyaya okunmak ve katkıya açılmak için; yerel kullanıcıya karar vermek ve kullanmak için. |
-| Ne için × Ne kadar | Bir katkı için ne kadarı yeter? | Bir paragraf ve kendi açıklaması yeter; dışarıdaki bireyin bütün mimariyi ya da geçmişi bilmesi gerekmez. |
-| Ne için × Neden | Amaç ile gerekçe nasıl ayrılır? | Amaç karşılıklı aktarım ve bağdır. Gerekçe, yerel çalışma ile dünyadaki karşılığının ve bireyler arasındaki bağlamın kopmamasıdır. |
+### Nereden?
 
-<!-- /uretilen:acilis_kesisimler -->
+İki yerden. Birincisi yerel kullanıcının bilgisayarı: oradan yalnız onun açıkça seçtiği şeyler gelir. İkincisi dış dünya: internetteki kaynaklar ve dışarıdaki insanların soruları, önerileri, düzeltmeleri.
 
-Kesişimler satır satır ve sütun sütun okunabiliyor. "Nasıl" satırı kapının protokolünü veriyor: alma, gönderme, sınırlama ve bunların neden ayrı adımlar olduğu. "Nereye" sütunu kapının hiçbir şeyin üzerine yazmadığını gösteriyor: dışarıda yeni bir dal, içeride yeni bir dizin. Mevcut dal ezilmiyor, yerel proje kendiliğinden değişmiyor. "Neden" sütunu kapının ahlakını taşıyor: amaçsız ve sahipsiz geçiş yok, kamusal ile özel ayrı, olaylar ayrı kaydediliyor, yanıt gelmemesi kabul sayılmıyor, bağlam kopmuyor. "Ne için" satırı ise köprünün kişi ekseni: bir dış katkı için bir paragraf ve bir açıklama yetiyor.
+### Nereye?
+
+Yerelden çıkan şey, internette herkesin görebileceği bir yere gider. Orada var olan hiçbir şeyin üzerine yazılmaz. Dışarıdan gelen şey, yerel kullanıcının önce bakacağı ayrı bir yere iner. Onun çalışmasına kendiliğinden karışmaz.
+
+### Ne kadar?
+
+Yalnız seçilen kadar. Bir seferde geçebilecek miktarın bir üst sınırı var. Seçilmeyen hiçbir şey geçmez. Şifreler ve kişisel bilgiler hiç geçmez.
+
+### Neden?
+
+Bir bilgisayarda yapılan iş ile dünyadaki karşılığı kolayca birbirinden kopar. Bir sözün kime ait olduğu, bir bilginin nereden geldiği unutulur. Ortak Köprü bu bağı korumak için var.
+
+<!-- /uretilen:acilis_sade_sorular -->
 
 ## Altı ilke
 
-İlkeler, yirmi kesişimin tekrar eden sözlerinden çıkarıldı. Her ilke en az bir kapı sorusunu ve en az bir geçiş sorusunu birbirine bağlıyor; altısı birlikte dokuz sorunun hepsini kapsıyor. Her ilkenin bugün depoda hangi dosyalarla taşındığı ve niyete olan mesafesi ayrı yazılı.
+Ortak Köprü altı ilkeye göre çalışır. Her ilkenin altında sizin için ne anlama geldiği ve bugün ne kadarının gerçekten işlediği yazılı.
 
-<!-- uretilen:acilis_ilkeler -->
-
-| İlke | Bağladığı sorular | Bugün | Taşıyan dosyalar | Mesafe |
-| --- | --- | --- | --- | --- |
-| 1. Karşılıklılık | Ne, Nereden, Nereye | kısmen uygulanıyor | `kapi.py`, `docs/KAPI_KULLANIMI.md`, `CONTRIBUTING.md` | Dosyalar iki yönde geçiyor. Dışarıdan gelen bir katkıyı yerel kullanıcıya getiren ve karşılığını geri götüren adım yok; bu bağ GitHub bildirimlerine bırakılmış. (S09) |
-| 2. Yerel merkez | Nerede, Ne zaman, Ne kadar | kısmen uygulanıyor | `src/ortak_kopru/exchange.py`, `docs/kararlar/0002-dis-alan-kapisi.md`, `AGENTS-kopru.md` | Yerel gönderici kopru_gonder.ps1 kapının dışından çalışıyor ve çalışma klasöründe kalan izlenmeyen her dosyayı herkese açık ana dala gönderebiliyor; bu, seçimsiz bir çıkış yolu. (R-17, S02) |
-| 3. Köken ve sahiplik | Ne, Ne zaman, Nereden | uygulanıyor | `schemas/exchange-manifest.schema.json`, `src/ortak_kopru/gateway.py`, `kopru_ekle.py` | — |
-| 4. Sınır | Nerede, Nereye, Ne kadar | kısmen uygulanıyor | `kopru_ekle.py`, `src/ortak_kopru/exchange.py`, `.github/scripts/kopru_gonder.sh` | Bulut göndericisi kapsamı defter, ayna ve çağrı günlükleriyle sınırlıyor; yerel gönderici sınırlamıyor. Aynı kural iki yerde iki ayrı biçimde uygulanıyor. (R-17, S02) |
-| 5. Açık katılım | Nasıl, Ne için, Nereden | kısmen uygulanıyor | `docs/WEB_GIRISI.md`, `CONTRIBUTING.md`, `index.html` | Okuma ve katkı yolları açık, ama bugüne kadar dışarıdan bir katkı gelmedi (tek Issue #16, yerel kullanıcının kendi kaydı). Gelen bir katkının yerel kullanıcıya ulaşması GitHub bildirimlerine bırakılmış. (S09) |
-| 6. Doğrulanabilirlik ve geri dönüş | Nasıl, Ne zaman, Neden | uygulanıyor | `src/ortak_kopru/gateway.py`, `tools/dogrula.py`, `kopru.html` | — |
-
-<!-- /uretilen:acilis_ilkeler -->
-
-<!-- uretilen:acilis_ilke_metinleri -->
+<!-- uretilen:acilis_sade_ilkeler -->
 
 ### 1. Karşılıklılık
 
 **Kapı iki yöne açılır, köprü iki yöne taşır.**
 
-Yerelden dışarıya paylaşmak ile dışarıdan yerele almak aynı kurallarla ve aynı kayıtla yürür. Bağ da iki yönlüdür: dışarıdaki bir birey yerel kullanıcıya ulaşabildiği gibi, yerel kullanıcının karşılığı da ona ve etkilediği metne döner. Yalnız tek yöne çalışan bir geçit kapı değil, yalnızca bir çıkıştır.
+Sizin için anlamı: Burada yalnız okumazsınız, yazabilirsiniz de. Yerel kullanıcı da yalnız paylaşmaz, dışarıdan gelene karşılık verir.
 
-*Bağladığı sorular:* Ne, Nereden, Nereye. *Bugün:* kısmen uygulanıyor. Dosyalar iki yönde geçiyor. Dışarıdan gelen bir katkıyı yerel kullanıcıya getiren ve karşılığını geri götüren adım yok; bu bağ GitHub bildirimlerine bırakılmış.
+Bugün: Dosyalar iki yönde de geçebiliyor. Dışarıdan gelen bir sorunun yerel kullanıcıya ulaşması ise henüz kendiliğinden olmuyor; şimdilik GitHub'ın kendi bildirimlerine bağlı.
 
 ### 2. Yerel merkez
 
 **Merkez yerel kullanıcıdır: kapıdan yalnız onun seçtiği geçer, dışarıdan gelen kendiliğinden uygulanmaz.**
 
-Yerel çalışma kendi yerinde ve kendi araçlarında sürer. Kapı bir eşitleme aracı değildir; yerel klasörü dışarı açmaz, dışarıdaki bir değişikliği yerel projeye kendiliğinden yazmaz. Kapının ne zaman açılacağına ve neyin geçeceğine yerel kullanıcı karar verir; bir kayıt görmek ya da bir Issue açılması kendi başına iş emri değildir.
+Sizin için anlamı: Neyin paylaşılacağına yerel kullanıcı karar verir. Dışarıdan gelen bir öneri, o kabul etmeden onun çalışmasını değiştirmez.
 
-*Bağladığı sorular:* Nerede, Ne zaman, Ne kadar. *Bugün:* kısmen uygulanıyor. Yerel gönderici kopru_gonder.ps1 kapının dışından çalışıyor ve çalışma klasöründe kalan izlenmeyen her dosyayı herkese açık ana dala gönderebiliyor; bu, seçimsiz bir çıkış yolu.
+Bugün: Kapının kendisi bu kurala uyuyor. Ama eski bir paylaşım aracı hâlâ seçim yapmadan gönderebiliyor; daraltılması bekleniyor.
 
 ### 3. Köken ve sahiplik
 
 **Her geçiş kökeni, sahibi, sürümü ve zamanıyla taşınır.**
 
-Bir dosyanın hangi commit'ten geldiği, bir sözün kime ait olduğu, bir yorumun kimin yorumu olduğu geçişten sonra da görünür kalır. Geçen her bayt bir karmayla sabitlenir; kayıtlar değiştirilmez, düzeltme yeni bir kayıtla eskisinin yanına gelir. Böylece kapıdan geçen şey, karşı tarafta da kaynağıyla birlikte okunur.
+Sizin için anlamı: Burada okuduğunuz her şeyin nereden geldiği ve kime ait olduğu yazılıdır. Sizin katkınız da sizin adınızla kalır.
 
-*Bağladığı sorular:* Ne, Ne zaman, Nereden. *Bugün:* uygulanıyor.
+Bugün: Tam olarak işliyor.
 
 ### 4. Sınır
 
 **Kapı bir duvar da taşır: gizli olan geçmez, geri alınamayan geçiş en sıkı denetimden geçer.**
 
-Belirteçler, anahtarlar, IP adresleri, cihaz kimlikleri, kişisel dosyalar ve özel çalışma alanı kapının herkese açık tarafına geçmez. Dışarıdan alınan bir şey yerel projenin içine kendiliğinden girmez. Herkese açık geçmişe girmiş bir dosya geri alınamayacağı için, denetim en çok çıkış yönünde sıkıdır.
+Sizin için anlamı: Şifreler, kişisel bilgiler ve özel çalışmalar kapıdan geçmez. Bir kez herkese açılan bir şey geri alınamaz. Bu yüzden en sıkı kontrol çıkışta yapılır.
 
-*Bağladığı sorular:* Nerede, Nereye, Ne kadar. *Bugün:* kısmen uygulanıyor. Bulut göndericisi kapsamı defter, ayna ve çağrı günlükleriyle sınırlıyor; yerel gönderici sınırlamıyor. Aynı kural iki yerde iki ayrı biçimde uygulanıyor.
+Bugün: Kapı bu sınırı uyguluyor. Tek açık nokta yine o eski paylaşım aracı.
 
 ### 5. Açık katılım
 
 **Dışarıdaki biri önceki konuşmaları bilmeden okuyabilir, sorabilir ve katkı getirebilir; getirdiği şey etkilediği yere bağlanır.**
 
-Köprünün dış ucu herkese açıktır. Bir okuyucunun bütün mimariyi ya da geçmişi bilmesi gerekmez; bir paragraf ve kendi açıklaması yeterli bir başlangıçtır. Gelen katkı, etkilediği metnin ya da kaydın yanına bağlanır ve nasıl karşılandığı görünür kalır. Yanıt gelmemesi kabul sayılmaz.
+Sizin için anlamı: Önceki konuşmaları bilmeniz gerekmez. Bir yazıyı okuyup bir soru sormanız ya da bir düzeltme önermeniz yeterli bir başlangıçtır. Getirdiğiniz şey, ilgili olduğu yazının yanına bağlanır.
 
-*Bağladığı sorular:* Nasıl, Ne için, Nereden. *Bugün:* kısmen uygulanıyor. Okuma ve katkı yolları açık, ama bugüne kadar dışarıdan bir katkı gelmedi (tek Issue #16, yerel kullanıcının kendi kaydı). Gelen bir katkının yerel kullanıcıya ulaşması GitHub bildirimlerine bırakılmış.
+Bugün: Okuma ve yazma yolları açık. Ama dışarıdan henüz kimse yazmadı; ilk katkı sizinki olabilir.
 
 ### 6. Doğrulanabilirlik ve geri dönüş
 
 **Hazırlanmak, gönderilmek, alınmak, okunmak ve kullanılmak ayrı olaylardır; hiçbir geçiş olduğundan fazla gösterilmez ve her değişiklik izini silmeden geri alınabilir.**
 
-Kapının her adımı ayrı bir olay olarak kaydedilir; sonucu belirsiz kalan bir gönderim uzlaştırılmadan gerçekleşmiş sayılmaz. Deponun kendi hakkındaki her sözü kırılabilecek bir denetime bağlıdır ve tek komutla sınanır. Geri alma, izi silerek değil yeni bir kayıtla yapılır.
+Sizin için anlamı: Bir şeyin hazırlanmış olması, gönderildiği ya da okunduğu anlamına gelmez; burada bunlar ayrı yazılır. Bir hata olursa silinmez, yanına düzeltmesi eklenir.
 
-*Bağladığı sorular:* Nasıl, Ne zaman, Neden. *Bugün:* uygulanıyor.
+Bugün: Tam olarak işliyor.
 
-<!-- /uretilen:acilis_ilke_metinleri -->
+<!-- /uretilen:acilis_sade_ilkeler -->
 
-Altı ilkenin ikisi bugün uygulanıyor: Köken ve sahiplik ile Doğrulanabilirlik ve geri dönüş. Bunlar, deponun kendi geçmişinden gelen alışkanlıklar: imzalı ve değişmeyen kayıt, sabitlenmiş baytlar, ayrı kaydedilen olaylar. Diğer dördü kısmen uygulanıyor ve mesafeleri yine iki işe iniyor. Yerel merkez ile Sınır, yerel göndericinin kapsamını bekliyor ([S02](SIMDI_VE_SONRASI.md#rafine-sonrası-dokuz-senaryo), bulgu R-17). Karşılıklılık ile Açık katılım ise kişiler arası köprünün kapıya bağlanmasını bekliyor (S09). Yani niyete giden yol, iki somut değişiklikten geçiyor: biri bir betiğin birkaç satırı, öbürü kapıya Issues'ı yalnız okuyan bir alım adımı. İkisinin de kararı Haluk'ta.
+## Bugün nerede duruyoruz?
 
-## Önceki tanımlarla ilişki
+<!-- uretilen:acilis_sade_bugun -->
 
-Aynı gün yazılan [Dokuz Koordinatla Ortak Köprü](DEPO_TANIMI.md) ile [Şimdi ve Sonrası](SIMDI_VE_SONRASI.md), depoyu gözlendiği hâliyle tanımlıyordu ve o gözlemler kendi saatlerine ait olarak duruyor. Bu açılış ise niyeti koyuyor. Gözlenen ile niyet edilen arasındaki fark, yukarıdaki "Bugün depoda" sütununda ve ilkelerin mesafesinde ölçülüyor. Önceki iki belgenin başına, bağlayıcı tanımın burada olduğunu söyleyen tarihli bir not eklendi. Senaryo kaydına da kişiler arası köprü S09 olarak girdi.
+Altı ilkenin ikisi bugün tam olarak işliyor, dördü kısmen işliyor. Kısmen işleyenler: Karşılıklılık, Yerel merkez, Sınır, Açık katılım.
 
-## Kaydın ve yüzlerin bağı
+<!-- /uretilen:acilis_sade_bugun -->
 
-`python tools/acilis.py`, [açılış kaydından](acilis.json) README'nin ve Web girişinin açılış bloklarını ve bu belgedeki tabloları yazar. `--check` kipi yazmadan şunları denetler: beşli ile dörtlünün tam ve ayrık olması, yirmi kesişimin her birinin tam bir kez sorulması, ilkelerin bire altı numaralı olması, her ilkenin en az bir kapı ve bir geçiş sorusunu bağlaması, ilkelerin birlikte dokuz soruyu kapsaması. Bunlara ek olarak tam uygulanmayan her ilkenin mesafesini yazmasını, dayanak dosyalarının depoda bulunmasını, bağlı bulguların hâlâ açık, bağlı senaryoların var olmasını ve üç yüzdeki blokların kayıtla eşliğini de denetler. Bağlı bir bulgu kapanırsa denetim, ilkenin durumunun yeniden yazılmasını ister. Böylece ilkelerin mesafesi, gerçek ilerlemeyle birlikte kısalır. Bu kontrol `python tools/dogrula.py` listesinde ve CI'da koşar.
+Bu sayfa olanı olduğundan fazla göstermemeye çalışır. Kısmen işleyen ilkeler için yapılacak iş belli. Biri eski bir paylaşım aracının daraltılması. Öbürü dışarıdan gelen soruların yerel kullanıcıya kendiliğinden ulaşması. İkisi de yapıldığında bu sayfadaki durum yazıları da değişecek.
 
-Bir ilkeye, bir soruya ya da bir kesişime itiraz etmek veya ekleme getirmek için adını belirterek [GitHub Issues](https://github.com/HalukAINRS/ortak-kopru/issues) kullanılabilir. Bu, köprünün kendisini kullanmaktır.
+## Nereden başlamalı?
+
+- Önce [Web kapısına](https://halukainrs.github.io/ortak-kopru/) bakabilirsiniz. Orası bu yerin herkese açık giriş sayfası.
+- Bir şey sormak ya da önermek isterseniz [GitHub'da bir Issue açın](https://github.com/HalukAINRS/ortak-kopru/issues/new). Hangi yazıya ya da hangi ilkeye karşılık verdiğinizi yazmanız işi kolaylaştırır.
+- Başkalarının neler yazdığını [Issue listesinden](https://github.com/HalukAINRS/ortak-kopru/issues) görebilirsiniz.
+
+## Birkaç kelime
+
+<!-- uretilen:acilis_sozluk -->
+
+- **İnternet ve Web:** Bu sayfada ikisi aynı anlamda kullanılıyor: herkesin bir tarayıcıyla ulaşabildiği dış dünya.
+- **Yerel kullanıcı:** Ortak Köprü'nün öbür ucundaki bilgisayarın sahibi. Bugün bu kişi Haluk.
+- **GitHub:** Yazıların ve dosyaların herkese açık durduğu, insanların birlikte çalışmak için kullandığı bir internet sitesi. Ortak Köprü'nün dış yüzü orada.
+- **Depo:** GitHub'da bir çalışmanın bütün dosyalarını ve geçmişini bir arada tutan yer. Ortak Köprü bir depodur.
+- **Issue:** GitHub'da bir depoya soru, öneri ya da hata bildirimi yazmanın yolu. Okumak için hesap gerekmez; yazmak için ücretsiz bir GitHub hesabı yeter.
+- **Pull request:** Bir depodaki yazıya ya da dosyaya doğrudan değişiklik önermenin yolu. Biraz teknik bilgi ister; bir Issue her zaman yeterlidir.
+- **Sürüm:** Bir dosyanın belirli bir andaki hâli. Dosya sonradan değişse de alınan sürüm aynı kalır.
+
+<!-- /uretilen:acilis_sozluk -->
+
+## Daha fazlası
+
+Bu sayfayı anlamak için başka bir yere bakmanız gerekmez. Merak ederseniz iki ayrı sayfa var. Araçlar, kurulum ve denetimler [teknik ayrıntılar](TEKNIK.md) sayfasında toplandı. Bu yerin bugüne kadarki çalışmaları ve kayıtları [geçmiş işler](GECMIS.md) sayfasında duruyor.

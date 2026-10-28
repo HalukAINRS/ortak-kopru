@@ -13,12 +13,23 @@
     "kapi": {
       "ad": "Kapının kendisi",
       "aciklama": "Beşli soru kapıyı tanımlar: ne olduğunu, nerede durduğunu, nasıl işlediğini, ne zaman açıldığını ve ne için var olduğunu.",
-      "sorular": ["ne", "nerede", "nasil", "ne_zaman", "ne_icin"]
+      "sorular": [
+        "ne",
+        "nerede",
+        "nasil",
+        "ne_zaman",
+        "ne_icin"
+      ]
     },
     "gecis": {
       "ad": "Geçişin kendisi",
       "aciklama": "Dörtlü soru kapıdan geçeni tanımlar: nereden geldiğini, nereye gittiğini, ne kadar olduğunu ve neden geçtiğini.",
-      "sorular": ["nereden", "nereye", "ne_kadar", "neden"]
+      "sorular": [
+        "nereden",
+        "nereye",
+        "ne_kadar",
+        "neden"
+      ]
     }
   },
   "sorular": {
@@ -28,17 +39,25 @@
       "bugun": "Kapı dosyalar için var: kapi.py seçilmiş dosyaları GitHub'a gönderir ve GitHub'dan kesin sürümle alır. Köprü yalnız GitHub'ın kendi araçlarıyla (Pages, Issues, PR) var; dışarıdan gelen bir katkıyı yerel kullanıcıya getiren bir araç yok.",
       "durum": "kısmen",
       "varyantlar": [
-        {"soru": "Ne değildir?", "yanit": "Bir eşitleme ya da aynalama aracı değildir: yerel klasörü dışarı açmaz, dışarıdakini yerelde kendiliğinden uygulamaz. Bir arşiv de değildir; arşiv, kapıdan geçmiş olanın izidir."}
-      ]
+        {
+          "soru": "Ne değildir?",
+          "yanit": "Bir eşitleme ya da aynalama aracı değildir: yerel klasörü dışarı açmaz, dışarıdakini yerelde kendiliğinden uygulamaz. Bir arşiv de değildir; arşiv, kapıdan geçmiş olanın izidir."
+        }
+      ],
+      "sade": "Ortak Köprü iki şeydir. Birincisi bir kapı: bir bilgisayardaki çalışma ile internet arasında. İkincisi bir köprü: o bilgisayarın sahibi ile dışarıdaki insanlar arasında. Kapıdan dosyalar ve bilgiler geçer. Köprüden sorular, katkılar ve yanıtlar geçer."
     },
     "nerede": {
       "soru": "Nerede?",
       "yanit": "İki kenarda ve aralarında. Bir kenar yerel kullanıcının bilgisayarı, öbür kenar Web. Kapının kendisi bu GitHub deposudur: kod, kayıt ve herkese açık yüz. Geçişlerin özel kaydı ise bilgisayarda, Git'in dışında durur.",
-      "bugun": "Herkese açık yüz github.com/HalukAINRS/ortak-kopru ve onun Pages yayını. Yerel kenar, README'ye göre Y:\\HalukAI\\Ortak_Kopru\\kopru\\ klasörü. Aktarımların özel kaydı kapi.py'ye verilen --exchange-dir dizininde.",
+      "bugun": "Herkese açık yüz github.com/HalukAINRS/ortak-kopru ve onun Pages yayını. Yerel kenar, teknik ayrıntılara göre Y:\\HalukAI\\Ortak_Kopru\\kopru\\ klasörü. Aktarımların özel kaydı kapi.py'ye verilen --exchange-dir dizininde.",
       "durum": "var",
       "varyantlar": [
-        {"soru": "Nerede durmaz?", "yanit": "Kişisel dosyalar, gizli değerler ve özel çalışma alanı kapının herkese açık tarafında durmaz."}
-      ]
+        {
+          "soru": "Nerede durmaz?",
+          "yanit": "Kişisel dosyalar, gizli değerler ve özel çalışma alanı kapının herkese açık tarafında durmaz."
+        }
+      ],
+      "sade": "Herkesin görebildiği yüzü internette, GitHub adlı sitede durur. Öbür ucu yerel kullanıcının kendi bilgisayarıdır. Özel çalışmalar o bilgisayarda kalır. Dışarı yalnız paylaşılmak üzere seçilen şeyler çıkar."
     },
     "nasil": {
       "soru": "Nasıl?",
@@ -46,8 +65,12 @@
       "bugun": "Kapının adımları kapi.py'nin on alt komutudur (prepare, plan, send, reconcile, fetch, materialize ve kayıt komutları). Köprünün adımları GitHub arayüzünde elle atılır.",
       "durum": "kısmen",
       "varyantlar": [
-        {"soru": "Nasıl geri alınır?", "yanit": "Gönderim yeni bir dala gider ve PR birleştirilmez; geri almak dalı silmektir. Alınan dosya yeni bir dizine çıkar; geri almak dizini silmektir. Herkese açık geçmişe girmiş bir dosya ise geri alınamaz; bu yüzden en sıkı denetim çıkış yönündedir."}
-      ]
+        {
+          "soru": "Nasıl geri alınır?",
+          "yanit": "Gönderim yeni bir dala gider ve PR birleştirilmez; geri almak dalı silmektir. Alınan dosya yeni bir dizine çıkar; geri almak dizini silmektir. Herkese açık geçmişe girmiş bir dosya ise geri alınamaz; bu yüzden en sıkı denetim çıkış yönündedir."
+        }
+      ],
+      "sade": "Yerel kullanıcı paylaşmak istediği şeyi seçer. Kapı onu olduğu gibi saklar ve dışarı taşır. Dışarıdan bir şey alınırken hangi sürümün alındığı not edilir. Dışarıdaki biri yazılanı okur ve bir soru ya da katkı bırakır. Her adım ayrı ayrı kayda geçer."
     },
     "ne_zaman": {
       "soru": "Ne zaman?",
@@ -55,8 +78,12 @@
       "bugun": "kapi.py yalnız komutla çalışır. Saatlik bulut otomasyonu yalnız kopru.html kayıtlarına yanıt verir, dosya taşımaz; 24 Ekim'den beri modeli de çağırmıyor.",
       "durum": "var",
       "varyantlar": [
-        {"soru": "Ne zamana kadar geçerlidir?", "yanit": "Bir geçişin kaydı kendi anına aittir. Alınan bir kaynak, alındığı commit'te sabit kalır; daha yeni sürüm yeniden alınır, eski kayıt silinmez."}
-      ]
+        {
+          "soru": "Ne zamana kadar geçerlidir?",
+          "yanit": "Bir geçişin kaydı kendi anına aittir. Alınan bir kaynak, alındığı commit'te sabit kalır; daha yeni sürüm yeniden alınır, eski kayıt silinmez."
+        }
+      ],
+      "sade": "Kapı kendiliğinden açılmaz. Yerel kullanıcı istediğinde açılır. Köprü ise her zaman açıktır: dışarıdaki biri istediği an okuyabilir ve yazabilir. Her geçişin tarihi saklanır."
     },
     "ne_icin": {
       "soru": "Ne için?",
@@ -64,9 +91,16 @@
       "bugun": "Paylaşma ve getirme dosya düzeyinde çalışıyor. Bireylerle bağ için okuma sayfaları ve Issues açık, ama bugüne kadar dışarıdan bir Issue ya da yorum gelmedi; tek Issue (#16) yerel kullanıcının kendi kaydı.",
       "durum": "kısmen",
       "varyantlar": [
-        {"soru": "Kimin için?", "yanit": "Yerel kullanıcı için: neyin çıkıp gireceğine o karar verir. Harici birey için: girişin kapısı ve karşılığın adresi. Katılımcı modeller için: işin kaynağını ve devrini taşıyan ortak yer; bağı taşırlar, yerine geçmezler."},
-        {"soru": "Ne için değildir?", "yanit": "Bütün yerel işin buradan geçmesi için değildir; bir Issue açılması yerel bir aracı çalıştırmaz."}
-      ]
+        {
+          "soru": "Kimin için?",
+          "yanit": "Yerel kullanıcı için: neyin çıkıp gireceğine o karar verir. Harici birey için: girişin kapısı ve karşılığın adresi. Katılımcı modeller için: işin kaynağını ve devrini taşıyan ortak yer; bağı taşırlar, yerine geçmezler."
+        },
+        {
+          "soru": "Ne için değildir?",
+          "yanit": "Bütün yerel işin buradan geçmesi için değildir; bir Issue açılması yerel bir aracı çalıştırmaz."
+        }
+      ],
+      "sade": "Bir bilgisayarda yapılan çalışma dünyayla paylaşılabilsin diye. Dünyadaki bilgi o çalışmaya katılabilsin diye. Dışarıdaki biri yerel kullanıcıyla bağ kurabilsin diye."
     },
     "nereden": {
       "soru": "Nereden?",
@@ -74,8 +108,12 @@
       "bugun": "Yerel seçim prepare ile, dış kaynak fetch ile sabitleniyor. Bireylerin katkısı Issues ve PR'dan gelebiliyor, ama onu yerel tarafa taşıyan bir adım yok.",
       "durum": "kısmen",
       "varyantlar": [
-        {"soru": "Nereden gelmez?", "yanit": "Kendiliğinden hiçbir yerden: ne yerel klasörün tamamı ne bir dış hizmetin otomatik akışı kapıdan seçimsiz geçer."}
-      ]
+        {
+          "soru": "Nereden gelmez?",
+          "yanit": "Kendiliğinden hiçbir yerden: ne yerel klasörün tamamı ne bir dış hizmetin otomatik akışı kapıdan seçimsiz geçer."
+        }
+      ],
+      "sade": "İki yerden. Birincisi yerel kullanıcının bilgisayarı: oradan yalnız onun açıkça seçtiği şeyler gelir. İkincisi dış dünya: internetteki kaynaklar ve dışarıdaki insanların soruları, önerileri, düzeltmeleri."
     },
     "nereye": {
       "soru": "Nereye?",
@@ -83,8 +121,12 @@
       "bugun": "Dosya yönleri kodda var: mevcut dalın üzerine yazılmaz, PR birleştirilmez, alınan dosya projeye kendiliğinden uygulanmaz. Karşılığın bireye ve ilgili metne dönmesi elle yapılıyor.",
       "durum": "kısmen",
       "varyantlar": [
-        {"soru": "Nereye gitmez?", "yanit": "Belirteç, anahtar, IP adresi, cihaz kimliği ve özel çalışma alanı dışarıya gitmez; dışarıdan alınan dosya yerel projenin içine kendiliğinden gitmez."}
-      ]
+        {
+          "soru": "Nereye gitmez?",
+          "yanit": "Belirteç, anahtar, IP adresi, cihaz kimliği ve özel çalışma alanı dışarıya gitmez; dışarıdan alınan dosya yerel projenin içine kendiliğinden gitmez."
+        }
+      ],
+      "sade": "Yerelden çıkan şey, internette herkesin görebileceği bir yere gider. Orada var olan hiçbir şeyin üzerine yazılmaz. Dışarıdan gelen şey, yerel kullanıcının önce bakacağı ayrı bir yere iner. Onun çalışmasına kendiliğinden karışmaz."
     },
     "ne_kadar": {
       "soru": "Ne kadar?",
@@ -92,8 +134,12 @@
       "bugun": "Sınırlar src/ortak_kopru/exchange.py'de. Ama yerel gönderici kopru_gonder.ps1 kapının dışından çalışıyor ve çalışma klasöründe kalan izlenmeyen her dosyayı gönderebiliyor (R-17).",
       "durum": "kısmen",
       "varyantlar": [
-        {"soru": "Ne kadarı bekliyor?", "yanit": "Dışarıdan gelip cevap bekleyen bir Issue yok. Defterde ise 16 kayıt, cevap verebilecek bir yolu olmayan adreslerde bekliyor."}
-      ]
+        {
+          "soru": "Ne kadarı bekliyor?",
+          "yanit": "Dışarıdan gelip cevap bekleyen bir Issue yok. Defterde ise 16 kayıt, cevap verebilecek bir yolu olmayan adreslerde bekliyor."
+        }
+      ],
+      "sade": "Yalnız seçilen kadar. Bir seferde geçebilecek miktarın bir üst sınırı var. Seçilmeyen hiçbir şey geçmez. Şifreler ve kişisel bilgiler hiç geçmez."
     },
     "neden": {
       "soru": "Neden?",
@@ -101,90 +147,303 @@
       "bugun": "Karar 0002 yerel ile dış alan arasındaki sınırı, kayıt defteri sözün sahibiyle korunmasını taşıyor.",
       "durum": "var",
       "varyantlar": [
-        {"soru": "Neden başka türlü değil?", "yanit": "Bir bulut eşitlemesi yerel klasörü bütünüyle dışarı açardı; bir sohbet geçmişi sözün sahibini ve sürümünü kaybettirirdi. Kapı seçer, köprü bağlar, ikisi de iz bırakır."}
-      ]
+        {
+          "soru": "Neden başka türlü değil?",
+          "yanit": "Bir bulut eşitlemesi yerel klasörü bütünüyle dışarı açardı; bir sohbet geçmişi sözün sahibini ve sürümünü kaybettirirdi. Kapı seçer, köprü bağlar, ikisi de iz bırakır."
+        }
+      ],
+      "sade": "Bir bilgisayarda yapılan iş ile dünyadaki karşılığı kolayca birbirinden kopar. Bir sözün kime ait olduğu, bir bilginin nereden geldiği unutulur. Ortak Köprü bu bağı korumak için var."
     }
   },
   "kesisimler": [
-    {"kapi": "ne", "gecis": "nereden", "soru": "Ne nereden gelir?", "yanit": "Dışarıdan kesin commit'e bağlı kaynak dosyalar ve bireylerin soruları, kaynakları, düzeltmeleri gelir; yerelden kullanıcının seçtiği çıktı ve karşılığı."},
-    {"kapi": "ne", "gecis": "nereye", "soru": "Ne nereye gider?", "yanit": "Seçilmiş yerel dosya GitHub'da yeni bir dala, alınan kaynak yerelde yeni bir inceleme dizinine gider; bireyin katkısı yerel kullanıcıya, kullanıcının karşılığı bireye."},
-    {"kapi": "ne", "gecis": "ne_kadar", "soru": "Ne kadarı geçer?", "yanit": "Yalnız seçilen: aktarım başına en çok 64 dosya ve 64 MiB. Seçilmeyen hiçbir dosya pakete girmez."},
-    {"kapi": "ne", "gecis": "neden", "soru": "Bu şey neden geçer?", "yanit": "Yerel kullanıcı onu bir amaçla seçtiği ya da bir birey onu bir soruya karşılık getirdiği için; amaçsız ve sahipsiz geçiş yoktur."},
-    {"kapi": "nerede", "gecis": "nereden", "soru": "Kapının hangi tarafından girilir?", "yanit": "Dış taraftan, Web'den: Pages'te okunur, Issues ve PR'da yazılır. İç taraftan, bilgisayardan: kapi.py ve yerel araçlarla."},
-    {"kapi": "nerede", "gecis": "nereye", "soru": "Geçen şey nerede durur?", "yanit": "Dışarıda yeni bir dalda ve taslak PR'da, mevcut dala dokunmadan; içeride yeni bir dizinde, yerel projeye dokunmadan."},
-    {"kapi": "nerede", "gecis": "ne_kadar", "soru": "Nerede ne kadar iz kalır?", "yanit": "Herkese açık tarafta yalnız seçilmiş içerik ve kamusal kayıt kalır; aktarımın amacı, yerel yolları ve makbuzları bilgisayardaki özel kayıtta durur."},
-    {"kapi": "nerede", "gecis": "neden", "soru": "Neden iki ayrı yer?", "yanit": "Kamuya açılan ile özel kalan karışmasın diye: kapının herkese açık yüzü ile geçişlerin özel kaydı ayrı tutulur."},
-    {"kapi": "nasil", "gecis": "nereden", "soru": "Nasıl alınır?", "yanit": "Dış kaynak kesin bir commit'e bağlanır, baytları SHA-256 ile sabitlenir ve inceleme için yeni bir dizine çıkarılır."},
-    {"kapi": "nasil", "gecis": "nereye", "soru": "Nasıl gönderilir?", "yanit": "Uzak sürüm okunup fark planlanır, yalnız o planın karmasıyla yeni bir dala gönderilir, istenirse taslak PR açılır. Sonucu belirsiz kalan bir gönderim uzlaştırılmadan gerçekleşmiş sayılmaz."},
-    {"kapi": "nasil", "gecis": "ne_kadar", "soru": "Nasıl sınırlanır?", "yanit": "Boyut ve sayı sınırları, yasak desen denetimi, dış yükleme denetimi ve gönderim kapsamıyla. Sınırı aşan istek reddedilir, kesilerek geçirilmez."},
-    {"kapi": "nasil", "gecis": "neden", "soru": "Neden bu yolla?", "yanit": "Hazırlanmak, gönderilmek, alınmak, okunmak ve kullanılmak ayrı olaylardır. Her biri ayrı kaydedildiğinde hiçbir geçiş olduğundan fazla gösterilmez."},
-    {"kapi": "ne_zaman", "gecis": "nereden", "soru": "Dışarıdan ne zaman alınır?", "yanit": "Yerel kullanıcı istediğinde ve belirli bir sürümde; kaynak, alındığı commit'in anında sabit kalır."},
-    {"kapi": "ne_zaman", "gecis": "nereye", "soru": "Dışarıya ne zaman gider?", "yanit": "Yalnız yerel kullanıcının komutuyla. Saatlik otomasyon yalnız defter kayıtlarına yanıt verir, dosya göndermez."},
-    {"kapi": "ne_zaman", "gecis": "ne_kadar", "soru": "Bir geçiş ne zamana kadar geçerlidir?", "yanit": "Her geçiş ve her gözlem kendi anına aittir; daha yeni sürüm yeniden alınır, eski kayıt silinmez."},
-    {"kapi": "ne_zaman", "gecis": "neden", "soru": "Neden şimdi?", "yanit": "Bir istek ya da katkı geldiğinde. Yanıt gelmemesi kabul sayılmaz; bekleyen her şey bekleyen olarak görünür kalır."},
-    {"kapi": "ne_icin", "gecis": "nereden", "soru": "Kimden ne için gelir?", "yanit": "Harici bireyden soru sormak, kaynak ya da düzeltme getirmek için; dış kaynaktan yerel işi beslemek için."},
-    {"kapi": "ne_icin", "gecis": "nereye", "soru": "Kime ne için gider?", "yanit": "Dış dünyaya okunmak ve katkıya açılmak için; yerel kullanıcıya karar vermek ve kullanmak için."},
-    {"kapi": "ne_icin", "gecis": "ne_kadar", "soru": "Bir katkı için ne kadarı yeter?", "yanit": "Bir paragraf ve kendi açıklaması yeter; dışarıdaki bireyin bütün mimariyi ya da geçmişi bilmesi gerekmez."},
-    {"kapi": "ne_icin", "gecis": "neden", "soru": "Amaç ile gerekçe nasıl ayrılır?", "yanit": "Amaç karşılıklı aktarım ve bağdır. Gerekçe, yerel çalışma ile dünyadaki karşılığının ve bireyler arasındaki bağlamın kopmamasıdır."}
+    {
+      "kapi": "ne",
+      "gecis": "nereden",
+      "soru": "Ne nereden gelir?",
+      "yanit": "Dışarıdan kesin commit'e bağlı kaynak dosyalar ve bireylerin soruları, kaynakları, düzeltmeleri gelir; yerelden kullanıcının seçtiği çıktı ve karşılığı."
+    },
+    {
+      "kapi": "ne",
+      "gecis": "nereye",
+      "soru": "Ne nereye gider?",
+      "yanit": "Seçilmiş yerel dosya GitHub'da yeni bir dala, alınan kaynak yerelde yeni bir inceleme dizinine gider; bireyin katkısı yerel kullanıcıya, kullanıcının karşılığı bireye."
+    },
+    {
+      "kapi": "ne",
+      "gecis": "ne_kadar",
+      "soru": "Ne kadarı geçer?",
+      "yanit": "Yalnız seçilen: aktarım başına en çok 64 dosya ve 64 MiB. Seçilmeyen hiçbir dosya pakete girmez."
+    },
+    {
+      "kapi": "ne",
+      "gecis": "neden",
+      "soru": "Bu şey neden geçer?",
+      "yanit": "Yerel kullanıcı onu bir amaçla seçtiği ya da bir birey onu bir soruya karşılık getirdiği için; amaçsız ve sahipsiz geçiş yoktur."
+    },
+    {
+      "kapi": "nerede",
+      "gecis": "nereden",
+      "soru": "Kapının hangi tarafından girilir?",
+      "yanit": "Dış taraftan, Web'den: Pages'te okunur, Issues ve PR'da yazılır. İç taraftan, bilgisayardan: kapi.py ve yerel araçlarla."
+    },
+    {
+      "kapi": "nerede",
+      "gecis": "nereye",
+      "soru": "Geçen şey nerede durur?",
+      "yanit": "Dışarıda yeni bir dalda ve taslak PR'da, mevcut dala dokunmadan; içeride yeni bir dizinde, yerel projeye dokunmadan."
+    },
+    {
+      "kapi": "nerede",
+      "gecis": "ne_kadar",
+      "soru": "Nerede ne kadar iz kalır?",
+      "yanit": "Herkese açık tarafta yalnız seçilmiş içerik ve kamusal kayıt kalır; aktarımın amacı, yerel yolları ve makbuzları bilgisayardaki özel kayıtta durur."
+    },
+    {
+      "kapi": "nerede",
+      "gecis": "neden",
+      "soru": "Neden iki ayrı yer?",
+      "yanit": "Kamuya açılan ile özel kalan karışmasın diye: kapının herkese açık yüzü ile geçişlerin özel kaydı ayrı tutulur."
+    },
+    {
+      "kapi": "nasil",
+      "gecis": "nereden",
+      "soru": "Nasıl alınır?",
+      "yanit": "Dış kaynak kesin bir commit'e bağlanır, baytları SHA-256 ile sabitlenir ve inceleme için yeni bir dizine çıkarılır."
+    },
+    {
+      "kapi": "nasil",
+      "gecis": "nereye",
+      "soru": "Nasıl gönderilir?",
+      "yanit": "Uzak sürüm okunup fark planlanır, yalnız o planın karmasıyla yeni bir dala gönderilir, istenirse taslak PR açılır. Sonucu belirsiz kalan bir gönderim uzlaştırılmadan gerçekleşmiş sayılmaz."
+    },
+    {
+      "kapi": "nasil",
+      "gecis": "ne_kadar",
+      "soru": "Nasıl sınırlanır?",
+      "yanit": "Boyut ve sayı sınırları, yasak desen denetimi, dış yükleme denetimi ve gönderim kapsamıyla. Sınırı aşan istek reddedilir, kesilerek geçirilmez."
+    },
+    {
+      "kapi": "nasil",
+      "gecis": "neden",
+      "soru": "Neden bu yolla?",
+      "yanit": "Hazırlanmak, gönderilmek, alınmak, okunmak ve kullanılmak ayrı olaylardır. Her biri ayrı kaydedildiğinde hiçbir geçiş olduğundan fazla gösterilmez."
+    },
+    {
+      "kapi": "ne_zaman",
+      "gecis": "nereden",
+      "soru": "Dışarıdan ne zaman alınır?",
+      "yanit": "Yerel kullanıcı istediğinde ve belirli bir sürümde; kaynak, alındığı commit'in anında sabit kalır."
+    },
+    {
+      "kapi": "ne_zaman",
+      "gecis": "nereye",
+      "soru": "Dışarıya ne zaman gider?",
+      "yanit": "Yalnız yerel kullanıcının komutuyla. Saatlik otomasyon yalnız defter kayıtlarına yanıt verir, dosya göndermez."
+    },
+    {
+      "kapi": "ne_zaman",
+      "gecis": "ne_kadar",
+      "soru": "Bir geçiş ne zamana kadar geçerlidir?",
+      "yanit": "Her geçiş ve her gözlem kendi anına aittir; daha yeni sürüm yeniden alınır, eski kayıt silinmez."
+    },
+    {
+      "kapi": "ne_zaman",
+      "gecis": "neden",
+      "soru": "Neden şimdi?",
+      "yanit": "Bir istek ya da katkı geldiğinde. Yanıt gelmemesi kabul sayılmaz; bekleyen her şey bekleyen olarak görünür kalır."
+    },
+    {
+      "kapi": "ne_icin",
+      "gecis": "nereden",
+      "soru": "Kimden ne için gelir?",
+      "yanit": "Harici bireyden soru sormak, kaynak ya da düzeltme getirmek için; dış kaynaktan yerel işi beslemek için."
+    },
+    {
+      "kapi": "ne_icin",
+      "gecis": "nereye",
+      "soru": "Kime ne için gider?",
+      "yanit": "Dış dünyaya okunmak ve katkıya açılmak için; yerel kullanıcıya karar vermek ve kullanmak için."
+    },
+    {
+      "kapi": "ne_icin",
+      "gecis": "ne_kadar",
+      "soru": "Bir katkı için ne kadarı yeter?",
+      "yanit": "Bir paragraf ve kendi açıklaması yeter; dışarıdaki bireyin bütün mimariyi ya da geçmişi bilmesi gerekmez."
+    },
+    {
+      "kapi": "ne_icin",
+      "gecis": "neden",
+      "soru": "Amaç ile gerekçe nasıl ayrılır?",
+      "yanit": "Amaç karşılıklı aktarım ve bağdır. Gerekçe, yerel çalışma ile dünyadaki karşılığının ve bireyler arasındaki bağlamın kopmamasıdır."
+    }
   ],
   "ilkeler": [
     {
-      "no": 1, "ad": "Karşılıklılık",
+      "no": 1,
+      "ad": "Karşılıklılık",
       "ilke": "Kapı iki yöne açılır, köprü iki yöne taşır.",
       "aciklama": "Yerelden dışarıya paylaşmak ile dışarıdan yerele almak aynı kurallarla ve aynı kayıtla yürür. Bağ da iki yönlüdür: dışarıdaki bir birey yerel kullanıcıya ulaşabildiği gibi, yerel kullanıcının karşılığı da ona ve etkilediği metne döner. Yalnız tek yöne çalışan bir geçit kapı değil, yalnızca bir çıkıştır.",
-      "sorular": ["ne", "nereden", "nereye"],
-      "dayanaklar": ["kapi.py", "docs/KAPI_KULLANIMI.md", "CONTRIBUTING.md"],
+      "sorular": [
+        "ne",
+        "nereden",
+        "nereye"
+      ],
+      "dayanaklar": [
+        "kapi.py",
+        "docs/KAPI_KULLANIMI.md",
+        "CONTRIBUTING.md"
+      ],
       "durum": "kısmen",
       "eksik": "Dosyalar iki yönde geçiyor. Dışarıdan gelen bir katkıyı yerel kullanıcıya getiren ve karşılığını geri götüren adım yok; bu bağ GitHub bildirimlerine bırakılmış.",
-      "senaryolar": ["S09"]
+      "senaryolar": [
+        "S09"
+      ],
+      "sade": "Burada yalnız okumazsınız, yazabilirsiniz de. Yerel kullanıcı da yalnız paylaşmaz, dışarıdan gelene karşılık verir.",
+      "bugun_sade": "Dosyalar iki yönde de geçebiliyor. Dışarıdan gelen bir sorunun yerel kullanıcıya ulaşması ise henüz kendiliğinden olmuyor; şimdilik GitHub'ın kendi bildirimlerine bağlı."
     },
     {
-      "no": 2, "ad": "Yerel merkez",
+      "no": 2,
+      "ad": "Yerel merkez",
       "ilke": "Merkez yerel kullanıcıdır: kapıdan yalnız onun seçtiği geçer, dışarıdan gelen kendiliğinden uygulanmaz.",
       "aciklama": "Yerel çalışma kendi yerinde ve kendi araçlarında sürer. Kapı bir eşitleme aracı değildir; yerel klasörü dışarı açmaz, dışarıdaki bir değişikliği yerel projeye kendiliğinden yazmaz. Kapının ne zaman açılacağına ve neyin geçeceğine yerel kullanıcı karar verir; bir kayıt görmek ya da bir Issue açılması kendi başına iş emri değildir.",
-      "sorular": ["nerede", "ne_zaman", "ne_kadar"],
-      "dayanaklar": ["src/ortak_kopru/exchange.py", "docs/kararlar/0002-dis-alan-kapisi.md", "AGENTS-kopru.md"],
+      "sorular": [
+        "nerede",
+        "ne_zaman",
+        "ne_kadar"
+      ],
+      "dayanaklar": [
+        "src/ortak_kopru/exchange.py",
+        "docs/kararlar/0002-dis-alan-kapisi.md",
+        "AGENTS-kopru.md"
+      ],
       "durum": "kısmen",
       "eksik": "Yerel gönderici kopru_gonder.ps1 kapının dışından çalışıyor ve çalışma klasöründe kalan izlenmeyen her dosyayı herkese açık ana dala gönderebiliyor; bu, seçimsiz bir çıkış yolu.",
-      "bulgular": ["R-17"],
-      "senaryolar": ["S02"]
+      "bulgular": [
+        "R-17"
+      ],
+      "senaryolar": [
+        "S02"
+      ],
+      "sade": "Neyin paylaşılacağına yerel kullanıcı karar verir. Dışarıdan gelen bir öneri, o kabul etmeden onun çalışmasını değiştirmez.",
+      "bugun_sade": "Kapının kendisi bu kurala uyuyor. Ama eski bir paylaşım aracı hâlâ seçim yapmadan gönderebiliyor; daraltılması bekleniyor."
     },
     {
-      "no": 3, "ad": "Köken ve sahiplik",
+      "no": 3,
+      "ad": "Köken ve sahiplik",
       "ilke": "Her geçiş kökeni, sahibi, sürümü ve zamanıyla taşınır.",
       "aciklama": "Bir dosyanın hangi commit'ten geldiği, bir sözün kime ait olduğu, bir yorumun kimin yorumu olduğu geçişten sonra da görünür kalır. Geçen her bayt bir karmayla sabitlenir; kayıtlar değiştirilmez, düzeltme yeni bir kayıtla eskisinin yanına gelir. Böylece kapıdan geçen şey, karşı tarafta da kaynağıyla birlikte okunur.",
-      "sorular": ["ne", "ne_zaman", "nereden"],
-      "dayanaklar": ["schemas/exchange-manifest.schema.json", "src/ortak_kopru/gateway.py", "kopru_ekle.py"],
-      "durum": "uygulanıyor"
+      "sorular": [
+        "ne",
+        "ne_zaman",
+        "nereden"
+      ],
+      "dayanaklar": [
+        "schemas/exchange-manifest.schema.json",
+        "src/ortak_kopru/gateway.py",
+        "kopru_ekle.py"
+      ],
+      "durum": "uygulanıyor",
+      "sade": "Burada okuduğunuz her şeyin nereden geldiği ve kime ait olduğu yazılıdır. Sizin katkınız da sizin adınızla kalır.",
+      "bugun_sade": "Tam olarak işliyor."
     },
     {
-      "no": 4, "ad": "Sınır",
+      "no": 4,
+      "ad": "Sınır",
       "ilke": "Kapı bir duvar da taşır: gizli olan geçmez, geri alınamayan geçiş en sıkı denetimden geçer.",
       "aciklama": "Belirteçler, anahtarlar, IP adresleri, cihaz kimlikleri, kişisel dosyalar ve özel çalışma alanı kapının herkese açık tarafına geçmez. Dışarıdan alınan bir şey yerel projenin içine kendiliğinden girmez. Herkese açık geçmişe girmiş bir dosya geri alınamayacağı için, denetim en çok çıkış yönünde sıkıdır.",
-      "sorular": ["nerede", "nereye", "ne_kadar"],
-      "dayanaklar": ["kopru_ekle.py", "src/ortak_kopru/exchange.py", ".github/scripts/kopru_gonder.sh"],
+      "sorular": [
+        "nerede",
+        "nereye",
+        "ne_kadar"
+      ],
+      "dayanaklar": [
+        "kopru_ekle.py",
+        "src/ortak_kopru/exchange.py",
+        ".github/scripts/kopru_gonder.sh"
+      ],
       "durum": "kısmen",
       "eksik": "Bulut göndericisi kapsamı defter, ayna ve çağrı günlükleriyle sınırlıyor; yerel gönderici sınırlamıyor. Aynı kural iki yerde iki ayrı biçimde uygulanıyor.",
-      "bulgular": ["R-17"],
-      "senaryolar": ["S02"]
+      "bulgular": [
+        "R-17"
+      ],
+      "senaryolar": [
+        "S02"
+      ],
+      "sade": "Şifreler, kişisel bilgiler ve özel çalışmalar kapıdan geçmez. Bir kez herkese açılan bir şey geri alınamaz. Bu yüzden en sıkı kontrol çıkışta yapılır.",
+      "bugun_sade": "Kapı bu sınırı uyguluyor. Tek açık nokta yine o eski paylaşım aracı."
     },
     {
-      "no": 5, "ad": "Açık katılım",
+      "no": 5,
+      "ad": "Açık katılım",
       "ilke": "Dışarıdaki biri önceki konuşmaları bilmeden okuyabilir, sorabilir ve katkı getirebilir; getirdiği şey etkilediği yere bağlanır.",
       "aciklama": "Köprünün dış ucu herkese açıktır. Bir okuyucunun bütün mimariyi ya da geçmişi bilmesi gerekmez; bir paragraf ve kendi açıklaması yeterli bir başlangıçtır. Gelen katkı, etkilediği metnin ya da kaydın yanına bağlanır ve nasıl karşılandığı görünür kalır. Yanıt gelmemesi kabul sayılmaz.",
-      "sorular": ["ne_icin", "nasil", "nereden"],
-      "dayanaklar": ["docs/WEB_GIRISI.md", "CONTRIBUTING.md", "index.html"],
+      "sorular": [
+        "ne_icin",
+        "nasil",
+        "nereden"
+      ],
+      "dayanaklar": [
+        "docs/WEB_GIRISI.md",
+        "CONTRIBUTING.md",
+        "index.html"
+      ],
       "durum": "kısmen",
       "eksik": "Okuma ve katkı yolları açık, ama bugüne kadar dışarıdan bir katkı gelmedi (tek Issue #16, yerel kullanıcının kendi kaydı). Gelen bir katkının yerel kullanıcıya ulaşması GitHub bildirimlerine bırakılmış.",
-      "senaryolar": ["S09"]
+      "senaryolar": [
+        "S09"
+      ],
+      "sade": "Önceki konuşmaları bilmeniz gerekmez. Bir yazıyı okuyup bir soru sormanız ya da bir düzeltme önermeniz yeterli bir başlangıçtır. Getirdiğiniz şey, ilgili olduğu yazının yanına bağlanır.",
+      "bugun_sade": "Okuma ve yazma yolları açık. Ama dışarıdan henüz kimse yazmadı; ilk katkı sizinki olabilir."
     },
     {
-      "no": 6, "ad": "Doğrulanabilirlik ve geri dönüş",
+      "no": 6,
+      "ad": "Doğrulanabilirlik ve geri dönüş",
       "ilke": "Hazırlanmak, gönderilmek, alınmak, okunmak ve kullanılmak ayrı olaylardır; hiçbir geçiş olduğundan fazla gösterilmez ve her değişiklik izini silmeden geri alınabilir.",
       "aciklama": "Kapının her adımı ayrı bir olay olarak kaydedilir; sonucu belirsiz kalan bir gönderim uzlaştırılmadan gerçekleşmiş sayılmaz. Deponun kendi hakkındaki her sözü kırılabilecek bir denetime bağlıdır ve tek komutla sınanır. Geri alma, izi silerek değil yeni bir kayıtla yapılır.",
-      "sorular": ["nasil", "ne_zaman", "neden"],
-      "dayanaklar": ["src/ortak_kopru/gateway.py", "tools/dogrula.py", "kopru.html"],
-      "durum": "uygulanıyor"
+      "sorular": [
+        "nasil",
+        "ne_zaman",
+        "neden"
+      ],
+      "dayanaklar": [
+        "src/ortak_kopru/gateway.py",
+        "tools/dogrula.py",
+        "kopru.html"
+      ],
+      "durum": "uygulanıyor",
+      "sade": "Bir şeyin hazırlanmış olması, gönderildiği ya da okunduğu anlamına gelmez; burada bunlar ayrı yazılır. Bir hata olursa silinmez, yanına düzeltmesi eklenir.",
+      "bugun_sade": "Tam olarak işliyor."
+    }
+  ],
+  "sade_tanim": "Ortak Köprü iki şeydir. Bir kapı: bir bilgisayardaki çalışma ile internet arasında. Bir köprü: o bilgisayarın sahibi ile dışarıdaki insanlar arasında. Kapıdan dosyalar ve bilgiler geçer; köprüden sorular, katkılar ve yanıtlar.",
+  "sozluk": [
+    {
+      "terim": "İnternet ve Web",
+      "anlam": "Bu sayfada ikisi aynı anlamda kullanılıyor: herkesin bir tarayıcıyla ulaşabildiği dış dünya."
+    },
+    {
+      "terim": "Yerel kullanıcı",
+      "anlam": "Ortak Köprü'nün öbür ucundaki bilgisayarın sahibi. Bugün bu kişi Haluk."
+    },
+    {
+      "terim": "GitHub",
+      "anlam": "Yazıların ve dosyaların herkese açık durduğu, insanların birlikte çalışmak için kullandığı bir internet sitesi. Ortak Köprü'nün dış yüzü orada."
+    },
+    {
+      "terim": "Depo",
+      "anlam": "GitHub'da bir çalışmanın bütün dosyalarını ve geçmişini bir arada tutan yer. Ortak Köprü bir depodur."
+    },
+    {
+      "terim": "Issue",
+      "anlam": "GitHub'da bir depoya soru, öneri ya da hata bildirimi yazmanın yolu. Okumak için hesap gerekmez; yazmak için ücretsiz bir GitHub hesabı yeter."
+    },
+    {
+      "terim": "Pull request",
+      "anlam": "Bir depodaki yazıya ya da dosyaya doğrudan değişiklik önermenin yolu. Biraz teknik bilgi ister; bir Issue her zaman yeterlidir."
+    },
+    {
+      "terim": "Sürüm",
+      "anlam": "Bir dosyanın belirli bir andaki hâli. Dosya sonradan değişse de alınan sürüm aynı kalır."
     }
   ]
 }

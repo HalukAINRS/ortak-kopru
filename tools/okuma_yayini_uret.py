@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REPO = 'https://github.com/HalukAINRS/ortak-kopru'
 PAGES = {
     'WEB_GIRISI.md': ('index.html', 'Ortak Köprü'),
+    'ACILIS.md': ('acilis.html', 'Açılış: Kapı ve Köprü'),
     'ORTAK_MIMARI_DEFTERI.md': ('mimari.html', 'Ortak Mimari Defteri'),
     'ANLAM_NOT_DEFTERI.md': ('not-defteri.html', 'Anlam ve Dönüş Defteri'),
     'SON_DURUM.md': ('durum.html', 'Son durum'),
@@ -139,7 +140,7 @@ def render(source: str) -> tuple[str, list[tuple[str, str]]]:
 
 def page(filename: str, output_name: str, label: str) -> str:
     body, headings = render((ROOT / 'docs' / filename).read_text(encoding='utf-8'))
-    nav = ''.join(f'<a href="{target}"' + (' aria-current="page"' if target == output_name else '') + f'>{html.escape(name)}</a>' for target, name in [('index.html', 'Başlangıç'), ('mimari.html', 'Mimari defteri'), ('not-defteri.html', 'Not defteri'), ('durum.html', 'Son durum'), ('kaynaklar.html', 'Kaynaklar')])
+    nav = ''.join(f'<a href="{target}"' + (' aria-current="page"' if target == output_name else '') + f'>{html.escape(name)}</a>' for target, name in [('index.html', 'Başlangıç'), ('acilis.html', 'Açılış'), ('mimari.html', 'Mimari defteri'), ('not-defteri.html', 'Not defteri'), ('durum.html', 'Son durum'), ('kaynaklar.html', 'Kaynaklar')])
     contents = ''.join(f'<li><a href="#{anchor}">{html.escape(title)}</a></li>' for anchor, title in headings)
     title = label if output_name == 'index.html' else label + ' · Ortak Köprü'
     return f'''<!doctype html>

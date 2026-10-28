@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deponun açılışını (docs/acilis.json) denetler ve üç yüzdeki açılış bloklarını ondan üretir.
+"""Deponun açılışını (docs/acilis.json) denetler ve dört yüzdeki açılış bloklarını ondan üretir.
 
 Açılış; kullanıcının niyet sözünü, bu niyetten kurulan tanımı, dokuz soruyu ve altı ana
 ilkeyi taşır. Sorular iki gruptadır: kapının kendisini tanımlayan beşli (ne, nerede, nasıl,
@@ -13,7 +13,12 @@ Denetim:
     bağlaması, ilkelerin birlikte dokuz soruyu kapsaması;
   - "uygulanıyor" olmayan ilkenin eksiğini yazması; dayanak yollarının depoda bulunması;
     bağlı bulguların rafine kayıtlarında açık, bağlı senaryoların senaryo kaydında var olması;
-  - README.md, docs/WEB_GIRISI.md ve docs/ACILIS.md içindeki üretilen blokların kayıtla eşliği.
+  - README.md, docs/WEB_GIRISI.md, docs/ACILIS.md ve docs/ACILIS_TEKNIK.md içindeki üretilen blokların
+    kayıtla eşliği;
+  - okunabilirlik: docs/ACILIS.md, README.md ve Web açılışı ilk kez gelen okuyucu içindir; kod
+    biçimi, dosya adı, commit ya da iç kimlik taşımaz, sözlükte açıklanmayan teknik terim kullanmaz,
+    cümleleri kısadır; açılış belgesi ve README teknik ayrıntılara (docs/TEKNIK.md) ve geçmiş
+    işlere (docs/GECMIS.md) ayrı sayfalardan bağlanır.
 
 Kullanım:
     python tools/acilis.py            # blokları kayıttan yaz ve denetle
@@ -119,24 +124,66 @@ def _tarih(veri: dict) -> str:
     return f"{int(gun)} {AYLAR[int(ay) - 1]} {yil}"
 
 
+SADE_DURUM = {"uygulanıyor": "işliyor", "kısmen": "kısmen işliyor", "henüz yok": "henüz yok"}
+SAYI = {0: "hiçbiri", 1: "biri", 2: "ikisi", 3: "üçü", 4: "dördü", 5: "beşi", 6: "altısı"}
+
+
 def readme_blogu(veri: dict) -> str:
     satirlar = [f"> **Niyet** ({veri['niyet']['sahibi']}, {_tarih(veri)}): “{veri['niyet']['soz']}”", "",
-                f"**Tanım.** {veri['tanim']}", "", "**Altı ilke**", ""]
+                veri["sade_tanim"], "", "**Altı ilke**", ""]
     for ilke in veri["ilkeler"]:
-        satirlar.append(f"{ilke['no']}. **{ilke['ad']}.** {ilke['ilke']} *Bugün: {DURUM_METNI[ilke['durum']]}.*")
-    satirlar += ["", "Dokuz soruyla ayrıntı, beşli ile dörtlünün yirmi kesişimi ve ilkelerin bugünkü karşılıkları: "
+        satirlar.append(f"{ilke['no']}. **{ilke['ad']}.** {ilke['ilke']} Bugün {SADE_DURUM[ilke['durum']]}.")
+    satirlar += ["", "İlk kez geliyorsanız, önceden bir şey bilmeden okuyabileceğiniz anlatım: "
                      "[Açılış: Kapı ve Köprü](docs/ACILIS.md).", ""]
     return "\n".join(satirlar)
 
 
 def web_blogu(veri: dict) -> str:
     satirlar = [f"**Niyet** ({veri['niyet']['sahibi']}, {_tarih(veri)}): “{veri['niyet']['soz']}”", "",
-                veri["tanim"], ""]
+                veri["sade_tanim"], ""]
     for ilke in veri["ilkeler"]:
-        satirlar.append(f"- **{ilke['no']}. {ilke['ad']}.** {ilke['ilke']} Bugün: {DURUM_METNI[ilke['durum']]}.")
-    satirlar += ["", "Bu tanımın dokuz soruyla ayrıntısı ve ilkelerin bugün depoda neye karşılık geldiği "
-                     "[açılış belgesindedir](ACILIS.md).", ""]
+        satirlar.append(f"- **{ilke['no']}. {ilke['ad']}.** {ilke['ilke']} Bugün {SADE_DURUM[ilke['durum']]}.")
+    satirlar += ["", "İlk kez geliyorsanız, önceden bir şey bilmeden okuyabileceğiniz anlatım "
+                     "[açılış sayfasındadır](ACILIS.md).", ""]
     return "\n".join(satirlar)
+
+
+def kisaca(veri: dict) -> str:
+    return "\n".join([f"Ortak Köprü'yü kuran kişi {veri['niyet']['sahibi']}. Bu yerin amacını {_tarih(veri)} günü "
+                      "kendi sözleriyle şöyle yazdı:", "",
+                      f"**“{veri['niyet']['soz']}”**", "", "Daha sade söylersek:", "", veri["sade_tanim"], ""])
+
+
+def sade_sorular(veri: dict) -> str:
+    parcalar = []
+    for kok in BESLI + DORTLU:
+        parcalar += [f"### {veri['sorular'][kok]['soru']}", "", veri["sorular"][kok]["sade"], ""]
+    return "\n".join(parcalar)
+
+
+def sade_ilkeler(veri: dict) -> str:
+    parcalar = []
+    for ilke in veri["ilkeler"]:
+        parcalar += [f"### {ilke['no']}. {ilke['ad']}", "", f"**{ilke['ilke']}**", "",
+                     f"Sizin için anlamı: {ilke['sade']}", "", f"Bugün: {ilke['bugun_sade']}", ""]
+    return "\n".join(parcalar)
+
+
+def sade_bugun(veri: dict) -> str:
+    durumlar = [ilke["durum"] for ilke in veri["ilkeler"]]
+    tam, kismen, yok = durumlar.count("uygulanıyor"), durumlar.count("kısmen"), durumlar.count("henüz yok")
+    cumle = f"Altı ilkenin {SAYI[tam]} bugün tam olarak işliyor, {SAYI[kismen]} kısmen işliyor"
+    cumle += f", {SAYI[yok]} henüz yok." if yok else "."
+    eksikler = [ilke["ad"] for ilke in veri["ilkeler"] if ilke["durum"] != "uygulanıyor"]
+    return cumle + " Kısmen işleyenler: " + ", ".join(eksikler) + ".\n"
+
+
+def sozluk(veri: dict) -> str:
+    return "\n".join(f"- **{madde['terim']}:** {madde['anlam']}" for madde in veri["sozluk"]) + "\n"
+
+
+def tam_tanim(veri: dict) -> str:
+    return veri["tanim"] + "\n"
 
 
 def soru_tablosu(veri: dict) -> str:
@@ -196,6 +243,72 @@ def ilke_tablosu(veri: dict) -> str:
     return "\n".join(satirlar) + "\n"
 
 
+# İlk kez gelen okuyucunun açılışta karşılaşmaması gereken teknik terimler. Sözlükte açıklanan terim
+# kullanılabilir; açıklanmayan terim sade anlatıma giremez. Büyük harfli kısaltmalar büyük/küçük harfe duyarlı.
+TEKNIK_TERIMLER = [
+    (r"\bAPI\b", "API"), (r"\bCLI\b", "CLI"), (r"\bCI\b", "CI"), (r"\bJSON\b", "JSON"), (r"\bHTML\b", "HTML"),
+    (r"\bSHA\b", "SHA"), (r"\bPR\b", "PR"), (r"(?i)\bcommit", "commit"), (r"(?i)\bissue", "issue"),
+    (r"(?i)\bpull request", "pull request"), (r"(?i)\bgithub", "github"), (r"(?i)\bpages\b", "pages"),
+    (r"(?i)\breadme", "readme"), (r"(?i)\bmarkdown", "markdown"), (r"(?i)\bterminal", "terminal"),
+    (r"(?i)\bbetik", "betik"), (r"(?i)\bşema", "şema"), (r"(?i)\bkomut satır", "komut satırı"),
+]
+EN_UZUN_CUMLE = 30
+ORTALAMA_CUMLE = 16
+
+
+def _gorunen(metin: str) -> str:
+    """İşaret satırlarını, bağlantı adreslerini ve vurgu işaretlerini çıkarır; okuyucunun gördüğü metin kalır."""
+    metin = re.sub(r"<!--.*?-->", "", metin, flags=re.S)
+    metin = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", metin)
+    return metin.replace("**", "")
+
+
+def okunabilirlik(ad: str, metin: str, sozluk_terimleri: list[str], ayrim_bagi: bool = False) -> list[str]:
+    """İlk kez gelen okuyucu için yazılmış metnin sade kalıp kalmadığını denetler."""
+    hatalar = []
+    if "`" in metin:
+        hatalar.append(f"{ad}: kod biçimi (`) kullanılmış")
+    gorunen = _gorunen(metin)
+    for desen, aciklama in [(r"\b[\w./-]+\.(?:py|json|md|html|ps1|cmd|ya?ml|sh|txt)\b", "dosya adı"),
+                            (r"\b(?=[0-9a-f]*\d)[0-9a-f]{7,40}\b", "commit kimliği"),
+                            (r"\b(?:R-\d{2}|S\d{2}|B\d{2}|k-\d{4})\b", "iç kimlik")]:
+        for bulunan in sorted(set(re.findall(desen, gorunen))):
+            hatalar.append(f"{ad}: {aciklama} görünüyor: {bulunan}")
+    sozluk = [terim.lower() for terim in sozluk_terimleri]
+    for desen, terim in TEKNIK_TERIMLER:
+        if re.search(desen, gorunen) and not any(terim in madde for madde in sozluk):
+            hatalar.append(f"{ad}: '{terim}' teknik terimi sözlükte açıklanmadan kullanılmış")
+    duz = re.sub(r"“[^”]*”", "", gorunen)
+    satirlar = [satir.lstrip("-# ").strip() for satir in duz.splitlines() if satir.strip() and not satir.startswith("#")]
+    cumleler = [c for c in re.split(r"(?<=[.!?])\s+", " ".join(satirlar)) if c.strip()]
+    uzunluklar = [len(c.split()) for c in cumleler]
+    for cumle, uzunluk in zip(cumleler, uzunluklar):
+        if uzunluk > EN_UZUN_CUMLE:
+            hatalar.append(f"{ad}: {uzunluk} kelimelik cümle (en çok {EN_UZUN_CUMLE}): {cumle[:60]}…")
+    if uzunluklar and sum(uzunluklar) / len(uzunluklar) > ORTALAMA_CUMLE:
+        hatalar.append(f"{ad}: ortalama cümle {sum(uzunluklar) / len(uzunluklar):.1f} kelime (en çok {ORTALAMA_CUMLE})")
+    if ayrim_bagi:
+        for hedef, adi in (("TEKNIK.md", "teknik ayrıntılar"), ("GECMIS.md", "geçmiş işler")):
+            if not re.search(r"\]\((?:docs/)?" + re.escape(hedef) + r"\)", metin):
+                hatalar.append(f"{ad}: {adi} sayfasına ({hedef}) bağlantı yok")
+    return hatalar
+
+
+def okunabilirlik_denetle(veri: dict) -> list[str]:
+    terimler = [madde["terim"] for madde in veri["sozluk"]]
+    hatalar = []
+    acilis = KOK / "docs" / "ACILIS.md"
+    if acilis.is_file():
+        hatalar += okunabilirlik("docs/ACILIS.md", acilis.read_text(encoding="utf-8"), terimler, ayrim_bagi=True)
+    readme = KOK / "README.md"
+    if readme.is_file():
+        # README, GitHub'da ilk görülen sayfadır: açılış bloğuyla birlikte bütünü sade kalır ve iki ayrı yere yönlendirir.
+        hatalar += okunabilirlik("README.md", readme.read_text(encoding="utf-8"), terimler, ayrim_bagi=True)
+    hatalar += okunabilirlik("README açılışı", readme_blogu(veri), terimler)
+    hatalar += okunabilirlik("Web açılışı", web_blogu(veri), terimler)
+    return hatalar
+
+
 def _ayir(metin: str) -> str:
     """Bloğu işaretlerden boş satırla ayırır; Web üreticisi ve Markdown işaretleri ayrı paragraf görür."""
     return "\n" + metin.strip("\n") + "\n\n"
@@ -209,9 +322,13 @@ def _ham_bloklar(veri: dict) -> dict[Path, dict[str, str]]:
     return {
         KOK / "README.md": {"acilis": readme_blogu(veri)},
         KOK / "docs" / "WEB_GIRISI.md": {"acilis": web_blogu(veri)},
-        KOK / "docs" / "ACILIS.md": {"acilis_sorular": soru_tablosu(veri), "acilis_varyantlar": varyant_tablosu(veri),
-                                     "acilis_matris": matris(veri), "acilis_kesisimler": kesisim_tablosu(veri),
-                                     "acilis_ilkeler": ilke_tablosu(veri), "acilis_ilke_metinleri": ilke_metinleri(veri)},
+        KOK / "docs" / "ACILIS.md": {"acilis_kisaca": kisaca(veri), "acilis_sade_sorular": sade_sorular(veri),
+                                     "acilis_sade_ilkeler": sade_ilkeler(veri), "acilis_sade_bugun": sade_bugun(veri),
+                                     "acilis_sozluk": sozluk(veri)},
+        KOK / "docs" / "ACILIS_TEKNIK.md": {"acilis_tanim": tam_tanim(veri), "acilis_sorular": soru_tablosu(veri),
+                                            "acilis_varyantlar": varyant_tablosu(veri), "acilis_matris": matris(veri),
+                                            "acilis_kesisimler": kesisim_tablosu(veri), "acilis_ilkeler": ilke_tablosu(veri),
+                                            "acilis_ilke_metinleri": ilke_metinleri(veri)},
     }
 
 
@@ -245,6 +362,7 @@ def main() -> int:
                     yol.write_text(yeni, encoding="utf-8", newline="\n")
                     metin = yeni
             hatalar.extend(belge_denetle(yol.relative_to(KOK).as_posix(), metin, uretilen))
+        hatalar.extend(okunabilirlik_denetle(veri))
     for hata in hatalar:
         print(hata)
     if hatalar:
@@ -254,7 +372,7 @@ def main() -> int:
     durumlar = [ilke["durum"] for ilke in veri["ilkeler"]]
     print(f"TAMAM: niyet, tanım, 9 soru ({len(BESLI)}+{len(DORTLU)}), {len(veri['kesisimler'])} kesişim ve 6 ilke "
           f"({durumlar.count('uygulanıyor')} uygulanıyor, {durumlar.count('kısmen')} kısmen, "
-          f"{durumlar.count('henüz yok')} henüz yok); README, Web girişi ve açılış belgesi kayıtla uyumlu.")
+          f"{durumlar.count('henüz yok')} henüz yok); README, Web girişi, açılış belgesi ve teknik ek kayıtla uyumlu; ilk temas metinleri sade.")
     return 0
 
 

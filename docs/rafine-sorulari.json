@@ -202,7 +202,7 @@
           "varyant": "nerede.gorulemez",
           "aciklama": "README'ye göre kanonik kopya Y:\\HalukAI\\Ortak_Kopru\\kopru\\ klasörüdür; bulut oturumundan görülemez.",
           "durum": "beyan",
-          "dayanak": "README.md#yerleştirme"
+          "dayanak": "docs/TEKNIK.md#yerleştirme"
         },
         {
           "ad": "Bulutta çalışan",
@@ -395,7 +395,7 @@
           "varyant": "nereye.sonraki",
           "aciklama": "README; genel gelen/giden ekranını, diğer dosya hizmeti bağlayıcılarını ve genel dış iş talebi akışını sonraki geliştirmeler olarak sayar.",
           "durum": "beyan",
-          "dayanak": "README.md#güncel-yön-dış-alanlara-açılan-kapı"
+          "dayanak": "docs/TEKNIK.md#güncel-yön-dış-alanlara-açılan-kapı"
         },
         {
           "ad": "Gitmemesi gereken",
@@ -424,7 +424,7 @@
         "onkosul": [],
         "yanitlar": {
           "ne": "Aynı depo; ama niyeti açılışında yazılı ve kendi sözünü sınayan bir depo: açılış README'de, Web girişinde ve açılış belgesinde tek kayıttan, sözleşmeler çekirdeğin çıktısına, tanım depoya, belgedeki tablolar veri kaydına bağlı; doğrulama yerelde ve CI'da aynı listeyi koşar.",
-          "nerede": "Yer değişmez; tanım ve tur kayıtları docs/ altına, araçlar tools/ altına girer; Pages beş sayfayı aynı kaynaklardan yeniden yayımlar.",
+          "nerede": "Yer değişmez; tanım ve tur kayıtları docs/ altına, araçlar tools/ altına girer; Pages altı sayfayı aynı kaynaklardan yeniden yayımlar.",
           "ne_zaman": "Birleşme anından itibaren; tanımın ölçümleri o kesitte tarihlenir, yalnız büyüyen defter değerleri alt sınır olarak izlenir.",
           "ne_kadar": "Test yöntemi 226'dan 291'e, sözleşme 6'dan 10'a, belge 15'ten 21'e çıkar; doğrulama tek komutta 10 kontrol koşar; 24 bulgunun 17'si kapanmış olur.",
           "nereden": "Değişiklikler tek PR'dan gelir; kayıtların giriş yolları aynı kalır, ama bölüm parçaları da kayıt ekleyicinin denetiminden geçer.",

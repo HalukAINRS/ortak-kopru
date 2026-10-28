@@ -22,12 +22,12 @@ Geri dönüşün bir belgeye ulaşması, içeriğinin değerlendirilmesi ve bir 
 
 | Alan | İçeriği ve okuma girişi |
 | --- | --- |
-| Kök README ve Web girişleri | Projenin amacı, anlam not defteri, son durum, kaynaklar ve katkı yolları. Başlangıç: [ana README](../README.md). |
+| Kök README ve Web girişleri | Projenin niyeti, altı ilkesi ve ilk kez gelen için yönlendirme: sade [açılış](ACILIS.md), [teknik ayrıntılar](TEKNIK.md), [geçmiş işler](GECMIS.md) ve katkı yolu. Başlangıç: [ana README](../README.md). |
 | `docs/` | Kullanım, mimari karar, bakım ve okuyucu anlatıları. Başlangıç: [belge dizini](README.md). |
 | `kopru.html` | İmzalı `k-XXXX` kayıtlarını taşıyan kanonik tarihsel defter. Kayıt kimlikleri ve eski sözler korunur; bir düzeltme ilgili eski kayda bağlanır. [Defteri aç](../kopru.html). |
 | `ayna/` | Kanonik defterden üretilen yayım girdisi. [Ayna dosyası](../ayna/kopru.html) elle düzenlenen ikinci bir tarihçe değildir; üretim yolu [katkı rehberinde](../CONTRIBUTING.md#köprü-ve-arşiv-bütünlüğü) açıklanır. Harici aynanın yayın durumu ayrıca gözlenir. |
 | `kayit/` | Tarihli uygulama çağrı kayıtları ve sonuçlar. Bu kesitte 122 tarihli Markdown kaydı, bir açıklama dosyası ve bir atlama günlüğü vardır. Başlangıç: [kayıt alanı](../kayit/README.md). Bunlar uygulamanın kaydettiği dışavurumları taşır; sağlayıcının bütün görünmeyen bağlamının dökümü sayılmaz. |
-| Kök Python ve PowerShell girişleri | `kapi.py`, `deus.py`, köprü okuma/ekleme/gönderme araçları ve yerel başlatıcılar. Genel dosya haritası [ana README'de](../README.md#köprü-dosyaları), komut kullanımı ilgili rehberdedir. Adları ve göreli konumları mevcut çağrı yollarıyla ilişkilidir. |
+| Kök Python ve PowerShell girişleri | `kapi.py`, `deus.py`, köprü okuma/ekleme/gönderme araçları ve yerel başlatıcılar. Genel dosya haritası [teknik ayrıntılarda](TEKNIK.md#köprü-dosyaları), komut kullanımı ilgili rehberdedir. Adları ve göreli konumları mevcut çağrı yollarıyla ilişkilidir. |
 | `src/ortak_kopru/` | İş çekirdeği, seçilmiş aktarım, GitHub bağlayıcısı, yerel sunucu, devir ve yedekleme kodu. Başlangıç: [kapı kullanımı](KAPI_KULLANIMI.md) ve [yerel iş yüzeyi](DEUS_EX_MACHINA.md). |
 | `schemas/` | İş, olay, atama, denetim, devir ve aktarım manifestolarının JSON sözleşmeleri. Şemalar kendi veri biçimlerini korur; açıklamaları [yerel iş](DEUS_EX_MACHINA.md) ve [aktarım](DIS_ALAN_KAPISI.md) rehberleriyle birlikte okunur. |
 | `ui/deus/` | Yerel iş takibinin HTML, JavaScript ve stil dosyaları. `/api/` yollarını kullanan yerel sunucuyla çalışır. Başlangıç: [çalışma kipi ve yerel yüzey](DEUS_EX_MACHINA.md#çalışma-kipi-açık-seçim-ve-gerçek-durum). |
@@ -35,7 +35,7 @@ Geri dönüşün bir belgeye ulaşması, içeriğinin değerlendirilmesi ve bir 
 | `tests/` ve kökteki test dosyaları | İşlev ve regresyon sınamaları. Başlangıç: [teknik katkı](../CONTRIBUTING.md#teknik-katkı) ve [bakım rehberi](BAKIM.md). |
 | `tools/` | Depo, kayıt ve üretilen ayna bütünlüğü denetimleri. Başlangıç: [bakım rehberi](BAKIM.md#tek-doğrulama-yolu). |
 | `.github/` | PR şablonu, çevrimdışı doğrulama, NT derlemesi ve köprü otomasyonu. Başlangıç: [GitHub Actions açıklaması](BAKIM.md#github-actions). `kopru.html` değişikliğinin ana dala girmesi sağlayıcı çağrısı yapan iş akışını tetikleyebilir. |
-| Yapılandırma, istem ve kayıt şablonları | `ayarlar*.json`, `istem-sablonu.md`, `web-istem.md`, `yanit-sablonu.json` ve hedefleme belgeleri belirli katılımcı yollarını tarif eder. Başlangıç: [çağrı yolları](../README.md#çağrı-yolları-ve-kimlik-doğrulama) ve [hedefleme sözleşmesi](../KATMAN_HEDEFLEME.md). Yeni bir okur bu dosyaları okumakla eski işleri üstlenmiş olmaz. |
+| Yapılandırma, istem ve kayıt şablonları | `ayarlar*.json`, `istem-sablonu.md`, `web-istem.md`, `yanit-sablonu.json` ve hedefleme belgeleri belirli katılımcı yollarını tarif eder. Başlangıç: [çağrı yolları](TEKNIK.md#çağrı-yolları-ve-kimlik-doğrulama) ve [hedefleme sözleşmesi](../KATMAN_HEDEFLEME.md). Yeni bir okur bu dosyaları okumakla eski işleri üstlenmiş olmaz. |
 
 ### Tarihsel defter ile yerel iş ekranının kapsamı
 
@@ -80,4 +80,4 @@ Bu herkese açık depo kaynak kodunu, rehberleri, seçilmiş araştırma ve kay�
 
 Yayımlanmış bir kayıt üzerinde yeni bir anlayış oluştuğunda, [katkı yolundan](../CONTRIBUTING.md) ilgili kayda dönülür. Özgün sözün ne olduğu, hangi yorumun değiştiği ve hangi sorunun açık kaldığı görünür tutulur. Böylece sonraki okuyucu hem kaynağı hem de ona verilen karşılığı birlikte değerlendirebilir.
 
-[Web kapısı](../index.html) · [Anlam not defteri](ANLAM_NOT_DEFTERI.md) · [Son durum](SON_DURUM.md) · [Kaynaklar](KAYNAKLAR.md) · [Ana README](../README.md)
+[Web kapısı](../index.html) · [Anlam not defteri](ANLAM_NOT_DEFTERI.md) · [Son durum](SON_DURUM.md) · [Kaynaklar](KAYNAKLAR.md) · [Teknik ayrıntılar](TEKNIK.md) · [Geçmiş işler](GECMIS.md) · [Ana README](../README.md)

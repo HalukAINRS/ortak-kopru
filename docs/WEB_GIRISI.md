@@ -4,16 +4,16 @@
 
 **Niyet** (Haluk, 28 Ekim 2026): “Bu GitHub Reposu'nun Niyeti = Dış Dünya (Web) ile Yerel (Bilgisayarım) arasındaki kapı ve aynı zamanda Harici bireyler ile yerel kullanıcı arasındaki bağı sağlayacak köprü olarak karşılıklı aktarımı ve bağlantıları sağlamaktır.”
 
-Ortak Köprü, yerel kullanıcının bilgisayarındaki çalışma ile Web arasında bir kapı, yerel kullanıcı ile dışarıdaki bireyler arasında bir köprüdür. Kapıdan, yerel kullanıcının seçtiği içerik kaynağı ve sürümüyle dışarı çıkar; Web'deki kaynaklar kesin sürümleriyle içeri alınır. Köprüden, dışarıdaki biri önceki konuşmaları bilmeden okuyabilir, sorabilir ve katkı getirebilir; yerel kullanıcının karşılığı ona geri döner. Her geçiş, nereden geldiği, nereye gittiği, ne kadar olduğu ve neden yapıldığıyla izlenebilir kalır.
+Ortak Köprü iki şeydir. Bir kapı: bir bilgisayardaki çalışma ile internet arasında. Bir köprü: o bilgisayarın sahibi ile dışarıdaki insanlar arasında. Kapıdan dosyalar ve bilgiler geçer; köprüden sorular, katkılar ve yanıtlar.
 
-- **1. Karşılıklılık.** Kapı iki yöne açılır, köprü iki yöne taşır. Bugün: kısmen uygulanıyor.
-- **2. Yerel merkez.** Merkez yerel kullanıcıdır: kapıdan yalnız onun seçtiği geçer, dışarıdan gelen kendiliğinden uygulanmaz. Bugün: kısmen uygulanıyor.
-- **3. Köken ve sahiplik.** Her geçiş kökeni, sahibi, sürümü ve zamanıyla taşınır. Bugün: uygulanıyor.
-- **4. Sınır.** Kapı bir duvar da taşır: gizli olan geçmez, geri alınamayan geçiş en sıkı denetimden geçer. Bugün: kısmen uygulanıyor.
-- **5. Açık katılım.** Dışarıdaki biri önceki konuşmaları bilmeden okuyabilir, sorabilir ve katkı getirebilir; getirdiği şey etkilediği yere bağlanır. Bugün: kısmen uygulanıyor.
-- **6. Doğrulanabilirlik ve geri dönüş.** Hazırlanmak, gönderilmek, alınmak, okunmak ve kullanılmak ayrı olaylardır; hiçbir geçiş olduğundan fazla gösterilmez ve her değişiklik izini silmeden geri alınabilir. Bugün: uygulanıyor.
+- **1. Karşılıklılık.** Kapı iki yöne açılır, köprü iki yöne taşır. Bugün kısmen işliyor.
+- **2. Yerel merkez.** Merkez yerel kullanıcıdır: kapıdan yalnız onun seçtiği geçer, dışarıdan gelen kendiliğinden uygulanmaz. Bugün kısmen işliyor.
+- **3. Köken ve sahiplik.** Her geçiş kökeni, sahibi, sürümü ve zamanıyla taşınır. Bugün işliyor.
+- **4. Sınır.** Kapı bir duvar da taşır: gizli olan geçmez, geri alınamayan geçiş en sıkı denetimden geçer. Bugün kısmen işliyor.
+- **5. Açık katılım.** Dışarıdaki biri önceki konuşmaları bilmeden okuyabilir, sorabilir ve katkı getirebilir; getirdiği şey etkilediği yere bağlanır. Bugün kısmen işliyor.
+- **6. Doğrulanabilirlik ve geri dönüş.** Hazırlanmak, gönderilmek, alınmak, okunmak ve kullanılmak ayrı olaylardır; hiçbir geçiş olduğundan fazla gösterilmez ve her değişiklik izini silmeden geri alınabilir. Bugün işliyor.
 
-Bu tanımın dokuz soruyla ayrıntısı ve ilkelerin bugün depoda neye karşılık geldiği [açılış belgesindedir](ACILIS.md).
+İlk kez geliyorsanız, önceden bir şey bilmeden okuyabileceğiniz anlatım [açılış sayfasındadır](ACILIS.md).
 
 <!-- /uretilen:acilis -->
 
@@ -35,6 +35,6 @@ Anlaşılmayan bir paragrafı sorabilir, farklı bir yorum paylaşabilir veya ke
 
 ## Kaynaklara ve gereçlere ilerleyin
 
-[Depo rehberi](DEPO_REHBERI.md), belgelerin, kodun, denemelerin ve tarihsel kayıtların hangi amaçla bulunduğunu gösterir. [Tarihsel köprü defteri](../kopru.html), eski katkıların özgün kayıtlarını taşır. Teknik kullanım isteyen okuyucu [kapı rehberinden](KAPI_KULLANIMI.md) başlayabilir.
+[Depo rehberi](DEPO_REHBERI.md), belgelerin, kodun, denemelerin ve tarihsel kayıtların hangi amaçla bulunduğunu gösterir. [Tarihsel köprü defteri](../kopru.html), eski katkıların özgün kayıtlarını taşır. Teknik kullanım isteyen okuyucu [kapı rehberinden](KAPI_KULLANIMI.md) başlayabilir. Bütün teknik ayrıntılar [teknik ayrıntılar](TEKNIK.md), bugüne kadarki işler ve kayıtlar [geçmiş işler](GECMIS.md) sayfasında toplanır.
 
 Bu web yüzü, seçilmiş bilgilerin okunabildiği ve katkı yollarının bulunduğu kapıdır. Bilgisayardaki komut araçlarının çalışma durumu kendi kanıtlarıyla değerlendirilir. [Son durum raporu](SON_DURUM.md), mevcut parçalarla açık işleri birlikte gösterir.
