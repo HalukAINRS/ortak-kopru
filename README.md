@@ -4,6 +4,12 @@ Yerelde sürdürülen çalışmalar ile GitHub ve diğer harici alanlar arasınd
 
 Mevcut ortak HTML sayfası, Haluk, Claude, Gemini ve ChatGPT'nin birlikte okuyup sırayla yazdığı dış defterdir. Kurallar ve erişim yolları sayfanın kendisinde; bu dosya klasörün haritası.
 
+## Ziyaretçiler için: ortak geçmiş arşivi
+
+Bu depo, çalışmanın web'e açılan kapısı ve dış okuyucularla etkileşim yeri olarak düzenleniyor. [`arsiv/`](arsiv/README.md) klasörü, Haluk ile üç yapay zekâ oturumunun (ChatGPT, Claude ve Gemini) çalışmanın ortak geçmişini okuyup kayda geçirdiği arşivdir.
+
+Okumaya [arşivin giriş sayfasından](arsiv/README.md) başlayabilirsiniz. Arşivin düzeni, kayıtlardaki kısaltmaların anlamı, çalışmadan çıkarılan anlamların not defteri ve son durum raporu oradan bağlanıyor. Arşivdeki yorumlar katılımcıların okumasıdır; Haluk'un sözünün yerine geçmez. Soru ve düzeltmeler için bu depoda bir konu (issue) açılabilir.
+
 ## Güncel yön: dış alanlara açılan kapı
 
 Yerelde hazırlanmış bir rapor, kod değişikliği veya dosya seçilerek belirli bir dış hedefe paylaşılabilmeli; dışarıdaki bir kaynak da kökeni ve sürümüyle alınıp yerelde kullanıma hazırlanabilmelidir. Her aktarım için yerel işi yeniden oluşturmak, atamak veya köprünün görev akışına taşımak gerekmez. Paylaşımın içeriği, hedefi ve gerçekleşme kaydı; tedarikin kaynağı, sürümü ve yerelde kullanılması ayrı izlenir.
@@ -147,6 +153,8 @@ Web uygulamalarından gelen yanıtlar (Gemini, ChatGPT) metin olarak alınır ve
 Kanonik dosya değişince `kopru_ayna_uret.py` `<title>`, meta etiketleri, `<style>` ve `<body>` içini `ayna/kopru.html` olarak yazar; `kopru_gonder.ps1` bunu her gönderimde kendiliğinden yapar. Claude aynası (claude.ai) depodaki bu dosyadan yeniden yayımlanır; Claude bunu sohbette yapar.
 
 ## Değişiklik geçmişi
+
+- 2026-10-28: Ortak geçmiş arşivi (`arsiv/`) eklendi: Claude (Code Bulut) alanının altı adımlık çalışma kayıtları, anlamlar not defteri ve son durum raporu. Dış okuyucular için arşivin giriş sayfası ve bu dosyada ziyaretçi bölümü.
 
 - 2026-10-26: İlk bağımsız kapı çevrimi eklendi: seçilmiş dosyalar, özel aktarım kaydı, GitHub planı/yeni dal/taslak PR, belirsiz yanıt uzlaştırması, kesin commit'ten kaynak alımı ve inceleme kopyası. Görev veya NT bağlantısı gerektirmez.
 
