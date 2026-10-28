@@ -32,6 +32,34 @@
       "status": "passed",
       "phase": "before",
       "summary": "Ana dal dahil 28 dalda talimat dosyası bulundu."
+    },
+    {
+      "name": "tek komutlu doğrulama",
+      "command": "python tools/dogrula.py",
+      "status": "passed",
+      "phase": "after",
+      "summary": "12 tamam, 0 başarısız, 1 atlandı (PowerShell bu çalışma alanında yok; Windows denetimi CI'da)."
+    },
+    {
+      "name": "bağlantı denetimi",
+      "command": "depo içi bütün Markdown ve HTML bağlantıları ile çapaları",
+      "status": "passed",
+      "phase": "after",
+      "summary": "1379 bağlantı; kırık bağlantı ya da çapa yok."
+    },
+    {
+      "name": "ekran denetimi",
+      "command": "sözlük, durum raporu ve giriş sayfaları 390 ve 1280 piksel genişlikte",
+      "status": "passed",
+      "phase": "after",
+      "summary": "Yatay taşma yok; gezinmede tarihli sayfalar 'Geçmiş' etiketinin ardında."
+    },
+    {
+      "name": "dallarda talimat taraması",
+      "command": "git ls-tree -r her dalın ucunda",
+      "status": "passed",
+      "phase": "after",
+      "summary": "27 dal ve ana dalda kendiliğinden okunan ya da kopyalanmak için yazılmış talimat dosyası kalmadı; istem şablonları sıfır hâlinde."
     }
   ],
   "findings": [

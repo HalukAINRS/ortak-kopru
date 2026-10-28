@@ -12,7 +12,7 @@ Başlangıç: `main` @ `97c908de7a5850978082770ba3bac3e508688e57` (2026-10-28), 
 
 ## Aşamalar
 
-Son ölçüm: 2026-10-28T18:26:32Z · ana `origin/main` @ `2c51769` · dal `origin/claude/rafine-2026-10-28` @ `3165b98`. Canlı durum için: `python tools/donusum.py --durum`.
+Son ölçüm: 2026-10-28T19:31:17Z · ana `HEAD` @ `abed31f` · dal `origin/claude/rafine-2026-10-28` @ `90a13ca`. Canlı durum için: `python tools/donusum.py --durum`.
 
 | Aşama | Kim | Ön koşul | Karar | Zorunlu | Durum |
 | --- | --- | --- | --- | --- | --- |
@@ -22,10 +22,10 @@ Son ölçüm: 2026-10-28T18:26:32Z · ana `origin/main` @ `2c51769` · dal `orig
 | 3. Birleştirme (`birlesme`) | Haluk | yerel-hazirlik | Haluk: 2026-10-28 | evet | tamam |
 | 4. Bulut denetimi ve Web (`bulut`) | GitHub | birlesme | — | evet | tamam |
 | 5. Saatlik otomasyon (`otomasyon`) | GitHub | birlesme | — | evet | tamam |
-| 6. Yerel geçiş (`yerel-gecis`) | Haluk | birlesme | — | evet | elle-bekleniyor |
-| 7. Yardımcıların talimatı (`katmanlar`) | Haluk | yerel-gecis | — | evet | onkosul-bekliyor |
+| 6. Yerel geçiş (`yerel-gecis`) | Haluk | birlesme | — | evet | tamam |
+| 7. Yardımcıların talimatı (`katmanlar`) | Haluk | birlesme | — | evet | tamam |
 | 8. Bekleyen öteki öneriler (`acik-calismalar`) | katkıcılar | birlesme | — | hayır | istege-bagli |
-| 9. Kapanış (`kapanis`) | makine | bulut, otomasyon, katmanlar | — | evet | onkosul-bekliyor |
+| 9. Kapanış (`kapanis`) | makine | bulut, otomasyon, katmanlar | — | evet | tamam |
 | 10. Lisans (`lisans`) | Haluk | olusum | Haluk: bekliyor | hayır | istege-bagli |
 
 ### 0. Yeni oluşum hazır
@@ -72,7 +72,7 @@ git status --short
 git log --oneline origin/main..main
 ```
 
-Dokunduğu yerler: Y:\HalukAI\Ortak_Kopru\kopru (yerel çalışma kopyası).
+Dokunduğu yerler: Y:\HalukAI\Ortak_Kopru\kopru (tasarımdaki yerel çalışma kopyası; 28 Ekim 2026 itibarıyla yok).
 
 Geri dönüş: Kopru_Izle.cmd yeniden çalıştırılır; eski yerleşimle sürer.
 
@@ -136,34 +136,36 @@ Geri dönüş: Kırık koşuda birleşme geri alınır; iş akışı eski yollar
 ### 6. Yerel geçiş
 
 ```sh
-git pull --ff-only
+git clone https://github.com/HalukAINRS/ortak-kopru
 Kopru_Izle.cmd Hazirlik
 Kopru_Izle.cmd Tek
-Kopru_Izle.cmd
 ```
 
-Dokunduğu yerler: `Kopru_Izle.cmd`, `yerel/kopru_yerel.ps1`, `yerel/kopru_izle.ps1`, `yerel/kopru_gonder.ps1`, `katilimcilar/ayarlar-yerel.json`.
+Dokunduğu yerler: yerel bilgisayar (28 Ekim 2026 itibarıyla köprü klasörü yok), `docs/teknik/yerel-taraf.md`.
 
-Geri dönüş: Birleşme geri alındıktan sonra git pull --ff-only; Kopru_Izle.cmd eski yolları yeniden bulur.
+Geri dönüş: Yerel kopya silinir; Git'in genel safe.directory ayarına eklenen yol geri alınır (docs/teknik/yerel-taraf.md).
 
 | Ölçüt | Son ölçümde |
 | --- | --- |
-| elle: hazırlık denetiminin temiz çıktısı ya da izleyicinin birleşmeden sonraki ilk gönderimi (0/1 kanıt) | karşılanmıyor |
+| elle: yerel bilgisayarda eski yerleşimde kopya kalmadığının kanıtı (yeni kopyanın hazırlık çıktısı ya da kopya olmadığı bildirimi) (1/1 kanıt) | karşılanıyor |
 
 ### 7. Yardımcıların talimatı
 
 ```sh
-katilimcilar/AGENTS-kopru.md → AGENTS.md (Codex, Şaman), CLAUDE.md (Claude Code, Hacker), Copilot talimatı (Şahit), GEMINI.md
-python3 defter/kopru_oku.py kopru.html --acik
+python tools/harita.py --nerede AGENTS-kopru.md
+python defter/kopru_yanitla.py kopru.html --kuru
 ```
 
-Dokunduğu yerler: `katilimcilar/AGENTS-kopru.md`, yerel bilgisayardaki talimat dosyaları (depo dışı).
+Dokunduğu yerler: katilimcilar/AGENTS-kopru.md (silindi), katilimcilar/web-istem.md (silindi), katilimcilar/istem-sablonu.md (sıfırlandı), yerel/saman_devral.py ve Kopru_Izle.cmd'nin Şaman kipleri (silindi), öteki dallardaki talimat dosyaları.
 
-Geri dönüş: Talimat dosyalarındaki eski bölüm geri konur.
+Geri dönüş: Silinen dosyalar haritadaki önceki sürümden geri getirilir; dallardaki kaldırma kayıtları geri alınır (git revert).
 
 | Ölçüt | Son ölçümde |
 | --- | --- |
-| elle: talimatı güncellenen yardımcılar (0/1 kanıt) | karşılanmıyor |
+| ana dalda `katilimcilar/AGENTS-kopru.md` yok | karşılanıyor |
+| ana dalda `katilimcilar/web-istem.md` yok | karşılanıyor |
+| ana dalda `yerel/saman_devral.py` yok | karşılanıyor |
+| elle: öteki dallarda talimatların kaldırıldığını gösteren kayıt (2/1 kanıt) | karşılanıyor |
 
 ### 8. Bekleyen öteki öneriler
 
@@ -196,7 +198,7 @@ Geri dönüş: Kayıt yeni bir kayıtla düzeltilir; silinmez.
 | Ölçüt | Son ölçümde |
 | --- | --- |
 | `97c908d` sürümündeki her dosya ana dalda yerinde ya da eski adıyla haritada | karşılanıyor |
-| ana dalda `docs/gecmis/README.md` içinde “Dönüşüm tamamlandı” geçer | karşılanmıyor |
+| ana dalda `docs/gecmis/README.md` içinde “Dönüşüm tamamlandı” geçer | karşılanıyor |
 
 ### 10. Lisans
 

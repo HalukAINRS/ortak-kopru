@@ -209,3 +209,4 @@ Bu arşiv, Claude Code Bulut oturumunun 28 Ekim 2026'da Haluk'un art arda gelen 
 | `saman/steering-cli-devam-20261024` | `e1feb06` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
 | `steering-inceleme-2026-10-24` | `f820dbb` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
 
+**19:40–19:45** `claude/wonderful-feynman-3wfoxv` dalında, silinen bulut kartını denetleyen `tests/test_bulut_karti.py` de kaldırıldı (`eafb6db`); kart olmadan o sınamanın anlamı kalmamıştı. Ana dal dahil bütün dalların uçları yeniden tarandı: kendiliğinden okunan ya da kopyalanmak için yazılmış talimat dosyası kalmadı. Okumanın sonuçları ve dalların temizliği tek bir değişiklik önerisiyle ana dala gönderildi; dönüşümün zorunlu aşamalarının hepsi tamam ölçüldü ve dönüşüm kapandı.

@@ -752,11 +752,11 @@
     "basarili": true
   },
   "son_olcum": {
-    "zaman": "2026-10-28T18:26:32Z",
-    "ana": "origin/main",
-    "ana_surum": "2c51769678fa7876647e2f3b242d335c9064eb0b",
+    "zaman": "2026-10-28T19:31:17Z",
+    "ana": "HEAD",
+    "ana_surum": "abed31f54592ae8b33cafa22bae0a245da44349e",
     "dal": "origin/claude/rafine-2026-10-28",
-    "dal_surum": "3165b9886c1f20e0f0e972b493d535f205343530",
+    "dal_surum": "90a13ca5d3eee74cd55cac404ab0be034be73032",
     "durumlar": [
       {
         "kimlik": "olusum",
@@ -852,21 +852,33 @@
       },
       {
         "kimlik": "yerel-gecis",
-        "durum": "elle-bekleniyor",
+        "durum": "tamam",
         "olcutler": [
           {
-            "tarif": "elle: hazırlık denetiminin temiz çıktısı ya da izleyicinin birleşmeden sonraki ilk gönderimi (0/1 kanıt)",
-            "karsilaniyor": false
+            "tarif": "elle: yerel bilgisayarda eski yerleşimde kopya kalmadığının kanıtı (yeni kopyanın hazırlık çıktısı ya da kopya olmadığı bildirimi) (1/1 kanıt)",
+            "karsilaniyor": true
           }
         ]
       },
       {
         "kimlik": "katmanlar",
-        "durum": "onkosul-bekliyor",
+        "durum": "tamam",
         "olcutler": [
           {
-            "tarif": "elle: talimatı güncellenen yardımcılar (0/1 kanıt)",
-            "karsilaniyor": false
+            "tarif": "ana dalda `katilimcilar/AGENTS-kopru.md` yok",
+            "karsilaniyor": true
+          },
+          {
+            "tarif": "ana dalda `katilimcilar/web-istem.md` yok",
+            "karsilaniyor": true
+          },
+          {
+            "tarif": "ana dalda `yerel/saman_devral.py` yok",
+            "karsilaniyor": true
+          },
+          {
+            "tarif": "elle: öteki dallarda talimatların kaldırıldığını gösteren kayıt (2/1 kanıt)",
+            "karsilaniyor": true
           }
         ]
       },
@@ -882,7 +894,7 @@
       },
       {
         "kimlik": "kapanis",
-        "durum": "onkosul-bekliyor",
+        "durum": "tamam",
         "olcutler": [
           {
             "tarif": "`97c908d` sürümündeki her dosya ana dalda yerinde ya da eski adıyla haritada",
@@ -890,7 +902,7 @@
           },
           {
             "tarif": "ana dalda `docs/gecmis/README.md` içinde “Dönüşüm tamamlandı” geçer",
-            "karsilaniyor": false
+            "karsilaniyor": true
           }
         ]
       },
