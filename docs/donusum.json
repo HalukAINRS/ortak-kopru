@@ -21,22 +21,22 @@
     ]
   },
   "giris": [
-    "Bu sayfa, bugün GitHub'da duran Ortak Köprü deposunun yeni hâline nasıl geçeceğini anlatıyor. Yeni hâl ayrı bir yerde kuruldu ve sınandı. Ana depoya geçiş aşama aşama yürür. Her aşamanın kimin elinde olduğu, nasıl anlaşılacağı ve nasıl geri alınacağı yazılı.",
-    "Bu geçiş, açılıştan gerçeğe giden [yolun](yol.md) ilk adımını ana depoda gerçek kılıyor. Komutlar ve ölçütler [dönüşümün teknik ekinde](teknik/donusum-teknik.md) duruyor. Teknik konuların hepsi [teknik ayrıntılar](teknik/README.md), bugüne kadar yapılanlar [geçmiş işler](gecmis/README.md) bölümünde."
+    "Bu sayfa, Ortak Köprü deposunun 28 Ekim 2026'da bugünkü düzenine nasıl geçtiğini anlatıyor. Yeni hâl önce ayrı bir yerde kuruldu ve sınandı, sonra aşama aşama ana depoya geçti. Her aşamanın kimin elinde olduğu, nasıl anlaşıldığı ve nasıl geri alınabileceği yazılı.",
+    "Bu geçiş, açılıştan gerçeğe giden [yolun](yol.md) ilk adımını ana depoda gerçek kıldı. Komutlar ve ölçütler [dönüşümün teknik ekinde](teknik/donusum-teknik.md) duruyor. Teknik konuların hepsi [teknik ayrıntılar](teknik/README.md), bugüne kadar yapılanlar [geçmiş işler](gecmis/README.md) bölümünde."
   ],
   "degisenler": [
-    "Okuyan biri için değişen şey düzendir. Deponun girişi açılışla başlar. Dosyalar adı söylenen alanlara ayrılır: ortak defterin araçları, katılımcıların ayarları, yerel bilgisayarın araçları ve belgeler. Teknik ayrıntılar ile geçmiş işler ayrı klasörlere gider.",
-    "Kök klasör sadeleşir. Her dosyanın yeri, eski adı ve ne işe yaradığı bir haritada durur. Eski kayıtlarda geçen bir dosya adı o haritadan bulunur."
+    "Okuyan biri için değişen şey düzendir. Deponun girişi açılışla başlıyor. Dosyalar adı söylenen alanlara ayrıldı: ortak defterin araçları, katılımcıların ayarları, yerel bilgisayarın araçları ve belgeler. Teknik ayrıntılar ile geçmiş işler ayrı klasörlerde duruyor.",
+    "Kök klasör sadeleşti. Her dosyanın yeri, eski adı ve ne işe yaradığı bir haritada duruyor; her alanın klasöründe de bir giriş sayfası var. Eski kayıtlarda geçen bir dosya adı o haritadan bulunur. Yapay zekâ yardımcılarına verilmiş talimatlar da kaldırıldı."
   ],
   "degismeyenler": [
-    "Dışarıdan adresle ulaşılan her şey yerinde kalır. Ortak defterin Web adresi, aynası, Web sayfalarının adresleri ve çağrı kayıtları değişmez. Web'deki asistanlar ortak defteri eskisi gibi okur.",
-    "Bilgisayarda çift tıklanan izleyici girişi de yerinde kalır. Araçların adları değişmez; yalnız durdukları klasör değişir. Ortak defterdeki hiçbir kayıt değiştirilmez."
+    "Dışarıdan adresle ulaşılan her şey yerinde kaldı. Ortak defterin Web adresi, aynası, Web sayfalarının adresleri ve çağrı kayıtları değişmedi. Web'deki asistanlar ortak defteri eskisi gibi okuyor.",
+    "Bilgisayarda çift tıklanan izleyici girişi de yerinde kaldı; ama yerel taraf bugün hiçbir bilgisayarda kurulu değil. Araçların adları değişmedi; yalnız durdukları klasör değişti. Ortak defterdeki hiçbir kayıt değiştirilmedi."
   ],
   "yol": [
-    "Aşağıdaki resim geçişi bir taşınma gibi gösteriyor. Solda bugünkü depo var: bütün dosyalar tek bir odada. Sağda yeni hâl var: her şeyin bir rafı. Kapı aynı kalıyor. Yoldaki sayılar aşamaları gösteriyor."
+    "Aşağıdaki resim geçişi bir taşınma gibi gösteriyor. Solda 28 Ekim sabahki depo var: bütün dosyalar tek bir odada. Sağda bugünkü hâl var: her şeyin bir rafı. Kapı aynı kalıyor. Yoldaki sayılar aşamaları gösteriyor."
   ],
   "geri_donus": [
-    "Geçişin en önemli aşaması olan birleştirme tek adımda geri alınabilir. GitHub'daki geri alma düğmesine basılırsa ana depo eski hâline döner. Bilgisayar yeni hâli bir kez daha çeker ve yardımcıların eski talimatı geri konur.",
+    "Geçişin en önemli aşaması olan birleştirme tek adımda geri alınabilir. GitHub'daki geri alma düğmesine basılırsa ana depo eski hâline döner. Kaldırılan talimat dosyaları da istenirse haritada yazılı önceki sürümlerinden geri getirilir.",
     "Bu sırada hiçbir kayıt silinmez; geri almanın kendisi de bir kayıttır. Daha sonra yeniden denemek için geri almanın da geri alınması gerekir."
   ],
   "okur": [
@@ -75,7 +75,7 @@
       "karar": null,
       "sade": {
         "ne": "Yeni oluşum ayrı bir dalda kuruldu ve GitHub'a bir değişiklik önerisi olarak sunuldu.",
-        "neden": "Ana dal her saat çalışan bir otomasyonu ve bir yerel bilgisayarı besliyor. Bu kadar büyük bir değişiklik önce ayrı bir yerde kurulup sınanmalı.",
+        "neden": "Ana dal her saat çalışan bir otomasyonu besliyordu ve bir yerel bilgisayarı da besleyecek biçimde yazılmıştı. Bu kadar büyük bir değişiklik önce ayrı bir yerde kurulup sınanmalıydı.",
         "nasil": "Açılış, alanlar, harita, yol ve bu dönüşüm yolu o dalda duruyor. Her değişiklikte bütün denetimler iki ayrı işletim sisteminde çalışıyor.",
         "geri": "Dal ana dala dokunmaz. İstenirse öneri kapatılır ve hiçbir şey değişmez.",
         "sonra": "Yeni hâlin bütün parçaları görülebilir ve sınanabilir bir yerde durur."
@@ -169,7 +169,7 @@
         "neden": "Dosyaların yeri değişirken yerelde yarım kalan bir değişiklik yeni yerleşimle çakışabilir. Çalışmakta olan izleyici de yeni hâli çekince eski yolları bulamaz.",
         "nasil": "İzleyicinin penceresi kapatılır. Bekleyen bir değişiklik varsa izleyicinin gönderme komutuyla gönderilir. Sonra yerel klasörde bekleyen değişiklik kalmadığı bir kez daha denetlenir.",
         "geri": "Hiçbir şey silinmez. İzleyici yeniden açılırsa eski hâliyle çalışmayı sürdürür.",
-        "sonra": "Yerel bilgisayar ana daldaki son hâlle aynıdır ve yeni hâli çekmeye hazırdır."
+        "sonra": "Yerel bilgisayarda gönderilmemiş bir değişiklik kalmaz; yeni hâlle çakışacak bir şey yoktur."
       },
       "teknik": {
         "komutlar": [
@@ -179,7 +179,7 @@
           "git log --oneline origin/main..main"
         ],
         "dokunur": [
-          "Y:\\HalukAI\\Ortak_Kopru\\kopru (yerel çalışma kopyası)"
+          "Y:\\HalukAI\\Ortak_Kopru\\kopru (tasarımdaki yerel çalışma kopyası; 28 Ekim 2026 itibarıyla yok)"
         ],
         "geri_donus": "Kopru_Izle.cmd yeniden çalıştırılır; eski yerleşimle sürer."
       },
@@ -189,7 +189,7 @@
           "aciklama": "yerel klasörün temiz olduğunu gösteren çıktı ya da gönderim kaydı",
           "en_az": 1,
           "kanit": [
-            "Haluk'un 17.36 UTC onayı ('Onaylıyorum, uygula'); yerel klasör buradan görülemedi. Ana dalda 09.25 UTC'den (97c908d) beri yerelden gönderim yok."
+            "Haluk, 28 Ekim 2026 18.47 UTC: 'Bilgisayarımda köprü klasörüm yok.' Durdurulacak bir izleyici ve gönderilmemiş bir yerel değişiklik yok. (Birleştirme onayı 17.36 UTC'de verildi; o saatte yerel klasör buradan görülemiyordu.)"
           ]
         }
       ]
@@ -346,34 +346,32 @@
       ],
       "karar": null,
       "sade": {
-        "ne": "Yerel bilgisayar yeni hâli çeker ve izleyici yeniden başlar.",
-        "neden": "Yerel kullanıcının bilgisayarı ortak deftere yazan ikinci yoldur. Yeni yerleşimdeki araçlarla çalışmalıdır.",
-        "nasil": "Yeni hâl bilgisayara çekilir. Hazırlık denetimi çalıştırılır ve her satırın tamam olduğu görülür. Sonra izleyici bir tur çalıştırılır ve yeniden sürekli açılır.",
-        "geri": "Birleşme geri alınırsa yeni hâl bir kez daha çekilir ve bilgisayar eski yerleşime döner.",
-        "sonra": "Yerel izleyici yeni yerleşimle yazar ve gönderir."
+        "ne": "Yerel bilgisayarda eski yerleşimde bir kopya kalmaz. Yerel taraf yeniden kurulacaksa yeni hâlden kurulur.",
+        "neden": "Yerel kullanıcının bilgisayarı ortak deftere yazan ikinci yol olarak tasarlandı. Eski yerleşimde kalan bir kopya, araçları yeni yerlerinde bulamaz.",
+        "nasil": "Haluk 28 Ekim 2026'da bilgisayarında köprü klasörü olmadığını bildirdi; çekilecek eski bir kopya yok. Yerel taraf kurulacaksa ana depodan yeni bir kopya alınır ve yerel taraf sayfasındaki sırayla kurulur.",
+        "geri": "Geri alınacak bir yerel kurulum yok.",
+        "sonra": "Bilgisayarda eski yerleşimde bir kopya kalmadı. Yerel taraf bugün kurulu değil; kurulduğu gün yeni yerleşimle çalışır."
       },
       "teknik": {
         "komutlar": [
-          "git pull --ff-only",
+          "git clone https://github.com/HalukAINRS/ortak-kopru",
           "Kopru_Izle.cmd Hazirlik",
-          "Kopru_Izle.cmd Tek",
-          "Kopru_Izle.cmd"
+          "Kopru_Izle.cmd Tek"
         ],
         "dokunur": [
-          "Kopru_Izle.cmd",
-          "yerel/kopru_yerel.ps1",
-          "yerel/kopru_izle.ps1",
-          "yerel/kopru_gonder.ps1",
-          "katilimcilar/ayarlar-yerel.json"
+          "yerel bilgisayar (28 Ekim 2026 itibarıyla köprü klasörü yok)",
+          "docs/teknik/yerel-taraf.md"
         ],
-        "geri_donus": "Birleşme geri alındıktan sonra git pull --ff-only; Kopru_Izle.cmd eski yolları yeniden bulur."
+        "geri_donus": "Yerel kopya silinir; Git'in genel safe.directory ayarına eklenen yol geri alınır (docs/teknik/yerel-taraf.md)."
       },
       "olcutler": [
         {
           "tur": "elle",
-          "aciklama": "hazırlık denetiminin temiz çıktısı ya da izleyicinin birleşmeden sonraki ilk gönderimi",
+          "aciklama": "yerel bilgisayarda eski yerleşimde kopya kalmadığının kanıtı (yeni kopyanın hazırlık çıktısı ya da kopya olmadığı bildirimi)",
           "en_az": 1,
-          "kanit": []
+          "kanit": [
+            "Haluk, 28 Ekim 2026 18.47 UTC: 'Bilgisayarımda köprü klasörüm yok.' Eski yerleşimde çekilecek ya da yeniden başlatılacak bir yerel kopya yok."
+          ]
         }
       ]
     },
@@ -384,33 +382,51 @@
       "kim": "Haluk",
       "zorunlu": true,
       "onkosul": [
-        "yerel-gecis"
+        "birlesme"
       ],
       "karar": null,
       "sade": {
-        "ne": "Bilgisayardaki yapay zekâ yardımcılarının talimat dosyalarında duran köprü bölümü yenisiyle değiştirilir.",
-        "neden": "Bu bölüm her yardımcının kendi talimat dosyasına kopyalanmıştı ve eski dosya yollarını gösteriyor. Kopyalar kendiliğinden güncellenmez.",
-        "nasil": "Codex, Claude Code, Copilot ve Gemini yardımcılarının talimat dosyalarında köprü bölümü bulunur. Depodaki yeni bölüm onun yerine konur. Bir yardımcının ortak defteri okuyup yazabildiği bir kez sınanır.",
-        "geri": "Eski bölüm geri konur.",
-        "sonra": "Yardımcılar ortak deftere yeni yollardan yazar."
+        "ne": "Yapay zekâ yardımcılarına verilmiş talimatlar her yerden kaldırılır ya da sıfırlanır.",
+        "neden": "Haluk 28 Ekim 2026'da talimatların yenisiyle değiştirilmesini değil, her yerde silinmesini ya da sıfırlanmasını istedi. Talimat dosyaları eski yolları gösteriyordu ve kopyaları kendiliğinden güncellenmiyordu.",
+        "nasil": "Ana depoda yardımcıların talimat parçası, Web asistanlarının istemi ve Şaman'ın devir başlatıcısı silinir. Botun istemi sıfırlanır; içinde yalnız yanıtın biçimi kalır. Öteki dallarda da aynı dosyalar silinir ya da sıfırlanır. Kaldırılanların nedeni ve önceki hâli haritaya yazılır.",
+        "geri": "Silinen her dosya geçmişte durur ve geri getirilebilir; haritada önceki sürümü yazılıdır.",
+        "sonra": "Hiçbir yardımcı bu depodan bir talimat almaz. Bot yalnız yanıtın biçimini bilir."
       },
       "teknik": {
         "komutlar": [
-          "katilimcilar/AGENTS-kopru.md → AGENTS.md (Codex, Şaman), CLAUDE.md (Claude Code, Hacker), Copilot talimatı (Şahit), GEMINI.md",
-          "python3 defter/kopru_oku.py kopru.html --acik"
+          "python tools/harita.py --nerede AGENTS-kopru.md",
+          "python defter/kopru_yanitla.py kopru.html --kuru"
         ],
         "dokunur": [
-          "katilimcilar/AGENTS-kopru.md",
-          "yerel bilgisayardaki talimat dosyaları (depo dışı)"
+          "katilimcilar/AGENTS-kopru.md (silindi)",
+          "katilimcilar/web-istem.md (silindi)",
+          "katilimcilar/istem-sablonu.md (sıfırlandı)",
+          "yerel/saman_devral.py ve Kopru_Izle.cmd'nin Şaman kipleri (silindi)",
+          "öteki dallardaki talimat dosyaları"
         ],
-        "geri_donus": "Talimat dosyalarındaki eski bölüm geri konur."
+        "geri_donus": "Silinen dosyalar haritadaki önceki sürümden geri getirilir; dallardaki kaldırma kayıtları geri alınır (git revert)."
       },
       "olcutler": [
         {
+          "tur": "dosya_yok",
+          "yol": "katilimcilar/AGENTS-kopru.md"
+        },
+        {
+          "tur": "dosya_yok",
+          "yol": "katilimcilar/web-istem.md"
+        },
+        {
+          "tur": "dosya_yok",
+          "yol": "yerel/saman_devral.py"
+        },
+        {
           "tur": "elle",
-          "aciklama": "talimatı güncellenen yardımcılar",
+          "aciklama": "öteki dallarda talimatların kaldırıldığını gösteren kayıt",
           "en_az": 1,
-          "kanit": []
+          "kanit": [
+            "27 dalda 19.23–19.27 UTC arasında birer kaldırma kaydı gönderildi: 63 talimat dosyası silindi, 27 istem şablonu sıfırlandı; dal dal liste süreç arşivinde (docs/gecmis/rafine/claude-code-bulut-2026-10-28-surec.md, onuncu istek).",
+            "Örnek: https://github.com/HalukAINRS/ortak-kopru/commit/a96ea9132ea8708afddc114ef34321bcc303e737 (deus-ex-machina-2026-10-24: AGENTS.md, AGENTS-kopru.md, web-istem.md, devir/saman/CLI_BASLANGIC.md silindi; istem-sablonu.md sıfırlandı)."
+          ]
         }
       ]
     },
@@ -426,7 +442,7 @@
       "karar": null,
       "sade": {
         "ne": "Henüz birleşmemiş öteki değişiklik önerileri yeni yerleşime taşınır.",
-        "neden": "Bu öneriler eski yerleşimde hazırlandı. Bir kısmı yeri değişen dosyalara dokunuyor; çoğu haritada yeri olmayan yeni klasörler ekliyor.",
+        "neden": "Bu öneriler eski yerleşimde hazırlandı. Bir kısmı yeri değişen dosyalara dokunuyor; hepsi haritada yeri olmayan yeni dosya ya da klasörler ekliyor.",
         "nasil": "Her öneri, birleşmeden önce yeni ana dalın üzerine taşınır. Yeri değişen dosyanın yeni yeri haritadan bulunur. Yeni klasörler haritada bir alana bağlanır.",
         "geri": "Öneriler kendi dallarında durur ve ana dala dokunmaz.",
         "sonra": "Her öneri ana dala yeni yerleşimle girebilir."
@@ -508,7 +524,7 @@
       },
       "sade": {
         "ne": "Depo için bir lisans seçilir ve kökte bir lisans dosyası durur.",
-        "neden": "Belgelerin üç sıfır kuralının son yarısı, hiç bilmeyen bir alanın depoyu temel alabilmesidir. Bunun yasal yolu lisanstır.",
+        "neden": "Belgelerin üç sıfır kuralının üçüncüsü, hiç bilmeyen bir alanın depoyu temel alabilmesidir. Bunun yasal yolu lisanstır.",
         "nasil": "Sahibi bir lisans seçer. Lisans metni köke eklenir, haritaya ve kaynak gösterme dosyasına işlenir.",
         "geri": "Lisans sonradan değiştirilebilir. O güne kadar alınmış kopyalar alındıkları lisansla kalır.",
         "sonra": "Depo yalnız kaynak gösterilmekle kalmaz, üzerine kurulabilir."
@@ -736,11 +752,11 @@
     "basarili": true
   },
   "son_olcum": {
-    "zaman": "2026-10-28T18:26:32Z",
-    "ana": "origin/main",
-    "ana_surum": "2c51769678fa7876647e2f3b242d335c9064eb0b",
+    "zaman": "2026-10-28T19:31:17Z",
+    "ana": "HEAD",
+    "ana_surum": "abed31f54592ae8b33cafa22bae0a245da44349e",
     "dal": "origin/claude/rafine-2026-10-28",
-    "dal_surum": "3165b9886c1f20e0f0e972b493d535f205343530",
+    "dal_surum": "90a13ca5d3eee74cd55cac404ab0be034be73032",
     "durumlar": [
       {
         "kimlik": "olusum",
@@ -836,21 +852,33 @@
       },
       {
         "kimlik": "yerel-gecis",
-        "durum": "elle-bekleniyor",
+        "durum": "tamam",
         "olcutler": [
           {
-            "tarif": "elle: hazırlık denetiminin temiz çıktısı ya da izleyicinin birleşmeden sonraki ilk gönderimi (0/1 kanıt)",
-            "karsilaniyor": false
+            "tarif": "elle: yerel bilgisayarda eski yerleşimde kopya kalmadığının kanıtı (yeni kopyanın hazırlık çıktısı ya da kopya olmadığı bildirimi) (1/1 kanıt)",
+            "karsilaniyor": true
           }
         ]
       },
       {
         "kimlik": "katmanlar",
-        "durum": "onkosul-bekliyor",
+        "durum": "tamam",
         "olcutler": [
           {
-            "tarif": "elle: talimatı güncellenen yardımcılar (0/1 kanıt)",
-            "karsilaniyor": false
+            "tarif": "ana dalda `katilimcilar/AGENTS-kopru.md` yok",
+            "karsilaniyor": true
+          },
+          {
+            "tarif": "ana dalda `katilimcilar/web-istem.md` yok",
+            "karsilaniyor": true
+          },
+          {
+            "tarif": "ana dalda `yerel/saman_devral.py` yok",
+            "karsilaniyor": true
+          },
+          {
+            "tarif": "elle: öteki dallarda talimatların kaldırıldığını gösteren kayıt (2/1 kanıt)",
+            "karsilaniyor": true
           }
         ]
       },
@@ -866,7 +894,7 @@
       },
       {
         "kimlik": "kapanis",
-        "durum": "onkosul-bekliyor",
+        "durum": "tamam",
         "olcutler": [
           {
             "tarif": "`97c908d` sürümündeki her dosya ana dalda yerinde ya da eski adıyla haritada",
@@ -874,7 +902,7 @@
           },
           {
             "tarif": "ana dalda `docs/gecmis/README.md` içinde “Dönüşüm tamamlandı” geçer",
-            "karsilaniyor": false
+            "karsilaniyor": true
           }
         ]
       },

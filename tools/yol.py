@@ -262,6 +262,15 @@ def gosterge(yol: dict, veri_acilis: dict, hesap: dict[str, dict]) -> str:
     return "\n".join(satirlar)
 
 
+AYLAR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
+
+
+def _tarih(gun: str) -> str:
+    """2026-10-28 → 28 Ekim 2026."""
+    yil, ay, g = gun.split("-")
+    return f"{int(g)} {AYLAR[int(ay) - 1]} {yil}"
+
+
 def _ne_zaman(a: dict, adlar: dict[str, str], hesap: dict[str, dict]) -> str:
     biten = [adlar[k] for k in a["onkosul"] if hesap[k]["durum"] == "tamam"]
     bekleyen = [adlar[k] for k in a["onkosul"] if hesap[k]["durum"] != "tamam"]
@@ -274,6 +283,9 @@ def _ne_zaman(a: dict, adlar: dict[str, str], hesap: dict[str, dict]) -> str:
     if a["karar"]:
         if a["karar"]["verildi"] is None:
             metin += f" Ayrıca {a['karar']['kim']}'un bir karar vermesi gerekiyor. {a['karar']['soru']}"
+            g = a["karar"].get("gorus")
+            if g:
+                metin += f" Görüş ({g['kimden']}, {_tarih(g['tarih'])}). {g['oneri']} {g['ozet']} Karar yine {a['karar']['kim']}'ta."
         else:
             metin += f" {a['karar']['kim']} kararını verdi: {a['karar']['verildi']['yanit']}"
     return metin
@@ -299,9 +311,15 @@ def _ozet(yol: dict, veri_acilis: dict, hesap: dict[str, dict]) -> str:
     if atilabilir:
         metin += " Şu an atılabilecek adım: " + ", ".join(atilabilir) + "."
     if karar:
-        metin += " Kararı bekleyen adım: " + ", ".join(karar) + "."
-    if "onkosul-bekliyor" in d:
-        metin += " Öteki açık adımlar bir ön koşulun bitmesini bekliyor."
+        metin += (" Kararı bekleyen adım: " if len(karar) == 1 else " Kararı bekleyen adımlar: ") + ", ".join(karar) + "."
+    onkosul = [a["ad"] for a in adimlar if hesap[a["kimlik"]]["durum"] == "onkosul-bekliyor"]
+    disaridan = [a["ad"] for a in adimlar if hesap[a["kimlik"]]["durum"] == "disaridan-bekleniyor"]
+    if onkosul:
+        metin += (" Bir ön koşulun bitmesini bekleyen adım: " if len(onkosul) == 1
+                  else " Bir ön koşulun bitmesini bekleyen adımlar: ") + ", ".join(onkosul) + "."
+    if disaridan:
+        metin += (" Dışarıdan birinin gelmesini bekleyen adım: " if len(disaridan) == 1
+                  else " Dışarıdan birinin gelmesini bekleyen adımlar: ") + ", ".join(disaridan) + "."
     return metin
 
 
@@ -368,6 +386,9 @@ def teknik_belge(yol: dict, veri_acilis: dict, hesap: dict[str, dict]) -> str:
               f"Geri alma: {t['geri_alma']}"]
         if a["karar"]:
             p.append(f"Karar ({a['karar']['kim']}): {a['karar']['soru']}")
+            g = a["karar"].get("gorus")
+            if g:
+                p.append(f"Görüş ({g['kimden']}, {g['tarih']}): {g['oneri']} {g['gerekce']}")
         sat = ["| Ölçüt | Bugün |", "| --- | --- |"]
         for o in hesap[a["kimlik"]]["olcutler"]:
             sat.append(f"| {_hucre(o['tarif'])} | {'karşılanıyor' if o['karsilaniyor'] else 'karşılanmıyor'} |")

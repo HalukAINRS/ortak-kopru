@@ -23,7 +23,7 @@ Her soru iki biçimde yanıtlandı: niyete göre kapının ne olması gerektiği
 | Soru | Grup | Niyete göre | Bugün depoda | Durum |
 | --- | --- | --- | --- | --- |
 | Ne? | Kapının kendisi | İki yönlü bir geçit: bilgisayardaki yerel çalışma ile Web arasında bir kapı, yerel kullanıcı ile harici bireyler arasında bir köprü. Kapı içerik taşır, köprü insanları birbirine bağlar. | Kapı dosyalar için var: kapi.py seçilmiş dosyaları GitHub'a gönderir ve GitHub'dan kesin sürümle alır. Köprü yalnız GitHub'ın kendi araçlarıyla (Pages, Issues, PR) var; dışarıdan gelen bir katkıyı yerel kullanıcıya getiren bir araç yok. | kısmen |
-| Nerede? | Kapının kendisi | İki kenarda ve aralarında. Bir kenar yerel kullanıcının bilgisayarı, öbür kenar Web. Kapının kendisi bu GitHub deposudur: kod, kayıt ve herkese açık yüz. Geçişlerin özel kaydı ise bilgisayarda, Git'in dışında durur. | Herkese açık yüz github.com/HalukAINRS/ortak-kopru ve onun Pages yayını. Yerel kenar, teknik ayrıntılara göre Y:\HalukAI\Ortak_Kopru\kopru\ klasörü. Aktarımların özel kaydı kapi.py'ye verilen --exchange-dir dizininde. | var |
+| Nerede? | Kapının kendisi | İki kenarda ve aralarında. Bir kenar yerel kullanıcının bilgisayarı, öbür kenar Web. Kapının kendisi bu GitHub deposudur: kod, kayıt ve herkese açık yüz. Geçişlerin özel kaydı ise bilgisayarda, Git'in dışında durur. | Herkese açık yüz github.com/HalukAINRS/ortak-kopru ve onun Pages yayını. Yerel kenar tasarımda bir Windows bilgisayarındaki çalışma kopyasıdır; 28 Ekim 2026 itibarıyla hiçbir bilgisayarda kurulu değil (Haluk'un bildirimi). Kapının aracı kapi.py her Git kopyasında çalışır; aktarımların özel kaydı ona verilen --exchange-dir dizininde, Git'in dışında durur. | kısmen |
 | Nasıl? | Kapının kendisi | Kapıda: seç, sabitle, planla, gönder, uzlaştır; ya da al, sabitle, incele. Köprüde: oku, sor, getir, karşılık ver. Her adım ayrı kaydedilir ve hiçbiri bir öncekinin yerine geçmez. | Kapının adımları kapi.py'nin on alt komutudur (prepare, plan, send, reconcile, fetch, materialize ve kayıt komutları). Köprünün adımları GitHub arayüzünde elle atılır. | kısmen |
 | Ne zaman? | Kapının kendisi | Yerel kullanıcı istediğinde. Kapı kendiliğinden açılmaz. Her geçiş kendi zamanıyla kaydedilir ve o ana ait bir gözlem olarak okunur. | kapi.py yalnız komutla çalışır. Saatlik bulut otomasyonu yalnız kopru.html kayıtlarına yanıt verir, dosya taşımaz; 24 Ekim'den beri modeli de çağırmıyor. | var |
 | Ne için? | Kapının kendisi | Yerel çalışmanın sonucunu dünyayla paylaşmak, dünyadaki kaynağı yerele getirmek ve dışarıdaki bir bireyin yerel kullanıcıyla, aradaki bağlam kaybolmadan bağ kurabilmesi için. | Paylaşma ve getirme dosya düzeyinde çalışıyor. Bireylerle bağ için okuma sayfaları ve Issues açık, ama bugüne kadar dışarıdan bir Issue ya da yorum gelmedi; tek Issue (#16) yerel kullanıcının kendi kaydı. | kısmen |
@@ -108,10 +108,10 @@ Beşlinin her sorusu dörtlünün her sorusuyla birleştirildi. Satırlar kapın
 
 | İlke | Bağladığı sorular | Bugün | Taşıyan dosyalar | Mesafe |
 | --- | --- | --- | --- | --- |
-| 1. Karşılıklılık | Ne, Nereden, Nereye | kısmen uygulanıyor | `kapi.py`, `docs/teknik/kapi-kullanimi.md`, `CONTRIBUTING.md` | Dosyalar iki yönde geçiyor. Dışarıdan gelen bir katkıyı yerel kullanıcıya getiren ve karşılığını geri götüren adım yok; bu bağ GitHub bildirimlerine bırakılmış. (S09) |
-| 2. Yerel merkez | Nerede, Ne zaman, Ne kadar | kısmen uygulanıyor | `src/ortak_kopru/exchange.py`, `docs/teknik/kararlar/0002-dis-alan-kapisi.md`, `katilimcilar/AGENTS-kopru.md` | Yerel gönderici yerel/kopru_gonder.ps1 kapının dışından çalışıyor ve çalışma klasöründe kalan izlenmeyen her dosyayı herkese açık ana dala gönderebiliyor; bu, seçimsiz bir çıkış yolu. (R-17, S02) |
+| 1. Karşılıklılık | Ne, Nereden, Nereye | kısmen uygulanıyor | `kapi.py`, `docs/teknik/kapi-kullanimi.md`, `CONTRIBUTING.md` | Kapının aracı dosyaları iki yönde geçirebiliyor; ama bugün hiçbir bilgisayarda kurulu bir yerel kenar yok. Dışarıdan gelen bir katkıyı yerel kullanıcıya getiren ve karşılığını geri götüren adım da yok; bu bağ GitHub bildirimlerine bırakılmış. (S09) |
+| 2. Yerel merkez | Nerede, Ne zaman, Ne kadar | kısmen uygulanıyor | `src/ortak_kopru/exchange.py`, `docs/teknik/kararlar/0002-dis-alan-kapisi.md`, `CONTRIBUTING.md` | Yerel gönderici yerel/kopru_gonder.ps1 kapının dışından çalışacak ve çalışma klasöründe kalan izlenmeyen her dosyayı herkese açık ana dala gönderebilecek biçimde yazılı; bu, seçimsiz bir çıkış yolu. Gönderici bugün hiçbir bilgisayarda kurulu değil; yeniden kurulmadan önce daraltılması gerekir. (R-17, S02) |
 | 3. Köken ve sahiplik | Ne, Ne zaman, Nereden | uygulanıyor | `schemas/exchange-manifest.schema.json`, `src/ortak_kopru/gateway.py`, `defter/kopru_ekle.py` | — |
-| 4. Sınır | Nerede, Nereye, Ne kadar | kısmen uygulanıyor | `defter/kopru_ekle.py`, `src/ortak_kopru/exchange.py`, `.github/scripts/kopru_gonder.sh` | Bulut göndericisi kapsamı defter, ayna ve çağrı günlükleriyle sınırlıyor; yerel gönderici sınırlamıyor. Aynı kural iki yerde iki ayrı biçimde uygulanıyor. (R-17, S02) |
+| 4. Sınır | Nerede, Nereye, Ne kadar | kısmen uygulanıyor | `defter/kopru_ekle.py`, `src/ortak_kopru/exchange.py`, `.github/scripts/kopru_gonder.sh` | Bulut göndericisi kapsamı defter, ayna ve çağrı günlükleriyle sınırlıyor; yerel gönderici sınırlamıyor. Aynı kural iki yerde iki ayrı biçimde yazılı. Yerel gönderici bugün kurulu olmadığı için açık uykuda; kurulduğu gün geri gelir. (R-17, S02) |
 | 5. Açık katılım | Nasıl, Ne için, Nereden | kısmen uygulanıyor | `docs/web-girisi.md`, `CONTRIBUTING.md`, `index.html`, `.github/ISSUE_TEMPLATE/karsilik.yml` | Okuma ve katkı yolları açık; Web'deki her bölümün sonunda, yeri kendisi yazan bir karşılık bağlantısı var. Ama bugüne kadar dışarıdan bir katkı gelmedi (tek Issue #16, yerel kullanıcının kendi kaydı). Gelen bir katkının yerel kullanıcıya ulaşması GitHub bildirimlerine bırakılmış. (S09) |
 | 6. Doğrulanabilirlik ve geri dönüş | Nasıl, Ne zaman, Neden | uygulanıyor | `src/ortak_kopru/gateway.py`, `tools/dogrula.py`, `kopru.html` | — |
 
@@ -125,7 +125,7 @@ Beşlinin her sorusu dörtlünün her sorusuyla birleştirildi. Satırlar kapın
 
 Yerelden dışarıya paylaşmak ile dışarıdan yerele almak aynı kurallarla ve aynı kayıtla yürür. Bağ da iki yönlüdür: dışarıdaki bir birey yerel kullanıcıya ulaşabildiği gibi, yerel kullanıcının karşılığı da ona ve etkilediği metne döner. Yalnız tek yöne çalışan bir geçit kapı değil, yalnızca bir çıkıştır.
 
-*Bağladığı sorular:* Ne, Nereden, Nereye. *Bugün:* kısmen uygulanıyor. Dosyalar iki yönde geçiyor. Dışarıdan gelen bir katkıyı yerel kullanıcıya getiren ve karşılığını geri götüren adım yok; bu bağ GitHub bildirimlerine bırakılmış.
+*Bağladığı sorular:* Ne, Nereden, Nereye. *Bugün:* kısmen uygulanıyor. Kapının aracı dosyaları iki yönde geçirebiliyor; ama bugün hiçbir bilgisayarda kurulu bir yerel kenar yok. Dışarıdan gelen bir katkıyı yerel kullanıcıya getiren ve karşılığını geri götüren adım da yok; bu bağ GitHub bildirimlerine bırakılmış.
 
 ### 2. Yerel merkez
 
@@ -133,7 +133,7 @@ Yerelden dışarıya paylaşmak ile dışarıdan yerele almak aynı kurallarla v
 
 Yerel çalışma kendi yerinde ve kendi araçlarında sürer. Kapı bir eşitleme aracı değildir; yerel klasörü dışarı açmaz, dışarıdaki bir değişikliği yerel projeye kendiliğinden yazmaz. Kapının ne zaman açılacağına ve neyin geçeceğine yerel kullanıcı karar verir; bir kayıt görmek ya da bir Issue açılması kendi başına iş emri değildir.
 
-*Bağladığı sorular:* Nerede, Ne zaman, Ne kadar. *Bugün:* kısmen uygulanıyor. Yerel gönderici yerel/kopru_gonder.ps1 kapının dışından çalışıyor ve çalışma klasöründe kalan izlenmeyen her dosyayı herkese açık ana dala gönderebiliyor; bu, seçimsiz bir çıkış yolu.
+*Bağladığı sorular:* Nerede, Ne zaman, Ne kadar. *Bugün:* kısmen uygulanıyor. Yerel gönderici yerel/kopru_gonder.ps1 kapının dışından çalışacak ve çalışma klasöründe kalan izlenmeyen her dosyayı herkese açık ana dala gönderebilecek biçimde yazılı; bu, seçimsiz bir çıkış yolu. Gönderici bugün hiçbir bilgisayarda kurulu değil; yeniden kurulmadan önce daraltılması gerekir.
 
 ### 3. Köken ve sahiplik
 
@@ -149,7 +149,7 @@ Bir dosyanın hangi commit'ten geldiği, bir sözün kime ait olduğu, bir yorum
 
 Belirteçler, anahtarlar, IP adresleri, cihaz kimlikleri, kişisel dosyalar ve özel çalışma alanı kapının herkese açık tarafına geçmez. Dışarıdan alınan bir şey yerel projenin içine kendiliğinden girmez. Herkese açık geçmişe girmiş bir dosya geri alınamayacağı için, denetim en çok çıkış yönünde sıkıdır.
 
-*Bağladığı sorular:* Nerede, Nereye, Ne kadar. *Bugün:* kısmen uygulanıyor. Bulut göndericisi kapsamı defter, ayna ve çağrı günlükleriyle sınırlıyor; yerel gönderici sınırlamıyor. Aynı kural iki yerde iki ayrı biçimde uygulanıyor.
+*Bağladığı sorular:* Nerede, Nereye, Ne kadar. *Bugün:* kısmen uygulanıyor. Bulut göndericisi kapsamı defter, ayna ve çağrı günlükleriyle sınırlıyor; yerel gönderici sınırlamıyor. Aynı kural iki yerde iki ayrı biçimde yazılı. Yerel gönderici bugün kurulu olmadığı için açık uykuda; kurulduğu gün geri gelir.
 
 ### 5. Açık katılım
 

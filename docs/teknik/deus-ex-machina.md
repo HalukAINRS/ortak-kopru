@@ -1,8 +1,8 @@
 # deus_ex_machina — iş çekirdeği ve yerel yüzey
 
-Güncel ürün yönü, yerel çalışmalar ile harici alanlar arasında **paylaşım ve tedarik kapısıdır**. Kullanıcı yerel işlerini kendi araçlarında sürdürür. Bu belgede anlatılan görev akışı, ayrıca izlenmesi istenen işler için mevcut bir yetenektir; bir dosyayı dışarı paylaşmanın veya dışarıdan kaynak almanın ön koşulu olmayacaktır. Genel aktarım katmanının tasarımı ve mevcut uygulamadan ayrımı: [Dış alan kapısı](dis-alan-kapisi.md), [Karar 0002](kararlar/0002-dis-alan-kapisi.md).
+Güncel ürün yönü, yerel çalışmalar ile harici alanlar arasında **paylaşım ve tedarik kapısıdır**. Kullanıcı yerel işlerini kendi araçlarında sürdürür. Bu belgede anlatılan görev akışı, ayrıca izlenmesi istenen işler için mevcut bir yetenektir; bir dosyayı dışarı paylaşmanın veya dışarıdan kaynak almanın ön koşulu değildir; o iş `kapi.py` ile ayrıca yapılır. Genel aktarım katmanının tasarımı ve mevcut uygulamadan ayrımı: [Dış alan kapısı](dis-alan-kapisi.md), [Karar 0002](kararlar/0002-dis-alan-kapisi.md).
 
-Bu ilk uygulama, ortak HTML defterinin yanına **kalıcı iş / özgün ileti / çalıştırma / oturum** ayrımını ekler. Kaynaklar, yetki beyanı, düzeltmeler, sonuçlar ve kabul ölçütleri aynı işe bağlı kalır. Eski `k-XXXX` kayıtları yeni görev kuyruğuna otomatik alınmaz.
+Komutlar ve seçenekleri 28 Ekim 2026'da araçların kendi yardım çıktılarına karşı denetlendi. Bu ilk uygulama, ortak HTML defterinin yanına **kalıcı iş / özgün ileti / çalıştırma / oturum** ayrımını ekler. Kaynaklar, yetki beyanı, düzeltmeler, sonuçlar ve kabul ölçütleri aynı işe bağlı kalır. Eski `k-XXXX` kayıtları yeni görev kuyruğuna otomatik alınmaz.
 
 İkinci uygulama aşaması, ekrandan sonuç/doğrulama, oturum gelen kutusu, bütün dosyaları taşıyan devir paketi ve tutarlı yedekleme/geri yükleme ekler. [Devam ve yedekleme rehberi](devam-ve-yedek.md).
 
@@ -12,7 +12,7 @@ Kullanıcının güncel mimari gereksinimi, `deus_ex_machina` için CLI süreçl
 
 | Konum | Sorumluluk |
 | --- | --- |
-| `deus.py` | Mevcut kök betiklerini taşımayan tek giriş komutu |
+| `deus.py` | Yerel iş bileşeninin tek giriş komutu (depo kökünde) |
 | `src/ortak_kopru/core.py` | SQLite iş/ileti/çalıştırma/sonuç ilişkileri ve olaylar |
 | `src/ortak_kopru/cli.py` | Yerel komutlar ve özel JSON dışa aktarımı |
 | `src/ortak_kopru/server.py` | Loopback HTTP yüzeyi; kaynak yollarını dışarıya açmaz |
@@ -32,6 +32,8 @@ Python 3.12+ yeterlidir; çalışma kodunda dış Python paketi yoktur. Veritaba
 Varsayılan `nt-kernel` kipidir. `python deus.py runtime` gerçek aygıtı sorgular; aygıt bulunamadığında, platform desteklenmediğinde veya protokol uyuşmadığında başarısız sonuç verir. Normal iş komutları bu durumda veri dizini açıp sessizce başka kipe geçmez. Sunucu da yeni çalışma doğuran değişikliklerde NT uç noktasını yeniden denetler. `pause` ve `cancel`, sürücü kaybolduğunda da iş kaydını durdurabilmek için kullanılabilir. `backup`, `backup-verify`, `restore` ve `handoff-verify` özel veriyi kurtarma/denetleme amacıyla sürücü yokken de çalışır. Bu işlemlerde runtime yine gerçek `ready=false`, `kernel_verified=false` durumunu bildirir; dış süreç başlatılmaz.
 
 Geliştirme ve çevrimdışı sınama için **açıkça** `--backend portable` seçilir. Bu kipte `kernel_verified` false ve `task_execution` user-mode olarak bildirilir. NT kurulumu veya model çalıştırma kanıtı üretmez.
+
+Örnekler Windows yollarıyla (`D:/…`) yazıldı. Linux ve macOS'ta Git kopyasının dışında bir dizin seçin, örneğin `$HOME/DeusVeri`; depo kökünden çalıştırılan `D:/DeusVeri` gibi bir yol orada göreli sayılır, Git kopyasının içine düşer ve reddedilir. Örneklerde geçen `D:/Istek.txt`, `D:/Kaynak.txt`, `D:/Sonuc.txt`, `D:/Rapor.txt` ve `D:/Kontroller.json` gibi girdi dosyalarını önceden siz oluşturursunuz: işin metni, kaynak, sonuç ve denetim listesi.
 
 Yerel geliştirme örneği; `D:/DeusVeri` yerine kendi kalıcı, Git dışında kalan dizininizi seçin:
 
@@ -109,7 +111,7 @@ Bütün ölçütler güncel sonuca bağlı geçer kaydı taşıdığında iş `c
 
 ## Düzeltme, duraklatma ve devir
 
-`get IS_ID` güncel sürümü verir. Değiştirici komutlarda o sürüm `--revision` olarak kullanılır:
+Bu bölümün komutları, yukarıdaki doğrulamayla tamamlanmamış bir iş üzerinde çalışır: tamamlanmış ya da iptal edilmiş bir iş düzeltilemez ve sessizce yeniden açılmaz. Sürüm numaraları örnektir. `get IS_ID` güncel sürümü verir; değiştirici komutlarda o sürüm `--revision` olarak kullanılır:
 
 ```powershell
 python deus.py --backend portable --state-dir D:/DeusVeri revise IS_ID --words-file D:/Duzeltme.txt --revision 1 --request-key duzeltme-001
@@ -121,7 +123,7 @@ python deus.py --backend portable --state-dir D:/DeusVeri events --task IS_ID
 
 Düzeltme özgün sözü değiştirmez; yeni söz sürümü ekler. Güncel olmayan çalıştırma sonucu reddedilir. Pause/cancel, eski aktif çalıştırmayı geçersiz kılar. Resume işi yeniden hazır yapar; devam edecek oturum için yeni `assign` gerekir. Yeni atama aynı işte yeni çalıştırma açar. Önceki sonuçlar ve işlemler geçmişte kalır.
 
-Etkin bir çalıştırmayı başka oturuma devrederken `get IS_ID` ile güncel `active_attempt_id` okunur ve `--expected-active-attempt-id` olarak gönderilir. Bu önkoşul, gecikmiş bir atamanın daha yeni çalıştırmayı ezmesini önler. İlk atamada veya etkin çalıştırma kalmadığında bu seçenek verilmez. Arayüz aynı önkoşulu otomatik gönderir:
+Aşağıdaki devir örneği ayrı bir durumdur: işte etkin bir çalıştırma varken anlamlıdır, duraklatma ve devam ettirmeden sonra değil. Etkin bir çalıştırmayı başka oturuma devrederken `get IS_ID` ile güncel `active_attempt_id` okunur ve `--expected-active-attempt-id` olarak gönderilir. Bu önkoşul, gecikmiş bir atamanın daha yeni çalıştırmayı ezmesini önler. İlk atamada veya etkin çalıştırma kalmadığında bu seçenek verilmez. Arayüz aynı önkoşulu otomatik gönderir:
 
 ```powershell
 python deus.py --backend portable --state-dir D:/DeusVeri assign IS_ID --participant "Yeni oturum" --session YENI_OTURUM --revision 2 --expected-active-attempt-id GUNCEL_CALISTIRMA_ID --request-key devir-001
@@ -146,6 +148,8 @@ python -m unittest discover -v
 python tools/depo_kontrol.py
 node --check ui/deus/app.js
 ```
+
+Son komut Node gerektirir; Node yoksa aynı denetim `python tools/dogrula.py` içinde atlanmış olarak görünür.
 
 Yeni sınamalar; aynı isteğin tekrarı, eşzamanlı oluşturma, yeniden açılan veritabanı, kaynak bozulması, eski oturum/sonuç, düzeltme, pause/resume/cancel, sonuçla bağlı ölçütler, HTTP origin/belirteç ve NT protokolünü kapsar. Model veya canlı sürücü çağrısı taklitleri gerçek kurulum kanıtı sayılmaz. Windows WDK derlemesi ayrı CI akışındadır; çıktısı imzasızdır, yüklenmez.
 

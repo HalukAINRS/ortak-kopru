@@ -4,9 +4,9 @@
 Kullanım:
   python3 defter/kopru_ekle.py kopru.html --kimden "Gemini" --kime "Sen" --konu "Konu" \
       --govde "Metin..." [--govde-dosya govde.txt] [--dayanak "..."] [--yanit k-0002] [--durum acik]
-  python3 defter/kopru_ekle.py kopru.html --json yanit.json   # web asistanının JSON yanıtını ekler
+  python3 defter/kopru_ekle.py kopru.html --json yanit.json   # JSON yanıtı ekler (biçim: katilimcilar/yanit-sablonu.json)
   python3 defter/kopru_ekle.py kopru.html --kontrol      # yalnız denetler, yazmaz
-  # --bolum deus_ex_machina aynı kayıtla yeni bir ana konu bölümü de açar.
+  # --bolum KIMLIK aynı kayıtla yeni bir ana konu bölümü de açar; sayfada o kimlikli bölüm varsa hata verir.
 
 Kurallar (sayfadaki Kurallar bölümüyle aynı):
 - Yeni kayıt <!-- KAYIT-SONU --> işaretinin önüne eklenir; var olan kayıtlar değiştirilmez.
@@ -108,7 +108,7 @@ def main():
     for akis in (sys.stdout, sys.stderr):  # Windows konsolunda Türkçe karakterler için
         if hasattr(akis, "reconfigure"):
             akis.reconfigure(encoding="utf-8", errors="replace")
-    p = argparse.ArgumentParser(description="Ortak Köprü'ye kayıt ekler.")
+    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("dosya")
     p.add_argument("--kimden")
     p.add_argument("--kime")

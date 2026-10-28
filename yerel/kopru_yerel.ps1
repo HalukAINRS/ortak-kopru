@@ -11,14 +11,15 @@
 #   Kopru_Izle.cmd CodexGiris      → Şaman ortamında `codex login` (tarayıcı); "CodexGiris Cihaz" cihaz kodu akışı; "CodexGiris Durum" yalnız durum
 #   Kopru_Izle.cmd CopilotGiris    → Şahit ortamında `copilot login` (tarayıcı); "CopilotGiris Cihaz" cihaz kodu akışı
 #   Kopru_Izle.cmd CodexTani       → Codex tanısı: ortam, config.toml yetki satırları, auth.json alan adları, arg0 geçici klasörleri, kısa deneme çağrısı (değer yazmaz)
-#   Kopru_Izle.cmd SamanDevam    → doğrulanmış devir paketini ayrı çalışma ağacında etkileşimli Şaman ile açar
-#   Kopru_Izle.cmd SamanHazirla  → aynı paketi yalnız hazırlar; CLI çağırmaz
 #   Kopru_Izle.cmd Arg0Temizle     → Codex'in silemediği eski arg0 klasörlerini kilidi tutulmayanlardan başlayarak siler (önce kilit dosyası kapatılır)
+#   Parametreler: -Dakika N (izleme aralığı, varsayılan 5), -Yalniz AD (Tek ve Izle'de yalnız bir katılımcı), -Secenek (kipin argümanı)
 #
-# Yollar Hacker_Baslat.ps1, Saman_Baslat.ps1, Sahit_Baslat.ps1 ve HalukAI_Ortam.ps1'dekilerle aynı; kurulum değişirse
-# burada ve katilimcilar/ayarlar-yerel.json'da düzelt. Bu dosya makineye özgüdür; makineden bağımsız izleyici kopru_izle.ps1'dir.
+# Gerekenler: Windows, PowerShell 7, Git, Python 3.12+. Bu dosya makineye özgüdür; makineden bağımsız izleyici kopru_izle.ps1'dir.
+# Yollar ilk kurulan makinenin düzenine göredir ve katilimcilar/ayarlar-yerel.json'daki yollarla AYNI DEĞİLDİR (biri
+# Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari, öbürü Y:\archive\… altını gösterir); yeniden kurarken ikisi aynı yere bağlanır.
+# 28 Ekim 2026 itibarıyla yerel taraf hiçbir bilgisayarda kurulu değil: docs/teknik/yerel-taraf.md
 param(
-  [ValidateSet("Izle", "Hazirlik", "Tek", "Ekle", "Bolum", "Gonder", "VM", "CopilotKontrol", "CodexGiris", "CopilotGiris", "CodexTani", "Arg0Temizle", "SamanDevam", "SamanHazirla")][string]$Mod = "Izle",
+  [ValidateSet("Izle", "Hazirlik", "Tek", "Ekle", "Bolum", "Gonder", "VM", "CopilotKontrol", "CodexGiris", "CopilotGiris", "CodexTani", "Arg0Temizle")][string]$Mod = "Izle",
   [string]$Secenek = "",
   [int]$Dakika = 5,
   [string]$Yalniz = ""
@@ -54,6 +55,7 @@ foreach ($k in @("X:\Windows\Temp\Saman_Temp", "X:\Windows\Temp\Sahit_Temp", "X:
 $DepoKoku = Split-Path -Parent $PSScriptRoot   # betikler yerel/ altında; çalışma yeri depo köküdür
 Set-Location -LiteralPath $DepoKoku
 # WinPE her açılışta git'in global ayarını sıfırlar; exFAT'taki depo için safe.directory her seferinde eklenir.
+# Yan etki: $DepoYolu Git'in GENEL ayarına eklenir. Geri almak için: git config --global --unset-all safe.directory $DepoYolu
 if (Get-Command git -ErrorAction SilentlyContinue) {
   $guvenli = @(git config --global --get-all safe.directory 2>$null)
   if ($guvenli -notcontains $DepoYolu) { git config --global --add safe.directory $DepoYolu }
@@ -104,24 +106,6 @@ function Sahit-Ortami {
 switch ($Mod) {
 
 
-  "SamanDevam" {
-    $py = Bul-PyYol
-    if (-not $py) { Write-Error "Python yok (bkz. Hazirlik)."; exit 1 }
-    $samanArgs = @("-I", "-X", "utf8", (Join-Path $PSScriptRoot "saman_devral.py"))
-    if ($Secenek) { $samanArgs += @("--kaynak-zip", $Secenek) }
-    & $py @samanArgs
-    exit $LASTEXITCODE
-  }
-
-  "SamanHazirla" {
-    $py = Bul-PyYol
-    if (-not $py) { Write-Error "Python yok (bkz. Hazirlik)."; exit 1 }
-    $samanArgs = @("-I", "-X", "utf8", (Join-Path $PSScriptRoot "saman_devral.py"), "--hazirla")
-    if ($Secenek) { $samanArgs += @("--kaynak-zip", $Secenek) }
-    & $py @samanArgs
-    exit $LASTEXITCODE
-  }
-
   "VM" {
     & pwsh -NoLogo -NoProfile -ExecutionPolicy Bypass -File $HackerBaslat -Mod Kontrol
   }
@@ -170,7 +154,7 @@ switch ($Mod) {
       & $CodexExe login --device-auth
     } else {
       Write-Host "Tarayıcı açılacak; açılmazsa terminaldeki adresi Chrome'a kopyala. 'Sign in with ChatGPT' → Pro hesabınla onayla → buraya dön." -ForegroundColor Cyan
-      Write-Host "Giriş $env:CODEX_HOME\auth.json dosyasına yazılır (izleyici Şaman'ı aynı Home ile çağırır)." -ForegroundColor Cyan
+      Write-Host "Giriş $env:CODEX_HOME\auth.json dosyasına yazılır (izleyici Şaman'ı katilimcilar/ayarlar-yerel.json'daki Home ile çağırır; ikisinin aynı olduğunu denetleyin)." -ForegroundColor Cyan
       & $CodexExe login
     }
     Write-Host "--- durum ---" -ForegroundColor Cyan

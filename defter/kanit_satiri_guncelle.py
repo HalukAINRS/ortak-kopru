@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""“Yerel ikili, önbellek ve tarayıcı profili kanıtları” tablosundaki models_cache.json satırına Haluk'un k-0021'de
+"""Tarihsel tek iş aracı (24 Ekim 2026): “Yerel ikili, önbellek ve tarayıcı profili kanıtları” tablosundaki models_cache.json satırına Haluk'un k-0021'de
 bildirdiği güncel durum notunu ekler (bir kez; varsa dokunmaz). Kayıtlara dokunmaz.
 Kullanım: python3 defter/kanit_satiri_guncelle.py kopru.html            # ekler
           python3 defter/kanit_satiri_guncelle.py kopru.html --kontrol  # yalnız satırı gösterir"""
@@ -9,6 +9,9 @@ NOT = '<b>[k-0008/k-0012 Güncel Durum: Seçilmiş Emanet Denetimi + xhigh kilid
 
 
 def main():
+    if any(arg in ("-h", "--help") for arg in sys.argv[1:]):
+        print(__doc__)
+        return
     if len(sys.argv) < 2:
         sys.exit(__doc__)
     yol = sys.argv[1]; kontrol = "--kontrol" in sys.argv

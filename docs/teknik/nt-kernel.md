@@ -1,4 +1,6 @@
-# Mimari karar: deus_ex_machina'nın NT Kernel bileşeni
+# deus_ex_machina'nın NT Kernel bileşeni
+
+Bu belge, yerel iş bileşeninin Windows çekirdeğinde çalışan küçük sürücüsünün neden ve hangi sınırlarla yazıldığını anlatır. 26 Ekim 2026'da Haluk'un talimatıyla yazıldı; karar kaydı [Karar 0001](kararlar/0001-deus-is-ve-nt.md)'dir. Sürücü bugüne dek yalnız otomasyonda derlendi; imzalanmadı ve hiçbir bilgisayara yüklenmedi. Derleme adımları [sürücü klasörünün rehberindedir](../../windows/nt/README.md).
 
 **Dayanak:** Haluk'un 26 Ekim 2026 tarihli güncel talimatı:
 

@@ -2,7 +2,7 @@
 
 **Yön:** Haluk yereldeki işlerini mevcut araçları ve çalışma düzeniyle sürdürür. Ortak Köprü, seçilen ürünleri GitHub ve diğer harici alanlarla paylaşır; o alanlardan gereken kaynakların yerel kullanıma alınmasını sağlar.
 
-Bu belge kapının hedef davranışını ve mevcut uygulamayla ilişkisini tanımlar. İlk görevden bağımsız dosya aktarımı ve GitHub bağlayıcısı artık `kapi.py` üzerinden çalışır: seçme, planlama, yeni dal/taslak PR ile gönderme, sonucu uzlaştırma, kesin commit'ten alma ve inceleme kopyası çıkarma. [Gerçek komutlar ve ilk sürümün sınırları](kapi-kullanimi.md). Diğer hizmetler, genel dış iş talebi ve yeni aktarım ekranı henüz uygulanmadı; aşağıdaki geniş mimari kapsam bunları da tarif eder.
+Bu belge kapının hedef davranışını ve mevcut uygulamayla ilişkisini tanımlar; 26 Ekim 2026'da yazıldı, 28 Ekim'de yeniden okundu. İlk görevden bağımsız dosya aktarımı ve GitHub bağlayıcısı artık `kapi.py` üzerinden çalışır: seçme, planlama, yeni dal/taslak PR ile gönderme, sonucu uzlaştırma, kesin commit'ten alma ve inceleme kopyası çıkarma. [Gerçek komutlar ve ilk sürümün sınırları](kapi-kullanimi.md). Diğer hizmetler, genel dış iş talebi ve yeni aktarım ekranı henüz uygulanmadı; aşağıdaki geniş mimari kapsam bunları da tarif eder.
 
 ## Yerel çalışma ve kapının ilişkisi
 

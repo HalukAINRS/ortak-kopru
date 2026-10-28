@@ -54,7 +54,7 @@ Burada yalnız okumazsınız, yazabilirsiniz de. Yerel kullanıcı da yalnız pa
 
 Bu yerde okumakla yazmak arasında bir sıra yok. Bir yazıyı okuyup hemen bir soru bırakabilirsiniz. Yerel kullanıcı da yazdığınızı okur ve karşılık verir. Kapıdan dışarı çıkan bir şeyin yanıtı da aynı yoldan geri gelebilir.
 
-**Bugün:** Dosyalar iki yönde de geçebiliyor. Dışarıdan gelen bir sorunun yerel kullanıcıya ulaşması ise henüz kendiliğinden olmuyor; şimdilik GitHub'ın kendi bildirimlerine bağlı.
+**Bugün:** Kapının aracı dosyaları iki yönde geçirebilecek durumda; ama bugün hiçbir bilgisayarda kurulu bir yerel köprü yok. Dışarıdan gelen bir sorunun yerel kullanıcıya ulaşması da henüz kendiliğinden olmuyor; şimdilik GitHub'ın kendi bildirimlerine bağlı.
 
 ## 2. Yerel merkez
 
@@ -68,7 +68,7 @@ Neyin paylaşılacağına yerel kullanıcı karar verir. Dışarıdan gelen bir 
 
 Bu ilke yerel kullanıcıyı ve onun çalışmasını korur. Kapı, bilgisayardaki bir klasörü dışarıyla kendiliğinden aynı tutmaya çalışmaz. Dışarıdan gelen bir öneri önce bekler. Yerel kullanıcı ona bakar ve kararını kendisi verir.
 
-**Bugün:** Kapının kendisi bu kurala uyuyor. Ama eski bir paylaşım aracı hâlâ seçim yapmadan gönderebiliyor; daraltılması bekleniyor.
+**Bugün:** Kapının kendisi bu kurala uyuyor. Eski bir paylaşım aracı ise seçim yapmadan gönderebilecek biçimde yazılı. Araç bugün hiçbir bilgisayarda kurulu değil; yeniden kurulmadan önce daraltılması bekleniyor.
 
 ## 3. Köken ve sahiplik
 
@@ -92,7 +92,7 @@ Bu yerin bugüne kadarki bütün kayıtları bu yüzden kendi tarihleriyle duruy
 
 Dışarı çıkacak her şey çıkmadan önce denetlenir. Bu denetim kimsenin dikkatine bırakılmaz; kapının kendisi yapar. Siz de buraya yazarken kişisel bilgilerinizi paylaşmayın, çünkü yazdığınız şey herkese açık olur.
 
-**Bugün:** Kapı bu sınırı uyguluyor. Tek açık nokta yine o eski paylaşım aracı.
+**Bugün:** Kapı bu sınırı uyguluyor. Tek açık nokta yine o eski paylaşım aracı; bugün kurulu değil ama yeniden kurulursa açık da geri gelir.
 
 ## 5. Açık katılım
 

@@ -109,7 +109,12 @@ def eski_ad_haritasi(metin: str | None) -> dict[str, str]:
     if not metin:
         return {}
     veri = json.loads(metin)
-    return {ad: d["yol"] for alan in veri["alanlar"] for d in alan["dosyalar"] for ad in d.get("eski_adlar", [])}
+    harita = {ad: d["yol"] for alan in veri["alanlar"] for d in alan["dosyalar"] for ad in d.get("eski_adlar", [])}
+    # Bilerek kaldırılan dosyaların eski adları da çözülmüş sayılır: harita onların nedenini ve önceki sürümünü yazar.
+    for k in veri.get("kaldirilanlar", []):
+        for ad in [k["yol"], *k.get("eski_adlar", [])]:
+            harita.setdefault(ad, f"{k['yol']} ({k['islem']})")
+    return harita
 
 
 # ---------- ölçüt ve durum ----------
@@ -396,7 +401,7 @@ def once_sonra(kayit: dict, harita_verisi: dict, kok_bugun: int) -> str:
             sonra = d["yol"].rsplit("/", 1)[0] + "/" if "/" in d["yol"] else "kök"
             gruplar[(once, sonra)] = gruplar.get((once, sonra), 0) + 1
     sol = 32
-    satirlar = ["  " + "ÖNCE · bugünkü ana dal".ljust(sol) + "    SONRA · yeni oluşum",
+    satirlar = ["  " + "ÖNCE · 28 Ekim sabahki ana dal".ljust(sol) + "    SONRA · bugünkü ana dal",
                 "  " + "─" * sol + "    " + "─" * 26,
                 "  " + f"kökte {kayit['baslangic']['kok_dosya']} dosya".ljust(sol) + "    " + f"kökte {kok_bugun} dosya ve alanlar"]
     sira = sorted(gruplar.items(), key=lambda x: (x[0][0] != "kök", x[0][0], -x[1], x[0][1]))
@@ -452,15 +457,15 @@ def belge(kayit: dict, hesap: dict[str, dict], harita_verisi: dict, kok_bugun: i
           "Aşağıdaki ağaçta her aşama, bitmesini beklediği aşamanın altında duruyor. Dolu kare biten, boş kare açık, "
           "eşkenar dörtgen isteğe bağlı aşamayı gösterir.",
           *_cizim("Dönüşümün ağacı", "muhendis", agac(kayit, hesap))]
-    p += ["## Ne değişecek"] + kayit["degisenler"] + [
-        "Aşağıdaki plan, dosyaların bugün nerede durduğunu ve nereye gideceğini gösteriyor. Sayılar haritadaki eski adlardan "
+    p += ["## Ne değişti"] + kayit["degisenler"] + [
+        "Aşağıdaki plan, dosyaların 28 Ekim sabahı nerede durduğunu ve bugün nereye taşındığını gösteriyor. Sayılar haritadaki eski adlardan "
         "çıkarılıyor; bir dosya taşındıkça plan kendiliğinden değişir.",
         *_cizim("Önce ve sonra", "mimar", once_sonra(kayit, harita_verisi, kok_bugun))]
-    p += ["## Ne değişmeyecek"] + kayit["degismeyenler"]
+    p += ["## Ne değişmedi"] + kayit["degismeyenler"]
     c = cizimler["yol"]
     p += ["## Yol"] + kayit["yol"] + _cizim(c["baslik"], c["tur"], c["metin"])
     p += ["## Aşamalar",
-          "Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşamaları gösteriyor. Dolu nokta, o aşamada işin "
+          "Aşağıdaki iş çizelgesinde satırlar işin atandığı kişileri, sütunlar aşamaları gösteriyor. Dolu nokta, o aşamada işin "
           "kimde olduğunu belirtiyor.",
           *_cizim("Kim ne zaman", "muhendis", matris(kayit))]
     for a in kayit["asamalar"]:

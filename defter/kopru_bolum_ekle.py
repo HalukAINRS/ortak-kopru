@@ -4,7 +4,7 @@ Kullanım: python3 defter/kopru_bolum_ekle.py kopru.html docs/gecmis/parcalar/bo
 Parça dosyası tek bir <div id="y-…" class="alt"> … </div> içerir. Aynı id sayfada varsa yerine konur; yoksa
 “Mimari: ikimiz için” (#y-mimari) parçasının önüne, o da yoksa bölümün sonuna eklenir. Kayıtlara dokunmaz.
 Parça yazılmadan önce kayıt ekleyicinin dış yükleme ve yasak desen denetimlerinden geçer; birine takılırsa
-sayfa değişmez. Sonra kopru_ekle.py --kontrol ile denetle ve yerel/kopru_gonder.ps1 ile gönder. Yalnız standart kütüphane."""
+sayfa değişmez. Sonra defter/kopru_ekle.py --kontrol ile denetle; değişiklik bir değişiklik önerisiyle (pull request) ana dala gider. Yalnız standart kütüphane."""
 import os, re, sys, tempfile
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -12,6 +12,9 @@ from kopru_ekle import dis_yukleme_kontrol, yasak_kontrol  # noqa: E402
 
 
 def main():
+    if any(arg in ("-h", "--help") for arg in sys.argv[1:]):
+        print(__doc__)
+        return
     if len(sys.argv) != 3:
         sys.exit(__doc__)
     sayfa_yolu, parca_yolu = sys.argv[1], sys.argv[2]

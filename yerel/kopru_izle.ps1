@@ -1,9 +1,10 @@
-# Ortak Köprü yerel izleyici: abonelikle çalışan CLI katmanları (Claude Code, Codex, Gemini CLI) üzerinden
+# Ortak Köprü yerel izleyici: abonelikle çalışan CLI katmanları (Claude Code, Codex, Google CLI izleyicisi) üzerinden
 # bekleyen kayıtlara cevap verir. API anahtarı kullanmaz; katilimcilar/ayarlar-yerel.json'daki komutları çalıştırır.
 #
 #   pwsh -File yerel/kopru_izle.ps1              # beş dakikada bir döner
 #   pwsh -File yerel/kopru_izle.ps1 -TekSefer    # bir kez çalışır, çıkar
 #   pwsh -File yerel/kopru_izle.ps1 -Yalniz Claude   # yalnız bir katılımcı
+#   -Ayarlar YOL (varsayılan katilimcilar/ayarlar-yerel.json), -Dal AD (izleyicinin çalışacağı dal, varsayılan main)
 #
 # Bu dosya makineden bağımsızdır; makineye özgü ortam (PATH, Python yolu, katman Home'ları) kopru_yerel.ps1'de
 # ve katilimcilar/ayarlar-yerel.json'dadır. Windows'ta Kopru_Izle.cmd bu dosyayı o ortamla çağırır.

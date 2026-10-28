@@ -69,6 +69,23 @@ class YolTests(unittest.TestCase):
         self.adim(kayit, "sinir")["olcutler"] = [{"tur": "dosya_var", "yol": "kopru.html"}]
         self.assertEqual(yol.durumlar(kayit, self.bulgular)["sinir"]["durum"], "tamam")
 
+    def test_an_opinion_is_shown_but_does_not_decide(self):
+        kayit = self.acik_kopya("sinir")
+        self.adim(kayit, "sinir")["karar"]["gorus"] = {"kimden": "Sınama", "tarih": "2026-10-28", "oneri": "Önerim: evet.",
+                                                      "ozet": "Kısa bir gerekçe.", "gerekce": "Uzun bir gerekçe."}
+        self.assertEqual(yol.durumlar(kayit, self.bulgular)["sinir"]["durum"], "karar-bekliyor")
+        self.assertEqual(self.denetle(kayit), [])
+        metin = yol.BELGE.read_text(encoding="utf-8")
+        for a in self.yol["adimlar"]:
+            g = (a["karar"] or {}).get("gorus")
+            if g and a["karar"]["verildi"] is None:
+                with self.subTest(adim=a["kimlik"]):
+                    self.assertIn(g["oneri"], metin)
+                    self.assertIn(f"Karar yine {a['karar']['kim']}'ta.", metin)
+        eksik = copy.deepcopy(kayit)
+        del self.adim(eksik, "sinir")["karar"]["gorus"]["gerekce"]
+        self.assertTrue(any(h.startswith("sözleşme: $.adimlar[1].karar") for h in self.denetle(eksik)))
+
     def test_each_criterion_type_reads_the_repository(self):
         bulgular = {"R-01": "düzeltildi", "R-17": "açık"}
         durumlar = [

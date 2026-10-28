@@ -37,6 +37,7 @@ aside h2{font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;margin:.3
 .reader-note{background:var(--wash);padding:1rem;margin-top:1.8rem;border-radius:7px}
 .reader-note p{margin:0 0 .6rem}
 .reader-note p:last-child{margin:0}
+.nav-ayrac{color:var(--muted);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;align-self:center}
 .karsilik{margin:-.2rem 0 1.8rem;font-size:.84rem}
 .karsilik a{color:var(--muted);text-decoration:none;border-bottom:1px dashed var(--line);padding-bottom:.05rem}
 .karsilik a::before{content:"↳ "}

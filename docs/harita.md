@@ -22,6 +22,7 @@ ortak-kopru/
 ├── index.html        Web kapısı
 ├── acilis.html
 ├── yol.html
+├── sozluk.html
 ├── mimari.html
 ├── not-defteri.html
 ├── durum.html
@@ -51,11 +52,15 @@ Dışarıdan adresle çağrılan dosyalar yerinde kalır: ortak defter, aynası,
 
 Geri kalan her dosya adı söylenen bir alana girer. Makinelerin tanıdığı ortak klasör adları (docs, src, tests, tools, schemas) korunur; deponun kendi alanları Türkçe adlanır.
 
-Belge adları küçük harf ve tire ile yazılır. README, CONTRIBUTING ve AGENTS gibi ortak adlar büyük harf kalır. Kod dosyaları dilin kuralına uyar ve eski adlarını korur.
+Belge adları küçük harf ve tire ile yazılır. README ve CONTRIBUTING gibi ortak adlar büyük harf kalır. Kod dosyaları dilin kuralına uyar ve eski adlarını korur.
 
 Bir kayıt ile onun anlatısı aynı adı taşır ve yan yana durur: acilis.md ile acilis.json gibi.
 
 Yeri ya da adı değişen her dosyanın eski adı bu haritada durur; eski kayıtlarda geçen bir ad buradan bulunur.
+
+Bilerek kaldırılan ya da içeriği sıfırlanan her dosya, nedeni ve önceki hâlinin sürümüyle bu haritada durur.
+
+Bir alanın kendi klasörü varsa o klasörde bir giriş sayfası durur. Sayfa haritadan üretilir: alanın ne taşıdığını, dosyalarını ve nasıl çalıştırıldıklarını anlatır.
 
 Yeni bir belge üç sıfır kuralına uyar: hiç bilmeyen bir okuyucu ilk paragrafından ne olduğunu anlar; hiç bilmeyen bir makine onu haritadan bulur, denetler ve çalıştırır; hiç bilmeyen bir alan onu künyesiyle kaynak gösterir ve üzerine kurar.
 
@@ -74,7 +79,7 @@ Deponun kapısından ilk görünen dosyalar: kime ve neye açıldığını anlat
 
 ## Çalıştırma girişleri
 
-Kökte duran üç komut girişi. Adları ve yerleri değişmez; çünkü yerel bilgisayardaki kısayollar ve belgeler onları bu adla çağırır. Yeri: depo kökü.
+Kökte duran üç komut girişi. Adları ve yerleri değişmez; çünkü belgeler ve tasarımdaki yerel kısayollar onları bu adla çağırır. Yeri: depo kökü.
 
 | Dosya | Tür | Ne | Eski adı |
 | --- | --- | --- | --- |
@@ -91,9 +96,10 @@ Web'de yayımlanan okuma sayfaları. Adresleri değişmesin diye kökte dururlar
 | `index.html` | sayfa | Web girişi. | — |
 | `acilis.html` | sayfa | Açılış: niyet ve altı ilke. | — |
 | `yol.html` | sayfa | Açılıştan gerçeğe: yol. | — |
+| `sozluk.html` | sayfa | Sözlük. | — |
 | `mimari.html` | sayfa | Ortak Mimari Defteri. | — |
 | `not-defteri.html` | sayfa | Anlam ve Dönüş Defteri. | — |
-| `durum.html` | sayfa | Son durum. | — |
+| `durum.html` | sayfa | 28 Ekim 2026 durum raporu (tarihli kayıt). | — |
 | `kaynaklar.html` | sayfa | Kaynaklar. | — |
 | `okuma.css` | ayar | Okuma sayfalarının ortak stili; sayfalar başka hiçbir şey yüklemez. | — |
 
@@ -112,6 +118,7 @@ Web'de yayımlanan okuma sayfaları. Adresleri değişmesin diye kökte dururlar
 | `defter/kopru_bolum_ekle.py` | arac | Defterin yönlendirme bölümüne alt bölüm ekler ya da aynı kimlikliyi yeniler. | `kopru_bolum_ekle.py` |
 | `defter/kopru_ayna_uret.py` | arac | Kanonik defterden aynayı üretir; --kontrol eşliği denetler. | `kopru_ayna_uret.py` |
 | `defter/kanit_satiri_guncelle.py` | arac | Yerel kanıt tablosundaki bir satıra 21. kayıttaki durum notunu bir kez ekler; tarihsel tek iş aracı. | `kanit_satiri_guncelle.py` |
+| `defter/README.md` | belge | Bu klasörün giriş sayfası: ne taşıdığını, dosyalarını ve nasıl çalıştırıldıklarını anlatır. | — |
 
 ## Çağrı kayıtları
 
@@ -121,46 +128,75 @@ Bu alandaki dosyalar tek tek tanımlanmaz; alanın açıklaması hepsi için ge�
 
 ## Katılımcılar
 
-Deftere kimin, hangi yoldan ve hangi kurallarla yazdığı: çağrı ayarları, istem şablonları, yanıt biçimi, hedefleme sözleşmesi ve CLI katmanlarının talimat parçası. Yeri: `katilimcilar/`.
+Deftere kimin, hangi yoldan ve hangi biçimde yazdığı: çağrı ayarları, botun istem şablonu, yanıt kalıbı ve hedefleme sözleşmesi. Yeri: `katilimcilar/`.
 
 | Dosya | Tür | Ne | Eski adı |
 | --- | --- | --- | --- |
 | `katilimcilar/ayarlar.json` | ayar | Bulut otomasyonundaki çağrı yolları: Claude CLI ve yedeği, ChatGPT ve Gemini için API yolları. | `ayarlar.json` |
 | `katilimcilar/ayarlar-yerel.json` | ayar | Yerel bilgisayardaki CLI katılımcıları ve ortamları; yerel izleyici ve Şaman devri bunu okur. | `ayarlar-yerel.json` |
-| `katilimcilar/istem-sablonu.md` | ayar | Botun sistem istemi ve kullanıcı iletisi şablonu. | `istem-sablonu.md` |
-| `katilimcilar/web-istem.md` | ayar | Web asistanlarına defterle birlikte verilecek istem ve JSON yanıt biçimi. | `web-istem.md` |
+| `katilimcilar/istem-sablonu.md` | ayar | Botun yapay zekâ modeline gönderdiği istemin şablonu. 28 Ekim 2026'da sıfırlandı: yalnız yanıt biçimi ve yasak içerik. | `istem-sablonu.md` |
 | `katilimcilar/yanit-sablonu.json` | ayar | Web asistanlarının yanıt kalıbı; kayıt ekleyicinin --json girişi bunu okur. | `yanit-sablonu.json` |
-| `katilimcilar/AGENTS-kopru.md` | ayar | CLI katmanlarının talimat dosyalarına eklenen köprü kuralları parçası. | `AGENTS-kopru.md` |
 | `katilimcilar/katman-hedefleme.md` | belge | Bir kaydın hangi üreticiye ve role düştüğünü belirleyen hedefleme sözleşmesi. | `KATMAN_HEDEFLEME.md` |
+| `katilimcilar/README.md` | belge | Bu klasörün giriş sayfası: ne taşıdığını, dosyalarını ve nasıl çalıştırıldıklarını anlatır. | — |
 
 ## Yerel betikler
 
-Yerel kullanıcının Windows bilgisayarında çalışan betikler: izleyici, gönderici, ortam kapısı ve Şaman devri başlatıcısı. Hepsi depo kökünde çalışır. Yeri: `yerel/`.
+Yerel kullanıcının Windows bilgisayarında çalışmak üzere yazılmış betikler: izleyici, gönderici ve ortam kapısı. Bugün hiçbir bilgisayarda kurulu değiller. Yeri: `yerel/`.
 
 | Dosya | Tür | Ne | Eski adı |
 | --- | --- | --- | --- |
 | `yerel/kopru_yerel.ps1` | betik | Yerel makinenin ortamı ve modları (Hazirlik, Tek, Izle, Ekle, Bolum, Gonder ve ötekiler); Kopru_Izle.cmd bunu çağırır. | `kopru_yerel.ps1` |
 | `yerel/kopru_izle.ps1` | betik | Makineden bağımsız izleyici: eşitler, botu yerel ayarla çalıştırır, yeni kayıt varsa gönderir. | `kopru_izle.ps1` |
 | `yerel/kopru_gonder.ps1` | betik | Yerel değişiklikleri denetleyip gönderir; çakışmada defteri birleştirir, aynayı yeniler. | `kopru_gonder.ps1` |
-| `yerel/saman_devral.py` | arac | Sabit Şaman devir paketini ayrı çalışma ağacında doğrular; --hazirla yalnız hazırlar. | `saman_devral.py` |
+| `yerel/README.md` | belge | Bu klasörün giriş sayfası: ne taşıdığını, dosyalarını ve nasıl çalıştırıldıklarını anlatır. | — |
 
 ## Python paketi
 
 Kapının ve yerel iş bileşeninin çekirdeği: aktarım, GitHub bağdaştırıcısı, iş ve olay kaydı, devir, yedek ve yerel sunucu. Yalnız standart kütüphane kullanır. Yeri: `src/`.
 
-Bu alandaki dosyalar tek tek tanımlanmaz; alanın açıklaması hepsi için geçerlidir.
+| Dosya | Tür | Ne | Eski adı |
+| --- | --- | --- | --- |
+| `src/ortak_kopru/__init__.py` | kod | Paketin girişi: kalıcı iş, kaynak ve olay sözleşmelerinin paketi. | — |
+| `src/ortak_kopru/core.py` | kod | Kalıcı iş durumu: işler, kaynaklar ve olaylar; ortak defterden ayrı, özel bir dizinde tutulur. | — |
+| `src/ortak_kopru/cli.py` | kod | Yerel iş bileşeninin komutları (kökteki deus.py girişi): iş, kaynak, devam, yedek ve yerel sunucu. | — |
+| `src/ortak_kopru/server.py` | kod | Yerel iş deposunun yalnız bilgisayarın kendi adresinden açılan HTTP yüzü; sağlayıcı çağırmaz. | — |
+| `src/ortak_kopru/handoff.py` | kod | Kaydedilmiş oturumların bulunması ve sağlayıcıdan bağımsız, özel devir dosyaları; kaynaklar talimat değil veri sayılır. | — |
+| `src/ortak_kopru/backup.py` | kod | Görev veritabanının ve nesnelerinin tutarlı, doğrulanmış özel yedekleri ve geri yüklenmesi. | — |
+| `src/ortak_kopru/local_files.py` | kod | Özel, doğrulanmış yerel dosyalar ve üzerine yazmadan yayımlama; Git çalışma ağacının içinde çalışmayı reddeder. | — |
+| `src/ortak_kopru/exchange.py` | kod | Seçilmiş dosya aktarımları: paket, aktarım kaydı ve özel aktarım dizini; işlerden ve oturumlardan bağımsız. | — |
+| `src/ortak_kopru/gateway.py` | kod | GitHub alışverişinin işten bağımsız akışı: açık plan, kurtarılabilir yazma ve uzlaştırma. | — |
+| `src/ortak_kopru/gateway_cli.py` | kod | Kapının komutları (kökteki kapi.py girişi): hazırla, planla, gönder, uzlaştır, al ve dışa çıkar. | — |
+| `src/ortak_kopru/adapters/__init__.py` | kod | Dış hizmet bağdaştırıcılarının paketi; içe aktarılması hiçbir giriş-çıkış işlemi yapmaz. | — |
+| `src/ortak_kopru/adapters/github.py` | kod | GitHub REST bağdaştırıcısı: seçilmiş dosya alışverişi için sınırlı istekler. | — |
+| `src/ortak_kopru/adapters/windows_nt.py` | kod | Windows'taki NT aygıt kapısını okur; sürücüyü kurmaz ve yüklemez. | — |
+| `src/README.md` | belge | Bu klasörün giriş sayfası: ne taşıdığını, dosyalarını ve nasıl çalıştırıldıklarını anlatır. | — |
 
 ## Yerel arayüz
 
 Yerel iş bileşeninin bilgisayarda açılan ekranı; yalnız yerel sunucu üzerinden çalışır. Yeri: `ui/`.
 
-Bu alandaki dosyalar tek tek tanımlanmaz; alanın açıklaması hepsi için geçerlidir.
+| Dosya | Tür | Ne | Eski adı |
+| --- | --- | --- | --- |
+| `ui/deus/index.html` | sayfa | İş bileşeni ekranının sayfası; yerel sunucu açar, dışarıdan bir şey yüklemez. | — |
+| `ui/deus/app.js` | kod | Ekranın davranışı: yalnız yerel sunucuya istek atar, işleri ve olayları gösterir. | — |
+| `ui/deus/styles.css` | ayar | Ekranın görünümü. | — |
+| `ui/README.md` | belge | Bu klasörün giriş sayfası: ne taşıdığını, dosyalarını ve nasıl çalıştırıldıklarını anlatır. | — |
 
 ## Windows sürücüsü
 
 Yerel iş bileşeninin NT aygıt kapısı: sürücü kaynakları, protokol ve derleme gereçleri. Yeri: `windows/`.
 
-Bu alandaki dosyalar tek tek tanımlanmaz; alanın açıklaması hepsi için geçerlidir.
+| Dosya | Tür | Ne | Eski adı |
+| --- | --- | --- | --- |
+| `windows/nt/README.md` | belge | NT aygıt kapısının rehberi: amacı, derlemesi, denenmesi ve sınırları. | — |
+| `windows/nt/deus_kernel.c` | kod | KMDF sürücüsünün kaynağı: denetim aygıtı ve salt okunur sorgu işleyicisi. | — |
+| `windows/nt/deus_protocol.h` | kod | Kullanıcı tarafı ile sürücü arasındaki protokol: sabit boyutlu, işaretçisiz sorgu ve yanıt yapıları. | — |
+| `windows/nt/DeusKernel.vcxproj` | ayar | Sürücünün Visual Studio proje dosyası: derleme ayarları. | — |
+| `windows/nt/Directory.Build.props` | ayar | Sabitlenmiş Windows SDK ve WDK paketlerinin içe aktarımı. | — |
+| `windows/nt/packages.config` | ayar | Derleme için NuGet paketleri: Windows SDK ve WDK, sabit sürümle. | — |
+| `windows/nt/build.ps1` | betik | Sürücüyü yalnız Windows'ta derler; imzalamaz ve yüklemez. | — |
+| `windows/nt/.gitignore` | ayar | Derleme çıktıları ve indirilen paketler depoya girmez. | — |
+| `windows/README.md` | belge | Bu klasörün giriş sayfası: ne taşıdığını, dosyalarını ve nasıl çalıştırıldıklarını anlatır. | — |
 
 ## Belgeler: ilk temas ve harita
 
@@ -176,8 +212,9 @@ Bu alandaki dosyalar tek tek tanımlanmaz; alanın açıklaması hepsi için ge�
 | `docs/web-girisi.md` | belge | Web girişinin kaynak metni; index.html bundan üretilir. | `docs/WEB_GIRISI.md` |
 | `docs/harita.md` | belge | Bu harita: alanlar, dosyalar, eski adlar ve kurallar. | — |
 | `docs/harita.json` | kayit | Haritanın makine kaydı: her dosyanın alanı, türü, eski adları ve künyesi. | — |
-| `docs/donusum.md` | belge | Dönüşüm: GitHub'daki bugünkü deponun yeni oluşuma geçişi; aşamalar, kimin elinde olduğu, ölçüm ve geri dönüş, klavye çizimleriyle. | — |
+| `docs/donusum.md` | belge | Dönüşüm: deponun 28 Ekim 2026'da bugünkü düzenine geçişi; aşamalar, kimin elinde olduğu, ölçüm, kanıtlar ve geri dönüş, klavye çizimleriyle. | — |
 | `docs/donusum.json` | kayit | Dönüşümün makine kaydı: aşamalar, ölçütler, son ölçüm, prova ve bekleyen önerilerin çözümlemesi. | — |
+| `docs/sozluk.md` | belge | Depoda geçen kelimeler: yer ve yapı, ortak defter, katılımcılar ve odaklar, kapı ve iş bileşeni, geçmiş çalışmanın kavramları. | — |
 
 ## Teknik ayrıntılar
 
@@ -198,6 +235,7 @@ Araçlar, kurulum, doğrulama, otomasyon ve kararlar. Açılışı anlamak için
 | `docs/teknik/kararlar/0001-deus-is-ve-nt.md` | belge | Karar 0001: yerel iş bileşeni ve NT aygıtı. | `docs/kararlar/0001-deus-is-ve-nt.md` |
 | `docs/teknik/kararlar/0002-dis-alan-kapisi.md` | belge | Karar 0002: işten bağımsız dış alan kapısı. | `docs/kararlar/0002-dis-alan-kapisi.md` |
 | `docs/teknik/donusum-teknik.md` | belge | Dönüşümün teknik eki: komutlar, dokunulan yerler, ölçütler, prova, bekleyen önerilerin dosya dosya çözümlemesi ve geri dönüş. | — |
+| `docs/teknik/yerel-taraf.md` | belge | Kapının bilgisayardaki ucu: bugünkü durumu (kurulu değil), gerekenler, bilinen uyuşmazlıklar ve sıfırdan kurulum. | — |
 
 ## Geçmiş işler
 
@@ -222,6 +260,9 @@ Bugüne kadar yapılan işlerin anlatıları ve kayıtları. Her biri kendi tari
 | `docs/gecmis/parcalar/davet-copilot.json` | arsiv | Copilot katmanı için açılış kaydı taslağı. | `davet-copilot.json` |
 | `docs/gecmis/parcalar/isemri-arg0.json` | arsiv | Codex arg0 uyarısı için iş emri taslağı. | `isemri-arg0.json` |
 | `docs/gecmis/parcalar/bulgu-arg0-claude.json` | arsiv | Aynı konuda Claude'un ilk bulgu taslağı. | `bulgu-arg0-claude.json` |
+| `docs/gecmis/parcalar/README.md` | belge | Tarihsel parçaların dizini: dört taslağın her birinin defterdeki karşılığı ve okurken bilinmesi gerekenler. | — |
+| `docs/gecmis/rafine/okuma-2026-10-28.md` | belge | 28 Ekim akşamki belge okumasının anlatısı: ne okundu, ne bulundu, ne tamamlandı, ne açık kaldı. | — |
+| `docs/gecmis/rafine/claude-code-bulut-2026-10-28-okuma.json` | kayit | Belge okumasının makine kaydı: kontroller ve yirmi dokuz bulgu (R-25…R-53), sonuçlarıyla. | — |
 
 ## Sözleşmeler
 
@@ -242,6 +283,7 @@ Makine kayıtlarının JSON Schema sözleşmeleri; araçlar ve testler kayıtlar
 | `schemas/deus-handoff.schema.json` | sozlesme | Yerel iş devri. | — |
 | `schemas/deus-assign-request.schema.json` | sozlesme | Yerel iş atama isteği. | — |
 | `schemas/donusum.schema.json` | sozlesme | Dönüşüm kaydı. | — |
+| `schemas/README.md` | belge | Bu klasörün giriş sayfası: ne taşıdığını, dosyalarını ve nasıl çalıştırıldıklarını anlatır. | — |
 
 ## Bakım araçları
 
@@ -260,6 +302,7 @@ Deponun kendini denetleyen ve üreten araçları. Hepsi çevrimdışı, yalnız 
 | `tools/depo_tanimi.py` | arac | Depo tanımının ölçümlerini depodan üretir ve denetler. | — |
 | `tools/simdi_ve_sonrasi.py` | arac | Şimdi ve sonrası kaydını denetler; senaryo sırasını ve ölçümleri verir. | `tools/rafine_sorulari.py` |
 | `tools/donusum.py` | arac | Dönüşümü ölçer, prova eder, bekleyen önerileri çözümler ve iki belgeyi kayıttan üretir. | — |
+| `tools/README.md` | belge | Bu klasörün giriş sayfası: ne taşıdığını, dosyalarını ve nasıl çalıştırıldıklarını anlatır. | — |
 
 ## Testler
 
@@ -267,12 +310,12 @@ Regresyon testleri; geçici depolar ve sahte komutlarla çalışır, gerçek sa�
 
 | Dosya | Tür | Ne | Eski adı |
 | --- | --- | --- | --- |
-| `tests/test_saman_devral.py` | test | Şaman devri başlatıcısının geçici Git depolarıyla sınamaları. | `test_saman_devral.py` |
 | `tests/test_simdi_ve_sonrasi.py` | test | Şimdi ve sonrası kaydının denetim ve hesap sınamaları. | `tests/test_rafine_sorulari.py` |
+| `tests/README.md` | belge | Bu klasörün giriş sayfası: ne taşıdığını, dosyalarını ve nasıl çalıştırıldıklarını anlatır. | — |
 
 ## Otomasyon
 
-GitHub üzerinde çalışan iş akışları, gönderim betiği, PR şablonu ve okurun katkı kalıbı. Yeri: `.github/`.
+GitHub üzerinde çalışan iş akışları, gönderim betiği, PR şablonu, okurun katkı kalıbı ve güvenlik politikası. Yeri: `.github/`.
 
 | Dosya | Tür | Ne | Eski adı |
 | --- | --- | --- | --- |
@@ -283,33 +326,49 @@ GitHub üzerinde çalışan iş akışları, gönderim betiği, PR şablonu ve o
 | `.github/pull_request_template.md` | belge | PR açıklaması şablonu. | — |
 | `.github/ISSUE_TEMPLATE/karsilik.yml` | ayar | Katkı kalıbı: okurun sorusunu, kaynağını, düzeltmesini ya da görüşünü, karşılık verdiği sayfa ve bölümle birlikte alan konu formu. Okuma sayfalarındaki bölüm bağlantıları yer alanını kendisi doldurur. | — |
 | `.github/ISSUE_TEMPLATE/config.yml` | ayar | Konu açma ekranının ayarı: boş konuya izin verir, önce okumak isteyene açılış sayfasını gösterir. | — |
+| `.github/SECURITY.md` | belge | Güvenlik ve gizlilik: neyin hiç paylaşılmadığı, nasıl korunduğu ve gizli bir bilgi sızarsa ne yapılacağı. GitHub bunu deponun güvenlik politikası olarak gösterir. | — |
 
 ## Çalıştırma
 
-Aşağıdaki komutlar depo kökünden çalışır ve Python'un standart kütüphanesinden başka bir şey istemez. Yalnız okuyan komutlar her doğrulamada sınanır.
+Aşağıdaki komutlar depo kökünden çalışır. Python komutları Python 3.12 ya da üstünü ve yalnız standart kütüphaneyi ister; öteki komutların ne istediği “Gerekir” sütunundadır. Yalnız okuyan komutlar her doğrulamada sınanır.
 
-| Dosya | Komut | Yalnız okur |
-| --- | --- | --- |
-| `kapi.py` | `python kapi.py --help` | evet |
-| `deus.py` | `python deus.py --help` | evet |
-| `Kopru_Izle.cmd` | `Kopru_Izle.cmd Hazirlik` | hayır |
-| `defter/kopru_ekle.py` | `python defter/kopru_ekle.py kopru.html --kontrol` | evet |
-| `defter/kopru_oku.py` | `python defter/kopru_oku.py kopru.html --acik` | evet |
-| `defter/kopru_yanitla.py` | `python defter/kopru_yanitla.py kopru.html --kuru` | hayır |
-| `defter/kopru_ayna_uret.py` | `python defter/kopru_ayna_uret.py kopru.html ayna/kopru.html --kontrol` | evet |
-| `yerel/kopru_izle.ps1` | `pwsh -File yerel/kopru_izle.ps1 -TekSefer` | hayır |
-| `yerel/kopru_gonder.ps1` | `pwsh -File yerel/kopru_gonder.ps1` | hayır |
-| `yerel/saman_devral.py` | `python yerel/saman_devral.py --hazirla` | hayır |
-| `tools/dogrula.py` | `python tools/dogrula.py` | hayır |
-| `tools/depo_kontrol.py` | `python tools/depo_kontrol.py` | evet |
-| `tools/sema_denetle.py` | `python tools/sema_denetle.py` | evet |
-| `tools/okuma_yayini_uret.py` | `python tools/okuma_yayini_uret.py --check` | evet |
-| `tools/acilis.py` | `python tools/acilis.py --check` | evet |
-| `tools/yol.py` | `python tools/yol.py --check` | evet |
-| `tools/harita.py` | `python tools/harita.py --check` | evet |
-| `tools/depo_tanimi.py` | `python tools/depo_tanimi.py --check` | evet |
-| `tools/simdi_ve_sonrasi.py` | `python tools/simdi_ve_sonrasi.py --check` | evet |
-| `tools/donusum.py` | `python tools/donusum.py --check` | evet |
+| Dosya | Komut | Yalnız okur | Gerekir |
+| --- | --- | --- | --- |
+| `kapi.py` | `python kapi.py --help` | evet | Python 3.12+ |
+| `deus.py` | `python deus.py --help` | evet | Python 3.12+ |
+| `Kopru_Izle.cmd` | `Kopru_Izle.cmd Hazirlik` | hayır | Windows, PowerShell 7, Git ve yerel kurulum (28 Ekim 2026 itibarıyla hiçbir bilgisayarda kurulu değil) |
+| `defter/kopru_ekle.py` | `python defter/kopru_ekle.py kopru.html --kontrol` | evet | Python 3.12+ |
+| `defter/kopru_oku.py` | `python defter/kopru_oku.py kopru.html --acik` | evet | Python 3.12+ |
+| `defter/kopru_yanitla.py` | `python defter/kopru_yanitla.py kopru.html --kuru` | hayır | Python 3.12+ |
+| `defter/kopru_birlestir.py` | `python defter/kopru_birlestir.py --help` | evet | Python 3.12+ |
+| `defter/kopru_bolum_ekle.py` | `python defter/kopru_bolum_ekle.py --help` | evet | Python 3.12+ |
+| `defter/kopru_ayna_uret.py` | `python defter/kopru_ayna_uret.py kopru.html ayna/kopru.html --kontrol` | evet | Python 3.12+ |
+| `defter/kanit_satiri_guncelle.py` | `python defter/kanit_satiri_guncelle.py kopru.html --kontrol` | evet | Python 3.12+ |
+| `yerel/kopru_izle.ps1` | `pwsh -File yerel/kopru_izle.ps1 -TekSefer` | hayır | Windows, PowerShell 7, Git ve yerel kurulum (28 Ekim 2026 itibarıyla hiçbir bilgisayarda kurulu değil) |
+| `yerel/kopru_gonder.ps1` | `pwsh -File yerel/kopru_gonder.ps1` | hayır | Windows, PowerShell 7, Git ve yerel kurulum (28 Ekim 2026 itibarıyla hiçbir bilgisayarda kurulu değil); ana dala gönderme yetkisi |
+| `windows/nt/build.ps1` | `pwsh -File windows/nt/build.ps1 -Restore` | hayır | Windows, PowerShell 7, Visual Studio 2022 derleme araçları ve NuGet |
+| `tools/dogrula.py` | `python tools/dogrula.py` | hayır | Python 3.12+ |
+| `tools/depo_kontrol.py` | `python tools/depo_kontrol.py` | evet | Python 3.12+ |
+| `tools/sema_denetle.py` | `python tools/sema_denetle.py` | evet | Python 3.12+ |
+| `tools/okuma_yayini_uret.py` | `python tools/okuma_yayini_uret.py --check` | evet | Python 3.12+ |
+| `tools/acilis.py` | `python tools/acilis.py --check` | evet | Python 3.12+ |
+| `tools/yol.py` | `python tools/yol.py --check` | evet | Python 3.12+ |
+| `tools/harita.py` | `python tools/harita.py --check` | evet | Python 3.12+ |
+| `tools/depo_tanimi.py` | `python tools/depo_tanimi.py --check` | evet | Python 3.12+ |
+| `tools/simdi_ve_sonrasi.py` | `python tools/simdi_ve_sonrasi.py --check` | evet | Python 3.12+ |
+| `tools/donusum.py` | `python tools/donusum.py --check` | evet | Python 3.12+ |
+
+## Kaldırılan ve sıfırlanan dosyalar
+
+Bazı dosyalar depodan bilerek kaldırıldı ya da içerikleri baştan yazıldı. Eski bir kayıtta bunlardan birinin adı geçerse ne olduğu ve önceki hâlinin hangi sürümde durduğu burada yazılıdır.
+
+| Dosya | İşlem | Tarih | Neden | Önceki hâli |
+| --- | --- | --- | --- | --- |
+| `katilimcilar/AGENTS-kopru.md` | silindi | 2026-10-28 | Yardımcı talimatları her yerden kaldırıldı (Haluk, 28 Ekim 2026, 18.47 UTC). Codex, Claude Code, Copilot ve Gemini yardımcılarının talimat dosyalarına eklenen köprü parçasıydı. | [dcae3de](https://github.com/HalukAINRS/ortak-kopru/blob/dcae3deda4f0f796e77358331e3ae286cf668082/katilimcilar/AGENTS-kopru.md) |
+| `katilimcilar/web-istem.md` | silindi | 2026-10-28 | Yardımcı talimatları her yerden kaldırıldı (Haluk, 28 Ekim 2026, 18.47 UTC). Web asistanlarına defterle birlikte verilen istemdi. Yanıtın JSON biçimi yanıt kalıbında durur. | [dcae3de](https://github.com/HalukAINRS/ortak-kopru/blob/dcae3deda4f0f796e77358331e3ae286cf668082/katilimcilar/web-istem.md) |
+| `yerel/saman_devral.py` | silindi | 2026-10-28 | Yardımcı talimatları her yerden kaldırıldı (Haluk, 28 Ekim 2026, 18.47 UTC). Şaman'ın talimat paketini ayrı bir çalışma ağacına kurup Codex'i o talimatla açan başlatıcıydı; yerel kapının SamanDevam ve SamanHazirla kipleriyle birlikte kaldırıldı. | [dcae3de](https://github.com/HalukAINRS/ortak-kopru/blob/dcae3deda4f0f796e77358331e3ae286cf668082/yerel/saman_devral.py) |
+| `tests/test_saman_devral.py` | silindi | 2026-10-28 | Yardımcı talimatları her yerden kaldırıldı (Haluk, 28 Ekim 2026, 18.47 UTC). Şaman başlatıcısının sınamalarıydı; başlatıcıyla birlikte kaldırıldı. | [dcae3de](https://github.com/HalukAINRS/ortak-kopru/blob/dcae3deda4f0f796e77358331e3ae286cf668082/tests/test_saman_devral.py) |
+| `katilimcilar/istem-sablonu.md` | sıfırlandı | 2026-10-28 | Yardımcı talimatları her yerden kaldırıldı (Haluk, 28 Ekim 2026, 18.47 UTC). Botun istemindeki rol, kişilik ve çalışma kuralları çıkarıldı; yalnız yanıtın biçimi ve defterin reddettiği içerik kaldı. Defterin kurallar ve yönlendirme bölümleri artık istemle gönderilmez. | [dcae3de](https://github.com/HalukAINRS/ortak-kopru/blob/dcae3deda4f0f796e77358331e3ae286cf668082/katilimcilar/istem-sablonu.md) |
 
 ## Eski adlar
 
@@ -317,7 +376,7 @@ Eski kayıtlarda ve konuşmalarda geçen bir dosya adını burada bulabilirsiniz
 
 | Eski yol | Bugünkü yol |
 | --- | --- |
-| `AGENTS-kopru.md` | `katilimcilar/AGENTS-kopru.md` |
+| `AGENTS-kopru.md` | `katilimcilar/AGENTS-kopru.md (silindi)` |
 | `KATMAN_HEDEFLEME.md` | `katilimcilar/katman-hedefleme.md` |
 | `ayarlar-yerel.json` | `katilimcilar/ayarlar-yerel.json` |
 | `ayarlar.json` | `katilimcilar/ayarlar.json` |
@@ -362,12 +421,12 @@ Eski kayıtlarda ve konuşmalarda geçen bir dosya adını burada bulabilirsiniz
 | `kopru_oku.py` | `defter/kopru_oku.py` |
 | `kopru_yanitla.py` | `defter/kopru_yanitla.py` |
 | `kopru_yerel.ps1` | `yerel/kopru_yerel.ps1` |
-| `saman_devral.py` | `yerel/saman_devral.py` |
+| `saman_devral.py` | `yerel/saman_devral.py (silindi)` |
 | `schemas/rafine-sorulari.schema.json` | `schemas/simdi-ve-sonrasi.schema.json` |
-| `test_saman_devral.py` | `tests/test_saman_devral.py` |
+| `test_saman_devral.py` | `tests/test_saman_devral.py (silindi)` |
 | `tests/test_rafine_sorulari.py` | `tests/test_simdi_ve_sonrasi.py` |
 | `tools/rafine_sorulari.py` | `tools/simdi_ve_sonrasi.py` |
-| `web-istem.md` | `katilimcilar/web-istem.md` |
+| `web-istem.md` | `katilimcilar/web-istem.md (silindi)` |
 | `yanit-sablonu.json` | `katilimcilar/yanit-sablonu.json` |
 
 ## Künyeler
@@ -376,6 +435,8 @@ Yeni belgeler ve kayıtlar künyeleriyle kaynak gösterilebilir. Deponun tamamı
 
 | Dosya | Sahibi | Hazırlayan | Tarih | Kaynakları | Kimin için |
 | --- | --- | --- | --- | --- | --- |
+| `README.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/acilis.json` | depoyu ilk kez gören okuyucu |
+| `CONTRIBUTING.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/harita.json`, `.github/SECURITY.md` | katkı vermek isteyen okur ve geliştirici |
 | `CITATION.cff` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/acilis.json` | kaynak gösterecek kişi ya da araç |
 | `docs/README.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/harita.json` | belgeleri arayan okuyucu |
 | `docs/acilis.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/acilis.json` | ilk kez gelen okuyucu |
@@ -384,12 +445,18 @@ Yeni belgeler ve kayıtlar künyeleriyle kaynak gösterilebilir. Deponun tamamı
 | `docs/yol.json` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/acilis.json`, `docs/gecmis/simdi-ve-sonrasi.json`, `docs/gecmis/rafine/claude-code-bulut-2026-10-28-bulgular.json` | araçlar ve yolu temel alacak alanlar |
 | `docs/harita.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/harita.json` | depoda yolunu arayan okuyucu |
 | `docs/harita.json` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `README.md` | araçlar ve depoyu temel alacak alanlar |
-| `docs/donusum.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/donusum.json`, `docs/harita.json` | depoyu yeni hâline geçirecek sahibi ve onu izleyen okuyucu |
+| `docs/donusum.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/donusum.json`, `docs/harita.json` | deponun bugünkü düzene nasıl geçtiğini merak eden okuyucu |
 | `docs/donusum.json` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/harita.json`, `docs/acilis.json` | araçlar ve dönüşümü yeniden yapacak alanlar |
+| `docs/sozluk.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/acilis.json`, `docs/harita.json`, `katilimcilar/katman-hedefleme.md`, `docs/gecmis/ortak-mimari-defteri.md` | depoda geçen bir kelimeyi bilmeyen okuyucu |
 | `docs/teknik/README.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/harita.json` | kurulum ya da katkı için gelen okuyucu |
 | `docs/teknik/acilis-teknik.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/acilis.json` | açılışın dayanağını arayan okuyucu |
 | `docs/teknik/yol-teknik.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/yol.json` | adımı atacak ya da denetleyecek kişi |
-| `docs/teknik/donusum-teknik.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/donusum.json` | dönüşümü uygulayacak ya da denetleyecek okuyucu |
+| `docs/teknik/donusum-teknik.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/donusum.json` | dönüşümü denetleyecek ya da benzerini yapacak okuyucu |
+| `docs/teknik/yerel-taraf.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `yerel/kopru_yerel.ps1`, `yerel/kopru_izle.ps1`, `yerel/kopru_gonder.ps1`, `katilimcilar/ayarlar-yerel.json`, `Kopru_Izle.cmd` | yerel tarafı anlamak ya da yeniden kurmak isteyen |
 | `docs/gecmis/README.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/gecmis/rafine/claude-code-bulut-2026-10-28-surec.md` | geçmişi arayan okuyucu |
+| `docs/gecmis/parcalar/README.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `kopru.html`, `katilimcilar/yanit-sablonu.json` | eski taslaklardan birine rastlayan okuyucu |
+| `docs/gecmis/rafine/okuma-2026-10-28.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/gecmis/rafine/claude-code-bulut-2026-10-28-okuma.json` | belgelerin hangi durumda olduğunu merak eden okuyucu |
+| `docs/gecmis/rafine/claude-code-bulut-2026-10-28-okuma.json` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `schemas/rafine-bulgu.schema.json` | bulguları işleyecek araçlar ve alanlar |
+| `.github/SECURITY.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `defter/kopru_ekle.py`, `defter/kopru_yanitla.py`, `src/ortak_kopru/local_files.py` | depoya bir şey eklemek isteyen ya da sızmış bir bilgi gören |
 
 <!-- /uretilen:harita -->

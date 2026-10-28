@@ -2,13 +2,13 @@
 
 <!-- uretilen:donusum -->
 
-Bu sayfa, bugün GitHub'da duran Ortak Köprü deposunun yeni hâline nasıl geçeceğini anlatıyor. Yeni hâl ayrı bir yerde kuruldu ve sınandı. Ana depoya geçiş aşama aşama yürür. Her aşamanın kimin elinde olduğu, nasıl anlaşılacağı ve nasıl geri alınacağı yazılı.
+Bu sayfa, Ortak Köprü deposunun 28 Ekim 2026'da bugünkü düzenine nasıl geçtiğini anlatıyor. Yeni hâl önce ayrı bir yerde kuruldu ve sınandı, sonra aşama aşama ana depoya geçti. Her aşamanın kimin elinde olduğu, nasıl anlaşıldığı ve nasıl geri alınabileceği yazılı.
 
-Bu geçiş, açılıştan gerçeğe giden [yolun](yol.md) ilk adımını ana depoda gerçek kılıyor. Komutlar ve ölçütler [dönüşümün teknik ekinde](teknik/donusum-teknik.md) duruyor. Teknik konuların hepsi [teknik ayrıntılar](teknik/README.md), bugüne kadar yapılanlar [geçmiş işler](gecmis/README.md) bölümünde.
+Bu geçiş, açılıştan gerçeğe giden [yolun](yol.md) ilk adımını ana depoda gerçek kıldı. Komutlar ve ölçütler [dönüşümün teknik ekinde](teknik/donusum-teknik.md) duruyor. Teknik konuların hepsi [teknik ayrıntılar](teknik/README.md), bugüne kadar yapılanlar [geçmiş işler](gecmis/README.md) bölümünde.
 
 ## Bugün nerede duruyoruz
 
-Son ölçüm 2026-10-28 18:26 UTC'de, ana dalın o anki hâline karşı yapıldı. Dönüşümün on bir aşamasından altısı tamam. Sırada, yapılınca kanıtı yazılacak aşama: Yerel geçiş. Öteki zorunlu aşamalar bir ön koşulun bitmesini bekliyor. Son provada birleşme temiz çıktı ve denetimler geçti.
+Son ölçüm 2026-10-28 19:31 UTC'de, ana dalın o anki hâline karşı yapıldı. Dönüşümün on bir aşamasından dokuzu tamam. Son provada birleşme temiz çıktı ve denetimler geçti.
 
 Aşağıdaki ağaçta her aşama, bitmesini beklediği aşamanın altında duruyor. Dolu kare biten, boş kare açık, eşkenar dörtgen isteğe bağlı aşamayı gösterir.
 
@@ -21,32 +21,31 @@ Aşağıdaki ağaçta her aşama, bitmesini beklediği aşamanın altında duruy
    │       └─▶ (3) Birleştirme                    ■ tamam
    │           ├─▶ (4) Bulut denetimi ve Web      ■ tamam
    │           ├─▶ (5) Saatlik otomasyon          ■ tamam
-   │           ├─▶ (6) Yerel geçiş                □ kanıt
-   │           │   └─▶ (7) Yardımcıların talimatı □ ön koşul
-   │           │       └─▶ (9) Kapanış (+2)       □ ön koşul
+   │           ├─▶ (6) Yerel geçiş                ■ tamam
+   │           ├─▶ (7) Yardımcıların talimatı     ■ tamam
+   │           │   └─▶ (9) Kapanış (+2)           ■ tamam
    │           └─▶ (8) Bekleyen öteki öneriler    ◇ isteğe bağlı
    └─▶ (10) Lisans                                ◇ isteğe bağlı
 ```
 
-## Ne değişecek
+## Ne değişti
 
-Okuyan biri için değişen şey düzendir. Deponun girişi açılışla başlar. Dosyalar adı söylenen alanlara ayrılır: ortak defterin araçları, katılımcıların ayarları, yerel bilgisayarın araçları ve belgeler. Teknik ayrıntılar ile geçmiş işler ayrı klasörlere gider.
+Okuyan biri için değişen şey düzendir. Deponun girişi açılışla başlıyor. Dosyalar adı söylenen alanlara ayrıldı: ortak defterin araçları, katılımcıların ayarları, yerel bilgisayarın araçları ve belgeler. Teknik ayrıntılar ile geçmiş işler ayrı klasörlerde duruyor.
 
-Kök klasör sadeleşir. Her dosyanın yeri, eski adı ve ne işe yaradığı bir haritada durur. Eski kayıtlarda geçen bir dosya adı o haritadan bulunur.
+Kök klasör sadeleşti. Her dosyanın yeri, eski adı ve ne işe yaradığı bir haritada duruyor; her alanın klasöründe de bir giriş sayfası var. Eski kayıtlarda geçen bir dosya adı o haritadan bulunur. Yapay zekâ yardımcılarına verilmiş talimatlar da kaldırıldı.
 
-Aşağıdaki plan, dosyaların bugün nerede durduğunu ve nereye gideceğini gösteriyor. Sayılar haritadaki eski adlardan çıkarılıyor; bir dosya taşındıkça plan kendiliğinden değişir.
+Aşağıdaki plan, dosyaların 28 Ekim sabahı nerede durduğunu ve bugün nereye taşındığını gösteriyor. Sayılar haritadaki eski adlardan çıkarılıyor; bir dosya taşındıkça plan kendiliğinden değişir.
 
 **Önce ve sonra** · mimar çizimi
 
 ```text
-  ÖNCE · bugünkü ana dal              SONRA · yeni oluşum
+  ÖNCE · 28 Ekim sabahki ana dal      SONRA · bugünkü ana dal
   ────────────────────────────────    ──────────────────────────
-  kökte 38 dosya                      kökte 18 dosya ve alanlar
+  kökte 38 dosya                      kökte 19 dosya ve alanlar
   kökten 7 dosya                  ──▶ defter/
-  kökten 7 dosya                  ──▶ katilimcilar/
+  kökten 5 dosya                  ──▶ katilimcilar/
   kökten 4 dosya                  ──▶ docs/gecmis/parcalar/
-  kökten 4 dosya                  ──▶ yerel/
-  kökten 1 dosya                  ──▶ tests/
+  kökten 3 dosya                  ──▶ yerel/
   docs/ altından 9 dosya          ──▶ docs/gecmis/
   docs/ altından 9 dosya          ──▶ docs/teknik/
   docs/ altından 2 dosya          ──▶ aynı yerde, yeni adla
@@ -61,15 +60,15 @@ Aşağıdaki plan, dosyaların bugün nerede durduğunu ve nereye gideceğini g�
   çağrı kayıtları ve kökteki üç çalıştırma girişi
 ```
 
-## Ne değişmeyecek
+## Ne değişmedi
 
-Dışarıdan adresle ulaşılan her şey yerinde kalır. Ortak defterin Web adresi, aynası, Web sayfalarının adresleri ve çağrı kayıtları değişmez. Web'deki asistanlar ortak defteri eskisi gibi okur.
+Dışarıdan adresle ulaşılan her şey yerinde kaldı. Ortak defterin Web adresi, aynası, Web sayfalarının adresleri ve çağrı kayıtları değişmedi. Web'deki asistanlar ortak defteri eskisi gibi okuyor.
 
-Bilgisayarda çift tıklanan izleyici girişi de yerinde kalır. Araçların adları değişmez; yalnız durdukları klasör değişir. Ortak defterdeki hiçbir kayıt değiştirilmez.
+Bilgisayarda çift tıklanan izleyici girişi de yerinde kaldı; ama yerel taraf bugün hiçbir bilgisayarda kurulu değil. Araçların adları değişmedi; yalnız durdukları klasör değişti. Ortak defterdeki hiçbir kayıt değiştirilmedi.
 
 ## Yol
 
-Aşağıdaki resim geçişi bir taşınma gibi gösteriyor. Solda bugünkü depo var: bütün dosyalar tek bir odada. Sağda yeni hâl var: her şeyin bir rafı. Kapı aynı kalıyor. Yoldaki sayılar aşamaları gösteriyor.
+Aşağıdaki resim geçişi bir taşınma gibi gösteriyor. Solda 28 Ekim sabahki depo var: bütün dosyalar tek bir odada. Sağda bugünkü hâl var: her şeyin bir rafı. Kapı aynı kalıyor. Yoldaki sayılar aşamaları gösteriyor.
 
 **Taşınma** · ressam çizimi
 
@@ -89,7 +88,7 @@ Aşağıdaki resim geçişi bir taşınma gibi gösteriyor. Solda bugünkü depo
 
 ## Aşamalar
 
-Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşamaları gösteriyor. Dolu nokta, o aşamada işin kimde olduğunu belirtiyor.
+Aşağıdaki iş çizelgesinde satırlar işin atandığı kişileri, sütunlar aşamaları gösteriyor. Dolu nokta, o aşamada işin kimde olduğunu belirtiyor.
 
 **Kim ne zaman** · mühendis çizimi
 
@@ -111,7 +110,7 @@ Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşama
 
 **Ne?** Yeni oluşum ayrı bir dalda kuruldu ve GitHub'a bir değişiklik önerisi olarak sunuldu.
 
-**Neden?** Ana dal her saat çalışan bir otomasyonu ve bir yerel bilgisayarı besliyor. Bu kadar büyük bir değişiklik önce ayrı bir yerde kurulup sınanmalı.
+**Neden?** Ana dal her saat çalışan bir otomasyonu besliyordu ve bir yerel bilgisayarı da besleyecek biçimde yazılmıştı. Bu kadar büyük bir değişiklik önce ayrı bir yerde kurulup sınanmalıydı.
 
 **Nasıl?** Açılış, alanlar, harita, yol ve bu dönüşüm yolu o dalda duruyor. Her değişiklikte bütün denetimler iki ayrı işletim sisteminde çalışıyor.
 
@@ -155,7 +154,7 @@ Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşama
 
 **Geri dönüş:** Hiçbir şey silinmez. İzleyici yeniden açılırsa eski hâliyle çalışmayı sürdürür.
 
-**Bitince:** Yerel bilgisayar ana daldaki son hâlle aynıdır ve yeni hâli çekmeye hazırdır.
+**Bitince:** Yerel bilgisayarda gönderilmemiş bir değişiklik kalmaz; yeni hâlle çakışacak bir şey yoktur.
 
 ### 3. Birleştirme
 
@@ -213,39 +212,39 @@ Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşama
 
 ### 6. Yerel geçiş
 
-**Durum:** Ön koşulu bitti; olduğu görülünce kanıtı yazılacak.
+**Durum:** Tamam.
 
 **Kim?** Haluk.
 
-**Ne?** Yerel bilgisayar yeni hâli çeker ve izleyici yeniden başlar.
+**Ne?** Yerel bilgisayarda eski yerleşimde bir kopya kalmaz. Yerel taraf yeniden kurulacaksa yeni hâlden kurulur.
 
-**Neden?** Yerel kullanıcının bilgisayarı ortak deftere yazan ikinci yoldur. Yeni yerleşimdeki araçlarla çalışmalıdır.
+**Neden?** Yerel kullanıcının bilgisayarı ortak deftere yazan ikinci yol olarak tasarlandı. Eski yerleşimde kalan bir kopya, araçları yeni yerlerinde bulamaz.
 
-**Nasıl?** Yeni hâl bilgisayara çekilir. Hazırlık denetimi çalıştırılır ve her satırın tamam olduğu görülür. Sonra izleyici bir tur çalıştırılır ve yeniden sürekli açılır.
+**Nasıl?** Haluk 28 Ekim 2026'da bilgisayarında köprü klasörü olmadığını bildirdi; çekilecek eski bir kopya yok. Yerel taraf kurulacaksa ana depodan yeni bir kopya alınır ve yerel taraf sayfasındaki sırayla kurulur.
 
 **Ne zaman?** Önce şu aşamanın bitmesi gerekiyor: Birleştirme.
 
-**Geri dönüş:** Birleşme geri alınırsa yeni hâl bir kez daha çekilir ve bilgisayar eski yerleşime döner.
+**Geri dönüş:** Geri alınacak bir yerel kurulum yok.
 
-**Bitince:** Yerel izleyici yeni yerleşimle yazar ve gönderir.
+**Bitince:** Bilgisayarda eski yerleşimde bir kopya kalmadı. Yerel taraf bugün kurulu değil; kurulduğu gün yeni yerleşimle çalışır.
 
 ### 7. Yardımcıların talimatı
 
-**Durum:** Ön koşulunun bitmesini bekliyor.
+**Durum:** Tamam.
 
 **Kim?** Haluk.
 
-**Ne?** Bilgisayardaki yapay zekâ yardımcılarının talimat dosyalarında duran köprü bölümü yenisiyle değiştirilir.
+**Ne?** Yapay zekâ yardımcılarına verilmiş talimatlar her yerden kaldırılır ya da sıfırlanır.
 
-**Neden?** Bu bölüm her yardımcının kendi talimat dosyasına kopyalanmıştı ve eski dosya yollarını gösteriyor. Kopyalar kendiliğinden güncellenmez.
+**Neden?** Haluk 28 Ekim 2026'da talimatların yenisiyle değiştirilmesini değil, her yerde silinmesini ya da sıfırlanmasını istedi. Talimat dosyaları eski yolları gösteriyordu ve kopyaları kendiliğinden güncellenmiyordu.
 
-**Nasıl?** Codex, Claude Code, Copilot ve Gemini yardımcılarının talimat dosyalarında köprü bölümü bulunur. Depodaki yeni bölüm onun yerine konur. Bir yardımcının ortak defteri okuyup yazabildiği bir kez sınanır.
+**Nasıl?** Ana depoda yardımcıların talimat parçası, Web asistanlarının istemi ve Şaman'ın devir başlatıcısı silinir. Botun istemi sıfırlanır; içinde yalnız yanıtın biçimi kalır. Öteki dallarda da aynı dosyalar silinir ya da sıfırlanır. Kaldırılanların nedeni ve önceki hâli haritaya yazılır.
 
-**Ne zaman?** Önce şu aşamanın bitmesi gerekiyor: Yerel geçiş.
+**Ne zaman?** Önce şu aşamanın bitmesi gerekiyor: Birleştirme.
 
-**Geri dönüş:** Eski bölüm geri konur.
+**Geri dönüş:** Silinen her dosya geçmişte durur ve geri getirilebilir; haritada önceki sürümü yazılıdır.
 
-**Bitince:** Yardımcılar ortak deftere yeni yollardan yazar.
+**Bitince:** Hiçbir yardımcı bu depodan bir talimat almaz. Bot yalnız yanıtın biçimini bilir.
 
 ### 8. Bekleyen öteki öneriler
 
@@ -255,7 +254,7 @@ Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşama
 
 **Ne?** Henüz birleşmemiş öteki değişiklik önerileri yeni yerleşime taşınır.
 
-**Neden?** Bu öneriler eski yerleşimde hazırlandı. Bir kısmı yeri değişen dosyalara dokunuyor; çoğu haritada yeri olmayan yeni klasörler ekliyor.
+**Neden?** Bu öneriler eski yerleşimde hazırlandı. Bir kısmı yeri değişen dosyalara dokunuyor; hepsi haritada yeri olmayan yeni dosya ya da klasörler ekliyor.
 
 **Nasıl?** Her öneri, birleşmeden önce yeni ana dalın üzerine taşınır. Yeri değişen dosyanın yeni yeri haritadan bulunur. Yeni klasörler haritada bir alana bağlanır.
 
@@ -267,7 +266,7 @@ Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşama
 
 ### 9. Kapanış
 
-**Durum:** Ön koşulunun bitmesini bekliyor.
+**Durum:** Tamam.
 
 **Kim?** Makine.
 
@@ -291,7 +290,7 @@ Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşama
 
 **Ne?** Depo için bir lisans seçilir ve kökte bir lisans dosyası durur.
 
-**Neden?** Belgelerin üç sıfır kuralının son yarısı, hiç bilmeyen bir alanın depoyu temel alabilmesidir. Bunun yasal yolu lisanstır.
+**Neden?** Belgelerin üç sıfır kuralının üçüncüsü, hiç bilmeyen bir alanın depoyu temel alabilmesidir. Bunun yasal yolu lisanstır.
 
 **Nasıl?** Sahibi bir lisans seçer. Lisans metni köke eklenir, haritaya ve kaynak gösterme dosyasına işlenir.
 
@@ -307,7 +306,7 @@ GitHub'da on iki değişiklik önerisi daha bekliyor. Beşi yeri değişen dosya
 
 ## Geri dönüş
 
-Geçişin en önemli aşaması olan birleştirme tek adımda geri alınabilir. GitHub'daki geri alma düğmesine basılırsa ana depo eski hâline döner. Bilgisayar yeni hâli bir kez daha çeker ve yardımcıların eski talimatı geri konur.
+Geçişin en önemli aşaması olan birleştirme tek adımda geri alınabilir. GitHub'daki geri alma düğmesine basılırsa ana depo eski hâline döner. Kaldırılan talimat dosyaları da istenirse haritada yazılı önceki sürümlerinden geri getirilir.
 
 Bu sırada hiçbir kayıt silinmez; geri almanın kendisi de bir kayıttır. Daha sonra yeniden denemek için geri almanın da geri alınması gerekir.
 
@@ -317,6 +316,6 @@ Bu geçişi izleyebilirsiniz. Yeni hâl ana depoda duruyor ve Web'de okunabiliyo
 
 ## Birkaç kelime
 
-Bu sayfada geçen birkaç kelime: **İnternet ve Web:** Bu sayfada ikisi aynı anlamda kullanılıyor: herkesin bir tarayıcıyla ulaşabildiği dış dünya. **Yerel kullanıcı:** Ortak Köprü'nün öbür ucundaki bilgisayarın sahibi. Bugün bu kişi Haluk. **GitHub:** Yazıların ve dosyaların herkese açık durduğu, insanların birlikte çalışmak için kullandığı bir internet sitesi. Ortak Köprü'nün dış yüzü orada. **Depo:** GitHub'da bir çalışmanın bütün dosyalarını ve geçmişini bir arada tutan yer. Ortak Köprü bir depodur. **Issue:** GitHub'da bir depoya soru, öneri ya da hata bildirimi yazmanın yolu. Okumak için hesap gerekmez; yazmak için ücretsiz bir GitHub hesabı yeter.
+Bu sayfada geçen birkaç kelime: **İnternet ve Web:** Bu sayfada ikisi aynı anlamda kullanılıyor: herkesin bir tarayıcıyla ulaşabildiği dış dünya. **Yerel kullanıcı:** Ortak Köprü'nün öbür ucundaki bilgisayarın sahibi. Bugün bu kişi Haluk. **GitHub:** Yazıların ve dosyaların herkese açık durduğu, insanların birlikte çalışmak için kullandığı bir internet sitesi. Ortak Köprü'nün dış yüzü orada. **Depo:** GitHub'da bir çalışmanın bütün dosyalarını ve geçmişini bir arada tutan yer. Ortak Köprü bir depodur. **Issue:** GitHub'da bir depoya soru, öneri ya da hata bildirimi yazmanın yolu. Okumak için hesap gerekmez; yazmak için ücretsiz bir GitHub hesabı yeter. **Sürüm:** Bir dosyanın belirli bir andaki hâli. Dosya sonradan değişse de alınan sürüm aynı kalır.
 
 <!-- /uretilen:donusum -->

@@ -162,18 +162,18 @@
         }
       ],
       "olcumler": {
-        "izlenen_dosya": 281,
-        "python_dosyasi": 61,
-        "python_satiri": 14780,
+        "izlenen_dosya": 295,
+        "python_dosyasi": 59,
+        "python_satiri": 14429,
         "paket_modulu": 13,
-        "paket_satiri": 3831,
-        "test_dosyasi": 26,
-        "test_yontemi": 334,
+        "paket_satiri": 3832,
+        "test_dosyasi": 25,
+        "test_yontemi": 331,
         "json_sozlesmesi": 13,
         "is_akisi": 3,
         "powershell_betigi": 4,
-        "belge": 29,
-        "okuma_sayfasi": 7,
+        "belge": 33,
+        "okuma_sayfasi": 8,
         "dogrulama_kontrolu": 13,
         "kopru_kaydi": 179,
         "acik_durumlu_kayit": 167,
@@ -184,9 +184,9 @@
         "defter_bayti": 958505,
         "cagri_gunlugu": 122,
         "cagri_gunlugu_bayti": 34153346,
-        "rafine_bulgusu": 24,
-        "rafine_duzeltilen": 17,
-        "rafine_acik": 7
+        "rafine_bulgusu": 53,
+        "rafine_duzeltilen": 41,
+        "rafine_acik": 9
       }
     },
     "nereden": {

@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
-"""Depo bütünlüğünü çevrimdışı, dosya yazmadan ve sağlayıcı çağırmadan denetler."""
+"""Depo bütünlüğünü çevrimdışı, dosya yazmadan ve sağlayıcı çağırmadan denetler.
+
+Denetlenenler: Python sözdizimi, JSON dosyaları, defterdeki kayıt kimliklerinin tekilliği ve sırası, yanıt bağları,
+görünür sayaç, kayıt ekleyicinin içerik kuralları (yasak desen, dış yükleme), aynanın defterle eşliği ve
+katılımcı ayarlarındaki çağrı yollarının imzaları.
+
+Kullanım:
+    python tools/depo_kontrol.py      # her şeyi denetler; sorun varsa çıkış 1
+"""
 import ast
 import json
 from pathlib import Path
@@ -87,4 +95,7 @@ def denetle():
 
 
 if __name__ == "__main__":
+    if any(arg in ("-h", "--help") for arg in sys.argv[1:]):
+        print(__doc__)
+        sys.exit(0)
     sys.exit(denetle())

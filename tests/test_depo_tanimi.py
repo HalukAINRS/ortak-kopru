@@ -113,7 +113,11 @@ class DepoTanimiTests(unittest.TestCase):
         self.assertEqual(self.olcum["kopru_kaydi"], 179)
         self.assertEqual(self.olcum["ilk_kayit_zamani"], "2026-10-23T22:55:00+03:00")
         self.assertLessEqual(self.olcum["yanit_bagli_kayit"], self.olcum["kopru_kaydi"])
-        self.assertEqual(self.olcum["rafine_duzeltilen"] + self.olcum["rafine_acik"], self.olcum["rafine_bulgusu"])
+        # Düzeltilen ve açık bulgular toplamı aşmaz; kalanlar düzeltilmedi ya da geri çekildi diye kapanmıştır.
+        bulgular = [b for yol in sorted((ROOT / "docs" / "gecmis" / "rafine").glob("*.json"))
+                    for b in json.loads(yol.read_text(encoding="utf-8"))["findings"]]
+        kapanan = sum(1 for b in bulgular if b["resolution"] in ("düzeltilmedi", "geri çekildi"))
+        self.assertEqual(self.olcum["rafine_duzeltilen"] + self.olcum["rafine_acik"] + kapanan, self.olcum["rafine_bulgusu"])
 
     def test_command_line_check_passes_and_measure_mode_does_not_write(self):
         once = depo_tanimi.TANIM.read_bytes()

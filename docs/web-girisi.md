@@ -2,7 +2,7 @@
 
 <!-- uretilen:acilis -->
 
-Bu bölüm açılışın kısa hâlidir. İlk kez geliyorsanız uzun ve sade anlatım [açılış sayfasındadır](acilis.md). Niyetin adım adım nasıl gerçeğe döneceği [yol sayfasındadır](yol.md).
+Ortak Köprü, bir bilgisayardaki çalışma ile internet arasında bir kapı, o bilgisayarın sahibi ile dışarıdaki insanlar arasında bir köprü olmak için kurulmuş açık bir depodur. Bu sayfa onu ilk kez gören biri için yazıldı; önceden bir şey bilmeniz gerekmez. Aşağıda niyet ve altı ilke kısaca duruyor. Uzun ve sade anlatım [açılış sayfasındadır](acilis.md); niyetin adım adım nasıl gerçeğe döneceği ve bugün nerede durduğu [yol sayfasındadır](yol.md).
 
 ## Niyet
 
@@ -36,15 +36,21 @@ Ortak Köprü iki şeydir. Bir kapı: bir bilgisayardaki çalışma ile internet
 
 <!-- /uretilen:acilis -->
 
-Bu sayfa köprünün Web'deki ucudur. Önceki konuşmaları bilmeden okuyabilir; bir soru, kaynak, deneyim veya düzeltmeyle katkıda bulunabilirsiniz. Aşağıda, kapıdan bugüne kadar geçen ortak çalışmanın anlamlarına, kaynaklarına ve değişen açıklamalarına ulaşırsınız.
+Bu sayfa köprünün Web'deki ucudur. Önceki konuşmaları bilmeden okuyabilir; bir soru, kaynak, deneyim veya düzeltmeyle katkıda bulunabilirsiniz. Aşağıda önce bugünü anlatan sayfaları, sonra kapıdan bugüne kadar geçen ortak çalışmanın tarihli kayıtlarını bulursunuz.
 
-## Anlamdan başlayın
+## Bugünden başlayın
+
+[Açılış](acilis.md), bu yerin niyetini ve altı ilkesini önceden bir şey bilmeyen okuyucu için anlatır. [Yol sayfası](yol.md), niyetin adım adım nasıl gerçeğe döndüğünü, bugün nerede durulduğunu ve hangi adımın karar beklediğini gösterir. Bu yerde geçen kelimeler [sözlükte](sozluk.md) açıklanır.
+
+## Tarihli kayıtlar
+
+Aşağıdaki defterler 28 Ekim 2026 sabahı yazıldı ve o günün çalışmasını anlatır; her biri kendi tarihine aittir. ChatGPT, Claude ve Gemini bu çalışmada Haluk'un verdiği üç odakla katıldı: Şaman, Hacker ve Şahit. Bu adlar [sözlükte](sozluk.md#katılımcılar-ve-odaklar) açıklanır.
 
 [Ortak Mimari Defteri](gecmis/ortak-mimari-defteri.md), üç katılımcının kendine özgü 33×8 alanları ile serbest varyantlı dışavurumların nasıl birlikte çalıştığını anlatır. Tam yerleşim, döngü çeşitleri ve ortak noktanın günlük kullanım anlamı, klavye çizimleri ve sade paragraflarla burada okunabilir.
 
-[Anlam ve Dönüş Defteri](gecmis/anlam-not-defteri.md), önceki emeğin korunmasını, karşılıklı etkileşimi ve yapılan işin kaynağına geri dönmesini anlatır. ChatGPT, Claude ve Gemini'nin Şaman, Hacker ve Şahit odakları bu çalışmada farklı katkılar sağlar. Kavramlar ilk kullanıldıkları yerde açıklanır; paragraflar başka okuyuculara aktarılabilecek bağlamla yazılmıştır.
+[Anlam ve Dönüş Defteri](gecmis/anlam-not-defteri.md), önceki emeğin korunmasını, karşılıklı etkileşimi ve yapılan işin kaynağına geri dönmesini anlatır. Kavramlar ilk kullanıldıkları yerde açıklanır; paragraflar başka okuyuculara aktarılabilecek bağlamla yazılmıştır.
 
-Bir yorumun nereden geldiğini merak ederseniz [kaynak rehberine](gecmis/kaynaklar.md), bugün hangi noktada olduğumuzu görmek isterseniz [son durum raporuna](gecmis/son-durum.md) geçebilirsiniz. Kaynak sözü, modelin eklediği ilişki ve gözlenmiş sonuç kendi kapsamlarıyla görünür tutulur.
+Bir yorumun nereden geldiğini merak ederseniz [kaynak rehberine](gecmis/kaynaklar.md), o sabahki durumu görmek isterseniz [28 Ekim durum raporuna](gecmis/son-durum.md) geçebilirsiniz. Bugünkü durum [yol sayfasındadır](yol.md). Kaynak sözü, modelin eklediği ilişki ve gözlenmiş sonuç kendi kapsamlarıyla görünür tutulur.
 
 ## Kendi karşılığınızı getirin
 
@@ -71,4 +77,4 @@ Formu doğrudan açtıysanız ilgili paragrafı ve katkınızın bağlamını be
 
 [Depo rehberi](teknik/depo-rehberi.md), belgelerin, kodun, denemelerin ve tarihsel kayıtların hangi amaçla bulunduğunu gösterir. [Tarihsel köprü defteri](../kopru.html), eski katkıların özgün kayıtlarını taşır. Teknik kullanım isteyen okuyucu [kapı rehberinden](teknik/kapi-kullanimi.md) başlayabilir. Bütün teknik ayrıntılar [teknik ayrıntılar](teknik/README.md), bugüne kadarki işler ve kayıtlar [geçmiş işler](gecmis/README.md) sayfasında toplanır. Hangi dosyanın nerede durduğunu [depo haritası](harita.md) gösterir.
 
-Bu web yüzü, seçilmiş bilgilerin okunabildiği ve katkı yollarının bulunduğu kapıdır. Bilgisayardaki komut araçlarının çalışma durumu kendi kanıtlarıyla değerlendirilir. [Son durum raporu](gecmis/son-durum.md), mevcut parçalarla açık işleri birlikte gösterir.
+Bu web yüzü, seçilmiş bilgilerin okunabildiği ve katkı yollarının bulunduğu kapıdır. Bilgisayardaki komut araçlarının çalışma durumu kendi kanıtlarıyla değerlendirilir; 28 Ekim 2026 itibarıyla yerel taraf hiçbir bilgisayarda kurulu değil ([yerel taraf](teknik/yerel-taraf.md)). Bugün hangi parçanın işlediğini ve hangi işin açık olduğunu [yol sayfası](yol.md) gösterir.

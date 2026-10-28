@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Ortak Köprü depo haritası v1",
-  "description": "Depodaki her dosyanın hangi alana ait olduğunu, ne olduğunu, eski adlarını, nasıl üretildiğini, nasıl çalıştırılıp denetlendiğini ve yeni belgelerin künyesini taşır. tools/harita.py bu kaydı depoya karşı denetler ve docs/harita.md belgesini ondan üretir.",
+  "description": "Depodaki her dosyanın hangi alana ait olduğunu, ne olduğunu, eski adlarını, nasıl üretildiğini, nasıl çalıştırılıp denetlendiğini ve yeni belgelerin künyesini taşır. tools/harita.py bu kaydı depoya karşı denetler ve docs/harita.md belgesini ondan üretir. Kaldırılan ya da sıfırlanan dosyalar nedenleri ve önceki sürümleriyle kaldirilanlar listesinde durur; klasor_okur taşıyan alanların klasörüne bir giriş sayfası (README.md) üretilir.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -53,6 +53,13 @@
       "items": {
         "$ref": "#/$defs/alan"
       }
+    },
+    "kaldirilanlar": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/kaldirilan"
+      },
+      "description": "Depodan silinen ya da içeriği sıfırlanan dosyalar: ne zaman, neden ve önceki hâlinin hangi sürümde durduğu. Eski kayıtlarda geçen bir adın izi buradan sürülür."
     }
   },
   "$defs": {
@@ -103,6 +110,15 @@
           "items": {
             "$ref": "#/$defs/dosya"
           }
+        },
+        "klasor_okur": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Varsa alanın klasörüne üretilecek giriş sayfasının sade paragrafları; ilk kez gelen okuyucu içindir."
         }
       }
     },
@@ -129,7 +145,8 @@
             "ayar",
             "sozlesme",
             "test",
-            "arsiv"
+            "arsiv",
+            "kod"
           ]
         },
         "ne": {
@@ -178,6 +195,11 @@
         },
         "kunye": {
           "$ref": "#/$defs/kunye"
+        },
+        "gerekir": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Çalıştırma komutunun Python'un standart kütüphanesi dışında istediği şey (işletim sistemi, araç, kurulum)."
         }
       }
     },
@@ -216,6 +238,50 @@
         "okur": {
           "type": "string",
           "minLength": 1
+        }
+      }
+    },
+    "kaldirilan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "yol",
+        "islem",
+        "tarih",
+        "neden",
+        "onceki_surum"
+      ],
+      "properties": {
+        "yol": {
+          "type": "string",
+          "minLength": 1
+        },
+        "islem": {
+          "enum": [
+            "silindi",
+            "sıfırlandı"
+          ],
+          "description": "silindi: dosya artık izlenmez; sıfırlandı: dosya yerinde durur, içeriği baştan yazıldı."
+        },
+        "eski_adlar": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "tarih": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "neden": {
+          "type": "string",
+          "minLength": 1
+        },
+        "onceki_surum": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$",
+          "description": "Önceki hâlin durduğu tam Git sürümü."
         }
       }
     }

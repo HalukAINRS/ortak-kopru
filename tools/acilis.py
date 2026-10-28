@@ -170,8 +170,11 @@ def _durum_ozeti(veri: dict) -> str:
 
 def _kisa_acilis(veri: dict, acilis_yolu: str, yol_yolu: str) -> str:
     """README ve Web girişi için aynı iskelet: 'Niyet', sonra altı ilke; her biri birer paragraf."""
-    parcalar = [f"Bu bölüm açılışın kısa hâlidir. İlk kez geliyorsanız uzun ve sade anlatım [açılış sayfasındadır]({acilis_yolu}). "
-                f"Niyetin adım adım nasıl gerçeğe döneceği [yol sayfasındadır]({yol_yolu}).",
+    parcalar = [f"Ortak Köprü, bir bilgisayardaki çalışma ile internet arasında bir kapı, o bilgisayarın sahibi ile dışarıdaki "
+                f"insanlar arasında bir köprü olmak için kurulmuş açık bir depodur. Bu sayfa onu ilk kez gören biri için yazıldı; "
+                f"önceden bir şey bilmeniz gerekmez. Aşağıda niyet ve altı ilke kısaca duruyor. Uzun ve sade anlatım "
+                f"[açılış sayfasındadır]({acilis_yolu}); niyetin adım adım nasıl gerçeğe döneceği ve bugün nerede durduğu "
+                f"[yol sayfasındadır]({yol_yolu}).",
                 "## Niyet",
                 f"{veri['niyet']['sahibi']}, {_tarih(veri)}: **“{veri['niyet']['soz']}”**",
                 veri["sade_tanim"]]

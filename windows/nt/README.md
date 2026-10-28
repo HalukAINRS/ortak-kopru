@@ -1,5 +1,7 @@
 # deus_ex_machina — NT Kernel aygıt kapısı
 
+Bu klasör, yerel iş bileşeninin Windows çekirdeğiyle konuştuğu küçük sürücünün kaynaklarını ve derleme gereçlerini taşır. 26 Ekim 2026'da yazıldı. Sürücü yalnız GitHub'daki otomasyonda derlenir; imzalanmaz ve hiçbir bilgisayara yüklenmez. Derlemek için Windows, PowerShell 7, Visual Studio 2022 derleme araçları (MSBuild ve C++ araç takımı) ve NuGet gerekir; WDK paketleri `-Restore` ile indirilir. Neden yazıldığı [NT Kernel belgesinde](../../docs/teknik/nt-kernel.md) anlatılır.
+
 `deus_kernel.sys`, NT çekirdek modunda çalışacak KMDF non-PnP sürücü
 bileşenidir. Kullanıcı modundaki bağlayıcı, `\\.\DeusExMachina` aygıtına
 `DeviceIoControl` ile ulaşır. Ekrandaki arayüz, iş kayıtları ve CLI işlemleri

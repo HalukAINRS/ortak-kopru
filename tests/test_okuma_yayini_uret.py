@@ -124,6 +124,13 @@ class ReaderPublicationTests(unittest.TestCase):
         self.assertNotIn('karsilik', reader.render(source)[0])
         self.assertIn('template=karsilik', reader.KARSILIK)
 
+    def test_every_published_page_keeps_unix_line_endings(self):
+        # Windows'ta da üretilen sayfa ile depodaki sayfa aynı kalsın: her sayfa .gitattributes'ta eol=lf.
+        nitelikler = (reader.ROOT / '.gitattributes').read_text(encoding='utf-8').splitlines()
+        for output, _ in reader.PAGES.values():
+            with self.subTest(page=output):
+                self.assertIn(f'/{output} text eol=lf', nitelikler)
+
     def test_published_pages_link_every_section_to_its_reply(self):
         for source, (output, label) in reader.PAGES.items():
             with self.subTest(page=output):

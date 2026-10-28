@@ -7,6 +7,7 @@ from __future__ import annotations
 import copy
 import json
 from pathlib import Path
+import re
 import shlex
 import subprocess
 import sys
@@ -48,7 +49,7 @@ class HaritaTests(unittest.TestCase):
         self.assertEqual(dosyalar, sorted([
             ".gitattributes", ".gitignore", ".nojekyll", "CITATION.cff", "CONTRIBUTING.md", "README.md",
             "kapi.py", "deus.py", "Kopru_Izle.cmd", "kopru.html",
-            "index.html", "acilis.html", "yol.html", "mimari.html", "not-defteri.html", "durum.html", "kaynaklar.html", "okuma.css"]))
+            "index.html", "acilis.html", "yol.html", "sozluk.html", "mimari.html", "not-defteri.html", "durum.html", "kaynaklar.html", "okuma.css"]))
         agac = harita._kok_agaci(self.veri)
         for klasor in sorted(k for k in kok if k.endswith("/")):
             with self.subTest(klasor=klasor):
@@ -120,6 +121,51 @@ class HaritaTests(unittest.TestCase):
         self.assertTrue(any("bir paragrafla açılmalı" in h for h in harita.sade_paragraf("x", "| a | b |")))
         uzun = " ".join(["kelime"] * 31) + "."
         self.assertTrue(any("kelimelik cümle" in h for h in harita.sade_paragraf("x", uzun)))
+
+    def test_removed_and_reset_files_stay_traceable(self):
+        kaldirilan = {k["yol"]: k for k in harita.kaldirilanlar(self.veri)}
+        self.assertEqual(kaldirilan["katilimcilar/AGENTS-kopru.md"]["islem"], "silindi")
+        self.assertEqual(kaldirilan["katilimcilar/istem-sablonu.md"]["islem"], "sıfırlandı")
+        for yol, k in kaldirilan.items():
+            with self.subTest(yol=yol):
+                self.assertEqual(k["islem"] == "silindi", yol not in self.dosyalar)
+        bulunan = harita.nerede(self.veri, "AGENTS-kopru.md")
+        self.assertTrue(any("silindi" in b and "/blob/" in b for b in bulunan))
+        self.assertIn("katilimcilar/AGENTS-kopru.md: silindi diye yazılı ama hâlâ bir dosya",
+                      self.denetle(self.veri, self.dosyalar + ["katilimcilar/AGENTS-kopru.md"]))
+        bozuk = copy.deepcopy(self.veri)
+        bozuk["kaldirilanlar"].append({"yol": "olmayan.md", "islem": "sıfırlandı", "tarih": "2026-10-28",
+                                       "neden": "Sınama.", "onceki_surum": "0" * 40})
+        self.assertIn("olmayan.md: sıfırlandı diye yazılı ama depoda yok", self.denetle(bozuk))
+        self.assertIn("## Kaldırılan ve sıfırlanan dosyalar", harita.BELGE.read_text(encoding="utf-8"))
+
+    def test_no_assistant_instruction_files_in_the_repository(self):
+        # Haluk, 28 Ekim 2026: yardımcı talimatları her yerde silinsin ya da sıfırlansın.
+        talimat = re.compile(r"(^|/)(AGENTS[^/]*\.md|CLAUDE\.md|GEMINI\.md|copilot-instructions\.md|\.claude/.*|\.codex/.*|\.gemini/.*)$",
+                             re.IGNORECASE)
+        self.assertEqual([y for y in self.dosyalar if talimat.search(y)], [])
+
+    def test_every_area_folder_opens_with_its_own_page(self):
+        girisler = dict((y, a) for a, y in harita.klasor_girisleri(self.veri))
+        for yol in ("defter/README.md", "katilimcilar/README.md", "yerel/README.md", "src/README.md", "ui/README.md",
+                    "windows/README.md", "schemas/README.md", "tools/README.md", "tests/README.md"):
+            with self.subTest(yol=yol):
+                self.assertIn(yol, girisler)
+                metin = (ROOT / yol).read_text(encoding="utf-8")
+                self.assertEqual(metin, harita.klasor_girisi(self.veri, girisler[yol], self.dosyalar))
+                self.assertIn("## Bu klasörde", metin)
+                self.assertEqual(harita.sade_paragraf(yol, girisler[yol]["klasor_okur"][0]), [])
+        self.assertEqual(harita.klasor_denetle(self.veri), [])
+        bozuk = copy.deepcopy(self.veri)
+        next(a for a in bozuk["alanlar"] if a["kimlik"] == "otomasyon")["klasor_okur"] = ["Sınama paragrafı."]
+        self.assertTrue(any(".github/" in h for h in harita.klasor_denetle(bozuk)))
+
+    def test_commands_say_what_they_need(self):
+        tanim = {d["yol"]: d for _, d in harita.tanimlar(self.veri)}
+        self.assertEqual(harita.gerekir(tanim["tools/dogrula.py"]), "Python 3.12+")
+        self.assertIn("Windows", harita.gerekir(tanim["Kopru_Izle.cmd"]))
+        self.assertIn("kurulu değil", harita.gerekir(tanim["yerel/kopru_gonder.ps1"]))
+        self.assertIn("| Gerekir |", harita.BELGE.read_text(encoding="utf-8"))
 
     def test_repository_can_be_cited(self):
         self.assertEqual(harita.atif_denetle(self.veri), [])

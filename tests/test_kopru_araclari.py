@@ -213,5 +213,21 @@ class YanitlayiciMetinTests(unittest.TestCase):
         self.assertEqual(cikti.split(), ["YOK", "sentetik-abonelik"])
 
 
+class IstemSablonuTests(unittest.TestCase):
+    """28 Ekim 2026'da sıfırlanan bot istemi yalnız yanıt biçimini ve yasak içeriği taşır."""
+
+    def test_bot_prompt_carries_only_the_reply_format(self):
+        sistem, kullanici = kopru_yanitla.sablon_oku()
+        for alan in ('"kime"', '"konu"', '"govde"', '"dayanak"'):
+            self.assertIn(alan, sistem)
+        self.assertIn("reddeder", sistem)
+        # Rol, kişilik ve defterin kural ya da yönlendirme metni istemle gönderilmez.
+        for iz in ("{ad}", "katılımcısısın", "{kurallar_metni}", "{dosya_metni}", "İş emri", "Haluk"):
+            self.assertNotIn(iz, sistem + kullanici)
+        for alan in ("{bekleyen_idler}", "{hedef_id}", "{bekleyen_json}", "{kayitlar_json}"):
+            self.assertIn(alan, kullanici)
+        self.assertLess(len(sistem.split()), 80)
+
+
 if __name__ == "__main__":
     unittest.main()
