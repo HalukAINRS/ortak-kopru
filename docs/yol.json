@@ -14,7 +14,7 @@
   ],
   "plan": [
     "Aşağıdaki plan, Ortak Köprü'yü üstten görülen bir yapı gibi gösterir. Solda yerel kullanıcının odası, sağda dış avlu var. Aradaki duvarda tek bir kapı bulunuyor. Oklar neyin hangi yönde geçtiğini, parantez içindeki sayılar o geçişi koruyan ilkeyi gösteriyor.",
-    "Plan bugün yarı yarıya gerçek. Seçilen dosyaların dışarı çıkışı ve kaynakların sürümüyle içeri girişi kapının aracında hazır; aracı deponun herhangi bir kopyasında çalıştırmak yeter. Ama bugün hiçbir bilgisayarda kurulu bir yerel taraf yok. Soruların gelen kutusuna inmesi ve yanıtın aynı yoldan dönmesi henüz yok. Yol, eksik okları tek tek çiziyor."
+    "Planın okları bugün büyük ölçüde gerçek. Seçilen dosyaların dışarı çıkışı, kaynakların sürümüyle içeri girişi ve soruların gelen kutusuna inmesi kapının aracında hazır; aracı deponun herhangi bir kopyasında çalıştırmak yeter. Eksik tek ok, yanıtın aynı yoldan geri dönmesi. O adım Haluk'un kararını bekliyor."
   ],
   "izleme": [
     "Her adımın yanında bir durum yazar: tamam, atılabilir, karar bekliyor, ön koşul bekliyor, dışarıdan bekleniyor ya da ufukta. Bu durumlar elle yazılmaz; ölçütlerden hesaplanır. Bir adımın bütün ölçütleri karşılandığında adım tamam olur.",
@@ -22,7 +22,7 @@
   ],
   "okur": [
     "Bu yolun en kısa adımı sizin elinizde. Açılışı ya da bu sayfayı okuyup bir soru sorar, bir kaynak ya da düzeltme getirirseniz dışarıdan gelen ilk katkı gerçekleşmiş olur. Web'de her bölümün sonunda bir karşılık bağlantısı var; hangi bölüme yazdığınızı forma kendisi yazar. İsterseniz [karşılık formunu doğrudan açın](https://github.com/HalukAINRS/ortak-kopru/issues/new?template=karsilik.yml); GitHub buna Issue der.",
-    "Formu doğrudan açtıysanız hangi yazıya ve hangi adıma karşılık verdiğinizi yazmanız yeter. Bir adımın nasıl atılacağına dair öneriniz varsa onu da yazabilirsiniz. Öneriler yerel kullanıcının kararına sunulur, kendiliğinden uygulanmaz."
+    "Bir adımın nasıl atılacağına dair öneriniz varsa onu da yazabilirsiniz. Öneriler yerel kullanıcının kararına sunulur, kendiliğinden uygulanmaz."
   ],
   "teknik_giris": [
     "Bu ek, açılıştan gerçeğe giden yolun teknik karşılığıdır. Her adımın bağlantıları, ölçütleri, ölçütlerin bugünkü değerleri, dokunacağı yerler ve geri alma yolu burada durur. Sade anlatım yol sayfasındadır.",
@@ -43,7 +43,7 @@
       "yer": "belge",
       "bolum": "plan",
       "baslik": "Yapının planı",
-      "metin": "  PLAN · üstten görünüş                     ölçek: yok\n  ┌────────────────────────────┬──────┬──────────────────────┐\n  │ YEREL ODA                  │      │ DIŞ AVLU · Web       │\n  │                            │      │                      │\n  │ [çalışma]─▶[seçilen]────────────────▶[yayın]        (3)  │\n  │              (2)           │  K   │                      │\n  │ [gelen kutusu]◀──────────────────────[kaynak]       (3)  │\n  │      │ (1)                 │  A   │                      │\n  │      ▼                     │  P   │                      │\n  │ [yerel kullanıcı]◀───────────────────[soru, katkı]  (5)  │\n  │      └──────────────────────────────▶[yanıt]        (1)  │\n  │                            │  I   │                      │\n  │ duvar (4): gizli olan      │      │        [okur]        │\n  │ bu odadan çıkmaz           │      │                      │\n  └────────────────────────────┴──────┴──────────────────────┘\n   (6) her ok bir kayıt bırakır; hiçbir ok iz silmez"
+      "metin": "  PLAN · üstten görünüş                     ölçek: yok\n  ┌────────────────────────────┬──────┬──────────────────────┐\n  │ YEREL ODA                  │      │ DIŞ AVLU · Web       │\n  │                            │      │                      │\n  │ [çalışma]─▶[seçilen]────────────────▶[yayın]        (3)  │\n  │              (2)           │  K   │                      │\n  │ [inceleme]◀──────────────────────────[kaynak]       (3)  │\n  │                            │  A   │                      │\n  │ [gelen kutusu]◀──────────────────────[soru, katkı]  (5)  │\n  │      │ (2)                 │  P   │                      │\n  │      ▼                     │  I   │                      │\n  │ [yerel kullanıcı]───────────────────▶[yanıt]        (1)  │\n  │ duvar (4): gizli olan      │      │        [okur]        │\n  │ bu odadan çıkmaz           │      │                      │\n  └────────────────────────────┴──────┴──────────────────────┘\n   (6) her ok bir kayıt bırakır; hiçbir ok iz silmez"
     },
     {
       "kimlik": "katkinin-yasami",
@@ -78,7 +78,7 @@
       "sade": {
         "ne": "Açılış yazıldı, depo alanlarına ayrıldı ve kendini denetleyen bir harita kuruldu.",
         "neden": "Bir yerin gerçeğe dönüştüğünü görebilmek için önce neyin söz verildiğini ve neyin bugün işlediğini ayırmak gerekir.",
-        "nerede": "Deponun kendisinde: açılışta, haritada ve denetimlerde. Bu zemin 28 Ekim'den beri GitHub'daki ana depoda; oraya hangi aşamalarla geçildiği [dönüşüm sayfasında](donusum.md) anlatılıyor.",
+        "nerede": "Deponun kendisinde: açılışta, haritada ve denetimlerde. Bu zemin 28 Ekim'den beri GitHub'daki ana depoda; oraya hangi aşamalarla geçildiği [dönüşüm sayfasında](gecmis/donusum.md) anlatılıyor.",
         "yon": "İçeride kalır; dışarıya bir şey taşımaz.",
         "nasil": "Niyet, altı ilke ve her ilkenin bugünkü durumu bir kayda yazıldı. Sayfalar o kayıttan üretiliyor ve her değişiklikte yeniden sınanıyor.",
         "sonra": "Okuduğunuz her durum yazısı bir denetime dayanıyor. Bir şey değişirse yazı da değişmek zorunda."
@@ -90,7 +90,7 @@
           "tools/dogrula.py"
         ],
         "yon": "depo içi",
-        "nasil": "Açılış, harita ve tanım kayıtları; `tools/acilis.py`, `tools/harita.py` ve `tools/dogrula.py` ile üretim ve denetim. Ana dala geçişin aşamaları, provası ve ölçümü: `docs/donusum.json`, `tools/donusum.py`.",
+        "nasil": "Açılış, harita ve tanım kayıtları; `tools/acilis.py`, `tools/harita.py` ve `tools/dogrula.py` ile üretim ve denetim. Ana dala geçişin aşamaları, provası ve ölçümü: `docs/gecmis/donusum.json`, `tools/donusum.py`.",
         "geri_alma": "İlgili commit'ler geri alınır; kayıtlar ve belgeler önceki hâline döner."
       },
       "olcutler": [
@@ -131,7 +131,10 @@
       "karar": {
         "kim": "Haluk",
         "soru": "Yerel gönderici, defter ve çağrı kayıtları dışındaki dosyaları göndermeyi bıraksın mı? Bırakırsa öteki dosyalar kapıdan, seçilerek gider.",
-        "verildi": null,
+        "verildi": {
+          "tarih": "2026-10-28",
+          "yanit": "Evet, daraltılsın. Haluk görüşü 28 Ekim 2026 akşamı onayladı."
+        },
         "gorus": {
           "kimden": "Claude Code Bulut",
           "tarih": "2026-10-28",
@@ -142,7 +145,7 @@
       },
       "sade": {
         "ne": "Yerel bilgisayardaki eski paylaşım aracı, yalnız ortak defteri ve çağrı kayıtlarını gönderecek biçimde daraltılır.",
-        "neden": "Bu araç, çalışma klasöründe unutulmuş herhangi bir dosyayı da herkese açık yere gönderebilecek biçimde yazılı. Bu, yerel kullanıcının seçmediği bir şeyin dışarı çıkabilmesi demek. Araç bugün hiçbir bilgisayarda kurulu değil; ama yeniden kurulduğu gün bu açık da onunla gelir.",
+        "neden": "Bu araç, çalışma klasöründe unutulmuş herhangi bir dosyayı da herkese açık yere gönderebilecek biçimde yazılmıştı. Bu, yerel kullanıcının seçmediği bir şeyin dışarı çıkabilmesi demekti. İzleyici de onu her turdan önce kendiliğinden çağırıyordu.",
         "nerede": "Yerel bilgisayardaki eski paylaşım aracında.",
         "yon": "Yerel bilgisayardan Web'e giden çıkışta.",
         "nasil": "Araç, bulut tarafındaki eşi gibi yalnız belirli dosyaları hazırlar. Başka bir dosyayı paylaşmak isteyen kapıyı kullanır; kapı yalnız seçileni taşır.",
@@ -155,7 +158,7 @@
           "docs/gecmis/rafine/claude-code-bulut-2026-10-28-bulgular.json"
         ],
         "yon": "yerel → Web",
-        "nasil": "`git add -A -- .` yerine, `.github/scripts/kopru_gonder.sh` gibi yalnız `kopru.html`, `ayna/kopru.html` ve `kayit/` hazırlanır; başka değişiklik varsa uyarı yazılır, o değişiklik gönderilmez. Sınama: izlenmeyen ilgisiz bir dosya yerelde kalır, uzak dala gitmez. R-17 kaydı `düzeltildi` olur.",
+        "nasil": "`git add -A -- .` yerine, `.github/scripts/kopru_gonder.sh` gibi yalnız `kopru.html`, `ayna/kopru.html` ve `kayit/` hazırlanır. Kapsam dışında hazırlanmış bir dosya varsa hiçbir şey gönderilmez; kapsam dışındaki öteki değişiklikler bir uyarıyla yerelde kalır. İzleyici (`yerel/kopru_izle.ps1`) göndericiyi yalnız kapsam içinde bir değişiklik varsa çağırır. Sınamalar Windows CI'da koşar; R-17 kaydı `düzeltildi`.",
         "geri_alma": "Değişikliği getiren commit geri alınır; gönderici eski kapsamına döner. Defter ve kayıtlar etkilenmez."
       },
       "olcutler": [
@@ -244,7 +247,10 @@
       "karar": {
         "kim": "Haluk",
         "soru": "GitHub'a hangi yetkiyle bakılsın: yalnız herkese açık okumayla mı, kişisel bir anahtarla mı? Gelen kutusu bilgisayarda nerede dursun?",
-        "verildi": null,
+        "verildi": {
+          "tarih": "2026-10-28",
+          "yanit": "Önce yalnız herkese açık okumayla, anahtarsız başlansın; gelen kutusu kapının deponun dışında tuttuğu özel dizinde dursun. Haluk görüşü 28 Ekim 2026 akşamı onayladı."
+        },
         "gorus": {
           "kimden": "Claude Code Bulut",
           "tarih": "2026-10-28",
@@ -255,7 +261,7 @@
       },
       "sade": {
         "ne": "Dışarıdan gelen sorular ve katkılar, yerel kullanıcının bilgisayarındaki ayrı bir gelen kutusuna iner.",
-        "neden": "Bugün dışarıdaki birinin sorusu yerel kullanıcıya ancak GitHub'ın kendi bildirimleriyle ulaşıyor. Köprünün dış ucu açık, ama iç ucu kapıya bağlı değil.",
+        "neden": "Dışarıdaki birinin sorusu yerel kullanıcıya yalnız GitHub'ın kendi bildirimleriyle ulaşıyordu. Köprünün dış ucu açıktı, ama iç ucu kapıya bağlı değildi.",
         "nerede": "Kapıda ve yerel kullanıcının bilgisayarında.",
         "yon": "Web'den yerel bilgisayara.",
         "nasil": "Kapıya yeni bir iş eklenir. Açık konuları okur ve her birini kimin, ne zaman yazdığıyla ve hangi yazıya bağlı olduğuyla gelen kutusuna koyar. Gelen kutusu yerel çalışmaya kendiliğinden karışmaz; yerel kullanıcı önce bakar.",
@@ -263,14 +269,14 @@
       },
       "teknik": {
         "nerede": [
-          "src/ortak_kopru/gateway_cli.py",
+          "src/ortak_kopru/inbox.py",
           "src/ortak_kopru/adapters/github.py",
-          "src/ortak_kopru/exchange.py",
+          "src/ortak_kopru/gateway_cli.py",
           "tests/test_gateway_inbox.py"
         ],
         "yon": "Web → yerel",
-        "nasil": "`kapi.py inbox`: GitHub REST `GET /repos/{owner}/{repo}/issues` (çekme istekleri hariç); her konu yazarı, `updated_at`, gövde karması ve formdaki `yer` alanıyla aktarım veritabanına gelen kayıt olarak yazılır. İçerik özel aktarım dizinindeki gelen kutusuna çıkarılır; depo çalışma ağacına yazılmaz. Kimliksiz okuma mümkün; oran sınırı ve belirteç kararı Haluk'ta.",
-        "geri_alma": "Komut kaldırılır. Gelen kutusu özel dizinde kalır; depoya hiçbir şey yazılmamıştır."
+        "nasil": "`kapi.py --exchange-dir <dizin> inbox --repo <sahip/depo>`: GitHub REST `GET /repos/{owner}/{repo}/issues?state=open` anahtarsız okunur (ortamdaki belirteç gönderilmez), çekme istekleri atlanır. Her konu adresi, numarası, yazarı, açılış ve güncellenme zamanı, başlığı, gövdesi, gövde karması ve formdaki `tur` ve `yer` alanlarıyla `<dizin>/gelen/konu-<numara>-<karma>.json` dosyasına yazılır. Dizin bir Git çalışma ağacının içinde olamaz; değişmemiş konu yeniden yazılmaz, değişen konu yeni dosya olur. Belge: [kapı kullanımı, 6. bölüm](kapi-kullanimi.md#6-dışarıdan-gelen-soruları-almak).",
+        "geri_alma": "Komut kaldırılır. Gelen kutusu özel dizinde kalır ve elle silinebilir; depoya hiçbir şey yazılmamıştır."
       },
       "olcutler": [
         {

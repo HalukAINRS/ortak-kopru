@@ -4,7 +4,7 @@ Bu klasör, ortak deftere yanıt yazan botun her model çağrısında bıraktı�
 
 ## Kim yazar, ne zaman
 
-Kayıtları `defter/kopru_yanitla.py` yazar. Bu araç iki yerden çalıştı: GitHub'da saatte bir (`.github/workflows/kopru.yml`) ve yerel bilgisayardaki izleyiciden (`yerel/kopru_yerel.ps1`, `cli` yolu). Yerel taraf 28 Ekim 2026 itibarıyla hiçbir bilgisayarda kurulu değil; bot ise GitHub'da çalışmayı sürdürüyor ve yalnız kendisine düşen açık bir kayıt olduğunda yeni dosya yazar.
+Kayıtları `defter/kopru_yanitla.py` yazar. Bu araç iki yerden çalışır: GitHub'da saatte bir (`.github/workflows/kopru.yml`) ve yerel bilgisayardaki izleyiciden (`yerel/kopru_izle.ps1`, `cli` yolu; durumu [yerel taraf sayfasında](../docs/teknik/yerel-taraf.md)). İkisi de yalnız kendisine düşen açık bir kayıt olduğunda yeni dosya yazar.
 
 Bugünkü dosyalar 23 Ekim 2026 21.02 UTC ile 24 Ekim 2026 10.11 UTC arasındaki çağrılara aittir. `atlandi.log` dosyasının son satırı 25 Ekim 2026 tarihlidir. Klasör yaklaşık 33 MB tutar; bunun büyük kısmı, her çağrıya defterin tamamının konmasından gelir.
 
@@ -23,4 +23,4 @@ Bugünkü dosyalar 23 Ekim 2026 21.02 UTC ile 24 Ekim 2026 10.11 UTC arasındaki
 
 Kayıtlar anahtar, belirteç ya da çerez değeri taşımaz. Bu, defterin kurallar bölümündeki "Yasak" kuralıyla ve [güvenlik ve gizlilik sayfasıyla](../.github/SECURITY.md) aynı sınırdır. Anahtarlar yalnız ortam değişkeninden okunur ve hiçbir dosyaya yazılmaz.
 
-[Depo haritası](../docs/harita.md) · [Teknik ayrıntılar, otomasyon](../docs/teknik/README.md#otomasyon) · [Sözlük](../docs/sozluk.md)
+[Depo haritası](../docs/harita.md) · [Ortak defter: saatlik bot](../docs/teknik/ortak-defter.md#saatlik-bot) · [Sözlük](../docs/sozluk.md)

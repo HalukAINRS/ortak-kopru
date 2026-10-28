@@ -12,8 +12,4 @@ Ekranı açan komut depo kökündeki yerel iş bileşeni girişindedir; ayrınt�
 | [`deus/app.js`](deus/app.js) | Ekranın davranışı: yalnız yerel sunucuya istek atar, işleri ve olayları gösterir. | — |
 | [`deus/styles.css`](deus/styles.css) | Ekranın görünümü. | — |
 
-## Nereye bağlanır
-
-Bütün alanlar ve dosyalar [depo haritasında](../docs/harita.md#yerel-arayüz) durur. İlk kez geliyorsanız [açılıştan](../docs/acilis.md) başlayın. Kurulum, komutlar ve denetimler [teknik ayrıntılarda](../docs/teknik/README.md) anlatılır.
-
-Bu sayfa depo haritasından üretilir; elle değiştirilmez. Değiştirmek için haritadaki kayıt düzeltilir ve `python tools/harita.py` çalıştırılır.
+Bu sayfa [depo haritasından](../docs/harita.md#yerel-arayüz) üretilir; değiştirmek için haritadaki kayıt düzeltilir ve `python tools/harita.py` çalıştırılır.

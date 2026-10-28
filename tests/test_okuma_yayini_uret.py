@@ -86,7 +86,7 @@ class ReaderPublicationTests(unittest.TestCase):
         cases = {
             ('../acilis.md', 'gecmis'): 'acilis.html',
             ('anlam-not-defteri.md#ilk', 'gecmis'): 'not-defteri.html#ilk',
-            ('gecmis/son-durum.md', ''): 'durum.html',
+            ('gecmis/durum-raporu-2026-10-28.md', ''): 'durum.html',
             ('../teknik/README.md#otomasyon', 'gecmis'): repo + '/blob/main/docs/teknik/README.md#otomasyon',
             ('../../kopru.html', 'gecmis'): 'kopru.html',
             ('../defter/kopru_ekle.py', ''): repo + '/blob/main/defter/kopru_ekle.py',

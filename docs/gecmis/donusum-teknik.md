@@ -4,7 +4,7 @@
 
 Bu ek, GitHub'daki ana dalın yeni oluşuma geçişinin teknik karşılığıdır: aşamaların komutları, dokunduğu yerler, ölçütleri, son ölçüm ve prova, bekleyen öteki önerilerin çözümlemesi ve geri dönüş. Sade anlatım dönüşüm sayfasındadır.
 
-Kayıt `docs/donusum.json`, sözleşmesi `schemas/donusum.schema.json`, aracı `tools/donusum.py`. Araç belgeleri kayıttaki son ölçümden üretir; `--durum` canlı durumu, `--olc --yaz` yeni ölçümü, `--prova --yaz` birleşme provasını, `--dallar --yaz` bekleyen önerilerin çözümlemesini verir.
+Kayıt `docs/gecmis/donusum.json`, sözleşmesi `schemas/donusum.schema.json`, aracı `tools/donusum.py`. Araç belgeleri kayıttaki son ölçümden üretir; `--durum` canlı durumu, `--olc --yaz` yeni ölçümü, `--prova --yaz` birleşme provasını, `--dallar --yaz` bekleyen önerilerin çözümlemesini verir.
 
 ## Başlangıç ve hedef
 
@@ -12,7 +12,7 @@ Başlangıç: `main` @ `97c908de7a5850978082770ba3bac3e508688e57` (2026-10-28), 
 
 ## Aşamalar
 
-Son ölçüm: 2026-10-28T19:31:17Z · ana `HEAD` @ `abed31f` · dal `origin/claude/rafine-2026-10-28` @ `90a13ca`. Canlı durum için: `python tools/donusum.py --durum`.
+Son ölçüm: 2026-10-28T20:19:16Z · ana `origin/main` @ `6653d4d` · dal `origin/claude/rafine-2026-10-28` @ `90a13ca`. Canlı durum için: `python tools/donusum.py --durum`.
 
 | Aşama | Kim | Ön koşul | Karar | Zorunlu | Durum |
 | --- | --- | --- | --- | --- | --- |
@@ -136,18 +136,18 @@ Geri dönüş: Kırık koşuda birleşme geri alınır; iş akışı eski yollar
 ### 6. Yerel geçiş
 
 ```sh
-git clone https://github.com/HalukAINRS/ortak-kopru
+git clone https://github.com/HalukAINRS/ortak-kopru Y:\HalukAI\ortak-kopru
 Kopru_Izle.cmd Hazirlik
 Kopru_Izle.cmd Tek
 ```
 
-Dokunduğu yerler: yerel bilgisayar (28 Ekim 2026 itibarıyla köprü klasörü yok), `docs/teknik/yerel-taraf.md`.
+Dokunduğu yerler: Y:\HalukAI\ortak-kopru (köprü klasörü; Haluk, 28 Ekim 2026 19.53 UTC), `docs/teknik/yerel-taraf.md`.
 
 Geri dönüş: Yerel kopya silinir; Git'in genel safe.directory ayarına eklenen yol geri alınır (docs/teknik/yerel-taraf.md).
 
 | Ölçüt | Son ölçümde |
 | --- | --- |
-| elle: yerel bilgisayarda eski yerleşimde kopya kalmadığının kanıtı (yeni kopyanın hazırlık çıktısı ya da kopya olmadığı bildirimi) (1/1 kanıt) | karşılanıyor |
+| elle: yerel bilgisayarda eski yerleşimde kopya kalmadığının kanıtı (yeni kopyanın hazırlık çıktısı ya da kopya olmadığı bildirimi) (2/1 kanıt) | karşılanıyor |
 
 ### 7. Yardımcıların talimatı
 

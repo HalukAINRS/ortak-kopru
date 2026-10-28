@@ -1,6 +1,6 @@
 # Rafine turu süreç arşivi — Claude Code Bulut, 28 Ekim 2026
 
-Bu arşiv, Claude Code Bulut oturumunun 28 Ekim 2026'da Haluk'un art arda gelen istekleri üzerine yaptığı işleri saat saat kaydeder: rafine turu, açılış, alanlar, yol, dönüşüm, birleştirme, katkı kalıbı, yardımcı talimatlarının kaldırılması ve belgelerin okunması. Dosya yolları her saatin kendi yerleşimine göredir; bugünkü yerleri [depo haritası](../../harita.md) gösterir. Arşiv neyin hangi sırayla yapıldığını, hangi komutun hangi sonucu verdiğini ve hangi varsayımın kanıtla geri çekildiğini kendi zamanıyla kaydeder. Gözlemci Claude Code Bulut'tur (Hacker odağı); oturum Anthropic'in bulut çalışma alanında, Linux üzerinde, Python 3.13.18 ile yürüdü. Hedef bilgisayar veya başka katılımcıların oturumları bu arşivin gözlem kapsamında değildir. Kullanıcıya dönük anlatı [Rafine defterinde](rafine-defteri.md), aynı turun makinece okunur kaydı [bulgu dosyasında](claude-code-bulut-2026-10-28-bulgular.json) bulunur.
+Bu arşiv, Claude Code Bulut oturumunun 28 Ekim 2026'da Haluk'un art arda gelen istekleri üzerine yaptığı işleri saat saat kaydeder: rafine turu, açılış, alanlar, yol, dönüşüm, birleştirme, katkı kalıbı, yardımcı talimatlarının kaldırılması, belgelerin okunması, iki kararın uygulanması ve sadeleştirme. Her talimatın üç parçalı yanıtı [yanıtlar arşivinde](claude-code-bulut-2026-10-28-yanitlar.md) bir arada durur. Dosya yolları her saatin kendi yerleşimine göredir; bugünkü yerleri [depo haritası](../../harita.md) gösterir. Arşiv neyin hangi sırayla yapıldığını, hangi komutun hangi sonucu verdiğini ve hangi varsayımın kanıtla geri çekildiğini kendi zamanıyla kaydeder. Gözlemci Claude Code Bulut'tur (Hacker odağı); oturum Anthropic'in bulut çalışma alanında, Linux üzerinde, Python 3.13.18 ile yürüdü. Hedef bilgisayar veya başka katılımcıların oturumları bu arşivin gözlem kapsamında değildir. Kullanıcıya dönük anlatı [Rafine defterinde](rafine-defteri.md), aynı turun makinece okunur kaydı [bulgu dosyasında](claude-code-bulut-2026-10-28-bulgular.json) bulunur.
 
 ## Gözlem kesiti
 
@@ -125,7 +125,7 @@ Bu arşiv, Claude Code Bulut oturumunun 28 Ekim 2026'da Haluk'un art arda gelen 
 
 ## Yedinci istek: açılıştan gerçeğe giden yol ve klavye çizimleri
 
-**15:00** Haluk'un yedinci talimatı geldi: açılışı gerçeğe dönüştürmenin yolu kurulacak. Çalışma protokolü, belgelerin içerik kuralı ve üç parça yanıt sürüyor; içerik ressam, mimar ve mühendis gözüyle klavye çizimleriyle desteklenecek.
+**15:00** Haluk'un yedinci talimatı geldi: açılışı gerçeğe dönüştürmenin yolu kurulacak. Belgelerin içerik kuralı ve üç parça yanıt sürüyor; içerik ressam, mimar ve mühendis gözüyle klavye çizimleriyle desteklenecek.
 
 **15:00–15:03** Okuma biçimi kararlaştırıldı ve kullanıcıya bildirildi: yol kurulacak, adımlar atılmayacak. Kararı sahibine ait adımlar karar bekliyor olarak görünecek. Açılıştaki dört kısmi ilkenin eksikleri tek tek çıkarıldı. Yerel gönderici seçimsiz gönderebiliyor (2. ve 4. ilke, R-17, S02). Dışarıdan gelen soru yerel kullanıcıya ancak GitHub bildirimleriyle ulaşıyor (1. ilke, S09). Getirilen katkının etkilediği yere bağlanması kişinin dikkatine kalıyor ve dışarıdan henüz kimse yazmadı (5. ilke).
 
@@ -137,7 +137,7 @@ Bu arşiv, Claude Code Bulut oturumunun 28 Ekim 2026'da Haluk'un art arda gelen 
 
 ## Sekizinci istek: bugünkü depodan yeni oluşuma dönüşüm yolu
 
-**16:40** Haluk'un sekizinci talimatı geldi: GitHub'daki bugünkü deponun bu yeni oluşuma dönüşümünün yolu kurulacak. Çalışma protokolü, belgelerin içerik kuralı ve üç parça yanıt sürüyor; içerik ressam, mimar ve mühendis çizimleriyle desteklenecek.
+**16:40** Haluk'un sekizinci talimatı geldi: GitHub'daki bugünkü deponun bu yeni oluşuma dönüşümünün yolu kurulacak. Belgelerin içerik kuralı ve üç parça yanıt sürüyor; içerik ressam, mimar ve mühendis çizimleriyle desteklenecek.
 
 **16:40–16:45** Bu turun bağlamında yedinci isteğin (15.00) çalışması görünmüyordu; depo ve süreç arşivi okunarak yerinde bulundu ve onun üzerine kuruldu. İki yol birbirinden ayrıldı. Açılıştan gerçeğe giden yol, niyetin ilkelerini işler hâle getirir. Dönüşüm ise o yolun sıfırıncı adımını (Zemin) GitHub'daki ana dalda gerçek kılar. Okuma biçimi kullanıcıya bildirildi: yol kurulacak, birleştirme gibi kararı sahibine ait adımlar atılmayacak.
 
@@ -151,7 +151,7 @@ Bu arşiv, Claude Code Bulut oturumunun 28 Ekim 2026'da Haluk'un art arda gelen 
 
 ## Dokuzuncu istek: birleştirme ve katkı kalıbı
 
-**17:36** Haluk'un dokuzuncu talimatı geldi: "Onaylıyorum, uygula. Sıradaki ilk ana işi de gerçekleştir." Çalışma protokolü, içerik kuralı, üç parça yanıt ve çizimler sürüyor. Okuma biçimi kullanıcıya bildirildi: onay, yeni oluşumun önerisinin (#23) birleştirme kaydıyla ana dala alınmasıdır. Sıradaki ilk ana iş, yolda karar beklemeyen ilk adım olan katkı kalıbıdır. Göndericinin daraltılması (yolun birinci adımı) ayrı bir karar olarak bekliyor; bu onayın içinde sayılmadı.
+**17:36** Haluk'un dokuzuncu talimatı geldi: "Onaylıyorum, uygula. Sıradaki ilk ana işi de gerçekleştir." İçerik kuralı, üç parça yanıt ve çizimler sürüyor. Okuma biçimi kullanıcıya bildirildi: onay, yeni oluşumun önerisinin (#23) birleştirme kaydıyla ana dala alınmasıdır. Sıradaki ilk ana iş, yolda karar beklemeyen ilk adım olan katkı kalıbıdır. Göndericinin daraltılması (yolun birinci adımı) ayrı bir karar olarak bekliyor; bu onayın içinde sayılmadı.
 
 **17:38–17:41** Karar ve yerel hazırlığın kanıtı dönüşüm kaydına yazıldı (`6373eb1`). Yerel klasör buradan görülemediği için kanıt, onayın kendisi ve ana dalda 09.25 UTC'den beri yerelden gönderim olmadığı gözlemi oldu.
 
@@ -167,7 +167,7 @@ Bu arşiv, Claude Code Bulut oturumunun 28 Ekim 2026'da Haluk'un art arda gelen 
 
 ## Onuncu istek: yardımcı talimatları, yerel klasör, iki karar ve belgelerin okuması
 
-**18:47** Haluk'un onuncu talimatı geldi: "Bilgisayarımda köprü klasörüm yok. Yardımcı talimatları her yerde silinsin veya sıfırlansın. İki karar konusunda senin görüşünü söyle. Bir yandan da GitHub Reposu içindeki belgeleri ve içeriklerin okumasını yapalım. Eksik ve yetersiz olanları tamamlayalım." Çalışma protokolü, içerik kuralı, üç parça yanıt ve çizimler sürüyor.
+**18:47** Haluk'un onuncu talimatı geldi: "Bilgisayarımda köprü klasörüm yok. Yardımcı talimatları her yerde silinsin veya sıfırlansın. İki karar konusunda senin görüşünü söyle. Bir yandan da GitHub Reposu içindeki belgeleri ve içeriklerin okumasını yapalım. Eksik ve yetersiz olanları tamamlayalım." İçerik kuralı, üç parça yanıt ve çizimler sürüyor.
 
 **18:48–18:55** Talimat dosyaları tarandı. Ana dalda yardımcıların talimat parçası (`katilimcilar/AGENTS-kopru.md`), Web asistanlarının istemi (`katilimcilar/web-istem.md`), botun istem şablonu ve Şaman'ın talimat paketini kuran başlatıcı (`yerel/saman_devral.py`) bulundu. Ana dal dışındaki 27 dalın hepsinde ilk ikisi ve şablon vardı; bazılarında ayrıca kökte `AGENTS.md`, `devir/hacker/CLAUDE.md`, `.claude/settings.json` ile onun oturum açılışında okuttuğu `docs/BULUT_KARTI.md`, `devir/saman/CLI_BASLANGIC.md` ve `devir/sahit/START_HERE.md`. Dalların kapsamı Haluk'a soruldu; yanıt "Dallarda da sil/sıfırla" oldu. Okuma biçimi: kendiliğinden okunan ya da kopyalanmak için yazılmış talimatlar silinir; bir makinenin okuduğu dosya (botun istemi) sıfırlanır, böylece bot çalışmayı sürdürür. Defterin kendi kuralları ve tarihli çağrı kayıtları talimat değil kayıttır; dokunulmadı.
 
@@ -212,3 +212,27 @@ Bu arşiv, Claude Code Bulut oturumunun 28 Ekim 2026'da Haluk'un art arda gelen 
 **19:40–19:45** `claude/wonderful-feynman-3wfoxv` dalında, silinen bulut kartını denetleyen `tests/test_bulut_karti.py` de kaldırıldı (`eafb6db`); kart olmadan o sınamanın anlamı kalmamıştı. Ana dal dahil bütün dalların uçları yeniden tarandı: kendiliğinden okunan ya da kopyalanmak için yazılmış talimat dosyası kalmadı. Okumanın sonuçları ve dalların temizliği tek bir değişiklik önerisiyle ana dala gönderildi; dönüşümün zorunlu aşamalarının hepsi tamam ölçüldü ve dönüşüm kapandı.
 
 **19:45–19:55** Öneri #25 açıldı. Windows denetimi, yeni sözlük sayfasının satır sonlarının Windows'ta farklı çıkmasıyla kırıldı; sayfa `.gitattributes`'a eklendi ve her yayımlanan sayfanın orada durduğunu sınayan bir sınama yazıldı. Codex incelemesi, yerel tarafın sıfırdan kurulum adımlarında bir açık buldu: izleyici, çalışma kopyasında değişiklik görürse her turdan önce göndericiyi kendisi çağırıyor; adımlar ise yolların izlenen dosyalara yazılmasını istiyordu. Böylece makineye özgü yollar ana dala gidebilirdi. Kurulum, göndericinin daraltılması ve yolların depo dışındaki bir ayardan okunması bitmeden yapılmayacak biçimde yeniden yazıldı; göndericinin kararına dair görüşe de bu eklendi.
+
+## Onbirinci istek: kararlar, köprü klasörü ve sadeleştirme
+
+**19.52** Haluk öneri #25'i birleştirme kaydıyla ana dala aldı (`6653d4d`).
+
+**19.53** Haluk'un on birinci talimatı geldi: “Birleştir. Köprü klasörü: "Y:\HalukAI\ortak-kopru"; iki karar için görüşlerini onaylıyorum.” Katmanların, dosyaların ve belgelerin düzeni, adları ve sırası önemli; anlaşılır, güçlü bağlı ve akıcı olmalılar; sadelik, saflık ve netlik önemli. Şişkinlikler, çeldiriciler, yönlendiriciler ve işlevsizler silinecek; tekrar, çatışma ve tutarsızlık yaratanlar bulunup düzeltilecek. İş listesi bitene kadar sürecek. İçerik kuralı, üç parça yanıt ve çizimler sürüyor; yanıtlar öncekilerle birlikte tek bir arşiv dosyasına girecek.
+
+**19.55–20.08** Okuma biçimi: iki onay yolun 1. ve 3. adımını açar; ikisi de atılır. Birleşmiş ana dalın ayrı bir kopyası üzerinde iki salt okuma koşusu başlatıldı: biri yapıyı, adları, sırayı ve şişkinliği, öbürü tekrarları, çatışmaları ve tutarsızlıkları aradı. İlki on dokuz madde, ikincisi on altı çatışma ve on iki tekrar bildirdi. En ağır bulgu aynıydı: yerel tarafın durumu otuz kadar dosyada ayrı ayrı yazılmıştı ve 19.53'teki bildirimle hepsi eskimişti. İkinci ağır bulgu, tarihli iki kaydın her değişiklikte bugüne göre yeniden ölçülmesiydi; bu onları tarihli olmaktan çıkarıyordu.
+
+**19.56–20.13** Yolun 1. adımı: yerel gönderici artık yalnız defteri, aynasını ve çağrı kayıtlarını hazırlıyor; kapsam dışında hazırlanmış bir dosya görürse hiçbir şey göndermiyor; kapsam dışındaki değişiklikleri adıyla uyarıp yerelde bırakıyor. İzleyici göndericiyi yalnız kapsam içinde bir değişiklik varsa çağırıyor. Yerel ortam betiği depo yolunu artık betiğin konumundan türetiyor. Bulut göndericisiyle aynı kapsam iki PowerShell sınamasıyla sabitlendi. R-17 ve R-39 kapandı.
+
+**20.00–20.13** Yolun 3. adımı: kapıya `inbox` komutu eklendi. Komut GitHub'daki açık konuları anahtarsız okuyor, çekme isteklerini atlıyor ve her konuyu yazarı, zamanları, gövdesinin karması ve formdaki tür ve yer alanlarıyla aktarım dizininin `gelen/` klasörüne yazıyor; dizin bir Git çalışma ağacının içinde olamıyor. Beş sınama ağsız çalışıyor. Komut gerçek depoya karşı da anahtarsız denendi; tek açık konu (#16) gelen kutusuna indi. Açılışta 2. ve 4. ilke uygulanıyor oldu. Yol ve açılış sınamalarından üçü kaydın o anki durumuna bağlıydı; kendi kopyalarında durumu kuracak biçimde yeniden yazıldı.
+
+**20.13–20.16** İki adım `9f10e56` ile gönderildi ve öneri #26 taslak olarak açıldı. Denetim iki işletim sisteminde geçti; PowerShell bulunan Ubuntu koşucusunda yeni gönderici sınamaları da koştu.
+
+**20.15–20.29** Sadeleştirme. Yerel tarafın durumu tek sayfaya, ortak defterin işleyişi yeni bir teknik sayfaya, doğrulama bakım rehberine, dallar ve arşivler geçmiş işler sayfasına toplandı; dizinler yalnız yönlendiriyor. Defterde zaten duran dört taslak, defteri yerinde değiştiren iki araç ve yerel başlatıcının bölüm kipi, tarihli iki kaydı canlı tutan araçlar ile onların sınamaları ve sözleşmeleri ve depo rehberi silindi; her birinin nedeni ve önceki sürümü haritada. Tarihli iki kayıt kendi kesitlerinin değerlerine döndürüldü (13.25 ve 13.33 UTC). Dönüşüm kapanmış bir iş olarak geçmişe, durum raporu tarihli adıyla taşındı. Dönüşüm bu kez bir dala değil ana dala karşı yeniden ölçüldü; önce ve sonra planı artık bugünkü haritadan değil, ölçülen sürümün kaydından çiziliyor. Harita alanları okuma sırasına girdi; adlar tekleşti (Web sayfaları, Kök komutları, Yerel taraf). Web çubuğu yalnız bugünü anlatan sayfaları gösteriyor.
+
+**20.20** Kurulum adımları yazılırken bir açık görüldü: izlenen bir dosyada yerelde kalan makine yolu, uzak dal ilerlemişken göndericinin rebase'ini durdururdu. Rebase artık yerel değişikliği kenara alıp geri koyuyor; bunu bir PowerShell sınaması sabitliyor.
+
+**20.29–20.40** Sadeleştirme `7313e83` ile gönderildi. Bağlantı denetimi, birkaç eski çapanın ve taşınan sayfaya giden bağlantıların düzeltilmesinden sonra kırık bağlantı bulmadı. Bütün talimatların üç parçalı yanıtları tek bir [yanıtlar arşivine](claude-code-bulut-2026-10-28-yanitlar.md) yazıldı.
+
+**20.40–20.45** Yanıtlar arşivi, süreç kaydı ve dört çizim `897ac5d` ile gönderildi. Taslak öneri hazır duruma API'den çevrilemediği için #26 kapatıldı ve aynı dal hazır öneri #27 olarak açıldı.
+
+**20.38–20.45** Codex incelemesi gelen kutusunda bir açık buldu: aynı aktarım dizini iki depoyla kullanılırsa aynı numaralı ve aynı içerikli iki konu aynı dosya adını alıyor, ikincisi değişmemiş sayılıp yazılmıyordu. Dosya adının karmasına deponun adı ve konunun numarası katıldı; iki depodan aynı numaralı konunun ayrı tutulduğunu bir sınama sabitliyor.

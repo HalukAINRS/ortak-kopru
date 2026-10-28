@@ -3,8 +3,7 @@
 #   Kopru_Izle.cmd                 → Izle: beş dakikada bir bekleyenleri CLI'larla yanıtlar, gönderir (pencere açık kalır)
 #   Kopru_Izle.cmd Hazirlik        → her parçayı denetler, eksikleri ve ne yapılacağını yazar; model çağırmaz
 #   Kopru_Izle.cmd Tek             → bir tur çalışır, çıkar; "Tek Copilot" yalnız o katılımcı
-#   Kopru_Izle.cmd Ekle dosya.json → JSON'daki kaydı sayfaya ekler (ör. docs/gecmis/parcalar/davet-copilot.json), sonra Gonder gerekir
-#   Kopru_Izle.cmd Bolum parca.html → “Yönlendirme dosyası”na alt bölüm ekler/yeniler (ör. docs/gecmis/parcalar/bolum-guncel-2026-10-24.html), sonra Gonder
+#   Kopru_Izle.cmd Ekle kayit.json → JSON'daki kaydı deftere ekler (biçim: katilimcilar/yanit-sablonu.json), sonra Gonder gerekir
 #   Kopru_Izle.cmd Gonder          → sayfayı denetler, değişiklikleri commit edip GitHub'a gönderir
 #   Kopru_Izle.cmd VM              → Hacker sanal makinesini başlatır (Hacker_Baslat.ps1 -Mod Kontrol)
 #   Kopru_Izle.cmd CopilotKontrol  → Copilot CLI'a Şahit ortamında küçük bir deneme sorusu sorar (giriş sınaması)
@@ -17,9 +16,10 @@
 # Gerekenler: Windows, PowerShell 7, Git, Python 3.12+. Bu dosya makineye özgüdür; makineden bağımsız izleyici kopru_izle.ps1'dir.
 # Yollar ilk kurulan makinenin düzenine göredir ve katilimcilar/ayarlar-yerel.json'daki yollarla AYNI DEĞİLDİR (biri
 # Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari, öbürü Y:\archive\… altını gösterir); yeniden kurarken ikisi aynı yere bağlanır.
-# 28 Ekim 2026 itibarıyla yerel taraf hiçbir bilgisayarda kurulu değil: docs/teknik/yerel-taraf.md
+# Köprü klasörü (Haluk, 28 Ekim 2026 19.53 UTC): Y:\HalukAI\ortak-kopru. Depo yolu sabit yazılmaz, betiğin konumundan
+# türer. Kurulum ve bilinen uyuşmazlıklar: docs/teknik/yerel-taraf.md
 param(
-  [ValidateSet("Izle", "Hazirlik", "Tek", "Ekle", "Bolum", "Gonder", "VM", "CopilotKontrol", "CodexGiris", "CopilotGiris", "CodexTani", "Arg0Temizle")][string]$Mod = "Izle",
+  [ValidateSet("Izle", "Hazirlik", "Tek", "Ekle", "Gonder", "VM", "CopilotKontrol", "CodexGiris", "CopilotGiris", "CodexTani", "Arg0Temizle")][string]$Mod = "Izle",
   [string]$Secenek = "",
   [int]$Dakika = 5,
   [string]$Yalniz = ""
@@ -41,7 +41,6 @@ $CodexExe     = "$Katmanlar\03_Codex_Saman\npm_global\node_modules\@openai\codex
 $SamanHome    = "$Katmanlar\03_Codex_Saman\Home"
 $CopilotExe   = "$Katmanlar\Runtime\Copilot-1.0.103-win-x64\copilot.exe"
 $SahitHome    = "$Katmanlar\02_Copilot_Sahit\Home"
-$DepoYolu     = "Y:/HalukAI/Ortak_Kopru/kopru"      # git safe.directory eğik çizgi ister
 $SshOrtak     = @("-p", "2222", "-i", $SshAnahtar, "-o", "BatchMode=yes", "-o", "UserKnownHostsFile=$SshBilinen",
                   "-o", "StrictHostKeyChecking=yes", "-o", "LogLevel=ERROR", "-o", "ConnectTimeout=10", "hacker@127.0.0.1")
 
@@ -53,6 +52,7 @@ foreach ($k in @("X:\Windows\Temp\Saman_Temp", "X:\Windows\Temp\Sahit_Temp", "X:
   try { New-Item -Path $k -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null } catch {}
 }
 $DepoKoku = Split-Path -Parent $PSScriptRoot   # betikler yerel/ altında; çalışma yeri depo köküdür
+$DepoYolu = $DepoKoku -replace '\\', '/'      # git safe.directory eğik çizgi ister; yol betiğin konumundan türer
 Set-Location -LiteralPath $DepoKoku
 # WinPE her açılışta git'in global ayarını sıfırlar; exFAT'taki depo için safe.directory her seferinde eklenir.
 # Yan etki: $DepoYolu Git'in GENEL ayarına eklenir. Geri almak için: git config --global --unset-all safe.directory $DepoYolu
@@ -117,22 +117,12 @@ switch ($Mod) {
   "Ekle" {
     $py = Bul-PyYol
     if (-not $py) { Write-Error "Python yok (bkz. Hazirlik)."; return }
-    if (-not $Secenek -or -not (Test-Path -LiteralPath $Secenek)) { Write-Error "Eklenecek JSON dosyasını ver: Kopru_Izle.cmd Ekle docs/gecmis/parcalar/davet-copilot.json"; return }
+    if (-not $Secenek -or -not (Test-Path -LiteralPath $Secenek)) { Write-Error "Eklenecek JSON dosyasını ver: Kopru_Izle.cmd Ekle kayit.json (biçim: katilimcilar/yanit-sablonu.json)"; return }
     $kid = (& $py -I -X utf8 defter/kopru_ekle.py kopru.html --json $Secenek 2>&1 | Out-String).Trim()
     if ($LASTEXITCODE -ne 0) { Write-Error "Eklenmedi: $kid"; return }
     Write-Host "Eklendi: $kid" -ForegroundColor Green
     & $py -I -X utf8 defter/kopru_ekle.py kopru.html --kontrol
     Write-Host "Göndermek için: Kopru_Izle.cmd Gonder" -ForegroundColor Cyan
-  }
-
-  "Bolum" {
-    $py = Bul-PyYol
-    if (-not $py) { Write-Error "Python yok (bkz. Hazirlik)."; return }
-    if (-not $Secenek -or -not (Test-Path -LiteralPath $Secenek)) { Write-Error "Parça dosyasını ver: Kopru_Izle.cmd Bolum docs/gecmis/parcalar/bolum-guncel-2026-10-24.html"; return }
-    & $py -I -X utf8 defter/kopru_bolum_ekle.py kopru.html $Secenek
-    if ($LASTEXITCODE -ne 0) { return }
-    & $py -I -X utf8 defter/kopru_ekle.py kopru.html --kontrol
-    Write-Host "Göndermek için: Kopru_Izle.cmd Gonder (ayna da yenilenmeli; Claude bu sohbette yapar)" -ForegroundColor Cyan
   }
 
   "CodexGiris" {
@@ -300,7 +290,7 @@ switch ($Mod) {
       foreach ($ad in @("Claude", "ChatGPT", "Copilot")) {
         $j = (& $pyYol -I -X utf8 defter/kopru_yanitla.py kopru.html --bekleyenler $ad 2>&1 | Out-String)
         try { $n = @((ConvertFrom-Json $j)).Count } catch { $n = "?" }
-        $ipucu = if ($ad -eq "Copilot" -and $n -eq 0) { "henüz ona yazılmış kayıt yok → Kopru_Izle.cmd Ekle docs/gecmis/parcalar/davet-copilot.json" } else { "ilk turda bu kayıtlara tek yanıt yazar" }
+        $ipucu = if ($ad -eq "Copilot" -and $n -eq 0) { "henüz ona yazılmış kayıt yok → Kopru_Izle.cmd Ekle kayit.json" } else { "ilk turda bu kayıtlara tek yanıt yazar" }
         Ekle "Bekleyen → $ad" "$n kayıt" $ipucu
       }
     } else { Ekle "Sayfa denetimi" "ATLANDI" "Python yok" }

@@ -157,6 +157,47 @@ class PowerShellSenderTests(unittest.TestCase):
         self.assertFalse((self.local / '.git/rebase-apply').exists())
         self.assertEqual(self.git(self.local, 'diff', '--name-only', '--diff-filter=U'), '')
 
+    def test_sender_leaves_unselected_files_local(self):
+        # Karar (Haluk, 28 Ekim 2026): gönderici yalnız defteri, aynasını ve çağrı kayıtlarını gönderir.
+        (self.local / 'settings.txt').write_text('machine-specific value\n', encoding='utf-8', newline='\n')
+        (self.local / 'forgotten.txt').write_text('private note\n', encoding='utf-8', newline='\n')
+        self.append(self.local, 'Local', '2026-10-02T00:00:00+00:00')
+        result = self.run_ps()
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertEqual(self.remote_bytes('kopru.html').count(b'<article class="kayit"'), 2)
+        self.assertEqual(self.remote_bytes('settings.txt'), b'base\n')
+        listed = self.git(self.remote, 'ls-tree', '-r', '--name-only', 'main').splitlines()
+        self.assertNotIn('forgotten.txt', listed)
+        self.assertEqual((self.local / 'settings.txt').read_bytes(), b'machine-specific value\n')
+        self.assertEqual((self.local / 'forgotten.txt').read_bytes(), b'private note\n')
+        self.assertIn('settings.txt', result.stdout + result.stderr)
+        self.assertIn('forgotten.txt', result.stdout + result.stderr)
+
+    def test_sender_rebases_around_an_unselected_local_change(self):
+        # Kurulumda izlenen bir dosyaya yazılan makine yolu yerelde kalır; uzak ilerlemişken de gönderim sürer.
+        writer = self.writer()
+        self.append(writer, 'Remote', '2026-10-02T00:00:00+00:00')
+        self.generate(writer)
+        self.commit(writer, 'remote append')
+        self.git(writer, 'push', '-q', 'origin', 'main')
+        (self.local / 'settings.txt').write_text('machine-specific value\n', encoding='utf-8', newline='\n')
+        self.append(self.local, 'Local', '2026-10-03T00:00:00+00:00')
+        result = self.run_ps()
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertEqual(self.remote_bytes('kopru.html').count(b'<article class="kayit"'), 3)
+        self.assertEqual(self.remote_bytes('settings.txt'), b'base\n')
+        self.assertEqual((self.local / 'settings.txt').read_bytes(), b'machine-specific value\n')
+        self.assertEqual(self.git(self.local, 'stash', 'list'), '')
+
+    def test_sender_refuses_files_staged_outside_its_scope(self):
+        (self.local / 'settings.txt').write_text('staged by hand\n', encoding='utf-8', newline='\n')
+        self.git(self.local, 'add', 'settings.txt')
+        self.append(self.local, 'Local', '2026-10-02T00:00:00+00:00')
+        result = self.run_ps()
+        self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertEqual(self.remote_head(), self.initial)
+        self.assertEqual(self.git(self.local, 'diff', '--cached', '--name-only'), 'settings.txt')
+
     def test_three_rejected_pushes_return_failure_and_keep_local_commit(self):
         hook = self.local / '.git/hooks/pre-push'
         hook.write_text(

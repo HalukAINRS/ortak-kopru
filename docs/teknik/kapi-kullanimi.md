@@ -15,8 +15,9 @@ Her komutta `--exchange-dir` **alt komuttan önce** verilir. Bu alan Git çalı�
 | `exchange.sqlite3` | Aktarım kimlikleri, özel kaynak/amaç bilgisi, planlar, durumlar, makbuzlar ve olaylar |
 | `packages/` | Yalnız seçilmiş dosyaların sabit kopyaları ve paket manifestoları |
 | `locks/` | Aynı aktarıma eşzamanlı gönderim yapılmasını engelleyen yerel kilit dosyaları |
+| `gelen/` | Gelen kutusu: GitHub'daki açık konuların, kimin ne zaman yazdığıyla birer JSON kopyası (6. bölüm) |
 
-`prepare` ve `fetch` gerektiğinde yeni aktarım alanı oluşturur. `list`, `show` ve diğer mevcut kaydı kullanan komutlar, bulunmayan alanı boş veritabanına dönüştürmez.
+`prepare`, `fetch` ve `inbox` gerektiğinde yeni aktarım alanı oluşturur. `list`, `show` ve diğer mevcut kaydı kullanan komutlar, bulunmayan alanı boş veritabanına dönüştürmez.
 
 Depo dizininden Linux örneği:
 
@@ -190,6 +191,48 @@ python3 kapi.py --exchange-dir "$KAPI_ALANI" materialize AKTARIM_ID --output "$H
 
 Çıkarma hedefi Git dışında, aktarım alanının dışında ve henüz bulunmayan bir dizin olmalıdır. Boş bile olsa mevcut dizin ezilmez. İnceleme kopyasından gerekli dosyaları mevcut projenize kendi araçlarınızla alabilirsiniz; `materialize` projenize otomatik yama uygulamaz ve alınan dosyayı çalıştırmaz.
 
+## 6. Dışarıdan gelen soruları almak
+
+Okurlar Web'deki her bölümün sonundaki bağlantıyla ya da karşılık formuyla GitHub'da bir konu açar. `inbox` bu konuları yerel kullanıcının önüne getirir:
+
+```bash
+python3 kapi.py --exchange-dir "$KAPI_ALANI" inbox --repo HalukAINRS/ortak-kopru
+```
+
+PowerShell karşılığı:
+
+```powershell
+python kapi.py --exchange-dir $KapiAlani inbox --repo HalukAINRS/ortak-kopru
+```
+
+Komut açık konuları okur, çekme isteklerini atlar ve her konuyu aktarım alanının `gelen/` dizinine `konu-<numara>-<karma>.json` adıyla yazar. Dosya; konunun adresini, numarasını, yazarını, açılış ve güncellenme zamanını, başlığı, gövdeyi, gövdenin SHA-256 karmasını ve formdan okunan iki alanı taşır: `tur` (soru, kaynak, düzeltme, görüş) ve `yer` (hangi sayfa, hangi bölüm). Formsuz açılmış bir konuda bu iki alan boştur.
+
+Aşağıdaki akış, bir okurun sorusunun gelen kutusuna nasıl indiğini gösterir. Sol sütun Web'de, sağ sütun yerel kullanıcının bilgisayarında olanı anlatır.
+
+**Gelen kutusunun akışı** · mühendis çizimi
+
+```text
+ Web (GitHub)                    bilgisayar (aktarım dizini)
+ ─────────────────────────────   ─────────────────────────────
+ okur bölüm bağlantısına basar
+          │
+          ▼
+ karşılık formu: tür, yer, metin
+          │ konu açılır
+          ▼
+ açık konu #N ─── inbox ───────▶ gelen/konu-00000N-<karma>.json
+ (anahtarsız okunur;             yazar · zamanlar · yer · tür
+  çekme istekleri atlanır)       gövde · karma · adres
+                                          │
+                                          ▼
+                                 yerel kullanıcı okur, karar
+                                 verir; hiçbir şey çalışmaz
+```
+
+Okuma anahtarsızdır: ortamda bir GitHub belirteci olsa bile bu komut onu göndermez. GitHub anahtarsız okumaya saatte 60 istek tanır; bir okuma, her 100 açık konu için bir istek yapar. Bu yol Haluk'un 28 Ekim 2026 kararıdır ([yolun 3. adımı](../yol.md)).
+
+Değişmemiş bir konu ikinci kez yazılmaz. Başlığı ya da gövdesi değişen konu yeni bir dosya olur; önceki hâli silinmez. Dosya adındaki karma deponun adını da içerir; aynı aktarım alanı başka bir depoyla kullanılırsa aynı numaralı konular karışmaz. Gelen kutusu yalnız okumak içindir: içerik çalıştırılmaz, yerel çalışmaya uygulanmaz ve aktarım alanı Git'in dışında olduğu için hiçbir gönderime karışmaz. Konuya yanıt yazmak henüz kapının işi değildir; yanıt GitHub'da konunun altına yazılır ([yolun 4. adımı](../yol.md)).
+
 ## İlk sürümün sınırları
 
 | Sınır | Kapsam |
@@ -218,4 +261,4 @@ Geri alırken yine yeni bir özel dizin kullanın; eski etkin alanın üzerine y
 
 Otomatik testler sentetik dosyalar ve sahte HTTP/sağlayıcı yanıtlarıyla çalışır; canlı GitHub yazımı veya hedef Windows kurulumu kanıtı sayılmaz. Bir gerçek aktarımın dayanağı, o çağrının kaydı ve doğrulanmış dış makbuzudur. Kamuya açık kaynakla yapılan salt okuma denemesi de yazma yetkisinin veya PR oluşturmanın denenmiş olduğu anlamına gelmez.
 
-İlgili uygulama: [CLI](../../src/ortak_kopru/gateway_cli.py), [aktarım akışı](../../src/ortak_kopru/gateway.py), [özel kayıt ve paketler](../../src/ortak_kopru/exchange.py), [GitHub bağlayıcısı](../../src/ortak_kopru/adapters/github.py).
+İlgili uygulama: [CLI](../../src/ortak_kopru/gateway_cli.py), [aktarım akışı](../../src/ortak_kopru/gateway.py), [özel kayıt ve paketler](../../src/ortak_kopru/exchange.py), [gelen kutusu](../../src/ortak_kopru/inbox.py), [GitHub bağlayıcısı](../../src/ortak_kopru/adapters/github.py).

@@ -17,13 +17,10 @@ Kod yalnız Python'un standart kütüphanesini kullanır. Komut girişleri depo 
 | [`ortak_kopru/local_files.py`](ortak_kopru/local_files.py) | Özel, doğrulanmış yerel dosyalar ve üzerine yazmadan yayımlama; Git çalışma ağacının içinde çalışmayı reddeder. | — |
 | [`ortak_kopru/exchange.py`](ortak_kopru/exchange.py) | Seçilmiş dosya aktarımları: paket, aktarım kaydı ve özel aktarım dizini; işlerden ve oturumlardan bağımsız. | — |
 | [`ortak_kopru/gateway.py`](ortak_kopru/gateway.py) | GitHub alışverişinin işten bağımsız akışı: açık plan, kurtarılabilir yazma ve uzlaştırma. | — |
-| [`ortak_kopru/gateway_cli.py`](ortak_kopru/gateway_cli.py) | Kapının komutları (kökteki kapi.py girişi): hazırla, planla, gönder, uzlaştır, al ve dışa çıkar. | — |
+| [`ortak_kopru/gateway_cli.py`](ortak_kopru/gateway_cli.py) | Kapının komutları (kökteki kapi.py girişi): hazırla, planla, gönder, uzlaştır, al, gelen kutusuna indir ve dışa çıkar. | — |
+| [`ortak_kopru/inbox.py`](ortak_kopru/inbox.py) | Gelen kutusu: GitHub'daki açık konuları anahtarsız okur ve aktarım dizininin gelen/ klasörüne, yazarı, zamanı ve yeriyle birer JSON olarak indirir. | — |
 | [`ortak_kopru/adapters/__init__.py`](ortak_kopru/adapters/__init__.py) | Dış hizmet bağdaştırıcılarının paketi; içe aktarılması hiçbir giriş-çıkış işlemi yapmaz. | — |
-| [`ortak_kopru/adapters/github.py`](ortak_kopru/adapters/github.py) | GitHub REST bağdaştırıcısı: seçilmiş dosya alışverişi için sınırlı istekler. | — |
+| [`ortak_kopru/adapters/github.py`](ortak_kopru/adapters/github.py) | GitHub REST bağdaştırıcısı: seçilmiş dosya alışverişi ve açık konuların okunması için sınırlı istekler. | — |
 | [`ortak_kopru/adapters/windows_nt.py`](ortak_kopru/adapters/windows_nt.py) | Windows'taki NT aygıt kapısını okur; sürücüyü kurmaz ve yüklemez. | — |
 
-## Nereye bağlanır
-
-Bütün alanlar ve dosyalar [depo haritasında](../docs/harita.md#python-paketi) durur. İlk kez geliyorsanız [açılıştan](../docs/acilis.md) başlayın. Kurulum, komutlar ve denetimler [teknik ayrıntılarda](../docs/teknik/README.md) anlatılır.
-
-Bu sayfa depo haritasından üretilir; elle değiştirilmez. Değiştirmek için haritadaki kayıt düzeltilir ve `python tools/harita.py` çalıştırılır.
+Bu sayfa [depo haritasından](../docs/harita.md#python-paketi) üretilir; değiştirmek için haritadaki kayıt düzeltilir ve `python tools/harita.py` çalıştırılır.

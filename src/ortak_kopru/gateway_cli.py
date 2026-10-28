@@ -1,6 +1,7 @@
 """Explicit, task-independent file exchange commands.
 
-Only plan/send/reconcile/fetch create a provider client. Local preparation and
+Only plan/send/reconcile/fetch create a provider client from the environment;
+inbox reads public issues with an anonymous client. Local preparation and
 inspection need neither a provider credential nor the NT device. Nothing in
 this entry point starts the existing task store or executes incoming content.
 """
@@ -13,7 +14,7 @@ import re
 import sqlite3
 import sys
 
-from . import gateway
+from . import gateway, inbox
 from .adapters.github import GitHubClient, GitHubError
 from .core import CoreError
 from .exchange import ExchangeConflict, ExchangeStore
@@ -81,6 +82,10 @@ def parser():
     fetch.add_argument("--purpose", required=True)
     fetch.add_argument("--request-key", required=True)
 
+    incoming = sub.add_parser(
+        "inbox", help="Açık GitHub konularını anahtarsız oku ve özel gelen kutusuna (gelen/) indir.")
+    incoming.add_argument("--repo", dest="repository", required=True, help="GitHub kaynağı: sahip/depo.")
+
     sub.add_parser("list", help="Kayıtlı aktarımları listele; yeni alan oluşturmaz.")
     for name, help_text in (
         ("show", "Bir aktarımın özel yerel kaydını göster."),
@@ -134,6 +139,8 @@ def error_payload(error):
             message = "GitHub işleminin sonucu belirsiz; aktarım reconcile ile denetlenmeli."
         elif code == "invalid_input":
             message = "GitHub hedefi veya sürüm alanı geçersiz."
+        elif code == "too_many_issues":
+            message = "Açık konu sayısı gelen kutusunun bir okumada alabileceğinden fazla."
         elif code == "credentials_required":
             message = "GitHub yazımı için yerel ortamda hizmet erişim bilgisi gerekli."
         elif status in {401, 403}:
@@ -167,7 +174,7 @@ def main(argv=None):
     try:
         command = args.command
         selection = read_selection(args.selection) if command == "prepare" else None
-        store = ExchangeStore(args.exchange_dir, create=command in {"prepare", "fetch"})
+        store = ExchangeStore(args.exchange_dir, create=command in {"prepare", "fetch", "inbox"})
         if command == "prepare":
             result = gateway.prepare(
                 store, selection, repository=args.repository, base_ref=args.base_ref,
@@ -186,6 +193,8 @@ def main(argv=None):
                 result = gateway.fetch(
                     store, client, repository=args.repository, ref=args.ref,
                     paths=args.paths, purpose=args.purpose, request_key=args.request_key)
+        elif command == "inbox":
+            result = inbox.collect(store.directory, GitHubClient(), args.repository)
         elif command == "list":
             result = {"transfers": store.list_transfers()}
         elif command == "show":

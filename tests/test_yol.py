@@ -33,6 +33,14 @@ class YolTests(unittest.TestCase):
     def adim(self, kayit, kimlik):
         return next(a for a in kayit["adimlar"] if a["kimlik"] == kimlik)
 
+    def kismen_acilis(self, *nolar):
+        """Açılış kaydının, verilen ilkeleri kısmen işliyor sayan bir kopyası."""
+        kayit = copy.deepcopy(self.acilis)
+        for ilke in kayit["ilkeler"]:
+            if ilke["no"] in nolar:
+                ilke.update(durum="kısmen", eksik="Sınama eksiği.")
+        return kayit
+
     def acik_kopya(self, *kimlikler):
         """Kaydın, verilen adımları bitmemiş ve kararsız sayılan bir kopyası."""
         kayit = copy.deepcopy(self.yol)
@@ -74,7 +82,7 @@ class YolTests(unittest.TestCase):
         self.adim(kayit, "sinir")["karar"]["gorus"] = {"kimden": "Sınama", "tarih": "2026-10-28", "oneri": "Önerim: evet.",
                                                       "ozet": "Kısa bir gerekçe.", "gerekce": "Uzun bir gerekçe."}
         self.assertEqual(yol.durumlar(kayit, self.bulgular)["sinir"]["durum"], "karar-bekliyor")
-        self.assertEqual(self.denetle(kayit), [])
+        self.assertEqual(self.denetle(kayit, self.kismen_acilis(*self.adim(kayit, "sinir")["ilkeler"])), [])
         metin = yol.BELGE.read_text(encoding="utf-8")
         for a in self.yol["adimlar"]:
             g = (a["karar"] or {}).get("gorus")
@@ -92,7 +100,8 @@ class YolTests(unittest.TestCase):
             ({"tur": "dosya_var", "yol": "kopru.html"}, True),
             ({"tur": "dosya_var", "yol": "olmayan.txt"}, False),
             ({"tur": "dosya_icerir", "yol": "tools/dogrula.py", "desen": "tools/yol.py"}, True),
-            ({"tur": "dosya_icermez", "yol": "yerel/kopru_gonder.ps1", "desen": "git add -A"}, False),
+            ({"tur": "dosya_icermez", "yol": "yerel/kopru_gonder.ps1", "desen": "git add -A"}, True),
+            ({"tur": "dosya_icermez", "yol": "yerel/kopru_gonder.ps1", "desen": "ayna/kopru.html"}, False),
             ({"tur": "test_var", "yol": "tests/test_yol.py", "ad": "test_each_criterion_type_reads_the_repository"}, True),
             ({"tur": "test_var", "yol": "tests/test_yol.py", "ad": "test_olmayan"}, False),
             ({"tur": "bulgu_kapali", "kimlik": "R-01"}, True),
@@ -121,8 +130,10 @@ class YolTests(unittest.TestCase):
         for a in kayit["adimlar"]:
             if 4 in a["ilkeler"]:
                 a["olcutler"] = [{"tur": "dosya_var", "yol": "kopru.html"}]
+                if a["karar"]:
+                    a["karar"]["verildi"] = a["karar"]["verildi"] or {"tarih": "2026-10-29", "yanit": "Sınama."}
         self.assertIn("4. ilke (Sınır): yoldaki bütün zorunlu adımları tamam; açılıştaki durum 'uygulanıyor' olarak güncellenmeli",
-                      self.denetle(kayit))
+                      self.denetle(kayit, self.kismen_acilis(4)))
         # Tam işleyen bir ilkeye açık zorunlu adım bağlanamaz.
         kayit = self.acik_kopya("katki-kalibi")
         self.adim(kayit, "katki-kalibi")["ilkeler"].append(3)

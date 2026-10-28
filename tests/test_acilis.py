@@ -85,10 +85,17 @@ class AcilisTests(unittest.TestCase):
         self.assertIn("ilkeler[2].dayanaklar: depoda yok (olmayan/dosya.py)", hatalar)
 
     def test_closing_a_linked_finding_forces_the_principle_to_be_rewritten(self):
+        # Kaydın bugünkü durumundan bağımsız: kısmen işleyen bir ilke, kapanmış bir bulguya bağlı kalamaz.
+        kayit = copy.deepcopy(self.veri)
+        for i in (1, 3):
+            kayit["ilkeler"][i].update(durum="kısmen", eksik="Sınama eksiği.", bulgular=["R-17"])
         kapanmis = dict(self.bulgular, **{"R-17": "düzeltildi"})
-        hatalar = acilis.denetle(self.veri, kapanmis, self.senaryolar)
+        hatalar = acilis.denetle(kayit, kapanmis, self.senaryolar)
         self.assertIn("ilkeler[2].bulgular: R-17 kapanmış (düzeltildi); ilkenin durumu yeniden yazılmalı", hatalar)
         self.assertIn("ilkeler[4].bulgular: R-17 kapanmış (düzeltildi); ilkenin durumu yeniden yazılmalı", hatalar)
+        acik = dict(self.bulgular, **{"R-17": "açık"})
+        self.assertNotIn("ilkeler[2].bulgular: R-17 kapanmış (düzeltildi); ilkenin durumu yeniden yazılmalı",
+                         acilis.denetle(kayit, acik, self.senaryolar))
 
     def test_faces_drift_is_detected_and_regenerated(self):
         uretilen = acilis.bloklar(self.veri)[ROOT / "README.md"]
@@ -165,12 +172,14 @@ class AcilisTests(unittest.TestCase):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         basliklar = [satir[3:] for satir in readme.splitlines() if satir.startswith("## ")]
         self.assertEqual(basliklar, acilis.basliklar(self.veri) + ["Buradan başlayın"])
-        teknik = (ROOT / "docs" / "teknik" / "README.md").read_text(encoding="utf-8")
+        # Teknik bölümler teknik klasöründe, tarihsel bölümler geçmiş işlerde; README ikisine de bağlanır.
+        teknik = ROOT / "docs" / "teknik"
+        for dosya, baslik in (("README.md", "## Teknik belgeler"), ("ortak-defter.md", "## Saatlik bot"),
+                              ("bakim.md", "## Tek doğrulama yolu"), ("yerel-taraf.md", "## Bugünkü durum")):
+            with self.subTest(teknik=dosya):
+                self.assertIn(baslik, (teknik / dosya).read_text(encoding="utf-8"))
         gecmis = (ROOT / "docs" / "gecmis" / "README.md").read_text(encoding="utf-8")
-        for baslik in ("## Yerleştirme", "## Otomasyon", "## Bakım ve doğrulama"):
-            with self.subTest(teknik=baslik):
-                self.assertIn(baslik, teknik)
-        for baslik in ("## Açılışa giden yol", "## Değişiklik geçmişi", "## deus_ex_machina ve Şaman devri"):
+        for baslik in ("## Açılışa giden yol", "## Dallar ve arşivler", "## Değişiklik geçmişi"):
             with self.subTest(gecmis=baslik):
                 self.assertIn(baslik, gecmis)
 

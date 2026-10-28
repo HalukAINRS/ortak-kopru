@@ -9,8 +9,6 @@ Sözleşmeler JSON Schema adlı ortak biçimin bir alt kümesiyle yazılır. Des
 | Dosya | Ne | Nasıl çalışır |
 | --- | --- | --- |
 | [`acilis.schema.json`](acilis.schema.json) | Açılış kaydı. | — |
-| [`depo-tanimi.schema.json`](depo-tanimi.schema.json) | Dokuz koordinatlı depo tanımı. | — |
-| [`simdi-ve-sonrasi.schema.json`](simdi-ve-sonrasi.schema.json) | Şimdi ve sonrası kaydı. | — |
 | [`yol.schema.json`](yol.schema.json) | Açılıştan gerçeğe yol kaydı. | — |
 | [`rafine-bulgu.schema.json`](rafine-bulgu.schema.json) | Gözden geçirme bulguları. | — |
 | [`harita.schema.json`](harita.schema.json) | Depo haritası. | — |
@@ -22,8 +20,4 @@ Sözleşmeler JSON Schema adlı ortak biçimin bir alt kümesiyle yazılır. Des
 | [`deus-assign-request.schema.json`](deus-assign-request.schema.json) | Yerel iş atama isteği. | — |
 | [`donusum.schema.json`](donusum.schema.json) | Dönüşüm kaydı. | — |
 
-## Nereye bağlanır
-
-Bütün alanlar ve dosyalar [depo haritasında](../docs/harita.md#sözleşmeler) durur. İlk kez geliyorsanız [açılıştan](../docs/acilis.md) başlayın. Kurulum, komutlar ve denetimler [teknik ayrıntılarda](../docs/teknik/README.md) anlatılır.
-
-Bu sayfa depo haritasından üretilir; elle değiştirilmez. Değiştirmek için haritadaki kayıt düzeltilir ve `python tools/harita.py` çalıştırılır.
+Bu sayfa [depo haritasından](../docs/harita.md#sözleşmeler) üretilir; değiştirmek için haritadaki kayıt düzeltilir ve `python tools/harita.py` çalıştırılır.

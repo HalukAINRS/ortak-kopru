@@ -1,17 +1,17 @@
 # Yerel taraf
 
-Bu sayfa, kapının bilgisayardaki ucunu anlatır: ne için tasarlandığını, bugün nerede durduğunu ve sıfırdan nasıl kurulacağını. Kısa cevap şu: 28 Ekim 2026 itibarıyla yerel taraf hiçbir bilgisayarda kurulu değil. Depo onu çalıştıracak betikleri taşıyor, ama betiklerin beklediği klasörler ve programlar bugün yok. Bu sayfa teknik ayrıntıdır; açılışı anlamak için okunması gerekmez.
+Bu sayfa, kapının bilgisayardaki ucunu anlatır: ne için tasarlandığını, bugün nerede durduğunu ve nasıl kurulacağını. Yerel tarafın durumu depoda yalnız burada yazılıdır; öteki sayfalar buraya bağlanır. Bu sayfa teknik ayrıntıdır; açılışı anlamak için okunması gerekmez.
 
 ## Bugünkü durum
 
-Haluk 28 Ekim 2026 18.47 UTC'de bilgisayarında köprü klasörü olmadığını bildirdi. Bunun sonuçları:
+Yerel kullanıcının köprü klasörü `Y:\HalukAI\ortak-kopru` (Haluk, 28 Ekim 2026 19.53 UTC). Aynı gün 18.47 UTC'de bilgisayarında köprü klasörü olmadığını bildirmişti; yeni yerleşim ana dala 17.47 UTC'de girdiği için bu klasör yeni yerleşimden alınmış olmalı. Klasörün içeriği ve izleyicinin orada çalışıp çalışmadığı bu depodan görünmez. Aşağıdaki her şey, o klasörde ne olduğundan bağımsız olarak doğrudur.
 
 | Konu | Bugün |
 | --- | --- |
-| Ortak defter | Tek kopyası GitHub'daki ana dalda. Defterin kendi kurallarındaki "kanonik kopya yereldir" cümlesi o günün düzenini anlatır; defter kendi kuralıyla yalnız yeni bir kayıtla düzeltilebilir ve bu karar Haluk'ta. |
-| Bot | GitHub'da saatte bir çalışıyor (`.github/workflows/kopru.yml`). Yerel katmanlar (Hacker, Şaman, Google izleyicisi) çalışmıyor. |
-| Kapı | `kapi.py` herhangi bir Git kopyasında çalışır; aktarım dizini Git'in dışında olmak zorundadır. Yerel tarafa bağlı değildir. |
-| Yerel gönderici | `yerel/kopru_gonder.ps1` kurulu değil; seçimsiz gönderme açığı (R-17) bu yüzden uykuda. Daraltılması [yolun 1. adımında](../yol.md) karar bekliyor. |
+| Ortak defter | Depo, GitHub'daki ana dalı esas alır: bot ve Web oradan çalışır. Defterin kendi kurallarındaki "kanonik kopya yereldir" cümlesi ilk düzeni anlatır; defter kendi kuralıyla yalnız yeni bir kayıtla düzeltilebilir ve bu karar Haluk'ta (R-52). |
+| Bot | GitHub'da saatte bir çalışır (`.github/workflows/kopru.yml`). Yerel katmanlar (Hacker, Şaman, Google izleyicisi) yalnız izleyici çalışırken cevap verir. |
+| Kapı | `kapi.py` herhangi bir Git kopyasında çalışır; aktarım dizini Git'in dışında olmak zorundadır. Gelen kutusu (`kapi.py inbox`) da oradadır. Yerel tarafa bağlı değildir. |
+| Yerel gönderici | `yerel/kopru_gonder.ps1` 28 Ekim 2026 akşamından beri yalnız defteri, aynasını ve çağrı kayıtlarını gönderir ([yolun 1. adımı](../yol.md)). |
 | Yerel iş bileşeni | `deus.py` herhangi bir bilgisayarda kurulabilir; NT aygıt kapısı yalnız Windows'ta ve yalnız derlenmiş olarak var. |
 
 ## Tasarım
@@ -24,7 +24,7 @@ Yerel taraf bir Windows bilgisayarı için yazıldı. Tek giriş noktası kökte
  Kopru_Izle.cmd  (çift tık = Izle; ya da kip adı)
        │
        ▼
- yerel/kopru_yerel.ps1   ortam: Y:\ yolları, Python, SSH
+ yerel/kopru_yerel.ps1   ortam: depo kökü, Python, SSH
        │
        ├── Izle / Tek ──▶ yerel/kopru_izle.ps1
        │                    │
@@ -37,8 +37,9 @@ Yerel taraf bir Windows bilgisayarı için yazıldı. Tek giriş noktası kökte
        │                    └──▶ Google (CLI izleyici)
        │
        ├── Gonder ───▶ yerel/kopru_gonder.ps1 ──▶ push main
+       │                 yalnız kopru.html, ayna/, kayit/
        ├── Hazirlik ────▶ her parçayı denetler, model çağırmaz
-       └── Ekle, Bolum, VM, Giriş ve tanı kipleri
+       └── Ekle, VM, Giriş ve tanı kipleri
 ```
 
 ## Gerekenler
@@ -55,36 +56,50 @@ Betiklerin kendisi depoda. Çalışmaları için depo dışında şunlar gerekir
 
 ## Bilinen uyuşmazlıklar ve yan etkiler
 
-Betikler ve ayarlar, kuruldukları ilk makinenin klasör düzenine bağlı yazıldı. Yeniden kurmadan önce şunlar bilinmeli:
+Betikler ve ayarlar, kuruldukları ilk makinenin klasör düzenine bağlı yazıldı. Kurmadan önce şunlar bilinmeli:
 
-1. **İki ayrı yol ağacı.** `yerel/kopru_yerel.ps1` katmanları `Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari\…` altında arar; `katilimcilar/ayarlar-yerel.json` ise `Y:\archive\10_Katmanlar\…` ve `Y:\archive\30_Govde_Sistem\…` altındaki komutları çalıştırır. Codex'in ev klasörü ikisinde farklıdır: `CodexGiris` kipinin girişi yazdığı yer, izleyicinin baktığı yer değildir.
+1. **İki ayrı yol ağacı.** `yerel/kopru_yerel.ps1` katmanları `Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari\…` altında arar; `katilimcilar/ayarlar-yerel.json` ise `Y:\archive\10_Katmanlar\…` ve `Y:\archive\30_Govde_Sistem\…` altındaki komutları çalıştırır. Codex'in ev klasörü ikisinde farklıdır: `CodexGiris` kipinin girişi yazdığı yer, izleyicinin baktığı yer değildir (R-38).
 2. **Copilot ile Google.** Hazırlık ve giriş kipleri Copilot CLI'ı denetler; yerel ayarlarda ise Copilot yerine `Google (CLI izleyici)` katılımcısı var.
-3. **Git'in genel ayarı.** `yerel/kopru_yerel.ps1` her çalıştığında `Y:/HalukAI/Ortak_Kopru/kopru` yolunu Git'in genel `safe.directory` listesine ekler. Bu, depo başka bir yerde olsa da olur. Geri almak için: `git config --global --unset-all safe.directory Y:/HalukAI/Ortak_Kopru/kopru`.
-4. **Gönderici ve izleyici.** `yerel/kopru_gonder.ps1` çalışma klasöründeki her değişikliği (`git add -A`) ana dala gönderir. İzleyici (`yerel/kopru_izle.ps1`) de çalışma kopyasında gönderilmemiş bir değişiklik görürse her turdan önce göndericiyi kendisi çağırır. Yani açık yalnız `Gonder` kipinde değil, `Tek` ve sürekli izlemenin her turundadır. Bu, [yolun 1. adımındaki](../yol.md) kararın konusudur.
+3. **Git'in genel ayarı.** `yerel/kopru_yerel.ps1` her çalıştığında kendi depo kökünü Git'in genel `safe.directory` listesine ekler; WinPE her açılışta bu ayarı sıfırladığı için ekleme her seferinde yapılır. Yol 28 Ekim 2026 akşamından beri betiğin konumundan türer; köprü klasörü için geri almak: `git config --global --unset-all safe.directory Y:/HalukAI/ortak-kopru`.
 
-## Sıfırdan kurmak
+## Kurmak
 
-Bugünkü kodla yerel tarafı kurmak güvenli değildir. Kurulum, makineye özgü yolların izlenen iki dosyaya yazılmasını ister; izleyici ise çalışma kopyasında değişiklik gördüğü ilk turda göndericiyi çağırır. Böylece o yollar ve klasörde kalan her dosya herkese açık ana dala gider. Bu yüzden kurulumdan önce iki iş biter:
+Aşağıdaki kesit, köprü klasöründe bir değişiklik olduğunda göndericinin neyi dışarı taşıdığını, neyi içeride bıraktığını gösterir.
 
-1. Gönderici daraltılır: yalnız defteri, aynasını ve çağrı kayıtlarını gönderir ([yolun 1. adımı](../yol.md), Haluk'un kararı).
-2. Yollar tek kaynaktan ve depo dışındaki bir yerel ayardan okunur; izlenen dosyalar makineye göre değiştirilmez (şimdi ve sonrası kaydındaki S03 senaryosu).
+**Göndericinin kapsamı** · mimar çizimi
 
-İkisi bittikten sonra sıra şöyledir:
+```text
+ KESİT · köprü klasörü (Y:\HalukAI\ortak-kopru)
+
+ ┌──────────────────────────────┬───────────────────────────┐
+ │ gönderilir (ana dala)        │ yerelde kalır, adı yazılır│
+ │                              │                           │
+ │  kopru.html  ortak defter    │  yerel/*.ps1 yol ayarı    │
+ │  ayna/       defterin aynası │  katilimcilar/ ayarları   │
+ │  kayit/      çağrı kayıtları │  unutulmuş her dosya      │
+ └──────────────┬───────────────┴───────────────────────────┘
+                │                 başka bir dosya ancak
+                ▼                 kapıdan, seçilerek çıkar
+         GitHub · ana dal
+```
+
+Gönderici yalnız defteri, aynasını ve çağrı kayıtlarını gönderir; izleyici onu yalnız bunlardan biri değiştiğinde çağırır. Kurulum için izlenen bir dosyaya makineye özgü bir yol yazmak gerekirse o değişiklik yerelde kalır ve gönderici adını uyarıyla yazar. Kurulumdan önce kalan tek iş, yolların tek kaynaktan ve depo dışındaki bir yerel ayardan okunmasıdır (şimdi ve sonrası kaydındaki S03 senaryosu, R-38). O iş bitmeden yollar elle, iki dosyada aynı yere bağlanır.
 
 1. Windows'ta Git, PowerShell 7 ve Python 3.12 ya da üstünü kurun.
-2. Depoyu istediğiniz bir klasöre klonlayın: `git clone https://github.com/HalukAINRS/ortak-kopru`.
-3. Makineye özgü yolları depo dışındaki yerel ayara yazın.
+2. Depoyu köprü klasörüne klonlayın: `git clone https://github.com/HalukAINRS/ortak-kopru Y:\HalukAI\ortak-kopru`. Klasör zaten bir klonsa `git pull` yeter.
+3. Makineye özgü yolları `yerel/kopru_yerel.ps1` ve `katilimcilar/ayarlar-yerel.json` içinde aynı yere bağlayın; bu değişiklikler gönderilmez.
 4. `Kopru_Izle.cmd Hazirlik` her parçayı denetler, eksikleri yazar; hiçbir model çağırmaz ve hiçbir şey göndermez.
 5. `Kopru_Izle.cmd Tek` bir tur çalışır ve çıkar; sürekli izleme için dosyaya çift tıklanır.
 
 ## Yerel taraf olmadan
 
-Yerel taraf kurulu değilken de şunlar yapılabilir:
+Yerel taraf çalışmıyorken de şunlar yapılabilir:
 
 | İş | Yol |
 | --- | --- |
 | Defteri okumak | [Web'deki defter](https://halukainrs.github.io/ortak-kopru/kopru.html) ya da `python defter/kopru_oku.py kopru.html --acik` |
 | Bir yazıya karşılık vermek | Web'de her bölümün sonundaki bağlantı ya da [karşılık formu](https://github.com/HalukAINRS/ortak-kopru/issues/new?template=karsilik.yml) |
+| Gelen karşılıkları almak | Herhangi bir klonda `python kapi.py --exchange-dir <Git dışındaki dizin> inbox --repo HalukAINRS/ortak-kopru` |
 | Seçilmiş dosyaları paylaşmak ya da almak | Herhangi bir klonda `python kapi.py --exchange-dir <Git dışındaki dizin> …` ([kapı kullanımı](kapi-kullanimi.md)) |
 | Deftere kayıt eklemek | Bir klonda `python defter/kopru_ekle.py kopru.html …`, ardından değişiklik önerisi (pull request) |
 

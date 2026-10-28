@@ -370,9 +370,10 @@
         "ana_surum",
         "dal",
         "dal_surum",
-        "durumlar"
+        "durumlar",
+        "yerlesim"
       ],
-      "description": "Aşamaların bir ana dal sürümüne karşı hesaplanmış durumları; tools/donusum.py --olc yazar.",
+      "description": "Aşamaların bir ana dal sürümüne karşı hesaplanmış durumları ve o sürümün yerleşimi; tools/donusum.py --olc yazar.",
       "properties": {
         "zaman": {
           "type": "string",
@@ -436,6 +437,47 @@
                     "karsilaniyor": {
                       "type": "boolean"
                     }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "yerlesim": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kok_dosya",
+            "gruplar"
+          ],
+          "description": "Ölçülen ana dal sürümünün yerleşimi: kökteki dosya sayısı ve haritadaki eski adlardan sayılan taşınmalar. \"Önce ve sonra\" planı bundan çizilir.",
+          "properties": {
+            "kok_dosya": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "gruplar": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "once",
+                  "sonra",
+                  "sayi"
+                ],
+                "properties": {
+                  "once": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sonra": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sayi": {
+                    "type": "integer",
+                    "minimum": 1
                   }
                 }
               }

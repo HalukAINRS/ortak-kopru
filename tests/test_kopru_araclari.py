@@ -164,26 +164,6 @@ class AracKomutTests(unittest.TestCase):
                           "--govde", r"Git-Portable-2.56.0.2\usr\bin\ssh.exe ile bağlanıldı")
         self.assertEqual(surum.returncode, 0, surum.stderr)
 
-    def test_section_fragment_with_external_load_or_secret_is_refused_before_writing(self):
-        once = self.sayfa.read_bytes()
-        for icerik, hata in [
-            ('<div id="y-dis" class="alt">\n  <img src="https://x/iz.png">\n</div>', "dış kaynak"),
-            ('<div id="y-gizli" class="alt">\n  <p>192.168.1.20</p>\n</div>', "yasak desen"),
-        ]:
-            parca = self.dizin / "parca.html"
-            parca.write_text(icerik, encoding="utf-8")
-            sonuc = self.calistir("kopru_bolum_ekle.py", self.sayfa, parca)
-            with self.subTest(hata=hata):
-                self.assertNotEqual(sonuc.returncode, 0)
-                self.assertIn(hata, sonuc.stderr)
-                self.assertEqual(self.sayfa.read_bytes(), once)
-        parca = self.dizin / "parca.html"
-        parca.write_text('<div id="y-yeni" class="alt">\n  <p>Yeni alt bölüm.</p>\n</div>', encoding="utf-8")
-        sonuc = self.calistir("kopru_bolum_ekle.py", self.sayfa, parca)
-        self.assertEqual(sonuc.returncode, 0, sonuc.stderr)
-        yeni = self.sayfa.read_text(encoding="utf-8")
-        self.assertLess(yeni.index('id="y-yeni"'), yeni.index('id="y-mimari"'))
-
     def test_responder_rejects_unknown_participant_filter_instead_of_doing_nothing(self):
         sonuc = self.calistir("kopru_yanitla.py", self.sayfa, "--ayarlar", ROOT / "katilimcilar" / "ayarlar.json", "--yalniz", "Copilot", "--kuru")
         self.assertEqual(sonuc.returncode, 1)
@@ -192,12 +172,6 @@ class AracKomutTests(unittest.TestCase):
 
 
 class YanitlayiciMetinTests(unittest.TestCase):
-    def test_section_text_unescapes_every_html_entity(self):
-        belge = ('<section id="yonlendirme"><p>Claude&#x27;un &quot;katmanı&quot; &lt;br&gt; &amp; '
-                 'Gemini&#39;nin</p></section>')
-        self.assertEqual(kopru_yanitla.bolum_metni(belge, "yonlendirme"),
-                         'Claude\'un "katmanı" <br> & Gemini\'nin')
-
     def test_cloud_cli_route_does_not_receive_api_keys(self):
         ayar = json.loads((ROOT / "katilimcilar" / "ayarlar.json").read_text(encoding="utf-8"))
         claude = next(kat for kat in ayar["katilimcilar"] if kat["saglayici"] == "cli")

@@ -41,7 +41,7 @@ class HaritaTests(unittest.TestCase):
                       self.denetle(self.veri, self.dosyalar + ["yeni-kok-dosyasi.txt"]))
         bozuk = copy.deepcopy(self.veri)
         bozuk["alanlar"][0]["kapsam"].append("kapi.py")
-        self.assertIn("kapi.py: birden çok alanda (giris, girisler)", self.denetle(bozuk))
+        self.assertIn("kapi.py: birden çok alanda (giris, komutlar)", self.denetle(bozuk))
 
     def test_root_shows_only_entries_pages_ledger_and_area_folders(self):
         kok = {yol.split("/", 1)[0] + ("/" if "/" in yol else "") for yol in self.dosyalar}
@@ -164,7 +164,7 @@ class HaritaTests(unittest.TestCase):
         tanim = {d["yol"]: d for _, d in harita.tanimlar(self.veri)}
         self.assertEqual(harita.gerekir(tanim["tools/dogrula.py"]), "Python 3.12+")
         self.assertIn("Windows", harita.gerekir(tanim["Kopru_Izle.cmd"]))
-        self.assertIn("kurulu değil", harita.gerekir(tanim["yerel/kopru_gonder.ps1"]))
+        self.assertIn("yerel-taraf.md", harita.gerekir(tanim["yerel/kopru_gonder.ps1"]))
         self.assertIn("| Gerekir |", harita.BELGE.read_text(encoding="utf-8"))
 
     def test_repository_can_be_cited(self):
