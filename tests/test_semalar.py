@@ -39,7 +39,7 @@ class ValidatorRulesTests(unittest.TestCase):
         self.assertEqual(sorted(semalar), [
             "depo-tanimi.schema.json", "deus-assign-request.schema.json", "deus-checks.schema.json", "deus-event.schema.json",
             "deus-handoff.schema.json", "deus-task.schema.json", "exchange-manifest.schema.json",
-            "rafine-bulgu.schema.json"])
+            "rafine-bulgu.schema.json", "rafine-sorulari.schema.json"])
         for ad, sema in semalar.items():
             self.assertEqual(sema_denetle.sema_bicimini_denetle(sema), [], ad)
             self.assertIn("title", sema, ad)
@@ -123,7 +123,7 @@ class ValidatorRulesTests(unittest.TestCase):
         shape = subprocess.run([sys.executable, "-I", str(ROOT / "tools/sema_denetle.py")],
                                capture_output=True, text=True, encoding="utf-8", cwd=ROOT)
         self.assertEqual(shape.returncode, 0, shape.stdout + shape.stderr)
-        self.assertIn("8 şema", shape.stdout)
+        self.assertIn("9 şema", shape.stdout)
 
 
 class CoreOutputContractTests(unittest.TestCase):

@@ -8,7 +8,7 @@ Bu depo, yerelde yürüyen çalışmaların dışarıya açılan kapısını ve 
 
 | Ne arıyorsunuz? | Başlangıç |
 | --- | --- |
-| Deponun ne olduğu, nerede ve ne zamandan beri durduğu, ne kadar olduğu, nereden geldiği, neden ve nasıl çalıştığı, ne için kullanıldığı ve nereye gittiği | [Dokuz koordinatla tanım](docs/DEPO_TANIMI.md) |
+| Deponun ne olduğu, nerede ve ne zamandan beri durduğu, ne kadar olduğu, nereden geldiği, neden ve nasıl çalıştığı, ne için kullanıldığı ve nereye gittiği | [Dokuz koordinatla tanım](docs/DEPO_TANIMI.md) · [Şimdi ve sonrası](docs/SIMDI_VE_SONRASI.md) |
 | 33×8 döngüler ile serbest dışavurumun birlikte çalışma biçimi | [Ortak Mimari Defteri](docs/ORTAK_MIMARI_DEFTERI.md) |
 | Ortak çalışmanın anlamı ve kullanılan kavramlar | [Anlam not defteri](docs/ANLAM_NOT_DEFTERI.md) |
 | Tamamlanan iş, mevcut durum ve açık kalanlar | [Son durum](docs/SON_DURUM.md) |
@@ -103,7 +103,8 @@ k-0111, Şaman CLI devrinin tarihsel başlangıç kaydıdır; sonraki ilerleme v
 | `tools/dogrula.py` | Bütün çevrimdışı kontrolleri CI ile aynı sırayla tek komutta koşar; bulunmayan aracı `ATLANDI` diye yazar, çıkış kodu yalnız başarısızlıkta sıfırdan farklıdır. |
 | `tools/depo_kontrol.py` | Çevrimdışı Python/JSON, kayıt/yanıt bağı, sayaç, ayna ve yapılandırma imzası denetimi. |
 | `tools/sema_denetle.py` | `schemas/` sözleşmelerinin desteklenen JSON Schema alt kümesinde kaldığını denetler; `--sema AD --veri DOSYA` ile tek veriyi doğrular. Çekirdek çıktılarıyla eşlik `tests/test_semalar.py` içindedir. |
-| `tools/depo_tanimi.py` | Dokuz koordinatlı depo tanımının (`docs/depo-tanimi.json`) ölçümlerini depodan üretir; `--check` ölçümleri, dayanak yollarını ve defter zamanlarını yazmadan denetler. |
+| `tools/depo_tanimi.py` | Dokuz koordinatlı depo tanımının (`docs/depo-tanimi.json`) ölçümlerini depodan üretir; `--check` yapısal ölçümleri birebir, defterle büyüyenleri alt sınır olarak denetler, anlık sayıların farkını bilgi olarak yazar. |
+| `tools/rafine_sorulari.py` | Şimdi ve sonrası kaydını (`docs/rafine-sorulari.json`) denetler: dokuz soru, varyantlar, birleşimler, ön koşullu senaryolar ve her senaryonun geri alma yolu; `docs/SIMDI_VE_SONRASI.md` içindeki tabloları bu kayıttan yazar. `--sira` senaryo sırasını, `--olc` günlük ve cevapsız kayıt hesaplarını verir. |
 | `tools/okuma_yayini_uret.py` | `docs/` altındaki beş kaynak metinden statik okuma sayfalarını üretir; `--check` yazmadan uyumu denetler. |
 | `.github/workflows/dogrulama.yml` | PR ve ana dal için Linux/Windows testleri; sağlayıcı çağrısı ve yazma yetkisi yok. |
 | `.github/workflows/kopru.yml` | GitHub Actions: `kopru.html` değişince, saatte bir ve elle çalışır; botu çağırır, `[skip ci]` ile gönderir. |
@@ -180,6 +181,8 @@ Kanonik dosya değişince `kopru_ayna_uret.py` `<title>`, meta etiketleri, `<sty
 ## Değişiklik geçmişi
 
 - 2026-10-28: Dokuz koordinatla depo tanımı ([anlatı](docs/DEPO_TANIMI.md), [makine kaydı](docs/depo-tanimi.json)); ölçümleri `tools/depo_tanimi.py` üretir ve doğrulama listesinde denetler.
+
+- 2026-10-28: Şimdi ve sonrası: ana dalın dokuz soruya yanıtı, rafine sonrası için ön koşullu sekiz senaryo, on sekiz soru varyantı ve on iki birleşim ([anlatı](docs/SIMDI_VE_SONRASI.md), [makine kaydı](docs/rafine-sorulari.json)); tablolar ve kurallar `tools/rafine_sorulari.py` ile denetlenir.
 
 - 2026-10-28: Rafine turu (Claude Code Bulut, Hacker odağı). `tools/dogrula.py` ile yerelde ve CI'da aynı tek doğrulama listesi; `tools/sema_denetle.py` ve `tests/test_semalar.py` ile `schemas/` sözleşmeleri çekirdeğin gerçek çıktılarına bağlandı; belge tutarsızlıkları (eksik dosya satırları, sayfa sayımı, iş akışı tablosu) giderildi. Tur kaydı: [Rafine defteri](docs/RAFINE_DEFTERI.md) · [süreç arşivi](docs/rafine/README.md).
 

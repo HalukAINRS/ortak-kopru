@@ -315,7 +315,7 @@
       "claim": "Her çağrı günlüğü defterin tamamını kopyalıyor (124 dosya, 33 MB); anahtarı olmayan yolun her saatlik atlanması da bir commit üretiyor (atlandi.log 113 satır).",
       "evidence": "du -sh kayit; wc -l kayit/atlandi.log.",
       "resolution": "açık",
-      "note": "Günlüklerin kanıt değeri ile depo büyümesi arasındaki tercih kullanıcıya aittir; kayit/ dosyaları değiştirilmedi."
+      "note": "Günlüklerin kanıt değeri ile depo büyümesi arasındaki tercih kullanıcıya aittir; kayit/ dosyaları değiştirilmedi. 28 Ekim 12.00 UTC gözlemiyle daraltıldı: atlama satırları ve onlara bağlı commit'ler 25 Ekim 12.41 UTC'de durdu; saatlik yanıtlayıcı koşmaya devam ediyor ama bulut yolları için bekleyen kayıt olmadığından ne model çağırıyor ne yazıyor. Büyüme sorunu günlük biçiminde kalıyor: baytların binde 973'ü defterin kopyası (docs/rafine-sorulari.json, S05)."
     },
     {
       "id": "R-22",
@@ -353,6 +353,11 @@
       "assumption": "kopru.yml'deki 'if: env.CLAUDE_CODE_OAUTH_TOKEN' koşulu aynı adımın env bloğunu göremez, bu yüzden Claude Code CLI Actions'ta hiç kurulmuyor.",
       "checked_by": "GitHub bağlam tablosu ve actions/runner StepsRunner.cs kaynağı",
       "outcome": "Adım düzeyi env koşuldan önce bağlama ekleniyor; kalıp doğru. Betik incelemesi de kayit/ günlüklerinde Actions'ta CLI yoluyla üretilmiş kayıtlar buldu. İş akışına dokunulmadı."
+    },
+    {
+      "assumption": "Anahtarı olmayan bir yolun her saatlik atlanması bugün de bir commit üretiyor.",
+      "checked_by": "kayit/atlandi.log son satırı, kopru.yml koşu geçmişi (176 koşu) ve tools/rafine_sorulari.py --olc",
+      "outcome": "Bu davranış 25 Ekim 12.41 UTC'ye kadar sürdü; o tarihten beri bulut yolları için bekleyen kayıt kalmadığı için atlama satırı yazılmıyor. Bulgu (R-21) silinmedi, notunda tarihiyle daraltıldı."
     }
   ]
 }

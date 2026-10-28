@@ -1,0 +1,859 @@
+{
+  "schema_version": 1,
+  "kind": "ortak_kopru_rafine_sorulari",
+  "konu": "Ortak Köprü deposunun şimdiki tanımı ve rafine sonrası olabilecek tanımı",
+  "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+  "hazirlandi": "2026-10-28T12:00:57Z",
+  "kesit": {
+    "dal": "claude/rafine-2026-10-28",
+    "pr": 23,
+    "temel_commit": "97c908de7a5850978082770ba3bac3e508688e57"
+  },
+  "sorular": [
+    {
+      "kok": "ne",
+      "soru": "Ne?",
+      "varyantlar": [
+        {
+          "id": "ne.merkez",
+          "soru": "Merkezinde ne var?",
+          "anlam": "Diğer parçaların dayandığı tek öğeyi arar."
+        },
+        {
+          "id": "ne.degil",
+          "soru": "Ne değildir?",
+          "anlam": "Tanımın sınırını, deponun iddia etmediğini arar."
+        }
+      ]
+    },
+    {
+      "kok": "nerede",
+      "soru": "Nerede?",
+      "varyantlar": [
+        {
+          "id": "nerede.calisir",
+          "soru": "Nerede çalışır?",
+          "anlam": "Kodun gerçekten yürüdüğü ortamları arar; dosyanın durduğu yerden ayrıdır."
+        },
+        {
+          "id": "nerede.gorulemez",
+          "soru": "Nerede görülemez?",
+          "anlam": "Bu gözlemin erişemediği, yalnız beyanla bilinen yerleri arar."
+        }
+      ]
+    },
+    {
+      "kok": "ne_zaman",
+      "soru": "Ne zaman?",
+      "varyantlar": [
+        {
+          "id": "ne_zaman.beri",
+          "soru": "Ne zamandan beri?",
+          "anlam": "Bir etkinliğin ya da sessizliğin başladığı anı arar."
+        },
+        {
+          "id": "ne_zaman.bozulur",
+          "soru": "Ne zaman bozulur?",
+          "anlam": "Hangi olayda tanımın ya da aracın kırılacağını arar."
+        }
+      ]
+    },
+    {
+      "kok": "ne_kadar",
+      "soru": "Ne kadar?",
+      "varyantlar": [
+        {
+          "id": "ne_kadar.buyur",
+          "soru": "Ne kadar büyür?",
+          "anlam": "Büyüklüğün kendisini değil hızını ve neyin büyüttüğünü arar."
+        },
+        {
+          "id": "ne_kadar.acik",
+          "soru": "Ne kadarı açık?",
+          "anlam": "Bekleyen, karar isteyen veya cevapsız kalan payı arar."
+        }
+      ]
+    },
+    {
+      "kok": "nereden",
+      "soru": "Nereden?",
+      "varyantlar": [
+        {
+          "id": "nereden.giris",
+          "soru": "Nereden girer?",
+          "anlam": "İçeriğin depoya hangi yollardan girdiğini arar."
+        },
+        {
+          "id": "nereden.yetki",
+          "soru": "Yetki nereden gelir?",
+          "anlam": "Bir işin yapılmasını kimin başlattığını arar; içeriğin kaynağından ayrıdır."
+        }
+      ]
+    },
+    {
+      "kok": "neden",
+      "soru": "Neden?",
+      "varyantlar": [
+        {
+          "id": "neden.simdi",
+          "soru": "Neden şimdi?",
+          "anlam": "Zamanlamanın gerekçesini arar."
+        },
+        {
+          "id": "neden.degil",
+          "soru": "Neden başka türlü değil?",
+          "anlam": "Seçilmeyen yolu ve neden seçilmediğini arar."
+        }
+      ]
+    },
+    {
+      "kok": "nasil",
+      "soru": "Nasıl?",
+      "varyantlar": [
+        {
+          "id": "nasil.sinanir",
+          "soru": "Nasıl sınanır?",
+          "anlam": "Bir iddianın hangi denetimle kırılabileceğini arar."
+        },
+        {
+          "id": "nasil.geri_alinir",
+          "soru": "Nasıl geri alınır?",
+          "anlam": "Bir değişikliğin izi silinmeden nasıl geri çevrileceğini, geri alınamayan bir şey bırakıp bırakmadığını arar."
+        }
+      ]
+    },
+    {
+      "kok": "ne_icin",
+      "soru": "Ne için?",
+      "varyantlar": [
+        {
+          "id": "ne_icin.kimin",
+          "soru": "Kimin için?",
+          "anlam": "Amacın sahibini arar; her kullanıcının amacı ayrıdır."
+        },
+        {
+          "id": "ne_icin.degil",
+          "soru": "Ne için değildir?",
+          "anlam": "Amacın sınırını, beklenmemesi gereken kullanımı arar."
+        }
+      ]
+    },
+    {
+      "kok": "nereye",
+      "soru": "Nereye?",
+      "varyantlar": [
+        {
+          "id": "nereye.sonraki",
+          "soru": "Sonraki adım nereye?",
+          "anlam": "Belgelenmiş ya da karar bekleyen yönü arar."
+        },
+        {
+          "id": "nereye.gitmez",
+          "soru": "Nereye gitmez?",
+          "anlam": "Çıkmaması gereken yeri ve bu sınırın nasıl korunduğunu arar."
+        }
+      ]
+    }
+  ],
+  "simdi": {
+    "ne": {
+      "yanit": "Ana dalda Ortak Köprü, değişmeyen ve numaralı kayıtlardan oluşan bir HTML defterinin çevresine kurulmuş, seçilmiş içeriği yerel ile GitHub arasında taşıyan, isteğe bağlı bir iş takibi ve dış okuyucuya açılan beş sayfalık bir yayın taşıyan herkese açık bir depodur.",
+      "ogeler": [
+        {
+          "ad": "Kanonik defter",
+          "varyant": "ne.merkez",
+          "aciklama": "kopru.html 179 imzalı kayıt taşır; kayıtlar değiştirilmez, düzeltme yeni kayıtla ve eskisine yanıt bağıyla gelir.",
+          "durum": "gözlendi",
+          "dayanak": "kopru.html",
+          "olcum": "kopru_kaydi"
+        },
+        {
+          "ad": "Dört iş alanı",
+          "aciklama": "Dış alan kapısı (kapi.py), deus_ex_machina iş bileşeni (deus.py ve src/ortak_kopru), katılımcı otomasyonu (kopru_yanitla.py) ve dış okuyucu yayını (tools/okuma_yayini_uret.py).",
+          "durum": "gözlendi",
+          "dayanak": "README.md"
+        },
+        {
+          "ad": "Ne değildir",
+          "varyant": "ne.degil",
+          "aciklama": "Bir modelin kesintisiz belleği, hedef bilgisayarda sürekli çalışan bir sistem ya da katılımcıların özel düşünme dökümü değildir; belgeler bu sınırları açıkça yazar.",
+          "durum": "beyan",
+          "dayanak": "docs/SON_DURUM.md"
+        },
+        {
+          "ad": "Belge olarak kalan sözleşmeler",
+          "aciklama": "schemas/ altındaki altı JSON sözleşmesini ana dalda hiçbir kod veya test okumaz; kod sözleşmeden ayrılsa görünmez.",
+          "durum": "gözlendi",
+          "dayanak": "schemas/deus-task.schema.json"
+        }
+      ]
+    },
+    "nerede": {
+      "yanit": "Herkese açık GitHub deposu ve Pages yayını; beyana göre Haluk'un Y: sürücüsündeki kanonik klasör; Git dışında tutulan özel çalışma alanı.",
+      "ogeler": [
+        {
+          "ad": "Herkese açık yüz",
+          "aciklama": "HalukAINRS/ortak-kopru deposu, Pages yayını ve bu kesitte 26 dal ucu; araştırma ve devir malzemesi kendi dallarında durur.",
+          "durum": "gözlendi",
+          "dayanak": "docs/DEPO_REHBERI.md"
+        },
+        {
+          "ad": "Kanonik klasör",
+          "varyant": "nerede.gorulemez",
+          "aciklama": "README'ye göre kanonik kopya Y:\\HalukAI\\Ortak_Kopru\\kopru\\ klasörüdür; bulut oturumundan görülemez.",
+          "durum": "beyan",
+          "dayanak": "README.md#yerleştirme"
+        },
+        {
+          "ad": "Bulutta çalışan",
+          "varyant": "nerede.calisir",
+          "aciklama": "GitHub Actions'ta saatlik yanıtlayıcı (176 koşu, 28 Ekim'de de her saat başarılı), PR doğrulaması ve NT derlemesi.",
+          "durum": "gözlendi",
+          "dayanak": ".github/workflows/kopru.yml"
+        },
+        {
+          "ad": "Yerelde çalışan",
+          "varyant": "nerede.calisir",
+          "aciklama": "Haluk'un Windows makinesinde PowerShell izleyicisi ve göndericisi, loopback'te yerel iş ekranı.",
+          "durum": "beyan",
+          "dayanak": "kopru_izle.ps1"
+        }
+      ]
+    },
+    "ne_zaman": {
+      "yanit": "23 Ekim 2026 akşamı önce yerelde doğdu, 25 dakika sonra GitHub'a açıldı; defterin son kaydı 26 Ekim, ana dalın son birleşmesi 28 Ekim 09.25 UTC.",
+      "ogeler": [
+        {
+          "ad": "Doğuş sırası",
+          "aciklama": "k-0001 'Köprü açıldı' 19.55 UTC'de (22.55 UTC+3) yazıldı; GitHub deposu 20.20 UTC'de oluşturuldu.",
+          "durum": "gözlendi",
+          "dayanak": "kopru.html",
+          "olcum": "ilk_kayit_zamani"
+        },
+        {
+          "ad": "Son kayıt",
+          "aciklama": "k-0179, 26 Ekim 19.40 UTC; sayfanın son güncellemesi aynı an.",
+          "durum": "gözlendi",
+          "dayanak": "kopru.html",
+          "olcum": "son_kayit_zamani"
+        },
+        {
+          "ad": "Sessizliğin başlangıcı",
+          "varyant": "ne_zaman.beri",
+          "aciklama": "Son çağrı günlüğü 24 Ekim 10.11 UTC, son atlama satırı 25 Ekim 12.41 UTC. Saatlik yanıtlayıcı koşmaya devam ediyor ama bulut yolları için bekleyen kayıt kalmadığından modeli çağırmıyor.",
+          "durum": "gözlendi",
+          "dayanak": "kayit/atlandi.log",
+          "olcum": "son_gunluk_zamani"
+        },
+        {
+          "ad": "Bekleyen kırılma",
+          "varyant": "ne_zaman.bozulur",
+          "aciklama": "Ana daldaki kayıt ekleyici Git-Portable-2.56.0.2 gibi bir sürüm adını IP sanar; bir bot bunu alıntıladığı an kayıt reddedilir ve iş akışı hata verir. Bu henüz olmadı.",
+          "durum": "gözlendi",
+          "dayanak": "kopru_ekle.py"
+        }
+      ]
+    },
+    "ne_kadar": {
+      "yanit": "179 kayıt, 13 modüllük paket, 43 Python dosyası, 17 test dosyasında 226 test yöntemi, 6 sözleşme, 15 belge; çağrı günlükleri 122 dosyada 34 MB.",
+      "ogeler": [
+        {
+          "ad": "Kod ve test",
+          "aciklama": "Ana dalda 43 Python dosyası ve 10.267 satır; bunun 3.832 satırı 13 modüllük pakette; 17 test dosyasında 226 test yöntemi. Değerler bu oturumda ana dalın ayrı bir çalışma ağacında aynı araçla ölçüldü.",
+          "durum": "gözlendi",
+          "dayanak": "src/ortak_kopru/core.py"
+        },
+        {
+          "ad": "Defter",
+          "aciklama": "179 kayıt; 134'ü bir önceki kayda yanıt bağıyla bağlı, 167'sinin durum alanı açık. Gönderenler: Claude 84, ChatGPT 47, Copilot 31, Haluk 11, Gemini 6.",
+          "durum": "gözlendi",
+          "dayanak": "kopru.html",
+          "olcum": "yanit_bagli_kayit"
+        },
+        {
+          "ad": "Büyüme",
+          "varyant": "ne_kadar.buyur",
+          "aciklama": "Defter üç günde 179 kayda ulaştı, günde yaklaşık 60. Çağrı günlüklerinin baytlarının binde 973'ü, her çağrıda kopyalanan defterin kendisi. Ana dalda beş günde 228 commit birikti.",
+          "durum": "gözlendi",
+          "dayanak": "kayit/README.md",
+          "olcum": "gunluk_ileti_binde"
+        },
+        {
+          "ad": "Açık pay",
+          "varyant": "ne_kadar.acik",
+          "aciklama": "Durum alanı açık 167 kaydın çoğu kimseyi beklemiyor; ama 16'sı yapılandırılmış hiçbir yolun cevaplayamayacağı adreslerde: Gemini (Şahit) 12, Copilot (Şahit) 3, Gemini (CLI) 1.",
+          "durum": "gözlendi",
+          "dayanak": "KATMAN_HEDEFLEME.md",
+          "olcum": "yetim_acik_kayit"
+        }
+      ]
+    },
+    "nereden": {
+      "yanit": "İş Haluk'tan gelir; içerik ChatGPT, Claude, Gemini ve Copilot imzalı kayıtlardan, anlatı korunmuş tarihsel kaynaklardan beslenir.",
+      "ogeler": [
+        {
+          "ad": "Yetki",
+          "varyant": "nereden.yetki",
+          "aciklama": "Defterin ilk kuralı: merkez Haluk'tur, işi o verir. Köprüde açık bir kayıt görmek bir katılımcı için iş emri değildir.",
+          "durum": "gözlendi",
+          "dayanak": "AGENTS-kopru.md"
+        },
+        {
+          "ad": "Giriş yolları",
+          "varyant": "nereden.giris",
+          "aciklama": "Web asistanlarının JSON yanıtı, yerel CLI katmanları, GitHub Actions botu ve Haluk'un kendi eklemesi; dördü de kopru_ekle.py'den geçer.",
+          "durum": "gözlendi",
+          "dayanak": "kopru_ekle.py"
+        },
+        {
+          "ad": "Tarihsel kaynaklar",
+          "aciklama": "deus_ex_machina Rehberi'nin Parça 0–33'ü, Akış ve Karar Defteri, Üçüncü Defter ve Steering arşivi; hangi sözün nereden geldiği kaynak rehberinde ayrılır.",
+          "durum": "beyan",
+          "dayanak": "docs/KAYNAKLAR.md"
+        }
+      ]
+    },
+    "neden": {
+      "yanit": "Söz, yorum, gereç ve deneyim hiçbir katılımcının kesintisiz belleğine güvenmeden, kaynağı ve sahibiyle kaybolmadan sürsün diye.",
+      "ogeler": [
+        {
+          "ad": "Kaybolmasın",
+          "aciklama": "Akış ve Karar Defteri'nde korunmuş kullanıcı sözü: \"Akışın içinde eskide kalan şeyler kaybolmasın.\"",
+          "durum": "beyan",
+          "dayanak": "docs/KAYNAKLAR.md#akış-ve-karar-defteri"
+        },
+        {
+          "ad": "Seçilmeyen yol",
+          "varyant": "neden.degil",
+          "aciklama": "Kayıtlar düzenlenebilir bir sayfa ya da sohbet geçmişi yerine değişmeyen, numaralı bir defterde tutulur; çünkü bir düzeltmenin eski sözü silmemesi isteniyor.",
+          "durum": "yorum",
+          "dayanak": "CONTRIBUTING.md"
+        },
+        {
+          "ad": "Kapının nedeni",
+          "aciklama": "Yerel çalışma kendi araçlarında sürer; köprüye yalnız dışarı gidecek ya da dışarıdan alınacak içerik girer.",
+          "durum": "beyan",
+          "dayanak": "docs/kararlar/0002-dis-alan-kapisi.md"
+        }
+      ]
+    },
+    "nasil": {
+      "yanit": "Standart kütüphaneyle yazılmış ve denetimden geçmeden yazmayan Python araçlarıyla; ana dalda doğrulama belgelerde iki komut, CI'da beş ayrı adım.",
+      "ogeler": [
+        {
+          "ad": "Yazma kuralı",
+          "aciklama": "Kayıt ekleyici numara verir, yanıt bağının gerçek bir önceki kayda gittiğini, yasak desenleri ve sayfanın dışarıdan bir şey yüklemediğini denetler.",
+          "durum": "gözlendi",
+          "dayanak": "kopru_ekle.py"
+        },
+        {
+          "ad": "Sınama",
+          "varyant": "nasil.sinanir",
+          "aciklama": "Ana dalda belgeler iki doğrulama komutu önerir, CI ise beş ayrı adım koşar; sözleşmeleri okuyan test yoktur.",
+          "durum": "gözlendi",
+          "dayanak": ".github/workflows/dogrulama.yml"
+        },
+        {
+          "ad": "Geri alma",
+          "varyant": "nasil.geri_alinir",
+          "aciklama": "Kayıt silinmez; geri alma yeni kayıtla düzeltmedir. Kod PR ile girer ve Git geçmişinden geri çevrilir; göndericiler zorla gönderim yapmaz.",
+          "durum": "beyan",
+          "dayanak": "CONTRIBUTING.md#çakışma-çözümü"
+        }
+      ]
+    },
+    "ne_icin": {
+      "yanit": "Haluk'un tek yerden okuyup iş verebilmesi, katılımcıların önceki işi devralabilmesi, dış okuyucunun geri dönebilmesi ve yerel çıktının seçilerek paylaşılabilmesi için.",
+      "ogeler": [
+        {
+          "ad": "Kimin için",
+          "varyant": "ne_icin.kimin",
+          "aciklama": "Haluk için tek okuma noktası; katılımcı için devralma; dış okuyucu için anlam ve katkı yolu; geliştirici için doğrulama.",
+          "durum": "beyan",
+          "dayanak": "docs/ORTAK_MIMARI_DEFTERI.md#tek-noktanın-günlük-kullanım-anlamı"
+        },
+        {
+          "ad": "Ne için değildir",
+          "varyant": "ne_icin.degil",
+          "aciklama": "Bütün yerel işlerin buradan geçmesi için değildir; bir okuyucunun Issue açması yerel CLI işini başlatmaz.",
+          "durum": "beyan",
+          "dayanak": "docs/DIS_ALAN_KAPISI.md"
+        },
+        {
+          "ad": "Paylaşım ve tedarik",
+          "aciklama": "kapi.py seçilmiş dosyaları GitHub'da yeni bir dala gönderir ve GitHub'dan kesin bir commit'e bağlı kaynak alır.",
+          "durum": "gözlendi",
+          "dayanak": "docs/KAPI_KULLANIMI.md"
+        }
+      ]
+    },
+    "nereye": {
+      "yanit": "Belgelere göre kapının genel bir gelen/giden ekranına ve GitHub dışındaki dosya hizmetlerine, tek noktanın hedef bilgisayarda gözlenmesine; ayrıca karar bekleyen on iki açık taslak PR'ın sonucuna.",
+      "ogeler": [
+        {
+          "ad": "Belgelenmiş yön",
+          "varyant": "nereye.sonraki",
+          "aciklama": "README; genel gelen/giden ekranını, diğer dosya hizmeti bağlayıcılarını ve genel dış iş talebi akışını sonraki geliştirmeler olarak sayar.",
+          "durum": "beyan",
+          "dayanak": "README.md#güncel-yön-dış-alanlara-açılan-kapı"
+        },
+        {
+          "ad": "Gitmemesi gereken",
+          "varyant": "nereye.gitmez",
+          "aciklama": "Belirteç, anahtar, IP ve cihaz kimliği deftere; özel iş verileri depoya gitmez. Ana dalda bu sınırın iki açığı vardı: bulut Claude CLI'ına API anahtarları da geçiyordu, yerel gönderici izlenmeyen her dosyayı gönderebiliyordu.",
+          "durum": "gözlendi",
+          "dayanak": "kopru_gonder.ps1"
+        },
+        {
+          "ad": "Karar bekleyenler",
+          "aciklama": "Bu kesitte 12 açık taslak PR birleştirme, kapatma ya da sürdürme kararı bekliyordu.",
+          "durum": "gözlendi",
+          "dayanak": "https://github.com/HalukAINRS/ortak-kopru/pulls"
+        }
+      ]
+    }
+  },
+  "sonra": {
+    "senaryolar": [
+      {
+        "id": "S01",
+        "ad": "Rafinenin ana dala alınması",
+        "durum": "öneri",
+        "karar": "Haluk, PR #23'ü birleştirdiğinde.",
+        "kaynak_bulgu": [],
+        "onkosul": [],
+        "yanitlar": {
+          "ne": "Aynı depo; ama kendi sözünü sınayan bir depo: sözleşmeler çekirdeğin çıktısına, tanım depoya, belgedeki tablolar veri kaydına, doğrulama yerelde ve CI'da aynı listeye bağlı.",
+          "nerede": "Yer değişmez; tanım ve tur kayıtları docs/ altına, araçlar tools/ altına girer; Pages beş sayfayı aynı kaynaklardan yeniden yayımlar.",
+          "ne_zaman": "Birleşme anından itibaren; tanımın ölçümleri o kesitte tarihlenir, yalnız büyüyen defter değerleri alt sınır olarak izlenir.",
+          "ne_kadar": "Test yöntemi 226'dan 280'e, sözleşme 6'dan 9'a, belge 15'ten 20'ye çıkar; doğrulama tek komutta 9 kontrol koşar; 24 bulgunun 17'si kapanmış olur.",
+          "nereden": "Değişiklikler tek PR'dan gelir; kayıtların giriş yolları aynı kalır, ama bölüm parçaları da kayıt ekleyicinin denetiminden geçer.",
+          "neden": "Deponun kendi hakkında söyledikleriyle yaptıkları arasındaki aralıklar kapansın; tanım sessizce eskiyemesin.",
+          "nasil": "python tools/dogrula.py her PR'da Linux ve Windows'ta koşar; depo_tanimi.py --check ve rafine_sorulari.py --check bu listededir.",
+          "ne_icin": "Sonraki katılımcının, deponun hangi iddiasının sınandığını tek komutla görebilmesi için.",
+          "nereye": "Açık yedi bulguya, yani S02–S06 kararlarına."
+        },
+        "varyantlar": {
+          "nasil.geri_alinir": "Birleşme commit'i git revert ile geri çevrilir; kopru.html ve kayıtlar değişmediği için defter etkilenmez.",
+          "ne_zaman.bozulur": "Biri sözleşmeyi ya da onu üreten kodu tek başına değiştirirse sözleşme testi, yapısal bir ölçüm değişirse tanım denetimi kızarır; bu istenen bozulmadır.",
+          "nasil.sinanir": "PR #23'ün CI koşuları Windows'ta ve Ubuntu'da yeşil; PowerShell ayrıştırması ve testleri dahil."
+        },
+        "olcumler": [
+          "test_yontemi",
+          "json_sozlesmesi",
+          "dogrulama_kontrolu",
+          "rafine_duzeltilen"
+        ]
+      },
+      {
+        "id": "S02",
+        "ad": "Yerel göndericinin kapsamının daraltılması",
+        "durum": "öneri",
+        "karar": "Haluk, değişikliği kendi makinesinde denedikten sonra.",
+        "kaynak_bulgu": [
+          "R-17"
+        ],
+        "onkosul": [],
+        "yanitlar": {
+          "ne": "Yerel gönderici, bulut göndericisi gibi yalnız kopru.html, aynayı ve kayit/ klasörünü hazırlar; kapsam dışı hazırlanmış bir dosya görürse durur.",
+          "nerede": "Haluk'un Windows makinesinde, kopru_gonder.ps1 ve kopru_izle.ps1 içinde.",
+          "ne_zaman": "Değişiklikten sonraki ilk beş dakikalık izleyici turundan itibaren.",
+          "ne_kadar": "İki betikte birkaç satır ve bulut göndericisindeki kapsam testinin PowerShell karşılığı.",
+          "nereden": "Bulut göndericisinin bugün uyguladığı kuraldan, aynen.",
+          "neden": "Klasörde yanlışlıkla kalan bir dosya herkese açık geçmişe girmesin; giren bir dosya oradan geri alınamaz.",
+          "nasil": "git add -A yerine açık yol listesi; git diff --cached --name-only ile kapsam dışı yol denetimi.",
+          "ne_icin": "Haluk'un yerel klasörünü not, arşiv ve geçici dosya için çekinmeden kullanabilmesi için.",
+          "nereye": "Kod ve belge değişiklikleri izleyiciyle değil, PR yoluyla gider."
+        },
+        "varyantlar": {
+          "nasil.geri_alinir": "Betik değişikliği tek commit'le geri çevrilir. Ama kapsam daralmadan önce gönderilmiş bir dosya herkese açık geçmişten geri alınamaz; bu asimetri senaryonun asıl nedenidir.",
+          "nereye.gitmez": "Not dosyaları, indirilen arşivler, geçici JSON'lar ve kilitlenme sonrası kalan birleştirme dosyaları ana dala.",
+          "ne_zaman.bozulur": "Haluk izleyiciyle bilerek kod da gönderiyorsa bu kullanım durur; o durumda PR yoluna geçmek gerekir."
+        }
+      },
+      {
+        "id": "S03",
+        "ad": "Başlatıcı yollarının tek kaynaktan türetilmesi",
+        "durum": "öneri",
+        "karar": "Haluk, hedef makinedeki gerçek yolları doğruladıktan sonra.",
+        "kaynak_bulgu": [
+          "R-18",
+          "R-20"
+        ],
+        "onkosul": [],
+        "yanitlar": {
+          "ne": "kopru_yerel.ps1; Codex, Copilot ve ssh yollarını ve bekleyen sorgularındaki imzaları ayarlar-yerel.json'dan okur.",
+          "nerede": "Haluk'un makinesinde; ayarlar-yerel.json ve kopru_yerel.ps1.",
+          "ne_zaman": "Yollar hedef makinede doğrulandığında; bu bulut oturumundan doğrulanamaz.",
+          "ne_kadar": "Hazırlık ekranında 0 görünen bekleyenler gerçek imzalarla görünür: ChatGPT (Şaman) 38, Google (CLI izleyici) 15, Claude (Hacker) 1.",
+          "nereden": "Tek kaynak ayarlar-yerel.json; iki dosyanın başındaki 'ikisini birlikte düzelt' notu gereksizleşir.",
+          "neden": "Giriş komutunun yazdığı kimlik, izleyicinin kullandığı klasöre gitsin; hazırlık raporu gerçekten kullanılan kurulumu sınasın.",
+          "nasil": "PowerShell'de ConvertFrom-Json ile katılımcılar okunur; depo yolu betiğin kendi konumundan türetilir.",
+          "ne_icin": "Haluk'un hazırlık ekranındaki 'TAMAM' ve 'EKSİK' sözlerine güvenebilmesi için.",
+          "nereye": "Başlatıcının makineye özel sabit yollardan arınmasına."
+        },
+        "varyantlar": {
+          "nasil.geri_alinir": "Betik commit'i geri çevrilir; ayar dosyası değişmediği için izleyicinin çalıştırdığı yollar etkilenmez.",
+          "nerede.gorulemez": "Y: sürücüsündeki gerçek dizinler bulut oturumundan görülemez; bu yüzden ilgili bulgu 'doğrulanmadı' durumunda."
+        }
+      },
+      {
+        "id": "S04",
+        "ad": "Şahit yolunun tanımlanması",
+        "durum": "olasılık",
+        "karar": "Haluk: Şahit rolünün hangi araçla cevap vereceği.",
+        "kaynak_bulgu": [
+          "R-19"
+        ],
+        "onkosul": [],
+        "yanitlar": {
+          "ne": "Yerel ayara 'Gemini (Şahit)' imzalı bir çağrı yolu eklenir; hedefleme sözleşmesinin yeni işleri yönlendirdiği adres cevap verebilir hâle gelir.",
+          "nerede": "Haluk'un makinesinde, Şahit'in kullanacağı CLI ile.",
+          "ne_zaman": "Araç kurulup ilk çağrı günlüğü yazıldığında.",
+          "ne_kadar": "16 cevapsız açık kaydın 12'si cevaplanabilir olur; 4'ü (Copilot (Şahit) 3, Gemini (CLI) 1) kalır.",
+          "nereden": "KATMAN_HEDEFLEME.md'nin yeni işleri Gemini (Şahit) adresine yönlendiren kuralından.",
+          "neden": "Sözleşmenin yönlendirdiği adrese giden bir yol yokken kayıtlar sessizce birikiyor.",
+          "nasil": "Yanıtlayıcının var olan CLI sağlayıcısıyla; kod değişmez, yalnız ayar satırı eklenir.",
+          "ne_icin": "Şahit'e yazılmış soruların gerçekten okunması için.",
+          "nereye": "Kalan 4 kayıt için ayrı bir karara: tarihsel Copilot (Şahit) kayıtlarının yeni kayıtla kapatılması mı, yeniden adreslenmesi mi."
+        },
+        "varyantlar": {
+          "nasil.geri_alinir": "Ayar satırı kaldırılır; yazılmış kayıtlar defterde kalır ve yeni kayıtla düzeltilir.",
+          "ne_kadar.acik": "Cevapsız açık kayıtların dörtte üçü bu tek kararla çözülür."
+        },
+        "olcumler": [
+          "yetim_acik_kayit",
+          "sahit_yolu_sonrasi_yetim"
+        ]
+      },
+      {
+        "id": "S05",
+        "ad": "Çağrı günlüklerinin inceltilmesi",
+        "durum": "olasılık",
+        "karar": "Haluk: günlüklerin kanıt değeri ile depo büyümesi arasındaki tercih.",
+        "kaynak_bulgu": [
+          "R-21"
+        ],
+        "onkosul": [],
+        "yanitlar": {
+          "ne": "Yeni günlükler defterin tam kopyası yerine kayıt kimliklerini ve sayfanın özetini taşır; sistem istemi, ham yanıt ve sonuç aynen kalır.",
+          "nerede": "kopru_yanitla.py içindeki günlük yazımı; kayit/ altındaki eski dosyalar olduğu gibi durur.",
+          "ne_zaman": "Değişiklikten sonraki ilk model çağrısından itibaren.",
+          "ne_kadar": "Bugünkü 122 günlük bu biçimde yaklaşık 0,95 MB tutardı (bugün 34 MB); son günlük 637 KB yerine yaklaşık 10 KB olurdu.",
+          "nereden": "Defterin kendisinden: kayıtlar değişmediği için kimlik listesi ve sayfanın Git geçmişi o anki istemi yeniden kurmaya yeter.",
+          "neden": "Her çağrı, defterin tamamını herkese açık geçmişe bir kez daha ekliyor; büyüme kayıt sayısıyla birlikte hızlanıyor.",
+          "nasil": "Kullanıcı iletisi bölümünün yerine kimlik listesi ve özet yazılır; --kuru ve --istem kipleri tam istemi göstermeye devam eder.",
+          "ne_icin": "Deponun klonlanabilir ve okunabilir kalması için.",
+          "nereye": "kayit/README.md'deki günlük biçimi açıklamasına."
+        },
+        "varyantlar": {
+          "nasil.geri_alinir": "Yazım biçimi eski hâline döndürülür; inceltilmiş günlüklerdeki istem, sayfanın Git geçmişi ve kimlik listesiyle yeniden kurulabildiği için kanıt kaybolmaz.",
+          "neden.simdi": "Günlükler 24 Ekim'den beri yazılmıyor; biçim, hiçbir eski kayda dokunmadan ve süren bir yazışmayı bölmeden bugün değiştirilebilir.",
+          "ne_zaman.beri": "Son günlük 24 Ekim 10.11 UTC'de yazıldı; atlama günlüğü 25 Ekim 12.41 UTC'den beri sessiz."
+        },
+        "olcumler": [
+          "gunluk_bayti",
+          "gunluk_inceltilmis_bayt_tahmini",
+          "son_gunluk_inceltilmis_bayt_tahmini"
+        ]
+      },
+      {
+        "id": "S06",
+        "ad": "Sürüm etiketinin ve kanıt notunun açıklanması",
+        "durum": "öneri",
+        "karar": "Haluk.",
+        "kaynak_bulgu": [
+          "R-22",
+          "R-23"
+        ],
+        "onkosul": [],
+        "yanitlar": {
+          "ne": "kopru.html'deki 4.2 sürüm etiketinin neyi saydığı ve README'deki 4.6.x numaralarıyla ilişkisi bir yerde yazılır; hiç uygulanmamış kanıt satırı notu ya uygulanır ya da betiği kaldırılır.",
+          "nerede": "README'nin değişiklik geçmişi ve gerekiyorsa deftere eklenecek yeni bir kayıt.",
+          "ne_zaman": "Haluk'un kararıyla; başka hiçbir senaryoyu beklemez.",
+          "ne_kadar": "Birkaç cümle ve bir betik.",
+          "nereden": "Sürüm numaralarını koyan kişinin niyetinden; bu niyet belgelerde yazılı değil.",
+          "neden": "Bir okuyucu iki farklı sürüm numarası gördüğünde hangisinin neye ait olduğunu bilmeli.",
+          "nasil": "Belge değişikliği PR ile; deftere ilişkin açıklama kopru_ekle.py ile yeni kayıt olarak.",
+          "ne_icin": "Dış okuyucunun sürüm geçmişini doğru okuyabilmesi için.",
+          "nereye": "README'nin değişiklik geçmişine."
+        },
+        "varyantlar": {
+          "nasil.geri_alinir": "Belge değişikliği geri çevrilir; deftere eklenmiş bir açıklama ise silinmez, gerekirse yeni bir kayıtla düzeltilir."
+        }
+      },
+      {
+        "id": "S07",
+        "ad": "Tek noktanın bilgisayarda gözlenmesi",
+        "durum": "beyan",
+        "karar": "Haluk'un makinesinde yapılacak küçük bir deneme.",
+        "kaynak_bulgu": [],
+        "onkosul": [
+          "S01",
+          "S03"
+        ],
+        "yanitlar": {
+          "ne": "Aynı işin CLI ve GitHub karşılıklarının birbirine bağlandığı ilk gözlenmiş örnek: girdi, yerel sonuç ve ortak kayıt.",
+          "nerede": "Haluk'un bilgisayarında ve bu depoda, aynı anda.",
+          "ne_zaman": "Rafine ana dala girip başlatıcı yolları doğru kurulduktan sonra; ortak mimari defteri bunu 'önümüzdeki küçük deneme' diye anıyor.",
+          "ne_kadar": "Tek bir iş yeter; amaç sayı değil, ilk gözlem.",
+          "nereden": "Ortak mimari defterindeki tek nokta (1) tarifinden.",
+          "neden": "Bu bağlantı şimdiye kadar yalnız tarif edildi; hiçbir belge gerçekleştiğini ileri sürmüyor.",
+          "nasil": "kapi.py ile seçilmiş bir dosya yeni bir dala gönderilir; aynı iş defterde bir kayıtla bağlanır ve gönderim makbuzu kayda dayanak olur.",
+          "ne_icin": "Kullanıcının 'tek noktadan (1)' hedefinin ilk kanıtı için.",
+          "nereye": "Sonuç, kanıtıyla birlikte ortak mimari defterinin 'Uygulamanın bulunduğu yer' bölümüne eklenir."
+        },
+        "varyantlar": {
+          "nasil.geri_alinir": "Deneme yeni bir dalda yapılır; kapı mevcut dalın üzerine yazmadığı ve PR birleştirmediği için geri alma, dalı silmekten ibarettir.",
+          "nasil.sinanir": "Gönderim makbuzu, GitHub'daki dal ve defterdeki kayıt aynı işi gösterir."
+        }
+      },
+      {
+        "id": "S08",
+        "ad": "Kapının genişlemesi",
+        "durum": "beyan",
+        "karar": "Haluk; README'nin sonraki geliştirmeler listesine göre.",
+        "kaynak_bulgu": [],
+        "onkosul": [
+          "S07"
+        ],
+        "yanitlar": {
+          "ne": "Genel bir gelen/giden ekranı, GitHub dışındaki dosya hizmetleri için bağlayıcılar ve genel bir dış iş talebi akışı.",
+          "nerede": "src/ortak_kopru/adapters altında yeni bağlayıcılar ve yerel ekran.",
+          "ne_zaman": "Tek nokta gözlendikten sonra; ilk gözlem, genişlemenin neyi taşıması gerektiğini belirler.",
+          "ne_kadar": "Karar 0002'nin dört uygulama aşamasından dördüncüsü.",
+          "nereden": "Dış alan kapısı rehberinden ve Karar 0002'den.",
+          "neden": "Yerel çıktı yalnız GitHub'a değil, kullanıcının çalıştığı diğer yerlere de seçilerek gidebilsin.",
+          "nasil": "Var olan aktarım sözleşmesi ve plan, gönderim, uzlaştırma çevrimiyle; her hedef kendi makbuzuyla.",
+          "ne_icin": "Yerel çalışmanın kendi araçlarında kalıp yalnız seçilmiş sonucunun dışarı açılması için.",
+          "nereye": "Yeni hedeflere; her biri kendi makbuzu ve belirsiz sonuç uzlaştırmasıyla."
+        },
+        "varyantlar": {
+          "nasil.geri_alinir": "Her bağlayıcı ayrı bir modüldür; kaldırıldığında GitHub yolu değişmez."
+        }
+      }
+    ]
+  },
+  "birlesimler": [
+    {
+      "id": "B01",
+      "sorular": [
+        "nereden",
+        "nereye"
+      ],
+      "varyantlar": [
+        "nereden.giris",
+        "nereye.gitmez"
+      ],
+      "soru": "Bilgi nereden girip nereye çıkar?",
+      "katman": "ikisi",
+      "yanit": "Dört giriş yolu tek kayıt ekleyiciden geçer; çıkış iki yöndür: defter herkese açık depoya ve Pages'e, seçilmiş dosyalar kapıdan yeni bir GitHub dalına. Ters yönde GitHub'dan alınan dosya kesin bir commit'e bağlanıp yeni bir dizine çıkar, yerel projeye kendiliğinden uygulanmaz. Rafine sonrası, gizli değerler ve kapsam dışı dosyalar için 'nereye gitmez' sınırı iki ayrı yerde daha sıkı.",
+      "durum": "gözlendi",
+      "dayanak": "docs/KAPI_KULLANIMI.md"
+    },
+    {
+      "id": "B02",
+      "sorular": [
+        "ne_zaman",
+        "ne_kadar"
+      ],
+      "varyantlar": [
+        "ne_zaman.beri",
+        "ne_kadar.buyur"
+      ],
+      "soru": "Ne zaman ne kadar büyüdü?",
+      "katman": "simdi",
+      "yanit": "İlk üç günde 179 kayıt ve 122 çağrı günlüğü yazıldı; 24 Ekim'den sonra günlük, 26 Ekim'den sonra kayıt eklenmedi. 28 Ekim'de ise üç PR birleşti; üçü de ağırlıkla belge ve okuma sayfasıydı, yalnız ikisi bu sayfaları üreten araca dokundu. Büyüme durmadı, yer değiştirdi: defterden belgelere ve PR'lara.",
+      "durum": "gözlendi",
+      "olcumler": [
+        "kopru_kaydi",
+        "son_gunluk_zamani"
+      ]
+    },
+    {
+      "id": "B03",
+      "sorular": [
+        "neden",
+        "ne_icin"
+      ],
+      "varyantlar": [
+        "ne_icin.kimin"
+      ],
+      "soru": "Gerekçe ile amaç nasıl ayrılır?",
+      "katman": "ikisi",
+      "yanit": "Neden, deponun var olma gerekçesidir: önceki söz kaybolmasın. Ne için, onu kimin hangi işte kullandığıdır: Haluk tek yerden okusun, katılımcı devralsın, okuyucu dönsün. Rafine bu ikisini birbirine bağladı; gerekçe 'kaybolmasın' ise aracın kendi sözü de sessizce eskimemeli.",
+      "durum": "yorum"
+    },
+    {
+      "id": "B04",
+      "sorular": [
+        "nerede",
+        "nasil"
+      ],
+      "varyantlar": [
+        "nerede.calisir"
+      ],
+      "soru": "Her yerde hangi araç çalışır?",
+      "katman": "simdi",
+      "yanit": "Actions'ta Python yanıtlayıcı ve Bash gönderici, Haluk'un makinesinde PowerShell izleyici ve gönderici, tarayıcıda statik sayfalar, loopback'te iş sunucusu. Aynı gönderim kuralı iki yerde iki ayrı dilde yazılmış ve ikisi aynı değil: kapsam Bash'te sınırlı, PowerShell'de değil.",
+      "durum": "gözlendi",
+      "dayanak": ".github/scripts/kopru_gonder.sh"
+    },
+    {
+      "id": "B05",
+      "sorular": [
+        "ne",
+        "nasil",
+        "ne_kadar"
+      ],
+      "varyantlar": [
+        "nasil.sinanir"
+      ],
+      "soru": "Ne iddia ediliyor, nasıl sınanıyor ve ne kadarı?",
+      "katman": "ikisi",
+      "yanit": "Ana dalda altı sözleşmenin hiçbiri ve CI'daki beş adımın ancak ikisi belgelerdeki yerel doğrulamada sınanıyordu. Rafine sonrası sözleşmelerin hepsi çekirdeğin gerçek çıktısına, tanımın yapısal ölçümleri depoya, bu kaydın tabloları belgeye karşı sınanıyor ve hepsi tek komutta koşuyor.",
+      "durum": "gözlendi",
+      "olcumler": [
+        "json_sozlesmesi",
+        "dogrulama_kontrolu"
+      ]
+    },
+    {
+      "id": "B06",
+      "sorular": [
+        "ne_zaman",
+        "nasil"
+      ],
+      "varyantlar": [
+        "ne_zaman.bozulur",
+        "nasil.geri_alinir"
+      ],
+      "soru": "Ne zaman bozulur ve nasıl geri alınır?",
+      "katman": "sonra",
+      "yanit": "Her senaryo bu iki soruyu birlikte yanıtlıyor. Hepsi geri alınabilir; tek istisna, herkese açık geçmişe girmiş bir dosya. Bu asimetri, en küçük değişiklik olmasına rağmen S02'yi en ağır senaryo yapıyor.",
+      "durum": "yorum"
+    },
+    {
+      "id": "B07",
+      "sorular": [
+        "nereden",
+        "neden"
+      ],
+      "varyantlar": [
+        "nereden.yetki"
+      ],
+      "soru": "Yetki nereden gelir ve neden oradan?",
+      "katman": "simdi",
+      "yanit": "İş Haluk'tan gelir; açık bir kayıt iş emri değildir. Birden çok otomatik yazanın bulunduğu bir defterde görülen her kayıt iş sayılsaydı botlar birbirine iş üretirdi. Bot commit'lerindeki [skip ci] işareti ve katman hedefleme kuralları aynı kaygının araçtaki karşılığı.",
+      "durum": "yorum",
+      "dayanak": "KATMAN_HEDEFLEME.md"
+    },
+    {
+      "id": "B08",
+      "sorular": [
+        "ne_kadar",
+        "nereye"
+      ],
+      "varyantlar": [
+        "ne_kadar.acik",
+        "nereye.sonraki"
+      ],
+      "soru": "Ne kadarı, nereye gitmeyi bekliyor?",
+      "katman": "ikisi",
+      "yanit": "16 açık kayıt cevaplanamayan adreslerde, 12 açık taslak PR ve 7 açık bulgu karar bekliyor. Tek bir karar (S04) cevapsız kayıtların 12'sini çözer; açık bulguların hepsi S02–S06 arasında bir senaryoya bağlı.",
+      "durum": "gözlendi",
+      "olcumler": [
+        "yetim_acik_kayit",
+        "sahit_yolu_sonrasi_yetim",
+        "acik_bulgu"
+      ]
+    },
+    {
+      "id": "B09",
+      "sorular": [
+        "ne",
+        "ne_icin"
+      ],
+      "varyantlar": [
+        "ne.degil",
+        "ne_icin.degil"
+      ],
+      "soru": "Ne değildir ve ne için değildir?",
+      "katman": "simdi",
+      "yanit": "Bir model belleği, hedef bilgisayarda çalışan bir sistem ya da bütün yerel işlerin geçtiği bir boru değildir; bir okuyucunun Issue açması hiçbir yerel aracı çalıştırmaz. Bu iki olumsuz tanım, deponun belgelerinde en çok tekrar eden cümleler arasında: deponun sınırı, onu tanımlayan şeyin büyük kısmı.",
+      "durum": "yorum"
+    },
+    {
+      "id": "B10",
+      "sorular": [
+        "nerede",
+        "ne_zaman",
+        "nereden"
+      ],
+      "varyantlar": [
+        "nerede.gorulemez"
+      ],
+      "soru": "Defter nerede, ne zaman ve nereden doğdu?",
+      "katman": "simdi",
+      "yanit": "Önce yerelde (k-0001, 19.55 UTC), 25 dakika sonra GitHub'da (20.20 UTC). 'Kanonik kopya yereldir' kuralı sonradan konmuş bir ilke değil, bu doğuş sırasının kaydı. Doğduğu yer bugün de yalnız beyanla bilinir.",
+      "durum": "gözlendi",
+      "dayanak": "kopru.html"
+    },
+    {
+      "id": "B11",
+      "sorular": [
+        "neden",
+        "ne_zaman"
+      ],
+      "varyantlar": [
+        "neden.simdi"
+      ],
+      "soru": "Neden şimdi?",
+      "katman": "sonra",
+      "yanit": "Defter iki gündür, çağrı günlükleri dört gündür sessiz; ana dalın son üç PR'ı ağırlıkla belge ve okuma sayfasıydı. Araçlara ve günlük biçimine dokunmak, süren bir yazışmayı bölmeden ve hiçbir eski kayda dokunmadan bugün mümkün.",
+      "durum": "yorum"
+    },
+    {
+      "id": "B12",
+      "sorular": [
+        "ne",
+        "nerede",
+        "ne_zaman",
+        "ne_kadar",
+        "nereden",
+        "neden",
+        "nasil",
+        "ne_icin",
+        "nereye"
+      ],
+      "varyantlar": [
+        "neden.degil",
+        "nereye.sonraki"
+      ],
+      "soru": "Dokuz soru tek cümlede",
+      "katman": "ikisi",
+      "yanit": "Şimdi: 23 Ekim'de yerelde doğan ve GitHub'da herkese açık duran, dört üreticinin 179 kaydını Haluk'un verdiği işlerle değişmeden tutan Ortak Köprü, önceki söz kaybolmasın diye standart kütüphane araçlarıyla çalışır ve Haluk'un tek yerden okuması için kapısını GitHub dışına açmaya hazırlanır. Rafine sonrası: aynı depo, söylediğini kendisi sınayan bir yapıya kavuşur; ölçüsünü, sözleşmelerini ve tanımını her PR'da yeniden doğrular ve önündeki yedi kararı geri alınabilirlikleriyle birlikte, sırasıyla taşır.",
+      "durum": "yorum"
+    }
+  ],
+  "hesaplanan": {
+    "gunluk_sayisi": 122,
+    "gunluk_bayti": 34153346,
+    "gunluk_ileti_bayti": 33226060,
+    "gunluk_ileti_binde": 973,
+    "gunluk_inceltilmis_bayt_tahmini": 951686,
+    "son_gunluk_bayti": 637011,
+    "son_gunluk_inceltilmis_bayt_tahmini": 10378,
+    "gunluk_yazilan_gun": 2,
+    "ilk_gunluk_zamani": "2026-10-23T21:02:44Z",
+    "son_gunluk_zamani": "2026-10-24T10:11:57Z",
+    "atlandi_satiri": 113,
+    "son_atlandi_zamani": "2026-10-25T12:41:50Z",
+    "yapilandirilmis_yol": 7,
+    "yetim_acik_kayit": 16,
+    "yetim_dagilimi": "copilot (şahit)=3; gemini (cli)=1; gemini (şahit)=12",
+    "sahit_yolu_sonrasi_yetim": 4,
+    "acik_bulgu": 7,
+    "duzeltilen_bulgu": 17
+  }
+}

@@ -47,6 +47,8 @@ KONTROLLER: list[tuple[str, str, list[str], str | None]] = [
      [sys.executable, str(KOK / "tools/sema_denetle.py")], None),
     ("tanim", "Dokuz koordinatlı depo tanımının ölçümleri ve dayanakları",
      [sys.executable, str(KOK / "tools/depo_tanimi.py"), "--check"], None),
+    ("sorular", "Şimdi ve sonrası kaydı: senaryolar, varyantlar, birleşimler ve belge tabloları",
+     [sys.executable, str(KOK / "tools/rafine_sorulari.py"), "--check"], None),
     ("arayuz", "Yerel arayüz JavaScript sözdizimi",
      ["node", "--check", str(KOK / "ui/deus/app.js")], "node"),
     ("gonderim", "Bulut gönderim betiğinin Bash sözdizimi",

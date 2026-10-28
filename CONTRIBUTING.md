@@ -40,7 +40,7 @@ python kopru_ayna_uret.py kopru.html ayna/kopru.html
 python tools/depo_kontrol.py
 ```
 
-Dosya ekleyen, silen veya kod satırı değiştiren bir katkıdan sonra `python tools/depo_tanimi.py` ölçümleri yeniler; `--check` aynı denetimi yazmadan yapar ve CI'da koşar.
+Sözleşme, iş akışı veya doğrulama kontrolü ekleyen ya da kaldıran bir katkıdan sonra `python tools/depo_tanimi.py` tanımın ölçümlerini yeniler; satır, dosya ve test sayısındaki değişiklikler ise yenileme gerektirmez, `--check` bunları yalnız bilgi olarak yazar. Rafine bulgusu açan veya kapatan bir katkı, [şimdi ve sonrası kaydındaki](docs/rafine-sorulari.json) ilgili senaryoyu da günceller; `python tools/rafine_sorulari.py` belgedeki tabloları yeniden yazar, `--check` kaydı ve belgeyi denetler.
 
 `schemas/` altındaki bir sözleşmeyi veya onu üreten kodu değiştirirken `python tools/sema_denetle.py` ile şemanın desteklenen alt kümede kaldığını, `python -m unittest tests.test_semalar` ile de çekirdeğin ürettiği nesnelerin sözleşmeye hâlâ uyduğunu kontrol edin; ikisi de dış paket istemez.
 

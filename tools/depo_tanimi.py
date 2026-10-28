@@ -9,6 +9,15 @@ defter zamanlarının kopru.html ile eşliği. Böylece tanım sessizce eskiyeme
 Ölçümler platformdan bağımsızdır: dosya listesi Git'ten alınır, bayt ve satır sayıları
 CRLF→LF normalleştirilerek hesaplanır, testler çalıştırılmadan AST ile sayılır.
 
+Ölçümler üç sınıfta denetlenir:
+  KATI     yapısal değerler (sözleşme, iş akışı, doğrulama kontrolü, okuma sayfası sayıları, ilk
+           kayıt zamanı, rafine bulguları): birebir eşleşmeli; değişmeleri tanımı değiştirir.
+  BUYUYEN  defter ve çağrı günlüklerine bağlı değerler: kayıtlar değiştirilmez, yeni kayıt sona
+           eklenir; kayıtlı değer alt sınırdır, küçülme hatadır, büyüme bilgidir.
+  ANLIK    her kod veya belge değişikliğiyle oynayan sayılar (dosya, satır, test yöntemi, belge):
+           kesitin tarihli değeridir; fark hata değil bilgidir. Böylece ana dala giren ilgisiz
+           bir değişiklik başka katılımcıların PR'larını kızartmaz.
+
 Kullanım:
     python tools/depo_tanimi.py            # ölçümleri yenile (yalnız ne_kadar.olcumler yazılır)
     python tools/depo_tanimi.py --check    # yazmadan denetle; uyumsuzlukta çıkış 1
@@ -18,6 +27,7 @@ from __future__ import annotations
 
 import argparse
 import ast
+from datetime import datetime
 import json
 from pathlib import Path
 import re
@@ -36,6 +46,13 @@ import okuma_yayini_uret  # noqa: E402
 import sema_denetle  # noqa: E402
 
 KOORDINATLAR = ("ne", "nerede", "ne_zaman", "ne_kadar", "nereden", "neden", "nasil", "ne_icin", "nereye")
+# Defter ve günlüklerle yalnız büyüyen ölçümler: kayıtlı değer, ölçülenin alt sınırıdır.
+BUYUYEN = frozenset({"kopru_kaydi", "acik_durumlu_kayit", "yanit_bagli_kayit",
+                     "defter_bayti", "cagri_gunlugu", "cagri_gunlugu_bayti"})
+BUYUYEN_ZAMAN = frozenset({"son_kayit_zamani", "defter_son_guncelleme"})
+# Her kod veya belge değişikliğiyle oynayan sayılar: tarihli anlık değer, fark yalnız bilgidir.
+ANLIK = frozenset({"izlenen_dosya", "python_dosyasi", "python_satiri", "paket_satiri",
+                   "test_dosyasi", "test_yontemi", "belge"})
 
 
 def _dosyalar() -> list[str]:
@@ -114,18 +131,57 @@ def dayanak_yolu(dayanak: str) -> Path | None:
     return KOK / yol
 
 
-def denetle(tanim: dict, olcum: dict) -> list[str]:
+def _zaman(deger: str) -> datetime | None:
+    try:
+        return datetime.fromisoformat(deger.replace("Z", "+00:00"))
+    except (AttributeError, ValueError):
+        return None
+
+
+def defter_zamanlari() -> set[str]:
+    """Defterdeki bütün kayıt zamanları ve sayfanın son güncellemesi; kayıtlar değişmediği için kalıcıdır."""
+    belge = (KOK / "kopru.html").read_text(encoding="utf-8")
+    ayristirici = Ayristirici()
+    ayristirici.feed(belge)
+    ayristirici.close()
+    guncelleme = re.search(r'id="son-guncelleme" datetime="([^"]+)"', belge)
+    return {kayit["zaman"] for kayit in ayristirici.kayitlar} | ({guncelleme.group(1)} if guncelleme else set())
+
+
+def olcum_farki(anahtar: str, kayitli, olculen) -> str | None:
+    """Kayıtlı ölçüm ile ölçülen arasındaki kabul edilmeyen farkı açıklar; kabul edilirse None."""
+    if anahtar in BUYUYEN and isinstance(kayitli, int) and isinstance(olculen, int):
+        return None if olculen >= kayitli else f"kayıtlı {kayitli!r}, ölçülen {olculen!r} (yalnız büyüyebilir)"
+    if anahtar in BUYUYEN_ZAMAN:
+        once, simdi = _zaman(kayitli), _zaman(olculen)
+        if once and simdi:
+            return None if simdi >= once else f"kayıtlı {kayitli!r}, ölçülen {olculen!r} (geriye gidemez)"
+    if anahtar in ANLIK and isinstance(kayitli, int) and isinstance(olculen, int):
+        return None
+    return None if kayitli == olculen else f"kayıtlı {kayitli!r}, ölçülen {olculen!r}"
+
+
+def buyuyenler(tanim: dict, olcum: dict) -> list[str]:
+    """Kesitten bu yana değişen büyüyen ve anlık ölçümler; hata değil, tarihli değerin eskidiğine dair bilgi."""
+    kayitli = tanim["koordinatlar"]["ne_kadar"].get("olcumler", {})
+    return [f"{anahtar}: {kayitli[anahtar]!r} → {olcum[anahtar]!r}" for anahtar in sorted(BUYUYEN | BUYUYEN_ZAMAN | ANLIK)
+            if anahtar in kayitli and anahtar in olcum and kayitli[anahtar] != olcum[anahtar]
+            and olcum_farki(anahtar, kayitli[anahtar], olcum[anahtar]) is None]
+
+
+def denetle(tanim: dict, olcum: dict, zamanlar: set[str] | None = None) -> list[str]:
     sema = sema_denetle.sema_yukle("depo-tanimi")
     hatalar = [f"sözleşme: {hata}" for hata in sema_denetle.dogrula(sema, tanim)]
     if hatalar:
         return hatalar
     kayitli = tanim["koordinatlar"]["ne_kadar"].get("olcumler", {})
     for anahtar in sorted(set(kayitli) | set(olcum)):
-        if kayitli.get(anahtar) != olcum.get(anahtar):
-            hatalar.append(f"ne_kadar.olcumler.{anahtar}: kayıtlı {kayitli.get(anahtar)!r}, ölçülen {olcum.get(anahtar)!r}")
-    defter_zamanlari = {olcum.get("ilk_kayit_zamani"), olcum.get("son_kayit_zamani"), olcum.get("defter_son_guncelleme")}
+        fark = olcum_farki(anahtar, kayitli.get(anahtar), olcum.get(anahtar))
+        if fark:
+            hatalar.append(f"ne_kadar.olcumler.{anahtar}: {fark}")
+    zamanlar = defter_zamanlari() if zamanlar is None else zamanlar
     for sira, oge in enumerate(tanim["koordinatlar"]["ne_zaman"]["ogeler"]):
-        if oge.get("dayanak") == "kopru.html" and oge.get("zaman") not in defter_zamanlari:
+        if oge.get("dayanak") == "kopru.html" and oge.get("zaman") not in zamanlar:
             hatalar.append(f"ne_zaman.ogeler[{sira}].zaman: {oge.get('zaman')!r} defterdeki zamanlarla eşleşmiyor")
     for koordinat in KOORDINATLAR:
         for sira, oge in enumerate(tanim["koordinatlar"][koordinat]["ogeler"]):
@@ -155,6 +211,8 @@ def main() -> int:
     hatalar = denetle(tanim, olcum)
     for hata in hatalar:
         print(hata)
+    for bilgi in buyuyenler(tanim, olcum):
+        print(f"bilgi: kesitten bu yana değişti, tarihli değer korunuyor: {bilgi}")
     if hatalar:
         if args.check:
             print("Yenilemek için: python tools/depo_tanimi.py")

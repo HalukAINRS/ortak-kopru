@@ -37,8 +37,50 @@ class DepoTanimiTests(unittest.TestCase):
                 self.assertGreaterEqual(len(koordinat["ogeler"]), 3)
 
     def test_recorded_measurements_match_the_repository_now(self):
-        self.assertEqual(self.tanim["koordinatlar"]["ne_kadar"]["olcumler"], self.olcum)
+        kayitli = self.tanim["koordinatlar"]["ne_kadar"]["olcumler"]
+        self.assertEqual(set(kayitli), set(self.olcum))
+        katilar = set(self.olcum) - depo_tanimi.BUYUYEN - depo_tanimi.BUYUYEN_ZAMAN - depo_tanimi.ANLIK
+        self.assertEqual({k: kayitli[k] for k in katilar}, {k: self.olcum[k] for k in katilar})
         self.assertEqual(depo_tanimi.denetle(self.tanim, self.olcum), [])
+
+    def test_new_ledger_records_on_main_do_not_break_the_check_but_shrinking_does(self):
+        # Ana dala bot ya da yerel gönderici yeni kayıt ve günlük eklediğinde ilgisiz PR'lar kızarmamalı.
+        sonra = dict(self.olcum)
+        for anahtar in ("izlenen_dosya", "kopru_kaydi", "acik_durumlu_kayit", "yanit_bagli_kayit",
+                        "defter_bayti", "cagri_gunlugu", "cagri_gunlugu_bayti"):
+            sonra[anahtar] = self.olcum[anahtar] + 3
+        sonra["son_kayit_zamani"] = sonra["defter_son_guncelleme"] = "2026-11-02T08:00:00+00:00"
+        self.assertEqual(depo_tanimi.denetle(self.tanim, sonra), [])
+        bilgiler = "\n".join(depo_tanimi.buyuyenler(self.tanim, sonra))
+        self.assertIn("kopru_kaydi:", bilgiler)
+        self.assertIn("son_kayit_zamani:", bilgiler)
+        geri = dict(self.olcum, kopru_kaydi=self.olcum["kopru_kaydi"] - 1,
+                    son_kayit_zamani="2026-10-01T00:00:00+00:00")
+        hatalar = "\n".join(depo_tanimi.denetle(self.tanim, geri))
+        self.assertIn("kopru_kaydi: kayıtlı", hatalar)
+        self.assertIn("yalnız büyüyebilir", hatalar)
+        self.assertIn("geriye gidemez", hatalar)
+        yapisal = dict(self.olcum, json_sozlesmesi=self.olcum["json_sozlesmesi"] + 1)
+        self.assertIn("json_sozlesmesi", "\n".join(depo_tanimi.denetle(self.tanim, yapisal)))
+
+    def test_everyday_code_and_document_changes_are_information_not_errors(self):
+        # Başka bir katılımcının test, satır veya belge eklemesi tanımı bozmaz; tarihli değer korunur.
+        sonra = dict(self.olcum)
+        for anahtar in depo_tanimi.ANLIK:
+            sonra[anahtar] = self.olcum[anahtar] + 7
+        sonra["python_satiri"] = self.olcum["python_satiri"] - 40
+        self.assertEqual(depo_tanimi.denetle(self.tanim, sonra), [])
+        self.assertIn("test_yontemi:", "\n".join(depo_tanimi.buyuyenler(self.tanim, sonra)))
+        siniflar = [depo_tanimi.BUYUYEN, depo_tanimi.BUYUYEN_ZAMAN, depo_tanimi.ANLIK]
+        for i, a in enumerate(siniflar):
+            for b in siniflar[i + 1:]:
+                self.assertFalse(a & b)
+        self.assertTrue(set().union(*siniflar) <= set(self.olcum))
+
+    def test_ledger_times_stay_valid_after_later_records(self):
+        zamanlar = depo_tanimi.defter_zamanlari() | {"2026-11-02T08:00:00+00:00"}
+        self.assertEqual(depo_tanimi.denetle(self.tanim, self.olcum, zamanlar), [])
+        self.assertIn(self.olcum["ilk_kayit_zamani"], depo_tanimi.defter_zamanlari())
 
     def test_drift_in_measurements_paths_and_ledger_times_is_reported(self):
         bozuk = copy.deepcopy(self.tanim)
