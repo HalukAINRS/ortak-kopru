@@ -3,7 +3,7 @@
   "kind": "ortak_kopru_rafine_sorulari",
   "konu": "Ortak Köprü deposunun şimdiki tanımı ve rafine sonrası olabilecek tanımı",
   "hazirlayan": "Claude Code Bulut (Hacker odağı)",
-  "hazirlandi": "2026-10-28T12:00:57Z",
+  "hazirlandi": "2026-10-28T13:25:39Z",
   "kesit": {
     "dal": "claude/rafine-2026-10-28",
     "pr": 23,
@@ -423,13 +423,13 @@
         "kaynak_bulgu": [],
         "onkosul": [],
         "yanitlar": {
-          "ne": "Aynı depo; ama kendi sözünü sınayan bir depo: sözleşmeler çekirdeğin çıktısına, tanım depoya, belgedeki tablolar veri kaydına, doğrulama yerelde ve CI'da aynı listeye bağlı.",
+          "ne": "Aynı depo; ama niyeti açılışında yazılı ve kendi sözünü sınayan bir depo: açılış README'de, Web girişinde ve açılış belgesinde tek kayıttan, sözleşmeler çekirdeğin çıktısına, tanım depoya, belgedeki tablolar veri kaydına bağlı; doğrulama yerelde ve CI'da aynı listeyi koşar.",
           "nerede": "Yer değişmez; tanım ve tur kayıtları docs/ altına, araçlar tools/ altına girer; Pages beş sayfayı aynı kaynaklardan yeniden yayımlar.",
           "ne_zaman": "Birleşme anından itibaren; tanımın ölçümleri o kesitte tarihlenir, yalnız büyüyen defter değerleri alt sınır olarak izlenir.",
-          "ne_kadar": "Test yöntemi 226'dan 280'e, sözleşme 6'dan 9'a, belge 15'ten 20'ye çıkar; doğrulama tek komutta 9 kontrol koşar; 24 bulgunun 17'si kapanmış olur.",
+          "ne_kadar": "Test yöntemi 226'dan 291'e, sözleşme 6'dan 10'a, belge 15'ten 21'e çıkar; doğrulama tek komutta 10 kontrol koşar; 24 bulgunun 17'si kapanmış olur.",
           "nereden": "Değişiklikler tek PR'dan gelir; kayıtların giriş yolları aynı kalır, ama bölüm parçaları da kayıt ekleyicinin denetiminden geçer.",
           "neden": "Deponun kendi hakkında söyledikleriyle yaptıkları arasındaki aralıklar kapansın; tanım sessizce eskiyemesin.",
-          "nasil": "python tools/dogrula.py her PR'da Linux ve Windows'ta koşar; depo_tanimi.py --check ve rafine_sorulari.py --check bu listededir.",
+          "nasil": "python tools/dogrula.py her PR'da Linux ve Windows'ta koşar; tanım, senaryo ve açılış denetimleri (depo_tanimi.py, rafine_sorulari.py, acilis.py) bu listededir.",
           "ne_icin": "Sonraki katılımcının, deponun hangi iddiasının sınandığını tek komutla görebilmesi için.",
           "nereye": "Açık yedi bulguya, yani S02–S06 kararlarına."
         },
@@ -630,6 +630,31 @@
         },
         "varyantlar": {
           "nasil.geri_alinir": "Her bağlayıcı ayrı bir modüldür; kaldırıldığında GitHub yolu değişmez."
+        }
+      },
+      {
+        "id": "S09",
+        "ad": "Kişiler arası köprünün kapıya bağlanması",
+        "durum": "öneri",
+        "karar": "Haluk: dışarıdan gelen bir katkının yerel kullanıcıya hangi yoldan ulaşacağı.",
+        "kaynak_bulgu": [],
+        "onkosul": [
+          "S01"
+        ],
+        "yanitlar": {
+          "ne": "Kapı dosyaların yanında insanların sözünü de taşır: dışarıdan açılan bir Issue ya da PR yorumu yerel kullanıcının önüne, onun karşılığı da Issue'ya ve etkilediği metnin yanına gider.",
+          "nerede": "GitHub Issues ile yerel kullanıcının bilgisayarı arasında; kapının var olan GitHub bağlayıcısının yanında.",
+          "ne_zaman": "Açılış ana dala girdikten sonra; ilk dış katkı geldiğinde ya da yerel kullanıcı istediğinde. Bugüne kadar dışarıdan bir Issue gelmedi.",
+          "ne_kadar": "Bugün depoda tek bir Issue var (#16, yerel kullanıcının kendi kaydı); dışarıdan gelen katkı sıfır.",
+          "nereden": "Açılış bölümünün birinci (Karşılıklılık) ve beşinci (Açık katılım) ilkelerinden.",
+          "neden": "Niyet, kapının yalnız dosyalar arasında değil insanlar arasında da bağ kurmasını istiyor; bugün bu bağ GitHub bildirimlerine bırakılmış.",
+          "nasil": "kapi.py'ye Issues'ı yalnız okuyan bir alım adımı: seçilen Issue zamanı ve sahibiyle alınır, yerel kayda bağlanır. Karşılık yine yerel kullanıcının açık komutuyla gönderilir.",
+          "ne_icin": "Dışarıdaki bireyin sözünün yerel kullanıcıya kaybolmadan ulaşması ve karşılığın ona dönmesi için.",
+          "nereye": "Yerel kayıtta katkının kendisine, defterde ilgili kayda, ortak metinde etkilediği paragrafa."
+        },
+        "varyantlar": {
+          "nasil.geri_alinir": "Alım adımı yalnız okur; kaldırıldığında Issues ve kapının dosya yolu değişmez. Gönderilmiş bir yanıt silinmez, yeni bir yorumla düzeltilir.",
+          "ne_icin.kimin": "Harici birey ile yerel kullanıcı için; katılımcı modeller bu bağı taşır, yerine geçmez."
         }
       }
     ]
@@ -832,7 +857,7 @@
       ],
       "soru": "Dokuz soru tek cümlede",
       "katman": "ikisi",
-      "yanit": "Şimdi: 23 Ekim'de yerelde doğan ve GitHub'da herkese açık duran, dört üreticinin 179 kaydını Haluk'un verdiği işlerle değişmeden tutan Ortak Köprü, önceki söz kaybolmasın diye standart kütüphane araçlarıyla çalışır ve Haluk'un tek yerden okuması için kapısını GitHub dışına açmaya hazırlanır. Rafine sonrası: aynı depo, söylediğini kendisi sınayan bir yapıya kavuşur; ölçüsünü, sözleşmelerini ve tanımını her PR'da yeniden doğrular ve önündeki yedi kararı geri alınabilirlikleriyle birlikte, sırasıyla taşır.",
+      "yanit": "Şimdi: 23 Ekim'de yerelde doğan ve GitHub'da herkese açık duran, dört üreticinin 179 kaydını Haluk'un verdiği işlerle değişmeden tutan Ortak Köprü, önceki söz kaybolmasın diye standart kütüphane araçlarıyla çalışır ve Haluk'un tek yerden okuması için kapısını GitHub dışına açmaya hazırlanır. Rafine sonrası: aynı depo, söylediğini kendisi sınayan bir yapıya kavuşur; ölçüsünü, sözleşmelerini ve tanımını her PR'da yeniden doğrular ve önündeki sekiz kararı geri alınabilirlikleriyle birlikte, sırasıyla taşır.",
       "durum": "yorum"
     }
   ],

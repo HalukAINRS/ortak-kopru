@@ -54,6 +54,12 @@ class ReaderPublicationTests(unittest.TestCase):
         )))
         self.assertEqual(headings, [('devam', 'Devam')])
 
+    def test_generated_block_markers_are_not_reader_text(self):
+        body, _ = reader.render('<!-- uretilen:acilis -->\n\nAçılış paragrafı.\n\n<!-- /uretilen:acilis -->\n')
+        self.assertEqual(body, '<p>Açılış paragrafı.</p>')
+        body, _ = reader.render('Metin <!-- satır içi --> sürer.\n')
+        self.assertIn('&lt;!-- satır içi --&gt;', body)
+
 
 if __name__ == '__main__':
     unittest.main()

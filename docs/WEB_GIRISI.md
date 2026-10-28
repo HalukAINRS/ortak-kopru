@@ -1,6 +1,23 @@
 # Ortak Köprü
 
-Farklı ortamlarda oluşan söz, bilgi ve deneyimin birlikte devam edebilmesi için bir okuma ve etkileşim alanı. Burada çalışmadan çıkardığımız anlamları, kullandığımız kaynakları ve değişen açıklamaları paylaşıyoruz. Önceki konuşmaları bilmeden okuyabilir; bir soru, kaynak, deneyim veya düzeltmeyle katkıda bulunabilirsiniz.
+<!-- uretilen:acilis -->
+
+**Niyet** (Haluk, 28 Ekim 2026): “Bu GitHub Reposu'nun Niyeti = Dış Dünya (Web) ile Yerel (Bilgisayarım) arasındaki kapı ve aynı zamanda Harici bireyler ile yerel kullanıcı arasındaki bağı sağlayacak köprü olarak karşılıklı aktarımı ve bağlantıları sağlamaktır.”
+
+Ortak Köprü, yerel kullanıcının bilgisayarındaki çalışma ile Web arasında bir kapı, yerel kullanıcı ile dışarıdaki bireyler arasında bir köprüdür. Kapıdan, yerel kullanıcının seçtiği içerik kaynağı ve sürümüyle dışarı çıkar; Web'deki kaynaklar kesin sürümleriyle içeri alınır. Köprüden, dışarıdaki biri önceki konuşmaları bilmeden okuyabilir, sorabilir ve katkı getirebilir; yerel kullanıcının karşılığı ona geri döner. Her geçiş, nereden geldiği, nereye gittiği, ne kadar olduğu ve neden yapıldığıyla izlenebilir kalır.
+
+- **1. Karşılıklılık.** Kapı iki yöne açılır, köprü iki yöne taşır. Bugün: kısmen uygulanıyor.
+- **2. Yerel merkez.** Merkez yerel kullanıcıdır: kapıdan yalnız onun seçtiği geçer, dışarıdan gelen kendiliğinden uygulanmaz. Bugün: kısmen uygulanıyor.
+- **3. Köken ve sahiplik.** Her geçiş kökeni, sahibi, sürümü ve zamanıyla taşınır. Bugün: uygulanıyor.
+- **4. Sınır.** Kapı bir duvar da taşır: gizli olan geçmez, geri alınamayan geçiş en sıkı denetimden geçer. Bugün: kısmen uygulanıyor.
+- **5. Açık katılım.** Dışarıdaki biri önceki konuşmaları bilmeden okuyabilir, sorabilir ve katkı getirebilir; getirdiği şey etkilediği yere bağlanır. Bugün: kısmen uygulanıyor.
+- **6. Doğrulanabilirlik ve geri dönüş.** Hazırlanmak, gönderilmek, alınmak, okunmak ve kullanılmak ayrı olaylardır; hiçbir geçiş olduğundan fazla gösterilmez ve her değişiklik izini silmeden geri alınabilir. Bugün: uygulanıyor.
+
+Bu tanımın dokuz soruyla ayrıntısı ve ilkelerin bugün depoda neye karşılık geldiği [açılış belgesindedir](ACILIS.md).
+
+<!-- /uretilen:acilis -->
+
+Bu sayfa köprünün Web'deki ucudur. Önceki konuşmaları bilmeden okuyabilir; bir soru, kaynak, deneyim veya düzeltmeyle katkıda bulunabilirsiniz. Aşağıda, kapıdan bugüne kadar geçen ortak çalışmanın anlamlarına, kaynaklarına ve değişen açıklamalarına ulaşırsınız.
 
 ## Anlamdan başlayın
 

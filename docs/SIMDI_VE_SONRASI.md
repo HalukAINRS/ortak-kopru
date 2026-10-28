@@ -1,10 +1,12 @@
 # Şimdi ve Sonrası: Dokuz Soruyla Ortak Köprü
 
+> **28 Ekim 2026, 13.21 UTC notu.** Bu belge yazıldıktan sonra Haluk deponun niyetini koydu: Web ile yerel bilgisayar arasında bir kapı, dışarıdaki bireyler ile yerel kullanıcı arasında bir köprü. Deponun bağlayıcı tanımı ve altı ilkesi artık [Açılış: Kapı ve Köprü](ACILIS.md) belgesinde. Bu belgenin "Ne?" yanıtları niyetten önceki gözleme dayanır ve o saate ait olarak korunuyor. Niyetin ortaya çıkardığı kişiler arası köprü, aşağıdaki senaryolara S09 olarak eklendi.
+
 Bu belge, Ortak Köprü deposunu iki zamanda tanımlar: bugün herkese açık ana dalda olduğu hâliyle ve rafine çalışmasından sonra olabileceği hâliyle. Tanım dokuz soruya dayanır: Ne, Nerede, Ne zaman, Ne kadar, Nereden, Neden, Nasıl, Ne için ve Nereye. Sorular tek başlarına, varyantlarıyla ve birbirleriyle birleşerek soruldu. Belgeyi Claude Code Bulut, Hacker odağıyla, Haluk'un 28 Ekim 2026 tarihli talimatı üzerine hazırladı. Tablolar elle yazılmadı; [makinece okunur kayıttan](rafine-sorulari.json) üretildi ve her doğrulamada o kayda karşı yeniden denetleniyor. Paragraflar ise bu tabloların ne anlattığını açıyor.
 
 ## İki zamanı ayırmak
 
-"Şimdi", ana dalın `97c908d` ucudur: 28 Ekim 09.25 UTC'deki son birleşmeden sonra herkesin gördüğü depo. "Sonrası" ise tek bir gelecek değil, sekiz senaryodan oluşan bir yelpaze. İlk senaryo (S01), rafine çalışmasının [PR #23](https://github.com/HalukAINRS/ortak-kopru/pull/23) ile ana dala alınmasıdır. İçeriği gerçek, çünkü dalda duruyor ve CI'dan geçti; ama ana dala girmediği için şimdinin parçası sayılmıyor. Diğer yedi senaryo, açık kalan bulgulardan ya da depo belgelerinin kendi söylediği yönden doğuyor. Hiçbiri gerçekleşmiş sayılmıyor. Her birinin kimin kararıyla başlayacağı, neye bağlı olduğu ve nasıl geri alınacağı ayrıca yazılı.
+"Şimdi", ana dalın `97c908d` ucudur: 28 Ekim 09.25 UTC'deki son birleşmeden sonra herkesin gördüğü depo. "Sonrası" ise tek bir gelecek değil, dokuz senaryodan oluşan bir yelpaze. İlk senaryo (S01), rafine çalışmasının [PR #23](https://github.com/HalukAINRS/ortak-kopru/pull/23) ile ana dala alınmasıdır. İçeriği gerçek, çünkü dalda duruyor ve CI'dan geçti; ama ana dala girmediği için şimdinin parçası sayılmıyor. Diğer sekiz senaryo, açık kalan bulgulardan, depo belgelerinin kendi söylediği yönden ya da deponun niyetinden doğuyor. Hiçbiri gerçekleşmiş sayılmıyor. Her birinin kimin kararıyla başlayacağı, neye bağlı olduğu ve nasıl geri alınacağı ayrıca yazılı.
 
 Her yanıtın bilgi durumu ayrı tutuldu. Bu oturumda ölçülen ya da okunan şey "gözlendi", depo belgelerinin söyleyip burada ayrıca görülemeyen şey "beyan", hazırlayanın kurduğu ilişki "yorum" diye işaretli. Senaryolar ise "öneri" (bu çalışmanın önerisi), "olasılık" (karar bekleyen açık seçenek) ya da "beyan" (belgelerin söylediği yön) olarak ayrılıyor. Rafine dalında gözlenen deponun dokuz soruya ayrıntılı yanıtı [Depo tanımında](DEPO_TANIMI.md), bulguların kendisi [Rafine defterinde](RAFINE_DEFTERI.md) bulunuyor.
 
@@ -13,13 +15,13 @@ Her yanıtın bilgi durumu ayrı tutuldu. Bu oturumda ölçülen ya da okunan ş
 <!-- uretilen:karsilastirma -->
 | Soru | Şimdi: ana dal (`97c908d`) | Rafine sonrası, S01: Rafinenin ana dala alınması |
 | --- | --- | --- |
-| Ne? | Ana dalda Ortak Köprü, değişmeyen ve numaralı kayıtlardan oluşan bir HTML defterinin çevresine kurulmuş, seçilmiş içeriği yerel ile GitHub arasında taşıyan, isteğe bağlı bir iş takibi ve dış okuyucuya açılan beş sayfalık bir yayın taşıyan herkese açık bir depodur. | Aynı depo; ama kendi sözünü sınayan bir depo: sözleşmeler çekirdeğin çıktısına, tanım depoya, belgedeki tablolar veri kaydına, doğrulama yerelde ve CI'da aynı listeye bağlı. |
+| Ne? | Ana dalda Ortak Köprü, değişmeyen ve numaralı kayıtlardan oluşan bir HTML defterinin çevresine kurulmuş, seçilmiş içeriği yerel ile GitHub arasında taşıyan, isteğe bağlı bir iş takibi ve dış okuyucuya açılan beş sayfalık bir yayın taşıyan herkese açık bir depodur. | Aynı depo; ama niyeti açılışında yazılı ve kendi sözünü sınayan bir depo: açılış README'de, Web girişinde ve açılış belgesinde tek kayıttan, sözleşmeler çekirdeğin çıktısına, tanım depoya, belgedeki tablolar veri kaydına bağlı; doğrulama yerelde ve CI'da aynı listeyi koşar. |
 | Nerede? | Herkese açık GitHub deposu ve Pages yayını; beyana göre Haluk'un Y: sürücüsündeki kanonik klasör; Git dışında tutulan özel çalışma alanı. | Yer değişmez; tanım ve tur kayıtları docs/ altına, araçlar tools/ altına girer; Pages beş sayfayı aynı kaynaklardan yeniden yayımlar. |
 | Ne zaman? | 23 Ekim 2026 akşamı önce yerelde doğdu, 25 dakika sonra GitHub'a açıldı; defterin son kaydı 26 Ekim, ana dalın son birleşmesi 28 Ekim 09.25 UTC. | Birleşme anından itibaren; tanımın ölçümleri o kesitte tarihlenir, yalnız büyüyen defter değerleri alt sınır olarak izlenir. |
-| Ne kadar? | 179 kayıt, 13 modüllük paket, 43 Python dosyası, 17 test dosyasında 226 test yöntemi, 6 sözleşme, 15 belge; çağrı günlükleri 122 dosyada 34 MB. | Test yöntemi 226'dan 280'e, sözleşme 6'dan 9'a, belge 15'ten 20'ye çıkar; doğrulama tek komutta 9 kontrol koşar; 24 bulgunun 17'si kapanmış olur. |
+| Ne kadar? | 179 kayıt, 13 modüllük paket, 43 Python dosyası, 17 test dosyasında 226 test yöntemi, 6 sözleşme, 15 belge; çağrı günlükleri 122 dosyada 34 MB. | Test yöntemi 226'dan 291'e, sözleşme 6'dan 10'a, belge 15'ten 21'e çıkar; doğrulama tek komutta 10 kontrol koşar; 24 bulgunun 17'si kapanmış olur. |
 | Nereden? | İş Haluk'tan gelir; içerik ChatGPT, Claude, Gemini ve Copilot imzalı kayıtlardan, anlatı korunmuş tarihsel kaynaklardan beslenir. | Değişiklikler tek PR'dan gelir; kayıtların giriş yolları aynı kalır, ama bölüm parçaları da kayıt ekleyicinin denetiminden geçer. |
 | Neden? | Söz, yorum, gereç ve deneyim hiçbir katılımcının kesintisiz belleğine güvenmeden, kaynağı ve sahibiyle kaybolmadan sürsün diye. | Deponun kendi hakkında söyledikleriyle yaptıkları arasındaki aralıklar kapansın; tanım sessizce eskiyemesin. |
-| Nasıl? | Standart kütüphaneyle yazılmış ve denetimden geçmeden yazmayan Python araçlarıyla; ana dalda doğrulama belgelerde iki komut, CI'da beş ayrı adım. | python tools/dogrula.py her PR'da Linux ve Windows'ta koşar; depo_tanimi.py --check ve rafine_sorulari.py --check bu listededir. |
+| Nasıl? | Standart kütüphaneyle yazılmış ve denetimden geçmeden yazmayan Python araçlarıyla; ana dalda doğrulama belgelerde iki komut, CI'da beş ayrı adım. | python tools/dogrula.py her PR'da Linux ve Windows'ta koşar; tanım, senaryo ve açılış denetimleri (depo_tanimi.py, rafine_sorulari.py, acilis.py) bu listededir. |
 | Ne için? | Haluk'un tek yerden okuyup iş verebilmesi, katılımcıların önceki işi devralabilmesi, dış okuyucunun geri dönebilmesi ve yerel çıktının seçilerek paylaşılabilmesi için. | Sonraki katılımcının, deponun hangi iddiasının sınandığını tek komutla görebilmesi için. |
 | Nereye? | Belgelere göre kapının genel bir gelen/giden ekranına ve GitHub dışındaki dosya hizmetlerine, tek noktanın hedef bilgisayarda gözlenmesine; ayrıca karar bekleyen on iki açık taslak PR'ın sonucuna. | Açık yedi bulguya, yani S02–S06 kararlarına. |
 <!-- /uretilen:karsilastirma -->
@@ -60,7 +62,7 @@ Varyantların yarısı olumsuz: "Ne değildir?", "Nerede görülemez?", "Neden b
 
 "Nasıl geri alınır?" varyantı ise zorunlu tutuldu: hiçbir senaryo bu soruyu yanıtlamadan kayda giremiyor ve araç bunu denetliyor. Bu, deponun geçmişe uyguladığı ilkenin geleceğe uygulanması. Defterde bir kayıt silinmez, yeni kayıtla düzeltilir. Önerilen her değişiklik de izini silmeden nasıl geri çevrileceğini baştan söylemeli.
 
-## Rafine sonrası: sekiz senaryo
+## Rafine sonrası: dokuz senaryo
 
 <!-- uretilen:senaryolar -->
 | Sıra | Senaryo | Durum | Karar | Ön koşul | Bulgular |
@@ -72,16 +74,19 @@ Varyantların yarısı olumsuz: "Ne değildir?", "Nerede görülemez?", "Neden b
 | 5 | S05 Çağrı günlüklerinin inceltilmesi | olasılık | Haluk: günlüklerin kanıt değeri ile depo büyümesi arasındaki tercih. | — | R-21 |
 | 6 | S06 Sürüm etiketinin ve kanıt notunun açıklanması | öneri | Haluk. | — | R-22, R-23 |
 | 7 | S07 Tek noktanın bilgisayarda gözlenmesi | beyan | Haluk'un makinesinde yapılacak küçük bir deneme. | S01, S03 | — |
-| 8 | S08 Kapının genişlemesi | beyan | Haluk; README'nin sonraki geliştirmeler listesine göre. | S07 | — |
+| 8 | S09 Kişiler arası köprünün kapıya bağlanması | öneri | Haluk: dışarıdan gelen bir katkının yerel kullanıcıya hangi yoldan ulaşacağı. | S01 | — |
+| 9 | S08 Kapının genişlemesi | beyan | Haluk; README'nin sonraki geliştirmeler listesine göre. | S07 | — |
 <!-- /uretilen:senaryolar -->
 
-Sıra ön koşullardan hesaplanıyor. S01–S06 birbirini beklemiyor; her biri kendi kararıyla, herhangi bir sırada başlayabilir. S07 hem rafinenin ana dala girmesini hem başlatıcı yollarının düzelmesini bekliyor; S08 de S07'yi. Bu sıra bir öncelik sıralaması değil, bir bağımlılık sıralaması.
+Sıra ön koşullardan hesaplanıyor. S01–S06 birbirini beklemiyor; her biri kendi kararıyla, herhangi bir sırada başlayabilir. S07 hem rafinenin ana dala girmesini hem başlatıcı yollarının düzelmesini bekliyor; S08 de S07'yi. S09 yalnız rafinenin ana dala girmesini bekliyor. Bu sıra bir öncelik sıralaması değil, bir bağımlılık sıralaması.
 
 S01 rafinenin kendisi: sözleşmeler çekirdeğin çıktısına, tanım depoya, belgedeki bu tablolar veri kaydına bağlanıyor ve doğrulama tek komutta koşuyor. Geri alınması kolay, çünkü defterdeki hiçbir kayda dokunmuyor. S02 en küçük değişiklik ama en ağır senaryo. Yerel gönderici bugün çalışma klasöründe kalan izlenmeyen her dosyayı herkese açık ana dala gönderebiliyor. Betik değişikliğini geri almak tek commit, ama gönderilmiş bir dosyayı herkese açık geçmişten geri almak mümkün değil. Bu asimetri, senaryonun diğerlerinden önce düşünülmesi için yeterli bir neden.
 
 S03 ve S04 yanıtlayıcının cevap verebilmesiyle ilgili. S03'te başlatıcı, yollarını ve sorgularındaki imzaları yerel ayardan okuyor; böylece hazırlık ekranı, bugün 0 gösterdiği bekleyenleri gerçek imzalarla gösteriyor: ChatGPT (Şaman) 38, Google (CLI izleyici) 15, Claude (Hacker) 1. S04'te Şahit için bir çağrı yolu tanımlanıyor. Bu tek karar, cevapsız 16 kaydın 12'sini cevaplanabilir kılıyor; kalan dört kayıt için ayrı bir karar gerekiyor. S05 çağrı günlüklerini inceltiyor: bugünkü 122 günlük bu biçimde yaklaşık 0,95 MB tutardı. Bunun için doğru zaman şimdi, çünkü günlükler dört gündür yazılmıyor ve biçim hiçbir eski kayda dokunmadan değiştirilebilir.
 
 S06 küçük bir açıklık: defterdeki 4.2 sürüm etiketinin ve README'deki 4.6.x numaralarının neyi saydığı yazılmamış. S07 ve S08, belgelerin kendi söylediği yön. Tek noktanın, yani aynı işin CLI ve GitHub karşılıklarının birbirine bağlanmasının bilgisayarda ilk kez gözlenmesi; ardından kapının GitHub dışına açılması. İkisi de "beyan" durumunda, çünkü bu çalışma onları önermiyor; deponun yönü olarak kaydediyor ve sıralarını gösteriyor.
+
+S09, deponun niyeti konduktan sonra eklendi ve niyetin ortaya çıkardığı en büyük açıklığı karşılıyor. Kapı bugün yalnız dosya taşıyor. Dışarıdaki bir bireyin açtığı bir Issue'yu ya da yorumu yerel kullanıcının önüne getiren, onun karşılığını da Issue'ya ve etkilediği metne geri götüren bir adım yok; bu bağ GitHub bildirimlerine bırakılmış. Depoda bugüne kadar tek bir Issue açılmış (#16) ve o da yerel kullanıcının kendi kaydı. Senaryo, kapıya Issues'ı yalnız okuyan bir alım adımı ekliyor; karşılık yine yerel kullanıcının açık komutuyla gidiyor. Açılış belgesindeki altı ilkeden ikisinin, Karşılıklılık ile Açık katılımın, kısmen kalması bu eksikten.
 
 ## Soruların birleşimleri
 
@@ -110,7 +115,7 @@ Dokuz sorunun hepsi tek cümlede birleştirildiğinde iki tanım çıkıyor:
 
 > Şimdi: 23 Ekim'de yerelde doğan ve GitHub'da herkese açık duran, dört üreticinin 179 kaydını Haluk'un verdiği işlerle değişmeden tutan Ortak Köprü, önceki söz kaybolmasın diye standart kütüphane araçlarıyla çalışır ve Haluk'un tek yerden okuması için kapısını GitHub dışına açmaya hazırlanır.
 >
-> Rafine sonrası: aynı depo, söylediğini kendisi sınayan bir yapıya kavuşur; ölçüsünü, sözleşmelerini ve tanımını her PR'da yeniden doğrular ve önündeki yedi kararı geri alınabilirlikleriyle birlikte, sırasıyla taşır.
+> Rafine sonrası: aynı depo, söylediğini kendisi sınayan bir yapıya kavuşur; ölçüsünü, sözleşmelerini ve tanımını her PR'da yeniden doğrular ve önündeki sekiz kararı geri alınabilirlikleriyle birlikte, sırasıyla taşır.
 
 Dokuz sorudan 36 farklı ikili oluşuyor. Bu kayıttaki on bir birleşim (tek cümlelik özet hariç) bunların 15'ini soruyor. Geri kalan 21 ikili açık duruyor. "Nerede" ile "Ne için" (deponun hangi yüzü kimin için) ya da "Nereden" ile "Ne kadar" (hangi yoldan ne kadar içerik geldi) gibi ikililer, bir okuyucunun ekleyebileceği yeni birleşimler.
 

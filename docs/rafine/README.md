@@ -6,6 +6,6 @@ Süreç arşivi, o turda neyin nasıl incelendiğini, hangi komutların hangi so
 
 | Tur | Gözlemci | Kesit | Kayıtlar |
 | --- | --- | --- | --- |
-| 28 Ekim 2026 | Claude Code Bulut (Hacker odağı) | `main` @ `97c908de7a5850978082770ba3bac3e508688e57` | [Süreç](claude-code-bulut-2026-10-28-surec.md) · [Bulgular (JSON)](claude-code-bulut-2026-10-28-bulgular.json) · [Anlam defteri](../RAFINE_DEFTERI.md) · [Dokuz koordinatla tanım](../DEPO_TANIMI.md) · [Tanım (JSON)](../depo-tanimi.json) · [Şimdi ve sonrası](../SIMDI_VE_SONRASI.md) · [Senaryolar (JSON)](../rafine-sorulari.json) |
+| 28 Ekim 2026 | Claude Code Bulut (Hacker odağı) | `main` @ `97c908de7a5850978082770ba3bac3e508688e57` | [Süreç](claude-code-bulut-2026-10-28-surec.md) · [Bulgular (JSON)](claude-code-bulut-2026-10-28-bulgular.json) · [Anlam defteri](../RAFINE_DEFTERI.md) · [Dokuz koordinatla tanım](../DEPO_TANIMI.md) · [Tanım (JSON)](../depo-tanimi.json) · [Şimdi ve sonrası](../SIMDI_VE_SONRASI.md) · [Senaryolar (JSON)](../rafine-sorulari.json) · [Açılış](../ACILIS.md) · [Açılış (JSON)](../acilis.json) |
 
 Bir turun kaydını okuyan yeni katılımcı, o turdaki açık işleri kendiliğinden üstlenmiş olmaz; iş kullanıcıdan gelir. Düzeltme veya itiraz için ilgili bulgunun kimliğini (`R-01` gibi) belirterek [GitHub Issues](https://github.com/HalukAINRS/ortak-kopru/issues) kullanılabilir.

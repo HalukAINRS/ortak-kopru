@@ -1,6 +1,25 @@
 # Ortak Köprü
 
-Bu depo, yerelde yürüyen çalışmaların dışarıya açılan kapısını ve bu çalışmaların kaynaklı geçmişini bir arada tutar. Haluk ile ChatGPT, Claude, Gemini ve Copilot arasında oluşan açıklamalar, gereçler, işlemler ve düzeltmeler burada kendi bağlamlarıyla okunabilir. İlk kez gelen bir okuyucu, projenin neyi amaçladığını ve bugün hangi noktada olduğunu aşağıdaki girişlerden takip edebilir.
+<!-- uretilen:acilis -->
+
+> **Niyet** (Haluk, 28 Ekim 2026): “Bu GitHub Reposu'nun Niyeti = Dış Dünya (Web) ile Yerel (Bilgisayarım) arasındaki kapı ve aynı zamanda Harici bireyler ile yerel kullanıcı arasındaki bağı sağlayacak köprü olarak karşılıklı aktarımı ve bağlantıları sağlamaktır.”
+
+**Tanım.** Ortak Köprü, yerel kullanıcının bilgisayarındaki çalışma ile Web arasında bir kapı, yerel kullanıcı ile dışarıdaki bireyler arasında bir köprüdür. Kapıdan, yerel kullanıcının seçtiği içerik kaynağı ve sürümüyle dışarı çıkar; Web'deki kaynaklar kesin sürümleriyle içeri alınır. Köprüden, dışarıdaki biri önceki konuşmaları bilmeden okuyabilir, sorabilir ve katkı getirebilir; yerel kullanıcının karşılığı ona geri döner. Her geçiş, nereden geldiği, nereye gittiği, ne kadar olduğu ve neden yapıldığıyla izlenebilir kalır.
+
+**Altı ilke**
+
+1. **Karşılıklılık.** Kapı iki yöne açılır, köprü iki yöne taşır. *Bugün: kısmen uygulanıyor.*
+2. **Yerel merkez.** Merkez yerel kullanıcıdır: kapıdan yalnız onun seçtiği geçer, dışarıdan gelen kendiliğinden uygulanmaz. *Bugün: kısmen uygulanıyor.*
+3. **Köken ve sahiplik.** Her geçiş kökeni, sahibi, sürümü ve zamanıyla taşınır. *Bugün: uygulanıyor.*
+4. **Sınır.** Kapı bir duvar da taşır: gizli olan geçmez, geri alınamayan geçiş en sıkı denetimden geçer. *Bugün: kısmen uygulanıyor.*
+5. **Açık katılım.** Dışarıdaki biri önceki konuşmaları bilmeden okuyabilir, sorabilir ve katkı getirebilir; getirdiği şey etkilediği yere bağlanır. *Bugün: kısmen uygulanıyor.*
+6. **Doğrulanabilirlik ve geri dönüş.** Hazırlanmak, gönderilmek, alınmak, okunmak ve kullanılmak ayrı olaylardır; hiçbir geçiş olduğundan fazla gösterilmez ve her değişiklik izini silmeden geri alınabilir. *Bugün: uygulanıyor.*
+
+Dokuz soruyla ayrıntı, beşli ile dörtlünün yirmi kesişimi ve ilkelerin bugünkü karşılıkları: [Açılış: Kapı ve Köprü](docs/ACILIS.md).
+
+<!-- /uretilen:acilis -->
+
+Kapıdan bugüne kadar geçenlerin en büyüğü, Haluk ile ChatGPT, Claude, Gemini ve Copilot arasındaki ortak çalışmanın kaynaklı geçmişidir: açıklamalar, gereçler, işlemler ve düzeltmeler kendi bağlamlarıyla aşağıdaki girişlerden okunabilir.
 
 **[Web kapısından başlayın](https://halukainrs.github.io/ortak-kopru/).** GitHub üzerinden okumayı tercih ediyorsanız [anlam not defteri](docs/ANLAM_NOT_DEFTERI.md) ortak çalışmadan ne anlaşıldığını paragraflarla anlatır; [son durum](docs/SON_DURUM.md) yapılan işleri, kanıtlarını ve açık kalanları kendi tarihleriyle gösterir. [Kaynaklar](docs/KAYNAKLAR.md), anlatıdaki sözlerin ve yorumların dayanaklarına dönmek içindir.
 
@@ -8,6 +27,7 @@ Bu depo, yerelde yürüyen çalışmaların dışarıya açılan kapısını ve 
 
 | Ne arıyorsunuz? | Başlangıç |
 | --- | --- |
+| Deponun niyeti, tanımı ve altı ilkesi; kapının ve köprünün bugün neye karşılık geldiği | [Açılış: Kapı ve Köprü](docs/ACILIS.md) |
 | Deponun ne olduğu, nerede ve ne zamandan beri durduğu, ne kadar olduğu, nereden geldiği, neden ve nasıl çalıştığı, ne için kullanıldığı ve nereye gittiği | [Dokuz koordinatla tanım](docs/DEPO_TANIMI.md) · [Şimdi ve sonrası](docs/SIMDI_VE_SONRASI.md) |
 | 33×8 döngüler ile serbest dışavurumun birlikte çalışma biçimi | [Ortak Mimari Defteri](docs/ORTAK_MIMARI_DEFTERI.md) |
 | Ortak çalışmanın anlamı ve kullanılan kavramlar | [Anlam not defteri](docs/ANLAM_NOT_DEFTERI.md) |
@@ -104,6 +124,7 @@ k-0111, Şaman CLI devrinin tarihsel başlangıç kaydıdır; sonraki ilerleme v
 | `tools/depo_kontrol.py` | Çevrimdışı Python/JSON, kayıt/yanıt bağı, sayaç, ayna ve yapılandırma imzası denetimi. |
 | `tools/sema_denetle.py` | `schemas/` sözleşmelerinin desteklenen JSON Schema alt kümesinde kaldığını denetler; `--sema AD --veri DOSYA` ile tek veriyi doğrular. Çekirdek çıktılarıyla eşlik `tests/test_semalar.py` içindedir. |
 | `tools/depo_tanimi.py` | Dokuz koordinatlı depo tanımının (`docs/depo-tanimi.json`) ölçümlerini depodan üretir; `--check` yapısal ölçümleri birebir, defterle büyüyenleri alt sınır olarak denetler, anlık sayıların farkını bilgi olarak yazar. |
+| `tools/acilis.py` | Açılışı (`docs/acilis.json`) denetler: niyet, beşli ve dörtlü soru, 20 kesişim, altı ilke, ilkelerin dayanakları ve açık işlere bağı. README'nin ve Web girişinin açılış bloklarını ve `docs/ACILIS.md` tablolarını bu kayıttan yazar; `--check` eşliği denetler. |
 | `tools/rafine_sorulari.py` | Şimdi ve sonrası kaydını (`docs/rafine-sorulari.json`) denetler: dokuz soru, varyantlar, birleşimler, ön koşullu senaryolar ve her senaryonun geri alma yolu; `docs/SIMDI_VE_SONRASI.md` içindeki tabloları bu kayıttan yazar. `--sira` senaryo sırasını, `--olc` günlük ve cevapsız kayıt hesaplarını verir. |
 | `tools/okuma_yayini_uret.py` | `docs/` altındaki beş kaynak metinden statik okuma sayfalarını üretir; `--check` yazmadan uyumu denetler. |
 | `.github/workflows/dogrulama.yml` | PR ve ana dal için Linux/Windows testleri; sağlayıcı çağrısı ve yazma yetkisi yok. |
@@ -181,6 +202,8 @@ Kanonik dosya değişince `kopru_ayna_uret.py` `<title>`, meta etiketleri, `<sty
 ## Değişiklik geçmişi
 
 - 2026-10-28: Dokuz koordinatla depo tanımı ([anlatı](docs/DEPO_TANIMI.md), [makine kaydı](docs/depo-tanimi.json)); ölçümleri `tools/depo_tanimi.py` üretir ve doğrulama listesinde denetler.
+
+- 2026-10-28: Açılış: Haluk deponun niyetini koydu (Web ile yerel bilgisayar arasında kapı, dışarıdaki bireyler ile yerel kullanıcı arasında köprü). Niyetten kurulan tanım ve altı ilke README'nin ve Web girişinin başına yerleşti; dokuz soru beşli (kapı) ve dörtlü (geçiş) olarak ve 20 kesişimiyle soruldu ([açılış belgesi](docs/ACILIS.md), [makine kaydı](docs/acilis.json)). Kişiler arası köprü senaryo kaydına S09 olarak girdi.
 
 - 2026-10-28: Şimdi ve sonrası: ana dalın dokuz soruya yanıtı, rafine sonrası için ön koşullu sekiz senaryo, on sekiz soru varyantı ve on iki birleşim ([anlatı](docs/SIMDI_VE_SONRASI.md), [makine kaydı](docs/rafine-sorulari.json)); tablolar ve kurallar `tools/rafine_sorulari.py` ile denetlenir.
 

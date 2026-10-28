@@ -49,6 +49,8 @@ KONTROLLER: list[tuple[str, str, list[str], str | None]] = [
      [sys.executable, str(KOK / "tools/depo_tanimi.py"), "--check"], None),
     ("sorular", "Şimdi ve sonrası kaydı: senaryolar, varyantlar, birleşimler ve belge tabloları",
      [sys.executable, str(KOK / "tools/rafine_sorulari.py"), "--check"], None),
+    ("acilis", "Açılış: niyet, beşli ve dörtlü, 20 kesişim, altı ilke ve üç yüzün eşliği",
+     [sys.executable, str(KOK / "tools/acilis.py"), "--check"], None),
     ("arayuz", "Yerel arayüz JavaScript sözdizimi",
      ["node", "--check", str(KOK / "ui/deus/app.js")], "node"),
     ("gonderim", "Bulut gönderim betiğinin Bash sözdizimi",

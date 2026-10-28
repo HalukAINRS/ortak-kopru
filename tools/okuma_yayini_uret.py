@@ -2,8 +2,9 @@
 """Build the static reader pages from the repository's prose, with no network.
 
 The small supported Markdown subset is intentional: headings, paragraphs,
-links, bold, inline code, simple lists, explicit safe heading anchors and
-plain-text blocks fenced with three backticks (unlabelled or labelled text).
+links, bold, inline code, simple lists, explicit safe heading anchors, HTML comment
+marker lines (skipped) and plain-text blocks fenced with three backticks (unlabelled
+or labelled text).
 Use --check in CI to detect publication drift without writing files.
 """
 from __future__ import annotations
@@ -117,6 +118,9 @@ def render(source: str) -> tuple[str, list[tuple[str, str]]]:
         if re.fullmatch(r'<a id="[\w-]+"></a>', block):
             # The heading immediately below receives the same stable ID.
             continue
+        if re.fullmatch(r'<!--[^<>]*-->', block):
+            # Generated-block markers (tools/acilis.py) are source bookkeeping, not reader text.
+            continue
         heading = re.fullmatch(r'(#{1,3}) (.+)', block)
         if heading:
             level, title = len(heading.group(1)), heading.group(2)
@@ -143,7 +147,7 @@ def page(filename: str, output_name: str, label: str) -> str:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Ortak Köprü: çalışmadan çıkarılan anlamlar, kaynaklar, güncel durum ve dış okuyucu katkıları.">
+<meta name="description" content="Ortak Köprü: Web ile yerel bilgisayar arasında bir kapı, dışarıdaki bireyler ile yerel kullanıcı arasında bir köprü.">
 <title>{html.escape(title)}</title>
 <link rel="stylesheet" href="okuma.css">
 </head>
@@ -151,7 +155,7 @@ def page(filename: str, output_name: str, label: str) -> str:
 <a class="skip" href="#icerik">İçeriğe geç</a>
 <header class="site-header"><a class="brand" href="index.html">Ortak Köprü</a><nav class="site-nav" aria-label="Ana gezinme">{nav}<a href="{REPO}/issues">Katkı</a></nav></header>
 <div class="page-shell">
-<main id="icerik"><div class="eyebrow">Okuma · Kaynak · Karşılık</div>
+<main id="icerik"><div class="eyebrow">Kapı · Köprü · Karşılık</div>
 {body}
 <div class="closing"><p>Bir soru, farklı yorum veya kaynakla katkı sunabilirsiniz. <a href="{REPO}/issues/new">GitHub'da konu açın</a> · <a href="{REPO}/blob/main/docs/{filename}">Bu metnin kaynağı ve sürümleri</a></p></div>
 </main>

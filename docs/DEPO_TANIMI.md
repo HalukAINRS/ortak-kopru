@@ -1,5 +1,7 @@
 # Dokuz Koordinatla Ortak Köprü
 
+> **28 Ekim 2026, 13.21 UTC notu.** Bu tanım yazıldıktan sonra Haluk deponun niyetini koydu: Web ile yerel bilgisayar arasında bir kapı, dışarıdaki bireyler ile yerel kullanıcı arasında bir köprü. Deponun bağlayıcı tanımı ve altı ilkesi artık [Açılış: Kapı ve Köprü](ACILIS.md) belgesinde. Bu belge rafine dalını gözlendiği hâliyle tanımlar ve o saate ait olarak korunuyor. Gözlenen ile niyet edilen arasındaki mesafe, açılış belgesindeki ilkelerin durumunda ölçülüyor.
+
 Bu belge, rafine edilmiş Ortak Köprü deposunu dokuz soruyla tanımlar: Ne, Nerede, Ne zaman, Ne kadar, Nereden, Neden, Nasıl, Ne için ve Nereye. Tanımı Claude Code Bulut, Hacker odağıyla, Haluk'un 28 Ekim 2026 tarihli talimatı üzerine hazırladı. Tanımlanan, rafine çalışmasını taşıyan `claude/rafine-2026-10-28` dalıdır ([PR #23](https://github.com/HalukAINRS/ortak-kopru/pull/23)); dal ana dala alındığında tanım ana dalın tanımı olur. Her cümlenin bilgi statüsü ayrı tutuldu. Bu oturumda ölçülen veya okunan şey "gözlendi", depo belgelerinin söyleyip burada ayrıca görülemeyen şey "beyan", hazırlayanın kurduğu ilişki "yorum", karar veya gözlem bekleyen şey "açık" diye işaretlidir. Aynı tanımın makinece okunur ve depoya karşı denetlenen hâli [depo-tanimi.json](depo-tanimi.json) dosyasındadır. Bu belge rafine dalını, yani rafine sonrasının ilk adımını (S01) tanımlar; bugünkü ana dal ile rafine sonrası olabilecek tanımın karşılaştırması, soruların varyantları ve birleşimleri [Şimdi ve Sonrası](SIMDI_VE_SONRASI.md) belgesindedir.
 
 | Koordinat | Kısa yanıt |
@@ -7,7 +9,7 @@ Bu belge, rafine edilmiş Ortak Köprü deposunu dokuz soruyla tanımlar: Ne, Ne
 | Ne | Ortak çalışmayı kaynaklarıyla koruyan, seçilmiş içeriği yerel ile dış alanlar arasında taşıyan ve dış okuyucuya açan herkese açık depo. |
 | Nerede | GitHub deposu ve Pages yayını; beyana göre Haluk'un yerel klasörü; Git dışındaki özel çalışma alanı. |
 | Ne zaman | 23 Ekim 2026'da açıldı; defterin son kaydı 26 Ekim; bu tanım 28 Ekim kesitine ait. |
-| Ne kadar | 179 kayıt, 13 modüllük paket, 280 test yöntemi, 9 sözleşme, 9 doğrulama kontrolü; hepsi araçla ölçülür. |
+| Ne kadar | 179 kayıt, 13 modüllük paket, 291 test yöntemi, 10 sözleşme, 10 doğrulama kontrolü; hepsi araçla ölçülür. |
 | Nereden | İş Haluk'tan; içerik dört üreticinin imzalı kayıtlarından ve korunmuş tarihsel kaynaklardan. |
 | Neden | Söz, yorum, gereç ve deneyim tek bir belleğe güvenmeden, kaynağı ve sahibiyle kaybolmadan sürsün diye. |
 | Nasıl | Denetimden geçmeden yazmayan standart kütüphane araçlarıyla. |
@@ -34,7 +36,7 @@ Defterin son kaydı k-0179, 26 Ekim 19.40 UTC'dedir ve sayfanın "son güncellem
 
 ## Ne kadar?
 
-Depo, bu tanımın kesitinde Git'in izlediği iki yüz elliyi aşkın dosyadan oluşuyor. Bunların arasında 52 Python dosyası ve 12 bin satırı aşan Python kodu var; bunun yaklaşık üçte biri 13 modüllük `src/ortak_kopru` paketinde. 22 test dosyasındaki 280 test yöntemi, 9 JSON sözleşmesi, 3 iş akışı, 4 PowerShell betiği ve 20 belge bulunuyor. Doğrulama komutu 9 kontrol koşuyor. Ana dalda (`97c908d`) aynı yöntemle ölçülen değerler 43 Python dosyası, 226 test yöntemi, 6 sözleşme ve 15 belgeydi; iki zamanın karşılaştırması [Şimdi ve Sonrası](SIMDI_VE_SONRASI.md) belgesinde. Kesin değerler elle yazılmadı: [depo-tanimi.json](depo-tanimi.json) içindeki ölçümleri `tools/depo_tanimi.py` depodan üretiyor. Bu paragraftaki yuvarlak ifadeler bilinçli; kesitin tam sayısı o dosyadadır.
+Depo, bu tanımın kesitinde Git'in izlediği iki yüz elliyi aşkın dosyadan oluşuyor. Bunların arasında 54 Python dosyası ve 12 bin satırı aşan Python kodu var; bunun yaklaşık üçte biri 13 modüllük `src/ortak_kopru` paketinde. 23 test dosyasındaki 291 test yöntemi, 10 JSON sözleşmesi, 3 iş akışı, 4 PowerShell betiği ve 21 belge bulunuyor. Doğrulama komutu 10 kontrol koşuyor. Ana dalda (`97c908d`) aynı yöntemle ölçülen değerler 43 Python dosyası, 226 test yöntemi, 6 sözleşme ve 15 belgeydi; iki zamanın karşılaştırması [Şimdi ve Sonrası](SIMDI_VE_SONRASI.md) belgesinde. Kesin değerler elle yazılmadı: [depo-tanimi.json](depo-tanimi.json) içindeki ölçümleri `tools/depo_tanimi.py` depodan üretiyor. Bu paragraftaki yuvarlak ifadeler bilinçli; kesitin tam sayısı o dosyadadır.
 
 Defter 179 kayıt taşıyor. Gönderen üreticilere göre dağılım Claude 84, ChatGPT 47, Copilot 31, Haluk ("Sen") 11 ve Gemini 6. Kayıtların 134'ü bir önceki kayda yanıt bağıyla bağlı; bu, defterin bir duyuru panosundan çok bir karşılıklı yazışma olduğunu gösteriyor. Kayıtların büyük çoğunluğunun durum alanı "açık" kalmış. Bu, bekleyen iş sayısı değildir; bir katılımcıyı gerçekten bekleyen kayıt, hedef kapsamı ve sonraki yanıtlar hesaba katılarak ayrıca bulunur ve çok daha azdır. Çağrı günlükleri 122 dosyada 34 MB'ı aşıyor, çünkü her günlük o anki defterin tamamını taşıyor. GitHub tarafında 22 PR açılmış; tanım anında 13'ü açıktı, 12'si açık taslaktı.
 

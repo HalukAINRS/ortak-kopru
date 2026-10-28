@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ortak Köprü açılışı v1: niyet, tanım ve altı ilke",
+  "description": "Deponun kullanıcı tarafından konmuş niyetini, bu niyetten kurulan tanımı ve altı ana ilkeyi taşır. Sorular iki gruba ayrılır: kapının kendisini tanımlayan beşli (ne, nerede, nasıl, ne zaman, ne için) ve içinden geçeni tanımlayan dörtlü (nereden, nereye, ne kadar, neden). Her soru niyetteki yanıtını ve bugün depoda gözlenen karşılığını ayrı taşır. Beşli ile dörtlünün 20 kesişimi ayrıca sorulur. İlkelerin durumu, niyetle bugünkü depo arasındaki mesafedir; tools/acilis.py bu kaydı denetler ve README, Web girişi ve açılış belgesindeki blokları ondan üretir.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "niyet", "hazirlayan", "hazirlandi", "tanim", "gruplar", "sorular", "kesisimler", "ilkeler"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "kind": {"const": "ortak_kopru_acilis"},
+    "niyet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["soz", "sahibi", "zaman"],
+      "properties": {
+        "soz": {"type": "string", "minLength": 1, "description": "Kullanıcının niyet sözü, değiştirilmeden."},
+        "sahibi": {"type": "string", "minLength": 1},
+        "zaman": {"type": "string", "format": "date-time"}
+      }
+    },
+    "hazirlayan": {"type": "string", "minLength": 1, "maxLength": 200},
+    "hazirlandi": {"type": "string", "format": "date-time"},
+    "tanim": {"type": "string", "minLength": 1, "description": "Niyetten kurulan tanım; hazırlayanın sözüdür, niyetin yerine geçmez."},
+    "gruplar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kapi", "gecis"],
+      "properties": {
+        "kapi": {"$ref": "#/$defs/grup"},
+        "gecis": {"$ref": "#/$defs/grup"}
+      }
+    },
+    "sorular": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ne", "nerede", "nasil", "ne_zaman", "ne_icin", "nereden", "nereye", "ne_kadar", "neden"],
+      "properties": {
+        "ne": {"$ref": "#/$defs/soru"},
+        "nerede": {"$ref": "#/$defs/soru"},
+        "nasil": {"$ref": "#/$defs/soru"},
+        "ne_zaman": {"$ref": "#/$defs/soru"},
+        "ne_icin": {"$ref": "#/$defs/soru"},
+        "nereden": {"$ref": "#/$defs/soru"},
+        "nereye": {"$ref": "#/$defs/soru"},
+        "ne_kadar": {"$ref": "#/$defs/soru"},
+        "neden": {"$ref": "#/$defs/soru"}
+      }
+    },
+    "kesisimler": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kapi", "gecis", "soru", "yanit"],
+        "properties": {
+          "kapi": {"enum": ["ne", "nerede", "nasil", "ne_zaman", "ne_icin"]},
+          "gecis": {"enum": ["nereden", "nereye", "ne_kadar", "neden"]},
+          "soru": {"type": "string", "minLength": 1},
+          "yanit": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "ilkeler": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["no", "ad", "ilke", "aciklama", "sorular", "dayanaklar", "durum"],
+        "properties": {
+          "no": {"type": "integer", "minimum": 1, "maximum": 6},
+          "ad": {"type": "string", "minLength": 1},
+          "ilke": {"type": "string", "minLength": 1, "description": "Tek cümlelik ilke."},
+          "aciklama": {"type": "string", "minLength": 1},
+          "sorular": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/kok"}},
+          "dayanaklar": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "description": "İlkeyi bugün taşıyan depo içi yollar; denetlenir."},
+          "durum": {"enum": ["uygulanıyor", "kısmen", "henüz yok"]},
+          "eksik": {"type": "string", "minLength": 1, "description": "Durum 'uygulanıyor' değilse zorunlu: niyetle bugünkü depo arasındaki mesafe."},
+          "bulgular": {"type": "array", "items": {"type": "string", "pattern": "^R-[0-9]{2}$"}},
+          "senaryolar": {"type": "array", "items": {"type": "string", "pattern": "^S[0-9]{2}$"}}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "kok": {"enum": ["ne", "nerede", "nasil", "ne_zaman", "ne_icin", "nereden", "nereye", "ne_kadar", "neden"]},
+    "grup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ad", "aciklama", "sorular"],
+      "properties": {
+        "ad": {"type": "string", "minLength": 1},
+        "aciklama": {"type": "string", "minLength": 1},
+        "sorular": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/kok"}}
+      }
+    },
+    "soru": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["soru", "yanit", "bugun", "durum", "varyantlar"],
+      "properties": {
+        "soru": {"type": "string", "minLength": 1},
+        "yanit": {"type": "string", "minLength": 1, "description": "Niyete göre tanım."},
+        "bugun": {"type": "string", "minLength": 1, "description": "Bugün depoda gözlenen karşılık."},
+        "durum": {"enum": ["var", "kısmen", "yok"]},
+        "varyantlar": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["soru", "yanit"],
+            "properties": {
+              "soru": {"type": "string", "minLength": 1},
+              "yanit": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      }
+    }
+  }
+}
