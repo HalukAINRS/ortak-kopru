@@ -25,7 +25,7 @@
       <section id="empty" class="empty"><p class="eyebrow">SÖZ · İŞ · GERİ DÖNÜŞ</p><h2>Devamın yeri belli olsun.</h2><p>Bir iş seç veya özgün isteğinle yeni bir iş başlat. Kaynaklar, düzeltmeler ve sonuçlar aynı işte birlikte kalır.</p></section>
       <section id="task-detail" hidden>
         <div class="task-heading"><div><p id="task-id" class="eyebrow"></p><h2 id="task-title"></h2></div><span id="task-status" class="badge"></span></div>
-        <nav class="tabs" aria-label="İş görünümleri"><button type="button" data-view="work" aria-pressed="true">İş</button><button type="button" data-view="sources" aria-pressed="false">Kaynak ve karar</button><button type="button" data-view="history" aria-pressed="false">Geçmiş ve devir</button></nav>
+        <nav class="tabs" aria-label="İş görünümleri"><button type="button" data-view="work" aria-pressed="true">İş</button><button type="button" data-view="joint" aria-pressed="false">Ortak çalışma</button><button type="button" data-view="sources" aria-pressed="false">Kaynak ve karar</button><button type="button" data-view="history" aria-pressed="false">Geçmiş ve devir</button></nav>
         <div id="work-view">
           <article class="card"><h3>Güncel istek</h3><p id="current-words" class="prose"></p><p id="revision-note" class="muted"></p></article>
           <article class="card"><h3>Tamamlanma ölçütleri</h3><ul id="criteria"></ul></article>
@@ -74,6 +74,62 @@
           <div class="actions"><button id="pause-task" type="button">Duraklat</button><button id="resume-task" type="button">Devam et</button><button id="cancel-task" class="danger" type="button">İşi durdur</button></div>
           <details class="card"><summary>İsteği düzelt</summary><form id="revise-form"><label>Güncel sözün<textarea id="revised-words" required rows="5"></textarea></label><p class="muted">Önceki söz ve sonuçlar geçmişte kalır. Yeni sürüm, önceki çalıştırmanın sonucu ile kapanmaz.</p><button class="primary" type="submit">Düzeltmeyi kaydet</button></form></details>
           <details class="card"><summary>Bir CLI oturumuna ata</summary><form id="assign-form"><div class="form-row"><label>Katılımcı<input id="participant" list="participants" required placeholder="ChatGPT (Şaman)"></label><label>Gerçek oturum etiketi<input id="session" required autocomplete="off"></label></div><datalist id="participants"><option value="ChatGPT (Şaman)"></option><option value="Claude (Hacker)"></option><option value="Gemini (Şahit)"></option></datalist><p class="muted">Atama, teslim kaydı oluşturur. Alım ve sonuç CLI üzerinden veya bu ekranda açık beyanla kaydedilebilir; atama tek başına model çağrısı yapmaz.</p><button type="submit">Atamayı kaydet</button></form></details>
+        </div>
+        <div id="joint-view" hidden>
+          <article class="card joint-intro">
+            <p class="eyebrow">AYNI İŞ · AYRI OTURUMLAR · SOMUT DAYANAK</p>
+            <h3>Ortak çalışma</h3>
+            <p>ChatGPT, Claude ve Gemini oturumlarının katkılarını, seçilmiş GitHub kaynaklarını ve yerel işlemlerin makbuzlarını bu işte bir araya getir.</p>
+            <p class="muted">Katkının yazarı, oturumu ve aktaranı ayrı kaydedilir. Bu adlar birer beyandır; çevrimiçi olma veya kimlik doğrulaması göstermez. Her katılımcının kendine özgü [33×8] içsel döngüsü mevcut oturumunda kalır.</p>
+            <p id="joint-binding" class="binding"></p>
+            <p id="joint-state" class="muted"></p>
+            <p id="joint-stale" class="notice error" role="alert" hidden></p>
+            <button id="load-current-joint" type="button" hidden>Güncel sürüm için formları aç</button>
+          </article>
+          <details class="card" id="contribute-card" open>
+            <summary>Oturum katkısı ekle</summary>
+            <form id="contribute-form">
+              <div class="form-row">
+                <label>Katkının yazarı<input id="contribution-author" list="joint-authors" required maxlength="200" placeholder="Örneğin: Claude (Code Bulut)"></label>
+                <label>Kaynak oturum etiketi<input id="contribution-session" required maxlength="256" autocomplete="off" placeholder="Katkının geldiği mevcut oturum"></label>
+              </div>
+              <datalist id="joint-authors"><option value="ChatGPT (Şaman)"></option><option value="Claude (Hacker)"></option><option value="Claude (Code Bulut)"></option><option value="Gemini (Şahit)"></option></datalist>
+              <div class="form-row">
+                <label>Buraya aktaran<input id="contribution-relay" required maxlength="200" placeholder="Aktarımı yapan kişi veya oturum"></label>
+                <label>Ortak süreç<select id="contribution-stage" required><option value="16">16 · Gereksinim belirleme</option><option value="32">32 · Gereç oluşturma</option><option value="64">64 · Uygulama</option><option value="128">128 · Geri dönüş</option></select></label>
+              </div>
+              <label>Katkı<textarea id="contribution-body" required rows="5" placeholder="Görüşü, yapılan işi veya düzeltmeyi; gözlem ve öneriyi ayırarak yaz."></textarea></label>
+              <label>Dayanaklar <span class="muted">(isteğe bağlı)</span><textarea id="contribution-references" rows="2" placeholder="Her satıra bir dosya, kayıt kimliği veya kaynak bağlantısı"></textarea></label>
+              <p class="muted">Mevcut sohbetten aktarılan katkıyı kendi yazar ve oturumuyla kaydet. Özel erişim bilgilerini ve ham özel sayfaları bu alana koyma.</p>
+              <p id="contribute-error" class="error" role="alert" hidden></p>
+              <button id="contribute-submit" class="primary" type="submit">Katkıyı kaydet</button>
+            </form>
+          </details>
+          <div class="joint-tools">
+            <details class="card" id="operate-card">
+              <summary>Yerel CLI işlemi çalıştır</summary>
+              <form id="operate-form">
+                <label>İşlem<select id="local-operation" required><option value="repo_revision">Depo sürümünü oku</option><option value="repo_status">Depo durumunu oku</option><option value="python_version">Python sürümünü oku</option></select></label>
+                <label>Çalışma dizininin tam yolu<input id="local-cwd" required autocomplete="off" placeholder="Sunucunun çalıştığı ortamda bir dizin"></label>
+                <p class="muted">İşlem bu ekranın bağlı olduğu sunucuda çalışır. Girilen yol da o ortama aittir. Çıktı ve çıkış kodu 64 · Uygulama makbuzunda saklanır.</p>
+                <p id="operate-error" class="error" role="alert" hidden></p>
+                <button id="operate-submit" type="submit">İşlemi çalıştır</button>
+              </form>
+            </details>
+            <details class="card" id="github-card">
+              <summary>GitHub’dan seçili kaynak al</summary>
+              <form id="github-form">
+                <label>Depo<input id="github-repository" required placeholder="sahip/depo" autocomplete="off"></label>
+                <label>Dal, etiket veya commit<input id="github-ref" required value="main" autocomplete="off"></label>
+                <label>Depodaki dosya yolu<input id="github-path" required placeholder="docs/kaynak.md" autocomplete="off"></label>
+                <p class="muted">Seçilen dosya kesin kaynak sürümüyle alınır ve bu işe bağlanır. Kaynak 32 · Gereç oluşturma makbuzuyla saklanır; içindeki metin çalıştırılmaz.</p>
+                <p id="github-error" class="error" role="alert" hidden></p>
+                <button id="github-submit" type="submit">Kaynağı al</button>
+              </form>
+            </details>
+          </div>
+          <article class="card"><h3>Oturum katkıları</h3><div id="joint-contributions"></div></article>
+          <article class="card"><h3>İşlem ve kaynak makbuzları</h3><p class="muted">Makbuzlar yapılan işlemin gözlenen sonucunu gösterir. İşin tamamlanma ölçütleri İş görünümünde ayrıca değerlendirilir; buradaki kayıtlar oturum atamasını değiştirmez.</p><div id="joint-operations"></div></article>
         </div>
         <div id="sources-view" hidden>
           <article class="card"><h3>Özgün söz</h3><p id="original-words" class="prose"></p></article>

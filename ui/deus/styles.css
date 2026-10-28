@@ -555,3 +555,78 @@ select {
 #result-error,#verify-error,#receive-error {
   scroll-margin: 2rem;
 }
+
+.joint-intro .eyebrow {
+  margin-top: 0;
+}
+
+.joint-tools {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.joint-tools > .card {
+  min-width: 0;
+  margin: 0;
+}
+
+.joint-entry {
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--line);
+  overflow-wrap: anywhere;
+}
+
+.joint-entry:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.joint-entry:last-child {
+  padding-bottom: 0;
+}
+
+.joint-entry .section-heading {
+  align-items: start;
+  flex-wrap: wrap;
+  gap: .4rem 1rem;
+}
+
+.joint-entry h4 {
+  margin: 0;
+}
+
+.joint-entry .badge {
+  white-space: normal;
+}
+
+.badge-warning {
+  color: var(--danger);
+  background: #f4e9df;
+}
+
+.joint-references {
+  padding-left: 1.3rem;
+  font-size: .85rem;
+}
+
+.operation-facts {
+  font-size: .85rem;
+  margin: .7rem 0;
+}
+
+.operation-output {
+  margin: .8rem 0;
+  font-size: .85rem;
+}
+
+#contribute-error,#operate-error,#github-error {
+  scroll-margin: 2rem;
+}
+
+@media(max-width:1050px) {
+  .joint-tools {
+    grid-template-columns: 1fr;
+  }
+}

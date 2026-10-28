@@ -19,6 +19,13 @@ const statuses = {
   completed: "Tamamlandı",
   cancelled: "Durduruldu",
 };
+const stages = {16: "Gereksinim belirleme", 32: "Gereç oluşturma", 64: "Uygulama", 128: "Geri dönüş"};
+const localOperations = {repo_revision: "Depo sürümü", repo_status: "Depo durumu", python_version: "Python sürümü"};
+const operationStatuses = {
+  completed: "İşlem tamamlandı", failed: "İşlem başarısız", timeout: "Süre doldu",
+  output_limit: "Çıktı sınırına ulaşıldı", spawn_error: "Başlatılamadı",
+  unknown: "Sonuç kesinleşmedi", running: "İşlem sürüyor", prepared: "Hazırlandı",
+};
 
 let tasks = [];
 let current = null;
@@ -30,6 +37,8 @@ let busy = false;
 let receiveDraft = null;
 let resultDraft = null;
 let verificationDraft = null;
+let joint = null;
+let jointDraft = null;
 const pendingRequests = new Map();
 
 const key = () => crypto.randomUUID();
@@ -87,7 +96,9 @@ async function post(path, data) {
     pendingRequests.set(path, pending);
   }
   const response = await api(path, {...data, request_key: pending.key});
-  pendingRequests.delete(path);
+  // A recorded start without a final receipt is still uncertain. Retrying the
+  // unchanged form must observe that operation, not start another process.
+  if (response.status !== "unknown") pendingRequests.delete(path);
   return response;
 }
 
@@ -132,6 +143,184 @@ function appendFiles(container, files, emptyMessage) {
     container.append(row);
   }
   if (!files.length) container.append(node("p", emptyMessage, "muted"));
+}
+
+function matchesJointDraft() {
+  return Boolean(jointDraft && current && joint && jointDraft.taskId === current.id &&
+    jointDraft.revision === current.revision && joint.task_id === current.id &&
+    joint.revision === current.revision);
+}
+
+function prepareJointDraft() {
+  // Resetting a form cancels an unsent new-attempt decision. An already issued
+  // uncertain request keeps its key, so resetting never authorizes another run.
+  for (const action of ["operate", "github"]) {
+    const path = `/api/tasks/${encodeURIComponent(current?.id || "")}/${action}`;
+    if (pendingRequests.get(path)?.freshIntent) pendingRequests.delete(path);
+  }
+  jointDraft = current ? {taskId: current.id, revision: current.revision} : null;
+  for (const name of ["contribute", "operate", "github"]) {
+    $(`${name}-form`).reset();
+    formError(`${name}-error`);
+  }
+}
+
+function addDefinition(list, label, value) {
+  if (value === undefined || value === null || value === "") return;
+  list.append(node("dt", label), node("dd", String(value)));
+}
+
+function platformDescription(platform) {
+  if (typeof platform === "string") return platform;
+  if (!platform || typeof platform !== "object" || Array.isArray(platform)) return "";
+  return [["system", "Sistem"], ["release", "Sürüm"], ["machine", "Mimari"],
+    ["python_implementation", "Python"], ["python_version", "Python sürümü"]]
+    .filter(([field]) => typeof platform[field] === "string" && platform[field])
+    .map(([field, label]) => `${label}: ${platform[field]}`).join(" · ");
+}
+
+function operationFormPayload(action) {
+  if (action === "operate") return {
+    operation: $("local-operation").value, cwd: $("local-cwd").value.trim(), stage: 64,
+  };
+  return {
+    repository: $("github-repository").value.trim(), ref: $("github-ref").value.trim(),
+    paths: [$("github-path").value.trim()], stage: 32,
+  };
+}
+
+function prepareOperationRetry(operation) {
+  if (busy || !runtimeReady || !matchesJointDraft() || isClosed() || current.status === "paused") return;
+  const action = operation.kind === "local_cli" ? "operate" : "github";
+  const parameters = operation.parameters || {};
+  $(`${action}-form`).reset();
+  if (action === "operate") {
+    $("local-operation").value = parameters.operation;
+    $("local-cwd").value = parameters.cwd;
+  } else {
+    $("github-repository").value = parameters.repository;
+    $("github-ref").value = parameters.ref;
+    $("github-path").value = parameters.paths[0];
+  }
+  const path = `/api/tasks/${encodeURIComponent(jointDraft.taskId)}/${action}`;
+  const payload = {...operationFormPayload(action), expected_revision: jointDraft.revision};
+  // This explicit decision allocates a new request; it neither runs it nor
+  // changes the earlier uncertain operation. Ordinary form resets do not do so.
+  pendingRequests.set(path, {signature: JSON.stringify(payload), key: key(), freshIntent: true});
+  formError(`${action}-error`);
+  $(`${action}-card`).open = true;
+  $(`${action}-form`).scrollIntoView({block: "center", behavior: "smooth"});
+  notice(`Önceki ${operation.operation_id} kaydı korunuyor. Sürüm ${jointDraft.revision} için ayrı bir deneme hazırlandı; alanları inceleyip formun gönder düğmesiyle başlat. Yeni kayıt önceki belirsiz sonucu tamamlanmış saymaz.`);
+  renderAvailability();
+}
+
+function appendStream(container, label, stream) {
+  if (!stream || typeof stream.text !== "string") return;
+  if (!stream.text && !stream.truncated) return;
+  const details = node("details", undefined, "operation-output");
+  details.append(node("summary", `${label} · ${stream.captured_bytes ?? "?"} bayt${stream.truncated ? " · kısmi çıktı" : ""}`));
+  details.append(node("pre", stream.text));
+  if (stream.sha256) details.append(node("p", `Saklanan çıktı SHA-256: ${stream.sha256}`, "binding"));
+  if (stream.truncated) details.append(node("p", "Çıktının tamamı saklanmadı; bu makbuz kaydedilmiş parçayı gösterir.", "muted"));
+  container.append(details);
+}
+
+function renderJoint() {
+  if (!jointDraft) prepareJointDraft();
+  const sameRevision = joint?.task_id === current.id && joint.revision === current.revision;
+  const stale = !matchesJointDraft();
+  $("joint-binding").textContent = `Bu formlar: iş ${jointDraft.taskId} · sürüm ${jointDraft.revision}`;
+  $("joint-stale").hidden = !stale;
+  $("joint-stale").textContent = stale ? sameRevision ?
+    "İstek sürümü değişti. Taslaklar önceki sürüme bağlıdır. Güncel sürüm için formları açtığında aşağıdaki üç formun alanları temizlenir." :
+    "İş ve ortak çalışma kaydı farklı sürümlerden geldi. Durumu yenile; taslaklar bu sırada korunur." : "";
+  $("load-current-joint").hidden = !stale || !sameRevision;
+  $("joint-state").textContent = isClosed() ? "İş kapalı. Önceki katkılar ve makbuzlar okunabilir." :
+    current.status === "paused" ? "İş duraklatıldı. Yeni katkı veya işlem için İş görünümünden devam et." :
+    "Katkılar ve işlemler bu söz sürümüne bağlanır. Ortak süreç numaraları tamamlanma sayacı değildir.";
+
+  const contributions = $("joint-contributions");
+  contributions.replaceChildren();
+  for (const contribution of [...(joint?.contributions || [])].reverse()) {
+    const row = node("article", undefined, "joint-entry");
+    const heading = node("div", undefined, "section-heading");
+    heading.append(node("h4", contribution.author),
+      node("span", `${contribution.stage} · ${stages[contribution.stage] || "Ortak süreç"}`, "badge"));
+    row.append(heading);
+    row.append(node("p", `Oturum: ${contribution.session_id} · Aktaran: ${contribution.relayed_by}`, "binding"));
+    row.append(node("p", `Sürüm ${contribution.revision} · ${contribution.at || ""}${contribution.historical || contribution.revision !== current.revision ? " · Önceki sürüm" : ""}`, "muted"));
+    row.append(node("p", contribution.body, "prose"));
+    if (contribution.references?.length) {
+      row.append(node("h4", "Dayanaklar"));
+      const references = node("ul", undefined, "joint-references");
+      for (const reference of contribution.references) references.append(node("li", typeof reference === "string" ? reference : JSON.stringify(reference)));
+      row.append(references);
+    }
+    row.append(node("p", `Katkı kaydı: ${contribution.id}`, "binding muted"));
+    contributions.append(row);
+  }
+  if (!joint?.contributions?.length) contributions.append(node("p", "Bu işte henüz oturum katkısı yok. Mevcut sohbetlerden gelen katkılar yukarıdaki formdan kaydedilebilir.", "muted"));
+
+  const operations = $("joint-operations");
+  operations.replaceChildren();
+  for (const operation of [...(joint?.operations || [])].reverse()) {
+    const row = node("article", undefined, "joint-entry");
+    const receipt = operation.receipt;
+    const parameters = operation.parameters || {};
+    const github = operation.kind === "github_fetch";
+    const operationName = parameters.operation || receipt?.operation;
+    const heading = node("div", undefined, "section-heading");
+    const status = receipt?.status || operation.status;
+    heading.append(node("h4", github ? "GitHub kaynağı" : localOperations[operationName] || "Yerel CLI işlemi"),
+      node("span", operationStatuses[status] || status || "Durum belirtilmedi", `badge${["failed", "timeout", "output_limit", "spawn_error", "unknown"].includes(status) ? " badge-warning" : ""}`));
+    row.append(heading);
+    row.append(node("p", `${operation.stage} · ${stages[operation.stage] || "Ortak süreç"} · Sürüm ${operation.revision}${operation.historical || operation.revision !== current.revision ? " · Önceki sürüm" : ""}`, "muted"));
+    const facts = node("dl", undefined, "operation-facts");
+    if (github) {
+      const origin = receipt?.origin || receipt?.source || receipt || {};
+      addDefinition(facts, "Depo", origin.repository || parameters.repository);
+      addDefinition(facts, "İstenen sürüm", origin.requested_ref || parameters.ref);
+      addDefinition(facts, "Kesin commit", origin.commit || receipt?.commit);
+      addDefinition(facts, "Dosya", (receipt?.files?.map((file) => file.path) || parameters.paths || []).join("\n"));
+      addDefinition(facts, "Aktarım", receipt?.transfer_id);
+    } else {
+      addDefinition(facts, "Çalışma dizini", receipt?.cwd || parameters.cwd);
+      addDefinition(facts, "Ortam", platformDescription(receipt?.platform));
+      if (receipt) addDefinition(facts, "Çıkış kodu", receipt.exit_code ?? "Kaydedilmedi");
+      if (typeof receipt?.duration_ms === "number") addDefinition(facts, "Süre", `${Math.round(receipt.duration_ms)} ms`);
+    }
+    if (facts.childElementCount) row.append(facts);
+    if (receipt) {
+      if (github && receipt.files?.length) {
+        const files = node("div", undefined, "result-artifacts");
+        appendFiles(files, receipt.files, "");
+        row.append(files);
+      }
+      const errorMessage = typeof receipt.error === "string" ? receipt.error : receipt.error?.message;
+      if (typeof errorMessage === "string") row.append(node("p", errorMessage, "error"));
+      appendStream(row, "Komut çıktısı", receipt.stdout);
+      appendStream(row, "Hata çıktısı", receipt.stderr);
+    } else {
+      row.append(node("p", "İşlemin başlangıç kaydı var; tamamlanmış makbuzu henüz yok. Bu kayıt kendiliğinden yeni bir deneme başlatmaz.", "muted"));
+    }
+    const details = node("details", undefined, "binding-details");
+    details.append(node("summary", "Makbuz ve kayıt ayrıntısı"), node("pre", JSON.stringify(operation, null, 2)));
+    row.append(details);
+    if (status === "unknown") {
+      row.append(node("p", "Bu kayıt korunur. Ayrı bir deneme, önceki belirsiz işlemi tamamlanmış saymaz.", "muted"));
+      if (!github || parameters.paths?.length === 1) {
+        const retry = node("button", "Yeni deneme için formu aç");
+        retry.type = "button";
+        retry.dataset.retryOperation = operation.operation_id;
+        retry.onclick = () => prepareOperationRetry(operation);
+        row.append(retry);
+      } else {
+        row.append(node("p", "Bu seçim birden çok dosya içeriyor. Ayrı deneme kararı CLI'de yeni bir request key ile kaydedilebilir.", "muted"));
+      }
+    }
+    operations.append(row);
+  }
+  if (!joint?.operations?.length) operations.append(node("p", "Bu iş için henüz CLI veya GitHub kaynak makbuzu yok.", "muted"));
 }
 
 function renderProgress() {
@@ -248,12 +437,18 @@ function resetWorkflowDrafts() {
   receiveDraft = null;
   resultDraft = null;
   verificationDraft = null;
+  jointDraft = null;
+  joint = null;
   $("receive-form").reset();
   $("result-form").reset();
   $("verification-fields").replaceChildren();
   for (const id of ["receive-error", "result-error", "verify-error"]) formError(id);
   $("result-card").open = false;
   $("verify-card").open = false;
+  for (const name of ["contribute", "operate", "github"]) {
+    $(`${name}-form`).reset();
+    formError(`${name}-error`);
+  }
 }
 
 function renderWorkflow() {
@@ -332,6 +527,13 @@ function renderAvailability() {
   disableForm("verify-form", !mutable || !matchesResult(verificationDraft) || !["awaiting_verification", "blocked"].includes(current.status));
   $("load-current-attempt").disabled = !mutable;
   $("load-current-result").disabled = !mutable;
+  for (const name of ["contribute", "operate", "github"]) {
+    disableForm(`${name}-form`, !mutable || current.status === "paused" || !matchesJointDraft());
+  }
+  $("load-current-joint").disabled = !mutable || current.status === "paused";
+  for (const button of document.querySelectorAll("[data-retry-operation]")) {
+    button.disabled = !mutable || current.status === "paused" || !matchesJointDraft();
+  }
 }
 
 function renderTask() {
@@ -354,6 +556,7 @@ function renderTask() {
   $("sources").replaceChildren();
   appendFiles($("sources"), current.sources, "Bu işe dosya kaynağı eklenmedi.");
   renderProgress();
+  renderJoint();
   renderWorkflow();
   showView(activeView);
   renderList();
@@ -361,7 +564,7 @@ function renderTask() {
 
 function showView(view) {
   activeView = view;
-  for (const name of ["work", "sources", "history"]) $(`${name}-view`).hidden = name !== view;
+  for (const name of ["work", "joint", "sources", "history"]) $(`${name}-view`).hidden = name !== view;
   document.querySelectorAll("[data-view]").forEach((button) =>
     button.setAttribute("aria-pressed", String(button.dataset.view === view)));
 }
@@ -369,11 +572,14 @@ function showView(view) {
 async function selectTask(id) {
   const selected = ++selection;
   const base = `/api/tasks/${encodeURIComponent(id)}`;
-  const [task, bundle, history] = await Promise.all([api(base), api(`${base}/context`), api(`${base}/events`)]);
+  const [task, bundle, history, collaboration] = await Promise.all([
+    api(base), api(`${base}/context`), api(`${base}/events`), api(`${base}/joint`),
+  ]);
   if (selected !== selection) return;
   if (current?.id !== task.id) resetWorkflowDrafts();
   current = task;
   context = bundle;
+  joint = collaboration;
   $("context").textContent = JSON.stringify(bundle, null, 2);
   $("events").replaceChildren(...history.events.map((event) => {
     const item = node("li");
@@ -534,6 +740,66 @@ $("verify-form").onsubmit = (event) => {
     {checks, expected_revision: draft.revision}, "Denetim beyanları kaydedildi.", "verify-error", () => {
       if (current?.id === draft.taskId) verificationDraft = null;
     });
+};
+
+$("load-current-joint").onclick = () => {
+  prepareJointDraft();
+  renderJoint();
+  renderAvailability();
+};
+
+function submitJoint(action, payload, message, onSuccess) {
+  if (busy || !matchesJointDraft() || isClosed() || current.status === "paused") return;
+  const draft = {...jointDraft};
+  const path = `/api/tasks/${encodeURIComponent(draft.taskId)}/${action}`;
+  const data = {...payload, expected_revision: draft.revision};
+  const kind = {operate: "local_cli", github: "github_fetch"}[action];
+  const previous = kind && [...(joint?.operations || [])].reverse().find((item) => item.kind === kind);
+  const signature = JSON.stringify(data);
+  const pending = pendingRequests.get(path);
+  if (previous?.status === "unknown" && pending?.signature !== signature && !pending?.freshIntent) {
+    const message = "Önceki işlemin sonucu kesinleşmedi. Makbuzu inceleyip ayrı bir deneme istediğinde o kayıttaki ‘Yeni deneme için formu aç’ düğmesini kullan. Sayfayı yenilemek veya alanları temizlemek yeniden çalıştırma kararı sayılmaz.";
+    formError(`${action}-error`, message);
+    notice(message, true);
+    return;
+  }
+  if (pending?.freshIntent) {
+    // Edits before the first submission belong to the explicit new decision.
+    // Once sent, the same key remains bound to the exact submitted payload.
+    pending.signature = signature;
+    pending.freshIntent = false;
+  }
+  mutate(path, data, message, `${action}-error`, (response) => {
+      if (current?.id === draft.taskId && onSuccess) onSuccess(response);
+    });
+}
+
+$("contribute-form").onsubmit = (event) => {
+  event.preventDefault();
+  const stage = Number($("contribution-stage").value);
+  if (![16, 32, 64, 128].includes(stage)) return;
+  submitJoint("contribute", {
+    author: $("contribution-author").value.trim(),
+    session_id: $("contribution-session").value.trim(),
+    relayed_by: $("contribution-relay").value.trim(),
+    stage,
+    body: $("contribution-body").value,
+    references: lines($("contribution-references").value),
+  }, "Katkı, yazarı ve aktarım bilgisiyle kaydedildi.", () => $("contribute-form").reset());
+};
+
+$("operate-form").onsubmit = (event) => {
+  event.preventDefault();
+  const operation = $("local-operation").value;
+  if (!Object.hasOwn(localOperations, operation)) return;
+  submitJoint("operate", operationFormPayload("operate"),
+    "İşlem kaydı güncellendi. Makbuzun durumunu ve çıktısını aşağıda inceleyebilirsin.");
+};
+
+$("github-form").onsubmit = (event) => {
+  event.preventDefault();
+  submitJoint("github", operationFormPayload("github"),
+    "Kaynak alma kaydı güncellendi. Kaynak sürümü ve işlem sonucu makbuzda gösteriliyor.");
 };
 
 $("download-context").onclick = () => {

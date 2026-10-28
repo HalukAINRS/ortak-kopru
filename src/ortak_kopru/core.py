@@ -22,6 +22,8 @@ SCHEMA_VERSION = 1
 MAX_FILE_BYTES = 8 * 1024 * 1024
 MAX_CONTEXT_TEXT_BYTES = 2 * 1024 * 1024
 MAX_REFERENCES = 64
+JOINT_STAGES = (16, 32, 64, 128)
+MAX_JOINT_RECEIPT_BYTES = 1024 * 1024
 TASK_STATES = ("ready", "running", "paused", "awaiting_verification", "blocked", "completed", "cancelled")
 
 
@@ -61,6 +63,12 @@ def _text(value, name, maximum=200000):
 def _revision(value):
     if type(value) is not int or value < 1:
         raise CoreError("expected_revision pozitif tam sayı olmalı.")
+    return value
+
+
+def _joint_stage(value):
+    if type(value) is not int or value not in JOINT_STAGES:
+        raise CoreError("stage yalnız 16, 32, 64 veya 128 olmalı.")
     return value
 
 
@@ -227,8 +235,10 @@ class Store:
         return row
 
     def _event(self, db, task_id, revision, kind, data):
+        identity, at = uuid.uuid4().hex, _now()
         db.execute("INSERT INTO events(id,task_id,revision,kind,at,data) VALUES(?,?,?,?,?,?)",
-                   (uuid.uuid4().hex, task_id, revision, kind, _now(), _json(data)))
+                   (identity, task_id, revision, kind, at, _json(data)))
+        return {"id": identity, "at": at, "revision": revision, "data": data}
 
     def _invalidate(self, db, task, reason):
         if task["active_attempt_id"]:
@@ -247,6 +257,12 @@ class Store:
             raise CoreError(f"Dosya okunamadı: {path.name}") from exc
         if len(data) > MAX_FILE_BYTES:
             raise CoreError(f"Dosya sınırı {MAX_FILE_BYTES} bayt; kaynağı açık parçalarla ver.")
+        return self._snapshot_bytes(reference, data)
+
+    def _snapshot_bytes(self, reference, data):
+        """Capture already obtained bytes; callers hold the short DB write lock."""
+        if not isinstance(data, bytes) or len(data) > MAX_FILE_BYTES:
+            raise CoreError("Kaynak baytları dosya boyut sınırı içinde olmalı.")
         digest = hashlib.sha256(data).hexdigest()
         target = self.objects / digest
         # All snapshot writers hold this Store's BEGIN IMMEDIATE transaction.
@@ -312,6 +328,184 @@ class Store:
     def list_tasks(self):
         with self._db() as db:
             return [self._task(db, row[0]) for row in db.execute("SELECT id FROM tasks ORDER BY created_at DESC,id")]
+
+    def _joint_eligible(self, db, task_id, expected_revision):
+        task = self._row(db, task_id, expected_revision)
+        if task["status"] in ("paused", "cancelled", "completed"):
+            raise Conflict("Duraklatılmış veya kapanmış işe yeni ortak kayıt eklenemez.")
+        return task
+
+    def _joint_source(self, db, task_id, revision, record_id, category, data,
+                      provenance, *, role="evidence"):
+        # The stored object is a real local file. Its remote origin, when any,
+        # remains metadata; it is never confused with a local repository HEAD.
+        digest = hashlib.sha256(data).hexdigest()
+        note = _json({"category": category, "task_id": task_id,
+                      "revision": revision, "record_id": record_id,
+                      "provenance": provenance})
+        source = self._snapshot_bytes({"path": str(self.objects / digest),
+                                       "role": role, "note": note}, data)
+        source.update(task_id=task_id, revision=revision, record_id=record_id,
+                      category=category, provenance=provenance)
+        position = db.execute("SELECT COALESCE(MAX(position),-1)+1 FROM sources WHERE task_id=?",
+                              (task_id,)).fetchone()[0]
+        db.execute("INSERT INTO sources VALUES(?,?,?,?)",
+                   (task_id, source["id"], position, _json(source)))
+        return source
+
+    def record_contribution(self, task_id, author, session_id, relayed_by, stage,
+                            body, expected_revision, request_key, references=None):
+        """Append a session's declared contribution without assigning an attempt."""
+        revision = _revision(expected_revision)
+        if references is None:
+            references = []
+        if not isinstance(references, list) or len(references) > MAX_REFERENCES:
+            raise CoreError("Katkı en fazla 64 metin başvurusu içerebilir.")
+        data = {"author": _text(author, "author", 200),
+                "session_id": _text(session_id, "session_id", 256),
+                "relayed_by": _text(relayed_by, "relayed_by", 200),
+                "stage": _joint_stage(stage), "body": _text(body, "body"),
+                "references": [_text(value, "reference", 4096) for value in references],
+                "identity_verified": False, "instruction_authority": False,
+                "execution_evidence": False}
+        payload = {"task_id": _text(task_id, "task_id", 80),
+                   "expected_revision": revision, **data}
+
+        def action(db):
+            self._joint_eligible(db, task_id, revision)
+            event = self._event(db, task_id, revision, "contribution_recorded", data)
+            document = {"kind": "session_contribution", "task_id": task_id,
+                        **data, **{key: event[key] for key in ("id", "at", "revision")}}
+            self._joint_source(db, task_id, revision, event["id"], "contribution",
+                               (_json(document) + "\n").encode("utf-8"),
+                               {"author": data["author"], "session_id": data["session_id"],
+                                "relayed_by": data["relayed_by"]}, role="reference")
+            return {"id": event["id"]}
+
+        saved = self._write("joint_contribution", request_key, payload, action)
+        return next(item for item in self.joint_view(task_id)["contributions"]
+                    if item["id"] == saved["id"])
+
+    def prepare_joint_operation(self, task_id, kind, stage, parameters,
+                                expected_revision, request_key):
+        """Claim once before external work; a replay never grants a second claim."""
+        revision = _revision(expected_revision)
+        if kind not in ("local_cli", "github_fetch") or not isinstance(parameters, dict):
+            raise CoreError("Ortak işlem türü veya parametreleri geçersiz.")
+        if kind == "local_cli":
+            if (set(parameters) != {"operation", "cwd"} or parameters["operation"] not in
+                    ("repo_revision", "repo_status", "python_version")):
+                raise CoreError("Ortak yerel işlem sabit işlem listesinden seçilmeli.")
+            _text(parameters["cwd"], "cwd", 32768)
+        else:
+            if (set(parameters) != {"repository", "ref", "paths"}
+                    or not isinstance(parameters["paths"], list)
+                    or not 1 <= len(parameters["paths"]) <= MAX_REFERENCES):
+                raise CoreError("GitHub işlemi depo, ref ve 1–64 seçilmiş yol içermeli.")
+            _text(parameters["repository"], "repository", 140)
+            _text(parameters["ref"], "ref", 256)
+            for path in parameters["paths"]:
+                _text(path, "path", 1024)
+        if len(_json(parameters).encode("utf-8")) > 256 * 1024:
+            raise CoreError("Ortak işlem parametreleri boyut sınırını aşıyor.")
+        payload = {"task_id": _text(task_id, "task_id", 80), "kind": kind,
+                   "stage": _joint_stage(stage), "parameters": parameters,
+                   "expected_revision": revision}
+        claimed = False
+
+        def action(db):
+            nonlocal claimed
+            self._joint_eligible(db, task_id, revision)
+            event = self._event(db, task_id, revision, "operation_prepared", {
+                "kind": kind, "stage": stage, "parameters": parameters,
+                "identity_verified": False, "instruction_authority": False,
+                "task_completion_verified": False})
+            claimed = True
+            return {"operation_id": event["id"]}
+
+        saved = self._write("joint_operation", request_key, payload, action)
+        return self._get_joint_operation(task_id, saved["operation_id"]), claimed
+
+    def finish_joint_operation(self, task_id, operation_id, receipt, captures=None):
+        """Persist actual return bytes at the claimed revision, even after a correction.
+
+        This internal completion does not reauthorize work or change task/attempt
+        state. No network or subprocess is allowed while this transaction is open.
+        """
+        if (not isinstance(receipt, dict) or receipt.get("status") not in
+                ("completed", "failed", "timeout", "output_limit", "spawn_error", "unknown")):
+            raise CoreError("Ortak işlem makbuzunun durumu geçersiz.")
+        encoded = _json(receipt).encode("utf-8")
+        if len(encoded) > MAX_JOINT_RECEIPT_BYTES:
+            raise CoreError("Ortak işlem makbuzu boyut sınırını aşıyor.")
+        captures = [] if captures is None else captures
+        if not isinstance(captures, list) or len(captures) > MAX_REFERENCES:
+            raise CoreError("İşlem en fazla 64 kaynak görüntüsü içerebilir.")
+        for capture in captures:
+            if (not isinstance(capture, dict) or set(capture) != {"data", "provenance"}
+                    or not isinstance(capture["data"], bytes)
+                    or len(capture["data"]) > MAX_FILE_BYTES
+                    or not isinstance(capture["provenance"], dict)
+                    or len(_json(capture["provenance"]).encode("utf-8")) > 16384):
+                raise CoreError("İşlem kaynak görüntüsü geçersiz veya çok büyük.")
+        if sum(len(capture["data"]) for capture in captures) > 64 * 1024 * 1024:
+            raise CoreError("İşlem kaynaklarının toplam boyutu 64 MiB sınırını aşıyor.")
+        with self._db(write=True) as db:
+            self._row(db, task_id)
+            prepared = db.execute("SELECT * FROM events WHERE id=? AND task_id=? AND kind='operation_prepared'",
+                                  (_text(operation_id, "operation_id", 80), task_id)).fetchone()
+            if prepared is None:
+                raise NotFound("İşlem başlamadan önce hazırlanmış olmalı.")
+            finished = self._joint_finished(db, task_id).get(operation_id)
+            if finished is not None:
+                if finished["receipt"] != receipt:
+                    raise Conflict("İşlemin makbuzu daha önce farklı içerikle kaydedilmiş.")
+            else:
+                revision, parameters = prepared["revision"], json.loads(prepared["data"])
+                document = {"task_id": task_id, "revision": revision,
+                            "operation_id": operation_id, **parameters, "receipt": receipt}
+                sources = [self._joint_source(
+                    db, task_id, revision, operation_id, "operation_receipt",
+                    (_json(document) + "\n").encode("utf-8"), {"kind": parameters["kind"]})]
+                for capture in captures:
+                    sources.append(self._joint_source(db, task_id, revision, operation_id,
+                                                      "operation_source", capture["data"],
+                                                      capture["provenance"]))
+                self._event(db, task_id, revision, "operation_finished", {
+                    "operation_id": operation_id, "receipt": receipt,
+                    "source_ids": [source["id"] for source in sources],
+                    "task_completion_verified": False})
+        return self._get_joint_operation(task_id, operation_id)
+
+    @staticmethod
+    def _joint_finished(db, task_id):
+        return {data["operation_id"]: data for row in db.execute(
+            "SELECT data FROM events WHERE task_id=? AND kind='operation_finished' ORDER BY seq",
+            (task_id,)) for data in [json.loads(row[0])]}
+
+    def joint_view(self, task_id):
+        with self._db() as db:
+            revision = self._row(db, task_id)["revision"]
+            finished, contributions, operations = self._joint_finished(db, task_id), [], []
+            for row in db.execute("SELECT * FROM events WHERE task_id=? AND kind IN ('contribution_recorded','operation_prepared') ORDER BY seq", (task_id,)):
+                data = json.loads(row["data"])
+                common = {"revision": row["revision"], "at": row["at"],
+                          "historical": row["revision"] != revision}
+                if row["kind"] == "contribution_recorded":
+                    contributions.append({**data, **common, "id": row["id"]})
+                else:
+                    completion = finished.get(row["id"], {})
+                    receipt = completion.get("receipt")
+                    operations.append({**data, **common, "operation_id": row["id"],
+                                       "status": receipt["status"] if receipt is not None else "unknown",
+                                       "receipt": receipt, "source_ids": completion.get("source_ids", [])})
+            return {"task_id": task_id, "revision": revision,
+                    "contributions": contributions, "operations": operations,
+                    "identity_verified": False, "instruction_authority": False}
+
+    def _get_joint_operation(self, task_id, operation_id):
+        return next(item for item in self.joint_view(task_id)["operations"]
+                    if item["operation_id"] == operation_id)
 
     def create_task(self, original_words, authority, criteria, request_key, sources=None):
         words, permission, required, refs = _text(original_words, "original_words"), _authority(authority), _criteria(criteria), _references(sources)
