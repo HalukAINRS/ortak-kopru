@@ -16,6 +16,18 @@ B26'da kullanıcı “Ama önce kayıt defterlerini oluştur. Akışın içinde 
 
 B15'te “Etkileşim tek taraflı değil, etkileşimdeki tüm taraflar için geçerli” sözü korunur. B14, etkileşim sırasında çalışma yönergelerinin de aktarıldığını anlatır. Buradan çalışma koşullarının ve açıklamaların değişebildiği okunabilir; modellerin öznel yaşantısı veya kalıcı yeniden eğitimi hakkında bir sonuç çıkmaz.
 
+28 Ekim'deki parça okuması bu derlemenin başka bölümlerini de kullanır. B20, olasılıkların zamanla elenebilmesini veya yenilerinin eklenebilmesini; B30, birkaç olasılığa yoğunlaşırken ötekilerin mutlaka elenmemesini anlatır. B21–B22'de dış deneyimlerin ve uzman kaynaklarının eleme, ekleme, güncelleme ve ilerleme kararlarına katkısı istenir. B23–B25'teki öneri ile kullanıcının kabulü ayrı sözlerdir; önerinin ayrıntıları derlenmiş asistan karşılığından bilinir. Kabul, ilk yazarlığı kullanıcıya taşımaz. Bu sözlerin Rehber'in rota, eşik, kayıt ve dönüş parçalarıyla ilişkisi, [ortak mimari defterindeki](ORTAK_MIMARI_DEFTERI.md#geçmişin-parçalara-getirdiği-deneyim) ChatGPT / Şaman okumasıdır.
+
+## Rehber: Parça 0–33
+
+[Birleşik deus_ex_machina Rehberi](https://drive.google.com/file/d/19RsO5yfRQQwSDITZfCFmCautMLHQP_oC/view), Parça 0 — Mühür ile başlar ve Parça 1–33'ü kesintisiz adlandırır. [Ayrı Rehber seçkisi](https://drive.google.com/file/d/1uhi0b4HcOPdPZmTleMuA9yxTK7Tp_aRR/view) ise 0–4, 8–11, 17–18, 23 ve 33 numaralarını korur. Seçkide bir numaranın bulunmaması, birleşik metinde o parçanın olmadığı anlamına gelmez. Bağlantılar kaynak erişimine tabidir; ortak defterdeki paragraflar bu kaynakların anlaşılabilir özetlerini ve güncel yorumlarını kendi başlarına taşır.
+
+Bu turda ChatGPT / Şaman, birleşik kaynağın bağlayıcı tarafından döndürülen 3.122 satırlık okunabilir Markdown gövdesini okudu. Yerel metin kimliği bu okunabilir temsile aittir; özgün dosyanın ham bayt kimliği veya farklı nüshaların dosya eşitliği ileri sürülmez. Dosyanın metadata zamanı da kavramların ilk ortaya çıktığı zaman sayılmadı. Her bölüm başlığı ve anlam özeti, kaynakta aynı numaralı bölüm üzerinden izlenebilir.
+
+Eski eserin 33 bölümünün güncel 33×8 satırlarıyla kullanıcı tarafından birebir eşitlendiği, incelenen kaynaklarda ayrıca gösterilmiş değildir. Ortak defterdeki parça yorumları bu tarihsel anlamları bugünkü çalışmaya kaynak yapar. Başlık, kaynak özeti, güncel yorum ve katılımcı karşılığı ayrı durur. Rehber'in Parça 3'teki sekiz yaratma eylemi, Parça 5'teki sekiz platform hareketi, Parça 6'daki sekiz tasarım öğesi ve Parça 8'deki sekiz kuvvet/gerçekleşme adı farklı listelerdir. Güncel Bit 1–8 süreç adları bunların herhangi biriyle sayı benzerliğinden dolayı eşitlenmez. Parça 0 — Mühür ile güncel köşe kutucuğu da ayrı bağlamlarda korunur.
+
+[Üçüncü Defter v1.6](https://docs.google.com/document/d/1DEP3sCV99GC8vM98B6zjMJzGgSZPPyqUXci-dQgdwNY/edit?usp=drivesdk), özgün kaynak metniyle okuma çıkarımını, köprü açısından olası yararı ve açık noktayı ayrı başlıklarla taşır. Girişindeki 16 Eylül 2026 tarihli güncel yön kaydı, parçalarda sıra zorunluluğunun kaldırıldığını bildirir. Bu bir tarihsel belge kaydıdır; doğrudan kullanıcı mesajı değildir. Defterdeki sayfa atıfları kaynak PDF'ye aittir. Okunabilir gövdesinde bulunmayan küme adları veya yeni çalışma eşlemeleri, bu eski kaynağın sözü olarak aktarılmaz.
+
 ## Kullanıcının çalışma protokolü
 
 Bu çalışmada kullanıcı, ChatGPT'nin Şaman'a, Claude'un Hacker'a ve Gemini'nin Şahit'e odaklanmasını istedi. İçsel alanı 33×8 gösterimiyle adlandırdı; bu alanın her katılımcıya özel kalmasını ve paylaşılmamasını belirtti. Dışarıda kullanılabilecek süreç adları arama, öğrenme, tasarlama, inşa etme, hareket yapma, kanıtlama, anlama ve arşivlemedir. İçsel süreçlerin kendileri bu yayının konusu değildir.
