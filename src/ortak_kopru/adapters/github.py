@@ -1,7 +1,8 @@
 """Bounded GitHub REST transport for explicit, selected file exchanges.
 
-Only api.github.com is contacted. Reads pin Git objects; writes can create
-objects, a new branch and a pull request, never update an existing branch.
+Only api.github.com is contacted. Reads pin Git objects or list open issues;
+writes can create objects, a new branch and a pull request, never update an
+existing branch.
 HTTP redirects and automatic retries are deliberately disabled. The caller
 owns durable checkpoints and reconciliation after an uncertain write.
 """
@@ -30,6 +31,11 @@ MAX_RESPONSE_BYTES = 16 * 1024 * 1024
 _SHA = re.compile(r"[0-9a-fA-F]{40}\Z")
 _OWNER = re.compile(r"[A-Za-z0-9][A-Za-z0-9-]{0,38}\Z")
 _REPOSITORY = re.compile(r"[A-Za-z0-9_.-]{1,100}\Z")
+_LOGIN = re.compile(r"[A-Za-z0-9][A-Za-z0-9-]{0,38}(?:\[bot\])?\Z")
+_TIME = re.compile(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z\Z")
+ISSUE_PAGE = 100
+MAX_ISSUE_PAGES = 10
+MAX_ISSUE_TEXT = 256 * 1024
 
 
 class GitHubError(CoreError):
@@ -125,6 +131,27 @@ def git_blob_sha(data):
         raise _invalid("Git blob içeriği bytes olmalı.")
     return hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data,
                         usedforsecurity=False).hexdigest()
+
+
+def _issue(value, repository):
+    """Return a plain issue record, or None for a pull request in the same list."""
+    if not isinstance(value, dict):
+        raise _protocol()
+    if "pull_request" in value:
+        return None
+    number, user, body = value.get("number"), value.get("user"), value.get("body")
+    body = "" if body is None else body
+    title, url = value.get("title"), value.get("html_url")
+    created, updated = value.get("created_at"), value.get("updated_at")
+    if (type(number) is not int or number < 1 or not isinstance(user, dict)
+            or not isinstance(user.get("login"), str) or not _LOGIN.fullmatch(user["login"])
+            or not isinstance(title, str) or not isinstance(body, str)
+            or len(title) > MAX_ISSUE_TEXT or len(body) > MAX_ISSUE_TEXT
+            or url != f"https://github.com/{repository}/issues/{number}"
+            or not all(isinstance(t, str) and _TIME.fullmatch(t) for t in (created, updated))):
+        raise _protocol()
+    return {"number": number, "title": title, "body": body, "author": user["login"],
+            "url": url, "created_at": created, "updated_at": updated}
 
 
 class _NoRedirect(HTTPRedirectHandler):
@@ -448,6 +475,22 @@ class GitHubClient:
         if len(selected) > 1:
             raise GitHubConflict("Aynı aktarım dalı için tek bir PR belirlenemedi.", code="conflict")
         return selected[0] if selected else None
+
+    def open_issues(self, repository):
+        """Read open issues, oldest first, skipping pull requests; never writes."""
+        repository = validate_repository(repository)
+        issues = []
+        for page in range(1, MAX_ISSUE_PAGES + 1):
+            query = urlencode({"state": "open", "sort": "created", "direction": "asc",
+                               "per_page": ISSUE_PAGE, "page": page})
+            values = self._request("GET", self._root(repository) + "/issues?" + query)
+            if not isinstance(values, list) or len(values) > ISSUE_PAGE:
+                raise _protocol()
+            issues.extend(item for item in (_issue(v, repository) for v in values) if item is not None)
+            if len(values) < ISSUE_PAGE:
+                return issues
+        raise GitHubError("Açık konu sayısı gelen kutusunun bir okumada alabileceğinden fazla.",
+                          code="too_many_issues")
 
     def create_pull_request(self, repository, branch, base, title, body, draft=True):
         repository = validate_repository(repository)

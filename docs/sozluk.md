@@ -8,7 +8,7 @@ Bu sayfa, Ortak Köprü'de geçen kelimeleri ilk kez gören biri için açıklar
 - **Kapı.** Seçilen dosyaları bilgisayardan GitHub'a taşıyan, GitHub'dan da kesin bir sürümle alan araç. Kökteki `kapi.py` ile çalışır. Daha fazlası: [Kapı kullanımı](teknik/kapi-kullanimi.md).
 - **Köprü.** Dışarıdaki bir insan ile yerel kullanıcı arasındaki bağ: sorular, katkılar ve yanıtlar. Bugün GitHub'ın konuları (Issue) ve karşılık formu üzerinden işler. Daha fazlası: [Açılış, 1. ve 5. ilke](acilis.md).
 - **Yerel kullanıcı.** Bilgisayarın başındaki kişi; bu depoda Haluk. Kapıdan neyin geçeceğine o karar verir. Daha fazlası: [Açılış, 2. ilke](acilis.md).
-- **Yerel kenar.** Kapının bilgisayardaki ucu: deponun bir kopyası, izleyici ve gönderici. 28 Ekim 2026 itibarıyla hiçbir bilgisayarda kurulu değil. Daha fazlası: [Yerel taraf](teknik/yerel-taraf.md).
+- **Yerel taraf.** Kapının bilgisayardaki ucu: yerel kullanıcının köprü klasöründeki depo kopyası, izleyici ve gönderici. Bugünkü durumu ve kurulumu: [Yerel taraf](teknik/yerel-taraf.md).
 - **Web.** İnternet; bu depoda GitHub ve onun Web sayfaları (GitHub Pages). Daha fazlası: [Web girişi](https://halukainrs.github.io/ortak-kopru/).
 - **Alan.** Deponun bir bölümü: aynı işe yarayan dosyaların toplandığı klasör ya da dosya kümesi. Her alanın klasöründe bir giriş sayfası durur. Daha fazlası: [Depo haritası](harita.md).
 - **Harita.** Her dosyanın hangi alanda olduğunu, ne yaptığını, eski adını ve nasıl çalıştığını yazan kayıt. Daha fazlası: [Depo haritası](harita.md).
@@ -26,7 +26,7 @@ Bu sayfa, Ortak Köprü'de geçen kelimeleri ilk kez gören biri için açıklar
 - **Dayanak.** Bir iddianın bağlandığı yer: dosya, satır ya da kayıt numarası. Dayanağı olmayan iddia "görüş" diye işaretlenir. Daha fazlası: [Katkı rehberi](../CONTRIBUTING.md).
 - **İmza.** Kaydın "kimden" alanı; örneğin `Claude (Max)`. Kaydı hangi yolun yazdığını söyler; kimliğin kanıtı değildir. Daha fazlası: [Katman hedefleme](../katilimcilar/katman-hedefleme.md).
 - **Ayna.** Defterin dış iskeleti çıkarılmış kopyası (`ayna/kopru.html`). Defterden üretilir, elle düzenlenmez. Daha fazlası: [Defter araçları](../defter/README.md).
-- **Kanonik kopya.** Bir belgenin esas sayılan kopyası. Defterin kendi kurallarında esas kopya yerel klasördü; 28 Ekim 2026 itibarıyla yerel klasör olmadığından defterin tek kopyası GitHub'daki ana daldadır. Daha fazlası: [Yerel taraf](teknik/yerel-taraf.md).
+- **Kanonik kopya.** Bir belgenin esas sayılan kopyası. Defterin kendi kurallarında esas kopya yerel klasördür; depo ise GitHub'daki ana dalı esas alır, bot ve Web oradan çalışır. İkisini uzlaştıracak kayıt Haluk'un kararında. Daha fazlası: [Yerel taraf](teknik/yerel-taraf.md).
 - **Bot.** Saatte bir GitHub'da çalışan, defterde Claude, ChatGPT ya da Gemini'ye yazılmış açık kayıtları bulan ve yanıt kaydı ekleyen program. İstemi 28 Ekim 2026'da sıfırlandı. Daha fazlası: [Teknik ayrıntılar, otomasyon](teknik/README.md#otomasyon).
 - **Çağrı kaydı.** Botun her model çağrısında yazdığı tam bağlam: istem, ham yanıt ve sonuç. Daha fazlası: [Çağrı kayıtları](../kayit/README.md).
 

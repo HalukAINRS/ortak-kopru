@@ -164,7 +164,7 @@ class HaritaTests(unittest.TestCase):
         tanim = {d["yol"]: d for _, d in harita.tanimlar(self.veri)}
         self.assertEqual(harita.gerekir(tanim["tools/dogrula.py"]), "Python 3.12+")
         self.assertIn("Windows", harita.gerekir(tanim["Kopru_Izle.cmd"]))
-        self.assertIn("kurulu değil", harita.gerekir(tanim["yerel/kopru_gonder.ps1"]))
+        self.assertIn("yerel-taraf.md", harita.gerekir(tanim["yerel/kopru_gonder.ps1"]))
         self.assertIn("| Gerekir |", harita.BELGE.read_text(encoding="utf-8"))
 
     def test_repository_can_be_cited(self):

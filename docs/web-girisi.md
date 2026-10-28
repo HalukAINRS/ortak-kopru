@@ -16,7 +16,7 @@ Ortak Köprü iki şeydir. Bir kapı: bir bilgisayardaki çalışma ile internet
 
 ## 2. Yerel merkez
 
-**Merkez yerel kullanıcıdır: kapıdan yalnız onun seçtiği geçer, dışarıdan gelen kendiliğinden uygulanmaz.** Neyin paylaşılacağına yerel kullanıcı karar verir. Dışarıdan gelen bir öneri, o kabul etmeden onun çalışmasını değiştirmez. Bugün kısmen işliyor.
+**Merkez yerel kullanıcıdır: kapıdan yalnız onun seçtiği geçer, dışarıdan gelen kendiliğinden uygulanmaz.** Neyin paylaşılacağına yerel kullanıcı karar verir. Dışarıdan gelen bir öneri, o kabul etmeden onun çalışmasını değiştirmez. Bugün işliyor.
 
 ## 3. Köken ve sahiplik
 
@@ -24,7 +24,7 @@ Ortak Köprü iki şeydir. Bir kapı: bir bilgisayardaki çalışma ile internet
 
 ## 4. Sınır
 
-**Kapı bir duvar da taşır: gizli olan geçmez, geri alınamayan geçiş en sıkı denetimden geçer.** Şifreler, kişisel bilgiler ve özel çalışmalar kapıdan geçmez. Bir kez herkese açılan bir şey geri alınamaz. Bu yüzden en sıkı kontrol çıkışta yapılır. Bugün kısmen işliyor.
+**Kapı bir duvar da taşır: gizli olan geçmez, geri alınamayan geçiş en sıkı denetimden geçer.** Şifreler, kişisel bilgiler ve özel çalışmalar kapıdan geçmez. Bir kez herkese açılan bir şey geri alınamaz. Bu yüzden en sıkı kontrol çıkışta yapılır. Bugün işliyor.
 
 ## 5. Açık katılım
 
@@ -77,4 +77,4 @@ Formu doğrudan açtıysanız ilgili paragrafı ve katkınızın bağlamını be
 
 [Depo rehberi](teknik/depo-rehberi.md), belgelerin, kodun, denemelerin ve tarihsel kayıtların hangi amaçla bulunduğunu gösterir. [Tarihsel köprü defteri](../kopru.html), eski katkıların özgün kayıtlarını taşır. Teknik kullanım isteyen okuyucu [kapı rehberinden](teknik/kapi-kullanimi.md) başlayabilir. Bütün teknik ayrıntılar [teknik ayrıntılar](teknik/README.md), bugüne kadarki işler ve kayıtlar [geçmiş işler](gecmis/README.md) sayfasında toplanır. Hangi dosyanın nerede durduğunu [depo haritası](harita.md) gösterir.
 
-Bu web yüzü, seçilmiş bilgilerin okunabildiği ve katkı yollarının bulunduğu kapıdır. Bilgisayardaki komut araçlarının çalışma durumu kendi kanıtlarıyla değerlendirilir; 28 Ekim 2026 itibarıyla yerel taraf hiçbir bilgisayarda kurulu değil ([yerel taraf](teknik/yerel-taraf.md)). Bugün hangi parçanın işlediğini ve hangi işin açık olduğunu [yol sayfası](yol.md) gösterir.
+Bu web yüzü, seçilmiş bilgilerin okunabildiği ve katkı yollarının bulunduğu kapıdır. Bilgisayardaki komut araçlarının çalışma durumu kendi kanıtlarıyla değerlendirilir; yerel tarafın bugünkü durumu [yerel taraf sayfasındadır](teknik/yerel-taraf.md). Bugün hangi parçanın işlediğini ve hangi işin açık olduğunu [yol sayfası](yol.md) gösterir.

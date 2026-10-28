@@ -162,13 +162,13 @@
         }
       ],
       "olcumler": {
-        "izlenen_dosya": 295,
-        "python_dosyasi": 59,
-        "python_satiri": 14429,
-        "paket_modulu": 13,
-        "paket_satiri": 3832,
-        "test_dosyasi": 25,
-        "test_yontemi": 331,
+        "izlenen_dosya": 297,
+        "python_dosyasi": 61,
+        "python_satiri": 14737,
+        "paket_modulu": 14,
+        "paket_satiri": 3954,
+        "test_dosyasi": 26,
+        "test_yontemi": 340,
         "json_sozlesmesi": 13,
         "is_akisi": 3,
         "powershell_betigi": 4,
@@ -185,8 +185,8 @@
         "cagri_gunlugu": 122,
         "cagri_gunlugu_bayti": 34153346,
         "rafine_bulgusu": 53,
-        "rafine_duzeltilen": 41,
-        "rafine_acik": 9
+        "rafine_duzeltilen": 43,
+        "rafine_acik": 7
       }
     },
     "nereden": {

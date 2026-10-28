@@ -14,7 +14,7 @@ Belge katkısında değişen metni, kaynak adreslerini ve bağlantıları kontro
 
 ## Teknik katkı
 
-Çalışma ortamı: **Python 3.12 veya üstü ve Git**. Python betikleri ve testler standart kütüphaneyi kullanır; paket kurulumu gerekmez. Bazı Linux ve macOS makinelerinde komut `python` yerine `python3` adıyla bulunur. Node, Bash ve PowerShell 7 isteğe bağlıdır: yalnız ilgili sözdizimi kontrolleri için gerekir, yoksa o kontrol `ATLANDI` yazar. Yerel Windows tarafı bugün hiçbir bilgisayarda kurulu değildir; durumu ve kurulumu [yerel taraf sayfasındadır](docs/teknik/yerel-taraf.md).
+Çalışma ortamı: **Python 3.12 veya üstü ve Git**. Python betikleri ve testler standart kütüphaneyi kullanır; paket kurulumu gerekmez. Bazı Linux ve macOS makinelerinde komut `python` yerine `python3` adıyla bulunur. Node, Bash ve PowerShell 7 isteğe bağlıdır: yalnız ilgili sözdizimi kontrolleri için gerekir, yoksa o kontrol `ATLANDI` yazar. Yerel Windows tarafının durumu ve kurulumu [yerel taraf sayfasındadır](docs/teknik/yerel-taraf.md).
 
 ```sh
 git clone https://github.com/HalukAINRS/ortak-kopru

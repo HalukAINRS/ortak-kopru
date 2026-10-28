@@ -85,10 +85,17 @@ class AcilisTests(unittest.TestCase):
         self.assertIn("ilkeler[2].dayanaklar: depoda yok (olmayan/dosya.py)", hatalar)
 
     def test_closing_a_linked_finding_forces_the_principle_to_be_rewritten(self):
+        # Kaydın bugünkü durumundan bağımsız: kısmen işleyen bir ilke, kapanmış bir bulguya bağlı kalamaz.
+        kayit = copy.deepcopy(self.veri)
+        for i in (1, 3):
+            kayit["ilkeler"][i].update(durum="kısmen", eksik="Sınama eksiği.", bulgular=["R-17"])
         kapanmis = dict(self.bulgular, **{"R-17": "düzeltildi"})
-        hatalar = acilis.denetle(self.veri, kapanmis, self.senaryolar)
+        hatalar = acilis.denetle(kayit, kapanmis, self.senaryolar)
         self.assertIn("ilkeler[2].bulgular: R-17 kapanmış (düzeltildi); ilkenin durumu yeniden yazılmalı", hatalar)
         self.assertIn("ilkeler[4].bulgular: R-17 kapanmış (düzeltildi); ilkenin durumu yeniden yazılmalı", hatalar)
+        acik = dict(self.bulgular, **{"R-17": "açık"})
+        self.assertNotIn("ilkeler[2].bulgular: R-17 kapanmış (düzeltildi); ilkenin durumu yeniden yazılmalı",
+                         acilis.denetle(kayit, acik, self.senaryolar))
 
     def test_faces_drift_is_detected_and_regenerated(self):
         uretilen = acilis.bloklar(self.veri)[ROOT / "README.md"]

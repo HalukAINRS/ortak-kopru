@@ -13,7 +13,7 @@ Bu sayfa, depoyu bakımını yapacak biri içindir: hangi işin hangi dosyada ol
 | Katılımcı seçimi ve çağrı | `defter/kopru_yanitla.py`, `katilimcilar/ayarlar*.json`, `katilimcilar/katman-hedefleme.md` |
 | Yayım ve eşitleme | `yerel/kopru_gonder.ps1`, `defter/kopru_birlestir.py`, `.github/scripts/kopru_gonder.sh` |
 | Kanonik sayfa ve üretilen ayna | `kopru.html`, `ayna/kopru.html`, `defter/kopru_ayna_uret.py` |
-| Yerel başlatıcılar (bugün kurulu değil; [yerel taraf](yerel-taraf.md)) | `Kopru_Izle.cmd`, `yerel/kopru_yerel.ps1`, `yerel/kopru_izle.ps1` |
+| Yerel başlatıcılar ([yerel taraf](yerel-taraf.md)) | `Kopru_Izle.cmd`, `yerel/kopru_yerel.ps1`, `yerel/kopru_izle.ps1` |
 | Tarihsel kanıtlar | `kayit/`; değiştirilmeden korunur |
 | Çevrimdışı kontroller | `tools/dogrula.py` (hepsi tek komutla), `tests/`, `tools/depo_kontrol.py`, `tools/sema_denetle.py`, `tools/harita.py` |
 | Alanlar, dosyalar ve eski adlar | [Depo haritası](../harita.md), `docs/harita.json`, `tools/harita.py --nerede AD` |
@@ -77,7 +77,7 @@ Actions bağımlılıkları Node 24 kullanan [checkout v7.0.1](https://github.co
 
 26 Ekim'de güncellenen rol belgesi Şahit'in güncel insan rolünü `Gemini (Şahit)` olarak kaydediyor. Kodun tarihsel yalın `Şahit`/`Sahit` takma adı ise eski kayıtların kapsamını korumak için `Copilot (Şahit)` adresine bağlıdır. Yeni kayıtlar tam üretici/rol adresini kullanmalıdır. Takma adın tüm geçmiş için değiştirilmesi eski işlerin yeniden açılmasına veya başka üreticinin yanıtıyla kapanmasına yol açabilir; bu bakım böyle bir yeniden adresleme yapmaz. Ayrıntı: [hedefleme sözleşmesi](../../katilimcilar/katman-hedefleme.md).
 
-Yerel ayarların açıklaması, içindeki `katilimcilar` listesiyle uyumludur. Ama yerel ayarların komut yolları ile `yerel/kopru_yerel.ps1` içindeki yollar ayrı klasör ağaçlarını gösterir ve yerel taraf bugün hiçbir bilgisayarda kurulu değildir; ayrıntı [yerel taraf sayfasındadır](yerel-taraf.md). Canlı Windows, sanal makine ya da sağlayıcı denemesi bu çevrimdışı kontrollerin kapsamı dışındadır.
+Yerel ayarların açıklaması, içindeki `katilimcilar` listesiyle uyumludur. Ama yerel ayarların komut yolları ile `yerel/kopru_yerel.ps1` içindeki yollar ayrı klasör ağaçlarını gösterir; ayrıntı [yerel taraf sayfasındadır](yerel-taraf.md). Canlı Windows, sanal makine ya da sağlayıcı denemesi bu çevrimdışı kontrollerin kapsamı dışındadır.
 
 ## Dal ve PR haritası
 

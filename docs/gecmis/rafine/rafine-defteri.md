@@ -38,7 +38,7 @@ Belgelerdeki tutarsızlıkların çoğu yanlış değil, eskimiş bilgiydi. Duru
 
 ## Açık kalanlar ve kimin kararı oldukları
 
-**28 Ekim 2026 akşamı notu.** Bu bölüm o sabahın durumudur. Yerel gönderici bugün hiçbir bilgisayarda kurulu değil; daraltma kararı [yolun 1. adımında](../../yol.md) bekliyor. Bugünkü açık işler yol sayfasındadır.
+**28 Ekim 2026 akşamı notu.** Bu bölüm o sabahın durumudur. Yerel gönderici aynı akşam daraltıldı ([yolun 1. adımı](../../yol.md)). Bugünkü açık işler yol sayfasındadır.
 
 En önemli iki konu, bu oturumda çalıştırılamayan PowerShell tarafındadır. Yerel gönderici, çalışma klasöründeki izlenmeyen her dosyayı herkese açık ana dala gönderebiliyor; bulut göndericisi ise yalnız defter, ayna ve çağrı kayıtlarını kabul ediyor. Klasörde yanlışlıkla kalan bir dosya beş dakika içinde herkese açık geçmişe girebilir. Ayrıca başlatıcının yokladığı kurulum yolları, izleyicinin gerçekten kullandığı yollardan farklı görünüyor; bu, hedef makinede doğrulanmalı. Bu oturumda PowerShell ikilisini çalıştırma izni verilmediği için bu betiklere dokunulmadı; değişiklik, Haluk'un makinesinde denenebilecek biçimde önerildi.
 

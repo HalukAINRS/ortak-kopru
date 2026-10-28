@@ -15,7 +15,7 @@ Bu klasör, 24 Ekim 2026'da ortak deftere eklenmek üzere hazırlanmış dört t
 
 Taslaklar eklenmeden önce düzenlendi; defterdeki metinle ayrıntıda ayrışabilirler. Ayrışan yerde defter esastır.
 
-JSON taslaklarındaki "not" alanları o günün iş talimatıdır ("Haluk ekler" gibi). Bugün geçerli değildir: taslaklar zaten eklendi, yeniden eklenmeleri kayıtları çoğaltır ve onları ekleyen yerel kapı bugün kurulu değil.
+JSON taslaklarındaki "not" alanları o günün iş talimatıdır ("Haluk ekler" gibi). Bugün geçerli değildir: taslaklar zaten eklendi, yeniden eklenmeleri kayıtları çoğaltır.
 
 JSON taslakları defterin yanıt kalıbını izler: kimden, kime, konu, gövde, dayanak, yanıt ve durum (`katilimcilar/yanit-sablonu.json`).
 

@@ -131,7 +131,7 @@
           "ne": "Windows'ta çift tıklanan yerel izleyici girişi; yerel/kopru_yerel.ps1'i çağırır.",
           "calistir": "Kopru_Izle.cmd Hazirlik",
           "yan_etkisiz": false,
-          "gerekir": "Windows, PowerShell 7, Git ve yerel kurulum (28 Ekim 2026 itibarıyla hiçbir bilgisayarda kurulu değil)"
+          "gerekir": "Windows, PowerShell 7, Git ve yerel kurulum (docs/teknik/yerel-taraf.md)"
         }
       ]
     },
@@ -417,7 +417,7 @@
       "ad": "Yerel betikler",
       "yol": "yerel/",
       "her_dosya_tanimli": true,
-      "ne": "Yerel kullanıcının Windows bilgisayarında çalışmak üzere yazılmış betikler: izleyici, gönderici ve ortam kapısı. Bugün hiçbir bilgisayarda kurulu değiller.",
+      "ne": "Yerel kullanıcının Windows bilgisayarında, köprü klasöründe çalışmak üzere yazılmış betikler: izleyici, gönderici ve ortam kapısı.",
       "kapsam": [
         "yerel/**"
       ],
@@ -433,29 +433,29 @@
         {
           "yol": "yerel/kopru_izle.ps1",
           "tur": "betik",
-          "ne": "Makineden bağımsız izleyici: eşitler, botu yerel ayarla çalıştırır, yeni kayıt varsa gönderir.",
+          "ne": "Makineden bağımsız izleyici: eşitler, botu yerel ayarla çalıştırır, defterde ya da kayıtlarda değişiklik varsa göndericiyi çağırır.",
           "eski_adlar": [
             "kopru_izle.ps1"
           ],
           "calistir": "pwsh -File yerel/kopru_izle.ps1 -TekSefer",
           "yan_etkisiz": false,
-          "gerekir": "Windows, PowerShell 7, Git ve yerel kurulum (28 Ekim 2026 itibarıyla hiçbir bilgisayarda kurulu değil)"
+          "gerekir": "Windows, PowerShell 7, Git ve yerel kurulum (docs/teknik/yerel-taraf.md)"
         },
         {
           "yol": "yerel/kopru_gonder.ps1",
           "tur": "betik",
-          "ne": "Yerel değişiklikleri denetleyip gönderir; çakışmada defteri birleştirir, aynayı yeniler.",
+          "ne": "Yalnız defteri, aynasını ve çağrı kayıtlarını gönderir; başka değişiklikleri yerelde bırakır, çakışmada defteri birleştirir ve aynayı yeniler.",
           "eski_adlar": [
             "kopru_gonder.ps1"
           ],
           "calistir": "pwsh -File yerel/kopru_gonder.ps1",
           "yan_etkisiz": false,
-          "gerekir": "Windows, PowerShell 7, Git ve yerel kurulum (28 Ekim 2026 itibarıyla hiçbir bilgisayarda kurulu değil); ana dala gönderme yetkisi"
+          "gerekir": "Windows, PowerShell 7, Git ve yerel kurulum (docs/teknik/yerel-taraf.md); ana dala gönderme yetkisi"
         }
       ],
       "klasor_okur": [
-        "Bu klasör, yerel kullanıcının Windows bilgisayarında çalışmak üzere yazılmış betikleri taşır. İzleyici defteri yerelden izler, gönderici değişiklikleri GitHub'a gönderir. Ortam kapısı bu işlerin hepsini tek bir komuttan başlatır.",
-        "Bu betikler bugün hiçbir bilgisayarda kurulu değil: 28 Ekim 2026 itibarıyla yerel kullanıcının bilgisayarında köprü klasörü yok. Betiklerdeki sürücü yolları kuruldukları ilk makineye aittir; yeniden kurulurken yeni makineye göre düzeltilir. Göndericinin daraltılması ayrıca bir karar bekliyor; ayrıntısı yol sayfasında."
+        "Bu klasör, yerel kullanıcının Windows bilgisayarında çalışmak üzere yazılmış betikleri taşır. İzleyici defteri yerelden izler ve bekleyen kayıtlara yerel katılımcıların cevabını ekler. Gönderici yalnız defteri, aynasını ve çağrı kayıtlarını GitHub'a gönderir; başka her değişiklik yerelde kalır. Ortam kapısı bu işlerin hepsini tek bir komuttan başlatır.",
+        "Betiklerdeki katman yolları kuruldukları ilk makineye aittir. Yerel tarafın bugünkü durumu, gerekenleri ve kurulumu [yerel taraf sayfasında](../docs/teknik/yerel-taraf.md) yazılıdır."
       ]
     },
     {
@@ -516,7 +516,12 @@
         {
           "yol": "src/ortak_kopru/gateway_cli.py",
           "tur": "kod",
-          "ne": "Kapının komutları (kökteki kapi.py girişi): hazırla, planla, gönder, uzlaştır, al ve dışa çıkar."
+          "ne": "Kapının komutları (kökteki kapi.py girişi): hazırla, planla, gönder, uzlaştır, al, gelen kutusuna indir ve dışa çıkar."
+        },
+        {
+          "yol": "src/ortak_kopru/inbox.py",
+          "tur": "kod",
+          "ne": "Gelen kutusu: GitHub'daki açık konuları anahtarsız okur ve aktarım dizininin gelen/ klasörüne, yazarı, zamanı ve yeriyle birer JSON olarak indirir."
         },
         {
           "yol": "src/ortak_kopru/adapters/__init__.py",
@@ -526,7 +531,7 @@
         {
           "yol": "src/ortak_kopru/adapters/github.py",
           "tur": "kod",
-          "ne": "GitHub REST bağdaştırıcısı: seçilmiş dosya alışverişi için sınırlı istekler."
+          "ne": "GitHub REST bağdaştırıcısı: seçilmiş dosya alışverişi ve açık konuların okunması için sınırlı istekler."
         },
         {
           "yol": "src/ortak_kopru/adapters/windows_nt.py",
@@ -996,7 +1001,7 @@
         {
           "yol": "docs/teknik/yerel-taraf.md",
           "tur": "belge",
-          "ne": "Kapının bilgisayardaki ucu: bugünkü durumu (kurulu değil), gerekenler, bilinen uyuşmazlıklar ve sıfırdan kurulum.",
+          "ne": "Kapının bilgisayardaki ucu: bugünkü durumu (tek kaynak), gerekenler, bilinen uyuşmazlıklar ve kurulum.",
           "kunye": {
             "sahibi": "Haluk",
             "hazirlayan": "Claude Code Bulut (Hacker odağı)",

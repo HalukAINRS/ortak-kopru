@@ -141,13 +141,13 @@ Deftere kimin, hangi yoldan ve hangi biçimde yazdığı: çağrı ayarları, bo
 
 ## Yerel betikler
 
-Yerel kullanıcının Windows bilgisayarında çalışmak üzere yazılmış betikler: izleyici, gönderici ve ortam kapısı. Bugün hiçbir bilgisayarda kurulu değiller. Yeri: `yerel/`.
+Yerel kullanıcının Windows bilgisayarında, köprü klasöründe çalışmak üzere yazılmış betikler: izleyici, gönderici ve ortam kapısı. Yeri: `yerel/`.
 
 | Dosya | Tür | Ne | Eski adı |
 | --- | --- | --- | --- |
 | `yerel/kopru_yerel.ps1` | betik | Yerel makinenin ortamı ve modları (Hazirlik, Tek, Izle, Ekle, Bolum, Gonder ve ötekiler); Kopru_Izle.cmd bunu çağırır. | `kopru_yerel.ps1` |
-| `yerel/kopru_izle.ps1` | betik | Makineden bağımsız izleyici: eşitler, botu yerel ayarla çalıştırır, yeni kayıt varsa gönderir. | `kopru_izle.ps1` |
-| `yerel/kopru_gonder.ps1` | betik | Yerel değişiklikleri denetleyip gönderir; çakışmada defteri birleştirir, aynayı yeniler. | `kopru_gonder.ps1` |
+| `yerel/kopru_izle.ps1` | betik | Makineden bağımsız izleyici: eşitler, botu yerel ayarla çalıştırır, defterde ya da kayıtlarda değişiklik varsa göndericiyi çağırır. | `kopru_izle.ps1` |
+| `yerel/kopru_gonder.ps1` | betik | Yalnız defteri, aynasını ve çağrı kayıtlarını gönderir; başka değişiklikleri yerelde bırakır, çakışmada defteri birleştirir ve aynayı yeniler. | `kopru_gonder.ps1` |
 | `yerel/README.md` | belge | Bu klasörün giriş sayfası: ne taşıdığını, dosyalarını ve nasıl çalıştırıldıklarını anlatır. | — |
 
 ## Python paketi
@@ -165,9 +165,10 @@ Kapının ve yerel iş bileşeninin çekirdeği: aktarım, GitHub bağdaştırı
 | `src/ortak_kopru/local_files.py` | kod | Özel, doğrulanmış yerel dosyalar ve üzerine yazmadan yayımlama; Git çalışma ağacının içinde çalışmayı reddeder. | — |
 | `src/ortak_kopru/exchange.py` | kod | Seçilmiş dosya aktarımları: paket, aktarım kaydı ve özel aktarım dizini; işlerden ve oturumlardan bağımsız. | — |
 | `src/ortak_kopru/gateway.py` | kod | GitHub alışverişinin işten bağımsız akışı: açık plan, kurtarılabilir yazma ve uzlaştırma. | — |
-| `src/ortak_kopru/gateway_cli.py` | kod | Kapının komutları (kökteki kapi.py girişi): hazırla, planla, gönder, uzlaştır, al ve dışa çıkar. | — |
+| `src/ortak_kopru/gateway_cli.py` | kod | Kapının komutları (kökteki kapi.py girişi): hazırla, planla, gönder, uzlaştır, al, gelen kutusuna indir ve dışa çıkar. | — |
+| `src/ortak_kopru/inbox.py` | kod | Gelen kutusu: GitHub'daki açık konuları anahtarsız okur ve aktarım dizininin gelen/ klasörüne, yazarı, zamanı ve yeriyle birer JSON olarak indirir. | — |
 | `src/ortak_kopru/adapters/__init__.py` | kod | Dış hizmet bağdaştırıcılarının paketi; içe aktarılması hiçbir giriş-çıkış işlemi yapmaz. | — |
-| `src/ortak_kopru/adapters/github.py` | kod | GitHub REST bağdaştırıcısı: seçilmiş dosya alışverişi için sınırlı istekler. | — |
+| `src/ortak_kopru/adapters/github.py` | kod | GitHub REST bağdaştırıcısı: seçilmiş dosya alışverişi ve açık konuların okunması için sınırlı istekler. | — |
 | `src/ortak_kopru/adapters/windows_nt.py` | kod | Windows'taki NT aygıt kapısını okur; sürücüyü kurmaz ve yüklemez. | — |
 | `src/README.md` | belge | Bu klasörün giriş sayfası: ne taşıdığını, dosyalarını ve nasıl çalıştırıldıklarını anlatır. | — |
 
@@ -235,7 +236,7 @@ Araçlar, kurulum, doğrulama, otomasyon ve kararlar. Açılışı anlamak için
 | `docs/teknik/kararlar/0001-deus-is-ve-nt.md` | belge | Karar 0001: yerel iş bileşeni ve NT aygıtı. | `docs/kararlar/0001-deus-is-ve-nt.md` |
 | `docs/teknik/kararlar/0002-dis-alan-kapisi.md` | belge | Karar 0002: işten bağımsız dış alan kapısı. | `docs/kararlar/0002-dis-alan-kapisi.md` |
 | `docs/teknik/donusum-teknik.md` | belge | Dönüşümün teknik eki: komutlar, dokunulan yerler, ölçütler, prova, bekleyen önerilerin dosya dosya çözümlemesi ve geri dönüş. | — |
-| `docs/teknik/yerel-taraf.md` | belge | Kapının bilgisayardaki ucu: bugünkü durumu (kurulu değil), gerekenler, bilinen uyuşmazlıklar ve sıfırdan kurulum. | — |
+| `docs/teknik/yerel-taraf.md` | belge | Kapının bilgisayardaki ucu: bugünkü durumu (tek kaynak), gerekenler, bilinen uyuşmazlıklar ve kurulum. | — |
 
 ## Geçmiş işler
 
@@ -336,7 +337,7 @@ Aşağıdaki komutlar depo kökünden çalışır. Python komutları Python 3.12
 | --- | --- | --- | --- |
 | `kapi.py` | `python kapi.py --help` | evet | Python 3.12+ |
 | `deus.py` | `python deus.py --help` | evet | Python 3.12+ |
-| `Kopru_Izle.cmd` | `Kopru_Izle.cmd Hazirlik` | hayır | Windows, PowerShell 7, Git ve yerel kurulum (28 Ekim 2026 itibarıyla hiçbir bilgisayarda kurulu değil) |
+| `Kopru_Izle.cmd` | `Kopru_Izle.cmd Hazirlik` | hayır | Windows, PowerShell 7, Git ve yerel kurulum (docs/teknik/yerel-taraf.md) |
 | `defter/kopru_ekle.py` | `python defter/kopru_ekle.py kopru.html --kontrol` | evet | Python 3.12+ |
 | `defter/kopru_oku.py` | `python defter/kopru_oku.py kopru.html --acik` | evet | Python 3.12+ |
 | `defter/kopru_yanitla.py` | `python defter/kopru_yanitla.py kopru.html --kuru` | hayır | Python 3.12+ |
@@ -344,8 +345,8 @@ Aşağıdaki komutlar depo kökünden çalışır. Python komutları Python 3.12
 | `defter/kopru_bolum_ekle.py` | `python defter/kopru_bolum_ekle.py --help` | evet | Python 3.12+ |
 | `defter/kopru_ayna_uret.py` | `python defter/kopru_ayna_uret.py kopru.html ayna/kopru.html --kontrol` | evet | Python 3.12+ |
 | `defter/kanit_satiri_guncelle.py` | `python defter/kanit_satiri_guncelle.py kopru.html --kontrol` | evet | Python 3.12+ |
-| `yerel/kopru_izle.ps1` | `pwsh -File yerel/kopru_izle.ps1 -TekSefer` | hayır | Windows, PowerShell 7, Git ve yerel kurulum (28 Ekim 2026 itibarıyla hiçbir bilgisayarda kurulu değil) |
-| `yerel/kopru_gonder.ps1` | `pwsh -File yerel/kopru_gonder.ps1` | hayır | Windows, PowerShell 7, Git ve yerel kurulum (28 Ekim 2026 itibarıyla hiçbir bilgisayarda kurulu değil); ana dala gönderme yetkisi |
+| `yerel/kopru_izle.ps1` | `pwsh -File yerel/kopru_izle.ps1 -TekSefer` | hayır | Windows, PowerShell 7, Git ve yerel kurulum (docs/teknik/yerel-taraf.md) |
+| `yerel/kopru_gonder.ps1` | `pwsh -File yerel/kopru_gonder.ps1` | hayır | Windows, PowerShell 7, Git ve yerel kurulum (docs/teknik/yerel-taraf.md); ana dala gönderme yetkisi |
 | `windows/nt/build.ps1` | `pwsh -File windows/nt/build.ps1 -Restore` | hayır | Windows, PowerShell 7, Visual Studio 2022 derleme araçları ve NuGet |
 | `tools/dogrula.py` | `python tools/dogrula.py` | hayır | Python 3.12+ |
 | `tools/depo_kontrol.py` | `python tools/depo_kontrol.py` | evet | Python 3.12+ |

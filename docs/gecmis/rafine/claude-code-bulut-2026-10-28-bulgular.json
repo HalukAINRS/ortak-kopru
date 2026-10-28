@@ -274,8 +274,9 @@
       "location": "kopru_gonder.ps1:50, kopru_izle.ps1:52-55",
       "claim": "Yerel gönderici çalışma ağacındaki izlenmeyen her dosyayı (iki .gitignore deseni dışında) commit edip herkese açık ana dala gönderiyor; bulut göndericisi ise kapsamı kopru.html, ayna ve kayit ile sınırlayıp kapsam dışını reddediyor.",
       "evidence": "git add -A -- . ':!yanit*.json' ':!istem*.txt' ile .github/scripts/kopru_gonder.sh:16-28 karşılaştırması.",
-      "resolution": "açık",
-      "note": "PowerShell bu ortamda çalıştırılamadığı ve davranış Haluk'un makinesindeki akışı değiştireceği için uygulanmadı. Önerilen: bulut göndericisiyle aynı kapsam ve kapsam dışı hazırlanmış dosyada durma."
+      "resolution": "düzeltildi",
+      "note": "PowerShell bu ortamda çalıştırılamadığı ve davranış Haluk'un makinesindeki akışı değiştireceği için uygulanmadı. Önerilen: bulut göndericisiyle aynı kapsam ve kapsam dışı hazırlanmış dosyada durma.",
+      "change": "28 Ekim 2026 akşamı, Haluk'un kararıyla (19.53 UTC): yerel/kopru_gonder.ps1 yalnız kopru.html, ayna/kopru.html ve kayit/ hazırlar; kapsam dışında hazırlanmış bir dosya görürse hiçbir şey göndermez; kapsam dışındaki değişiklikleri uyarıyla yerelde bırakır. yerel/kopru_izle.ps1 göndericiyi yalnız kapsam içi değişiklikte çağırır. Sınamalar tests/test_powershell.py içinde (test_sender_leaves_unselected_files_local, test_sender_refuses_files_staged_outside_its_scope) ve Windows CI'da koşar."
     },
     {
       "id": "R-18",

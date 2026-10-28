@@ -465,7 +465,7 @@ Bu defter, 33×8 yerleşimini, serbest döngü ilişkilerini, dört dışavurum 
 
 Bu defterin Web görünümü, ana kaynak metinden üretilen yedi ortak okuma sayfasından biridir. Yayın denetimi, kaynak değişince sayfanın da değişmesini kontrol eder. Kaynak metin, değişiklik geçmişi ve okuyucunun katkı yolu aynı ortak depoda birbirine bağlıdır.
 
-Hedef bilgisayardaki canlı CLI bağlantısı, kendi ortamında gözlenebilir bir denemeyle doğrulanacak uygulama işidir. Önümüzdeki küçük denemede aynı işin girdisi, yerel sonucu ve ortak kaydı birbirine bağlanabilir. (28 Ekim 2026 akşamı: yerel taraf hiçbir bilgisayarda kurulu değil; bkz. [yerel taraf](../teknik/yerel-taraf.md).) Bu sayfanın yayımlanmış olması, hedef bilgisayarda o denemenin yapılmış olduğunu göstermez.
+Hedef bilgisayardaki canlı CLI bağlantısı, kendi ortamında gözlenebilir bir denemeyle doğrulanacak uygulama işidir. Önümüzdeki küçük denemede aynı işin girdisi, yerel sonucu ve ortak kaydı birbirine bağlanabilir. (Yerel tarafın bugünkü durumu: [yerel taraf](../teknik/yerel-taraf.md).) Bu sayfanın yayımlanmış olması, hedef bilgisayarda o denemenin yapılmış olduğunu göstermez.
 
 ## Kaynaklara ve düzeltmelere dönmek
 

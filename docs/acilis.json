@@ -36,7 +36,7 @@
     "ne": {
       "soru": "Ne?",
       "yanit": "İki yönlü bir geçit: bilgisayardaki yerel çalışma ile Web arasında bir kapı, yerel kullanıcı ile harici bireyler arasında bir köprü. Kapı içerik taşır, köprü insanları birbirine bağlar.",
-      "bugun": "Kapı dosyalar için var: kapi.py seçilmiş dosyaları GitHub'a gönderir ve GitHub'dan kesin sürümle alır. Köprü yalnız GitHub'ın kendi araçlarıyla (Pages, Issues, PR) var; dışarıdan gelen bir katkıyı yerel kullanıcıya getiren bir araç yok.",
+      "bugun": "Kapı dosyalar için var: kapi.py seçilmiş dosyaları GitHub'a gönderir ve GitHub'dan kesin sürümle alır. Köprünün geliş yönü de var: kapi.py inbox, GitHub'da açılan konuları yerel kullanıcının gelen kutusuna indirir. Yanıtın aynı yoldan dönmesi henüz yok; yanıt GitHub'da elle yazılıyor.",
       "durum": "kısmen",
       "varyantlar": [
         {
@@ -49,7 +49,7 @@
     "nerede": {
       "soru": "Nerede?",
       "yanit": "İki kenarda ve aralarında. Bir kenar yerel kullanıcının bilgisayarı, öbür kenar Web. Kapının kendisi bu GitHub deposudur: kod, kayıt ve herkese açık yüz. Geçişlerin özel kaydı ise bilgisayarda, Git'in dışında durur.",
-      "bugun": "Herkese açık yüz github.com/HalukAINRS/ortak-kopru ve onun Pages yayını. Yerel kenar tasarımda bir Windows bilgisayarındaki çalışma kopyasıdır; 28 Ekim 2026 itibarıyla hiçbir bilgisayarda kurulu değil (Haluk'un bildirimi). Kapının aracı kapi.py her Git kopyasında çalışır; aktarımların özel kaydı ona verilen --exchange-dir dizininde, Git'in dışında durur.",
+      "bugun": "Herkese açık yüz github.com/HalukAINRS/ortak-kopru ve onun Pages yayını. Yerel kenar bir Windows bilgisayarındaki çalışma kopyasıdır; Haluk 28 Ekim 2026 akşamı köprü klasörünü Y:\\HalukAI\\ortak-kopru olarak bildirdi. O klasörde yerel tarafın kurulu olup olmadığı buradan görünmüyor. Kapının aracı kapi.py her Git kopyasında çalışır; aktarımların ve gelen kutusunun özel kaydı ona verilen --exchange-dir dizininde, Git'in dışında durur.",
       "durum": "kısmen",
       "varyantlar": [
         {
@@ -62,7 +62,7 @@
     "nasil": {
       "soru": "Nasıl?",
       "yanit": "Kapıda: seç, sabitle, planla, gönder, uzlaştır; ya da al, sabitle, incele. Köprüde: oku, sor, getir, karşılık ver. Her adım ayrı kaydedilir ve hiçbiri bir öncekinin yerine geçmez.",
-      "bugun": "Kapının adımları kapi.py'nin on alt komutudur (prepare, plan, send, reconcile, fetch, materialize ve kayıt komutları). Köprünün adımları GitHub arayüzünde elle atılır.",
+      "bugun": "Kapının adımları kapi.py'nin on bir alt komutudur (prepare, plan, send, reconcile, fetch, inbox, materialize ve kayıt komutları). Köprüde okumak, sormak ve getirmek hazır; karşılık vermek GitHub arayüzünde elle yapılıyor.",
       "durum": "kısmen",
       "varyantlar": [
         {
@@ -105,8 +105,8 @@
     "nereden": {
       "soru": "Nereden?",
       "yanit": "İki kaynaktan. Yerelden: yerel kullanıcının açıkça seçtiği dosya, rapor ya da söz. Dışarıdan: Web'deki bir kaynak, kesin bir commit'e bağlı olarak; ya da harici bir bireyin sorusu, kaynağı, düzeltmesi.",
-      "bugun": "Yerel seçim prepare ile, dış kaynak fetch ile sabitleniyor. Bireylerin katkısı Issues ve PR'dan gelebiliyor, ama onu yerel tarafa taşıyan bir adım yok.",
-      "durum": "kısmen",
+      "bugun": "Yerel seçim prepare ile, dış kaynak fetch ile sabitleniyor. Bireylerin soruları, kaynakları ve düzeltmeleri karşılık formuyla Issues'a geliyor; kapi.py inbox onları yazarı, zamanı ve yeriyle yerel gelen kutusuna indiriyor.",
+      "durum": "var",
       "varyantlar": [
         {
           "soru": "Nereden gelmez?",
@@ -131,8 +131,8 @@
     "ne_kadar": {
       "soru": "Ne kadar?",
       "yanit": "Yalnız seçilen kadar ve sınırlı: bir aktarımda en çok 64 dosya, dosya başına 8 MiB, toplam 64 MiB. Geçen her bayt SHA-256 ile sabitlenir; sayılmayan bir şey geçmiş sayılmaz.",
-      "bugun": "Sınırlar src/ortak_kopru/exchange.py'de. Ama yerel gönderici yerel/kopru_gonder.ps1 kapının dışından çalışıyor ve çalışma klasöründe kalan izlenmeyen her dosyayı gönderebiliyor (R-17).",
-      "durum": "kısmen",
+      "bugun": "Sınırlar src/ortak_kopru/exchange.py'de. Yerel gönderici de 28 Ekim 2026'dan beri yalnız defteri, aynasını ve çağrı kayıtlarını gönderiyor; başka bir dosya ancak kapıdan, seçilerek çıkar.",
+      "durum": "var",
       "varyantlar": [
         {
           "soru": "Ne kadarı bekliyor?",
@@ -294,12 +294,12 @@
         "CONTRIBUTING.md"
       ],
       "durum": "kısmen",
-      "eksik": "Kapının aracı dosyaları iki yönde geçirebiliyor; ama bugün hiçbir bilgisayarda kurulu bir yerel kenar yok. Dışarıdan gelen bir katkıyı yerel kullanıcıya getiren ve karşılığını geri götüren adım da yok; bu bağ GitHub bildirimlerine bırakılmış.",
+      "eksik": "Kapının aracı dosyaları iki yönde geçiriyor; dışarıda açılan konular da `kapi.py inbox` ile yerel kullanıcının gelen kutusuna iniyor. Karşılığı aynı yoldan geri götüren adım henüz yok; yanıt GitHub'da, konunun altına elle yazılıyor.",
       "senaryolar": [
         "S09"
       ],
       "sade": "Burada yalnız okumazsınız, yazabilirsiniz de. Yerel kullanıcı da yalnız paylaşmaz, dışarıdan gelene karşılık verir.",
-      "bugun_sade": "Kapının aracı dosyaları iki yönde geçirebilecek durumda; ama bugün hiçbir bilgisayarda kurulu bir yerel köprü yok. Dışarıdan gelen bir sorunun yerel kullanıcıya ulaşması da henüz kendiliğinden olmuyor; şimdilik GitHub'ın kendi bildirimlerine bağlı.",
+      "bugun_sade": "Kapı dosyaları iki yönde geçirebiliyor. Dışarıdan gelen sorular da yerel kullanıcının bilgisayarındaki gelen kutusuna inebiliyor. Yanıtın aynı yoldan geri dönmesi henüz yok; şimdilik yanıt GitHub'da, sorunun altına elle yazılıyor.",
       "sade_sorular": [
         "nereden",
         "nereye"
@@ -323,16 +323,9 @@
         "docs/teknik/kararlar/0002-dis-alan-kapisi.md",
         "CONTRIBUTING.md"
       ],
-      "durum": "kısmen",
-      "eksik": "Yerel gönderici yerel/kopru_gonder.ps1 kapının dışından çalışacak ve çalışma klasöründe kalan izlenmeyen her dosyayı herkese açık ana dala gönderebilecek biçimde yazılı; bu, seçimsiz bir çıkış yolu. Gönderici bugün hiçbir bilgisayarda kurulu değil; yeniden kurulmadan önce daraltılması gerekir.",
-      "bulgular": [
-        "R-17"
-      ],
-      "senaryolar": [
-        "S02"
-      ],
+      "durum": "uygulanıyor",
       "sade": "Neyin paylaşılacağına yerel kullanıcı karar verir. Dışarıdan gelen bir öneri, o kabul etmeden onun çalışmasını değiştirmez.",
-      "bugun_sade": "Kapının kendisi bu kurala uyuyor. Eski bir paylaşım aracı ise seçim yapmadan gönderebilecek biçimde yazılı. Araç bugün hiçbir bilgisayarda kurulu değil; yeniden kurulmadan önce daraltılması bekleniyor.",
+      "bugun_sade": "Tam olarak işliyor.",
       "sade_sorular": [
         "nerede",
         "ne_zaman"
@@ -380,16 +373,9 @@
         "src/ortak_kopru/exchange.py",
         ".github/scripts/kopru_gonder.sh"
       ],
-      "durum": "kısmen",
-      "eksik": "Bulut göndericisi kapsamı defter, ayna ve çağrı günlükleriyle sınırlıyor; yerel gönderici sınırlamıyor. Aynı kural iki yerde iki ayrı biçimde yazılı. Yerel gönderici bugün kurulu olmadığı için açık uykuda; kurulduğu gün geri gelir.",
-      "bulgular": [
-        "R-17"
-      ],
-      "senaryolar": [
-        "S02"
-      ],
+      "durum": "uygulanıyor",
       "sade": "Şifreler, kişisel bilgiler ve özel çalışmalar kapıdan geçmez. Bir kez herkese açılan bir şey geri alınamaz. Bu yüzden en sıkı kontrol çıkışta yapılır.",
-      "bugun_sade": "Kapı bu sınırı uyguluyor. Tek açık nokta yine o eski paylaşım aracı; bugün kurulu değil ama yeniden kurulursa açık da geri gelir.",
+      "bugun_sade": "Tam olarak işliyor.",
       "sade_sorular": [
         "ne_kadar"
       ],
@@ -414,7 +400,7 @@
         ".github/ISSUE_TEMPLATE/karsilik.yml"
       ],
       "durum": "kısmen",
-      "eksik": "Okuma ve katkı yolları açık; Web'deki her bölümün sonunda, yeri kendisi yazan bir karşılık bağlantısı var. Ama bugüne kadar dışarıdan bir katkı gelmedi (tek Issue #16, yerel kullanıcının kendi kaydı). Gelen bir katkının yerel kullanıcıya ulaşması GitHub bildirimlerine bırakılmış.",
+      "eksik": "Okuma ve katkı yolları açık; Web'deki her bölümün sonunda, yeri kendisi yazan bir karşılık bağlantısı var ve açılan konular yerel kullanıcının gelen kutusuna iniyor. Ama bugüne kadar dışarıdan bir katkı gelmedi (tek Issue #16, yerel kullanıcının kendi kaydı).",
       "senaryolar": [
         "S09"
       ],

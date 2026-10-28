@@ -201,7 +201,7 @@
       "claim": "Yerel betik ile yerel ayarlar ayrı klasör ağaçlarını gösteriyor; Codex'in ev klasörü ikisinde farklı; Hazırlık Copilot'u denetlerken ayarlarda Google izleyicisi var.",
       "evidence": "Teknik okuma A.8; dosyaların karşılaştırması.",
       "resolution": "açık",
-      "note": "R-18 ve R-20 ile aynı konunun 28 Ekim akşamki hâli; S03 senaryosunda izlenir. Yerel taraf kurulu olmadığı ve yollar makineye özgü olduğu için kod değiştirilmedi; uyuşmazlık yerel taraf sayfasında ve betik başlığında yazılı."
+      "note": "R-18 ve R-20 ile aynı konunun 28 Ekim akşamki hâli; S03 senaryosunda izlenir. Haluk köprü klasörünü 19.53 UTC'de Y:\\HalukAI\\ortak-kopru olarak bildirdi; katman yolları makineye özgü olduğu için kod değiştirilmedi. Uyuşmazlık yerel taraf sayfasında ve betik başlığında yazılı."
     },
     {
       "id": "R-39",
@@ -210,8 +210,9 @@
       "location": "yerel/kopru_yerel.ps1:53-56",
       "claim": "Betik her çalıştığında sabit bir yolu Git'in genel safe.directory listesine ekler.",
       "evidence": "Kaynak okuması.",
-      "resolution": "açık",
-      "note": "S03 senaryosunda izlenir. Belgelendi ve geri alma komutu yazıldı; davranış yerel taraf yeniden kurulurken gözden geçirilir."
+      "resolution": "düzeltildi",
+      "note": "S03 senaryosunda izlenir. Belgelendi ve geri alma komutu yazıldı; davranış yerel taraf yeniden kurulurken gözden geçirilir.",
+      "change": "28 Ekim 2026 akşamı: yerel/kopru_yerel.ps1 eklediği yolu artık betiğin konumundan türetiyor (depo kökü); sabit bir yol yazılmıyor. WinPE genel ayarı her açılışta sıfırladığı için ekleme sürüyor; yan etkisi ve geri alma komutu betikte ve docs/teknik/yerel-taraf.md'de yazılı."
     },
     {
       "id": "R-40",
@@ -338,10 +339,10 @@
       "severity": "düşük",
       "area": "belge",
       "location": "kopru.html (Kurallar bölümü)",
-      "claim": "Defterin kuralları kanonik kopyanın yerel klasör olduğunu ve gönderimin yerel betikle yapıldığını söylüyor; bugün ikisi de geçerli değil.",
+      "claim": "Defterin kuralları kanonik kopyanın yerel klasör olduğunu ve gönderimin yerel betikle yapıldığını söylüyor; depo ise ana dalı esas alıyor ve bot GitHub'dan gönderiyor.",
       "evidence": "Geçmiş okuması; Haluk'un 18.47 bildirimi.",
       "resolution": "düzeltilmedi",
-      "note": "Defter kendi kuralıyla yalnız yeni bir kayıtla düzeltilir; böyle bir kaydın yazılması Haluk'un kararı. Belgeler bu farkı yazıyor."
+      "note": "Defter kendi kuralıyla yalnız yeni bir kayıtla düzeltilir; böyle bir kaydın yazılması Haluk'un kararı. Belgeler farkı tek yerde (docs/teknik/yerel-taraf.md) yazıyor. Aynı kayıt, defterin elle şablon yolunu ve tarihsel Copilot (Şahit) eşlemesini de güncelleyebilir."
     },
     {
       "id": "R-53",

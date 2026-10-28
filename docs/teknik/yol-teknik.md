@@ -11,10 +11,10 @@ Kayıt `docs/yol.json`, sözleşmesi `schemas/yol.schema.json`, aracı `tools/yo
 | Adım | İlkeler | Ön koşul | Karar | Yön | Büyüklük | Bulgu, senaryo | Durum |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 0. Zemin (`zemin`) | 3, 6 | — | — | depo içi | orta | — | tamam |
-| 1. Gönderici yalnız seçileni gönderir (`sinir`) | 2, 4 | zemin | Haluk: bekliyor | yerel → Web | küçük | R-17, S02 | karar-bekliyor |
+| 1. Gönderici yalnız seçileni gönderir (`sinir`) | 2, 4 | zemin | Haluk: 2026-10-28 | yerel → Web | küçük | R-17, S02 | tamam |
 | 2. Katkı kalıbı (`katki-kalibi`) | 5 | zemin | — | Web → Web (okurdan yazıya) | küçük | — | tamam |
-| 3. Gelen kutusu (`gelen-kutusu`) | 1, 2 | katki-kalibi | Haluk: bekliyor | Web → yerel | orta | S09 | karar-bekliyor |
-| 4. Yanıt geri döner (`yanit-donusu`) | 1 | gelen-kutusu | Haluk: bekliyor | yerel → Web | orta | — | onkosul-bekliyor |
+| 3. Gelen kutusu (`gelen-kutusu`) | 1, 2 | katki-kalibi | Haluk: 2026-10-28 | Web → yerel | orta | S09 | tamam |
+| 4. Yanıt geri döner (`yanit-donusu`) | 1 | gelen-kutusu | Haluk: bekliyor | yerel → Web | orta | — | karar-bekliyor |
 | 5. İlk dış katkı (`ilk-dis-katki`) | 5 | katki-kalibi | — | Web → yerel → Web | küçük | — | disaridan-bekleniyor |
 | 6. Kapı GitHub dışına açılır (`kapinin-genislemesi`) | 1 (ufuk) | yanit-donusu | Haluk: bekliyor | yerel ↔ ikinci dış alan | büyük | S08 | ufukta |
 
@@ -22,10 +22,10 @@ Kayıt `docs/yol.json`, sözleşmesi `schemas/yol.schema.json`, aracı `tools/yo
 
 ```text
   (0) Zemin                                         ■ tamam
-   ├─▶ (1) Gönderici yalnız seçileni gönderir       □ karar
+   ├─▶ (1) Gönderici yalnız seçileni gönderir       ■ tamam
    └─▶ (2) Katkı kalıbı                             ■ tamam
-       ├─▶ (3) Gelen kutusu                         □ karar
-       │   └─▶ (4) Yanıt geri döner                 □ ön koşul
+       ├─▶ (3) Gelen kutusu                         ■ tamam
+       │   └─▶ (4) Yanıt geri döner                 □ karar
        │       └─▶ (6) Kapı GitHub dışına açılır    ◇ ufukta
        └─▶ (5) İlk dış katkı                        □ dışarıdan
 ```
@@ -35,10 +35,10 @@ Kayıt `docs/yol.json`, sözleşmesi `schemas/yol.schema.json`, aracı `tools/yo
 ```text
   ilke                                adımlar   açılışta
   ──────────────────────────────────  ────────  ────────────────
-  1 Karşılıklılık                     □□◇       kısmen işliyor
-  2 Yerel merkez                      □□        kısmen işliyor
+  1 Karşılıklılık                     ■□◇       kısmen işliyor
+  2 Yerel merkez                      ■■        işliyor
   3 Köken ve sahiplik                 ■         işliyor
-  4 Sınır                             □         kısmen işliyor
+  4 Sınır                             ■         işliyor
   5 Açık katılım                      ■□        kısmen işliyor
   6 Doğrulanabilirlik ve geri dönüş   ■         işliyor
 ```
@@ -59,7 +59,7 @@ Geri alma: İlgili commit'ler geri alınır; kayıtlar ve belgeler önceki hâli
 
 ### 1. Gönderici yalnız seçileni gönderir
 
-`git add -A -- .` yerine, `.github/scripts/kopru_gonder.sh` gibi yalnız `kopru.html`, `ayna/kopru.html` ve `kayit/` hazırlanır; başka değişiklik varsa uyarı yazılır, o değişiklik gönderilmez. Sınama: izlenmeyen ilgisiz bir dosya yerelde kalır, uzak dala gitmez. R-17 kaydı `düzeltildi` olur.
+`git add -A -- .` yerine, `.github/scripts/kopru_gonder.sh` gibi yalnız `kopru.html`, `ayna/kopru.html` ve `kayit/` hazırlanır. Kapsam dışında hazırlanmış bir dosya varsa hiçbir şey gönderilmez; kapsam dışındaki öteki değişiklikler bir uyarıyla yerelde kalır. İzleyici (`yerel/kopru_izle.ps1`) göndericiyi yalnız kapsam içinde bir değişiklik varsa çağırır. Sınamalar Windows CI'da koşar; R-17 kaydı `düzeltildi`.
 
 Dokunacağı yerler: `yerel/kopru_gonder.ps1`, `tests/test_powershell.py`, `docs/gecmis/rafine/claude-code-bulut-2026-10-28-bulgular.json`.
 
@@ -71,9 +71,9 @@ Görüş (Claude Code Bulut, 2026-10-28): Önerim: evet, daraltılsın. R-17 bug
 
 | Ölçüt | Bugün |
 | --- | --- |
-| `yerel/kopru_gonder.ps1` içinde `git add -A` geçmez | karşılanmıyor |
-| `tests/test_powershell.py` içinde `test_sender_leaves_unselected_files_local` sınaması var (CI'da geçer) | karşılanmıyor |
-| R-17 bulgusu düzeltildi | karşılanmıyor |
+| `yerel/kopru_gonder.ps1` içinde `git add -A` geçmez | karşılanıyor |
+| `tests/test_powershell.py` içinde `test_sender_leaves_unselected_files_local` sınaması var (CI'da geçer) | karşılanıyor |
+| R-17 bulgusu düzeltildi | karşılanıyor |
 
 ### 2. Katkı kalıbı
 
@@ -91,11 +91,11 @@ Geri alma: Form dosyası ve üretici değişikliği geri alınır, sayfalar yeni
 
 ### 3. Gelen kutusu
 
-`kapi.py inbox`: GitHub REST `GET /repos/{owner}/{repo}/issues` (çekme istekleri hariç); her konu yazarı, `updated_at`, gövde karması ve formdaki `yer` alanıyla aktarım veritabanına gelen kayıt olarak yazılır. İçerik özel aktarım dizinindeki gelen kutusuna çıkarılır; depo çalışma ağacına yazılmaz. Kimliksiz okuma mümkün; oran sınırı ve belirteç kararı Haluk'ta.
+`kapi.py --exchange-dir <dizin> inbox --repo <sahip/depo>`: GitHub REST `GET /repos/{owner}/{repo}/issues?state=open` anahtarsız okunur (ortamdaki belirteç gönderilmez), çekme istekleri atlanır. Her konu adresi, numarası, yazarı, açılış ve güncellenme zamanı, başlığı, gövdesi, gövde karması ve formdaki `tur` ve `yer` alanlarıyla `<dizin>/gelen/konu-<numara>-<karma>.json` dosyasına yazılır. Dizin bir Git çalışma ağacının içinde olamaz; değişmemiş konu yeniden yazılmaz, değişen konu yeni dosya olur. Belge: [kapı kullanımı, 6. bölüm](teknik/kapi-kullanimi.md#6-dışarıdan-gelen-soruları-almak).
 
-Dokunacağı yerler: `src/ortak_kopru/gateway_cli.py`, `src/ortak_kopru/adapters/github.py`, `src/ortak_kopru/exchange.py`, `tests/test_gateway_inbox.py`.
+Dokunacağı yerler: `src/ortak_kopru/inbox.py`, `src/ortak_kopru/adapters/github.py`, `src/ortak_kopru/gateway_cli.py`, `tests/test_gateway_inbox.py`.
 
-Geri alma: Komut kaldırılır. Gelen kutusu özel dizinde kalır; depoya hiçbir şey yazılmamıştır.
+Geri alma: Komut kaldırılır. Gelen kutusu özel dizinde kalır ve elle silinebilir; depoya hiçbir şey yazılmamıştır.
 
 Karar (Haluk): GitHub'a hangi yetkiyle bakılsın: yalnız herkese açık okumayla mı, kişisel bir anahtarla mı? Gelen kutusu bilgisayarda nerede dursun?
 
@@ -103,8 +103,8 @@ Görüş (Claude Code Bulut, 2026-10-28): Önerim: önce yalnız herkese açık 
 
 | Ölçüt | Bugün |
 | --- | --- |
-| `src/ortak_kopru/gateway_cli.py` içinde `"inbox"` geçer | karşılanmıyor |
-| `tests/test_gateway_inbox.py` içinde `test_issue_lands_in_private_inbox_with_provenance` sınaması var (CI'da geçer) | karşılanmıyor |
+| `src/ortak_kopru/gateway_cli.py` içinde `"inbox"` geçer | karşılanıyor |
+| `tests/test_gateway_inbox.py` içinde `test_issue_lands_in_private_inbox_with_provenance` sınaması var (CI'da geçer) | karşılanıyor |
 
 ### 4. Yanıt geri döner
 

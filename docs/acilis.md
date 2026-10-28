@@ -40,7 +40,7 @@ Aşağıdaki resim bu benzetmeyi çiziyor. Solda yerel kullanıcının bilgisaya
 
 Bu sayfada geçen birkaç kelime: **İnternet ve Web:** Bu sayfada ikisi aynı anlamda kullanılıyor: herkesin bir tarayıcıyla ulaşabildiği dış dünya. **Yerel kullanıcı:** Ortak Köprü'nün öbür ucundaki bilgisayarın sahibi. Bugün bu kişi Haluk. **GitHub:** Yazıların ve dosyaların herkese açık durduğu, insanların birlikte çalışmak için kullandığı bir internet sitesi. Ortak Köprü'nün dış yüzü orada. **Issue:** GitHub'da bir depoya soru, öneri ya da hata bildirimi yazmanın yolu. Okumak için hesap gerekmez; yazmak için ücretsiz bir GitHub hesabı yeter. **Sürüm:** Bir dosyanın belirli bir andaki hâli. Dosya sonradan değişse de alınan sürüm aynı kalır.
 
-Bu niyet altı ilkeyle işler. Bugün altısının ikisi tam olarak işliyor, dördü kısmen işliyor. Her ilke aşağıda kendi başlığında anlatılıyor.
+Bu niyet altı ilkeyle işler. Bugün altısının dördü tam olarak işliyor, ikisi kısmen işliyor. Her ilke aşağıda kendi başlığında anlatılıyor.
 
 ## 1. Karşılıklılık
 
@@ -54,7 +54,7 @@ Burada yalnız okumazsınız, yazabilirsiniz de. Yerel kullanıcı da yalnız pa
 
 Bu yerde okumakla yazmak arasında bir sıra yok. Bir yazıyı okuyup hemen bir soru bırakabilirsiniz. Yerel kullanıcı da yazdığınızı okur ve karşılık verir. Kapıdan dışarı çıkan bir şeyin yanıtı da aynı yoldan geri gelebilir.
 
-**Bugün:** Kapının aracı dosyaları iki yönde geçirebilecek durumda; ama bugün hiçbir bilgisayarda kurulu bir yerel köprü yok. Dışarıdan gelen bir sorunun yerel kullanıcıya ulaşması da henüz kendiliğinden olmuyor; şimdilik GitHub'ın kendi bildirimlerine bağlı.
+**Bugün:** Kapı dosyaları iki yönde geçirebiliyor. Dışarıdan gelen sorular da yerel kullanıcının bilgisayarındaki gelen kutusuna inebiliyor. Yanıtın aynı yoldan geri dönmesi henüz yok; şimdilik yanıt GitHub'da, sorunun altına elle yazılıyor.
 
 ## 2. Yerel merkez
 
@@ -68,7 +68,7 @@ Neyin paylaşılacağına yerel kullanıcı karar verir. Dışarıdan gelen bir 
 
 Bu ilke yerel kullanıcıyı ve onun çalışmasını korur. Kapı, bilgisayardaki bir klasörü dışarıyla kendiliğinden aynı tutmaya çalışmaz. Dışarıdan gelen bir öneri önce bekler. Yerel kullanıcı ona bakar ve kararını kendisi verir.
 
-**Bugün:** Kapının kendisi bu kurala uyuyor. Eski bir paylaşım aracı ise seçim yapmadan gönderebilecek biçimde yazılı. Araç bugün hiçbir bilgisayarda kurulu değil; yeniden kurulmadan önce daraltılması bekleniyor.
+**Bugün:** Tam olarak işliyor.
 
 ## 3. Köken ve sahiplik
 
@@ -92,7 +92,7 @@ Bu yerin bugüne kadarki bütün kayıtları bu yüzden kendi tarihleriyle duruy
 
 Dışarı çıkacak her şey çıkmadan önce denetlenir. Bu denetim kimsenin dikkatine bırakılmaz; kapının kendisi yapar. Siz de buraya yazarken kişisel bilgilerinizi paylaşmayın, çünkü yazdığınız şey herkese açık olur.
 
-**Bugün:** Kapı bu sınırı uyguluyor. Tek açık nokta yine o eski paylaşım aracı; bugün kurulu değil ama yeniden kurulursa açık da geri gelir.
+**Bugün:** Tam olarak işliyor.
 
 ## 5. Açık katılım
 

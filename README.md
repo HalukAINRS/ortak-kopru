@@ -16,7 +16,7 @@ Ortak Köprü iki şeydir. Bir kapı: bir bilgisayardaki çalışma ile internet
 
 ## 2. Yerel merkez
 
-**Merkez yerel kullanıcıdır: kapıdan yalnız onun seçtiği geçer, dışarıdan gelen kendiliğinden uygulanmaz.** Neyin paylaşılacağına yerel kullanıcı karar verir. Dışarıdan gelen bir öneri, o kabul etmeden onun çalışmasını değiştirmez. Bugün kısmen işliyor.
+**Merkez yerel kullanıcıdır: kapıdan yalnız onun seçtiği geçer, dışarıdan gelen kendiliğinden uygulanmaz.** Neyin paylaşılacağına yerel kullanıcı karar verir. Dışarıdan gelen bir öneri, o kabul etmeden onun çalışmasını değiştirmez. Bugün işliyor.
 
 ## 3. Köken ve sahiplik
 
@@ -24,7 +24,7 @@ Ortak Köprü iki şeydir. Bir kapı: bir bilgisayardaki çalışma ile internet
 
 ## 4. Sınır
 
-**Kapı bir duvar da taşır: gizli olan geçmez, geri alınamayan geçiş en sıkı denetimden geçer.** Şifreler, kişisel bilgiler ve özel çalışmalar kapıdan geçmez. Bir kez herkese açılan bir şey geri alınamaz. Bu yüzden en sıkı kontrol çıkışta yapılır. Bugün kısmen işliyor.
+**Kapı bir duvar da taşır: gizli olan geçmez, geri alınamayan geçiş en sıkı denetimden geçer.** Şifreler, kişisel bilgiler ve özel çalışmalar kapıdan geçmez. Bir kez herkese açılan bir şey geri alınamaz. Bu yüzden en sıkı kontrol çıkışta yapılır. Bugün işliyor.
 
 ## 5. Açık katılım
 

@@ -17,7 +17,8 @@
 # Gerekenler: Windows, PowerShell 7, Git, Python 3.12+. Bu dosya makineye özgüdür; makineden bağımsız izleyici kopru_izle.ps1'dir.
 # Yollar ilk kurulan makinenin düzenine göredir ve katilimcilar/ayarlar-yerel.json'daki yollarla AYNI DEĞİLDİR (biri
 # Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari, öbürü Y:\archive\… altını gösterir); yeniden kurarken ikisi aynı yere bağlanır.
-# 28 Ekim 2026 itibarıyla yerel taraf hiçbir bilgisayarda kurulu değil: docs/teknik/yerel-taraf.md
+# Köprü klasörü (Haluk, 28 Ekim 2026 19.53 UTC): Y:\HalukAI\ortak-kopru. Depo yolu sabit yazılmaz, betiğin konumundan
+# türer. Kurulum ve bilinen uyuşmazlıklar: docs/teknik/yerel-taraf.md
 param(
   [ValidateSet("Izle", "Hazirlik", "Tek", "Ekle", "Bolum", "Gonder", "VM", "CopilotKontrol", "CodexGiris", "CopilotGiris", "CodexTani", "Arg0Temizle")][string]$Mod = "Izle",
   [string]$Secenek = "",
@@ -41,7 +42,6 @@ $CodexExe     = "$Katmanlar\03_Codex_Saman\npm_global\node_modules\@openai\codex
 $SamanHome    = "$Katmanlar\03_Codex_Saman\Home"
 $CopilotExe   = "$Katmanlar\Runtime\Copilot-1.0.103-win-x64\copilot.exe"
 $SahitHome    = "$Katmanlar\02_Copilot_Sahit\Home"
-$DepoYolu     = "Y:/HalukAI/Ortak_Kopru/kopru"      # git safe.directory eğik çizgi ister
 $SshOrtak     = @("-p", "2222", "-i", $SshAnahtar, "-o", "BatchMode=yes", "-o", "UserKnownHostsFile=$SshBilinen",
                   "-o", "StrictHostKeyChecking=yes", "-o", "LogLevel=ERROR", "-o", "ConnectTimeout=10", "hacker@127.0.0.1")
 
@@ -53,6 +53,7 @@ foreach ($k in @("X:\Windows\Temp\Saman_Temp", "X:\Windows\Temp\Sahit_Temp", "X:
   try { New-Item -Path $k -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null } catch {}
 }
 $DepoKoku = Split-Path -Parent $PSScriptRoot   # betikler yerel/ altında; çalışma yeri depo köküdür
+$DepoYolu = $DepoKoku -replace '\\', '/'      # git safe.directory eğik çizgi ister; yol betiğin konumundan türer
 Set-Location -LiteralPath $DepoKoku
 # WinPE her açılışta git'in global ayarını sıfırlar; exFAT'taki depo için safe.directory her seferinde eklenir.
 # Yan etki: $DepoYolu Git'in GENEL ayarına eklenir. Geri almak için: git config --global --unset-all safe.directory $DepoYolu

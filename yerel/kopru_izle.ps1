@@ -43,14 +43,15 @@ while ($true) {
     $zaman = Get-Date -Format 'HH:mm'
     $aktifDal = git symbolic-ref --quiet --short HEAD
     if ($LASTEXITCODE -ne 0 -or $aktifDal -ne $Dal) { throw "İzleyici '$Dal' dalında çalışmalı; bu tur katılımcı çağrılmadı." }
-    # Önce eşitle: yerelde gönderilmemiş commit ya da değişiklik varsa kopru_gonder.ps1 birleştirip gönderir; yoksa düz ileri sarılır.
+    # Önce eşitle: yerelde gönderilmemiş commit ya da gönderim kapsamında değişiklik varsa kopru_gonder.ps1 birleştirip gönderir; yoksa düz ileri sarılır.
     git fetch -q origin $Dal
     if ($LASTEXITCODE -ne 0) { throw "Uzak depo alınamadı; bu tur katılımcı çağrılmadı." }
     $ileride = git rev-list --count "origin/$Dal..HEAD"
     if ($LASTEXITCODE -ne 0) { throw "Yerel/uzak dal karşılaştırılamadı." }
     $geride = git rev-list --count "HEAD..origin/$Dal"
     if ($LASTEXITCODE -ne 0) { throw "Uzak/yerel dal karşılaştırılamadı." }
-    $kirli = @(git status --porcelain -- . ":!yanit*.json" ":!istem*.txt").Count
+    # Yalnız gönderim kapsamındaki değişiklikler (defter, ayna, çağrı kayıtları) göndericiyi çağırır; başka yerel değişiklikler yerelde kalır.
+    $kirli = @(git status --porcelain -- kopru.html ayna/kopru.html kayit).Count
     if ($LASTEXITCODE -ne 0) { throw "Çalışma ağacının durumu okunamadı." }
     if ([int]$ileride -gt 0 -or $kirli -gt 0) {
       pwsh -NoLogo -NoProfile -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot "kopru_gonder.ps1") -Dal $Dal
