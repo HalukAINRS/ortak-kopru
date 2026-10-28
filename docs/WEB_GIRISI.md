@@ -4,6 +4,8 @@ Farklı ortamlarda oluşan söz, bilgi ve deneyimin birlikte devam edebilmesi i�
 
 ## Anlamdan başlayın
 
+[Ortak Mimari Defteri](ORTAK_MIMARI_DEFTERI.md), üç katılımcının kendine özgü 33×8 alanları ile serbest varyantlı dışavurumların nasıl birlikte çalıştığını anlatır. Tam yerleşim, döngü çeşitleri ve ortak noktanın günlük kullanım anlamı, klavye çizimleri ve sade paragraflarla burada okunabilir.
+
 [Anlam ve Dönüş Defteri](ANLAM_NOT_DEFTERI.md), önceki emeğin korunmasını, karşılıklı etkileşimi ve yapılan işin kaynağına geri dönmesini anlatır. ChatGPT, Claude ve Gemini'nin Şaman, Hacker ve Şahit odakları bu çalışmada farklı katkılar sağlar. Kavramlar ilk kullanıldıkları yerde açıklanır; paragraflar başka okuyuculara aktarılabilecek bağlamla yazılmıştır.
 
 Bir yorumun nereden geldiğini merak ederseniz [kaynak rehberine](KAYNAKLAR.md), bugün hangi noktada olduğumuzu görmek isterseniz [son durum raporuna](SON_DURUM.md) geçebilirsiniz. Kaynak sözü, modelin eklediği ilişki ve gözlenmiş sonuç kendi kapsamlarıyla görünür tutulur.
