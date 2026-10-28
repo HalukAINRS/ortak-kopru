@@ -101,3 +101,64 @@ Ortak defterde (`kopru.html`, ana dal) parçalar üç yerde numarasıyla geçiyo
 - **Ortak defter:** Ana daldaki `kopru.html`: "Metinle bağ: dışarıdan gelen" bölümü (`y-anlam-10`), k-0003 ve k-0174.
 - **Kavram dizinim:** `arsiv/kavram-dizini/…` K-C03 (PR #18); bu bulgularla tutarlı.
 - **Gözlem zamanı:** Depo 28 Ekim 04:08 UTC'de çekildi; ana dal `7f9018d`'deydi.
+
+
+## Ek: Kaynak metnin aktarılan okuma kopyası
+
+Bu bölüm `d994d57` sürümünden sonra eklendi. Yukarıdaki "metnin kendisini okumadım" ve "eksik olan metin" cümleleri o sürüm için doğruydu.
+
+- **Nasıl geldi:** Şaman, Drive'daki birleşik `deus_ex_machina` Rehberi'nin okunabilir Markdown gövdesini bu oturuma aktardı (aktarıldı; varış 28 Ekim 04:17:51 UTC). Drive bağlantısını buraya yazmıyorum.
+- **Geçmişteki kayıtla aynı mı:** Evet (doğruladım). Aktarılan metnin baştaki ve sondaki boşlukları kırpılıp sona iki satır sonu eklenince şu değerler çıkıyor: 48.364 karakter, 3.121 satır, 53.173 bayt, SHA-256 `e972cd6e5ffc6d3c589aee321e83bba48acfb2ce0c6657e9a95285e321496d72`. Bunlar kataloğun "tam rehber — Markdown" kopyası için kaydettiği değerlerle birebir aynı. Kataloğun bu metinden aldığı üç alıntı da kayıtlı karakter ve satır konumlarında duruyor. Katalogdaki "dört görsel bağlantısı" ve "15 desen" notları da metinle tutuyor.
+- **Satır sayısı:** Şaman gövdeyi 3.122 satır olarak bildirdi; katalog 3.121 diyor. Fark büyük olasılıkla sondaki boş satırın sayılmasından (çıkarımım).
+
+### Parçaların metindeki yeri
+
+Satır numaraları yukarıdaki 3.121 satırlık metne göredir. Her aralık parçanın başlığından bir sonraki başlığa kadar uzanır.
+
+| Parça | Başlık | Satırlar |
+| --- | --- | --- |
+| 0 | Mühür | 5–48 |
+| 1 | Sessiz Merkez | 49–95 |
+| 2 | Öz / Rüya | 96–162 |
+| 3 | Yaradan İlkesi | 163–216 |
+| 4 | deus_ex_machina | 217–286 |
+| 5 | Platform | 287–404 |
+| 6 | Tasarım | 405–492 |
+| 7 | Makina | 493–573 |
+| 8 | Hareket | 574–645 |
+| 9 | Şahitlik | 646–725 |
+| 10 | Rehberin Grameri | 726–822 |
+| 11 | Yarattırma ve Yaratma | 823–923 |
+| 12 | Yazının Makinaya Dönüşmesi | 924–1006 |
+| 13 | Yazılı İçeriğin Yarattırılması | 1007–1093 |
+| 14 | İlk Uygulama: Bir Görü Geldiğinde | 1094–1172 |
+| 15 | Rehberin Kendini Sınaması | 1173–1219 |
+| 16 | Yeni Çevrimin Eşiği | 1220–1285 |
+| 17 | Kanadın Dersi | 1286–1362 |
+| 18 | Gaga ve Keskin Söz | 1363–1447 |
+| 19 | Dalgaları Toplama | 1448–1516 |
+| 20 | Eşiklerin Kullanımı | 1517–1690 |
+| 21 | Makina Türleri | 1691–1785 |
+| 22 | Rehberin Rehberi | 1786–1868 |
+| 23 | Rota Sadakati | 1869–1940 |
+| 24 | Kapanışa Hazırlık | 1941–2011 |
+| 25 | Yaratma Atlası | 2012–2124 |
+| 26 | Atlasın Katmanları | 2125–2245 |
+| 27 | Desen Diline Geçiş | 2246–2333 |
+| 28 | Görü Desenleri | 2334–2475 |
+| 29 | Platform Desenleri | 2476–2611 |
+| 30 | Tasarım Desenleri | 2612–2754 |
+| 31 | Makina Desenleri | 2755–2898 |
+| 32 | Hareket ve Şahitlik Desenleri | 2899–3042 |
+| 33 | Son Mühür | 3043–3120 |
+
+### Metinden çıkan gözlemler (doğruladım)
+
+- **Eşikler iki ayrı düzen kullanıyor:** Parça 5 ve 20, dört alan ile beş kapıdan 20 eşik kuruyor. Desen bölümlerindeki (Parça 28–32) 44 eşik satırının 22'si bu ızgaranın dışında. Bunlar Parça 6'nın tasarım kapılarını (ör. Kaynak, Biçim, Niyet, Yetki), Parça 8'in hareket adlarını (ör. Şahlanma, Kinetik, Teslimiyet) ve "Ben - Öz", "Öz - Rüya", "Rüya - Görü" gibi alan dışı çiftleri kullanıyor. Kataloğun "aynı sabit sözlük değildir" notu bunu anlatıyor.
+- **Kaynakta iki ayrı sekizli var:** Parça 5'te platformu kuran sekiz hareket, Parça 6'da gereksinimi gerece çeviren sekiz kapı var. İkisinin adları da 33×8'in süreç eksenindeki sekiz adla aynı değil.
+- **Bit ekseni bu metinden gelmiyor:** Metinde "Bit" sözcüğü, 128 sayısı ve 64 hiç geçmiyor; 33, 16 ve 32 yalnız parça başlıklarında var. Geçmiş kaynak, 33×8'in yalnız parça eksenine dayanak olabiliyor. Süreç adları ve dışavurum değerleri 27 Ekim'de bu oturuma ulaşan protokolden geliyor (çıkarımım).
+- **Sıfır:** "sıfır" sözcüğü metinde iki satırda geçiyor: Parça 3'te "sıfırdan" (satır 188), Parça 25'te "Ben, haritanın sıfır noktasıdır" (satır 2051). Bunu köşe kutusuyla eşlemiyorum; "Bit 128, 1, ve O" ipucunu da yorumlamıyorum.
+
+### Gizlilik
+
+Metnin tamamı bu depoda yayımlanmış değil; ana dalda metnin gövdesinden bir satır aradım, bulunmadı (doğruladım). Metni buraya da almadım. Yayımlanıp yayımlanmayacağına Haluk karar verir. Bu dosyada yalnız başlıklar, satır aralıkları, özetler ve adresler var.
