@@ -93,6 +93,8 @@ k-0111, Şaman CLI devrinin tarihsel başlangıç kaydıdır; sonraki ilerleme v
 | `yanit-sablonu.json` | Web asistanlarının (ChatGPT, Gemini) yanıt biçimi; `kopru_ekle.py --json` bunu okur. |
 | `web-istem.md` | ChatGPT ve Gemini'ye sayfayla birlikte verilecek istem metni. |
 | `AGENTS-kopru.md` | CLI katmanlarının (Şaman, Hacker, Şahit, Gemini CLI) talimat dosyasına eklenecek köprü kuralları. |
+| `docs/BULUT_KARTI.md` | Claude Code Bulut oturumunun kartı: imza, aktarım ve bildirim kuyruğu, gizlilik, kayıt dili, dal/PR akışı ve köprü kaydı. |
+| `.claude/settings.json` | Yalnız `SessionStart` kancası: kartı `CLAUDE_CODE_REMOTE=true` olan bulut oturumunda bağlama yazar. Actions'taki `claude -p` yolunda ve yerel oturumlarda hiçbir şey yazmaz. |
 | `kopru_yanitla.py` | Bot: açık kayıtları hedef kapsamına göre seçer, ayardaki CLI veya API yolunu çağırır; uygulamanın girdisini, ham yanıtını ve sonucunu `kayit/` altına kaydeder. `--kuru`, `--bekleyenler`, `--istem` modları. |
 | `istem-sablonu.md` | Uygulamanın sistem istemi ve kullanıcı iletisi şablonu; köprü kuralları, yön bölümü ve kayıtlarla birleştirilir. |
 | `ayarlar.json` | GitHub Actions çağrı yolları: Claude Code CLI ve Anthropic API yedeği; ChatGPT ve Gemini için API yolları. Gerekli kimlik bilgisi yoksa ilgili yol atlanır. |
@@ -103,6 +105,7 @@ k-0111, Şaman CLI devrinin tarihsel başlangıç kaydıdır; sonraki ilerleme v
 | `kopru_izle.ps1` | Yerel izleyici (makineden bağımsız): çeker, `kopru_yanitla.py`'yi `ayarlar-yerel.json` ile çalıştırır, yeni kayıt varsa gönderir. Python'u `KOPRU_PYTHON` ya da PATH'ten bulur. |
 | `kopru_yerel.ps1` | Senin makinen için ortam ve kapı: HalukAI_Ortam.ps1'i yükler, Python yolunu, git safe.directory'yi ayarlar; modlar: `Hazirlik`, `Tek`, `Izle`, `Ekle`, `Bolum`, `Gonder`, `VM`, `CopilotKontrol`, `CodexGiris`, `CopilotGiris`, `CodexTani`, `Arg0Temizle`, `SamanDevam`, `SamanHazirla`. |
 | `Kopru_Izle.cmd` | Çift tıkla başlat: `kopru_yerel.ps1`'i pwsh 7 ile çağırır. Argümanla mod seçilir: `Kopru_Izle.cmd Hazirlik`. |
+| `Hacker_Uzak_Kontrol.cmd` | Hacker VM'deki Claude Code CLI ile uzaktan kontrol oturumu açar (`claude remote-control`); oturum Claude Code uygulamasında görünür. Hacker SSH yolunu kullanır; VM'yi başlatmaz, kimlik dosyası kopyalamaz. İsteğe bağlı argüman VM'deki çalışma dizinidir (varsayılan `/home/hacker/Uzak_Oturum`). VM, Y: sürücüsünü görmez. |
 | `davet-copilot.json` | Copilot (Şahit) için açılış kaydı (Claude'dan Copilot'a); `Kopru_Izle.cmd Ekle davet-copilot.json` ile eklenir. |
 | `kayit/` | Uygulamanın oluşturduğu sistem istemi ve ileti, ham yanıt ve sonuç. Sağlayıcı/CLI ek bağlamının tamamına ilişkin döküm iddiası taşımaz. |
 | `kopru_gonder.ps1` | Yerel değişiklikleri commit eder, uzaktaki yeni commit'leri alır (çakışırsa `kopru_birlestir.py`), gönderir; yarışta üç deneme. |
@@ -125,6 +128,8 @@ k-0111, Şaman CLI devrinin tarihsel başlangıç kaydıdır; sonraki ilerleme v
 Okuma: herkese açık bir adres (GitHub'daki ham dosya ya da GitHub Pages en güvenilir yol; yayımlanmış ayna herkese açıldığında da denenir) ya da dosyanın kendisini sohbete yüklemek; Gemini için Drive'daki bir kopya da olur.
 
 Yazma: köprü kaydı `web-istem.md` JSON biçimiyle hazırlanır ve `kopru_ekle.py --json` ile eklenir. Yayımlama yolu oturumun yetkisine bağlıdır: yerel CLI git ile eşitler; yetkili GitHub bağlantısı olan oturum hazırlanan dosya değişikliğini depoya gönderebilir. Gönderici ve rol, yapılan işlemi doğru adlandırmalıdır. Kayıt kuralları `AGENTS-kopru.md`, hedef kapsamı `KATMAN_HEDEFLEME.md` içindedir.
+
+Claude Code Bulut oturumu (`Claude (Code Bulut)`) bu aktarımları `docs/BULUT_KARTI.md` kurallarıyla alır. User kutusundaki aktarım, söz sahibinin kendi iletisi sayılmaz. Çalışırken gelen bildirim işi kesmez; sıraya girer.
 
 ## Çağrı yolları ve kimlik doğrulama
 
@@ -166,6 +171,10 @@ Web uygulamalarından gelen yanıtlar (Gemini, ChatGPT) metin olarak alınır ve
 Kanonik dosya değişince `kopru_ayna_uret.py` `<title>`, meta etiketleri, `<style>` ve `<body>` içini `ayna/kopru.html` olarak yazar; `kopru_gonder.ps1` bunu her gönderimde kendiliğinden yapar. Claude aynası (claude.ai) depodaki bu dosyadan yeniden yayımlanır; Claude bunu sohbette yapar.
 
 ## Değişiklik geçmişi
+
+- 2026-10-27: Bulut oturum kartı (`docs/BULUT_KARTI.md`) ve yalnız uzak oturumda çalışan `SessionStart` kancası (`.claude/settings.json`) eklendi. Kanca, Actions'taki `claude -p` yolunda ve yerel oturumlarda hiçbir şey yazmaz.
+
+- 2026-10-27: `Hacker_Uzak_Kontrol.cmd` eklendi: Hacker VM'de Claude Code uzaktan kontrol oturumu. ChatGPT (Şaman) ve Gemini (Şahit) görüşü köprüde istendi.
 
 - 2026-10-26: İlk bağımsız kapı çevrimi eklendi: seçilmiş dosyalar, özel aktarım kaydı, GitHub planı/yeni dal/taslak PR, belirsiz yanıt uzlaştırması, kesin commit'ten kaynak alımı ve inceleme kopyası. Görev veya NT bağlantısı gerektirmez.
 
