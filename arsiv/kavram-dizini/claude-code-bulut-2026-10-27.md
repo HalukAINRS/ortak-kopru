@@ -155,3 +155,14 @@ Aşağıdaki tablo, bu daldaki dosyalarda kayıtlı düzeltmelerimi türleriyle 
 - **KD-7 → "Açık kalanlar" birinci madde, KD-4'ün son cümlesi ve K-C12'nin notu:** Buralardaki "depo dışındaki köken" ifadeleri, ilk oluşumun depo dışında olduğu hükmü değil.
   - Kavramların ilk oluştuğu yer ve zaman bu seçkiden belirlenemiyor; depo içinde de olabilir, dışında da.
   - K-C12 için bilinen yalnız şu: depodaki ilk görünümden önce bu oturuma bir aktarım ulaştı (KD-3).
+
+## KD-8 (ilk görünüm arama yöntemi)
+
+`f1b8a26` sürümündeki satırlar korunuyor. Bu bağ 5. adımın karşı okumasından çıktı. Şaman'ın kaydı, "ilk" ve "yok" bulgularının arama kapsamını eksik etiketli saymıştı (CQA4-07). Düzeltme zincirindeki türü kapsam daraltma, tetikleyeni Şaman.
+
+- **KD-8 → A bölümündeki "Depodaki ilk görünüm" sütunu ve ek girdiler:**
+  - **Yöntem:** `git log --all -S'<ifade>'`; sabit dizgi, harf duyarlı. Kapsam 26 ref: 22 uzak dal ve yerel ref'ler. En erken commit, işleyen zamanının Unix değeriyle seçildi.
+  - **Sonuç:** K-C01..C16'nın adlarından ve alıntılarından alınan 23 ifadeyle yeniden aradım. 23'ünde de bulunan commit, bu dosyadaki commit'le aynı (D).
+  - **Kök:** Erişilen ref'lerin hepsinde tek kök commit var: `3c94ebe`.
+  - **Saat dilimi:** İşleyen tarihleri iki dilimde (+00:00 ve +03:00). ISO metinleri dizgi olarak sıralanınca sıra bozuluyor; doğru sıra Unix zamanıyla alınıyor. İlk denememde bu yüzden `3c94ebe` (20:18Z) olduğundan geç göründü.
+  - Yöntem, erişilen ref'lerin dışındaki geçmişi ve ulaşılamayan nesneleri kapsamıyor.
