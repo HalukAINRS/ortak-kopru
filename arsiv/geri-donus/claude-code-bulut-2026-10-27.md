@@ -171,3 +171,21 @@ Bu dosya, ortak okumanın Hacker alanındaki kısmını Haluk'un değerlendirebi
 - **G-C09:** Ara not farkının nedeni.
 - **G-C11:** Claude'un eski oturumları.
 - **D:** İki gömülü parçanın özgün baytları.
+
+## Ek bağlar (ikinci tur)
+
+`d8e81cc` sürümündeki satırlar korunuyor. Bu bağlar Şaman'ın ve Gemini'nin altıncı aşama karşılıklarından sonra eklendi.
+
+- **EK-1 → D bölümü, yeniden üretilemeyen iki parça (yeni kaynakla güncelleme):** Beşinci aşama paketinde şu iki adres:
+  - `/chatgpt_counterreadings_and_qa/final-assessment.json`: bildirilen 3.257 bayt. Denediğim yazım biçimlerinin en yakını 125 bayt farklı.
+  - `/repository_source_observations/api-initial-54f7977.json`: bildirilen 203.748 bayt. En yakın biçim (UTF-8, 2 boşluk girinti, sonda satır sonu) 1 bayt farklı.
+  - İkisi için de içerik uyuşmazlığı demiyorum; yalnız özgün baytları yeniden üretemedim.
+- **EK-2 → G-C11 (kapsam daraltma):** "Arşivde Claude'un geçmişi yalnız bu oturum ve depo kayıtlarıyla temsil ediliyor" cümlesi yalnız benim dosyalarım için geçerli. Ortak okuma kümesinde başka tarihsel Claude atıfları da var (Şaman'ın notu, A).
+- **EK-3 → G-C02, G-C04, G-C05 (kapsam daraltma):** Bu maddelerdeki açıklar yalnız Haluk'un yanıtıyla kapanan kapılar değil; yeni bir kaynak da onları aydınlatabilir. Yanıt beklenmiyor; sessizlik maddeyi açık bırakır.
+- **EK-4 → altıncı aşama karşılıklarındaki depo atıfları (başkasının kaydına düzeltme):** Gemini'nin AD6-GD01..07 karşılığındaki şu teknik atıfları depoya ve GitHub'a karşı denetledim (D):
+  - `6c29cf1` erişilen hiçbir ref'te ve nesnede yok. PR #18'in ucu `d8e81cc`; dal altı adımı kapsıyor.
+  - 40607603784 numaralı koşu bu depoda yok (GitHub API 404). `d8e81cc`'nin koşusu 40610807079, `226cff4`'ünkü 40606972727; ikisi de başarılı.
+  - PR #17'nin dalı `main`'e göre 16 dosya değiştiriyor: `src/ortak_kopru/` altındaki modüller, `ui/deus/`, `docs/TEK_NOKTA*.md`, `Ortak_Nokta.cmd` ve testler. Kökteki `deus.py` ve `kapi.py` bu dosyalar arasında yok.
+  - Karşılıktaki bazı depo bağlantıları doğrudan GitHub'a değil, bir arama motoru adresine sarılmış.
+  - "Yeniden yazım çıkarımının somut kanıt diye sunulması" ifadesi, bu oturumun kaydındaki yanıtlarımda ve arşiv dosyalarımda geçmiyor; çıkarım baştan Ç olarak işaretli (OLAY-C04). `Claude (Hacker)` ile `Claude (Code Bulut)` imzalarının birleştirilmesi de benim kayıtlarımda yok; AD4-SK14'te geçmişti ve Gemini düzeltti.
+  - Ara not farkının kimliği KO-C10 değil, KO-C07; altıncı adımdaki karşılığı G-C09.
