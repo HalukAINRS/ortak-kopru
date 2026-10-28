@@ -1,6 +1,6 @@
 # Depo rehberi: hangi alan neyi taşır?
 
-Ortak Köprü'ye ilk kez gelen biri için başlangıç, [anlam not defteri](../gecmis/anlam-not-defteri.md) ve [son durum](../gecmis/son-durum.md) sayfalarıdır. Bu rehber, orada okunan bir açıklamadan kaynak belgesine, tarihsel kayda veya çalışan aracın koduna geçmek için hazırlanmıştır. [Kaynaklar](../gecmis/kaynaklar.md), anlatıdaki dayanakları ayrıca bir araya getirir.
+Bu rehber, depodaki bir açıklamadan onun kaynak belgesine, tarihsel kayda ya da çalışan aracın koduna geçmek isteyen okur içindir. Ortak Köprü'ye ilk kez geliyorsanız önce [açılışı](../acilis.md), bugün nerede durulduğunu görmek için [yol sayfasını](../yol.md) okuyun; tarihli anlatılar [anlam not defteri](../gecmis/anlam-not-defteri.md) ve [28 Ekim durum raporu](../gecmis/son-durum.md) sayfalarındadır. Her alanın klasöründe ayrıca kendi giriş sayfası vardır. [Kaynaklar](../gecmis/kaynaklar.md), anlatıdaki dayanakları ayrıca bir araya getirir.
 
 Depodaki dosyalar kendi işlevine uygun biçimde kalır. Bir Python dosyası çalıştırılabilir kod, bir JSON dosyası işlenebilir veri, bir HTML defteri korunmuş kayıt, bir Markdown metni ise anlatı veya rehber olabilir. Dış okuyucuya açıklık, bu özgün biçimleri ve geçmişi korurken her alana anlaşılır bir giriş sağlamaktır.
 
@@ -34,14 +34,14 @@ Geri dönüşün bir belgeye ulaşması, içeriğinin değerlendirilmesi ve bir 
 | `schemas/` | İş, olay, atama, denetim, devir ve aktarım manifestolarının JSON sözleşmeleri. Şemalar kendi veri biçimlerini korur; açıklamaları [yerel iş](deus-ex-machina.md) ve [aktarım](dis-alan-kapisi.md) rehberleriyle birlikte okunur. |
 | `ui/deus/` | Yerel iş takibinin HTML, JavaScript ve stil dosyaları. `/api/` yollarını kullanan yerel sunucuyla çalışır. Başlangıç: [çalışma kipi ve yerel yüzey](deus-ex-machina.md#çalışma-kipi-açık-seçim-ve-gerçek-durum). |
 | `windows/nt/` | NT aygıt kapısının C kaynakları, protokolü ve derleme gereçleri. Başlangıç: [sürücü README'si](../../windows/nt/README.md). Kaynak, derleme, yükleme ve hedef bilgisayarda gerçekleşme ayrı kapsamlarla belirtilir. |
-| `tests/` | İşlev ve regresyon sınamaları; Şaman devri sınamaları da buradadır. Başlangıç: [teknik katkı](../../CONTRIBUTING.md#teknik-katkı) ve [bakım rehberi](bakim.md). |
+| `tests/` | İşlev ve regresyon sınamaları. Başlangıç: [teknik katkı](../../CONTRIBUTING.md#teknik-katkı) ve [bakım rehberi](bakim.md). |
 | `tools/` | Depo, kayıt ve ayna bütünlüğü; açılış, harita, tanım ve senaryo kayıtlarının üretimi ve denetimi. Başlangıç: [bakım rehberi](bakim.md#tek-doğrulama-yolu). |
 | `.github/` | PR şablonu, çevrimdışı doğrulama, NT derlemesi ve köprü otomasyonu. Başlangıç: [GitHub Actions açıklaması](bakim.md#github-actions). `kopru.html` değişikliğinin ana dala girmesi sağlayıcı çağrısı yapan iş akışını tetikleyebilir. |
-| `katilimcilar/` | Çağrı ayarları (`ayarlar*.json`), istem ve yanıt şablonları, hedefleme sözleşmesi ve CLI talimat parçası belirli katılımcı yollarını tarif eder. Başlangıç: [çağrı yolları](README.md#çağrı-yolları-ve-kimlik-doğrulama) ve [hedefleme sözleşmesi](../../katilimcilar/katman-hedefleme.md). Yeni bir okur bu dosyaları okumakla eski işleri üstlenmiş olmaz. |
+| `katilimcilar/` | Çağrı ayarları (`ayarlar*.json`), botun 28 Ekim 2026'da sıfırlanan istem şablonu, yanıt kalıbı ve hedefleme sözleşmesi belirli katılımcı yollarını tarif eder. Yapay zekâ yardımcılarına verilmiş talimat dosyaları aynı gün kaldırıldı. Başlangıç: [çağrı yolları](README.md#çağrı-yolları-ve-kimlik-doğrulama) ve [hedefleme sözleşmesi](../../katilimcilar/katman-hedefleme.md). Yeni bir okur bu dosyaları okumakla eski işleri üstlenmiş olmaz. |
 
 ### Tarihsel defter ile yerel iş ekranının kapsamı
 
-`kopru.html`, bu okuma kesitinde 179 kayıt ve kendi üst bölümünde 26 Ekim güncelleme tarihi taşıyor. Üstündeki kurallar ve erişim açıklamaları da belirli bir çalışma döneminin anlatımıdır. Güncel katılımcı, araç ve yetki bilgisi için [son durum](../gecmis/son-durum.md) ile ilgili teknik sözleşme birlikte okunur. Eski kayıtlar güncel anlatıya uydurularak değiştirilmez.
+`kopru.html`, bu okuma kesitinde 179 kayıt ve kendi üst bölümünde 26 Ekim güncelleme tarihi taşıyor. Üstündeki kurallar ve erişim açıklamaları da belirli bir çalışma döneminin anlatımıdır. Güncel katılımcı, araç ve yetki bilgisi için [yol sayfası](../yol.md), [teknik ayrıntılar](README.md) ve ilgili teknik sözleşme birlikte okunur. Eski kayıtlar güncel anlatıya uydurularak değiştirilmez.
 
 `ui/deus/index.html`, özel çalışma alanındaki işleri yönetmek için yerel sunucunun sunduğu ekrandır. Sunucu yalnız loopback üzerinde dinler; iş ve kaynak API'leri bu yerel bağlamı kullanır. Halka açık Web kapısı, bu ekranın bir kopyasını açarak özel işlere bağlanmaz. Okuyucunun yayımlanmış anlatıya erişimi ile yerel kullanıcının işlem yapması kendi yüzeylerinde kalır.
 

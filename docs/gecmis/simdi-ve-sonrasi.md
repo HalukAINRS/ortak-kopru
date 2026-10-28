@@ -2,6 +2,8 @@
 
 > **28 Ekim 2026, 13.21 UTC notu.** Bu belge yazıldıktan sonra Haluk deponun niyetini koydu: Web ile yerel bilgisayar arasında bir kapı, dışarıdaki bireyler ile yerel kullanıcı arasında bir köprü. Deponun bağlayıcı tanımı ve altı ilkesi artık [Açılış: Kapı ve Köprü](../acilis.md) belgesinde. Bu belgenin "Ne?" yanıtları niyetten önceki gözleme dayanır ve o saate ait olarak korunuyor. Niyetin ortaya çıkardığı kişiler arası köprü, aşağıdaki senaryolara S09 olarak eklendi.
 
+> **28 Ekim 2026, 18.47 UTC notu.** İlk senaryo (S01) 17.47 UTC'de gerçekleşti: PR #23 birleştirme kaydıyla ana dala alındı (`2c51769`). Kalan senaryoların izi bugün [yol](../yol.md) ve [dönüşüm](../donusum.md) sayfalarındadır. Haluk'un bilgisayarında yerel köprü klasörü yok; yerel tarafa dayanan senaryolar o saatin varsayımıdır.
+
 > **28 Ekim 2026, 13.56 UTC notu.** README'nin teknik bölümleri [teknik ayrıntılar](../teknik/README.md), tarihsel bölümleri [geçmiş işler](README.md) sayfasına taşındı. Bu belgede "README'ye göre" ya da "README" diye anılan bölümler artık o iki sayfadadır; anlatım o saate ait olarak korunuyor.
 
 Bu belge, Ortak Köprü deposunu iki zamanda tanımlar: bugün herkese açık ana dalda olduğu hâliyle ve rafine çalışmasından sonra olabileceği hâliyle. Tanım dokuz soruya dayanır: Ne, Nerede, Ne zaman, Ne kadar, Nereden, Neden, Nasıl, Ne için ve Nereye. Sorular tek başlarına, varyantlarıyla ve birbirleriyle birleşerek soruldu. Belgeyi Claude Code Bulut, Hacker odağıyla, Haluk'un 28 Ekim 2026 tarihli talimatı üzerine hazırladı. Tablolar elle yazılmadı; [makinece okunur kayıttan](simdi-ve-sonrasi.json) üretildi ve her doğrulamada o kayda karşı yeniden denetleniyor. Paragraflar ise bu tabloların ne anlattığını açıyor.
@@ -71,7 +73,7 @@ Varyantların yarısı olumsuz: "Ne değildir?", "Nerede görülemez?", "Neden b
 | --- | --- | --- | --- | --- | --- |
 | 1 | S01 Rafinenin ana dala alınması | öneri | Haluk, PR #23'ü birleştirdiğinde. | — | — |
 | 2 | S02 Yerel göndericinin kapsamının daraltılması | öneri | Haluk, değişikliği kendi makinesinde denedikten sonra. | — | R-17 |
-| 3 | S03 Başlatıcı yollarının tek kaynaktan türetilmesi | öneri | Haluk, hedef makinedeki gerçek yolları doğruladıktan sonra. | — | R-18, R-20 |
+| 3 | S03 Başlatıcı yollarının tek kaynaktan türetilmesi | öneri | Haluk, hedef makinedeki gerçek yolları doğruladıktan sonra. | — | R-18, R-20, R-38, R-39 |
 | 4 | S04 Şahit yolunun tanımlanması | olasılık | Haluk: Şahit rolünün hangi araçla cevap vereceği. | — | R-19 |
 | 5 | S05 Çağrı günlüklerinin inceltilmesi | olasılık | Haluk: günlüklerin kanıt değeri ile depo büyümesi arasındaki tercih. | — | R-21 |
 | 6 | S06 Sürüm etiketinin ve kanıt notunun açıklanması | öneri | Haluk. | — | R-22, R-23 |
@@ -123,6 +125,6 @@ Dokuz sorudan 36 farklı ikili oluşuyor. Bu kayıttaki on bir birleşim (tek c�
 
 ## Kaydın ve belgenin bağı
 
-Bu belgedeki dört tablo `python tools/rafine_sorulari.py` ile [rafine-sorulari.json](simdi-ve-sonrasi.json) kaydından yazılır; `--check` kipi belgeyle kaydın eşliğini, kaydın sözleşmesine uyumunu, tanımlı her varyantın kullanılmasını, açık her bulgunun bir senaryoya bağlanmasını, her senaryonun geri alınma yolunu ve ön koşullarda döngü olmamasını denetler. `--sira` senaryoların bağımlılık sırasını verir. Günlük ve defter büyüklükleri gibi hesaplanan değerler tarihli gözlemdir: ana dala yeni bir kayıt eklendiğinde fark hata olarak değil bilgi olarak yazılır, böylece başka katılımcıların işi bu tanım yüzünden kızarmaz. Bu denetim `python tools/dogrula.py` listesinde ve dolayısıyla CI'da koşar.
+Bu belgedeki dört tablo `python tools/simdi_ve_sonrasi.py` ile [simdi-ve-sonrasi.json](simdi-ve-sonrasi.json) kaydından yazılır (araç 28 Ekim öğleden sonra `tools/rafine_sorulari.py` adından taşındı); `--check` kipi belgeyle kaydın eşliğini, kaydın sözleşmesine uyumunu, tanımlı her varyantın kullanılmasını, açık her bulgunun bir senaryoya bağlanmasını, her senaryonun geri alınma yolunu ve ön koşullarda döngü olmamasını denetler. `--sira` senaryoların bağımlılık sırasını verir. Günlük ve defter büyüklükleri gibi hesaplanan değerler tarihli gözlemdir: ana dala yeni bir kayıt eklendiğinde fark hata olarak değil bilgi olarak yazılır, böylece başka katılımcıların işi bu tanım yüzünden kızarmaz. Bu denetim `python tools/dogrula.py` listesinde ve dolayısıyla CI'da koşar.
 
 Bir yanıta itiraz etmek, bir senaryoyu değiştirmek ya da açık kalan ikililerden birini sormak için sorunun ya da senaryonun kimliğini (S04, B08 gibi) belirterek [GitHub Issues](https://github.com/HalukAINRS/ortak-kopru/issues) kullanılabilir. Bir senaryonun gerçekleşmesi, kendi kanıtıyla bu kaydın yanına eklenir; yanıt gelmemesi bir senaryonun kabul edildiği anlamına gelmez.

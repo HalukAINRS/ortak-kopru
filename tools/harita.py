@@ -13,7 +13,14 @@ nasıl çalıştırılıp denetlendiğini ve yeni belgelerin künyesini taşır.
     (kod biçimi ve dosya adı yok, cümle en çok 30, ortalama en çok 18 kelime) ve klavye
     çizimlerinin tools/cizim.py kurallarına uyması;
   - CITATION.cff'nin var olması ve başlığı ile depo adresinin README ile uyuşması;
+  - kaldırılan dosyaların gerçekten kalkmış, sıfırlananların yerinde olması ve önceki sürümde bulunması;
+  - giriş sayfası istenen her klasörde (klasor_okur) üretilen README.md'nin kayıtla eşliği;
   - docs/harita.md içindeki üretilen bloğun kayıtla eşliği.
+
+Klasör giriş sayfaları: klasor_okur taşıyan her alanın klasörüne bir README.md yazılır. Sayfa alanın sade
+paragraflarıyla açılır, klasördeki dosyaları ne yaptıkları ve nasıl çalıştıklarıyla sayar ve haritaya,
+açılışa ve teknik ayrıntılara bağlanır. .github/ klasörüne giriş sayfası yazılmaz: GitHub oradaki README'yi
+deponun ön yüzü yapar.
 
 Kullanım:
     python tools/harita.py                 # belgeyi kayıttan yaz ve denetle
@@ -61,8 +68,140 @@ def alan_bul(harita: dict, yol: str) -> list[str]:
     return [alan["kimlik"] for alan in harita["alanlar"] if any(kapsar(d, yol) for d in alan["kapsam"])]
 
 
+KLASOR_GIRISI_NE = "Bu klasörün giriş sayfası: ne taşıdığını, dosyalarını ve nasıl çalıştırıldıklarını anlatır."
+
+
+def klasor_girisleri(harita: dict) -> list[tuple[dict, str]]:
+    """Giriş sayfası istenen alanlar ve sayfanın yolu."""
+    return [(alan, alan["yol"] + "README.md") for alan in harita["alanlar"] if alan.get("klasor_okur")]
+
+
 def tanimlar(harita: dict) -> list[tuple[dict, dict]]:
-    return [(alan, dosya) for alan in harita["alanlar"] for dosya in alan["dosyalar"]]
+    """Kayıttaki dosya tanımları ve üretilen klasör giriş sayfalarının tanımları."""
+    sonuc = [(alan, dosya) for alan in harita["alanlar"] for dosya in alan["dosyalar"]]
+    for alan, yol in klasor_girisleri(harita):
+        sonuc.append((alan, {"yol": yol, "tur": "belge", "ne": KLASOR_GIRISI_NE,
+                             "uretilir": {"kaynak": "docs/harita.json", "arac": "tools/harita.py"},
+                             "denetim": "python tools/harita.py --check"}))
+    return sonuc
+
+
+def gerekir(dosya: dict) -> str:
+    """Çalıştırma komutunun istediği: kayıtta yazılıysa o, değilse komutun türünden."""
+    if "gerekir" in dosya:
+        return dosya["gerekir"]
+    komut = dosya.get("calistir", "")
+    if komut.startswith("python"):
+        return "Python 3.12+"
+    if komut.startswith("pwsh"):
+        return "PowerShell 7"
+    return "—"
+
+
+def kaldirilanlar(harita: dict) -> list[dict]:
+    return harita.get("kaldirilanlar", [])
+
+
+def _git_var(nesne: str) -> bool | None:
+    """Git nesnesi bu kopyada var mı; Git yoksa None. Sığ kopyada eski sürümler bulunmayabilir."""
+    try:
+        sonuc = subprocess.run(["git", "cat-file", "-e", nesne], cwd=KOK, capture_output=True)
+    except OSError:
+        return None
+    return sonuc.returncode == 0
+
+
+def kaldirilan_denetle(harita: dict, mevcut: set[str]) -> list[str]:
+    hatalar, gorulen = [], set()
+    canli_eski = {ad for _, d in tanimlar(harita) for ad in d.get("eski_adlar", [])}
+    for k in kaldirilanlar(harita):
+        yol = k["yol"]
+        if yol in gorulen:
+            hatalar.append(f"{yol}: kaldırılanlarda iki kez")
+        gorulen.add(yol)
+        if k["islem"] == "silindi" and yol in mevcut:
+            hatalar.append(f"{yol}: silindi diye yazılı ama hâlâ bir dosya")
+        if k["islem"] == "sıfırlandı" and yol not in mevcut:
+            hatalar.append(f"{yol}: sıfırlandı diye yazılı ama depoda yok")
+        for ad in k.get("eski_adlar", []):
+            if ad in mevcut:
+                hatalar.append(f"{ad}: kaldırılan bir dosyanın eski adı ama hâlâ bir dosya")
+            if ad in canli_eski:
+                hatalar.append(f"{ad}: hem kaldırılan bir dosyanın hem yaşayan bir dosyanın eski adı")
+        surum = k["onceki_surum"]
+        if _git_var(surum + "^{commit}") and not _git_var(f"{surum}:{yol}"):
+            hatalar.append(f"{yol}: önceki sürümde ({surum[:7]}) bu dosya yok")
+    return hatalar
+
+
+def _baglanti_adi(metin: str) -> str:
+    """GitHub'ın başlık bağlantısı: küçük harf, harf ve rakam dışı işaretler atılır, boşluk tire olur."""
+    return re.sub(r"\s", "-", re.sub(r"[^\w\s-]", "", metin.lower()))
+
+
+def klasor_girisi(harita: dict, alan: dict, dosyalar: list[str] | None = None) -> str:
+    """Bir alanın klasörüne yazılan giriş sayfası (README.md)."""
+    yol = alan["yol"]
+    kok = "../" * yol.count("/")
+    parcalar = [f"# {alan['ad']}"] + list(alan["klasor_okur"])
+    tanimli = [d for a, d in tanimlar(harita) if a is alan and d["yol"] != yol + "README.md"]
+    parcalar.append("## Bu klasörde")
+    if alan["her_dosya_tanimli"] and tanimli:
+        satirlar = ["| Dosya | Ne | Nasıl çalışır |", "| --- | --- | --- |"]
+        for d in tanimli:
+            ic = d["yol"].startswith(yol)
+            ad = d["yol"][len(yol):] if ic else d["yol"]
+            hedef = ad if ic else kok + d["yol"]
+            if "calistir" in d:
+                nasil = f"`{d['calistir']}`"
+            elif "uretilir" in d:
+                nasil = f"`{d['uretilir']['arac']}` üretir"
+            else:
+                nasil = "—"
+            satirlar.append(f"| [`{ad}`]({hedef}) | {_hucre(d['ne'])} | {nasil} |")
+        parcalar.append("\n".join(satirlar))
+    else:
+        dosyalar = izlenen_dosyalar() if dosyalar is None else dosyalar
+        klasorler, turler = set(), set()
+        for d in dosyalar:
+            if alan_bul(harita, d) == [alan["kimlik"]] and d.startswith(yol) and d != yol + "README.md":
+                ic = d[len(yol):]
+                if "/" in ic:
+                    klasorler.add(ic.split("/", 1)[0] + "/")
+                else:
+                    turler.add("." + ic.rsplit(".", 1)[-1] if "." in ic else ic)
+        icerik = [f"[`{k}`]({k})" for k in sorted(klasorler)]
+        if turler:
+            icerik.append("kökte " + ", ".join(f"`{t}`" for t in sorted(turler)) + " dosyaları")
+        parcalar.append("Bu alandaki dosyalar tek tek tanımlanmaz; yukarıdaki açıklama hepsi için geçerlidir. "
+                        "Klasörün içinde: " + ", ".join(icerik) + ".")
+    parcalar += ["## Nereye bağlanır",
+                 f"Bütün alanlar ve dosyalar [depo haritasında]({kok}docs/harita.md#{_baglanti_adi(alan['ad'])}) durur. "
+                 f"İlk kez geliyorsanız [açılıştan]({kok}docs/acilis.md) başlayın. Kurulum, komutlar ve denetimler "
+                 f"[teknik ayrıntılarda]({kok}docs/teknik/README.md) anlatılır.",
+                 "Bu sayfa depo haritasından üretilir; elle değiştirilmez. Değiştirmek için haritadaki kayıt düzeltilir ve "
+                 "`python tools/harita.py` çalıştırılır."]
+    return "\n\n".join(parcalar) + "\n"
+
+
+def klasor_denetle(harita: dict, yaz: bool = False) -> list[str]:
+    """Klasör giriş sayfaları kayıtla aynı mı; yaz verilirse farklı olanlar yazılır."""
+    hatalar = []
+    dosyalar = izlenen_dosyalar()
+    for alan, yol in klasor_girisleri(harita):
+        if yol.startswith(".github/"):
+            hatalar.append(f"{yol}: .github/ klasörüne giriş sayfası yazılmaz (GitHub onu deponun ön yüzü yapar)")
+            continue
+        beklenen = klasor_girisi(harita, alan, dosyalar)
+        hedef = KOK / yol
+        metin = hedef.read_text(encoding="utf-8") if hedef.is_file() else None
+        if metin != beklenen:
+            if yaz:
+                hedef.write_text(beklenen, encoding="utf-8", newline="\n")
+            else:
+                hatalar.append(f"{yol}: depo haritasından üretilen hâliyle aynı değil")
+        hatalar += sade_paragraf(yol, alan["klasor_okur"][0])
+    return hatalar
 
 
 def ilk_paragraf(metin: str) -> str:
@@ -163,6 +302,7 @@ def denetle(harita: dict, dosyalar: list[str] | None = None) -> list[str]:
                 if alan_bul(harita, yol) == [alan["kimlik"]] and yol not in tanimli:
                     hatalar.append(f"{yol}: '{alan['kimlik']}' alanında ama tanımı yok")
     hatalar += atif_denetle(harita)
+    hatalar += kaldirilan_denetle(harita, mevcut)
     return hatalar
 
 
@@ -170,6 +310,7 @@ def eski_ad_denetle(harita: dict, ref: str) -> list[str]:
     """O sürümdeki her dosya bugün aynı yerde mi, değilse eski adı haritada mı?"""
     cikti = subprocess.check_output(["git", "ls-tree", "-r", "--name-only", "-z", ref], cwd=KOK)
     eski = {ad for _, dosya in tanimlar(harita) for ad in dosya.get("eski_adlar", [])}
+    eski |= {ad for k in kaldirilanlar(harita) for ad in [k["yol"], *k.get("eski_adlar", [])]}
     bugun = set(izlenen_dosyalar())   # Git'in listesi: büyük/küçük harfe duyarsız dosya sistemlerinde de doğru
     return [f"{ref}:{ad}: bugün yok ve eski adı haritada değil"
             for ad in sorted(set(cikti.decode("utf-8").split("\0")) - {""})
@@ -182,6 +323,11 @@ def nerede(harita: dict, ad: str) -> list[str]:
         adlar = [dosya["yol"]] + dosya.get("eski_adlar", [])
         if any(a == ad or a.rsplit("/", 1)[-1] == ad for a in adlar):
             sonuc.append(f"{dosya['yol']}  ({alan['ad']}) — {dosya['ne']}")
+    for k in kaldirilanlar(harita):
+        adlar = [k["yol"]] + k.get("eski_adlar", [])
+        if any(a == ad or a.rsplit("/", 1)[-1] == ad for a in adlar):
+            sonuc.append(f"{k['yol']}  ({k['islem']}, {k['tarih']}) — {k['neden']} "
+                         f"Önceki hâli: {DEPO}/blob/{k['onceki_surum']}/{k['yol']}")
     return sonuc
 
 
@@ -225,22 +371,34 @@ def belge(harita: dict) -> str:
     for alan in harita["alanlar"]:
         yer = f"`{alan['yol']}`" if alan["yol"] else "depo kökü"
         parcalar += [f"## {alan['ad']}", f"{alan['ne']} Yeri: {yer}."]
-        if alan["dosyalar"]:
+        alan_dosyalari = [d for a, d in tanimlar(harita) if a is alan]
+        if alan_dosyalari:
             satirlar = ["| Dosya | Tür | Ne | Eski adı |", "| --- | --- | --- | --- |"]
-            for dosya in alan["dosyalar"]:
+            for dosya in alan_dosyalari:
                 eski = ", ".join(f"`{a}`" for a in dosya.get("eski_adlar", [])) or "—"
                 satirlar.append(f"| `{dosya['yol']}` | {dosya['tur']} | {_hucre(dosya['ne'])} | {eski} |")
             parcalar.append("\n".join(satirlar))
         else:
             parcalar.append("Bu alandaki dosyalar tek tek tanımlanmaz; alanın açıklaması hepsi için geçerlidir.")
-    calisan = [(d["yol"], d["calistir"], d.get("yan_etkisiz", False)) for _, d in tanimlar(harita) if "calistir" in d]
+    calisan = [(d["yol"], d["calistir"], d.get("yan_etkisiz", False), gerekir(d)) for _, d in tanimlar(harita) if "calistir" in d]
     parcalar += ["## Çalıştırma",
-                 "Aşağıdaki komutlar depo kökünden çalışır ve Python'un standart kütüphanesinden başka bir şey istemez. "
-                 "Yalnız okuyan komutlar her doğrulamada sınanır."]
-    satirlar = ["| Dosya | Komut | Yalnız okur |", "| --- | --- | --- |"]
-    satirlar += [f"| `{y}` | `{c}` | {'evet' if g else 'hayır'} |" for y, c, g in calisan]
+                 "Aşağıdaki komutlar depo kökünden çalışır. Python komutları Python 3.12 ya da üstünü ve yalnız standart "
+                 "kütüphaneyi ister; öteki komutların ne istediği “Gerekir” sütunundadır. Yalnız okuyan komutlar her "
+                 "doğrulamada sınanır."]
+    satirlar = ["| Dosya | Komut | Yalnız okur | Gerekir |", "| --- | --- | --- | --- |"]
+    satirlar += [f"| `{y}` | `{c}` | {'evet' if g else 'hayır'} | {_hucre(r)} |" for y, c, g, r in calisan]
     parcalar.append("\n".join(satirlar))
+    if kaldirilanlar(harita):
+        parcalar += ["## Kaldırılan ve sıfırlanan dosyalar",
+                     "Bazı dosyalar depodan bilerek kaldırıldı ya da içerikleri baştan yazıldı. Eski bir kayıtta "
+                     "bunlardan birinin adı geçerse ne olduğu ve önceki hâlinin hangi sürümde durduğu burada yazılıdır."]
+        satirlar = ["| Dosya | İşlem | Tarih | Neden | Önceki hâli |", "| --- | --- | --- | --- | --- |"]
+        satirlar += [f"| `{k['yol']}` | {k['islem']} | {k['tarih']} | {_hucre(k['neden'])} | "
+                     f"[{k['onceki_surum'][:7]}]({DEPO}/blob/{k['onceki_surum']}/{k['yol']}) |" for k in kaldirilanlar(harita)]
+        parcalar.append("\n".join(satirlar))
     eski = sorted((ad, d["yol"]) for _, d in tanimlar(harita) for ad in d.get("eski_adlar", []))
+    eski = sorted(eski + [(ad, f"{k['yol']} ({k['islem']})") for k in kaldirilanlar(harita)
+                          for ad in k.get("eski_adlar", []) if k["islem"] == "silindi"])
     parcalar += ["## Eski adlar",
                  "Eski kayıtlarda ve konuşmalarda geçen bir dosya adını burada bulabilirsiniz. Komutla da sorulabilir: "
                  "`python tools/harita.py --nerede kopru_ekle.py`."]
@@ -281,7 +439,8 @@ def main() -> int:
             if yeni != metin:
                 BELGE.write_text(yeni, encoding="utf-8", newline="\n")
                 metin = yeni
-        hatalar = denetle(harita) + acilis.belge_denetle("docs/harita.md", metin, uretilen)
+        hatalar = klasor_denetle(harita, yaz=not args.check)
+        hatalar += denetle(harita) + acilis.belge_denetle("docs/harita.md", metin, uretilen)
     if args.ref:
         hatalar += eski_ad_denetle(harita, args.ref)
     for hata in hatalar:

@@ -1,5 +1,7 @@
 # Üretici adresi ve açık katman adresi
 
+Bu belge, ortak defterdeki bir kaydın hangi katılımcıya ve hangi yola düştüğünü belirleyen sözleşmedir. Defterin "kime" alanına ad yazan herkes ve botun ayarlarını değiştiren biri için yazıldı. Bot ve kayıt araçları bu kurallara uyar; sınamaları aşağıda. Sözleşme 24 Ekim 2026'da yazıldı, 26 Ekim'de rol adlarıyla güncellendi; kararların sahibi Haluk. Şaman, Hacker, Şahit ve katman kelimelerinin anlamı [sözlüktedir](../docs/sozluk.md#katılımcılar-ve-odaklar).
+
 Bir kaydın alıcısı ChatGPT (Şaman) ise, ChatGPT (API) yanıtı bu işi kapsamaz. CLI yolu bulunamadığında veya hata verdiğinde, API yedeği bu katman işini devralmaz. Her yol kendi imzasıyla bekleyenleri yeniden seçer; API yedeğine üst CLI'ın imzası aktarılmaz.
 
 Yalın ChatGPT, Claude, Copilot ve Gemini adresleri eski üretici adresleridir. Bu kayıtların geçmiş kapsama davranışı korunur; eski işler yeniden açılmaz. Aynı kayıtta açık katman ile yalın üretici birlikte adreslenmişse, ilgili kapsamlar ayrı değerlendirilir. Yanıtın kapsadığı üst kayıt numarası yalnız o hedef kapsamı için geçerlidir.

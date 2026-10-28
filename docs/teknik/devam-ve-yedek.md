@@ -2,9 +2,9 @@
 
 Bu aşama, ilk iş çekirdeğinin çevrimini tamamlar: sonuç ve kabul denetimi ekrandan yapılabilir; hedef oturum kendi etkin atamalarını bulabilir; kaynak baytlarıyla taşınabilen bir devir paketi hazırlanabilir; özel çalışma alanı tutarlı biçimde yedeklenip yeni bir dizine geri yüklenebilir.
 
-Bu işlemler isteğe bağlı iş takibinin özel verilerini taşır. Güncel [dış alan kapısı](dis-alan-kapisi.md) yönünde, yerelde hazırlanmış bir dosyanın paylaşılması için bu görev çevriminden geçmesi gerekmeyecektir. `handoff` özgün söz, yetki, kaynaklar ve önceki sonuçları içerir; `export` ve `backup` daha geniş özel geçmiş taşır. Bu çıktılar kendiliğinden seçici yayın paketi olarak kullanılmaz.
+Bu işlemler isteğe bağlı iş takibinin özel verilerini taşır. Güncel [dış alan kapısı](dis-alan-kapisi.md) yönünde, yerelde hazırlanmış bir dosyanın paylaşılması için bu görev çevriminden geçmesi gerekmez. `handoff` özgün söz, yetki, kaynaklar ve önceki sonuçları içerir; `export` ve `backup` daha geniş özel geçmiş taşır. Bu çıktılar kendiliğinden seçici yayın paketi olarak kullanılmaz.
 
-Hedef Windows bilgisayarındaki ilk kullanım, sürücü imzalama/yükleme ve canlı NT denemesi ayrı aşamada kalır. Aşağıdaki `portable` örnekleri açık geliştirme kipidir; kernel kurulumu veya gerçek sağlayıcı çalıştırması kanıtı üretmez. Temel kurulum ve iş sözleşmesi: [DEUS_EX_MACHINA.md](deus-ex-machina.md).
+Hedef Windows bilgisayarındaki ilk kullanım, sürücü imzalama/yükleme ve canlı NT denemesi ayrı aşamada kalır. Aşağıdaki `portable` örnekleri açık geliştirme kipidir; kernel kurulumu veya gerçek sağlayıcı çalıştırması kanıtı üretmez. Temel kurulum ve iş sözleşmesi: [deus_ex_machina rehberi](deus-ex-machina.md). Örneklerdeki `D:/…` yolları ve önceden oluşturulacak girdi dosyaları için oradaki açıklama geçerlidir: Linux ve macOS'ta Git kopyasının dışında bir dizin, örneğin `$HOME/DeusVeri`, seçilir. Komutlar 28 Ekim 2026'da yardım çıktılarına karşı denetlendi.
 
 ## Sonucu ekrandan tamamlamak
 

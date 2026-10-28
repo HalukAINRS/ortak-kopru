@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-"""Build the static reader pages from the repository's prose, with no network.
+"""Web'deki okuma sayfalarını docs/ altındaki metinlerden ağ kullanmadan üretir.
 
-The small supported Markdown subset is intentional: headings, paragraphs,
-links, bold, inline code, simple lists, explicit safe heading anchors, HTML comment
-marker lines (skipped) and plain-text blocks fenced with three backticks (unlabelled
-or labelled text).
-Use --check in CI to detect publication drift without writing files.
+Desteklenen Markdown bilerek küçüktür: başlıklar, paragraflar, bağlantılar, kalın yazı, satır içi kod,
+basit listeler, güvenli başlık çapaları, atlanan HTML yorum satırları ve üç ters tırnakla çevrili düz
+metin blokları (etiketsiz ya da text etiketli). Tablo ve ham HTML desteklenmez. Her ikinci düzey
+bölümün sonuna, katkı kalıbını yer ve başlık alanları dolu açan bir karşılık bağlantısı konur.
+
+Kullanım:
+    python tools/okuma_yayini_uret.py            # sayfaları yaz
+    python tools/okuma_yayini_uret.py --check    # yazmadan denetle; fark varsa çıkış 1
 """
 from __future__ import annotations
 
@@ -25,9 +28,10 @@ PAGES = {
     'web-girisi.md': ('index.html', 'Ortak Köprü'),
     'acilis.md': ('acilis.html', 'Açılış: Kapı ve Köprü'),
     'yol.md': ('yol.html', 'Açılıştan gerçeğe: yol'),
+    'sozluk.md': ('sozluk.html', 'Sözlük'),
     'gecmis/ortak-mimari-defteri.md': ('mimari.html', 'Ortak Mimari Defteri'),
     'gecmis/anlam-not-defteri.md': ('not-defteri.html', 'Anlam ve Dönüş Defteri'),
-    'gecmis/son-durum.md': ('durum.html', 'Son durum'),
+    'gecmis/son-durum.md': ('durum.html', '28 Ekim durum raporu'),
     'gecmis/kaynaklar.md': ('kaynaklar.html', 'Kaynaklar'),
 }
 
@@ -176,7 +180,14 @@ def render(source: str, folder: str = '', sayfa: str = '', sayfa_adi: str = '') 
 def page(filename: str, output_name: str, label: str) -> str:
     body, headings = render((ROOT / 'docs' / filename).read_text(encoding='utf-8'), posixpath.dirname(filename),
                             output_name, label)
-    nav = ''.join(f'<a href="{target}"' + (' aria-current="page"' if target == output_name else '') + f'>{html.escape(name)}</a>' for target, name in [('index.html', 'Başlangıç'), ('acilis.html', 'Açılış'), ('yol.html', 'Yol'), ('mimari.html', 'Mimari defteri'), ('not-defteri.html', 'Not defteri'), ('durum.html', 'Son durum'), ('kaynaklar.html', 'Kaynaklar')])
+    def baglanti(target: str, name: str) -> str:
+        return f'<a href="{target}"' + (' aria-current="page"' if target == output_name else '') + f'>{html.escape(name)}</a>'
+    # Bugünü anlatan sayfalar önce; tarihli kayıtlar "Geçmiş" etiketinin ardından gelir.
+    nav = ''.join(baglanti(t, n) for t, n in [('index.html', 'Başlangıç'), ('acilis.html', 'Açılış'), ('yol.html', 'Yol'),
+                                              ('sozluk.html', 'Sözlük')])
+    nav += '<span class="nav-ayrac">Geçmiş:</span>' + ''.join(
+        baglanti(t, n) for t, n in [('mimari.html', 'Mimari defteri'), ('not-defteri.html', 'Not defteri'),
+                                    ('durum.html', '28 Ekim raporu'), ('kaynaklar.html', 'Kaynaklar')])
     contents = ''.join(f'<li><a href="#{anchor}">{html.escape(title)}</a></li>' for anchor, title in headings)
     title = label if output_name == 'index.html' else label + ' · Ortak Köprü'
     return f'''<!doctype html>

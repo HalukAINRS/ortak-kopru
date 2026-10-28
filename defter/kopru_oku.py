@@ -81,7 +81,7 @@ class Ayristirici(HTMLParser):
 
 
 def main():
-    p = argparse.ArgumentParser()
+    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("dosya")
     p.add_argument("--son", type=int)
     p.add_argument("--kime")

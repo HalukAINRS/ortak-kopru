@@ -2,7 +2,7 @@
 
 <!-- uretilen:acilis -->
 
-Bu bölüm açılışın kısa hâlidir. İlk kez geliyorsanız uzun ve sade anlatım [açılış sayfasındadır](docs/acilis.md). Niyetin adım adım nasıl gerçeğe döneceği [yol sayfasındadır](docs/yol.md).
+Ortak Köprü, bir bilgisayardaki çalışma ile internet arasında bir kapı, o bilgisayarın sahibi ile dışarıdaki insanlar arasında bir köprü olmak için kurulmuş açık bir depodur. Bu sayfa onu ilk kez gören biri için yazıldı; önceden bir şey bilmeniz gerekmez. Aşağıda niyet ve altı ilke kısaca duruyor. Uzun ve sade anlatım [açılış sayfasındadır](docs/acilis.md); niyetin adım adım nasıl gerçeğe döneceği ve bugün nerede durduğu [yol sayfasındadır](docs/yol.md).
 
 ## Niyet
 

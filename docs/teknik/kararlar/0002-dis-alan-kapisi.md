@@ -1,6 +1,6 @@
 # Karar 0002 — Yerelden harici alanlara paylaşım ve tedarik kapısı
 
-Durum: Kullanıcının 26 Ekim 2026 tarihli açıklamasıyla ürün yönü netleşti.
+Tarih: 26 Ekim 2026 · Karar sahibi: Haluk · Durum: Haluk'un 26 Ekim 2026 tarihli açıklamasıyla ürün yönü netleşti.
 Bu belge yönü ve geliştirme sınırlarını kaydeder. İlk görevden bağımsız dosya
 aktarımı ve GitHub bağlayıcısı `kapi.py` üzerinden uygulanmıştır. Diğer
 sağlayıcılar ve genel dış çalışma talepleri geliştirme kapsamındadır.

@@ -1,5 +1,6 @@
 # Ortak Köprü: yerel değişiklikleri commit eder, uzaktaki yeni kayıtlarla birleştirir ve GitHub'a gönderir.
-# Kullanım: pwsh -File yerel/kopru_gonder.ps1   (depo: Y:\HalukAI\Ortak_Kopru\kopru)
+# Kullanım: pwsh -File yerel/kopru_gonder.ps1   (depo kökünde çalışır; ilk kurulumdaki yeri Y:\HalukAI\Ortak_Kopru\kopru idi)
+# DİKKAT: çalışma klasöründeki her değişikliği (git add -A) ana dala gönderir. Daraltılması karar bekliyor (docs/yol.md, 1. adım).
 # Birden çok yazan olduğu için (GitHub Actions botu, Gemini ve ChatGPT aktarımları, sen) önce uzak alınır:
 # kopru.html çakışırsa kopru_birlestir.py uzak sürümü esas alıp yalnız yereldeki kayıtları yeni numarayla ekler;
 # kayit/atlandi.log çakışırsa satırlar birleştirilir; diğer kaynak çakışmaları elle çözülmek üzere durdurulur.

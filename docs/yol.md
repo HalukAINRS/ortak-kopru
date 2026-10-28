@@ -8,7 +8,7 @@ Bu yol kendini denetler. Her adımın ölçütü var ve ölçütler her değişi
 
 ## Bugün nerede duruyoruz
 
-Bugün altı ilkenin ikisi tam olarak işliyor, dördü kısmen işliyor. Yolun yedi adımından ikisi tamam, dördü açık, biri ufukta. Kararı bekleyen adım: Gönderici yalnız seçileni gönderir, Gelen kutusu. Öteki açık adımlar bir ön koşulun bitmesini bekliyor.
+Bugün altı ilkenin ikisi tam olarak işliyor, dördü kısmen işliyor. Yolun yedi adımından ikisi tamam, dördü açık, biri ufukta. Kararı bekleyen adımlar: Gönderici yalnız seçileni gönderir, Gelen kutusu. Bir ön koşulun bitmesini bekleyen adım: Yanıt geri döner. Dışarıdan birinin gelmesini bekleyen adım: İlk dış katkı.
 
 Aşağıdaki gösterge her ilkeye bağlı adımları sayar. Dolu kare biten, boş kare açık, eşkenar dörtgen ufuktaki adımı gösterir.
 
@@ -45,7 +45,7 @@ Aşağıdaki resim bunu bir manzara gibi gösteriyor. Solda yerel kullanıcını
   └──┤░░├───┘    ╚═════════════════════╝   insanlar
      └┬─┘ kapı ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       :
-      :  yol: altı adım
+      :  yol: yedi adım
       :
       x  bugün buradayız
 ```
@@ -54,7 +54,7 @@ Aşağıdaki resim bunu bir manzara gibi gösteriyor. Solda yerel kullanıcını
 
 Aşağıdaki plan, Ortak Köprü'yü üstten görülen bir yapı gibi gösterir. Solda yerel kullanıcının odası, sağda dış avlu var. Aradaki duvarda tek bir kapı bulunuyor. Oklar neyin hangi yönde geçtiğini, parantez içindeki sayılar o geçişi koruyan ilkeyi gösteriyor.
 
-Plan bugün yarı yarıya gerçek. Seçilen dosyaların dışarı çıkışı ve kaynakların sürümüyle içeri girişi çalışıyor. Soruların gelen kutusuna inmesi ve yanıtın aynı yoldan dönmesi henüz yok. Yol, eksik okları tek tek çiziyor.
+Plan bugün yarı yarıya gerçek. Seçilen dosyaların dışarı çıkışı ve kaynakların sürümüyle içeri girişi kapının aracında hazır; aracı deponun herhangi bir kopyasında çalıştırmak yeter. Ama bugün hiçbir bilgisayarda kurulu bir yerel taraf yok. Soruların gelen kutusuna inmesi ve yanıtın aynı yoldan dönmesi henüz yok. Yol, eksik okları tek tek çiziyor.
 
 **Yapının planı** · mimar çizimi
 
@@ -121,7 +121,7 @@ Yol yedi adımdan oluşuyor. Aşağıdaki ağaçta her adım, bitmesini bekledi�
 
 **Ne?** Yerel bilgisayardaki eski paylaşım aracı, yalnız ortak defteri ve çağrı kayıtlarını gönderecek biçimde daraltılır.
 
-**Neden?** Bu araç bugün çalışma klasöründe unutulmuş herhangi bir dosyayı da herkese açık yere gönderebiliyor. Bu, yerel kullanıcının seçmediği bir şeyin dışarı çıkabilmesi demek.
+**Neden?** Bu araç, çalışma klasöründe unutulmuş herhangi bir dosyayı da herkese açık yere gönderebilecek biçimde yazılı. Bu, yerel kullanıcının seçmediği bir şeyin dışarı çıkabilmesi demek. Araç bugün hiçbir bilgisayarda kurulu değil; ama yeniden kurulduğu gün bu açık da onunla gelir.
 
 **Nerede?** Yerel bilgisayardaki eski paylaşım aracında.
 
@@ -129,7 +129,7 @@ Yol yedi adımdan oluşuyor. Aşağıdaki ağaçta her adım, bitmesini bekledi�
 
 **Nasıl?** Araç, bulut tarafındaki eşi gibi yalnız belirli dosyaları hazırlar. Başka bir dosyayı paylaşmak isteyen kapıyı kullanır; kapı yalnız seçileni taşır.
 
-**Ne zaman?** Ön koşulu bitti: Zemin. Ayrıca Haluk'un bir karar vermesi gerekiyor. Yerel gönderici, defter ve çağrı kayıtları dışındaki dosyaları göndermeyi bıraksın mı? Bırakırsa öteki dosyalar kapıdan, seçilerek gider.
+**Ne zaman?** Ön koşulu bitti: Zemin. Ayrıca Haluk'un bir karar vermesi gerekiyor. Yerel gönderici, defter ve çağrı kayıtları dışındaki dosyaları göndermeyi bıraksın mı? Bırakırsa öteki dosyalar kapıdan, seçilerek gider. Görüş (Claude Code Bulut, 28 Ekim 2026). Önerim: evet, daraltılsın. Gönderici bugün hiçbir bilgisayarda kurulu değil; bu yüzden değişiklik kimsenin işini bozmaz. Daraltılırsa, yeniden kurulduğu gün seçimsiz gönderme açığı onunla geri gelmez. Buluttaki eşi zaten yalnız defteri, aynasını ve çağrı kayıtlarını gönderiyor; iki yol aynı kurala bağlanır. Karar yine Haluk'ta.
 
 **Ne için?** Bu adım şu ilkelere hizmet eder: 2. ilke (Yerel merkez), 4. ilke (Sınır).
 
@@ -173,7 +173,7 @@ Yol yedi adımdan oluşuyor. Aşağıdaki ağaçta her adım, bitmesini bekledi�
 
 **Nasıl?** Kapıya yeni bir iş eklenir. Açık konuları okur ve her birini kimin, ne zaman yazdığıyla ve hangi yazıya bağlı olduğuyla gelen kutusuna koyar. Gelen kutusu yerel çalışmaya kendiliğinden karışmaz; yerel kullanıcı önce bakar.
 
-**Ne zaman?** Ön koşulu bitti: Katkı kalıbı. Ayrıca Haluk'un bir karar vermesi gerekiyor. GitHub'a hangi yetkiyle bakılsın: yalnız herkese açık okumayla mı, kişisel bir anahtarla mı? Gelen kutusu bilgisayarda nerede dursun?
+**Ne zaman?** Ön koşulu bitti: Katkı kalıbı. Ayrıca Haluk'un bir karar vermesi gerekiyor. GitHub'a hangi yetkiyle bakılsın: yalnız herkese açık okumayla mı, kişisel bir anahtarla mı? Gelen kutusu bilgisayarda nerede dursun? Görüş (Claude Code Bulut, 28 Ekim 2026). Önerim: önce yalnız herkese açık okumayla başlansın; gelen kutusu, kapının deponun dışında tuttuğu özel dizinde dursun. Depo ve konular zaten herkese açık; okumak için bir anahtar gerekmez. Anahtarsız okuma saatte altmış isteğe izin veriyor ve gelen kutusuna bu yeter. Böylece bilgisayarda sızabilecek bir anahtar da durmaz. Gelen kutusu kapının özel dizininde durursa, içindekiler hiçbir gönderimle depoya karışamaz. Bugün yerel taraf kurulu olmadığı için bu dizin, yerel taraf kurulduğu bilgisayarda açılır. Karar yine Haluk'ta.
 
 **Ne için?** Bu adım şu ilkelere hizmet eder: 1. ilke (Karşılıklılık), 2. ilke (Yerel merkez).
 

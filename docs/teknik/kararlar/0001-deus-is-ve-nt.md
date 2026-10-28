@@ -1,6 +1,6 @@
 # Karar 0001 — Kalıcı iş çekirdeği ve NT Kernel sınırı
 
-Durum: İlk uygulama. Kullanıcının mimari değerlendirmeyi kabul edip gerçekleştirme istediği tur temel alınmıştır.
+Tarih: 26 Ekim 2026 · Karar sahibi: Haluk · Durum: İlk uygulama. Kullanıcının mimari değerlendirmeyi kabul edip gerçekleştirme istediği tur temel alınmıştır.
 
 Sonraki kapsam açıklaması: [Karar 0002 — Dış alanlara açılan kapı](0002-dis-alan-kapisi.md). Yerel çalışmalar kendi araçlarında sürer; burada tanımlanan iş çekirdeği isteğe bağlı bir yetenektir. NT bileşeninin katman sınırı korunur. Genel paylaşım/tedarik kapısı görev kaydını zorunlu tutmayacaktır.
 

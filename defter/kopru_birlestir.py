@@ -188,6 +188,9 @@ def main():
         if hasattr(akis, "reconfigure"):
             akis.reconfigure(encoding="utf-8", errors="replace")
     a = sys.argv[1:]
+    if any(arg in ("-h", "--help") for arg in a):
+        print(__doc__)
+        return
     if len(a) == 2 and a[0] == "--rebase":
         yol = a[1]
         birlestir(git_asama(2, yol), git_asama(3, yol), yol, git_asama(1, yol))  # :2 = uzak, :3 = yerel

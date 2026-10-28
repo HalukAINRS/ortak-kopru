@@ -304,9 +304,10 @@ def main():
     for akis in (sys.stdout, sys.stderr):  # Windows konsolunda Türkçe karakterler için
         if hasattr(akis, "reconfigure"):
             akis.reconfigure(encoding="utf-8", errors="replace")
-    p = argparse.ArgumentParser()
+    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("dosya")
-    p.add_argument("--ayarlar", default=os.path.join(KATILIMCILAR, "ayarlar.json"))
+    p.add_argument("--ayarlar", default=os.path.join(KATILIMCILAR, "ayarlar.json"),
+                   help="katılımcı ayarları dosyası (varsayılan katilimcilar/ayarlar.json; yerel taraf için ayarlar-yerel.json)")
     p.add_argument("--kuru", action="store_true", help="API çağırma; istemleri kur ve kayit/ altına yaz")
     p.add_argument("--bekleyenler", metavar="AD", help="yalnız listele")
     p.add_argument("--istem", metavar="AD", help="istem metnini yaz ve çık")

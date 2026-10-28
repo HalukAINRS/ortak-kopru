@@ -49,8 +49,8 @@
     "nerede": {
       "soru": "Nerede?",
       "yanit": "İki kenarda ve aralarında. Bir kenar yerel kullanıcının bilgisayarı, öbür kenar Web. Kapının kendisi bu GitHub deposudur: kod, kayıt ve herkese açık yüz. Geçişlerin özel kaydı ise bilgisayarda, Git'in dışında durur.",
-      "bugun": "Herkese açık yüz github.com/HalukAINRS/ortak-kopru ve onun Pages yayını. Yerel kenar, teknik ayrıntılara göre Y:\\HalukAI\\Ortak_Kopru\\kopru\\ klasörü. Aktarımların özel kaydı kapi.py'ye verilen --exchange-dir dizininde.",
-      "durum": "var",
+      "bugun": "Herkese açık yüz github.com/HalukAINRS/ortak-kopru ve onun Pages yayını. Yerel kenar tasarımda bir Windows bilgisayarındaki çalışma kopyasıdır; 28 Ekim 2026 itibarıyla hiçbir bilgisayarda kurulu değil (Haluk'un bildirimi). Kapının aracı kapi.py her Git kopyasında çalışır; aktarımların özel kaydı ona verilen --exchange-dir dizininde, Git'in dışında durur.",
+      "durum": "kısmen",
       "varyantlar": [
         {
           "soru": "Nerede durmaz?",
@@ -294,12 +294,12 @@
         "CONTRIBUTING.md"
       ],
       "durum": "kısmen",
-      "eksik": "Dosyalar iki yönde geçiyor. Dışarıdan gelen bir katkıyı yerel kullanıcıya getiren ve karşılığını geri götüren adım yok; bu bağ GitHub bildirimlerine bırakılmış.",
+      "eksik": "Kapının aracı dosyaları iki yönde geçirebiliyor; ama bugün hiçbir bilgisayarda kurulu bir yerel kenar yok. Dışarıdan gelen bir katkıyı yerel kullanıcıya getiren ve karşılığını geri götüren adım da yok; bu bağ GitHub bildirimlerine bırakılmış.",
       "senaryolar": [
         "S09"
       ],
       "sade": "Burada yalnız okumazsınız, yazabilirsiniz de. Yerel kullanıcı da yalnız paylaşmaz, dışarıdan gelene karşılık verir.",
-      "bugun_sade": "Dosyalar iki yönde de geçebiliyor. Dışarıdan gelen bir sorunun yerel kullanıcıya ulaşması ise henüz kendiliğinden olmuyor; şimdilik GitHub'ın kendi bildirimlerine bağlı.",
+      "bugun_sade": "Kapının aracı dosyaları iki yönde geçirebilecek durumda; ama bugün hiçbir bilgisayarda kurulu bir yerel köprü yok. Dışarıdan gelen bir sorunun yerel kullanıcıya ulaşması da henüz kendiliğinden olmuyor; şimdilik GitHub'ın kendi bildirimlerine bağlı.",
       "sade_sorular": [
         "nereden",
         "nereye"
@@ -321,10 +321,10 @@
       "dayanaklar": [
         "src/ortak_kopru/exchange.py",
         "docs/teknik/kararlar/0002-dis-alan-kapisi.md",
-        "katilimcilar/AGENTS-kopru.md"
+        "CONTRIBUTING.md"
       ],
       "durum": "kısmen",
-      "eksik": "Yerel gönderici yerel/kopru_gonder.ps1 kapının dışından çalışıyor ve çalışma klasöründe kalan izlenmeyen her dosyayı herkese açık ana dala gönderebiliyor; bu, seçimsiz bir çıkış yolu.",
+      "eksik": "Yerel gönderici yerel/kopru_gonder.ps1 kapının dışından çalışacak ve çalışma klasöründe kalan izlenmeyen her dosyayı herkese açık ana dala gönderebilecek biçimde yazılı; bu, seçimsiz bir çıkış yolu. Gönderici bugün hiçbir bilgisayarda kurulu değil; yeniden kurulmadan önce daraltılması gerekir.",
       "bulgular": [
         "R-17"
       ],
@@ -332,7 +332,7 @@
         "S02"
       ],
       "sade": "Neyin paylaşılacağına yerel kullanıcı karar verir. Dışarıdan gelen bir öneri, o kabul etmeden onun çalışmasını değiştirmez.",
-      "bugun_sade": "Kapının kendisi bu kurala uyuyor. Ama eski bir paylaşım aracı hâlâ seçim yapmadan gönderebiliyor; daraltılması bekleniyor.",
+      "bugun_sade": "Kapının kendisi bu kurala uyuyor. Eski bir paylaşım aracı ise seçim yapmadan gönderebilecek biçimde yazılı. Araç bugün hiçbir bilgisayarda kurulu değil; yeniden kurulmadan önce daraltılması bekleniyor.",
       "sade_sorular": [
         "nerede",
         "ne_zaman"
@@ -381,7 +381,7 @@
         ".github/scripts/kopru_gonder.sh"
       ],
       "durum": "kısmen",
-      "eksik": "Bulut göndericisi kapsamı defter, ayna ve çağrı günlükleriyle sınırlıyor; yerel gönderici sınırlamıyor. Aynı kural iki yerde iki ayrı biçimde uygulanıyor.",
+      "eksik": "Bulut göndericisi kapsamı defter, ayna ve çağrı günlükleriyle sınırlıyor; yerel gönderici sınırlamıyor. Aynı kural iki yerde iki ayrı biçimde yazılı. Yerel gönderici bugün kurulu olmadığı için açık uykuda; kurulduğu gün geri gelir.",
       "bulgular": [
         "R-17"
       ],
@@ -389,7 +389,7 @@
         "S02"
       ],
       "sade": "Şifreler, kişisel bilgiler ve özel çalışmalar kapıdan geçmez. Bir kez herkese açılan bir şey geri alınamaz. Bu yüzden en sıkı kontrol çıkışta yapılır.",
-      "bugun_sade": "Kapı bu sınırı uyguluyor. Tek açık nokta yine o eski paylaşım aracı.",
+      "bugun_sade": "Kapı bu sınırı uyguluyor. Tek açık nokta yine o eski paylaşım aracı; bugün kurulu değil ama yeniden kurulursa açık da geri gelir.",
       "sade_sorular": [
         "ne_kadar"
       ],

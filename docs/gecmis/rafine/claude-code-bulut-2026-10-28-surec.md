@@ -1,6 +1,6 @@
 # Rafine turu süreç arşivi — Claude Code Bulut, 28 Ekim 2026
 
-Bu arşiv, 28 Ekim 2026 tarihli rafine turunda neyin hangi sırayla yapıldığını, hangi komutun hangi sonucu verdiğini ve hangi varsayımın kanıtla geri çekildiğini kendi zamanıyla kaydeder. Gözlemci Claude Code Bulut'tur (Hacker odağı); oturum Anthropic'in bulut çalışma alanında, Linux üzerinde, Python 3.13.18 ile yürüdü. Hedef bilgisayar veya başka katılımcıların oturumları bu arşivin gözlem kapsamında değildir. Kullanıcıya dönük anlatı [Rafine defterinde](rafine-defteri.md), aynı turun makinece okunur kaydı [bulgu dosyasında](claude-code-bulut-2026-10-28-bulgular.json) bulunur.
+Bu arşiv, Claude Code Bulut oturumunun 28 Ekim 2026'da Haluk'un art arda gelen istekleri üzerine yaptığı işleri saat saat kaydeder: rafine turu, açılış, alanlar, yol, dönüşüm, birleştirme, katkı kalıbı, yardımcı talimatlarının kaldırılması ve belgelerin okunması. Dosya yolları her saatin kendi yerleşimine göredir; bugünkü yerleri [depo haritası](../../harita.md) gösterir. Arşiv neyin hangi sırayla yapıldığını, hangi komutun hangi sonucu verdiğini ve hangi varsayımın kanıtla geri çekildiğini kendi zamanıyla kaydeder. Gözlemci Claude Code Bulut'tur (Hacker odağı); oturum Anthropic'in bulut çalışma alanında, Linux üzerinde, Python 3.13.18 ile yürüdü. Hedef bilgisayar veya başka katılımcıların oturumları bu arşivin gözlem kapsamında değildir. Kullanıcıya dönük anlatı [Rafine defterinde](rafine-defteri.md), aynı turun makinece okunur kaydı [bulgu dosyasında](claude-code-bulut-2026-10-28-bulgular.json) bulunur.
 
 ## Gözlem kesiti
 
@@ -164,3 +164,48 @@ Bu arşiv, 28 Ekim 2026 tarihli rafine turunda neyin hangi sırayla yapıldığ�
 **17:48–17:58** Katkı kalıbı yeni bir dalda kuruldu. GitHub'a bir konu formu eklendi: tür (soru, kaynak, düzeltme, görüş), yer (sayfa ve bölüm), karşılık, dayanak ve herkese açıklık onayı; boş konu açmak yine mümkün. Okuma sayfası üreticisi her ikinci düzey bölümün sonuna, formu yer ve başlık alanları dolu açan bir bağlantı ekliyor; sayfa sonundaki bağlantı da aynı formu sayfa adresiyle açıyor. Bağlantılar baskıda gizli. İlk denemede stil dosyasına ekleme, aynı seçicinin baskı kuralında da geçmesi yüzünden yapılmadı; satır başına bağlanarak düzeltildi. Açılışın beşinci ilkesi, README, katkı rehberi, Web girişi ve yol sayfası forma bağlandı; Web girişine bölümden forma giden bir mühendis çizimi eklendi. Yolun ikinci adımı ölçütlerle tamam oldu. Yol sınamalarından üçü bu adımın açık olduğunu varsayıyordu ve kırıldı; dönüşüm sınamalarındaki gibi kendi kopyalarında adımları açacak biçimde yeniden yazıldı. Dönüşüm sayfasının giriş ve okur paragrafları, birleşmeden sonraki duruma uyacak biçimde güncellendi.
 
 **18:00–18:27** Öneri #24 açıldı; denetim geçti, Codex incelemesi bulgu bildirmedi. Birleşmeden sonraki ilk saatlik otomasyon koşusu 18.25 UTC'de başladı ve başarıyla bitti (40744994620); defteri ve botu yeni yerlerinden (`defter/`, `katilimcilar/`) çağırdı. Bu koşu otomasyon aşamasının kanıtı olarak kayda yazıldı. Dönüşümde Claude'un elindeki aşamalar bitti; kalanlar Haluk'un yerel geçişi ve yardımcıların talimatı.
+
+## Onuncu istek: yardımcı talimatları, yerel klasör, iki karar ve belgelerin okuması
+
+**18:47** Haluk'un onuncu talimatı geldi: "Bilgisayarımda köprü klasörüm yok. Yardımcı talimatları her yerde silinsin veya sıfırlansın. İki karar konusunda senin görüşünü söyle. Bir yandan da GitHub Reposu içindeki belgeleri ve içeriklerin okumasını yapalım. Eksik ve yetersiz olanları tamamlayalım." Çalışma protokolü, içerik kuralı, üç parça yanıt ve çizimler sürüyor.
+
+**18:48–18:55** Talimat dosyaları tarandı. Ana dalda yardımcıların talimat parçası (`katilimcilar/AGENTS-kopru.md`), Web asistanlarının istemi (`katilimcilar/web-istem.md`), botun istem şablonu ve Şaman'ın talimat paketini kuran başlatıcı (`yerel/saman_devral.py`) bulundu. Ana dal dışındaki 27 dalın hepsinde ilk ikisi ve şablon vardı; bazılarında ayrıca kökte `AGENTS.md`, `devir/hacker/CLAUDE.md`, `.claude/settings.json` ile onun oturum açılışında okuttuğu `docs/BULUT_KARTI.md`, `devir/saman/CLI_BASLANGIC.md` ve `devir/sahit/START_HERE.md`. Dalların kapsamı Haluk'a soruldu; yanıt "Dallarda da sil/sıfırla" oldu. Okuma biçimi: kendiliğinden okunan ya da kopyalanmak için yazılmış talimatlar silinir; bir makinenin okuduğu dosya (botun istemi) sıfırlanır, böylece bot çalışmayı sürdürür. Defterin kendi kuralları ve tarihli çağrı kayıtları talimat değil kayıttır; dokunulmadı.
+
+**18:55–19:05** Ana dalda üç dosya ve başlatıcının sınaması silindi; `Kopru_Izle.cmd` ve `yerel/kopru_yerel.ps1`'den Şaman kipleri çıkarıldı; botun istemi yalnız yanıt biçimini ve yasak içeriği taşıyacak biçimde sıfırlandı ve örnek bir istemle bot denendi. Kaldırılanların tarihli kayıtlarda dayanak olarak geçtiği görüldü (`docs/gecmis/depo-tanimi.json`, `docs/gecmis/simdi-ve-sonrasi.json`); bunun için haritaya "kaldırılanlar" listesi eklendi: yol, işlem, tarih, neden ve önceki sürüm. Tarihli kayıtlar haritada silindiği yazılı bir dosyaya dayanabiliyor; yaşayan kayıtlar (açılış, yol) dayanamıyor. Aynı sırada her alan klasörüne haritadan üretilen bir giriş sayfası eklendi; `.github/` dışarıda bırakıldı, çünkü GitHub oradaki README'yi deponun ön yüzü yapar.
+
+**18:58–19:16** Belgeler üç kolda, birleşmeden sonraki ana dalın (`dcae3de`) ayrı bir kopyası üzerinde okundu: ilk temas belgeleri; teknik belgeler ve yaklaşık doksan beş komutun betiklerin gerçek seçeneklerine karşı denetimi; geçmiş işlerin belgeleri. Bulgular okuma kaydına R-25'ten R-53'e numarayla yazıldı. Bir şüphe kanıtla geri çekildi: abonelik yolunun kurulum adımının hiç çalışmadığı düşünülmüştü, ama 18.25 UTC koşusunun günlüğü adımın çalıştığını gösterdi (R-44).
+
+**19:05–19:22** Okumanın bulguları işlendi: yerel taraf sayfası, sözlük (Web'de de), güvenlik ve gizlilik sayfası, tarihsel parçaların ve çağrı kayıtlarının giriş sayfaları; tarihli sayfaların "tarihli kayıt" açılışları ve Web gezinmesinde "Geçmiş" etiketi; açılış, yol ve dönüşüm kayıtlarında yerel klasörün olmadığı; betiklerin yardım çıktıları; haritada "Gerekir" sütunu; karar belgelerine tarih ve sahip. Yolun iki kararına Claude Code Bulut'un görüşü kayda yazıldı; adımlar karar bekler durumda kaldı. Gönderici için görüş: daraltılsın. Gelen kutusu için görüş: anahtarsız okumayla başlansın, kapının Git dışındaki özel dizininde dursun. Kimliksiz okumanın saatte 60 istekle sınırlı olduğu GitHub'ın REST belgesinden okundu.
+
+**19:23–19:27** Yirmi yedi dala birer kaldırma kaydı gönderildi; her kayıt yalnız ileri gider, geçmişi silmez. İkinci bir deneme, yerel takip başvuruları eski kaldığı için ilk dalda reddedildi ve hiçbir şey göndermedi; başvurular yenilendikten sonra yalnız henüz temizlenmemiş olan `claude/katki-kalibi-2026-10-28` kaldı ve o da gönderildi. Açık on iki önerinin dalları da bu dallar arasında; onlarda denetimler yeniden çalışır.
+
+| Dal | Kayıt | Silinen | Sıfırlanan |
+| --- | --- | --- | --- |
+| `bakim/depo-onarim-2026-10-26` | `7ea89f4` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
+| `claude/arsiv-envanter-2026-10-27` | `8454dc3` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
+| `claude/hacker-devri-2026-10-24` | `de1cd6f` | `AGENTS-kopru.md`, `devir/hacker/CLAUDE.md`, `web-istem.md` | `istem-sablonu.md` |
+| `claude/katki-kalibi-2026-10-28` | `d2f4517` | `katilimcilar/AGENTS-kopru.md`, `katilimcilar/web-istem.md` | `katilimcilar/istem-sablonu.md` |
+| `claude/ortak-alan-araclari-2026-10-25` | `5779db3` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
+| `claude/ortak-mimari-hacker-2026-10-28` | `a63f4b6` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
+| `claude/rafine-2026-10-28` | `90a13ca` | `katilimcilar/AGENTS-kopru.md`, `katilimcilar/web-istem.md` | `katilimcilar/istem-sablonu.md` |
+| `claude/wonderful-feynman-3wfoxv` | `c84531e` | `.claude/settings.json`, `AGENTS-kopru.md`, `docs/BULUT_KARTI.md`, `web-istem.md` | `istem-sablonu.md` |
+| `copilot/convert-files-to-txt-html-json` | `ed36328` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
+| `copilot/deus-ex-machina-user-layer` | `b8b077c` | `AGENTS-kopru.md`, `devir/sahit/START_HERE.md`, `web-istem.md` | `istem-sablonu.md` |
+| `copilot/implement-transparent-architecture` | `84374a0` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
+| `copilot/ortak-kopru-dokumasyonu` | `c2b40eb` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
+| `deus-ex-machina-2026-10-24` | `a96ea91` | `AGENTS-kopru.md`, `AGENTS.md`, `devir/saman/CLI_BASLANGIC.md`, `web-istem.md` | `istem-sablonu.md` |
+| `gelistirme/deus-devam-yedek-2026-10-26` | `15ced2f` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
+| `gelistirme/deus-is-cekirdegi-nt-2026-10-26` | `ef7776e` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
+| `gelistirme/dis-alan-kapisi-ilk-cevrim-2026-10-26` | `d67ad59` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
+| `gemini-steering-gecmisi-2026-10-24` | `745d753` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
+| `hss/ortak-mimari-defteri-2026-10-28` | `6474b06` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
+| `hss/parcalar-gecmis-2026-10-28` | `0df2460` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
+| `hss/public-notebook-2026-10-28` | `d91fdff` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
+| `hss/tek-nokta-1-16` | `65dc7b9` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
+| `mimari/dis-alan-kapisi-2026-10-26` | `9686fb7` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
+| `sahit/cli-devri-2026-10-24` | `032687b` | `AGENTS-kopru.md`, `devir/sahit/START_HERE.md`, `web-istem.md` | `istem-sablonu.md` |
+| `saman/deus-cli-ilk-cevrim` | `d5a7c52` | `AGENTS-kopru.md`, `AGENTS.md`, `devir/saman/CLI_BASLANGIC.md`, `web-istem.md` | `istem-sablonu.md` |
+| `saman/kopru-katman-hedefleme-20261024` | `9893c65` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
+| `saman/steering-cli-devam-20261024` | `e1feb06` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
+| `steering-inceleme-2026-10-24` | `f820dbb` | `AGENTS-kopru.md`, `web-istem.md` | `istem-sablonu.md` |
+

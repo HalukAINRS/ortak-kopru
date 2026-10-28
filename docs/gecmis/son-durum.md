@@ -1,4 +1,6 @@
-# Ortak Köprü son durum raporu
+# Ortak Köprü durum raporu, 28 Ekim 2026
+
+**Tarihli kayıt.** Bu rapor 28 Ekim 2026 sabahının durumunu anlatır; adı “son durum” olsa da bugünkü durum değildir. Aynı gün öğleden sonra deponun niyeti konuldu, düzeni değişti ve yeni hâl akşam ana depoya geçti. Deponun bugünkü tanımı [açılışta](../acilis.md), bugün nerede durduğu [yol sayfasında](../yol.md) yazılıdır.
 
 28 Ekim 2026 tarihli bu rapor, Ortak Köprü'nün dış okuyucuya açılan yayın düzenini ve kayıtlı ortak çalışmanın durumunu anlatır. Çalışmanın amacı, farklı ortamlarda üretilen söz, yorum, gereç ve deneyimin kaynaklarıyla birlikte devam edebilmesidir. Bu yayınla gelen [Anlam ve Dönüş Defteri](anlam-not-defteri.md), önceki konuşmayı bilmeyen bir okuyucunun bu amacı, kullanılan kavramları ve kendi katkısının yerini anlayabilmesi için hazırlanmıştır.
 
@@ -24,7 +26,7 @@ ChatGPT, Şaman odağıyla bu anlatıyı hazırladı. Claude Code Bulut, Hacker 
 
 Claude Code Bulut, bu istek üzerine [on iki anlam paragrafı](https://github.com/HalukAINRS/ortak-kopru/blob/00aace1d331a464998063abe3315eee914474de3/arsiv/not-defteri/claude-code-bulut-2026-10-27.md), [Hacker alanının durum raporu](https://github.com/HalukAINRS/ortak-kopru/blob/00aace1d331a464998063abe3315eee914474de3/arsiv/son-durum/claude-code-bulut-2026-10-27.md) ve arşiv için giriş yazdı. Gemini, “HŞŞ Ortak Geçmiş Arşivi — Anlam Defteri ve Son Durum Raporu” adlı yeni not defterinde on anlam başlığı ve durum raporu oluşturdu. ChatGPT, yeni defterin iki kaynağını arayüzünden okudu ve kendi anlatısıyla birlikte karşı okumaya açtı. Bu katkıların sahipleri ve gözlem sınırları korunuyor.
 
-ChatGPT tarafında dış okuyucu için anlam defteri, kaynak rehberi, depo rehberi ve bu durum raporu hazırlandı. README ile katkı rehberinin girişleri bu okuma yoluna bağlandı. Aynı metinlerin statik web karşılıkları başlangıç, açılış, yol, mimari defteri, not defteri, durum ve kaynak sayfalarından oluşuyor; yedisi de aynı üreticiyle `docs/` altındaki kaynak metinlerden üretilir. Böylece anlam paragrafları hem depo içinde sürümlenebiliyor hem web üzerinde okunabiliyor.
+ChatGPT tarafında dış okuyucu için anlam defteri, kaynak rehberi, depo rehberi ve bu durum raporu hazırlandı. README ile katkı rehberinin girişleri bu okuma yoluna bağlandı. Aynı metinlerin statik web karşılıkları başlangıç, açılış, yol, mimari defteri, not defteri, durum ve kaynak sayfalarından oluşuyor (bu liste 28 Ekim öğleden sonra güncellendi; bugünkü sayfalar Web'deki gezinme çubuğundadır); hepsi aynı üreticiyle `docs/` altındaki kaynak metinlerden üretilir. Böylece anlam paragrafları hem depo içinde sürümlenebiliyor hem web üzerinde okunabiliyor.
 
 ## Son ortak geçmiş kesiti
 

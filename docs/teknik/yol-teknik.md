@@ -67,6 +67,8 @@ Geri alma: Değişikliği getiren commit geri alınır; gönderici eski kapsamı
 
 Karar (Haluk): Yerel gönderici, defter ve çağrı kayıtları dışındaki dosyaları göndermeyi bıraksın mı? Bırakırsa öteki dosyalar kapıdan, seçilerek gider.
 
+Görüş (Claude Code Bulut, 2026-10-28): Önerim: evet, daraltılsın. R-17 bugün uykuda: `yerel/kopru_gonder.ps1` hiçbir bilgisayarda kurulu değil (Haluk, 28 Ekim 2026 18.47 UTC). Daraltma küçük ve geri alınabilir; `.github/scripts/kopru_gonder.sh` ile aynı kapsam (`kopru.html`, `ayna/kopru.html`, `kayit/`) iki gönderim yolunu eşitler. Öteki dosyalar kapıdan (`kapi.py prepare`, `plan`, `send`) seçim ve kayıtla gider; 2. ve 4. ilkeler bu açıdan tam işler. Göndericiyi tümden kaldırmak da bir seçenek; ama yerel izleyici yeniden kurulursa yanıtlarını göndermek için bir göndericiye ihtiyaç duyar. Bu yüzden daraltmak kaldırmaktan iyidir. Gelen kutusunun yeri kararıyla da bağlıdır: seçimsiz bir gönderici, depo içindeki her özel dosyayı dışarı taşıyabilir.
+
 | Ölçüt | Bugün |
 | --- | --- |
 | `yerel/kopru_gonder.ps1` içinde `git add -A` geçmez | karşılanmıyor |
@@ -96,6 +98,8 @@ Dokunacağı yerler: `src/ortak_kopru/gateway_cli.py`, `src/ortak_kopru/adapters
 Geri alma: Komut kaldırılır. Gelen kutusu özel dizinde kalır; depoya hiçbir şey yazılmamıştır.
 
 Karar (Haluk): GitHub'a hangi yetkiyle bakılsın: yalnız herkese açık okumayla mı, kişisel bir anahtarla mı? Gelen kutusu bilgisayarda nerede dursun?
+
+Görüş (Claude Code Bulut, 2026-10-28): Önerim: önce yalnız herkese açık okumayla başlansın; gelen kutusu, kapının deponun dışında tuttuğu özel dizinde dursun. Kimliksiz GitHub REST istekleri IP başına saatte 60 ile sınırlıdır (GitHub'ın REST oran sınırı belgesi, 28 Ekim 2026'da bakıldı); kimlikli istekler saatte 5000. Gelen kutusu bir koşuda açık konuları sayfa başına 100 kayıtla okur; bir ya da iki istek yeter. Anahtar gerekirse: yalnız bu depoya, yalnız Issues okuma izniyle ve bitiş tarihli ince ayarlı kişisel erişim belirteci; ortam değişkeninden okunur, dosyaya yazılmaz. Yanıtların yazılması (4. adım) yazma izni ister; o ayrı bir belirteçle verilmeli, gelen kutusu yalnız okuyan izinle kalmalı. Yer: kapının `--exchange-dir` dizini bir Git çalışma ağacının içinde olamaz (`src/ortak_kopru/local_files.py`); gelen kutusu onun alt dizini olursa (örneğin `<aktarım dizini>/gelen`), yerel göndericinin `git add -A` kapsamına hiçbir zaman girmez. Bu, 1. adımın kararıyla bağlıdır: gönderici daraltılmadan yeniden kurulsa bile gelen kutusu depoya sızamaz.
 
 | Ölçüt | Bugün |
 | --- | --- |

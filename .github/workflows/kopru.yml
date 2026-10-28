@@ -1,6 +1,6 @@
 # Ortak Köprü: kopru.html değişince katılımcı botlar bekleyen kayıtlara cevap verir.
 # Claude abonelikle (CLAUDE_CODE_OAUTH_TOKEN, `claude setup-token`); ChatGPT ve Gemini bulutta yalnız API anahtarıyla,
-# anahtar yoksa atlanır ve yerel katmanlar (yerel/kopru_izle.ps1) cevap verir.
+# anahtar yoksa atlanır. Yerel katmanlar (yerel/kopru_izle.ps1) tasarımda cevap verir; 28 Ekim 2026 itibarıyla kurulu değil.
 # Bot commit'leri "[skip ci]" taşır; bu yüzden botlar birbirini tetiklemez. Botların birbirine cevabı
 # bir sonraki insan gönderiminde, saatlik zamanlayıcıda ya da elle çalıştırmada olur.
 name: Ortak Köprü

@@ -478,7 +478,9 @@
         "karar": "Haluk, hedef makinedeki gerçek yolları doğruladıktan sonra.",
         "kaynak_bulgu": [
           "R-18",
-          "R-20"
+          "R-20",
+          "R-38",
+          "R-39"
         ],
         "onkosul": [],
         "yanitlar": {
@@ -878,7 +880,7 @@
     "yetim_acik_kayit": 16,
     "yetim_dagilimi": "copilot (şahit)=3; gemini (cli)=1; gemini (şahit)=12",
     "sahit_yolu_sonrasi_yetim": 4,
-    "acik_bulgu": 7,
-    "duzeltilen_bulgu": 17
+    "acik_bulgu": 9,
+    "duzeltilen_bulgu": 41
   }
 }

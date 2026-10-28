@@ -1,6 +1,6 @@
 # Ortak Köprü — seçilmiş paylaşım ve tedarik kullanımı
 
-`kapi.py`, yerelde önceden hazırlanmış dosyaları GitHub'a paylaşmak ve GitHub'dan seçilen kaynakları almak için bağımsız giriş komutudur. Görev, çalıştırma veya oturum kaydı açmanız gerekmez. Yerel işleriniz kendi araçları ve proje dizinlerinde sürer.
+`kapi.py`, yerelde önceden hazırlanmış dosyaları GitHub'a paylaşmak ve GitHub'dan seçilen kaynakları almak için bağımsız giriş komutudur. Görev, çalıştırma veya oturum kaydı açmanız gerekmez. Yerel işleriniz kendi araçları ve proje dizinlerinde sürer. Kapı, deponun herhangi bir Git kopyasında çalışır; Windows'taki yerel tarafın kurulu olmasını gerektirmez. Komutlar ve seçenekleri 28 Ekim 2026'da `python kapi.py --help` çıktısına karşı denetlendi.
 
 Python **3.12 veya üstü** yeterlidir; çalışma kodu standart kütüphaneyi kullanır. Komutlar kullanıcı kipinde çalışır; NT aygıtı sorgulamaz ve `deus.py` için seçilmiş çalışma kipini değiştirmez. Yeni aktarım ekranı/HTTP servisi henüz yoktur; mevcut `deus` ekranı isteğe bağlı görev takibine aittir.
 

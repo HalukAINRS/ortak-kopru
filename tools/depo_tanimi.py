@@ -131,6 +131,29 @@ def dayanak_yolu(dayanak: str) -> Path | None:
     return KOK / yol
 
 
+def kaldirilan_yollar() -> set[str]:
+    """Depo haritasına göre bilerek silinmiş dosyalar (yol ve eski adlarıyla).
+
+    Tarihli kayıtlar o günün dosyalarına dayanır. Sonradan silinen bir dosya, haritada nedeni ve önceki
+    sürümüyle yazılıysa tarihli bir kaydın dayanağı olarak kabul edilir. Yaşayan kayıtlar (açılış, yol)
+    bunu kullanmaz: onların dayanağı bugün var olmalıdır."""
+    kayit = KOK / "docs" / "harita.json"
+    if not kayit.is_file():
+        return set()
+    veri = json.loads(kayit.read_text(encoding="utf-8"))
+    return {ad for k in veri.get("kaldirilanlar", []) if k["islem"] == "silindi"
+            for ad in [k["yol"], *k.get("eski_adlar", [])]}
+
+
+def tarihli_dayanak_var(dayanak: str, kaldirilan: set[str] | None = None) -> bool:
+    """Tarihli bir kaydın depo içi dayanağı bugün var mı, ya da bilerek silindiği haritada yazılı mı?"""
+    yol = dayanak_yolu(dayanak)
+    if yol is None or yol.exists():
+        return True
+    goreli = re.split(r"[#:]", dayanak, maxsplit=1)[0].strip()
+    return goreli in (kaldirilan_yollar() if kaldirilan is None else kaldirilan)
+
+
 def _zaman(deger: str) -> datetime | None:
     try:
         return datetime.fromisoformat(deger.replace("Z", "+00:00"))
@@ -183,10 +206,10 @@ def denetle(tanim: dict, olcum: dict, zamanlar: set[str] | None = None) -> list[
     for sira, oge in enumerate(tanim["koordinatlar"]["ne_zaman"]["ogeler"]):
         if oge.get("dayanak") == "kopru.html" and oge.get("zaman") not in zamanlar:
             hatalar.append(f"ne_zaman.ogeler[{sira}].zaman: {oge.get('zaman')!r} defterdeki zamanlarla eşleşmiyor")
+    kaldirilan = kaldirilan_yollar()
     for koordinat in KOORDINATLAR:
         for sira, oge in enumerate(tanim["koordinatlar"][koordinat]["ogeler"]):
-            yol = dayanak_yolu(oge.get("dayanak", "https://"))
-            if yol is not None and not yol.exists():
+            if not tarihli_dayanak_var(oge.get("dayanak", "https://"), kaldirilan):
                 hatalar.append(f"{koordinat}.ogeler[{sira}].dayanak: depoda yok ({oge['dayanak']})")
     return hatalar
 

@@ -1,0 +1,329 @@
+{
+  "schema_version": 1,
+  "kind": "ortak_kopru_rafine",
+  "observed_at": "2026-10-28T19:10:00Z",
+  "observer": "Claude Code Bulut (Hacker odağı)",
+  "base_commit": "dcae3deda4f0f796e77358331e3ae286cf668082",
+  "checks": [
+    {
+      "name": "giriş belgeleri okuması",
+      "command": "README, CONTRIBUTING, docs/*.md, .github şablonları; alt ajan okuması",
+      "status": "passed",
+      "phase": "before",
+      "summary": "Harita ve katkı rehberindeki bütün --check komutları geçti; kırık bağlantı yok; 30'a yakın bulgu."
+    },
+    {
+      "name": "teknik belgeler ve komutlar",
+      "command": "docs/teknik/*, betik başlıkları; yaklaşık 95 komut satırı argparse ve param bloklarına karşı",
+      "status": "passed",
+      "phase": "before",
+      "summary": "Bütün bayraklar var; 15 --help ve 12 salt okur denetim çıkış 0; yardımı olmayan betikler ve yerel yollar bulundu."
+    },
+    {
+      "name": "geçmiş belgeleri okuması",
+      "command": "docs/gecmis/*, kayit/README.md, parcalar/",
+      "status": "passed",
+      "phase": "before",
+      "summary": "Göreli bağlantılar çözülüyor; tarihsiz yayımlanan sayfalar ve iki çalışmayan komut bulundu."
+    },
+    {
+      "name": "talimat dosyası taraması",
+      "command": "git ls-tree -r her dalda; AGENTS*.md, CLAUDE.md, GEMINI.md, .claude/, istem şablonları",
+      "status": "passed",
+      "phase": "before",
+      "summary": "Ana dal dahil 28 dalda talimat dosyası bulundu."
+    }
+  ],
+  "findings": [
+    {
+      "id": "R-25",
+      "severity": "yüksek",
+      "area": "belge",
+      "location": "docs/teknik/README.md (Yerleştirme, Otomasyon); docs/acilis.json (sorular.nerede.bugun, ilkeler 1, 2, 4); docs/donusum.json (yerel aşamalar); yerel/*.ps1 başlıkları",
+      "claim": "Belgeler, yerel bir kanonik kopya (Y:\\HalukAI\\Ortak_Kopru\\kopru) ve çalışan bir yerel izleyici varmış gibi şimdiki zamanla yazıyordu; Haluk'un bilgisayarında köprü klasörü yok.",
+      "evidence": "Haluk, 28 Ekim 2026 18.47 UTC: 'Bilgisayarımda köprü klasörüm yok.' Teknik okuma A.1–A.9.",
+      "resolution": "düzeltildi",
+      "change": "docs/teknik/yerel-taraf.md (durum, gerekenler, uyuşmazlıklar, sıfırdan kurulum); teknik README, açılış kaydı, dönüşüm kaydı, yol kaydı ve betik başlıkları bugünkü duruma göre yazıldı."
+    },
+    {
+      "id": "R-26",
+      "severity": "orta",
+      "area": "belge",
+      "location": "katilimcilar/AGENTS-kopru.md, katilimcilar/web-istem.md, yerel/saman_devral.py ve onları anan CONTRIBUTING, teknik README, bakım ve depo rehberleri, kayit/README.md",
+      "claim": "Yapay zekâ yardımcılarına verilmiş talimatlar ve onları kuran başlatıcı depoda duruyordu; Haluk bunların her yerde silinmesini ya da sıfırlanmasını istedi.",
+      "evidence": "Haluk, 28 Ekim 2026 18.47 UTC isteği; git grep ile 27 dalda talimat dosyaları bulundu.",
+      "resolution": "düzeltildi",
+      "change": "Ana dalda üç dosya ve sınaması silindi, botun istemi sıfırlandı, Kopru_Izle.cmd'nin Şaman kipleri kaldırıldı; 27 dalda 63 talimat dosyası silindi ve 27 istem şablonu sıfırlandı. Atıflar güncellendi; harita kaldırılanları nedenleriyle yazıyor; tests/test_harita.py depoda talimat dosyası kalmadığını sınar."
+    },
+    {
+      "id": "R-27",
+      "severity": "orta",
+      "area": "sözleşme",
+      "location": "docs/harita.json, tools/harita.py, tools/depo_tanimi.py, tools/simdi_ve_sonrasi.py, tools/donusum.py",
+      "claim": "Bilerek kaldırılan bir dosyanın kaydı tutulamıyordu; tarihli kayıtların dayanağı silinince denetim kırılacaktı.",
+      "evidence": "depo-tanimi.json:200 ve simdi-ve-sonrasi.json:299 katilimcilar/AGENTS-kopru.md'ye dayanıyordu.",
+      "resolution": "düzeltildi",
+      "change": "Haritaya kaldırılanlar listesi (yol, işlem, tarih, neden, önceki sürüm) eklendi; --nerede onları da bulur; tarihli kayıtlar haritada silindiği yazılı bir dosyaya dayanabilir, yaşayan kayıtlar dayanamaz."
+    },
+    {
+      "id": "R-28",
+      "severity": "orta",
+      "area": "belge",
+      "location": "defter/, katilimcilar/, yerel/, src/, ui/, windows/, schemas/, tools/, tests/",
+      "claim": "Dokuz alan klasöründe giriş sayfası yoktu; GitHub'da klasöre giren biri yalnız dosya listesi görüyordu.",
+      "evidence": "Klasör taraması: yalnız docs/, kayit/ ve windows/nt/ altında README vardı.",
+      "resolution": "düzeltildi",
+      "change": "Haritadaki klasor_okur paragraflarından her alan klasörüne üretilen bir README.md; dosyaları ne yaptıkları ve nasıl çalıştıklarıyla sayar; harita denetimi kayıtla eşliği sınar."
+    },
+    {
+      "id": "R-29",
+      "severity": "düşük",
+      "area": "belge",
+      "location": "src/, ui/, windows/",
+      "claim": "Kod, arayüz ve Windows alanlarındaki dosyalar tek tek tanımlı değildi.",
+      "evidence": "docs/harita.json: her_dosya_tanimli=false, dosyalar boş.",
+      "resolution": "düzeltildi",
+      "change": "24 dosya haritada tanımlandı; üç alan her_dosya_tanimli oldu."
+    },
+    {
+      "id": "R-30",
+      "severity": "orta",
+      "area": "belge",
+      "location": "docs/gecmis/ortak-mimari-defteri.md, anlam-not-defteri.md, son-durum.md, kaynaklar.md (mimari.html, not-defteri.html, durum.html, kaynaklar.html)",
+      "claim": "Web'de yayımlanan dört tarihli sayfa tarihini, yazarını ve tarihli olduğunu söylemiyordu; 'Son durum' bugünkü durum gibi okunuyordu.",
+      "evidence": "Geçmiş okuması: dört sayfanın açılışında tarih ve 'tarihli kayıt' ibaresi yok.",
+      "resolution": "düzeltildi",
+      "change": "Her birine 'Tarihli kayıt' paragrafı; durum sayfası '28 Ekim durum raporu' adını aldı; Web gezinmesinde tarihli sayfalar 'Geçmiş' etiketinin ardından gelir."
+    },
+    {
+      "id": "R-31",
+      "severity": "orta",
+      "area": "belge",
+      "location": "CONTRIBUTING.md:3; docs/web-girisi.md:47, :74; docs/gecmis/kaynaklar.md:9, :39; docs/teknik/depo-rehberi.md:3",
+      "claim": "Yeni gelen okur bugünkü durum için 28 Ekim sabahki rapora gönderiliyordu.",
+      "evidence": "Giriş ve geçmiş okumaları.",
+      "resolution": "düzeltildi",
+      "change": "Bu bağlantılar yol sayfasına çevrildi; Web girişi 'Bugünden başlayın' ile açılır."
+    },
+    {
+      "id": "R-32",
+      "severity": "düşük",
+      "area": "belge",
+      "location": "README.md:5 (tools/acilis.py)",
+      "claim": "README, deponun ne olduğunu söylemeden 'Bu bölüm açılışın kısa hâlidir' diye açılıyordu.",
+      "evidence": "Giriş okuması.",
+      "resolution": "düzeltildi",
+      "change": "Açılış paragrafı deponun ne olduğunu ve kimin için yazıldığını söyler."
+    },
+    {
+      "id": "R-33",
+      "severity": "orta",
+      "area": "belge",
+      "location": "docs/sozluk.md",
+      "claim": "Depo genelinde geçen kelimeler (Şaman, Hacker, Şahit, defter, ayna, kanonik, 33×8, deus_ex_machina) tek yerde açıklanmıyordu.",
+      "evidence": "Üç okumanın ortak bulgusu.",
+      "resolution": "düzeltildi",
+      "change": "Beş gruplu sözlük; Web'de sözlük sayfası olarak da yayımlanır."
+    },
+    {
+      "id": "R-34",
+      "severity": "orta",
+      "area": "belge",
+      "location": ".github/SECURITY.md",
+      "claim": "Talimat parçası kaldırılınca neyin paylaşılmadığı ve sızıntıda ne yapılacağı yazılı bir yerde kalmıyordu.",
+      "evidence": "CONTRIBUTING.md:61 bu kuralları AGENTS-kopru.md'ye bağlıyordu.",
+      "resolution": "düzeltildi",
+      "change": "Güvenlik ve gizlilik sayfası: paylaşılmayanlar, korumalar (ekleyicinin reddi, GitHub gizli bilgi taraması, ortam değişkeni, Git dışı özel dizin) ve sızıntıda yapılacaklar."
+    },
+    {
+      "id": "R-35",
+      "severity": "orta",
+      "area": "belge",
+      "location": "docs/gecmis/simdi-ve-sonrasi.md:126; docs/gecmis/rafine/README.md:5",
+      "claim": "İki komut olmayan yolları gösteriyordu: tools/rafine_sorulari.py ve docs/rafine/.",
+      "evidence": "Komut denetimi.",
+      "resolution": "düzeltildi",
+      "change": "tools/simdi_ve_sonrasi.py ve docs/gecmis/rafine/."
+    },
+    {
+      "id": "R-36",
+      "severity": "düşük",
+      "area": "kod",
+      "location": "defter/kanit_satiri_guncelle.py, defter/kopru_birlestir.py, defter/kopru_bolum_ekle.py, tools/depo_kontrol.py, defter/kopru_ekle.py, kopru_oku.py, kopru_yanitla.py, src/ortak_kopru/cli.py",
+      "claim": "Bazı betikler --help'e cevap vermiyordu (biri hata, biri bütün denetimi çalıştırıyordu); bazılarının yardımı kullanımı göstermiyordu; deus.py'nin sekiz alt komutu açıklamasızdı.",
+      "evidence": "python3 X --help denemeleri.",
+      "resolution": "düzeltildi",
+      "change": "Hepsi --help ile kullanımı yazar; yardım metinleri belge başlığından gelir; harita bu komutları sınar."
+    },
+    {
+      "id": "R-37",
+      "severity": "düşük",
+      "area": "belge",
+      "location": "docs/harita.md (Çalıştırma)",
+      "claim": "Harita bütün komutların yalnız Python istediğini söylüyordu; Windows ve PowerShell komutları da listedeydi.",
+      "evidence": "tools/harita.py:238.",
+      "resolution": "düzeltildi",
+      "change": "Haritaya 'Gerekir' sütunu ve kayda gerekir alanı eklendi."
+    },
+    {
+      "id": "R-38",
+      "severity": "orta",
+      "area": "yapılandırma",
+      "location": "yerel/kopru_yerel.ps1 (Yollar), katilimcilar/ayarlar-yerel.json",
+      "claim": "Yerel betik ile yerel ayarlar ayrı klasör ağaçlarını gösteriyor; Codex'in ev klasörü ikisinde farklı; Hazırlık Copilot'u denetlerken ayarlarda Google izleyicisi var.",
+      "evidence": "Teknik okuma A.8; dosyaların karşılaştırması.",
+      "resolution": "açık",
+      "note": "R-18 ve R-20 ile aynı konunun 28 Ekim akşamki hâli; S03 senaryosunda izlenir. Yerel taraf kurulu olmadığı ve yollar makineye özgü olduğu için kod değiştirilmedi; uyuşmazlık yerel taraf sayfasında ve betik başlığında yazılı."
+    },
+    {
+      "id": "R-39",
+      "severity": "düşük",
+      "area": "yapılandırma",
+      "location": "yerel/kopru_yerel.ps1:53-56",
+      "claim": "Betik her çalıştığında sabit bir yolu Git'in genel safe.directory listesine ekler.",
+      "evidence": "Kaynak okuması.",
+      "resolution": "açık",
+      "note": "S03 senaryosunda izlenir. Belgelendi ve geri alma komutu yazıldı; davranış yerel taraf yeniden kurulurken gözden geçirilir."
+    },
+    {
+      "id": "R-40",
+      "severity": "düşük",
+      "area": "belge",
+      "location": "docs/teknik/deus-ex-machina.md, docs/teknik/devam-ve-yedek.md",
+      "claim": "Örnekler Windows yollarıyla yazılı (POSIX'te Git kopyasının içine düşer ve reddedilir), girdi dosyalarının önceden oluşturulacağı söylenmiyor, düzeltme örneği tamamlanmış bir işe uygulanıyor.",
+      "evidence": "Teknik okuma C.10–C.12.",
+      "resolution": "düzeltildi",
+      "change": "POSIX karşılığı ve girdi dosyaları açıklandı; bölümlerin hangi iş durumunda çalıştığı yazıldı; Node gereksinimi eklendi.",
+      "note": "Örnekler yeniden sıralanmadı."
+    },
+    {
+      "id": "R-41",
+      "severity": "düşük",
+      "area": "belge",
+      "location": "docs/teknik/kararlar/0001, 0002; docs/teknik/nt-kernel.md; windows/nt/README.md; katilimcilar/katman-hedefleme.md",
+      "claim": "Karar ve rehberlerde tarih, karar sahibi ya da sade açılış yoktu.",
+      "evidence": "Teknik okuma D.19–D.22.",
+      "resolution": "düzeltildi",
+      "change": "Tarih, karar sahibi ve açılış paragrafları eklendi."
+    },
+    {
+      "id": "R-42",
+      "severity": "düşük",
+      "area": "belge",
+      "location": "CONTRIBUTING.md",
+      "claim": "Klonlama adımı, python3 notu, denetim listesinin tamamı, --dallar ön koşulu ve yeniden üretim araçları eksikti.",
+      "evidence": "Giriş okuması.",
+      "resolution": "düzeltildi",
+      "change": "Hepsi eklendi; üretilen belgeler için kayıt-araç-belge tablosu."
+    },
+    {
+      "id": "R-43",
+      "severity": "düşük",
+      "area": "belge",
+      "location": "docs/teknik/README.md (Otomasyon)",
+      "claim": "Abonelik belirteci gizli değişkenlerde anılmıyor, botun nasıl durdurulacağı yazmıyor, Python'un kendiliğinden kurulduğu söyleniyordu.",
+      "evidence": "Teknik okuma A.2, A.4.",
+      "resolution": "düzeltildi",
+      "change": "CLAUDE_CODE_OAUTH_TOKEN, iş akışını devre dışı bırakma ve Hazırlık kipinin gerçek davranışı yazıldı."
+    },
+    {
+      "id": "R-44",
+      "severity": "bilgi",
+      "area": "iş akışı",
+      "location": ".github/workflows/kopru.yml:40",
+      "claim": "Abonelik yolunun kurulum adımı, kendi ortam değişkenine bakan koşul yüzünden hiç çalışmıyor olabilir diye düşünüldü.",
+      "evidence": "18.25 UTC koşusunun günlüğü: 'npm install -g @anthropic-ai/claude-code' çalıştı, 'added 2 packages'.",
+      "resolution": "geri çekildi"
+    },
+    {
+      "id": "R-45",
+      "severity": "orta",
+      "area": "belge",
+      "location": "docs/donusum.json, tools/donusum.py",
+      "claim": "Dönüşüm sayfası birleşmeden sonra da gelecek zamanla yazıyordu; yerel geçiş ve talimat aşamalarının öncülü gerçeğe uymuyordu ve kapanışı kilitliyordu.",
+      "evidence": "Giriş okuması; teknik okuma A.6, B.",
+      "resolution": "düzeltildi",
+      "change": "Metin geçmiş zamana alındı; yerel geçiş Haluk'un bildirimiyle, talimat aşaması kaldırma ve sıfırlamayla yeniden tanımlandı ve ölçüldü."
+    },
+    {
+      "id": "R-46",
+      "severity": "düşük",
+      "area": "belge",
+      "location": "docs/yol.json, tools/yol.py",
+      "claim": "Yol çiziminde 'altı adım' yazıyordu (yedi adım var); özet tekil ve çoğulu karıştırıyor, dışarıdan beklenen adımı ön koşul bekleyen sayıyordu; plan 'çalışıyor' diyordu.",
+      "evidence": "Giriş okuması.",
+      "resolution": "düzeltildi",
+      "change": "Düzeltildi; iki karara görüş alanı eklendi (karar yine sahibinde)."
+    },
+    {
+      "id": "R-47",
+      "severity": "düşük",
+      "area": "belge",
+      "location": "docs/gecmis/README.md",
+      "claim": "Defteri, Şaman kiplerini ve yerel işi şimdiki zamanla anlatıyordu.",
+      "evidence": "Geçmiş okuması.",
+      "resolution": "düzeltildi",
+      "change": "Tarihli notlar; bağlantı sabit sürüme çevrildi."
+    },
+    {
+      "id": "R-48",
+      "severity": "düşük",
+      "area": "belge",
+      "location": "kayit/README.md",
+      "claim": "Çağrı kayıtlarının açıklaması tek paragraftı; tarih aralığı, okuma yolu ve yazanlar yoktu; kaldırılan dosyayı anıyordu.",
+      "evidence": "Geçmiş okuması.",
+      "resolution": "düzeltildi",
+      "change": "Kim yazar, ne zaman, bir dosya nasıl okunur ve sınır bölümleri."
+    },
+    {
+      "id": "R-49",
+      "severity": "düşük",
+      "area": "belge",
+      "location": "docs/gecmis/parcalar/",
+      "claim": "Taslakların klasöründe açıklama yoktu; 'not' alanları bugün geçerli talimat gibi okunabiliyordu.",
+      "evidence": "Geçmiş okuması.",
+      "resolution": "düzeltildi",
+      "change": "Giriş sayfası: her taslağın defterdeki karşılığı ve neden yeniden eklenmeyeceği."
+    },
+    {
+      "id": "R-50",
+      "severity": "düşük",
+      "area": "belge",
+      "location": "docs/gecmis/ortak-mimari-defteri.md:412-424, :446; anlam-not-defteri.md",
+      "claim": "Altı kaynak bağlantısı sayfanın başına gidiyordu; bir bağlantı izleme parametreleri taşıyordu; mutlak bağlantılar taşınmaya dayanıksızdı.",
+      "evidence": "Geçmiş okuması.",
+      "resolution": "düzeltildi",
+      "change": "Bölüm çapaları, parametresiz adres, göreli bağlantılar."
+    },
+    {
+      "id": "R-51",
+      "severity": "bilgi",
+      "area": "belge",
+      "location": "LICENSE (yok); CITATION.cff",
+      "claim": "Depo kaynak gösterilebiliyor ama lisansı olmadığı için yasal olarak üzerine kurulamıyor.",
+      "evidence": "Giriş okuması.",
+      "resolution": "düzeltilmedi",
+      "note": "Karar Haluk'ta (dönüşümün lisans aşaması). README bunu yazıyor."
+    },
+    {
+      "id": "R-52",
+      "severity": "düşük",
+      "area": "belge",
+      "location": "kopru.html (Kurallar bölümü)",
+      "claim": "Defterin kuralları kanonik kopyanın yerel klasör olduğunu ve gönderimin yerel betikle yapıldığını söylüyor; bugün ikisi de geçerli değil.",
+      "evidence": "Geçmiş okuması; Haluk'un 18.47 bildirimi.",
+      "resolution": "düzeltilmedi",
+      "note": "Defter kendi kuralıyla yalnız yeni bir kayıtla düzeltilir; böyle bir kaydın yazılması Haluk'un kararı. Belgeler bu farkı yazıyor."
+    },
+    {
+      "id": "R-53",
+      "severity": "bilgi",
+      "area": "belge",
+      "location": "docs/teknik/bakim.md (Dal ve PR haritası)",
+      "claim": "Tablo 26 Ekim kesiti; açık önerilerin bugünkü durumu başka yerde.",
+      "evidence": "Teknik okuma D.18.",
+      "resolution": "düzeltildi",
+      "change": "Kesit tarihi ve dönüşümün teknik ekindeki bugünkü çözümlemeye bağlantı eklendi; açılış paragrafı yazıldı."
+    }
+  ]
+}

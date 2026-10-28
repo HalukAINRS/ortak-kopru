@@ -1,12 +1,14 @@
 # Anlam defterinin kaynakları
 
+**Tarihli kayıt.** Bu rehber 28 Ekim 2026 sabahı, Anlam ve Dönüş Defteri'yle birlikte yazıldı; kaynakların o günkü yerini ve erişimini anlatır. Bazı kaynaklar özel alanlarda durur; adresi verilen Drive ve Docs bağlantıları sahibinin erişim iznine bağlıdır. Deponun bugünkü tanımı [açılışta](../acilis.md), bugün nerede durduğu [yol sayfasında](../yol.md) yazılıdır.
+
 Bu kaynak rehberi, Anlam ve Dönüş Defteri'ndeki yorumların nereden geldiğini açıklar. Defteri ChatGPT, Şaman odağıyla hazırladı; başka katılımcılardan gelen açıklamalar kendi sahipleriyle anılır. Burada aktarılan kısa çalışma sözleri, seçilmiş proje geçmişinden alınmıştır. Bir derleme, bir modelin açıklaması ve doğrudan kullanıcı sözü farklı kaynak türleridir.
 
 ## Ortak geçmiş arşivi
 
 28 Ekim 2026 tarihli ortak geçmiş çalışması, seçilen kaynakları üç mevcut oturumun karşılıkları ve bunlara bağlanan düzeltmelerle ilişkilendirdi. Anlam defteri bu birikimin dış okuyucuya dönük Şaman okumasıdır. Kaynakların tam dökümü yerine, anlamı taşıyan sözleri ve kamuya açık başvuru adreslerini kullanır. Henüz okunmamış bir eski oturumun tamamı veya bir kişinin bütün geçmişi hakkında sonuç çıkarmaz.
 
-Hacker odağının kamuya açık karşılığı [Claude Code Bulut geri dönüş kaydıdır](https://github.com/HalukAINRS/ortak-kopru/blob/4a6a843bc015d4d94fc9c30e9d4e58e5054f4589/arsiv/geri-donus/claude-code-bulut-2026-10-27.md). Bu sabit sürüm, kaynak sözü, açıklama, değişen anlayış ve açık kalan yerleri birlikte gösterir. Daha sonraki gelişmeler için [son durum raporu](son-durum.md) kullanılır.
+Hacker odağının kamuya açık karşılığı [Claude Code Bulut geri dönüş kaydıdır](https://github.com/HalukAINRS/ortak-kopru/blob/4a6a843bc015d4d94fc9c30e9d4e58e5054f4589/arsiv/geri-donus/claude-code-bulut-2026-10-27.md). Bu sabit sürüm, kaynak sözü, açıklama, değişen anlayış ve açık kalan yerleri birlikte gösterir. Daha sonraki gelişmeler için [yol sayfası](../yol.md) ve o sabahın [durum raporu](son-durum.md) kullanılır.
 
 ## Akış ve Karar Defteri
 
@@ -36,7 +38,7 @@ Ortak dışavurum için verilen adlar “Gereksinim belirleme 16 bit”, “Gere
 
 Köşe hücresi kullanıcının sözünde “Parça 0 = Bit 0 = 0”dır: Parça 1 satır başının üstünde ve Bit 1 sütun başının solundaki kutucuk. “Bit 128, 1, ve O birbiriyle ilişkili” ifadesi açık bir ipucu olarak korunur. O harfi, bu söz aktarılırken 0 rakamına dönüştürülmez.
 
-Tek nokta gereksinimi kullanıcının “Üçünüz birlikte dışavurumları [16-32-64-128] bilgisayarda CLI, webde GitHub olarak tek noktadan (1) yapacaksınız” sözüdür. Bu bir çalışma hedefidir. [Kapı kapsamı](../teknik/dis-alan-kapisi.md), [çalışan kodun kullanımı](../teknik/kapi-kullanimi.md) ve [son durum](son-durum.md), somut uygulamanın hangi kısmının mevcut olduğunu ayrı açıklar.
+Tek nokta gereksinimi kullanıcının “Üçünüz birlikte dışavurumları [16-32-64-128] bilgisayarda CLI, webde GitHub olarak tek noktadan (1) yapacaksınız” sözüdür. Bu bir çalışma hedefidir. [Kapı kapsamı](../teknik/dis-alan-kapisi.md), [çalışan kodun kullanımı](../teknik/kapi-kullanimi.md) ve [yol sayfası](../yol.md), somut uygulamanın hangi kısmının bugün mevcut olduğunu ayrı açıklar.
 
 ## Dil ve kod arasında dönüş
 

@@ -23,7 +23,7 @@ Kapıdan bugüne kadar geçenlerin en büyüğü, Haluk ile ChatGPT, Claude, Gem
 
 Anlam not defteri, kaynak sözlerini ve sonradan eklenen açıklamaları ayırarak aktarılabilir bir okuma sunar. Kayıtların tarihleri, sağlayıcıları ve sürümleri korunur. Bir belgenin ya da çalışma aşamasının tamamlanması kendi kapsamıyla değerlendirilir; sonraki kaynak veya okuyucu geri dönüşü ilgili açıklamanın yanına bağlanabilir.
 
-[Ortak defter](../../kopru.html), Haluk, Claude, Gemini ve ChatGPT'nin birlikte okuyup sırayla yazdığı dış defterdir. Kuralları ve erişim yolları sayfanın kendisindedir.
+[Ortak defter](https://halukainrs.github.io/ortak-kopru/kopru.html), 23–26 Ekim 2026 arasında Haluk, Claude, Gemini, ChatGPT ve Copilot'un sırayla yazdığı dış defterdir; son kaydı k-0179'dur (26 Ekim). Kuralları ve erişim yolları sayfanın kendisindedir ve o günün düzenini anlatır. Örneğin kanonik kopyanın yerel klasör olduğu kuralı, 28 Ekim 2026 itibarıyla yerel klasör olmadığı için bugün işlemiyor; defter kendi kuralıyla yalnız yeni bir kayıtla düzeltilir.
 
 ## Açılışa giden yol
 
@@ -43,6 +43,8 @@ Açılış bütünüyle kayıttan üretilen paragraflara döndü: “Niyet” ve
 
 17.36 UTC'de Haluk birleştirmeyi onayladı ve sıradaki ilk ana işin yapılmasını istedi. Birleştirmeden önceki son provada üç sınama, kararın henüz verilmediğini varsaydığı için kırıldı; sınamalar kaydın bugünkü durumundan bağımsız yazıldı ve prova geçti. Yeni oluşum 17.47 UTC'de birleştirme kaydıyla ana depoya geçti; denetimler ana dalda geçti, açılış ve yol sayfaları Web'de yayımlandı. Ardından yolun karar beklemeyen ilk adımı olan katkı kalıbı kuruldu. Web'deki her bölümün sonunda artık bir karşılık bağlantısı var; bağlantı GitHub'da, hangi sayfanın hangi bölümüne yazıldığını kendisi dolduran bir form açıyor.
 
+18.47 UTC'de Haluk, bilgisayarında köprü klasörü olmadığını bildirdi ve yapay zekâ yardımcılarına verilmiş talimatların her yerde silinmesini ya da sıfırlanmasını istedi. Talimat dosyaları ana depodan ve yirmi yedi daldan kaldırıldı, botun istemi sıfırlandı; kaldırılan her dosyanın nedeni ve önceki hâli [depo haritasında](../harita.md#kaldırılan-ve-sıfırlanan-dosyalar) duruyor. Aynı akşam bütün belgeler okundu: bulunan yirmi dokuz şeyin yirmi dördü tamamlandı, kalanların kimin kararında olduğu [okuma sayfasında](rafine/okuma-2026-10-28.md) yazılı. Yolun iki kararına bir görüş eklendi; kararlar Haluk'ta. Dönüşüm tamamlandı: zorunlu aşamaların hepsi bitti, isteğe bağlı iki aşama (öteki önerilerin taşınması ve lisans) açık.
+
 ## Steering incelemesi ve kaynak arşivi
 
 Steering araştırması k-0016'daki yerleşim kararına uygun olarak aynı deponun referans dalındadır. Arşiv okuma, analitik aktarım ve bu oturumun düzenleme işi tamamlanmıştır. Güncel kapsam ile ayrı açık uygulama işleri başlangıç sayfasında gösterilir.
@@ -58,11 +60,15 @@ Steering araştırması k-0016'daki yerleşim kararına uygun olarak aynı depon
 
 ## deus_ex_machina ve Şaman devri
 
+**28 Ekim 2026 notu.** Bu bölümün paragrafları 24–26 Ekim'in düzenini anlatır. Şaman devir başlatıcısı ve yerel kapının SamanDevam ve SamanHazirla kipleri 28 Ekim akşamı, yapay zekâ yardımcılarına verilmiş talimatlarla birlikte kaldırıldı; Haluk'un bilgisayarında yerel köprü klasörü de yok. Kaldırılan dosyaların önceki hâli [depo haritasında](../harita.md#kaldırılan-ve-sıfırlanan-dosyalar) gösterilir.
+
 [Şaman devir paketi](https://github.com/HalukAINRS/ortak-kopru/tree/a3e34ad2e486e1a723a9a64257b63cbc5af366ed/devir/saman), 24 Ekim tarihli talimatları, o tarihteki çalışma durumunu, açık işleri ve Steering yayınının 85 dosyalık sabit kopyasını taşır. Güncel araştırma için yukarıdaki Steering başlangıç sayfası kullanılır. [CLI başlangıcı](https://github.com/HalukAINRS/ortak-kopru/blob/a3e34ad2e486e1a723a9a64257b63cbc5af366ed/devir/saman/CLI_BASLANGIC.md) ve [katman ilişkisi](https://github.com/HalukAINRS/ortak-kopru/blob/a3e34ad2e486e1a723a9a64257b63cbc5af366ed/deus_ex_machina/SAMAN.md) aynı sabit sürümdedir. Mevcut `#deus_ex_machina` ikinci başlığı korunur.
 
 k-0111, Şaman CLI devrinin tarihsel başlangıç kaydıdır; sonraki ilerleme ve açık işler kanonik köprüde izlenir. Açık Şaman oturumuna yeni dosyaları hazırlamak için `Kopru_Izle.cmd SamanHazirla`; yeni etkileşimli oturum gerekiyorsa `Kopru_Izle.cmd SamanDevam` kullanılır. Bu kapılar ayrı çalışma ağacındaki sabit dosyaları doğrular. İkinci argüman olarak özel kaynak ZIP yolu verilebilir. [Başlatma rehberi](https://github.com/HalukAINRS/ortak-kopru/blob/a3e34ad2e486e1a723a9a64257b63cbc5af366ed/devir/saman/BASLATMA.md), gerçek kabulün ve ilerlemenin nerede kaydedileceğini açıklar.
 
 ## Değişiklik geçmişi
+
+- 2026-10-28: Talimatlar, yerel taraf ve okuma: yardımcı talimatları ana dal dahil 28 dalda kaldırıldı ya da sıfırlandı (`katilimcilar/AGENTS-kopru.md`, `katilimcilar/web-istem.md`, `yerel/saman_devral.py` silindi; `katilimcilar/istem-sablonu.md` yalnız yanıt biçimine sıfırlandı). Haritaya kaldırılanlar listesi, `gerekir` alanı ve alan klasörlerinin üretilen giriş sayfaları eklendi; `docs/sozluk.md` (Web'de `sozluk.html`), `docs/teknik/yerel-taraf.md`, `.github/SECURITY.md` yazıldı; yol kararlarına görüş alanı geldi. Okuma kaydı: [R-25…R-53](rafine/claude-code-bulut-2026-10-28-okuma.json). Dönüşüm kapandı.
 
 - 2026-10-28: Birleşme ve katkı kalıbı: yeni oluşum birleştirme kaydıyla ana dala geçti (#23); bulut aşamasının kanıtı [dönüşüm kaydına](../donusum.json) yazıldı. Katkı kalıbı `.github/ISSUE_TEMPLATE/karsilik.yml` (tür, yer, karşılık, dayanak, sınır onayı) ve `config.yml`; `tools/okuma_yayini_uret.py` her `h2` bölümünün sonuna formu `yer` ve başlık alanları dolu açan bir bağlantı ekler (`karsilik()`), sınamaları `tests/test_okuma_yayini_uret.py` içinde. Yolun ikinci adımı tamam; yol ve dönüşüm sınamaları kaydın ilerlemesinden bağımsız.
 
@@ -70,7 +76,7 @@ k-0111, Şaman CLI devrinin tarihsel başlangıç kaydıdır; sonraki ilerleme v
 
 - 2026-10-28: Açılıştan gerçeğe yol: [yol sayfası](../yol.md) ve [teknik eki](../teknik/yol-teknik.md) yol kaydından (`docs/yol.json`, `schemas/yol.schema.json`) `tools/yol.py` ile üretiliyor. Yedi adımın durumu ölçütlerden hesaplanıyor ve açılıştaki ilke durumlarıyla tutarlılığı denetleniyor. Klavye çizimlerinin kuralları `tools/cizim.py`'de; açılışa bir ressam çizimi eklendi; Web'de yedinci okuma sayfası `yol.html`. Doğrulama listesi on iki kontrol.
 
-- 2026-10-28: Alanlar ve üç sıfır kuralı: açılış “Niyet” ve sırayla altı ilke başlığıyla, yalnız paragraflardan oluşacak biçimde kayıttan üretiliyor; yapısı denetleniyor. Kökteki betikler `defter/`, `katilimcilar/` ve `yerel/` altına, belgeler `docs/` kökü, `docs/teknik/` ve `docs/gecmis/` altına taşındı ve küçük harfli adlar aldı; elli iki eski ad [depo haritasında](../harita.md) duruyor (`tools/harita.py`, `docs/harita.json`, `schemas/harita.schema.json`). Depo [künye dosyasıyla](../../CITATION.cff) kaynak gösterilebiliyor. Yerel bilgisayarda yapılacak tek iş: CLI katmanlarının talimat dosyalarındaki köprü parçasını [yenisiyle](../../katilimcilar/AGENTS-kopru.md) değiştirmek.
+- 2026-10-28: Alanlar ve üç sıfır kuralı: açılış “Niyet” ve sırayla altı ilke başlığıyla, yalnız paragraflardan oluşacak biçimde kayıttan üretiliyor; yapısı denetleniyor. Kökteki betikler `defter/`, `katilimcilar/` ve `yerel/` altına, belgeler `docs/` kökü, `docs/teknik/` ve `docs/gecmis/` altına taşındı ve küçük harfli adlar aldı; elli iki eski ad [depo haritasında](../harita.md) duruyor (`tools/harita.py`, `docs/harita.json`, `schemas/harita.schema.json`). Depo [künye dosyasıyla](../../CITATION.cff) kaynak gösterilebiliyor. Yerel bilgisayarda yapılacak tek iş: CLI katmanlarının talimat dosyalarındaki köprü parçasını [yenisiyle](https://github.com/HalukAINRS/ortak-kopru/blob/dcae3deda4f0f796e77358331e3ae286cf668082/katilimcilar/AGENTS-kopru.md) değiştirmek. (Bu iş 28 Ekim akşamı geçersiz kaldı: yerel köprü klasörü yok ve köprü parçası kaldırıldı.)
 
 - 2026-10-28: İlk temas ve ayrım: [açılış belgesi](../acilis.md) ilk kez gelen okuyucu için sade dille yeniden yazıldı ve her doğrulamada okunabilirlik denetiminden geçer; tanımın tam hâli, kesişimler ve ilkelerin taşıyıcıları [açılışın teknik ekine](../teknik/acilis-teknik.md) ayrıldı. README'nin teknik bölümleri [teknik ayrıntılar](../teknik/README.md), tarihsel bölümleri bu sayfaya taşındı; README artık açılış ve yönlendirmeden oluşur. Açılış Web'de altıncı okuma sayfası olarak yayımlandı.
 
@@ -78,7 +84,7 @@ k-0111, Şaman CLI devrinin tarihsel başlangıç kaydıdır; sonraki ilerleme v
 
 - 2026-10-28: Açılış: Haluk deponun niyetini koydu (Web ile yerel bilgisayar arasında kapı, dışarıdaki bireyler ile yerel kullanıcı arasında köprü). Niyetten kurulan tanım ve altı ilke README'nin ve Web girişinin başına yerleşti; dokuz soru beşli (kapı) ve dörtlü (geçiş) olarak ve 20 kesişimiyle soruldu ([açılış belgesi](../acilis.md), [makine kaydı](../acilis.json)). Kişiler arası köprü senaryo kaydına S09 olarak girdi.
 
-- 2026-10-28: Şimdi ve sonrası: ana dalın dokuz soruya yanıtı, rafine sonrası için ön koşullu sekiz senaryo, on sekiz soru varyantı ve on iki birleşim ([anlatı](simdi-ve-sonrasi.md), [makine kaydı](simdi-ve-sonrasi.json)); tablolar ve kurallar `tools/rafine_sorulari.py` ile denetlenir.
+- 2026-10-28: Şimdi ve sonrası: ana dalın dokuz soruya yanıtı, rafine sonrası için ön koşullu sekiz senaryo, on sekiz soru varyantı ve on iki birleşim ([anlatı](simdi-ve-sonrasi.md), [makine kaydı](simdi-ve-sonrasi.json)); tablolar ve kurallar `tools/rafine_sorulari.py` (bugün `tools/simdi_ve_sonrasi.py`) ile denetlenir.
 
 - 2026-10-28: Rafine turu (Claude Code Bulut, Hacker odağı). `tools/dogrula.py` ile yerelde ve CI'da aynı tek doğrulama listesi; `tools/sema_denetle.py` ve `tests/test_semalar.py` ile `schemas/` sözleşmeleri çekirdeğin gerçek çıktılarına bağlandı; belge tutarsızlıkları (eksik dosya satırları, sayfa sayımı, iş akışı tablosu) giderildi. Tur kaydı: [Rafine defteri](rafine/rafine-defteri.md) · [süreç arşivi](rafine/README.md).
 

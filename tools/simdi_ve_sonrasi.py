@@ -201,9 +201,10 @@ def denetle(veri: dict, hesap: dict, bulgular: dict[str, str], olcum_anahtarlari
     kullanilan: set[str] = set()
     anahtarlar = olcum_anahtarlari | set(hesap)
 
+    kaldirilan = depo_tanimi.kaldirilan_yollar()
+
     def dayanak_denetle(konum: str, dayanak: str | None) -> None:
-        yol = depo_tanimi.dayanak_yolu(dayanak) if dayanak else None
-        if yol is not None and not yol.exists():
+        if dayanak and not depo_tanimi.tarihli_dayanak_var(dayanak, kaldirilan):
             hatalar.append(f"{konum}.dayanak: depoda yok ({dayanak})")
 
     for kok in KOKLER:
