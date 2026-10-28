@@ -162,3 +162,19 @@ Satır numaraları yukarıdaki 3.121 satırlık metne göredir. Her aralık par�
 ### Gizlilik
 
 Metnin tamamı bu depoda yayımlanmış değil; ana dalda metnin gövdesinden bir satır aradım, bulunmadı (doğruladım). Metni buraya da almadım. Yayımlanıp yayımlanmayacağına Haluk karar verir. Bu dosyada yalnız başlıklar, satır aralıkları, özetler ve adresler var.
+
+
+## Ek 2: Sekizli düzenler (düzeltme) ve listelerin yeri
+
+Bu bölüm `56ac5b0` sürümünden sonra eklendi. Satır numaraları yukarıdaki 3.121 satırlık metne göredir.
+
+- **Düzeltme:** Yukarıdaki "Kaynakta iki ayrı sekizli var" cümlesi eksik. Metnin kod bloklarında en az dört ayrı sekizli düzen var (doğruladım):
+  - Parça 3, satır 193–200: sekiz adımlı bir yaratma dizisi.
+  - Parça 5, satır 298–301 ve 307–310: dışa açılan dört yön ile içte dört karşılık.
+  - Parça 6, satır 422–429: gereksinimi gerece çeviren sekiz kapı. Aynı sekizli Parça 12'de (satır 951–958) ve Desen 7'de (satır 2641–2648) yineleniyor.
+  - Parça 8, satır 589–592 ve 606–609: dört dış kuvvet ile içte dört gerçekleşme.
+- **Süreç adları bu sekizlilerde yok:** Hiçbirinin adları 33×8'in süreç eksenindeki adlarla aynı değil. "Arama", "Tasarlama", "Kanıtlama", "Anlama" ve "Arşivleme" metinde hiç geçmiyor; "Öğrenme" ve "İnşa" birer kez geçiyor (doğruladım). Bu sekizlileri süreç ekseniyle eşlemiyorum.
+- **Parça 14, Parça 5'i izliyor:** Parça 14'teki dokuz adımlık liste (satır 1107–1115), bir tutma adımının ardından Parça 5'teki iki dörtlüyü aynı sırayla kullanıyor (doğruladım).
+- **Gereksinim ve gereç:** İki sözcük metinde sık geçiyor, en çok Parça 6 ve Parça 30'da. 16 ve 32 ise yalnız parça başlıklarında var. Dışavurumdaki iki adın sözcükleri bu metinde bulunuyor, 16 ve 32 etiketleri bulunmuyor (doğruladım). Aralarında köken ilişkisi kurmak çıkarım olur.
+- **Bir alıntıyı sınamak:** Boşlukları tek boşluğa indirip büyük/küçük harf ayırmadan, yukarıdaki SHA-256 ile doğrulanmış kopyada aramak yetiyor. Bu yol yalnız bu kopya için geçerli; sayfa numarası taşıyan başka bir nüsha ayrıca denetlenmeli.
+- **Gözlem zamanı:** Depo 28 Ekim 04:40 UTC'de çekildi; ana dal `7f9018d`'deydi.
