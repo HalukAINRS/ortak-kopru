@@ -3,8 +3,12 @@
 Kullanım: python3 kopru_bolum_ekle.py kopru.html bolum-guncel-2026-10-24.html
 Parça dosyası tek bir <div id="y-…" class="alt"> … </div> içerir. Aynı id sayfada varsa yerine konur; yoksa
 “Mimari: ikimiz için” (#y-mimari) parçasının önüne, o da yoksa bölümün sonuna eklenir. Kayıtlara dokunmaz.
-Sonra kopru_ekle.py --kontrol ile denetle ve kopru_gonder.ps1 ile gönder. Yalnız standart kütüphane."""
+Parça yazılmadan önce kayıt ekleyicinin dış yükleme ve yasak desen denetimlerinden geçer; birine takılırsa
+sayfa değişmez. Sonra kopru_ekle.py --kontrol ile denetle ve kopru_gonder.ps1 ile gönder. Yalnız standart kütüphane."""
 import os, re, sys, tempfile
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from kopru_ekle import dis_yukleme_kontrol, yasak_kontrol  # noqa: E402
 
 
 def main():
@@ -17,6 +21,12 @@ def main():
     if not m or not parca.endswith("</div>"):
         sys.exit("HATA: parça <div id=\"y-…\" class=\"alt\"> ile başlayıp </div> ile bitmeli.")
     pid = m.group(1)
+    sorunlar = dis_yukleme_kontrol(parca)
+    if sorunlar:
+        sys.exit("HATA: parça dış kaynak yüklüyor, köprü kuralı bozulur:\n  " + "\n  ".join(sorunlar))
+    yasak = yasak_kontrol(parca)
+    if yasak:
+        sys.exit("HATA: parçada yasak desen var: " + ", ".join(yasak))
     b = re.search(r'<section id="yonlendirme"[^>]*>.*?</section>', sayfa, re.S)
     if not b:
         sys.exit("HATA: sayfada <section id=\"yonlendirme\"> yok.")

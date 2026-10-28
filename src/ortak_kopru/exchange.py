@@ -21,7 +21,7 @@ import uuid
 
 from .core import CoreError
 from .local_files import (
-    LocalFileError, copy_verified_file, new_private_directory, private_path,
+    copy_verified_file, new_private_directory, private_path,
     read_regular_file, write_private_file,
 )
 

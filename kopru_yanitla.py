@@ -20,7 +20,7 @@ yalnız aynı katmanın yanıtıyla kapsanır; API yedeği CLI imzasını miras 
 
 Anahtarlar yalnız ortam değişkeninden okunur ve hiçbir yere yazılmaz.
 """
-import argparse, datetime, json, os, re, shutil, subprocess, sys, tempfile, urllib.error, urllib.request
+import argparse, datetime, html, json, os, re, shutil, subprocess, sys, tempfile, urllib.error, urllib.request
 
 BURASI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, BURASI)
@@ -118,7 +118,7 @@ def bolum_metni(belge, bolum_id):
     t = re.sub(r"</(p|li|h[1-6]|tr|div|details|summary)>", "\n", t)
     t = re.sub(r"</t[dh]>", " | ", t)
     t = re.sub(r"<[^>]+>", "", t)
-    t = t.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&").replace("&quot;", '"')
+    t = html.unescape(t)   # &#x27; ve diğer bütün HTML varlıkları istemde düz metin olur
     t = "\n".join(l.strip() for l in t.splitlines())
     return re.sub(r"\n{3,}", "\n\n", t).strip()
 
@@ -329,6 +329,9 @@ def main():
     en_cok = int(ayar.get("en_cok_cikti_token", 1500))
     eklenenler = []
     hata_sayisi = 0
+    if a.yalniz and a.yalniz not in {kat["ad"] for kat in ayar["katilimcilar"]}:
+        adlar = ", ".join(kat["ad"] for kat in ayar["katilimcilar"])
+        sys.exit(f"HATA: --yalniz {a.yalniz!r} bu ayar dosyasında yok; geçerli adlar: {adlar}")
     for kat in ayar["katilimcilar"]:
         ad = kat["ad"]
         if a.yalniz and ad != a.yalniz:

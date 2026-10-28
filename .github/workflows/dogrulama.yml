@@ -31,29 +31,8 @@ jobs:
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.12"
-      - name: Regresyon testleri (canlı sağlayıcı çağrısı yok)
-        run: python -m unittest discover -v
-      - name: Köprü ve ayna bütünlüğü
-        run: python tools/depo_kontrol.py
-      - name: Statik okuma sayfalarının kaynaklarla uyumu
-        run: python tools/okuma_yayini_uret.py --check
-      - name: Yerel arayüz JavaScript sözdizimi
-        run: node --check ui/deus/app.js
-      - name: Gönderim betiğinin Bash sözdizimi
-        if: runner.os == 'Linux'
-        run: bash -n .github/scripts/kopru_gonder.sh
-      - name: PowerShell sözdizimi
-        if: runner.os == 'Windows'
-        shell: pwsh
-        run: |
-          $bozuk = $false
-          Get-ChildItem -LiteralPath . -Filter *.ps1 | ForEach-Object {
-            $ayristirmaHatalari = $null
-            $sozcukler = $null
-            [void][System.Management.Automation.Language.Parser]::ParseFile($_.FullName, [ref]$sozcukler, [ref]$ayristirmaHatalari)
-            if ($ayristirmaHatalari.Count -gt 0) {
-              $ayristirmaHatalari | ForEach-Object { Write-Host $_ }
-              $bozuk = $true
-            }
-          }
-          if ($bozuk) { exit 1 }
+      # Yerelde çalıştırılan `python tools/dogrula.py` ile aynı liste: testler, depo kontrolü,
+      # okuma sayfaları, JSON sözleşmeleri, JavaScript/Bash/PowerShell sözdizimi.
+      # Bir araç bulunmuyorsa o kontrol ATLANDI yazılır; atlama başarısızlık sayılmaz.
+      - name: Birleşik çevrimdışı doğrulama
+        run: python tools/dogrula.py

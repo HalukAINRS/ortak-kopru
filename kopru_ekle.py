@@ -29,8 +29,9 @@ YASAK = [
     (r"\bAIza[0-9A-Za-z_-]{30,}", "Google anahtarı"),
     (r"\bgh[pousr]_[A-Za-z0-9]{30,}", "GitHub belirteci"),
     (r"\bglpat-[A-Za-z0-9_-]{16,}", "GitLab belirteci"),
-    (r"(?<![\d.])(?:\d{1,3}\.){3}\d{1,3}(?![\d.])", "IP adresi"),
-    (r"\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b", "UUID (cihaz ya da oturum kimliği olabilir)"),
+    # Dört sekizli 0-255; harf, rakam, nokta veya tireyle bitişik diziler (Git-Portable-2.56.0.2, v1.2.3.4) sürüm sayılır.
+    (r"(?<![\w.-])(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?![\d.])", "IP adresi"),
+    (r"(?i)\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b", "UUID (cihaz ya da oturum kimliği olabilir)"),
 ]
 UYARI = [
     (r"(?i)\b(accessToken|access_token|refresh_token|SAPISID|__Secure-|sessionKey)\b", "kimlik alanı adı (değer değilse sorun yok)"),
@@ -66,17 +67,40 @@ def zaman_metni(dt):
     return f"{dt.day} {AYLAR[dt.month-1]} {dt.year} {dt.hour:02d}.{dt.minute:02d}"
 
 
+YUKLEYEN_LINK = ("stylesheet", "icon", "preload", "modulepreload", "prefetch", "preconnect", "dns-prefetch", "manifest")
+DIS_ADRES = r"[\"']?\s*(https?:)?//"
+
+
 def dis_yukleme_kontrol(belge):
-    """Sayfanın dış kaynak yüklemediğini doğrular: src= ya da stylesheet href= ile http(s) adresi olmamalı."""
+    """Sayfanın dış kaynak yüklemediğini doğrular.
+
+    Kaynak yükleyen etiketlerde src/href/srcset/poster/data/action/formaction niteliği http(s) ya da // ile
+    başlayan bir adres taşımamalı; yükleme yapan <link> türleri (stylesheet, icon, preload, modulepreload,
+    prefetch, preconnect, dns-prefetch, manifest) dış adrese gitmemeli; CSS url() ve @import dış adres
+    almamalı; <meta http-equiv="refresh"> başka adrese yönlendirmemeli. Kayıt gövdeleri kaçışlı metin
+    olduğu için (&lt;img …) bu denetime takılmaz.
+    """
     sorunlar = []
-    for m in re.finditer(r"<(script|img|link|iframe|video|audio|source|object|embed)\b[^>]*>", belge, re.I):
+    for m in re.finditer(r"<(script|img|link|iframe|video|audio|source|track|object|embed|form|input|button|image|use)\b[^>]*>", belge, re.I):
         etiket = m.group(0)
-        if re.search(r"\b(src|href)\s*=\s*[\"']?\s*(https?:)?//", etiket, re.I):
-            if etiket.lower().startswith("<link") and "stylesheet" not in etiket.lower() and "icon" not in etiket.lower():
-                continue
-            sorunlar.append(etiket[:120])
-    if re.search(r"url\(\s*[\"']?\s*(https?:)?//", belge, re.I):
+        kucuk = etiket.lower()
+        dis = re.search(r"\b(src|href|xlink:href|poster|data|action|formaction)\s*=\s*" + DIS_ADRES, etiket, re.I) \
+            or re.search(r"\bsrcset\s*=\s*[\"'][^\"']*(https?:)?//", etiket, re.I)
+        if not dis:
+            continue
+        if kucuk.startswith("<link"):
+            rel = re.search(r"\brel\s*=\s*[\"']?([^\"'>]+)", etiket, re.I)
+            turler = rel.group(1).lower().split() if rel else []
+            if not any(t in YUKLEYEN_LINK or t.endswith("icon") for t in turler):
+                continue  # canonical, alternate gibi bağlantılar yükleme yapmaz
+        sorunlar.append(etiket[:120])
+    if re.search(r"url\(\s*" + DIS_ADRES, belge, re.I):
         sorunlar.append("CSS içinde dış url()")
+    if re.search(r"@import\s+(url\(\s*)?" + DIS_ADRES, belge, re.I):
+        sorunlar.append("CSS içinde dış @import")
+    for m in re.finditer(r"<meta\b[^>]*http-equiv\s*=\s*[\"']?refresh[^>]*>", belge, re.I):
+        if re.search(r"url\s*=", m.group(0), re.I):
+            sorunlar.append("meta refresh yönlendirmesi")
     return sorunlar
 
 
