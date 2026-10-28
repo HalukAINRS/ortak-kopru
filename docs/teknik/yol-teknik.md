@@ -45,7 +45,7 @@ Kayıt `docs/yol.json`, sözleşmesi `schemas/yol.schema.json`, aracı `tools/yo
 
 ### 0. Zemin
 
-Açılış, harita ve tanım kayıtları; `tools/acilis.py`, `tools/harita.py` ve `tools/dogrula.py` ile üretim ve denetim. Ana dala geçişin aşamaları, provası ve ölçümü: `docs/donusum.json`, `tools/donusum.py`.
+Açılış, harita ve tanım kayıtları; `tools/acilis.py`, `tools/harita.py` ve `tools/dogrula.py` ile üretim ve denetim. Ana dala geçişin aşamaları, provası ve ölçümü: `docs/gecmis/donusum.json`, `tools/donusum.py`.
 
 Dokunacağı yerler: `docs/acilis.json`, `docs/harita.json`, `tools/dogrula.py`.
 
@@ -91,7 +91,7 @@ Geri alma: Form dosyası ve üretici değişikliği geri alınır, sayfalar yeni
 
 ### 3. Gelen kutusu
 
-`kapi.py --exchange-dir <dizin> inbox --repo <sahip/depo>`: GitHub REST `GET /repos/{owner}/{repo}/issues?state=open` anahtarsız okunur (ortamdaki belirteç gönderilmez), çekme istekleri atlanır. Her konu adresi, numarası, yazarı, açılış ve güncellenme zamanı, başlığı, gövdesi, gövde karması ve formdaki `tur` ve `yer` alanlarıyla `<dizin>/gelen/konu-<numara>-<karma>.json` dosyasına yazılır. Dizin bir Git çalışma ağacının içinde olamaz; değişmemiş konu yeniden yazılmaz, değişen konu yeni dosya olur. Belge: [kapı kullanımı, 6. bölüm](teknik/kapi-kullanimi.md#6-dışarıdan-gelen-soruları-almak).
+`kapi.py --exchange-dir <dizin> inbox --repo <sahip/depo>`: GitHub REST `GET /repos/{owner}/{repo}/issues?state=open` anahtarsız okunur (ortamdaki belirteç gönderilmez), çekme istekleri atlanır. Her konu adresi, numarası, yazarı, açılış ve güncellenme zamanı, başlığı, gövdesi, gövde karması ve formdaki `tur` ve `yer` alanlarıyla `<dizin>/gelen/konu-<numara>-<karma>.json` dosyasına yazılır. Dizin bir Git çalışma ağacının içinde olamaz; değişmemiş konu yeniden yazılmaz, değişen konu yeni dosya olur. Belge: [kapı kullanımı, 6. bölüm](kapi-kullanimi.md#6-dışarıdan-gelen-soruları-almak).
 
 Dokunacağı yerler: `src/ortak_kopru/inbox.py`, `src/ortak_kopru/adapters/github.py`, `src/ortak_kopru/gateway_cli.py`, `tests/test_gateway_inbox.py`.
 

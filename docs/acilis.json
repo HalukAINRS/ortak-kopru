@@ -49,7 +49,7 @@
     "nerede": {
       "soru": "Nerede?",
       "yanit": "İki kenarda ve aralarında. Bir kenar yerel kullanıcının bilgisayarı, öbür kenar Web. Kapının kendisi bu GitHub deposudur: kod, kayıt ve herkese açık yüz. Geçişlerin özel kaydı ise bilgisayarda, Git'in dışında durur.",
-      "bugun": "Herkese açık yüz github.com/HalukAINRS/ortak-kopru ve onun Pages yayını. Yerel kenar bir Windows bilgisayarındaki çalışma kopyasıdır; Haluk 28 Ekim 2026 akşamı köprü klasörünü Y:\\HalukAI\\ortak-kopru olarak bildirdi. O klasörde yerel tarafın kurulu olup olmadığı buradan görünmüyor. Kapının aracı kapi.py her Git kopyasında çalışır; aktarımların ve gelen kutusunun özel kaydı ona verilen --exchange-dir dizininde, Git'in dışında durur.",
+      "bugun": "Herkese açık yüz github.com/HalukAINRS/ortak-kopru ve onun Pages yayını. Yerel taraf bir Windows bilgisayarındaki çalışma kopyasıdır; Haluk 28 Ekim 2026 akşamı köprü klasörünü Y:\\HalukAI\\ortak-kopru olarak bildirdi. O klasörde yerel tarafın kurulu olup olmadığı buradan görünmüyor. Kapının aracı kapi.py her Git kopyasında çalışır; aktarımların ve gelen kutusunun özel kaydı ona verilen --exchange-dir dizininde, Git'in dışında durur.",
       "durum": "kısmen",
       "varyantlar": [
         {

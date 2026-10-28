@@ -4,6 +4,11 @@
   "konu": "Ortak Köprü deposunun şimdiki tanımı ve rafine sonrası olabilecek tanımı",
   "hazirlayan": "Claude Code Bulut (Hacker odağı)",
   "hazirlandi": "2026-10-28T13:25:39Z",
+  "donduruldu": {
+    "tarih": "2026-10-28",
+    "kesit": "47066cc",
+    "not": "Kayıt 28 Ekim 2026 13.25 UTC kesitinde donduruldu; yalnız dayanak yolları yeni yerleşime çevrildi. Bugünkü açık işler yol sayfasında."
+  },
   "kesit": {
     "dal": "claude/rafine-2026-10-28",
     "pr": 23,
@@ -424,7 +429,7 @@
         "onkosul": [],
         "yanitlar": {
           "ne": "Aynı depo; ama niyeti açılışında yazılı ve kendi sözünü sınayan bir depo: açılış README'de, Web girişinde ve açılış belgesinde tek kayıttan, sözleşmeler çekirdeğin çıktısına, tanım depoya, belgedeki tablolar veri kaydına bağlı; doğrulama yerelde ve CI'da aynı listeyi koşar.",
-          "nerede": "Yer değişmez; tanım ve tur kayıtları docs/ altına, araçlar tools/ altına girer; Pages altı sayfayı aynı kaynaklardan yeniden yayımlar.",
+          "nerede": "Yer değişmez; tanım ve tur kayıtları docs/ altına, araçlar tools/ altına girer; Pages beş sayfayı aynı kaynaklardan yeniden yayımlar.",
           "ne_zaman": "Birleşme anından itibaren; tanımın ölçümleri o kesitte tarihlenir, yalnız büyüyen defter değerleri alt sınır olarak izlenir.",
           "ne_kadar": "Test yöntemi 226'dan 291'e, sözleşme 6'dan 10'a, belge 15'ten 21'e çıkar; doğrulama tek komutta 10 kontrol koşar; 24 bulgunun 17'si kapanmış olur.",
           "nereden": "Değişiklikler tek PR'dan gelir; kayıtların giriş yolları aynı kalır, ama bölüm parçaları da kayıt ekleyicinin denetiminden geçer.",
@@ -478,9 +483,7 @@
         "karar": "Haluk, hedef makinedeki gerçek yolları doğruladıktan sonra.",
         "kaynak_bulgu": [
           "R-18",
-          "R-20",
-          "R-38",
-          "R-39"
+          "R-20"
         ],
         "onkosul": [],
         "yanitlar": {
@@ -880,7 +883,7 @@
     "yetim_acik_kayit": 16,
     "yetim_dagilimi": "copilot (şahit)=3; gemini (cli)=1; gemini (şahit)=12",
     "sahit_yolu_sonrasi_yetim": 4,
-    "acik_bulgu": 9,
-    "duzeltilen_bulgu": 41
+    "acik_bulgu": 7,
+    "duzeltilen_bulgu": 17
   }
 }

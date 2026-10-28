@@ -10,7 +10,7 @@ günlük grubunda açılır ve hatalar satır notu olarak işaretlenir.
 Kullanım:
     python tools/dogrula.py              # hepsi
     python tools/dogrula.py --liste      # kontrol adlarını göster
-    python tools/dogrula.py --sadece testler,semalar,tanim
+    python tools/dogrula.py --sadece testler,semalar,harita
     python tools/dogrula.py --ayrintili   # her kontrolün tam çıktısı (testler -v)
 """
 from __future__ import annotations
@@ -45,10 +45,6 @@ KONTROLLER: list[tuple[str, str, list[str], str | None]] = [
      [sys.executable, str(KOK / "tools/okuma_yayini_uret.py"), "--check"], None),
     ("semalar", "JSON sözleşmelerinin desteklenen alt kümede kalması",
      [sys.executable, str(KOK / "tools/sema_denetle.py")], None),
-    ("tanim", "Dokuz koordinatlı depo tanımının ölçümleri ve dayanakları",
-     [sys.executable, str(KOK / "tools/depo_tanimi.py"), "--check"], None),
-    ("sorular", "Şimdi ve sonrası kaydı: senaryolar, varyantlar, birleşimler ve belge tabloları",
-     [sys.executable, str(KOK / "tools/simdi_ve_sonrasi.py"), "--check"], None),
     ("acilis", "Açılış: niyet ve altı ilke, kayıtla eşlik, yapı ve okunabilirlik",
      [sys.executable, str(KOK / "tools/acilis.py"), "--check"], None),
     ("yol", "Açılıştan gerçeğe yol: ölçütler, ön koşullar, açılışla tutarlılık ve iki belge",

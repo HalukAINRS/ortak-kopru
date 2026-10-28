@@ -41,7 +41,7 @@ class HaritaTests(unittest.TestCase):
                       self.denetle(self.veri, self.dosyalar + ["yeni-kok-dosyasi.txt"]))
         bozuk = copy.deepcopy(self.veri)
         bozuk["alanlar"][0]["kapsam"].append("kapi.py")
-        self.assertIn("kapi.py: birden çok alanda (giris, girisler)", self.denetle(bozuk))
+        self.assertIn("kapi.py: birden çok alanda (giris, komutlar)", self.denetle(bozuk))
 
     def test_root_shows_only_entries_pages_ledger_and_area_folders(self):
         kok = {yol.split("/", 1)[0] + ("/" if "/" in yol else "") for yol in self.dosyalar}

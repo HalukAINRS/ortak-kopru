@@ -175,12 +175,8 @@ def klasor_girisi(harita: dict, alan: dict, dosyalar: list[str] | None = None) -
             icerik.append("kökte " + ", ".join(f"`{t}`" for t in sorted(turler)) + " dosyaları")
         parcalar.append("Bu alandaki dosyalar tek tek tanımlanmaz; yukarıdaki açıklama hepsi için geçerlidir. "
                         "Klasörün içinde: " + ", ".join(icerik) + ".")
-    parcalar += ["## Nereye bağlanır",
-                 f"Bütün alanlar ve dosyalar [depo haritasında]({kok}docs/harita.md#{_baglanti_adi(alan['ad'])}) durur. "
-                 f"İlk kez geliyorsanız [açılıştan]({kok}docs/acilis.md) başlayın. Kurulum, komutlar ve denetimler "
-                 f"[teknik ayrıntılarda]({kok}docs/teknik/README.md) anlatılır.",
-                 "Bu sayfa depo haritasından üretilir; elle değiştirilmez. Değiştirmek için haritadaki kayıt düzeltilir ve "
-                 "`python tools/harita.py` çalıştırılır."]
+    parcalar.append(f"Bu sayfa [depo haritasından]({kok}docs/harita.md#{_baglanti_adi(alan['ad'])}) üretilir; değiştirmek için "
+                    "haritadaki kayıt düzeltilir ve `python tools/harita.py` çalıştırılır.")
     return "\n\n".join(parcalar) + "\n"
 
 
@@ -369,7 +365,12 @@ def belge(harita: dict) -> str:
     parcalar += ["Depo kökünden bakınca alanlar şöyle görünür. Sol sütun klasör ya da dosya, sağ sütun alanın adıdır.",
                  _kok_agaci(harita), "## Kurallar"] + list(harita["kurallar"])
     for alan in harita["alanlar"]:
-        yer = f"`{alan['yol']}`" if alan["yol"] else "depo kökü"
+        yer = "depo kökü"
+        if alan["yol"]:
+            yer = f"`{alan['yol']}`"
+            if (KOK / alan["yol"] / "README.md").is_file():
+                hedef = alan["yol"][len("docs/"):] if alan["yol"].startswith("docs/") else "../" + alan["yol"]
+                yer = f"[`{alan['yol']}`]({hedef}README.md)"
         parcalar += [f"## {alan['ad']}", f"{alan['ne']} Yeri: {yer}."]
         alan_dosyalari = [d for a, d in tanimlar(harita) if a is alan]
         if alan_dosyalari:

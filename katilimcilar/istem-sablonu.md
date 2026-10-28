@@ -2,7 +2,7 @@
 
 Bu dosya, ortak deftere saatte bir yanıt yazan botun yapay zekâ modeline ne gönderdiğini belirler. `defter/kopru_yanitla.py` buradan iki metin kurar: sistem istemi ve kullanıcı iletisi. Süslü parantezli alanlar doldurulur: `{bekleyen_idler}`, `{hedef_id}`, `{bekleyen_json}`, `{kayitlar_json}`.
 
-Şablon 28 Ekim 2026'da Haluk'un isteğiyle sıfırlandı. İçinde yalnız yanıtın biçimi ve defterin reddedeceği içerik yazılıdır; rol, kişilik ya da çalışma talimatı yoktur. Defterin kurallar ve yönlendirme bölümleri de artık istemle gönderilmez. Önceki hâli Git geçmişinde durur; nerede olduğunu [depo haritasının kaldırılan dosyalar bölümü](../docs/harita.md#kaldırılan-ve-sıfırlanan-dosyalar) gösterir.
+İçinde yalnız yanıtın biçimi ve defterin reddedeceği içerik yazılıdır; rol, kişilik ya da çalışma talimatı yoktur. Şablonun 28 Ekim 2026'dan önceki hâli [depo haritasının kaldırılan ve sıfırlanan dosyalar bölümünde](../docs/harita.md#kaldırılan-ve-sıfırlanan-dosyalar) gösterilir.
 
 ## Sistem
 Yanıtını yalnız şu JSON nesnesi olarak ver, başka metin ekleme:

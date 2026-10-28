@@ -43,7 +43,6 @@ sys.dont_write_bytecode = True
 sys.path.insert(0, str(KOK / "tools"))
 
 import cizim  # noqa: E402
-import depo_tanimi  # noqa: E402
 import sema_denetle  # noqa: E402
 
 BESLI = ("ne", "nerede", "nasil", "ne_zaman", "ne_icin")
@@ -66,6 +65,13 @@ def _rafine_bulgulari() -> dict[str, str]:
         for bulgu in json.loads(yol.read_text(encoding="utf-8"))["findings"]:
             sonuc[bulgu["id"]] = bulgu["resolution"]
     return sonuc
+
+
+def dayanak_yolu(dayanak: str) -> Path | None:
+    """Depo içi dayanağın yolunu döndürür (#bölüm ve :satır atılır); http(s) adresleri için None."""
+    if dayanak.startswith(("https://", "http://")):
+        return None
+    return KOK / re.split(r"[#:]", dayanak, maxsplit=1)[0].strip()
 
 
 def _senaryolar() -> set[str]:
@@ -105,7 +111,7 @@ def denetle(veri: dict, bulgular: dict[str, str] | None = None, senaryolar: set[
         if ilke["durum"] == "uygulanıyor" and (ilke.get("bulgular") or ilke.get("senaryolar")):
             hatalar.append(f"{konum}: uygulanan ilke açık bulgu veya senaryoya bağlanmamalı")
         for yol in ilke["dayanaklar"]:
-            hedef = depo_tanimi.dayanak_yolu(yol)
+            hedef = dayanak_yolu(yol)
             if hedef is not None and not hedef.exists():
                 hatalar.append(f"{konum}.dayanaklar: depoda yok ({yol})")
         for bulgu in ilke.get("bulgular", []):
@@ -228,7 +234,13 @@ def soru_tablosu(veri: dict) -> str:
             soru = veri["sorular"][kok]
             satirlar.append(f"| {soru['soru']} | {veri['gruplar'][grup]['ad']} | {_hucre(soru['yanit'])} | "
                             f"{_hucre(soru['bugun'])} | {soru['durum']} |")
-    return "\n".join(satirlar) + "\n"
+    adlar = {d: [veri["sorular"][k]["soru"].rstrip("?") for k in BESLI + DORTLU if veri["sorular"][k]["durum"] == d]
+             for d in ("var", "kısmen", "yok")}
+    ozet = (f"Dokuz yanıttan {len(adlar['var'])} tanesi bugün niyetle örtüşüyor ({', '.join(adlar['var']) or '—'}); "
+            f"{len(adlar['kısmen'])} tanesi kısmen örtüşüyor ({', '.join(adlar['kısmen']) or '—'})"
+            + (f"; {len(adlar['yok'])} tanesinin karşılığı henüz yok ({', '.join(adlar['yok'])})" if adlar["yok"] else "")
+            + ". Her kısmi yanıtın eksiği tablonun “Bugün depoda” sütununda, onu kapatacak adım [yolun teknik ekindedir](yol-teknik.md).")
+    return "\n".join(satirlar) + "\n\n" + ozet + "\n"
 
 
 def varyant_tablosu(veri: dict) -> str:

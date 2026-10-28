@@ -17,8 +17,4 @@ Sürücü otomasyonda yalnız derlenir; imzalanmaz ve hiçbir makineye yüklenme
 | [`nt/build.ps1`](nt/build.ps1) | Sürücüyü yalnız Windows'ta derler; imzalamaz ve yüklemez. | `pwsh -File windows/nt/build.ps1 -Restore` |
 | [`nt/.gitignore`](nt/.gitignore) | Derleme çıktıları ve indirilen paketler depoya girmez. | — |
 
-## Nereye bağlanır
-
-Bütün alanlar ve dosyalar [depo haritasında](../docs/harita.md#windows-sürücüsü) durur. İlk kez geliyorsanız [açılıştan](../docs/acilis.md) başlayın. Kurulum, komutlar ve denetimler [teknik ayrıntılarda](../docs/teknik/README.md) anlatılır.
-
-Bu sayfa depo haritasından üretilir; elle değiştirilmez. Değiştirmek için haritadaki kayıt düzeltilir ve `python tools/harita.py` çalıştırılır.
+Bu sayfa [depo haritasından](../docs/harita.md#windows-sürücüsü) üretilir; değiştirmek için haritadaki kayıt düzeltilir ve `python tools/harita.py` çalıştırılır.

@@ -4,6 +4,11 @@
   "tanimlanan": "claude/rafine-2026-10-28 dalı (PR #23); birleşince main",
   "hazirlayan": "Claude Code Bulut (Hacker odağı)",
   "hazirlandi": "2026-10-28T11:29:26Z",
+  "donduruldu": {
+    "tarih": "2026-10-28",
+    "kesit": "47066cc",
+    "not": "Ölçümler 28 Ekim 2026 13.33 UTC kesitinde, anlatıdaki sayılarla birlikte donduruldu. Bugünkü sayılar depo haritasında ve doğrulamada."
+  },
   "koordinatlar": {
     "ne": {
       "soru": "Ne?",
@@ -162,19 +167,19 @@
         }
       ],
       "olcumler": {
-        "izlenen_dosya": 297,
-        "python_dosyasi": 61,
-        "python_satiri": 14737,
-        "paket_modulu": 14,
-        "paket_satiri": 3954,
-        "test_dosyasi": 26,
-        "test_yontemi": 340,
-        "json_sozlesmesi": 13,
+        "izlenen_dosya": 257,
+        "python_dosyasi": 54,
+        "python_satiri": 12485,
+        "paket_modulu": 13,
+        "paket_satiri": 3831,
+        "test_dosyasi": 23,
+        "test_yontemi": 291,
+        "json_sozlesmesi": 10,
         "is_akisi": 3,
         "powershell_betigi": 4,
-        "belge": 33,
-        "okuma_sayfasi": 8,
-        "dogrulama_kontrolu": 13,
+        "belge": 21,
+        "okuma_sayfasi": 5,
+        "dogrulama_kontrolu": 10,
         "kopru_kaydi": 179,
         "acik_durumlu_kayit": 167,
         "yanit_bagli_kayit": 134,
@@ -184,8 +189,8 @@
         "defter_bayti": 958505,
         "cagri_gunlugu": 122,
         "cagri_gunlugu_bayti": 34153346,
-        "rafine_bulgusu": 53,
-        "rafine_duzeltilen": 43,
+        "rafine_bulgusu": 24,
+        "rafine_duzeltilen": 17,
         "rafine_acik": 7
       }
     },

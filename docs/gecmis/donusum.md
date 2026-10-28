@@ -4,11 +4,11 @@
 
 Bu sayfa, Ortak Köprü deposunun 28 Ekim 2026'da bugünkü düzenine nasıl geçtiğini anlatıyor. Yeni hâl önce ayrı bir yerde kuruldu ve sınandı, sonra aşama aşama ana depoya geçti. Her aşamanın kimin elinde olduğu, nasıl anlaşıldığı ve nasıl geri alınabileceği yazılı.
 
-Bu geçiş, açılıştan gerçeğe giden [yolun](yol.md) ilk adımını ana depoda gerçek kıldı. Komutlar ve ölçütler [dönüşümün teknik ekinde](teknik/donusum-teknik.md) duruyor. Teknik konuların hepsi [teknik ayrıntılar](teknik/README.md), bugüne kadar yapılanlar [geçmiş işler](gecmis/README.md) bölümünde.
+Bu geçiş, açılıştan gerçeğe giden [yolun](../yol.md) ilk adımını ana depoda gerçek kıldı. Komutlar ve ölçütler [dönüşümün teknik ekinde](donusum-teknik.md) duruyor. Teknik konuların hepsi [teknik ayrıntılar](../teknik/README.md), bugüne kadar yapılanlar [geçmiş işler](README.md) bölümünde.
 
 ## Bugün nerede duruyoruz
 
-Son ölçüm 2026-10-28 19:31 UTC'de, ana dalın o anki hâline karşı yapıldı. Dönüşümün on bir aşamasından dokuzu tamam. Son provada birleşme temiz çıktı ve denetimler geçti.
+Son ölçüm 2026-10-28 20:19 UTC'de, ana dalın o anki hâline karşı yapıldı. Dönüşümün on bir aşamasından dokuzu tamam. Son provada birleşme temiz çıktı ve denetimler geçti.
 
 Aşağıdaki ağaçta her aşama, bitmesini beklediği aşamanın altında duruyor. Dolu kare biten, boş kare açık, eşkenar dörtgen isteğe bağlı aşamayı gösterir.
 
@@ -34,12 +34,12 @@ Okuyan biri için değişen şey düzendir. Deponun girişi açılışla başlı
 
 Kök klasör sadeleşti. Her dosyanın yeri, eski adı ve ne işe yaradığı bir haritada duruyor; her alanın klasöründe de bir giriş sayfası var. Eski kayıtlarda geçen bir dosya adı o haritadan bulunur. Yapay zekâ yardımcılarına verilmiş talimatlar da kaldırıldı.
 
-Aşağıdaki plan, dosyaların 28 Ekim sabahı nerede durduğunu ve bugün nereye taşındığını gösteriyor. Sayılar haritadaki eski adlardan çıkarılıyor; bir dosya taşındıkça plan kendiliğinden değişir.
+Aşağıdaki plan, dosyaların 28 Ekim sabahı nerede durduğunu ve son ölçümde nereye taşınmış olduğunu gösteriyor. Sayılar, ölçülen ana dalın haritasındaki eski adlardan çıkarıldı.
 
 **Önce ve sonra** · mimar çizimi
 
 ```text
-  ÖNCE · 28 Ekim sabahki ana dal      SONRA · bugünkü ana dal
+  ÖNCE · 28 Ekim sabahki ana dal      SONRA · ölçülen ana dal
   ────────────────────────────────    ──────────────────────────
   kökte 38 dosya                      kökte 19 dosya ve alanlar
   kökten 7 dosya                  ──▶ defter/
@@ -64,7 +64,7 @@ Aşağıdaki plan, dosyaların 28 Ekim sabahı nerede durduğunu ve bugün nerey
 
 Dışarıdan adresle ulaşılan her şey yerinde kaldı. Ortak defterin Web adresi, aynası, Web sayfalarının adresleri ve çağrı kayıtları değişmedi. Web'deki asistanlar ortak defteri eskisi gibi okuyor.
 
-Bilgisayarda çift tıklanan izleyici girişi de yerinde kaldı; ama yerel taraf bugün hiçbir bilgisayarda kurulu değil. Araçların adları değişmedi; yalnız durdukları klasör değişti. Ortak defterdeki hiçbir kayıt değiştirilmedi.
+Bilgisayarda çift tıklanan izleyici girişi de yerinde kaldı. Araçların adları değişmedi; yalnız durdukları klasör değişti. Ortak defterdeki hiçbir kayıt değiştirilmedi.
 
 ## Yol
 
@@ -220,13 +220,13 @@ Aşağıdaki iş çizelgesinde satırlar işin atandığı kişileri, sütunlar 
 
 **Neden?** Yerel kullanıcının bilgisayarı ortak deftere yazan ikinci yol olarak tasarlandı. Eski yerleşimde kalan bir kopya, araçları yeni yerlerinde bulamaz.
 
-**Nasıl?** Haluk 28 Ekim 2026'da bilgisayarında köprü klasörü olmadığını bildirdi; çekilecek eski bir kopya yok. Yerel taraf kurulacaksa ana depodan yeni bir kopya alınır ve yerel taraf sayfasındaki sırayla kurulur.
+**Nasıl?** Haluk 28 Ekim 2026 18.47 UTC'de bilgisayarında köprü klasörü olmadığını bildirdi; çekilecek eski bir kopya yoktu. 19.53 UTC'de köprü klasörünü Y:\HalukAI\ortak-kopru olarak bildirdi. Yeni yerleşim ana dala 17.47 UTC'de girdiği için bu klasör yeni yerleşimden alınmış olmalı.
 
 **Ne zaman?** Önce şu aşamanın bitmesi gerekiyor: Birleştirme.
 
 **Geri dönüş:** Geri alınacak bir yerel kurulum yok.
 
-**Bitince:** Bilgisayarda eski yerleşimde bir kopya kalmadı. Yerel taraf bugün kurulu değil; kurulduğu gün yeni yerleşimle çalışır.
+**Bitince:** Bilgisayarda eski yerleşimde bir kopya kalmadı. Yerel taraf, köprü klasöründe yeni yerleşimle çalışır.
 
 ### 7. Yardımcıların talimatı
 

@@ -22,7 +22,7 @@
   },
   "giris": [
     "Bu sayfa, Ortak Köprü deposunun 28 Ekim 2026'da bugünkü düzenine nasıl geçtiğini anlatıyor. Yeni hâl önce ayrı bir yerde kuruldu ve sınandı, sonra aşama aşama ana depoya geçti. Her aşamanın kimin elinde olduğu, nasıl anlaşıldığı ve nasıl geri alınabileceği yazılı.",
-    "Bu geçiş, açılıştan gerçeğe giden [yolun](yol.md) ilk adımını ana depoda gerçek kıldı. Komutlar ve ölçütler [dönüşümün teknik ekinde](teknik/donusum-teknik.md) duruyor. Teknik konuların hepsi [teknik ayrıntılar](teknik/README.md), bugüne kadar yapılanlar [geçmiş işler](gecmis/README.md) bölümünde."
+    "Bu geçiş, açılıştan gerçeğe giden [yolun](../yol.md) ilk adımını ana depoda gerçek kıldı. Komutlar ve ölçütler [dönüşümün teknik ekinde](donusum-teknik.md) duruyor. Teknik konuların hepsi [teknik ayrıntılar](../teknik/README.md), bugüne kadar yapılanlar [geçmiş işler](README.md) bölümünde."
   ],
   "degisenler": [
     "Okuyan biri için değişen şey düzendir. Deponun girişi açılışla başlıyor. Dosyalar adı söylenen alanlara ayrıldı: ortak defterin araçları, katılımcıların ayarları, yerel bilgisayarın araçları ve belgeler. Teknik ayrıntılar ile geçmiş işler ayrı klasörlerde duruyor.",
@@ -30,7 +30,7 @@
   ],
   "degismeyenler": [
     "Dışarıdan adresle ulaşılan her şey yerinde kaldı. Ortak defterin Web adresi, aynası, Web sayfalarının adresleri ve çağrı kayıtları değişmedi. Web'deki asistanlar ortak defteri eskisi gibi okuyor.",
-    "Bilgisayarda çift tıklanan izleyici girişi de yerinde kaldı; ama yerel taraf bugün hiçbir bilgisayarda kurulu değil. Araçların adları değişmedi; yalnız durdukları klasör değişti. Ortak defterdeki hiçbir kayıt değiştirilmedi."
+    "Bilgisayarda çift tıklanan izleyici girişi de yerinde kaldı. Araçların adları değişmedi; yalnız durdukları klasör değişti. Ortak defterdeki hiçbir kayıt değiştirilmedi."
   ],
   "yol": [
     "Aşağıdaki resim geçişi bir taşınma gibi gösteriyor. Solda 28 Ekim sabahki depo var: bütün dosyalar tek bir odada. Sağda bugünkü hâl var: her şeyin bir rafı. Kapı aynı kalıyor. Yoldaki sayılar aşamaları gösteriyor."
@@ -44,7 +44,7 @@
   ],
   "teknik_giris": [
     "Bu ek, GitHub'daki ana dalın yeni oluşuma geçişinin teknik karşılığıdır: aşamaların komutları, dokunduğu yerler, ölçütleri, son ölçüm ve prova, bekleyen öteki önerilerin çözümlemesi ve geri dönüş. Sade anlatım dönüşüm sayfasındadır.",
-    "Kayıt `docs/donusum.json`, sözleşmesi `schemas/donusum.schema.json`, aracı `tools/donusum.py`. Araç belgeleri kayıttaki son ölçümden üretir; `--durum` canlı durumu, `--olc --yaz` yeni ölçümü, `--prova --yaz` birleşme provasını, `--dallar --yaz` bekleyen önerilerin çözümlemesini verir."
+    "Kayıt `docs/gecmis/donusum.json`, sözleşmesi `schemas/donusum.schema.json`, aracı `tools/donusum.py`. Araç belgeleri kayıttaki son ölçümden üretir; `--durum` canlı durumu, `--olc --yaz` yeni ölçümü, `--prova --yaz` birleşme provasını, `--dallar --yaz` bekleyen önerilerin çözümlemesini verir."
   ],
   "cizimler": [
     {
@@ -348,18 +348,18 @@
       "sade": {
         "ne": "Yerel bilgisayarda eski yerleşimde bir kopya kalmaz. Yerel taraf yeniden kurulacaksa yeni hâlden kurulur.",
         "neden": "Yerel kullanıcının bilgisayarı ortak deftere yazan ikinci yol olarak tasarlandı. Eski yerleşimde kalan bir kopya, araçları yeni yerlerinde bulamaz.",
-        "nasil": "Haluk 28 Ekim 2026'da bilgisayarında köprü klasörü olmadığını bildirdi; çekilecek eski bir kopya yok. Yerel taraf kurulacaksa ana depodan yeni bir kopya alınır ve yerel taraf sayfasındaki sırayla kurulur.",
+        "nasil": "Haluk 28 Ekim 2026 18.47 UTC'de bilgisayarında köprü klasörü olmadığını bildirdi; çekilecek eski bir kopya yoktu. 19.53 UTC'de köprü klasörünü Y:\\HalukAI\\ortak-kopru olarak bildirdi. Yeni yerleşim ana dala 17.47 UTC'de girdiği için bu klasör yeni yerleşimden alınmış olmalı.",
         "geri": "Geri alınacak bir yerel kurulum yok.",
-        "sonra": "Bilgisayarda eski yerleşimde bir kopya kalmadı. Yerel taraf bugün kurulu değil; kurulduğu gün yeni yerleşimle çalışır."
+        "sonra": "Bilgisayarda eski yerleşimde bir kopya kalmadı. Yerel taraf, köprü klasöründe yeni yerleşimle çalışır."
       },
       "teknik": {
         "komutlar": [
-          "git clone https://github.com/HalukAINRS/ortak-kopru",
+          "git clone https://github.com/HalukAINRS/ortak-kopru Y:\\HalukAI\\ortak-kopru",
           "Kopru_Izle.cmd Hazirlik",
           "Kopru_Izle.cmd Tek"
         ],
         "dokunur": [
-          "yerel bilgisayar (28 Ekim 2026 itibarıyla köprü klasörü yok)",
+          "Y:\\HalukAI\\ortak-kopru (köprü klasörü; Haluk, 28 Ekim 2026 19.53 UTC)",
           "docs/teknik/yerel-taraf.md"
         ],
         "geri_donus": "Yerel kopya silinir; Git'in genel safe.directory ayarına eklenen yol geri alınır (docs/teknik/yerel-taraf.md)."
@@ -370,7 +370,8 @@
           "aciklama": "yerel bilgisayarda eski yerleşimde kopya kalmadığının kanıtı (yeni kopyanın hazırlık çıktısı ya da kopya olmadığı bildirimi)",
           "en_az": 1,
           "kanit": [
-            "Haluk, 28 Ekim 2026 18.47 UTC: 'Bilgisayarımda köprü klasörüm yok.' Eski yerleşimde çekilecek ya da yeniden başlatılacak bir yerel kopya yok."
+            "Haluk, 28 Ekim 2026 18.47 UTC: 'Bilgisayarımda köprü klasörüm yok.' Eski yerleşimde çekilecek ya da yeniden başlatılacak bir yerel kopya yok.",
+            "Haluk, 28 Ekim 2026 19.53 UTC: 'Köprü klasörü: Y:\\HalukAI\\ortak-kopru'. Klasör 18.47 UTC'den sonra, yeni yerleşim ana dala girdikten (17.47 UTC) sonra bildirildi; içeriği bu oturumdan görülmedi."
           ]
         }
       ]
@@ -752,9 +753,9 @@
     "basarili": true
   },
   "son_olcum": {
-    "zaman": "2026-10-28T19:31:17Z",
-    "ana": "HEAD",
-    "ana_surum": "abed31f54592ae8b33cafa22bae0a245da44349e",
+    "zaman": "2026-10-28T20:19:16Z",
+    "ana": "origin/main",
+    "ana_surum": "6653d4df63fcb314e56ff9a1633d2c0acf2bd6f8",
     "dal": "origin/claude/rafine-2026-10-28",
     "dal_surum": "90a13ca5d3eee74cd55cac404ab0be034be73032",
     "durumlar": [
@@ -855,7 +856,7 @@
         "durum": "tamam",
         "olcutler": [
           {
-            "tarif": "elle: yerel bilgisayarda eski yerleşimde kopya kalmadığının kanıtı (yeni kopyanın hazırlık çıktısı ya da kopya olmadığı bildirimi) (1/1 kanıt)",
+            "tarif": "elle: yerel bilgisayarda eski yerleşimde kopya kalmadığının kanıtı (yeni kopyanın hazırlık çıktısı ya da kopya olmadığı bildirimi) (2/1 kanıt)",
             "karsilaniyor": true
           }
         ]
@@ -916,6 +917,76 @@
           }
         ]
       }
-    ]
+    ],
+    "yerlesim": {
+      "kok_dosya": 19,
+      "gruplar": [
+        {
+          "once": "kök",
+          "sonra": "defter/",
+          "sayi": 7
+        },
+        {
+          "once": "kök",
+          "sonra": "katilimcilar/",
+          "sayi": 5
+        },
+        {
+          "once": "kök",
+          "sonra": "docs/gecmis/parcalar/",
+          "sayi": 4
+        },
+        {
+          "once": "kök",
+          "sonra": "yerel/",
+          "sayi": 3
+        },
+        {
+          "once": "docs/",
+          "sonra": "docs/gecmis/",
+          "sayi": 9
+        },
+        {
+          "once": "docs/",
+          "sonra": "docs/teknik/",
+          "sayi": 9
+        },
+        {
+          "once": "docs/",
+          "sonra": "docs/",
+          "sayi": 2
+        },
+        {
+          "once": "docs/",
+          "sonra": "docs/gecmis/rafine/",
+          "sayi": 1
+        },
+        {
+          "once": "docs/kararlar/",
+          "sonra": "docs/teknik/kararlar/",
+          "sayi": 2
+        },
+        {
+          "once": "docs/rafine/",
+          "sonra": "docs/gecmis/rafine/",
+          "sayi": 3
+        },
+        {
+          "once": "schemas/",
+          "sonra": "schemas/",
+          "sayi": 1
+        },
+        {
+          "once": "tests/",
+          "sonra": "tests/",
+          "sayi": 1
+        },
+        {
+          "once": "tools/",
+          "sonra": "tools/",
+          "sayi": 1
+        }
+      ]
+    }
   }
 }

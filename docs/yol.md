@@ -101,7 +101,7 @@ Yol yedi adımdan oluşuyor. Aşağıdaki ağaçta her adım, bitmesini bekledi�
 
 **Neden?** Bir yerin gerçeğe dönüştüğünü görebilmek için önce neyin söz verildiğini ve neyin bugün işlediğini ayırmak gerekir.
 
-**Nerede?** Deponun kendisinde: açılışta, haritada ve denetimlerde. Bu zemin 28 Ekim'den beri GitHub'daki ana depoda; oraya hangi aşamalarla geçildiği [dönüşüm sayfasında](donusum.md) anlatılıyor.
+**Nerede?** Deponun kendisinde: açılışta, haritada ve denetimlerde. Bu zemin 28 Ekim'den beri GitHub'daki ana depoda; oraya hangi aşamalarla geçildiği [dönüşüm sayfasında](gecmis/donusum.md) anlatılıyor.
 
 **Nereden nereye?** İçeride kalır; dışarıya bir şey taşımaz.
 
@@ -257,7 +257,7 @@ Bir ilkeye bağlı bütün zorunlu adımlar bitince, açılışta o ilkenin duru
 
 Bu yolun en kısa adımı sizin elinizde. Açılışı ya da bu sayfayı okuyup bir soru sorar, bir kaynak ya da düzeltme getirirseniz dışarıdan gelen ilk katkı gerçekleşmiş olur. Web'de her bölümün sonunda bir karşılık bağlantısı var; hangi bölüme yazdığınızı forma kendisi yazar. İsterseniz [karşılık formunu doğrudan açın](https://github.com/HalukAINRS/ortak-kopru/issues/new?template=karsilik.yml); GitHub buna Issue der.
 
-Formu doğrudan açtıysanız hangi yazıya ve hangi adıma karşılık verdiğinizi yazmanız yeter. Bir adımın nasıl atılacağına dair öneriniz varsa onu da yazabilirsiniz. Öneriler yerel kullanıcının kararına sunulur, kendiliğinden uygulanmaz.
+Bir adımın nasıl atılacağına dair öneriniz varsa onu da yazabilirsiniz. Öneriler yerel kullanıcının kararına sunulur, kendiliğinden uygulanmaz.
 
 ## Birkaç kelime
 

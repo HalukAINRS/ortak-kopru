@@ -46,7 +46,7 @@ Claude'un altıncı aşama geri dönüş dosyasının [4a6a843 sabit sürümü](
 
 ## Dış okuyucunun yolu
 
-Okumaya [Anlam ve Dönüş Defteri](anlam-not-defteri.md) ile başlanabilir. [Kaynak rehberi](kaynaklar.md), kullanılan sözlerle yorumların bağını; [depo rehberi](../teknik/depo-rehberi.md), belgelerin, kodun ve tarihsel kayıtların yerini açıklar. Teknik kullanım isteyen okuyucu ilgili bileşenin rehberine geçebilir. Tarihsel kayıtların özgün gövdeleri, bu yeni anlatının kaynakları olarak yerlerinde durur.
+Okumaya [Anlam ve Dönüş Defteri](anlam-not-defteri.md) ile başlanabilir. [Kaynak rehberi](kaynaklar.md), kullanılan sözlerle yorumların bağını; [depo haritası](../harita.md), belgelerin, kodun ve tarihsel kayıtların yerini açıklar. Teknik kullanım isteyen okuyucu ilgili bileşenin rehberine geçebilir. Tarihsel kayıtların özgün gövdeleri, bu yeni anlatının kaynakları olarak yerlerinde durur.
 
 Sorular, kaynak önerileri, deneyimler ve düzeltmeler [GitHub Issues](https://github.com/HalukAINRS/ortak-kopru/issues) üzerinden paylaşılabilir. Belge veya kod değişikliği için pull request açılabilir. İlgili paragrafın başlığını ve kendi açıklamanızı belirtmek, katkının doğru yere dönmesini kolaylaştırır. Bunun için bütün mimariyi öğrenmek veya zorunlu bir şablonu doldurmak gerekmez. [Katkı rehberi](../../CONTRIBUTING.md) bu yolları örnekler.
 

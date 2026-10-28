@@ -108,4 +108,4 @@ Katkının sonucu, etkilediği açıklamanın yanında görünür olduğunda def
 
 ## Okumaya devam
 
-[Son durum raporu](son-durum.md), tarihlendirilmiş gelişmeleri ve açık işleri anlatır. [Kaynak rehberi](kaynaklar.md) kullanılan sözleri ve yorum bağlarını açıklar. [Depo rehberi](../teknik/depo-rehberi.md) belgeler, teknik bileşenler ve tarihsel kayıtlar arasında yol gösterir.
+[28 Ekim durum raporu](durum-raporu-2026-10-28.md), tarihlendirilmiş gelişmeleri ve açık işleri anlatır. [Kaynak rehberi](kaynaklar.md) kullanılan sözleri ve yorum bağlarını açıklar. [Depo haritası](../harita.md) belgeler, teknik bileşenler ve tarihsel kayıtlar arasında yol gösterir.

@@ -8,7 +8,7 @@ Bu kaynak rehberi, Anlam ve Dönüş Defteri'ndeki yorumların nereden geldiğin
 
 28 Ekim 2026 tarihli ortak geçmiş çalışması, seçilen kaynakları üç mevcut oturumun karşılıkları ve bunlara bağlanan düzeltmelerle ilişkilendirdi. Anlam defteri bu birikimin dış okuyucuya dönük Şaman okumasıdır. Kaynakların tam dökümü yerine, anlamı taşıyan sözleri ve kamuya açık başvuru adreslerini kullanır. Henüz okunmamış bir eski oturumun tamamı veya bir kişinin bütün geçmişi hakkında sonuç çıkarmaz.
 
-Hacker odağının kamuya açık karşılığı [Claude Code Bulut geri dönüş kaydıdır](https://github.com/HalukAINRS/ortak-kopru/blob/4a6a843bc015d4d94fc9c30e9d4e58e5054f4589/arsiv/geri-donus/claude-code-bulut-2026-10-27.md). Bu sabit sürüm, kaynak sözü, açıklama, değişen anlayış ve açık kalan yerleri birlikte gösterir. Daha sonraki gelişmeler için [yol sayfası](../yol.md) ve o sabahın [durum raporu](son-durum.md) kullanılır.
+Hacker odağının kamuya açık karşılığı [Claude Code Bulut geri dönüş kaydıdır](https://github.com/HalukAINRS/ortak-kopru/blob/4a6a843bc015d4d94fc9c30e9d4e58e5054f4589/arsiv/geri-donus/claude-code-bulut-2026-10-27.md). Bu sabit sürüm, kaynak sözü, açıklama, değişen anlayış ve açık kalan yerleri birlikte gösterir. Daha sonraki gelişmeler için [yol sayfası](../yol.md) ve o sabahın [durum raporu](durum-raporu-2026-10-28.md) kullanılır.
 
 ## Akış ve Karar Defteri
 

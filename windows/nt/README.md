@@ -72,7 +72,7 @@ Kurulum, önyükleme ayarları, sürücü imza ilkeleri ve mevcut güvenlik ara�
 bu derleme betiği tarafından değiştirilmez. Dağıtım ve geri alma planı,
 sürücü paketi ve hedef sistem bilgileriyle ayrıca ele alınır.
 
-Mimari yerleşim ve kapsam: [NT Kernel kararı](../../docs/teknik/nt-kernel.md).
+Mimari yerleşim ve kapsam: [NT Kernel](../../docs/teknik/nt-kernel.md) · [Karar 0001](../../docs/teknik/kararlar/0001-deus-is-ve-nt.md).
 
 ## Birincil kaynaklar
 

@@ -23,8 +23,4 @@ Kod yalnız Python'un standart kütüphanesini kullanır. Komut girişleri depo 
 | [`ortak_kopru/adapters/github.py`](ortak_kopru/adapters/github.py) | GitHub REST bağdaştırıcısı: seçilmiş dosya alışverişi ve açık konuların okunması için sınırlı istekler. | — |
 | [`ortak_kopru/adapters/windows_nt.py`](ortak_kopru/adapters/windows_nt.py) | Windows'taki NT aygıt kapısını okur; sürücüyü kurmaz ve yüklemez. | — |
 
-## Nereye bağlanır
-
-Bütün alanlar ve dosyalar [depo haritasında](../docs/harita.md#python-paketi) durur. İlk kez geliyorsanız [açılıştan](../docs/acilis.md) başlayın. Kurulum, komutlar ve denetimler [teknik ayrıntılarda](../docs/teknik/README.md) anlatılır.
-
-Bu sayfa depo haritasından üretilir; elle değiştirilmez. Değiştirmek için haritadaki kayıt düzeltilir ve `python tools/harita.py` çalıştırılır.
+Bu sayfa [depo haritasından](../docs/harita.md#python-paketi) üretilir; değiştirmek için haritadaki kayıt düzeltilir ve `python tools/harita.py` çalıştırılır.

@@ -13,7 +13,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from ortak_kopru import gateway  # noqa: E402
 from ortak_kopru.adapters.github import GitHubError, GitHubConflict, git_blob_sha  # noqa: E402
-from ortak_kopru.exchange import ExchangeConflict, ExchangeError, ExchangeStore  # noqa: E402
+from ortak_kopru.exchange import ExchangeConflict, ExchangeStore  # noqa: E402
 
 
 def identity(value):

@@ -20,7 +20,7 @@ yalnız aynı katmanın yanıtıyla kapsanır; API yedeği CLI imzasını miras 
 
 Anahtarlar yalnız ortam değişkeninden okunur ve hiçbir yere yazılmaz.
 """
-import argparse, datetime, html, json, os, re, shutil, subprocess, sys, tempfile, urllib.error, urllib.request
+import argparse, datetime, json, os, re, shutil, subprocess, sys, tempfile, urllib.error, urllib.request
 
 BURASI = os.path.dirname(os.path.abspath(__file__))          # defter/: kayıt araçları
 KOK = os.path.dirname(BURASI)                                 # depo kökü: kopru.html, kayit/, CLI çalışma yeri
@@ -37,11 +37,6 @@ def kayitlari_oku(yol):
         ay.feed(dosya.read())
     ay.close()
     return ay.kayitlar
-
-
-def ad_kok(s):
-    """'ChatGPT (Şaman)' → 'ChatGPT'."""
-    return (s or "").split("(")[0].strip()
 
 
 def kime_adlari(s):
@@ -112,19 +107,6 @@ def bekleyenler(kayitlar, ad):
     return out
 
 
-def bolum_metni(belge, bolum_id):
-    m = re.search(r'<section id="%s"[^>]*>(.*?)</section>' % re.escape(bolum_id), belge, re.S)
-    if not m:
-        return ""
-    t = re.sub(r"<style.*?</style>", "", m.group(1), flags=re.S)
-    t = re.sub(r"</(p|li|h[1-6]|tr|div|details|summary)>", "\n", t)
-    t = re.sub(r"</t[dh]>", " | ", t)
-    t = re.sub(r"<[^>]+>", "", t)
-    t = html.unescape(t)   # &#x27; ve diğer bütün HTML varlıkları istemde düz metin olur
-    t = "\n".join(l.strip() for l in t.splitlines())
-    return re.sub(r"\n{3,}", "\n\n", t).strip()
-
-
 # ---------- istem ----------
 
 def sablon_oku():
@@ -135,15 +117,11 @@ def sablon_oku():
 
 
 def istem_kur(yol, ad, bek):
-    belge = open(yol, encoding="utf-8").read()
     kayitlar = kayitlari_oku(yol)
     sistem, kullanici = sablon_oku()
     degerler = {
-        "ad": ad,
         "bekleyen_idler": ", ".join(k["id"] for k in bek),
         "hedef_id": bek[-1]["id"],
-        "kurallar_metni": bolum_metni(belge, "kurallar"),
-        "dosya_metni": bolum_metni(belge, "yonlendirme"),
         "kayitlar_json": json.dumps(kayitlar, ensure_ascii=False, indent=1),
         "bekleyen_json": json.dumps(bek, ensure_ascii=False, indent=1),
     }

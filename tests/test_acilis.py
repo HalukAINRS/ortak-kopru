@@ -172,12 +172,14 @@ class AcilisTests(unittest.TestCase):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         basliklar = [satir[3:] for satir in readme.splitlines() if satir.startswith("## ")]
         self.assertEqual(basliklar, acilis.basliklar(self.veri) + ["Buradan başlayın"])
-        teknik = (ROOT / "docs" / "teknik" / "README.md").read_text(encoding="utf-8")
+        # Teknik bölümler teknik klasöründe, tarihsel bölümler geçmiş işlerde; README ikisine de bağlanır.
+        teknik = ROOT / "docs" / "teknik"
+        for dosya, baslik in (("README.md", "## Teknik belgeler"), ("ortak-defter.md", "## Saatlik bot"),
+                              ("bakim.md", "## Tek doğrulama yolu"), ("yerel-taraf.md", "## Bugünkü durum")):
+            with self.subTest(teknik=dosya):
+                self.assertIn(baslik, (teknik / dosya).read_text(encoding="utf-8"))
         gecmis = (ROOT / "docs" / "gecmis" / "README.md").read_text(encoding="utf-8")
-        for baslik in ("## Yerleştirme", "## Otomasyon", "## Bakım ve doğrulama"):
-            with self.subTest(teknik=baslik):
-                self.assertIn(baslik, teknik)
-        for baslik in ("## Açılışa giden yol", "## Değişiklik geçmişi", "## deus_ex_machina ve Şaman devri"):
+        for baslik in ("## Açılışa giden yol", "## Dallar ve arşivler", "## Değişiklik geçmişi"):
             with self.subTest(gecmis=baslik):
                 self.assertIn(baslik, gecmis)
 

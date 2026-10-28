@@ -14,12 +14,6 @@ Defterin kendisi depo kökünde durur ve Web'de herkese açık okunur. Bir kayı
 | [`kopru_oku.py`](kopru_oku.py) | Kayıtları süzerek JSON verir. | `python defter/kopru_oku.py kopru.html --acik` |
 | [`kopru_yanitla.py`](kopru_yanitla.py) | Bot: katılımcılara düşen açık kayıtları bulur, ayardaki yolu çağırır, yanıtı ekler ve çağrıyı kayit altına yazar. | `python defter/kopru_yanitla.py kopru.html --kuru` |
 | [`kopru_birlestir.py`](kopru_birlestir.py) | İki yazarın aynı yere eklediği kayıtları birleştirir: uzak esas, yereldekiler yeni numarayla sona. | `python defter/kopru_birlestir.py --help` |
-| [`kopru_bolum_ekle.py`](kopru_bolum_ekle.py) | Defterin yönlendirme bölümüne alt bölüm ekler ya da aynı kimlikliyi yeniler. | `python defter/kopru_bolum_ekle.py --help` |
 | [`kopru_ayna_uret.py`](kopru_ayna_uret.py) | Kanonik defterden aynayı üretir; --kontrol eşliği denetler. | `python defter/kopru_ayna_uret.py kopru.html ayna/kopru.html --kontrol` |
-| [`kanit_satiri_guncelle.py`](kanit_satiri_guncelle.py) | Yerel kanıt tablosundaki bir satıra 21. kayıttaki durum notunu bir kez ekler; tarihsel tek iş aracı. | `python defter/kanit_satiri_guncelle.py kopru.html --kontrol` |
 
-## Nereye bağlanır
-
-Bütün alanlar ve dosyalar [depo haritasında](../docs/harita.md#ortak-defter) durur. İlk kez geliyorsanız [açılıştan](../docs/acilis.md) başlayın. Kurulum, komutlar ve denetimler [teknik ayrıntılarda](../docs/teknik/README.md) anlatılır.
-
-Bu sayfa depo haritasından üretilir; elle değiştirilmez. Değiştirmek için haritadaki kayıt düzeltilir ve `python tools/harita.py` çalıştırılır.
+Bu sayfa [depo haritasından](../docs/harita.md#ortak-defter) üretilir; değiştirmek için haritadaki kayıt düzeltilir ve `python tools/harita.py` çalıştırılır.

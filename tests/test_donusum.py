@@ -1,4 +1,4 @@
-"""Dönüşüm yolu (docs/donusum.json): ölçütler, durumlar, prova, bekleyen önerilerin çözümlemesi ve belgeler.
+"""Dönüşüm yolu (docs/gecmis/donusum.json): ölçütler, durumlar, prova, bekleyen önerilerin çözümlemesi ve belgeler.
 
 Git'e bakan ölçütler geçici, sentetik bir depoda sınanır; gerçek ana dala, ağa ya da sağlayıcıya dokunulmaz.
 """
@@ -72,8 +72,7 @@ class DonusumTests(unittest.TestCase):
     def test_repository_record_and_documents_agree(self):
         self.assertEqual(donusum.denetle(self.kayit), [])
         hesap = donusum.durumlar(self.kayit, None)
-        hv = json.loads(donusum.harita.KAYIT.read_text(encoding="utf-8"))
-        for yol, uretilen in donusum.bloklar(self.kayit, hesap, hv, donusum.kok_dosya_sayisi()).items():
+        for yol, uretilen in donusum.bloklar(self.kayit, hesap).items():
             with self.subTest(belge=yol.name):
                 self.assertEqual(donusum.acilis.belge_denetle(yol.name, yol.read_text(encoding="utf-8"), uretilen), [])
 
@@ -212,10 +211,15 @@ class DonusumTests(unittest.TestCase):
                 self.assertIn(f"({a['no']}) ", agac)
         matris = donusum.matris(self.kayit).splitlines()
         self.assertEqual(sum(s.count("●") for s in matris), len(self.kayit["asamalar"]))
-        hv = json.loads(donusum.harita.KAYIT.read_text(encoding="utf-8"))
-        plan = donusum.once_sonra(self.kayit, hv, 18)
+        plan = donusum.once_sonra(self.kayit)
         self.assertIn("──▶ defter/", plan)
         self.assertIn(f"kökte {self.kayit['baslangic']['kok_dosya']} dosya", plan)
+        # Plan kayıttaki son ölçümden çizilir; bugünkü harita değişse de tarihli plan değişmez.
+        self.assertIn(f"kökte {self.kayit['son_olcum']['yerlesim']['kok_dosya']} dosya ve alanlar", plan)
+        hv = json.loads(donusum.harita.KAYIT.read_text(encoding="utf-8"))
+        y = donusum.yerlesim(hv, 18)
+        self.assertEqual(y["kok_dosya"], 18)
+        self.assertTrue(all(g["sayi"] >= 1 for g in y["gruplar"]))
         for ad, metin in (("ağaç", agac), ("matris", "\n".join(matris)), ("plan", plan)):
             with self.subTest(cizim=ad):
                 self.assertEqual(cizim.denetle(ad, donusum._blok(metin)), [])

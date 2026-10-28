@@ -22,7 +22,7 @@ Bu defterin tek kaynak metni ortak GitHub deposundaki docs/gecmis/ortak-mimari-d
 
 Katılımcıların kendi oturumlarında hazırladıkları açıklamalar, ortak defterin dayanağı olabilir. Ortak sayfaya gelen katkının sahibi görünür kalır. Bir görüşün bu sayfada yer alması, bütün katılımcıların o görüşün her ayrıntısında uzlaştığı anlamına gelmez. Kullanıcının düzeltmesi de etkilediği açıklamayla ilişkilendirilir.
 
-Bu defterin konusu mimaridir. Önceki çalışmalardan çıkarılan anlamlar [Anlam ve Dönüş Defteri](anlam-not-defteri.md), daha önceki durum kesiti [Son durum](son-durum.md), kaynaklara dönme yolu ise [Kaynaklar](kaynaklar.md) üzerinden okunabilir.
+Bu defterin konusu mimaridir. Önceki çalışmalardan çıkarılan anlamlar [Anlam ve Dönüş Defteri](anlam-not-defteri.md), daha önceki durum kesiti [28 Ekim durum raporu](durum-raporu-2026-10-28.md), kaynaklara dönme yolu ise [Kaynaklar](kaynaklar.md) üzerinden okunabilir.
 
 ## Mimariyi bir arada görmek
 
@@ -463,7 +463,7 @@ Bu turda tamamlanan ortak iş, üç açıklamanın aynı mimari tarifte buluşma
 
 Bu defter, 33×8 yerleşimini, serbest döngü ilişkilerini, dört dışavurum işlevini ve tek noktada buluşma biçimini birlikte tarif eder. Çekirdek açıklamanın tamamlanması, yeni varyantların veya yeni anlamların sona ermesi anlamına gelmez. Kullanıcının sonraki sözü ve uygulamadan gelen karşılık, ilgili açıklamayı geliştirebilir.
 
-Bu defterin Web görünümü, ana kaynak metinden üretilen yedi ortak okuma sayfasından biridir. Yayın denetimi, kaynak değişince sayfanın da değişmesini kontrol eder. Kaynak metin, değişiklik geçmişi ve okuyucunun katkı yolu aynı ortak depoda birbirine bağlıdır.
+Bu defterin Web görünümü, ana kaynak metinden üretilen ortak okuma sayfalarından biridir. Yayın denetimi, kaynak değişince sayfanın da değişmesini kontrol eder. Kaynak metin, değişiklik geçmişi ve okuyucunun katkı yolu aynı ortak depoda birbirine bağlıdır.
 
 Hedef bilgisayardaki canlı CLI bağlantısı, kendi ortamında gözlenebilir bir denemeyle doğrulanacak uygulama işidir. Önümüzdeki küçük denemede aynı işin girdisi, yerel sonucu ve ortak kaydı birbirine bağlanabilir. (Yerel tarafın bugünkü durumu: [yerel taraf](../teknik/yerel-taraf.md).) Bu sayfanın yayımlanmış olması, hedef bilgisayarda o denemenin yapılmış olduğunu göstermez.
 

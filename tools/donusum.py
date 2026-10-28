@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Bugünkü depodan yeni oluşuma dönüşümü (docs/donusum.json) ölçer, prova eder, denetler ve belgelerini üretir.
+"""Bugünkü depodan yeni oluşuma dönüşümü (docs/gecmis/donusum.json) ölçer, prova eder, denetler ve belgelerini üretir.
+
+Dönüşüm 28 Ekim 2026 akşamı kapandı ve geçmiş işlere taşındı; araç kaydı denetlemeyi ve bekleyen
+önerileri (--dallar) yeni yerleşime göre çözümlemeyi sürdürür.
 
 Dönüşüm, GitHub'daki ana dalın, ayrı bir dalda kurulan yeni oluşuma geçişidir. Aşamaların durumu
 kayda elle yazılmaz; ölçütlerden hesaplanır:
@@ -19,8 +22,8 @@ kayda elle yazılmaz; ölçütlerden hesaplanır:
                                        ve haritada yeri olmayan dosya eklemiyor mu;
   elle                                 dış dünyadaki bir olayın kanıt adresleri yazıldı mı.
 
-Git'e bakan ölçütler yalnız --olc ve --durum kiplerinde hesaplanır; belgeler kayıttaki son ölçümden
-üretilir. Böylece belgeler her makinede aynı çıkar, ölçüm ise tarihlidir.
+Git'e bakan ölçütler yalnız --olc ve --durum kiplerinde hesaplanır; belgeler, "Önce ve sonra" planı
+dahil, kayıttaki son ölçümden üretilir. Böylece belgeler her makinede aynı çıkar, ölçüm ise tarihlidir.
 
 Kullanım:
     python tools/donusum.py                    # belgeleri kayıttan yaz ve denetle
@@ -36,16 +39,15 @@ import argparse
 import datetime
 import json
 from pathlib import Path
-import re
 import shutil
 import subprocess
 import sys
 import tempfile
 
 KOK = Path(__file__).resolve().parents[1]
-KAYIT = KOK / "docs" / "donusum.json"
-BELGE = KOK / "docs" / "donusum.md"
-TEKNIK = KOK / "docs" / "teknik" / "donusum-teknik.md"
+KAYIT = KOK / "docs" / "gecmis" / "donusum.json"
+BELGE = KOK / "docs" / "gecmis" / "donusum.md"
+TEKNIK = KOK / "docs" / "gecmis" / "donusum-teknik.md"
 VARSAYILAN_ANA = "origin/main"
 VARSAYILAN_DAL = "origin/claude/rafine-2026-10-28"
 sys.dont_write_bytecode = True
@@ -203,8 +205,12 @@ def _simdi() -> str:
 def olc(kayit: dict, ana: str, dal: str, kok: Path = KOK) -> dict:
     refler = {"ana": ana, "dal": dal}
     hesap = durumlar(kayit, refler, kok)
+    harita_metni = icerik(ana, "docs/harita.json", kok)
+    hv = json.loads(harita_metni) if harita_metni else {"alanlar": []}
+    kok_dosya = sum(1 for ad in dosyalar(ana, kok) if "/" not in ad)
     return {"zaman": _simdi(), "ana": ana, "ana_surum": surum(ana, kok), "dal": dal, "dal_surum": surum(dal, kok),
-            "durumlar": [{"kimlik": a["kimlik"], **hesap[a["kimlik"]]} for a in kayit["asamalar"]]}
+            "durumlar": [{"kimlik": a["kimlik"], **hesap[a["kimlik"]]} for a in kayit["asamalar"]],
+            "yerlesim": yerlesim(hv, kok_dosya)}
 
 
 # ---------- prova ve bekleyen öneriler ----------
@@ -392,20 +398,27 @@ def matris(kayit: dict) -> str:
     return "\n".join(satirlar)
 
 
-def once_sonra(kayit: dict, harita_verisi: dict, kok_bugun: int) -> str:
-    """Önce ve sonra: tabandaki yerlerden bugünkü alanlara, eski adlardan sayılarak."""
+def yerlesim(harita_verisi: dict, kok_dosya: int) -> dict:
+    """Ölçülen sürümün yerleşimi: kökteki dosya sayısı ve eski yerlerden yeni yerlere taşınan dosya sayıları."""
     gruplar: dict[tuple[str, str], int] = {}
     for _, d in harita.tanimlar(harita_verisi):
         for ad in d.get("eski_adlar", []):
             once = ad.rsplit("/", 1)[0] + "/" if "/" in ad else "kök"
             sonra = d["yol"].rsplit("/", 1)[0] + "/" if "/" in d["yol"] else "kök"
             gruplar[(once, sonra)] = gruplar.get((once, sonra), 0) + 1
-    sol = 32
-    satirlar = ["  " + "ÖNCE · 28 Ekim sabahki ana dal".ljust(sol) + "    SONRA · bugünkü ana dal",
-                "  " + "─" * sol + "    " + "─" * 26,
-                "  " + f"kökte {kayit['baslangic']['kok_dosya']} dosya".ljust(sol) + "    " + f"kökte {kok_bugun} dosya ve alanlar"]
     sira = sorted(gruplar.items(), key=lambda x: (x[0][0] != "kök", x[0][0], -x[1], x[0][1]))
-    for (once, sonra), n in sira:
+    return {"kok_dosya": kok_dosya, "gruplar": [{"once": o, "sonra": s, "sayi": n} for (o, s), n in sira]}
+
+
+def once_sonra(kayit: dict) -> str:
+    """Önce ve sonra: tabandaki yerlerden son ölçümdeki alanlara; değerler kayıttaki son ölçümden okunur."""
+    y = kayit["son_olcum"]["yerlesim"]
+    sol = 32
+    satirlar = ["  " + "ÖNCE · 28 Ekim sabahki ana dal".ljust(sol) + "    SONRA · ölçülen ana dal",
+                "  " + "─" * sol + "    " + "─" * 26,
+                "  " + f"kökte {kayit['baslangic']['kok_dosya']} dosya".ljust(sol) + "    " + f"kökte {y['kok_dosya']} dosya ve alanlar"]
+    for g in y["gruplar"]:
+        once, sonra, n = g["once"], g["sonra"], g["sayi"]
         etiket = f"kökten {n} dosya" if once == "kök" else f"{once} altından {n} dosya"
         satirlar.append("  " + etiket.ljust(sol) + "──▶ " + ("aynı yerde, yeni adla" if once == sonra else sonra))
     satirlar += ["", "  yerinde kalan: ortak defter, aynası, Web sayfaları,",
@@ -449,7 +462,7 @@ def _acik_ozet(kayit: dict) -> str:
             "Bunlar yeni yerleşime taşınınca ana dala girebilir; hangisinin neyi taşıması gerektiği teknik ektedir.")
 
 
-def belge(kayit: dict, hesap: dict[str, dict], harita_verisi: dict, kok_bugun: int) -> str:
+def belge(kayit: dict, hesap: dict[str, dict]) -> str:
     adlar = {a["kimlik"]: a["ad"] for a in kayit["asamalar"]}
     cizimler = {c["bolum"]: c for c in kayit["cizimler"] if c["yer"] == "belge"}
     p = list(kayit["giris"])
@@ -458,9 +471,9 @@ def belge(kayit: dict, hesap: dict[str, dict], harita_verisi: dict, kok_bugun: i
           "eşkenar dörtgen isteğe bağlı aşamayı gösterir.",
           *_cizim("Dönüşümün ağacı", "muhendis", agac(kayit, hesap))]
     p += ["## Ne değişti"] + kayit["degisenler"] + [
-        "Aşağıdaki plan, dosyaların 28 Ekim sabahı nerede durduğunu ve bugün nereye taşındığını gösteriyor. Sayılar haritadaki eski adlardan "
-        "çıkarılıyor; bir dosya taşındıkça plan kendiliğinden değişir.",
-        *_cizim("Önce ve sonra", "mimar", once_sonra(kayit, harita_verisi, kok_bugun))]
+        "Aşağıdaki plan, dosyaların 28 Ekim sabahı nerede durduğunu ve son ölçümde nereye taşınmış olduğunu gösteriyor. "
+        "Sayılar, ölçülen ana dalın haritasındaki eski adlardan çıkarıldı.",
+        *_cizim("Önce ve sonra", "mimar", once_sonra(kayit))]
     p += ["## Ne değişmedi"] + kayit["degismeyenler"]
     c = cizimler["yol"]
     p += ["## Yol"] + kayit["yol"] + _cizim(c["baslik"], c["tur"], c["metin"])
@@ -560,19 +573,15 @@ def teknik_belge(kayit: dict, hesap: dict[str, dict]) -> str:
     return "\n\n".join(p) + "\n"
 
 
-def bloklar(kayit: dict, hesap: dict[str, dict], harita_verisi: dict, kok_bugun: int) -> dict[Path, dict[str, str]]:
-    return {BELGE: {"donusum": acilis._ayir(belge(kayit, hesap, harita_verisi, kok_bugun))},
+def bloklar(kayit: dict, hesap: dict[str, dict]) -> dict[Path, dict[str, str]]:
+    return {BELGE: {"donusum": acilis._ayir(belge(kayit, hesap))},
             TEKNIK: {"donusum_teknik": acilis._ayir(teknik_belge(kayit, hesap))}}
 
 
 def okunabilirlik_denetle(metin: str) -> list[str]:
     veri = json.loads(acilis.KAYIT.read_text(encoding="utf-8"))
     terimler = [m["terim"] for m in veri["sozluk"]]
-    return acilis.okunabilirlik("docs/donusum.md", cizim.cizimsiz(metin), terimler, ayrim_bagi=True) + cizim.denetle("docs/donusum.md", metin)
-
-
-def kok_dosya_sayisi() -> int:
-    return sum(1 for ad in harita.izlenen_dosyalar() if "/" not in ad)
+    return acilis.okunabilirlik("docs/gecmis/donusum.md", cizim.cizimsiz(metin), terimler) + cizim.denetle("docs/gecmis/donusum.md", metin)
 
 
 def _yaz(kayit: dict) -> None:
@@ -628,8 +637,7 @@ def main() -> int:
     hatalar = denetle(kayit)
     if not hatalar:
         hesap = durumlar(kayit, None)
-        hv = json.loads(harita.KAYIT.read_text(encoding="utf-8"))
-        for hedef, uretilen in bloklar(kayit, hesap, hv, kok_dosya_sayisi()).items():
+        for hedef, uretilen in bloklar(kayit, hesap).items():
             metin = hedef.read_text(encoding="utf-8") if hedef.is_file() else ""
             if not args.check and metin:
                 yeni = acilis.belge_guncelle(metin, uretilen)
@@ -640,7 +648,7 @@ def main() -> int:
         if BELGE.is_file():
             hatalar += okunabilirlik_denetle(BELGE.read_text(encoding="utf-8"))
         if TEKNIK.is_file():
-            hatalar += cizim.denetle("docs/teknik/donusum-teknik.md", TEKNIK.read_text(encoding="utf-8"))
+            hatalar += cizim.denetle("docs/gecmis/donusum-teknik.md", TEKNIK.read_text(encoding="utf-8"))
     for hata in hatalar:
         print(hata)
     if hatalar:

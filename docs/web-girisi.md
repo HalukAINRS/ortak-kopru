@@ -40,7 +40,7 @@ Bu sayfa köprünün Web'deki ucudur. Önceki konuşmaları bilmeden okuyabilir;
 
 ## Bugünden başlayın
 
-[Açılış](acilis.md), bu yerin niyetini ve altı ilkesini önceden bir şey bilmeyen okuyucu için anlatır. [Yol sayfası](yol.md), niyetin adım adım nasıl gerçeğe döndüğünü, bugün nerede durulduğunu ve hangi adımın karar beklediğini gösterir. Bu yerde geçen kelimeler [sözlükte](sozluk.md) açıklanır.
+Açılış niyeti ve altı ilkeyi, yol sayfası bugün nerede durulduğunu ve hangi adımın karar beklediğini anlatır; ikisine yukarıdan geçilir. Bu yerde geçen kelimeler [sözlükte](sozluk.md), her dosyanın yeri [depo haritasında](harita.md) açıklanır.
 
 ## Tarihli kayıtlar
 
@@ -50,7 +50,7 @@ Aşağıdaki defterler 28 Ekim 2026 sabahı yazıldı ve o günün çalışması
 
 [Anlam ve Dönüş Defteri](gecmis/anlam-not-defteri.md), önceki emeğin korunmasını, karşılıklı etkileşimi ve yapılan işin kaynağına geri dönmesini anlatır. Kavramlar ilk kullanıldıkları yerde açıklanır; paragraflar başka okuyuculara aktarılabilecek bağlamla yazılmıştır.
 
-Bir yorumun nereden geldiğini merak ederseniz [kaynak rehberine](gecmis/kaynaklar.md), o sabahki durumu görmek isterseniz [28 Ekim durum raporuna](gecmis/son-durum.md) geçebilirsiniz. Bugünkü durum [yol sayfasındadır](yol.md). Kaynak sözü, modelin eklediği ilişki ve gözlenmiş sonuç kendi kapsamlarıyla görünür tutulur.
+Bir yorumun nereden geldiğini merak ederseniz [kaynak rehberine](gecmis/kaynaklar.md), o sabahki durumu görmek isterseniz [28 Ekim durum raporuna](gecmis/durum-raporu-2026-10-28.md) geçebilirsiniz. Bugünkü durum [yol sayfasındadır](yol.md). Kaynak sözü, modelin eklediği ilişki ve gözlenmiş sonuç kendi kapsamlarıyla görünür tutulur.
 
 ## Kendi karşılığınızı getirin
 
@@ -71,10 +71,8 @@ Anlaşılmayan bir paragrafı sorabilir, farklı bir yorum paylaşabilir veya ke
                               yanıt aynı konunun altına gelir
 ```
 
-Formu doğrudan açtıysanız ilgili paragrafı ve katkınızın bağlamını belirtmek, karşılığın doğru yere dönmesini kolaylaştırır. Bütün mimariyi çözmek veya bütün başlıkları doldurmak gerekmez. Bir düzeltme, etkilediği açıklamayla ilişkilendirilir; önceki sözün neden değiştiği izlenebilir kalır.
+Bütün mimariyi çözmek ya da bütün başlıkları doldurmak gerekmez. Yerel kullanıcı karşılıkları, yazanın adı ve bağlı olduğu bölümle birlikte kendi bilgisayarındaki gelen kutusuna alır.
 
 ## Kaynaklara ve gereçlere ilerleyin
 
-[Depo rehberi](teknik/depo-rehberi.md), belgelerin, kodun, denemelerin ve tarihsel kayıtların hangi amaçla bulunduğunu gösterir. [Tarihsel köprü defteri](../kopru.html), eski katkıların özgün kayıtlarını taşır. Teknik kullanım isteyen okuyucu [kapı rehberinden](teknik/kapi-kullanimi.md) başlayabilir. Bütün teknik ayrıntılar [teknik ayrıntılar](teknik/README.md), bugüne kadarki işler ve kayıtlar [geçmiş işler](gecmis/README.md) sayfasında toplanır. Hangi dosyanın nerede durduğunu [depo haritası](harita.md) gösterir.
-
-Bu web yüzü, seçilmiş bilgilerin okunabildiği ve katkı yollarının bulunduğu kapıdır. Bilgisayardaki komut araçlarının çalışma durumu kendi kanıtlarıyla değerlendirilir; yerel tarafın bugünkü durumu [yerel taraf sayfasındadır](teknik/yerel-taraf.md). Bugün hangi parçanın işlediğini ve hangi işin açık olduğunu [yol sayfası](yol.md) gösterir.
+[Tarihsel köprü defteri](../kopru.html), eski katkıların özgün kayıtlarını taşır. Teknik okuyucu [teknik ayrıntılardan](teknik/README.md) başlar: kapının komutları [kapı kullanımında](teknik/kapi-kullanimi.md), bilgisayardaki tarafın bugünkü durumu [yerel taraf sayfasındadır](teknik/yerel-taraf.md). Bugüne kadarki işler ve kayıtlar [geçmiş işler](gecmis/README.md) sayfasında toplanır.

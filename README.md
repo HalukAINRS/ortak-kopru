@@ -38,10 +38,6 @@ Ortak Köprü iki şeydir. Bir kapı: bir bilgisayardaki çalışma ile internet
 
 ## Buradan başlayın
 
-İlk kez geliyorsanız [Açılış: Kapı ve Köprü](docs/acilis.md) sayfasını okuyun. Önceden bir şey bilmeniz gerekmez. Aynı sayfa [Web'de de](https://halukainrs.github.io/ortak-kopru/acilis.html) okunabilir.
+Bir sorunuz, kaynağınız ya da düzeltmeniz varsa [karşılık formunu açın](https://github.com/HalukAINRS/ortak-kopru/issues/new?template=karsilik.yml). GitHub buna Issue der. Web'de okurken her bölümün sonundaki bağlantı, hangi bölüme yazdığınızı forma kendisi yazar. Bir dosya değişikliği önermenin yolu [katkı rehberindedir](CONTRIBUTING.md).
 
-Bir sorunuz, kaynağınız ya da düzeltmeniz varsa GitHub'da [karşılık formunu açın](https://github.com/HalukAINRS/ortak-kopru/issues/new?template=karsilik.yml); GitHub buna Issue der. Web'de okurken her bölümün sonundaki karşılık bağlantısı, hangi yazının hangi bölümüne yazdığınızı forma kendisi yazar. Doğrudan değişiklik önermek için [katkı rehberine](CONTRIBUTING.md) bakın.
-
-Açılıştaki niyetin adım adım nasıl gerçeğe döneceğini, hangi adımın karar beklediğini ve hangisinin atılabileceğini [yol sayfası](docs/yol.md) gösterir.
-
-Bu yerin dosyaları alanlara ayrılmıştır. Hangi klasörün ne taşıdığını ve dosyaların birbirine nasıl bağlandığını [depo haritası](docs/harita.md) gösterir. Deponun bu düzene hangi aşamalarla geçtiği, kimin neyi yaptığı ve geçişin nasıl geri alınabileceği [dönüşüm sayfasında](docs/donusum.md) anlatılıyor. Araçlar, kurulum ve denetimler [teknik ayrıntılar](docs/teknik/README.md) bölümünde, bugüne kadarki işler ve kayıtlar [geçmiş işler](docs/gecmis/README.md) bölümündedir.
+Bütün belgelerin dizini [belgeler sayfasıdır](docs/README.md). Araçlar ve kurulum [teknik ayrıntılarda](docs/teknik/README.md), bugüne kadarki işler [geçmiş işlerde](docs/gecmis/README.md), her dosyanın yeri [depo haritasındadır](docs/harita.md).

@@ -31,7 +31,7 @@ PAGES = {
     'sozluk.md': ('sozluk.html', 'Sözlük'),
     'gecmis/ortak-mimari-defteri.md': ('mimari.html', 'Ortak Mimari Defteri'),
     'gecmis/anlam-not-defteri.md': ('not-defteri.html', 'Anlam ve Dönüş Defteri'),
-    'gecmis/son-durum.md': ('durum.html', '28 Ekim durum raporu'),
+    'gecmis/durum-raporu-2026-10-28.md': ('durum.html', '28 Ekim durum raporu'),
     'gecmis/kaynaklar.md': ('kaynaklar.html', 'Kaynaklar'),
 }
 
@@ -182,12 +182,10 @@ def page(filename: str, output_name: str, label: str) -> str:
                             output_name, label)
     def baglanti(target: str, name: str) -> str:
         return f'<a href="{target}"' + (' aria-current="page"' if target == output_name else '') + f'>{html.escape(name)}</a>'
-    # Bugünü anlatan sayfalar önce; tarihli kayıtlar "Geçmiş" etiketinin ardından gelir.
+    # Çubukta yalnız bugünü anlatan sayfalar durur; tarihli kayıtlar Web girişinin "Tarihli kayıtlar" bölümündedir.
     nav = ''.join(baglanti(t, n) for t, n in [('index.html', 'Başlangıç'), ('acilis.html', 'Açılış'), ('yol.html', 'Yol'),
                                               ('sozluk.html', 'Sözlük')])
-    nav += '<span class="nav-ayrac">Geçmiş:</span>' + ''.join(
-        baglanti(t, n) for t, n in [('mimari.html', 'Mimari defteri'), ('not-defteri.html', 'Not defteri'),
-                                    ('durum.html', '28 Ekim raporu'), ('kaynaklar.html', 'Kaynaklar')])
+    nav += f'<a href="index.html#{slug("Tarihli kayıtlar")}">Geçmiş</a>'
     contents = ''.join(f'<li><a href="#{anchor}">{html.escape(title)}</a></li>' for anchor, title in headings)
     title = label if output_name == 'index.html' else label + ' · Ortak Köprü'
     return f'''<!doctype html>

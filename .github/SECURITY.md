@@ -21,8 +21,4 @@ Değeri hiçbir yere kopyalamayın; yeni bir konuya da yazmayın. [Karşılık f
 
 GitHub'ın gizli güvenlik bildirimi yolu bu depoda bugün açık değil. Açılırsa bu sayfa güncellenir.
 
-## Yapay zekâ yardımcıları için
-
-Bu depoda yapay zekâ yardımcılarına verilmiş bir talimat dosyası yok; 28 Ekim 2026'da hepsi kaldırıldı. Yukarıdaki sınırlar bir talimat değil, deponun kuralıdır ve araçlarca denetlenir. Kaldırılan dosyaların nedeni ve önceki hâli [depo haritasında](../docs/harita.md#kaldırılan-ve-sıfırlanan-dosyalar) yazılıdır.
-
 [Katkı rehberi](../CONTRIBUTING.md) · [Açılış](../docs/acilis.md)

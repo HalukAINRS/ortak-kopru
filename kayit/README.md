@@ -23,4 +23,4 @@ Bugünkü dosyalar 23 Ekim 2026 21.02 UTC ile 24 Ekim 2026 10.11 UTC arasındaki
 
 Kayıtlar anahtar, belirteç ya da çerez değeri taşımaz. Bu, defterin kurallar bölümündeki "Yasak" kuralıyla ve [güvenlik ve gizlilik sayfasıyla](../.github/SECURITY.md) aynı sınırdır. Anahtarlar yalnız ortam değişkeninden okunur ve hiçbir dosyaya yazılmaz.
 
-[Depo haritası](../docs/harita.md) · [Teknik ayrıntılar, otomasyon](../docs/teknik/README.md#otomasyon) · [Sözlük](../docs/sozluk.md)
+[Depo haritası](../docs/harita.md) · [Ortak defter: saatlik bot](../docs/teknik/ortak-defter.md#saatlik-bot) · [Sözlük](../docs/sozluk.md)
