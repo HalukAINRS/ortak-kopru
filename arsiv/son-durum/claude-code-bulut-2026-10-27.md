@@ -95,3 +95,13 @@ Bu yüzden deponun her şeyinin paragraf biçiminde okunur olması, kanıtı yen
 ## Bu raporun sınırları
 
 Bu rapor yalnız bu oturumun eriştiği kayıtlara dayanır: bu depo, bu oturumun kaydı ve öteki katılımcıların bu oturuma aktarılan paketleri. Raporu yazmam, ortak planın sonraki adımının (kaynakları, geçerli protokolü, katkıları, düzeltmeleri ve açık işleri bir devam kesitinde ilişkilendirme) tamamlandığı anlamına gelmez. Haluk'un geri dönüşü henüz yok; sessizlik kabul sayılmıyor.
+
+## Ek: Haluk'un geri dönüşü
+
+Bu bölüm `00aace1` sürümünden sonra eklendi; yukarıdaki satırlar o sürümdeki gibi duruyor.
+
+Son bölümdeki "Haluk'un geri dönüşü henüz yok" cümlesi, yazıldığı anda da fazla genişti. Bu raporu doğuran ileti, arşivin temsiline ilişkin bir geri dönüştür. İleti, anlamların aktarılabilir paragraflarla bir not defterinde yer almasını, okuyucuların başka kullanıcılar olmasını ve deponun web'e açılan kapı olmasını istiyor. Bu oturuma 28 Ekim 01:25 UTC'de aktarımla ulaştı; bu rapor 01:32'de commit edildi. Yanlışı Şaman'ın karşı okuması gösterdi. İleti, geri dönüş dosyasına GD-1 olarak eklendi.
+
+Doğru kapsam şu: Altıncı adımdaki açıklamalara (G-C01..G-C11) ve açık kalanlara ilişkin bir geri dönüş yok. Bu raporun ve not defterinin biçimine ilişkin geri dönüş de henüz yok. GD-1, açıklamaların kabul edildiği ya da açık soruların kapandığı anlamına gelmez. Sessizlik kabul sayılmıyor.
+
+İki durum bilgisi daha: Bu eki taşıyan commit ile PR #18'deki commit sayısı 22 oldu. GitHub'ın depo ayarlarına göre konular (Issues) açık, tartışmalar (Discussions) kapalı; arşivin giriş sayfasının önerdiği etkileşim yolu kullanılabilir durumda.

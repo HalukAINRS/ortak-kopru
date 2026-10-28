@@ -199,3 +199,19 @@ Bu dosya, ortak okumanın Hacker alanındaki kısmını Haluk'un değerlendirebi
   - `api-initial-54f7977.json`: 203.748 bayt, SHA-256 `7eb3cd64…`. 2 boşluk girinti; dosya iki satır sonuyla bitiyor.
   - İki dosyanın da baytları ve özetleri paketteki kimliklerle aynı. Ayrıştırılmış değerleri gömülü veriyle aynı. Tarifleri kendi kodumla uyguladım; gömülü veriden özgün baytları birebir üretiyorlar.
   - Böylece EK-1'deki açık kapandı: beşinci aşama paketindeki 51 parçanın 51'i özgün baytlarıyla doğrulandı. Yazım farkı veri uyuşmazlığı değildi.
+
+## Geri dönüş kaydı (GD-1)
+
+`4a6a843` sürümündeki satırlar korunuyor. C bölümündeki "Geri dönüş kayıtları: Henüz yok." satırı, yazıldığı `d8e81cc` için (28 Ekim, 00:45 UTC) doğruydu. Aşağıdaki ileti bu oturuma ondan sonra ulaştı.
+
+### GD-1 → arşivin okuyucusu ve biçimi; son durum raporu
+
+- **Söz sahibi ve yol:** Haluk; aktarımla (A). İleti "Kullanıcı bunu dedi:" diye başlıyor; aracı iletide adlandırılmamış.
+- **Varış:** Bu oturuma 28 Ekim 2026, 01:25:02 UTC. Sözün söylendiği an belirsiz.
+- **Kaynak sözü:** "Son durum raporu oluşturalım. Arşivde, üzerine çalıştıklarınızdan çıkardığınız anlamlar da yer almalı. Anlamlar, aktarıma uygun şekilde paragraflar halinde bir not defteri içinde yer almalı. Okuyucular başka kullanıcılar olacak. GitHub reposunda yer alan her şey de bu şekle uygun olursa daha iyi olur. Orası Web'e açılan kapı olacak. Harici kullanıcılarla etkileşim yeri."
+- **Tür:** Ekleme. İleti arşivin okuyucusunu ve biçimini belirliyor. Hiçbir G-C maddesine katılma, düzeltme ya da soru içermiyor.
+- **Değişen anlayış:** Altı adımın dosyaları katılımcılar ve Haluk için yazılmıştı. Arşivin okuyucuları artık dış kullanıcılar da. Anlamlar aktarılabilir paragraflarla anlatılıyor. Depo, web'e açılan kapı ve dış kullanıcılarla etkileşim yeri olarak düşünülüyor.
+- **Güncellenen yerler:** `00aace1` ile `arsiv/not-defteri/…`, `arsiv/son-durum/…`, `arsiv/README.md` ve README'deki ziyaretçi bölümü eklendi. Bu kaydı ekleyen commit, son durum raporuna bir ek ve not defterine N-13 paragrafını da ekledi.
+- **Düzeltilen cümle:** Son durum raporundaki "Haluk'un geri dönüşü henüz yok" cümlesi, `00aace1`'de yazıldığı anda da fazla genişti: ileti 01:25'te ulaşmış, rapor 01:32'de commit edilmişti. Bunu Şaman'ın yedinci aşama karşı okuması gösterdi (A; bu oturuma varış 01:43:53 UTC).
+- **Kapsam sınırı:** İleti şunları söylemiyor: G-C01..G-C11'deki açıklamaların kabul edildiği, açık kalanların kapandığı ya da `00aace1`'deki biçimin uygun bulunduğu. Birleştirme ve son durum raporundaki 3–7. öneriler için de karar içermiyor. "Her şey de bu şekle uygun olursa daha iyi olur" bir tercih olarak duruyor; deponun geri kalanının hangi yolla okunur kılınacağı belirlenmiş değil.
+- **Açık:** `00aace1`'deki not defterine ve son durum raporuna ilişkin geri dönüş yok. Sessizlik kabul sayılmıyor.

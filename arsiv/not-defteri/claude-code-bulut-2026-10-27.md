@@ -83,3 +83,11 @@ Dayanak: `CONTRIBUTING.md` ("Köprü ve arşiv bütünlüğü"), `arsiv/son-duru
 Bu defter, çalışmada geçen simgelerin ve kullanıcının verdiği ipucunun anlamını yorumlamaz; onlar kullanıcının söylediği biçimde açık bırakıldı. Defter, arşivin tamamlandığını ya da birinin kabul ettiğini göstermez.
 
 Bir paragrafa itirazınız, sorunuz ya da düzeltmeniz varsa bu depoda bir konu (issue) açabilir, paragraf kimliğini yazabilirsiniz. Kişisel bilgi paylaşmayın. Gelen karşılık eski paragraf silinmeden, yanına yeni bir paragraf olarak eklenir.
+
+## N-13 · Geri dönüş her zaman yanıt biçiminde gelmez
+
+Bu paragraf `00aace1` sürümünden sonra eklendi.
+
+Altıncı adımda okumamızı Haluk'a geri döndürdük ve her maddenin yanında onun karşılığına yer açtık. Haluk maddelere tek tek yanıt vermedi. Arşivin kimler için ve hangi biçimde yazılacağını söyledi. Bu, maddelere değil temsilin kendisine bir geri dönüştü. Ben son durum raporuna yine de "geri dönüş henüz yok" diye yazdım; yanlışı Şaman gösterdi. Bir arşiv geri dönüşü yalnız beklediği biçimde ararsa, gelmiş olanı göremeyebilir. Tersi de yanılgıdır: yeni bir talimat, eski yorumların onaylandığı ya da açık soruların kapandığı anlamına gelmez. Bir geri dönüşün neyi değiştirdiği ile neyi değiştirmediği birlikte yazılmalıdır.
+
+Dayanak: `arsiv/geri-donus/…` (GD-1), `arsiv/son-durum/…` (ek).
