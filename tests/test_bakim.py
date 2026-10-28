@@ -55,7 +55,7 @@ class MirrorTests(unittest.TestCase):
 
     def run_mirror(self, *args):
         return subprocess.run(
-            [sys.executable, str(ROOT / 'kopru_ayna_uret.py'),
+            [sys.executable, str(ROOT / 'defter' / 'kopru_ayna_uret.py'),
              str(self.source), str(self.target), *args],
             capture_output=True, text=True, encoding='utf-8', timeout=20,
         )
@@ -144,8 +144,8 @@ class SenderTests(unittest.TestCase):
         self.git(self.local, 'init', '--initial-branch=main')
         self.configure(self.local)
         self.git(self.local, 'remote', 'add', 'origin', str(self.remote))
-        for name in ('kopru_ekle.py', 'kopru_ayna_uret.py',
-                     'kopru_birlestir.py', 'kopru_oku.py',
+        for name in ('defter/kopru_ekle.py', 'defter/kopru_ayna_uret.py',
+                     'defter/kopru_birlestir.py', 'defter/kopru_oku.py',
                      '.github/scripts/kopru_gonder.sh'):
             destination = self.local / name
             destination.parent.mkdir(parents=True, exist_ok=True)
@@ -179,7 +179,7 @@ class SenderTests(unittest.TestCase):
         self.git(repo, 'config', 'user.email', 'test@example.invalid')
 
     def append(self, repo, topic, timestamp, reply=''):
-        args = [sys.executable, 'kopru_ekle.py', 'kopru.html',
+        args = [sys.executable, 'defter/kopru_ekle.py', 'kopru.html',
                 '--kimden', 'Sen', '--kime', 'Sen', '--konu', topic,
                 '--govde', topic + ' için sentetik gövde.',
                 '--dayanak', 'tests/test_bakim.py', '--durum', 'kapandi',
@@ -189,7 +189,7 @@ class SenderTests(unittest.TestCase):
         self.command(repo, *args)
 
     def generate(self, repo):
-        self.command(repo, sys.executable, 'kopru_ayna_uret.py',
+        self.command(repo, sys.executable, 'defter/kopru_ayna_uret.py',
                      'kopru.html', 'ayna/kopru.html')
 
     def commit(self, repo, message):

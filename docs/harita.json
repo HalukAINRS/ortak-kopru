@@ -1,0 +1,1067 @@
+{
+  "schema_version": 1,
+  "kind": "ortak_kopru_harita",
+  "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+  "hazirlandi": "2026-10-28T14:45:00Z",
+  "giris": [
+    "Bu harita, Ortak Köprü deposunda neyin nerede durduğunu gösterir. Her dosya tek bir alana aittir. Her alan bir klasöre ya da kökteki birkaç dosyaya karşılık gelir.",
+    "Harita bir makine kaydından üretilir ve her doğrulamada denetlenir. Bir dosya alanını bulamazsa, yeri değişen bir dosyanın eski adı kaybolursa ya da bir komut var olmayan bir dosyayı gösterirse denetim kırılır."
+  ],
+  "kurallar": [
+    "Dışarıdan adresle çağrılan dosyalar yerinde kalır: ortak defter, aynası, Web sayfaları, çağrı kayıtları ve kökteki üç çalıştırma girişi.",
+    "Geri kalan her dosya adı söylenen bir alana girer. Makinelerin tanıdığı ortak klasör adları (docs, src, tests, tools, schemas) korunur; deponun kendi alanları Türkçe adlanır.",
+    "Belge adları küçük harf ve tire ile yazılır. README, CONTRIBUTING ve AGENTS gibi ortak adlar büyük harf kalır. Kod dosyaları dilin kuralına uyar ve eski adlarını korur.",
+    "Bir kayıt ile onun anlatısı aynı adı taşır ve yan yana durur: acilis.md ile acilis.json gibi.",
+    "Yeri ya da adı değişen her dosyanın eski adı bu haritada durur; eski kayıtlarda geçen bir ad buradan bulunur.",
+    "Yeni bir belge üç sıfır kuralına uyar: hiç bilmeyen bir okuyucu ilk paragrafından ne olduğunu anlar; hiç bilmeyen bir makine onu haritadan bulur, denetler ve çalıştırır; hiç bilmeyen bir alan onu künyesiyle kaynak gösterir ve üzerine kurar."
+  ],
+  "alanlar": [
+    {
+      "kimlik": "giris",
+      "ad": "Giriş",
+      "yol": "",
+      "her_dosya_tanimli": true,
+      "ne": "Deponun kapısından ilk görünen dosyalar: kime ve neye açıldığını anlatan giriş, katkı yolu, kaynak gösterme bilgisi ve Git ile Web yayınının ayar dosyaları.",
+      "kapsam": [
+        "README.md",
+        "CONTRIBUTING.md",
+        "CITATION.cff",
+        ".gitignore",
+        ".gitattributes",
+        ".nojekyll"
+      ],
+      "dosyalar": [
+        {
+          "yol": "README.md",
+          "tur": "belge",
+          "ne": "Deponun ön yüzü: açılışın kısa hâli (niyet ve altı ilke) ve nereden başlanacağı.",
+          "uretilir": {
+            "kaynak": "docs/acilis.json",
+            "arac": "tools/acilis.py"
+          },
+          "denetim": "python tools/acilis.py --check"
+        },
+        {
+          "yol": "CONTRIBUTING.md",
+          "tur": "belge",
+          "ne": "Soru, kaynak düzeltmesi ve değişiklik önerisinin nasıl getirileceği; teknik katkının kuralları ve yeni belgelerin üç sıfır kuralı."
+        },
+        {
+          "yol": "CITATION.cff",
+          "tur": "kayit",
+          "ne": "Bu depoyu kaynak olarak göstermek isteyenler için makinece okunur künye.",
+          "denetim": "python tools/harita.py --check",
+          "kunye": {
+            "sahibi": "Haluk",
+            "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+            "tarih": "2026-10-28",
+            "kaynaklar": [
+              "docs/acilis.json"
+            ],
+            "okur": "kaynak gösterecek kişi ya da araç"
+          }
+        },
+        {
+          "yol": ".gitignore",
+          "tur": "ayar",
+          "ne": "Git'in izlemediği yerel ve geçici dosyalar."
+        },
+        {
+          "yol": ".gitattributes",
+          "tur": "ayar",
+          "ne": "Üretilen okuma sayfalarını her işletim sisteminde aynı satır sonuyla tutar."
+        },
+        {
+          "yol": ".nojekyll",
+          "tur": "ayar",
+          "ne": "Web yayınının dosyaları olduğu gibi sunması için boş işaret dosyası."
+        }
+      ]
+    },
+    {
+      "kimlik": "girisler",
+      "ad": "Çalıştırma girişleri",
+      "yol": "",
+      "her_dosya_tanimli": true,
+      "ne": "Kökte duran üç komut girişi. Adları ve yerleri değişmez; çünkü yerel bilgisayardaki kısayollar ve belgeler onları bu adla çağırır.",
+      "kapsam": [
+        "kapi.py",
+        "deus.py",
+        "Kopru_Izle.cmd"
+      ],
+      "dosyalar": [
+        {
+          "yol": "kapi.py",
+          "tur": "arac",
+          "ne": "Kapının girişi: seçilmiş dosyaları görev gerektirmeden paylaşır ve dışarıdan sürümüyle kaynak alır.",
+          "calistir": "python kapi.py --help",
+          "yan_etkisiz": true
+        },
+        {
+          "yol": "deus.py",
+          "tur": "arac",
+          "ne": "Yerel iş bileşeninin (deus_ex_machina) girişi: iş, devir, yedek ve yerel arayüz.",
+          "calistir": "python deus.py --help",
+          "yan_etkisiz": true
+        },
+        {
+          "yol": "Kopru_Izle.cmd",
+          "tur": "betik",
+          "ne": "Windows'ta çift tıklanan yerel izleyici girişi; yerel/kopru_yerel.ps1'i çağırır.",
+          "calistir": "Kopru_Izle.cmd Hazirlik",
+          "yan_etkisiz": false
+        }
+      ]
+    },
+    {
+      "kimlik": "web",
+      "ad": "Web kapısı",
+      "yol": "",
+      "her_dosya_tanimli": true,
+      "ne": "Web'de yayımlanan okuma sayfaları. Adresleri değişmesin diye kökte dururlar; her biri docs altındaki bir kaynak metinden üretilir, elle düzenlenmez.",
+      "kapsam": [
+        "index.html",
+        "acilis.html",
+        "mimari.html",
+        "not-defteri.html",
+        "durum.html",
+        "kaynaklar.html",
+        "okuma.css"
+      ],
+      "dosyalar": [
+        {
+          "yol": "index.html",
+          "tur": "sayfa",
+          "ne": "Web girişi.",
+          "uretilir": {
+            "kaynak": "docs/web-girisi.md",
+            "arac": "tools/okuma_yayini_uret.py"
+          },
+          "denetim": "python tools/okuma_yayini_uret.py --check"
+        },
+        {
+          "yol": "acilis.html",
+          "tur": "sayfa",
+          "ne": "Açılış: niyet ve altı ilke.",
+          "uretilir": {
+            "kaynak": "docs/acilis.md",
+            "arac": "tools/okuma_yayini_uret.py"
+          },
+          "denetim": "python tools/okuma_yayini_uret.py --check"
+        },
+        {
+          "yol": "mimari.html",
+          "tur": "sayfa",
+          "ne": "Ortak Mimari Defteri.",
+          "uretilir": {
+            "kaynak": "docs/gecmis/ortak-mimari-defteri.md",
+            "arac": "tools/okuma_yayini_uret.py"
+          },
+          "denetim": "python tools/okuma_yayini_uret.py --check"
+        },
+        {
+          "yol": "not-defteri.html",
+          "tur": "sayfa",
+          "ne": "Anlam ve Dönüş Defteri.",
+          "uretilir": {
+            "kaynak": "docs/gecmis/anlam-not-defteri.md",
+            "arac": "tools/okuma_yayini_uret.py"
+          },
+          "denetim": "python tools/okuma_yayini_uret.py --check"
+        },
+        {
+          "yol": "durum.html",
+          "tur": "sayfa",
+          "ne": "Son durum.",
+          "uretilir": {
+            "kaynak": "docs/gecmis/son-durum.md",
+            "arac": "tools/okuma_yayini_uret.py"
+          },
+          "denetim": "python tools/okuma_yayini_uret.py --check"
+        },
+        {
+          "yol": "kaynaklar.html",
+          "tur": "sayfa",
+          "ne": "Kaynaklar.",
+          "uretilir": {
+            "kaynak": "docs/gecmis/kaynaklar.md",
+            "arac": "tools/okuma_yayini_uret.py"
+          },
+          "denetim": "python tools/okuma_yayini_uret.py --check"
+        },
+        {
+          "yol": "okuma.css",
+          "tur": "ayar",
+          "ne": "Okuma sayfalarının ortak stili; sayfalar başka hiçbir şey yüklemez."
+        }
+      ]
+    },
+    {
+      "kimlik": "defter",
+      "ad": "Ortak defter",
+      "yol": "defter/",
+      "her_dosya_tanimli": true,
+      "ne": "İmzalı ve numaralı kayıtların tutulduğu ortak defter, onun aynası ve deftere yazan, okuyan, birleştiren araçlar. Defterin kendisi sabit adresiyle kökte durur.",
+      "kapsam": [
+        "kopru.html",
+        "ayna/**",
+        "defter/**"
+      ],
+      "dosyalar": [
+        {
+          "yol": "kopru.html",
+          "tur": "kayit",
+          "ne": "Kanonik ortak defter: kayıtlar değiştirilmez, düzeltme yeni kayıtla gelir. Herkese açık adresi değişmez.",
+          "denetim": "python defter/kopru_ekle.py kopru.html --kontrol"
+        },
+        {
+          "yol": "ayna/kopru.html",
+          "tur": "kayit",
+          "ne": "Defterin dış iskeletsiz aynası; kanonik dosyadan üretilir, elle düzenlenmez.",
+          "uretilir": {
+            "kaynak": "kopru.html",
+            "arac": "defter/kopru_ayna_uret.py"
+          },
+          "denetim": "python defter/kopru_ayna_uret.py kopru.html ayna/kopru.html --kontrol"
+        },
+        {
+          "yol": "defter/kopru_ekle.py",
+          "tur": "arac",
+          "ne": "Deftere kayıt ekler, numarayı verir, yasak desenleri reddeder; --kontrol yalnız denetler.",
+          "eski_adlar": [
+            "kopru_ekle.py"
+          ],
+          "calistir": "python defter/kopru_ekle.py kopru.html --kontrol",
+          "yan_etkisiz": true
+        },
+        {
+          "yol": "defter/kopru_oku.py",
+          "tur": "arac",
+          "ne": "Kayıtları süzerek JSON verir.",
+          "eski_adlar": [
+            "kopru_oku.py"
+          ],
+          "calistir": "python defter/kopru_oku.py kopru.html --acik",
+          "yan_etkisiz": true
+        },
+        {
+          "yol": "defter/kopru_yanitla.py",
+          "tur": "arac",
+          "ne": "Bot: katılımcılara düşen açık kayıtları bulur, ayardaki yolu çağırır, yanıtı ekler ve çağrıyı kayit altına yazar.",
+          "eski_adlar": [
+            "kopru_yanitla.py"
+          ],
+          "calistir": "python defter/kopru_yanitla.py kopru.html --kuru",
+          "yan_etkisiz": false
+        },
+        {
+          "yol": "defter/kopru_birlestir.py",
+          "tur": "arac",
+          "ne": "İki yazarın aynı yere eklediği kayıtları birleştirir: uzak esas, yereldekiler yeni numarayla sona.",
+          "eski_adlar": [
+            "kopru_birlestir.py"
+          ]
+        },
+        {
+          "yol": "defter/kopru_bolum_ekle.py",
+          "tur": "arac",
+          "ne": "Defterin yönlendirme bölümüne alt bölüm ekler ya da aynı kimlikliyi yeniler.",
+          "eski_adlar": [
+            "kopru_bolum_ekle.py"
+          ]
+        },
+        {
+          "yol": "defter/kopru_ayna_uret.py",
+          "tur": "arac",
+          "ne": "Kanonik defterden aynayı üretir; --kontrol eşliği denetler.",
+          "eski_adlar": [
+            "kopru_ayna_uret.py"
+          ],
+          "calistir": "python defter/kopru_ayna_uret.py kopru.html ayna/kopru.html --kontrol",
+          "yan_etkisiz": true
+        },
+        {
+          "yol": "defter/kanit_satiri_guncelle.py",
+          "tur": "arac",
+          "ne": "Yerel kanıt tablosundaki bir satıra 21. kayıttaki durum notunu bir kez ekler; tarihsel tek iş aracı.",
+          "eski_adlar": [
+            "kanit_satiri_guncelle.py"
+          ]
+        }
+      ]
+    },
+    {
+      "kimlik": "kayit",
+      "ad": "Çağrı kayıtları",
+      "yol": "kayit/",
+      "her_dosya_tanimli": false,
+      "ne": "Botun her katılımcı çağrısı için yazdığı tam bağlam: istem, ham yanıt ve sonuç; atlanan çağrıların günlüğü. Bot yazar, elle düzenlenmez.",
+      "kapsam": [
+        "kayit/**"
+      ],
+      "dosyalar": []
+    },
+    {
+      "kimlik": "katilimcilar",
+      "ad": "Katılımcılar",
+      "yol": "katilimcilar/",
+      "her_dosya_tanimli": true,
+      "ne": "Deftere kimin, hangi yoldan ve hangi kurallarla yazdığı: çağrı ayarları, istem şablonları, yanıt biçimi, hedefleme sözleşmesi ve CLI katmanlarının talimat parçası.",
+      "kapsam": [
+        "katilimcilar/**"
+      ],
+      "dosyalar": [
+        {
+          "yol": "katilimcilar/ayarlar.json",
+          "tur": "ayar",
+          "ne": "Bulut otomasyonundaki çağrı yolları: Claude CLI ve yedeği, ChatGPT ve Gemini için API yolları.",
+          "eski_adlar": [
+            "ayarlar.json"
+          ]
+        },
+        {
+          "yol": "katilimcilar/ayarlar-yerel.json",
+          "tur": "ayar",
+          "ne": "Yerel bilgisayardaki CLI katılımcıları ve ortamları; yerel izleyici ve Şaman devri bunu okur.",
+          "eski_adlar": [
+            "ayarlar-yerel.json"
+          ]
+        },
+        {
+          "yol": "katilimcilar/istem-sablonu.md",
+          "tur": "ayar",
+          "ne": "Botun sistem istemi ve kullanıcı iletisi şablonu.",
+          "eski_adlar": [
+            "istem-sablonu.md"
+          ]
+        },
+        {
+          "yol": "katilimcilar/web-istem.md",
+          "tur": "ayar",
+          "ne": "Web asistanlarına defterle birlikte verilecek istem ve JSON yanıt biçimi.",
+          "eski_adlar": [
+            "web-istem.md"
+          ]
+        },
+        {
+          "yol": "katilimcilar/yanit-sablonu.json",
+          "tur": "ayar",
+          "ne": "Web asistanlarının yanıt kalıbı; kayıt ekleyicinin --json girişi bunu okur.",
+          "eski_adlar": [
+            "yanit-sablonu.json"
+          ]
+        },
+        {
+          "yol": "katilimcilar/AGENTS-kopru.md",
+          "tur": "ayar",
+          "ne": "CLI katmanlarının talimat dosyalarına eklenen köprü kuralları parçası.",
+          "eski_adlar": [
+            "AGENTS-kopru.md"
+          ]
+        },
+        {
+          "yol": "katilimcilar/katman-hedefleme.md",
+          "tur": "belge",
+          "ne": "Bir kaydın hangi üreticiye ve role düştüğünü belirleyen hedefleme sözleşmesi.",
+          "eski_adlar": [
+            "KATMAN_HEDEFLEME.md"
+          ],
+          "denetim": "python -m unittest tests.test_katman_hedefleme"
+        }
+      ]
+    },
+    {
+      "kimlik": "yerel",
+      "ad": "Yerel betikler",
+      "yol": "yerel/",
+      "her_dosya_tanimli": true,
+      "ne": "Yerel kullanıcının Windows bilgisayarında çalışan betikler: izleyici, gönderici, ortam kapısı ve Şaman devri başlatıcısı. Hepsi depo kökünde çalışır.",
+      "kapsam": [
+        "yerel/**"
+      ],
+      "dosyalar": [
+        {
+          "yol": "yerel/kopru_yerel.ps1",
+          "tur": "betik",
+          "ne": "Yerel makinenin ortamı ve modları (Hazirlik, Tek, Izle, Ekle, Bolum, Gonder ve ötekiler); Kopru_Izle.cmd bunu çağırır.",
+          "eski_adlar": [
+            "kopru_yerel.ps1"
+          ]
+        },
+        {
+          "yol": "yerel/kopru_izle.ps1",
+          "tur": "betik",
+          "ne": "Makineden bağımsız izleyici: eşitler, botu yerel ayarla çalıştırır, yeni kayıt varsa gönderir.",
+          "eski_adlar": [
+            "kopru_izle.ps1"
+          ],
+          "calistir": "pwsh -File yerel/kopru_izle.ps1 -TekSefer",
+          "yan_etkisiz": false
+        },
+        {
+          "yol": "yerel/kopru_gonder.ps1",
+          "tur": "betik",
+          "ne": "Yerel değişiklikleri denetleyip gönderir; çakışmada defteri birleştirir, aynayı yeniler.",
+          "eski_adlar": [
+            "kopru_gonder.ps1"
+          ],
+          "calistir": "pwsh -File yerel/kopru_gonder.ps1",
+          "yan_etkisiz": false
+        },
+        {
+          "yol": "yerel/saman_devral.py",
+          "tur": "arac",
+          "ne": "Sabit Şaman devir paketini ayrı çalışma ağacında doğrular; --hazirla yalnız hazırlar.",
+          "eski_adlar": [
+            "saman_devral.py"
+          ],
+          "calistir": "python yerel/saman_devral.py --hazirla",
+          "yan_etkisiz": false
+        }
+      ]
+    },
+    {
+      "kimlik": "kod",
+      "ad": "Python paketi",
+      "yol": "src/",
+      "her_dosya_tanimli": false,
+      "ne": "Kapının ve yerel iş bileşeninin çekirdeği: aktarım, GitHub bağdaştırıcısı, iş ve olay kaydı, devir, yedek ve yerel sunucu. Yalnız standart kütüphane kullanır.",
+      "kapsam": [
+        "src/**"
+      ],
+      "dosyalar": []
+    },
+    {
+      "kimlik": "arayuz",
+      "ad": "Yerel arayüz",
+      "yol": "ui/",
+      "her_dosya_tanimli": false,
+      "ne": "Yerel iş bileşeninin bilgisayarda açılan ekranı; yalnız yerel sunucu üzerinden çalışır.",
+      "kapsam": [
+        "ui/**"
+      ],
+      "dosyalar": []
+    },
+    {
+      "kimlik": "windows",
+      "ad": "Windows sürücüsü",
+      "yol": "windows/",
+      "her_dosya_tanimli": false,
+      "ne": "Yerel iş bileşeninin NT aygıt kapısı: sürücü kaynakları, protokol ve derleme gereçleri.",
+      "kapsam": [
+        "windows/**"
+      ],
+      "dosyalar": []
+    },
+    {
+      "kimlik": "belgeler",
+      "ad": "Belgeler: ilk temas ve harita",
+      "yol": "docs/",
+      "her_dosya_tanimli": true,
+      "ne": "İlk kez gelen okuyucunun belgeleri ve bu harita. Teknik ayrıntılar ile geçmiş işler ayrı klasörlerdedir.",
+      "kapsam": [
+        "docs/README.md",
+        "docs/acilis.md",
+        "docs/acilis.json",
+        "docs/web-girisi.md",
+        "docs/harita.md",
+        "docs/harita.json"
+      ],
+      "dosyalar": [
+        {
+          "yol": "docs/README.md",
+          "tur": "belge",
+          "ne": "Belgelerin üç yeri: ilk temas, teknik ayrıntılar ve geçmiş işler.",
+          "kunye": {
+            "sahibi": "Haluk",
+            "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+            "tarih": "2026-10-28",
+            "kaynaklar": [
+              "docs/harita.json"
+            ],
+            "okur": "belgeleri arayan okuyucu"
+          }
+        },
+        {
+          "yol": "docs/acilis.md",
+          "tur": "belge",
+          "ne": "Açılış: niyet ve altı ilke, ilk kez gelen okuyucu için paragraflarla.",
+          "eski_adlar": [
+            "docs/ACILIS.md"
+          ],
+          "uretilir": {
+            "kaynak": "docs/acilis.json",
+            "arac": "tools/acilis.py"
+          },
+          "denetim": "python tools/acilis.py --check",
+          "kunye": {
+            "sahibi": "Haluk",
+            "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+            "tarih": "2026-10-28",
+            "kaynaklar": [
+              "docs/acilis.json"
+            ],
+            "okur": "ilk kez gelen okuyucu"
+          }
+        },
+        {
+          "yol": "docs/acilis.json",
+          "tur": "kayit",
+          "ne": "Açılışın makine kaydı: niyet, tanım, dokuz soru, yirmi kesişim, altı ilke ve sade metinler.",
+          "denetim": "python tools/acilis.py --check",
+          "kunye": {
+            "sahibi": "Haluk",
+            "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+            "tarih": "2026-10-28",
+            "kaynaklar": [
+              "kopru.html"
+            ],
+            "okur": "araçlar ve kaynak gösterecek alanlar"
+          }
+        },
+        {
+          "yol": "docs/web-girisi.md",
+          "tur": "belge",
+          "ne": "Web girişinin kaynak metni; index.html bundan üretilir.",
+          "eski_adlar": [
+            "docs/WEB_GIRISI.md"
+          ]
+        },
+        {
+          "yol": "docs/harita.md",
+          "tur": "belge",
+          "ne": "Bu harita: alanlar, dosyalar, eski adlar ve kurallar.",
+          "uretilir": {
+            "kaynak": "docs/harita.json",
+            "arac": "tools/harita.py"
+          },
+          "denetim": "python tools/harita.py --check",
+          "kunye": {
+            "sahibi": "Haluk",
+            "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+            "tarih": "2026-10-28",
+            "kaynaklar": [
+              "docs/harita.json"
+            ],
+            "okur": "depoda yolunu arayan okuyucu"
+          }
+        },
+        {
+          "yol": "docs/harita.json",
+          "tur": "kayit",
+          "ne": "Haritanın makine kaydı: her dosyanın alanı, türü, eski adları ve künyesi.",
+          "denetim": "python tools/harita.py --check",
+          "kunye": {
+            "sahibi": "Haluk",
+            "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+            "tarih": "2026-10-28",
+            "kaynaklar": [
+              "README.md"
+            ],
+            "okur": "araçlar ve depoyu temel alacak alanlar"
+          }
+        }
+      ]
+    },
+    {
+      "kimlik": "teknik",
+      "ad": "Teknik ayrıntılar",
+      "yol": "docs/teknik/",
+      "her_dosya_tanimli": true,
+      "ne": "Araçlar, kurulum, doğrulama, otomasyon ve kararlar. Açılışı anlamak için okunması gerekmez.",
+      "kapsam": [
+        "docs/teknik/**"
+      ],
+      "dosyalar": [
+        {
+          "yol": "docs/teknik/README.md",
+          "tur": "belge",
+          "ne": "Teknik ayrıntıların dizini ve eski README'nin teknik bölümleri.",
+          "eski_adlar": [
+            "docs/TEKNIK.md"
+          ],
+          "kunye": {
+            "sahibi": "Haluk",
+            "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+            "tarih": "2026-10-28",
+            "kaynaklar": [
+              "docs/harita.json"
+            ],
+            "okur": "kurulum ya da katkı için gelen okuyucu"
+          }
+        },
+        {
+          "yol": "docs/teknik/acilis-teknik.md",
+          "tur": "belge",
+          "ne": "Açılışın teknik eki: tanımın tam hâli, beşli ve dörtlü, yirmi kesişim, ilkelerin taşıyıcıları.",
+          "eski_adlar": [
+            "docs/ACILIS_TEKNIK.md"
+          ],
+          "uretilir": {
+            "kaynak": "docs/acilis.json",
+            "arac": "tools/acilis.py"
+          },
+          "denetim": "python tools/acilis.py --check",
+          "kunye": {
+            "sahibi": "Haluk",
+            "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+            "tarih": "2026-10-28",
+            "kaynaklar": [
+              "docs/acilis.json"
+            ],
+            "okur": "açılışın dayanağını arayan okuyucu"
+          }
+        },
+        {
+          "yol": "docs/teknik/kapi-kullanimi.md",
+          "tur": "belge",
+          "ne": "Kapının komutları, örnekleri, sınırları ve kurtarma davranışı.",
+          "eski_adlar": [
+            "docs/KAPI_KULLANIMI.md"
+          ]
+        },
+        {
+          "yol": "docs/teknik/dis-alan-kapisi.md",
+          "tur": "belge",
+          "ne": "Kapının kapsamı: yerel çalışma ile dış alanlar arasında paylaşım ve tedarik.",
+          "eski_adlar": [
+            "docs/DIS_ALAN_KAPISI.md"
+          ]
+        },
+        {
+          "yol": "docs/teknik/deus-ex-machina.md",
+          "tur": "belge",
+          "ne": "Yerel iş bileşeni: iş, söz, kaynak, sonuç ve doğrulama.",
+          "eski_adlar": [
+            "docs/DEUS_EX_MACHINA.md"
+          ]
+        },
+        {
+          "yol": "docs/teknik/devam-ve-yedek.md",
+          "tur": "belge",
+          "ne": "Yerel iş bileşeninde devir, yedek ve geri yükleme.",
+          "eski_adlar": [
+            "docs/DEVAM_VE_YEDEK.md"
+          ]
+        },
+        {
+          "yol": "docs/teknik/nt-kernel.md",
+          "tur": "belge",
+          "ne": "NT aygıt kapısının sınırları ve doğrulama ölçütleri.",
+          "eski_adlar": [
+            "docs/NT_KERNEL.md"
+          ]
+        },
+        {
+          "yol": "docs/teknik/bakim.md",
+          "tur": "belge",
+          "ne": "Bakım rehberi: tek komutlu doğrulama, kontroller, iş akışları ve dal haritası.",
+          "eski_adlar": [
+            "docs/BAKIM.md"
+          ]
+        },
+        {
+          "yol": "docs/teknik/depo-rehberi.md",
+          "tur": "belge",
+          "ne": "Depodaki alanların ve tarihsel dalların okuma rehberi.",
+          "eski_adlar": [
+            "docs/DEPO_REHBERI.md"
+          ]
+        },
+        {
+          "yol": "docs/teknik/kararlar/0001-deus-is-ve-nt.md",
+          "tur": "belge",
+          "ne": "Karar 0001: yerel iş bileşeni ve NT aygıtı.",
+          "eski_adlar": [
+            "docs/kararlar/0001-deus-is-ve-nt.md"
+          ]
+        },
+        {
+          "yol": "docs/teknik/kararlar/0002-dis-alan-kapisi.md",
+          "tur": "belge",
+          "ne": "Karar 0002: işten bağımsız dış alan kapısı.",
+          "eski_adlar": [
+            "docs/kararlar/0002-dis-alan-kapisi.md"
+          ]
+        }
+      ]
+    },
+    {
+      "kimlik": "gecmis",
+      "ad": "Geçmiş işler",
+      "yol": "docs/gecmis/",
+      "her_dosya_tanimli": true,
+      "ne": "Bugüne kadar yapılan işlerin anlatıları ve kayıtları. Her biri kendi tarihine aittir; burada durması bugün de geçerli olduğu anlamına gelmez.",
+      "kapsam": [
+        "docs/gecmis/**"
+      ],
+      "dosyalar": [
+        {
+          "yol": "docs/gecmis/README.md",
+          "tur": "belge",
+          "ne": "Geçmiş işlerin dizini, açılışa giden yol ve değişiklik geçmişi.",
+          "eski_adlar": [
+            "docs/GECMIS.md"
+          ],
+          "kunye": {
+            "sahibi": "Haluk",
+            "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+            "tarih": "2026-10-28",
+            "kaynaklar": [
+              "docs/gecmis/rafine/claude-code-bulut-2026-10-28-surec.md"
+            ],
+            "okur": "geçmişi arayan okuyucu"
+          }
+        },
+        {
+          "yol": "docs/gecmis/ortak-mimari-defteri.md",
+          "tur": "belge",
+          "ne": "33×8 döngüler ile serbest dışavurumun birlikte çalışma biçimi.",
+          "eski_adlar": [
+            "docs/ORTAK_MIMARI_DEFTERI.md"
+          ]
+        },
+        {
+          "yol": "docs/gecmis/anlam-not-defteri.md",
+          "tur": "belge",
+          "ne": "Ortak çalışmanın aktarılabilir anlamı ve kavramları.",
+          "eski_adlar": [
+            "docs/ANLAM_NOT_DEFTERI.md"
+          ]
+        },
+        {
+          "yol": "docs/gecmis/son-durum.md",
+          "tur": "belge",
+          "ne": "Tamamlanan iş, o günkü durum ve açık kalanlar.",
+          "eski_adlar": [
+            "docs/SON_DURUM.md"
+          ]
+        },
+        {
+          "yol": "docs/gecmis/kaynaklar.md",
+          "tur": "belge",
+          "ne": "Anlatıdan özgün kayda ve korunmuş kaynak sürümüne dönüş yolları.",
+          "eski_adlar": [
+            "docs/KAYNAKLAR.md"
+          ]
+        },
+        {
+          "yol": "docs/gecmis/depo-tanimi.md",
+          "tur": "belge",
+          "ne": "28 Ekim sabahı dokuz koordinatla yazılmış depo tanımı.",
+          "eski_adlar": [
+            "docs/DEPO_TANIMI.md"
+          ]
+        },
+        {
+          "yol": "docs/gecmis/depo-tanimi.json",
+          "tur": "kayit",
+          "ne": "Depo tanımının makine kaydı ve ölçümleri.",
+          "eski_adlar": [
+            "docs/depo-tanimi.json"
+          ],
+          "denetim": "python tools/depo_tanimi.py --check"
+        },
+        {
+          "yol": "docs/gecmis/simdi-ve-sonrasi.md",
+          "tur": "belge",
+          "ne": "Dokuz soru iki zamanda: o günkü ana dal ve rafine sonrası senaryolar.",
+          "eski_adlar": [
+            "docs/SIMDI_VE_SONRASI.md"
+          ]
+        },
+        {
+          "yol": "docs/gecmis/simdi-ve-sonrasi.json",
+          "tur": "kayit",
+          "ne": "Şimdi ve sonrası kaydı: varyantlar, birleşimler, ön koşullu senaryolar.",
+          "eski_adlar": [
+            "docs/rafine-sorulari.json"
+          ],
+          "denetim": "python tools/simdi_ve_sonrasi.py --check"
+        },
+        {
+          "yol": "docs/gecmis/rafine/README.md",
+          "tur": "belge",
+          "ne": "28 Ekim gözden geçirmesinin kayıt dizini.",
+          "eski_adlar": [
+            "docs/rafine/README.md"
+          ]
+        },
+        {
+          "yol": "docs/gecmis/rafine/rafine-defteri.md",
+          "tur": "belge",
+          "ne": "Gözden geçirmenin anlatısı: ne bulundu, ne düzeltildi, ne açık kaldı.",
+          "eski_adlar": [
+            "docs/RAFINE_DEFTERI.md"
+          ]
+        },
+        {
+          "yol": "docs/gecmis/rafine/claude-code-bulut-2026-10-28-surec.md",
+          "tur": "belge",
+          "ne": "Oturumun saat saat süreç arşivi.",
+          "eski_adlar": [
+            "docs/rafine/claude-code-bulut-2026-10-28-surec.md"
+          ]
+        },
+        {
+          "yol": "docs/gecmis/rafine/claude-code-bulut-2026-10-28-bulgular.json",
+          "tur": "kayit",
+          "ne": "Bulgu kayıtları: kimlik, kanıt, çözüm durumu.",
+          "eski_adlar": [
+            "docs/rafine/claude-code-bulut-2026-10-28-bulgular.json"
+          ],
+          "denetim": "python -m unittest tests.test_semalar"
+        },
+        {
+          "yol": "docs/gecmis/parcalar/bolum-guncel-2026-10-24.html",
+          "tur": "arsiv",
+          "ne": "24 Ekim arşivinin defter bölümü parçası.",
+          "eski_adlar": [
+            "bolum-guncel-2026-10-24.html"
+          ]
+        },
+        {
+          "yol": "docs/gecmis/parcalar/davet-copilot.json",
+          "tur": "arsiv",
+          "ne": "Copilot katmanı için açılış kaydı taslağı.",
+          "eski_adlar": [
+            "davet-copilot.json"
+          ]
+        },
+        {
+          "yol": "docs/gecmis/parcalar/isemri-arg0.json",
+          "tur": "arsiv",
+          "ne": "Codex arg0 uyarısı için iş emri taslağı.",
+          "eski_adlar": [
+            "isemri-arg0.json"
+          ]
+        },
+        {
+          "yol": "docs/gecmis/parcalar/bulgu-arg0-claude.json",
+          "tur": "arsiv",
+          "ne": "Aynı konuda Claude'un ilk bulgu taslağı.",
+          "eski_adlar": [
+            "bulgu-arg0-claude.json"
+          ]
+        }
+      ]
+    },
+    {
+      "kimlik": "sozlesmeler",
+      "ad": "Sözleşmeler",
+      "yol": "schemas/",
+      "her_dosya_tanimli": true,
+      "ne": "Makine kayıtlarının JSON Schema sözleşmeleri; araçlar ve testler kayıtları bunlara karşı doğrular.",
+      "kapsam": [
+        "schemas/**"
+      ],
+      "dosyalar": [
+        {
+          "yol": "schemas/acilis.schema.json",
+          "tur": "sozlesme",
+          "ne": "Açılış kaydı.",
+          "denetim": "python tools/sema_denetle.py"
+        },
+        {
+          "yol": "schemas/depo-tanimi.schema.json",
+          "tur": "sozlesme",
+          "ne": "Dokuz koordinatlı depo tanımı.",
+          "denetim": "python tools/sema_denetle.py"
+        },
+        {
+          "yol": "schemas/simdi-ve-sonrasi.schema.json",
+          "tur": "sozlesme",
+          "ne": "Şimdi ve sonrası kaydı.",
+          "eski_adlar": [
+            "schemas/rafine-sorulari.schema.json"
+          ],
+          "denetim": "python tools/sema_denetle.py"
+        },
+        {
+          "yol": "schemas/rafine-bulgu.schema.json",
+          "tur": "sozlesme",
+          "ne": "Gözden geçirme bulguları.",
+          "denetim": "python tools/sema_denetle.py"
+        },
+        {
+          "yol": "schemas/harita.schema.json",
+          "tur": "sozlesme",
+          "ne": "Depo haritası.",
+          "denetim": "python tools/sema_denetle.py"
+        },
+        {
+          "yol": "schemas/exchange-manifest.schema.json",
+          "tur": "sozlesme",
+          "ne": "Kapı aktarım paketi.",
+          "denetim": "python tools/sema_denetle.py"
+        },
+        {
+          "yol": "schemas/deus-task.schema.json",
+          "tur": "sozlesme",
+          "ne": "Yerel iş kaydı.",
+          "denetim": "python tools/sema_denetle.py"
+        },
+        {
+          "yol": "schemas/deus-event.schema.json",
+          "tur": "sozlesme",
+          "ne": "Yerel iş olayı.",
+          "denetim": "python tools/sema_denetle.py"
+        },
+        {
+          "yol": "schemas/deus-checks.schema.json",
+          "tur": "sozlesme",
+          "ne": "Yerel iş ölçüt denetimi.",
+          "denetim": "python tools/sema_denetle.py"
+        },
+        {
+          "yol": "schemas/deus-handoff.schema.json",
+          "tur": "sozlesme",
+          "ne": "Yerel iş devri.",
+          "denetim": "python tools/sema_denetle.py"
+        },
+        {
+          "yol": "schemas/deus-assign-request.schema.json",
+          "tur": "sozlesme",
+          "ne": "Yerel iş atama isteği.",
+          "denetim": "python tools/sema_denetle.py"
+        }
+      ]
+    },
+    {
+      "kimlik": "araclar",
+      "ad": "Bakım araçları",
+      "yol": "tools/",
+      "her_dosya_tanimli": true,
+      "ne": "Deponun kendini denetleyen ve üreten araçları. Hepsi çevrimdışı, yalnız standart kütüphaneyle çalışır; tek komut hepsini sırayla koşar.",
+      "kapsam": [
+        "tools/**"
+      ],
+      "dosyalar": [
+        {
+          "yol": "tools/dogrula.py",
+          "tur": "arac",
+          "ne": "Bütün çevrimdışı kontrolleri CI ile aynı sırayla tek komutta koşar.",
+          "calistir": "python tools/dogrula.py",
+          "yan_etkisiz": false
+        },
+        {
+          "yol": "tools/depo_kontrol.py",
+          "tur": "arac",
+          "ne": "Python ve JSON sözdizimi, kayıt bağları, sayaç, ayna ve imza denetimi.",
+          "calistir": "python tools/depo_kontrol.py",
+          "yan_etkisiz": true
+        },
+        {
+          "yol": "tools/sema_denetle.py",
+          "tur": "arac",
+          "ne": "Sözleşmelerin desteklenen JSON Schema alt kümesinde kaldığını denetler; tek veriyi doğrular.",
+          "calistir": "python tools/sema_denetle.py",
+          "yan_etkisiz": true
+        },
+        {
+          "yol": "tools/okuma_yayini_uret.py",
+          "tur": "arac",
+          "ne": "Web kapısı sayfalarını docs altındaki kaynaklardan üretir; --check sapmayı denetler.",
+          "calistir": "python tools/okuma_yayini_uret.py --check",
+          "yan_etkisiz": true
+        },
+        {
+          "yol": "tools/acilis.py",
+          "tur": "arac",
+          "ne": "Açılış kaydını denetler; README, Web girişi, açılış ve teknik ek bloklarını üretir; yapı ve okunabilirlik denetimi.",
+          "calistir": "python tools/acilis.py --check",
+          "yan_etkisiz": true
+        },
+        {
+          "yol": "tools/harita.py",
+          "tur": "arac",
+          "ne": "Haritayı denetler: her dosya tek alanda, eski adlar, künyeler, komutlar; harita belgesini üretir.",
+          "calistir": "python tools/harita.py --check",
+          "yan_etkisiz": true
+        },
+        {
+          "yol": "tools/depo_tanimi.py",
+          "tur": "arac",
+          "ne": "Depo tanımının ölçümlerini depodan üretir ve denetler.",
+          "calistir": "python tools/depo_tanimi.py --check",
+          "yan_etkisiz": true
+        },
+        {
+          "yol": "tools/simdi_ve_sonrasi.py",
+          "tur": "arac",
+          "ne": "Şimdi ve sonrası kaydını denetler; senaryo sırasını ve ölçümleri verir.",
+          "eski_adlar": [
+            "tools/rafine_sorulari.py"
+          ],
+          "calistir": "python tools/simdi_ve_sonrasi.py --check",
+          "yan_etkisiz": true
+        }
+      ]
+    },
+    {
+      "kimlik": "testler",
+      "ad": "Testler",
+      "yol": "tests/",
+      "her_dosya_tanimli": false,
+      "ne": "Regresyon testleri; geçici depolar ve sahte komutlarla çalışır, gerçek sağlayıcı çağırmaz.",
+      "kapsam": [
+        "tests/**"
+      ],
+      "dosyalar": [
+        {
+          "yol": "tests/test_saman_devral.py",
+          "tur": "test",
+          "ne": "Şaman devri başlatıcısının geçici Git depolarıyla sınamaları.",
+          "eski_adlar": [
+            "test_saman_devral.py"
+          ]
+        },
+        {
+          "yol": "tests/test_simdi_ve_sonrasi.py",
+          "tur": "test",
+          "ne": "Şimdi ve sonrası kaydının denetim ve hesap sınamaları.",
+          "eski_adlar": [
+            "tests/test_rafine_sorulari.py"
+          ]
+        }
+      ]
+    },
+    {
+      "kimlik": "otomasyon",
+      "ad": "Otomasyon",
+      "yol": ".github/",
+      "her_dosya_tanimli": true,
+      "ne": "GitHub üzerinde çalışan iş akışları, gönderim betiği ve PR şablonu.",
+      "kapsam": [
+        ".github/**"
+      ],
+      "dosyalar": [
+        {
+          "yol": ".github/workflows/dogrulama.yml",
+          "tur": "ayar",
+          "ne": "PR ve ana dal için Linux ve Windows'ta tek komutlu doğrulama; yazma yetkisi yok."
+        },
+        {
+          "yol": ".github/workflows/kopru.yml",
+          "tur": "ayar",
+          "ne": "Defter değişince, saatte bir ve elle botu çalıştırır; yanıtları gönderir."
+        },
+        {
+          "yol": ".github/workflows/deus-nt.yml",
+          "tur": "ayar",
+          "ne": "NT sürücüsünü Windows'ta derler; imzalamaz, yüklemez."
+        },
+        {
+          "yol": ".github/scripts/kopru_gonder.sh",
+          "tur": "betik",
+          "ne": "Otomasyonun gönderim betiği: yalnız defteri, aynayı ve çağrı kayıtlarını gönderir."
+        },
+        {
+          "yol": ".github/pull_request_template.md",
+          "tur": "belge",
+          "ne": "PR açıklaması şablonu."
+        }
+      ]
+    }
+  ]
+}

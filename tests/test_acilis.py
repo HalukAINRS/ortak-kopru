@@ -38,7 +38,7 @@ class AcilisTests(unittest.TestCase):
         soz = self.veri["niyet"]["soz"]
         self.assertTrue(soz.startswith("Bu GitHub Reposu'nun Niyeti = Dış Dünya (Web) ile Yerel (Bilgisayarım)"))
         self.assertEqual(self.veri["niyet"]["sahibi"], "Haluk")
-        for yol in (ROOT / "README.md", ROOT / "docs" / "WEB_GIRISI.md", ROOT / "docs" / "ACILIS.md"):
+        for yol in (ROOT / "README.md", ROOT / "docs" / "web-girisi.md", ROOT / "docs" / "acilis.md"):
             with self.subTest(yuz=yol.name):
                 self.assertIn(soz, yol.read_text(encoding="utf-8"))
         self.assertIn("28 Ekim 2026", acilis.readme_blogu(self.veri))
@@ -93,18 +93,19 @@ class AcilisTests(unittest.TestCase):
     def test_faces_drift_is_detected_and_regenerated(self):
         uretilen = acilis.bloklar(self.veri)[ROOT / "README.md"]
         metin = (ROOT / "README.md").read_text(encoding="utf-8")
-        bozuk = metin.replace("**Karşılıklılık.**", "**Karşılıklılk.**", 1)
+        bozuk = metin.replace("## 1. Karşılıklılık", "## 1. Karşılıklılk", 1)
         self.assertIn("README.md: 'acilis' bloğu açılış kaydıyla uyumsuz", acilis.belge_denetle("README.md", bozuk, uretilen))
         self.assertEqual(acilis.belge_guncelle(bozuk, uretilen), metin)
         eksik = metin.replace("<!-- uretilen:acilis -->", "", 1)
         self.assertIn("README.md: 'acilis' bloğunun işaretleri yok", acilis.belge_denetle("README.md", eksik, uretilen))
 
     def test_web_block_stays_inside_the_reader_subset_and_hides_markers(self):
-        uretilen = acilis.bloklar(self.veri)[ROOT / "docs" / "WEB_GIRISI.md"]["acilis"]
-        govde, _ = okuma_yayini_uret.render("<!-- uretilen:acilis -->\n" + uretilen + "<!-- /uretilen:acilis -->\n")
+        uretilen = acilis.bloklar(self.veri)[ROOT / "docs" / "web-girisi.md"]["acilis"]
+        govde, basliklar = okuma_yayini_uret.render("<!-- uretilen:acilis -->\n" + uretilen + "<!-- /uretilen:acilis -->\n")
         self.assertNotIn("&lt;!--", govde)
-        self.assertEqual(govde.count("<li>"), 6)
-        self.assertIn("<strong>Niyet</strong>", govde)
+        self.assertNotIn("<li>", govde)
+        self.assertEqual([baslik for _, baslik in basliklar], acilis.basliklar(self.veri))
+        self.assertIn('<a href="acilis.html">', govde)
 
     def test_matrix_has_five_rows_and_four_columns(self):
         satirlar = acilis.matris(self.veri).strip().splitlines()
@@ -113,7 +114,7 @@ class AcilisTests(unittest.TestCase):
 
     def test_first_contact_pages_pass_the_readability_check(self):
         self.assertEqual(acilis.okunabilirlik_denetle(self.veri), [])
-        acilis_metni = (ROOT / "docs" / "ACILIS.md").read_text(encoding="utf-8")
+        acilis_metni = (ROOT / "docs" / "acilis.md").read_text(encoding="utf-8")
         for yasak in ("`", "R-17", "S09", ".py", ".json"):
             with self.subTest(yasak=yasak):
                 self.assertNotIn(yasak, acilis_metni)
@@ -150,27 +151,66 @@ class AcilisTests(unittest.TestCase):
 
     def test_opening_must_point_to_technical_and_history_pages(self):
         terimler = [madde["terim"] for madde in self.veri["sozluk"]]
-        metin = "Bu yer bir kapıdır. Teknik konular [teknik ayrıntılar](TEKNIK.md) sayfasında."
+        metin = "Bu yer bir kapıdır. Teknik konular [teknik ayrıntılar](teknik/README.md) bölümünde."
         hatalar = acilis.okunabilirlik("örnek", metin, terimler, ayrim_bagi=True)
-        self.assertEqual(hatalar, ["örnek: geçmiş işler sayfasına (GECMIS.md) bağlantı yok"])
-        metin += " Eski işler [geçmiş işler](docs/GECMIS.md) sayfasında."
+        self.assertEqual(hatalar, ["örnek: geçmiş işler yerine (gecmis/) bağlantı yok"])
+        metin += " Eski işler [geçmiş işler](docs/gecmis/) bölümünde."
         self.assertEqual(acilis.okunabilirlik("örnek", metin, terimler, ayrim_bagi=True), [])
-        for sayfa in ("TEKNIK.md", "GECMIS.md"):
-            with self.subTest(sayfa=sayfa):
-                self.assertTrue((ROOT / "docs" / sayfa).is_file())
+        for yer in ("teknik", "gecmis"):
+            with self.subTest(yer=yer):
+                self.assertTrue((ROOT / "docs" / yer / "README.md").is_file())
 
     def test_readme_moves_technical_and_historical_sections_out(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         basliklar = [satir[3:] for satir in readme.splitlines() if satir.startswith("## ")]
-        self.assertEqual(basliklar, ["Buradan başlayın"])
-        teknik = (ROOT / "docs" / "TEKNIK.md").read_text(encoding="utf-8")
-        gecmis = (ROOT / "docs" / "GECMIS.md").read_text(encoding="utf-8")
-        for baslik in ("## Köprü dosyaları", "## Yerleştirme", "## Otomasyon", "## Bakım ve doğrulama"):
+        self.assertEqual(basliklar, acilis.basliklar(self.veri) + ["Buradan başlayın"])
+        teknik = (ROOT / "docs" / "teknik" / "README.md").read_text(encoding="utf-8")
+        gecmis = (ROOT / "docs" / "gecmis" / "README.md").read_text(encoding="utf-8")
+        for baslik in ("## Yerleştirme", "## Otomasyon", "## Bakım ve doğrulama"):
             with self.subTest(teknik=baslik):
                 self.assertIn(baslik, teknik)
         for baslik in ("## Açılışa giden yol", "## Değişiklik geçmişi", "## deus_ex_machina ve Şaman devri"):
             with self.subTest(gecmis=baslik):
                 self.assertIn(baslik, gecmis)
+
+    def test_opening_is_intent_then_six_principles_in_paragraphs(self):
+        metin = (ROOT / "docs" / "acilis.md").read_text(encoding="utf-8")
+        beklenen = acilis.basliklar(self.veri)
+        self.assertEqual(beklenen[0], "Niyet")
+        self.assertEqual(beklenen[1:], [f"{i['no']}. {i['ad']}" for i in self.veri["ilkeler"]])
+        self.assertEqual([satir[3:] for satir in metin.splitlines() if satir.startswith("## ")], beklenen)
+        self.assertEqual(acilis.yapi("acilis.md", metin, beklenen), [])
+        bloklar = [b for b in metin.split("\n\n") if b.strip() and not b.startswith(("#", "<!--"))]
+        self.assertGreaterEqual(len(bloklar), 30)
+        for bozulma, beklenen_hata in (("- madde", "liste"), ("1. madde", "numaralı liste"), ("| a | b |", "tablo"),
+                                       ("> alıntı", "alıntı bloğu"), ("### Alt", "alt başlık")):
+            with self.subTest(bozulma=bozulma):
+                hatalar = acilis.yapi("x", metin.replace("## Niyet\n", "## Niyet\n\n" + bozulma + "\n", 1), beklenen)
+                self.assertTrue(any(beklenen_hata in h for h in hatalar), hatalar)
+        sirasiz = metin.replace("## 1. Karşılıklılık", "## 1. Gecici").replace("## 2. Yerel merkez", "## 1. Karşılıklılık")
+        self.assertTrue(any("başlık sırası" in h for h in acilis.yapi("x", sirasiz, beklenen)))
+
+    def test_each_plain_answer_appears_once_under_intent_or_its_principle(self):
+        metin = (ROOT / "docs" / "acilis.md").read_text(encoding="utf-8")
+        for kok, soru in self.veri["sorular"].items():
+            with self.subTest(kok=kok):
+                self.assertEqual(metin.count(f"**{soru['soru']}** {soru['sade']}"), 1)
+        bozuk = copy.deepcopy(self.veri)
+        bozuk["ilkeler"][0]["sade_sorular"].append("nerede")
+        hatalar = self.denetle(bozuk)
+        self.assertIn("ilkeler[1].sade_sorular: 'nerede' bu ilkenin bağladığı sorular arasında değil", hatalar)
+        self.assertIn("acilis_belgesi: 'nerede' sorusunun sade yanıtı 2 kez yer alıyor (tam bir kez olmalı)", hatalar)
+        bozuk = copy.deepcopy(self.veri)
+        bozuk["acilis_belgesi"]["niyet"]["sorular"].remove("neden")
+        self.assertIn("acilis_belgesi: 'neden' sorusunun sade yanıtı 0 kez yer alıyor (tam bir kez olmalı)", self.denetle(bozuk))
+
+    def test_glossary_explains_only_the_words_on_the_page(self):
+        metin = acilis.acilis_belgesi(self.veri)
+        sozluk = next(b for b in metin.split("\n\n") if b.startswith("Bu sayfada geçen birkaç kelime:"))
+        self.assertIn("**GitHub:**", sozluk)
+        self.assertIn("**Issue:**", sozluk)
+        self.assertNotIn("**Pull request:**", sozluk)
+        self.assertLess(metin.index(sozluk), metin.index("## 1. "))
 
     def test_command_line_check(self):
         sonuc = subprocess.run([sys.executable, str(ROOT / "tools/acilis.py"), "--check"],

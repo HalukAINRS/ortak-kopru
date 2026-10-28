@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deponun açılışını (docs/acilis.json) denetler ve dört yüzdeki açılış bloklarını ondan üretir.
+"""Deponun açılışını (docs/acilis.json) denetler ve dört yüzdeki açılış metnini ondan üretir.
 
 Açılış; kullanıcının niyet sözünü, bu niyetten kurulan tanımı, dokuz soruyu ve altı ana
 ilkeyi taşır. Sorular iki gruptadır: kapının kendisini tanımlayan beşli (ne, nerede, nasıl,
@@ -13,12 +13,16 @@ Denetim:
     bağlaması, ilkelerin birlikte dokuz soruyu kapsaması;
   - "uygulanıyor" olmayan ilkenin eksiğini yazması; dayanak yollarının depoda bulunması;
     bağlı bulguların rafine kayıtlarında açık, bağlı senaryoların senaryo kaydında var olması;
-  - README.md, docs/WEB_GIRISI.md, docs/ACILIS.md ve docs/ACILIS_TEKNIK.md içindeki üretilen blokların
-    kayıtla eşliği;
-  - okunabilirlik: docs/ACILIS.md, README.md ve Web açılışı ilk kez gelen okuyucu içindir; kod
+  - dokuz sorunun sade yanıtının açılış belgesinde tam bir kez yer alması ('Niyet' bölümünde ya da
+    yanıtı bağlayan ilkenin bölümünde);
+  - README.md, docs/web-girisi.md, docs/acilis.md ve docs/teknik/acilis-teknik.md içindeki üretilen
+    blokların kayıtla eşliği;
+  - yapı: açılış metni önce 'Niyet', sonra sırayla altı ilkenin başlığını taşır; liste, tablo ya da
+    alıntı bloğu taşımaz, paragraflardan oluşur (docs/acilis.md, README ve Web açılışı);
+  - okunabilirlik: docs/acilis.md, README.md ve Web açılışı ilk kez gelen okuyucu içindir; kod
     biçimi, dosya adı, commit ya da iç kimlik taşımaz, sözlükte açıklanmayan teknik terim kullanmaz,
-    cümleleri kısadır; açılış belgesi ve README teknik ayrıntılara (docs/TEKNIK.md) ve geçmiş
-    işlere (docs/GECMIS.md) ayrı sayfalardan bağlanır.
+    cümleleri kısadır; açılış belgesi ve README teknik ayrıntılara (docs/teknik/) ve geçmiş işlere
+    (docs/gecmis/) ayrı yerlerden bağlanır.
 
 Kullanım:
     python tools/acilis.py            # blokları kayıttan yaz ve denetle
@@ -57,14 +61,14 @@ def _hucre(metin: str) -> str:
 
 def _rafine_bulgulari() -> dict[str, str]:
     sonuc = {}
-    for yol in sorted((KOK / "docs" / "rafine").glob("*.json")):
+    for yol in sorted((KOK / "docs" / "gecmis" / "rafine").glob("*.json")):
         for bulgu in json.loads(yol.read_text(encoding="utf-8"))["findings"]:
             sonuc[bulgu["id"]] = bulgu["resolution"]
     return sonuc
 
 
 def _senaryolar() -> set[str]:
-    yol = KOK / "docs" / "rafine-sorulari.json"
+    yol = KOK / "docs" / "gecmis" / "simdi-ve-sonrasi.json"
     if not yol.is_file():
         return set()
     return {senaryo["id"] for senaryo in json.loads(yol.read_text(encoding="utf-8"))["sonra"]["senaryolar"]}
@@ -113,6 +117,16 @@ def denetle(veri: dict, bulgular: dict[str, str] | None = None, senaryolar: set[
                 hatalar.append(f"{konum}.senaryolar: senaryo kaydında yok {senaryo}")
     for kok in [k for k in BESLI + DORTLU if k not in kapsanan]:
         hatalar.append(f"ilkeler: '{kok}' hiçbir ilkede geçmiyor")
+    # Açılış belgesinde her sorunun sade yanıtı tam bir kez: 'Niyet' bölümünde ya da onu bağlayan ilkede.
+    yanitlanan = list(veri["acilis_belgesi"]["niyet"]["sorular"])
+    for ilke in ilkeler:
+        for kok in ilke["sade_sorular"]:
+            if kok not in ilke["sorular"]:
+                hatalar.append(f"ilkeler[{ilke['no']}].sade_sorular: '{kok}' bu ilkenin bağladığı sorular arasında değil")
+        yanitlanan += ilke["sade_sorular"]
+    for kok in BESLI + DORTLU:
+        if yanitlanan.count(kok) != 1:
+            hatalar.append(f"acilis_belgesi: '{kok}' sorusunun sade yanıtı {yanitlanan.count(kok)} kez yer alıyor (tam bir kez olmalı)")
     return hatalar
 
 
@@ -128,58 +142,70 @@ SADE_DURUM = {"uygulanıyor": "işliyor", "kısmen": "kısmen işliyor", "henüz
 SAYI = {0: "hiçbiri", 1: "biri", 2: "ikisi", 3: "üçü", 4: "dördü", 5: "beşi", 6: "altısı"}
 
 
-def readme_blogu(veri: dict) -> str:
-    satirlar = [f"> **Niyet** ({veri['niyet']['sahibi']}, {_tarih(veri)}): “{veri['niyet']['soz']}”", "",
-                veri["sade_tanim"], "", "**Altı ilke**", ""]
+def _baslik(ilke: dict) -> str:
+    return f"{ilke['no']}. {ilke['ad']}"
+
+
+def basliklar(veri: dict) -> list[str]:
+    """Açılışın başlık sırası: önce 'Niyet', sonra sırayla altı ilke."""
+    return ["Niyet"] + [_baslik(ilke) for ilke in veri["ilkeler"]]
+
+
+def _soru_paragrafi(veri: dict, kok: str) -> str:
+    return f"**{veri['sorular'][kok]['soru']}** {veri['sorular'][kok]['sade']}"
+
+
+def _kucuk(metin: str) -> str:
+    return metin.replace("İ", "i").replace("I", "ı").lower()
+
+
+def _durum_ozeti(veri: dict) -> str:
+    durumlar = [ilke["durum"] for ilke in veri["ilkeler"]]
+    tam, kismen, yok = durumlar.count("uygulanıyor"), durumlar.count("kısmen"), durumlar.count("henüz yok")
+    cumle = f"Bu niyet altı ilkeyle işler. Bugün altısının {SAYI[tam]} tam olarak işliyor, {SAYI[kismen]} kısmen işliyor"
+    cumle += f", {SAYI[yok]} henüz yok." if yok else "."
+    return cumle + " Her ilke aşağıda kendi başlığında anlatılıyor."
+
+
+def _kisa_acilis(veri: dict, acilis_yolu: str) -> str:
+    """README ve Web girişi için aynı iskelet: 'Niyet', sonra altı ilke; her biri birer paragraf."""
+    parcalar = [f"Bu bölüm açılışın kısa hâlidir. İlk kez geliyorsanız uzun ve sade anlatım [açılış sayfasındadır]({acilis_yolu}).",
+                "## Niyet",
+                f"{veri['niyet']['sahibi']}, {_tarih(veri)}: **“{veri['niyet']['soz']}”**",
+                veri["sade_tanim"]]
     for ilke in veri["ilkeler"]:
-        satirlar.append(f"{ilke['no']}. **{ilke['ad']}.** {ilke['ilke']} Bugün {SADE_DURUM[ilke['durum']]}.")
-    satirlar += ["", "İlk kez geliyorsanız, önceden bir şey bilmeden okuyabileceğiniz anlatım: "
-                     "[Açılış: Kapı ve Köprü](docs/ACILIS.md).", ""]
-    return "\n".join(satirlar)
+        parcalar += [f"## {_baslik(ilke)}",
+                     f"**{ilke['ilke']}** {ilke['sade']} Bugün {SADE_DURUM[ilke['durum']]}."]
+    return "\n\n".join(parcalar) + "\n"
+
+
+def readme_blogu(veri: dict) -> str:
+    return _kisa_acilis(veri, "docs/acilis.md")
 
 
 def web_blogu(veri: dict) -> str:
-    satirlar = [f"**Niyet** ({veri['niyet']['sahibi']}, {_tarih(veri)}): “{veri['niyet']['soz']}”", "",
-                veri["sade_tanim"], ""]
+    return _kisa_acilis(veri, "acilis.md")
+
+
+def acilis_belgesi(veri: dict) -> str:
+    """docs/acilis.md'nin bütün gövdesi: giriş, 'Niyet' ve altı ilke; yalnız paragraf."""
+    belge = veri["acilis_belgesi"]
+    niyet = [f"Ortak Köprü'yü kuran kişi {veri['niyet']['sahibi']}. Bu yerin amacını {_tarih(veri)} günü kendi "
+             "sözleriyle şöyle yazdı:", f"**“{veri['niyet']['soz']}”**"]
+    niyet += [_soru_paragrafi(veri, kok) for kok in belge["niyet"]["sorular"]]
+    niyet += belge["niyet"]["paragraflar"]
+    ilkeler = []
     for ilke in veri["ilkeler"]:
-        satirlar.append(f"- **{ilke['no']}. {ilke['ad']}.** {ilke['ilke']} Bugün {SADE_DURUM[ilke['durum']]}.")
-    satirlar += ["", "İlk kez geliyorsanız, önceden bir şey bilmeden okuyabileceğiniz anlatım "
-                     "[açılış sayfasındadır](ACILIS.md).", ""]
-    return "\n".join(satirlar)
-
-
-def kisaca(veri: dict) -> str:
-    return "\n".join([f"Ortak Köprü'yü kuran kişi {veri['niyet']['sahibi']}. Bu yerin amacını {_tarih(veri)} günü "
-                      "kendi sözleriyle şöyle yazdı:", "",
-                      f"**“{veri['niyet']['soz']}”**", "", "Daha sade söylersek:", "", veri["sade_tanim"], ""])
-
-
-def sade_sorular(veri: dict) -> str:
-    parcalar = []
-    for kok in BESLI + DORTLU:
-        parcalar += [f"### {veri['sorular'][kok]['soru']}", "", veri["sorular"][kok]["sade"], ""]
-    return "\n".join(parcalar)
-
-
-def sade_ilkeler(veri: dict) -> str:
-    parcalar = []
-    for ilke in veri["ilkeler"]:
-        parcalar += [f"### {ilke['no']}. {ilke['ad']}", "", f"**{ilke['ilke']}**", "",
-                     f"Sizin için anlamı: {ilke['sade']}", "", f"Bugün: {ilke['bugun_sade']}", ""]
-    return "\n".join(parcalar)
-
-
-def sade_bugun(veri: dict) -> str:
-    durumlar = [ilke["durum"] for ilke in veri["ilkeler"]]
-    tam, kismen, yok = durumlar.count("uygulanıyor"), durumlar.count("kısmen"), durumlar.count("henüz yok")
-    cumle = f"Altı ilkenin {SAYI[tam]} bugün tam olarak işliyor, {SAYI[kismen]} kısmen işliyor"
-    cumle += f", {SAYI[yok]} henüz yok." if yok else "."
-    eksikler = [ilke["ad"] for ilke in veri["ilkeler"] if ilke["durum"] != "uygulanıyor"]
-    return cumle + " Kısmen işleyenler: " + ", ".join(eksikler) + ".\n"
-
-
-def sozluk(veri: dict) -> str:
-    return "\n".join(f"- **{madde['terim']}:** {madde['anlam']}" for madde in veri["sozluk"]) + "\n"
+        ilkeler += [f"## {_baslik(ilke)}", f"**{ilke['ilke']}**", ilke["sade"]]
+        ilkeler += [_soru_paragrafi(veri, kok) for kok in ilke["sade_sorular"]]
+        ilkeler += ilke["anlatim"] + [f"**Bugün:** {ilke['bugun_sade']}"]
+    # Sözlük yalnız sayfada gerçekten geçen kelimeleri açıklar ve ilkelerden önce gelir.
+    gorunen = _kucuk(_gorunen("\n".join(belge["giris"] + niyet + ilkeler)))
+    gecenler = [m for m in veri["sozluk"]
+                if any(_kucuk(parca) in gorunen for parca in m["terim"].split(" ve "))]
+    sozluk = ["Bu sayfada geçen birkaç kelime: " + " ".join(f"**{m['terim']}:** {m['anlam']}" for m in gecenler)] if gecenler else []
+    parcalar = belge["giris"] + ["## Niyet"] + niyet + sozluk + [_durum_ozeti(veri)] + ilkeler
+    return "\n\n".join(parcalar) + "\n"
 
 
 def tam_tanim(veri: dict) -> str:
@@ -288,24 +314,43 @@ def okunabilirlik(ad: str, metin: str, sozluk_terimleri: list[str], ayrim_bagi: 
     if uzunluklar and sum(uzunluklar) / len(uzunluklar) > ORTALAMA_CUMLE:
         hatalar.append(f"{ad}: ortalama cümle {sum(uzunluklar) / len(uzunluklar):.1f} kelime (en çok {ORTALAMA_CUMLE})")
     if ayrim_bagi:
-        for hedef, adi in (("TEKNIK.md", "teknik ayrıntılar"), ("GECMIS.md", "geçmiş işler")):
-            if not re.search(r"\]\((?:docs/)?" + re.escape(hedef) + r"\)", metin):
-                hatalar.append(f"{ad}: {adi} sayfasına ({hedef}) bağlantı yok")
+        for hedef, adi in (("teknik", "teknik ayrıntılar"), ("gecmis", "geçmiş işler")):
+            if not re.search(r"\]\((?:docs/)?" + hedef + r"/(?:README\.md)?(?:#[^)]*)?\)", metin):
+                hatalar.append(f"{ad}: {adi} yerine ({hedef}/) bağlantı yok")
+    return hatalar
+
+
+def yapi(ad: str, metin: str, beklenen: list[str]) -> list[str]:
+    """Açılış metni paragraflardan oluşur: başlıklar 'Niyet' ve altı ilke, sırayla; liste, tablo, alıntı yok."""
+    hatalar = []
+    duz = re.sub(r"<!--.*?-->", "", metin, flags=re.S)
+    bulunan = [m.group(1) for m in re.finditer(r"(?m)^## (.+)$", duz)]
+    if bulunan[:len(beklenen)] != beklenen:
+        hatalar.append(f"{ad}: başlık sırası {bulunan} (beklenen: {beklenen})")
+    if re.search(r"(?m)^#{3,} ", duz):
+        hatalar.append(f"{ad}: alt başlık (###) var; açılış yalnız 'Niyet' ve ilke başlıklarını taşır")
+    for desen, aciklama in ((r"(?m)^\s*[-*+] ", "liste"), (r"(?m)^\s*\d+[.)] ", "numaralı liste"),
+                            (r"(?m)^\s*\|", "tablo"), (r"(?m)^\s*>", "alıntı bloğu")):
+        if re.search(desen, duz):
+            hatalar.append(f"{ad}: {aciklama} var; açılış paragraflardan oluşur")
     return hatalar
 
 
 def okunabilirlik_denetle(veri: dict) -> list[str]:
     terimler = [madde["terim"] for madde in veri["sozluk"]]
     hatalar = []
-    acilis = KOK / "docs" / "ACILIS.md"
+    acilis = KOK / "docs" / "acilis.md"
     if acilis.is_file():
-        hatalar += okunabilirlik("docs/ACILIS.md", acilis.read_text(encoding="utf-8"), terimler, ayrim_bagi=True)
+        metin = acilis.read_text(encoding="utf-8")
+        hatalar += okunabilirlik("docs/acilis.md", metin, terimler, ayrim_bagi=True)
+        hatalar += yapi("docs/acilis.md", metin, basliklar(veri))
     readme = KOK / "README.md"
     if readme.is_file():
         # README, GitHub'da ilk görülen sayfadır: açılış bloğuyla birlikte bütünü sade kalır ve iki ayrı yere yönlendirir.
         hatalar += okunabilirlik("README.md", readme.read_text(encoding="utf-8"), terimler, ayrim_bagi=True)
-    hatalar += okunabilirlik("README açılışı", readme_blogu(veri), terimler)
-    hatalar += okunabilirlik("Web açılışı", web_blogu(veri), terimler)
+        hatalar += yapi("README.md", readme.read_text(encoding="utf-8"), basliklar(veri) + ["Buradan başlayın"])
+    for ad, blok in (("README açılışı", readme_blogu(veri)), ("Web açılışı", web_blogu(veri))):
+        hatalar += okunabilirlik(ad, blok, terimler) + yapi(ad, blok, basliklar(veri))
     return hatalar
 
 
@@ -321,14 +366,12 @@ def bloklar(veri: dict) -> dict[Path, dict[str, str]]:
 def _ham_bloklar(veri: dict) -> dict[Path, dict[str, str]]:
     return {
         KOK / "README.md": {"acilis": readme_blogu(veri)},
-        KOK / "docs" / "WEB_GIRISI.md": {"acilis": web_blogu(veri)},
-        KOK / "docs" / "ACILIS.md": {"acilis_kisaca": kisaca(veri), "acilis_sade_sorular": sade_sorular(veri),
-                                     "acilis_sade_ilkeler": sade_ilkeler(veri), "acilis_sade_bugun": sade_bugun(veri),
-                                     "acilis_sozluk": sozluk(veri)},
-        KOK / "docs" / "ACILIS_TEKNIK.md": {"acilis_tanim": tam_tanim(veri), "acilis_sorular": soru_tablosu(veri),
-                                            "acilis_varyantlar": varyant_tablosu(veri), "acilis_matris": matris(veri),
-                                            "acilis_kesisimler": kesisim_tablosu(veri), "acilis_ilkeler": ilke_tablosu(veri),
-                                            "acilis_ilke_metinleri": ilke_metinleri(veri)},
+        KOK / "docs" / "web-girisi.md": {"acilis": web_blogu(veri)},
+        KOK / "docs" / "acilis.md": {"acilis_belgesi": acilis_belgesi(veri)},
+        KOK / "docs" / "teknik" / "acilis-teknik.md": {"acilis_tanim": tam_tanim(veri), "acilis_sorular": soru_tablosu(veri),
+                                                       "acilis_varyantlar": varyant_tablosu(veri), "acilis_matris": matris(veri),
+                                                       "acilis_kesisimler": kesisim_tablosu(veri), "acilis_ilkeler": ilke_tablosu(veri),
+                                                       "acilis_ilke_metinleri": ilke_metinleri(veri)},
     }
 
 

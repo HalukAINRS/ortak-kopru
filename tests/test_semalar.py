@@ -39,7 +39,7 @@ class ValidatorRulesTests(unittest.TestCase):
         self.assertEqual(sorted(semalar), [
             "acilis.schema.json", "depo-tanimi.schema.json", "deus-assign-request.schema.json", "deus-checks.schema.json", "deus-event.schema.json",
             "deus-handoff.schema.json", "deus-task.schema.json", "exchange-manifest.schema.json",
-            "rafine-bulgu.schema.json", "rafine-sorulari.schema.json"])
+            "harita.schema.json", "rafine-bulgu.schema.json", "simdi-ve-sonrasi.schema.json"])
         for ad, sema in semalar.items():
             self.assertEqual(sema_denetle.sema_bicimini_denetle(sema), [], ad)
             self.assertIn("title", sema, ad)
@@ -123,7 +123,7 @@ class ValidatorRulesTests(unittest.TestCase):
         shape = subprocess.run([sys.executable, "-I", str(ROOT / "tools/sema_denetle.py")],
                                capture_output=True, text=True, encoding="utf-8", cwd=ROOT)
         self.assertEqual(shape.returncode, 0, shape.stdout + shape.stderr)
-        self.assertIn("10 şema", shape.stdout)
+        self.assertIn("11 şema", shape.stdout)
 
 
 class CoreOutputContractTests(unittest.TestCase):
@@ -216,11 +216,11 @@ class CoreOutputContractTests(unittest.TestCase):
 
 
 class RafineKayitTests(unittest.TestCase):
-    """docs/rafine/ altındaki her bulgu kaydı kendi sözleşmesine uyar ve kimlikleri tekildir."""
+    """docs/gecmis/rafine/ altındaki her bulgu kaydı kendi sözleşmesine uyar ve kimlikleri tekildir."""
 
     def test_every_refinement_record_follows_its_contract(self):
         sema = sema_denetle.sema_yukle("rafine-bulgu")
-        kayitlar = sorted((ROOT / "docs" / "rafine").glob("*.json"))
+        kayitlar = sorted((ROOT / "docs" / "gecmis" / "rafine").glob("*.json"))
         self.assertTrue(kayitlar)
         for yol in kayitlar:
             veri = json.loads(yol.read_text(encoding="utf-8"))

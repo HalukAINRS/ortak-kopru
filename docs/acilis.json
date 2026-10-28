@@ -131,7 +131,7 @@
     "ne_kadar": {
       "soru": "Ne kadar?",
       "yanit": "Yalnız seçilen kadar ve sınırlı: bir aktarımda en çok 64 dosya, dosya başına 8 MiB, toplam 64 MiB. Geçen her bayt SHA-256 ile sabitlenir; sayılmayan bir şey geçmiş sayılmaz.",
-      "bugun": "Sınırlar src/ortak_kopru/exchange.py'de. Ama yerel gönderici kopru_gonder.ps1 kapının dışından çalışıyor ve çalışma klasöründe kalan izlenmeyen her dosyayı gönderebiliyor (R-17).",
+      "bugun": "Sınırlar src/ortak_kopru/exchange.py'de. Ama yerel gönderici yerel/kopru_gonder.ps1 kapının dışından çalışıyor ve çalışma klasöründe kalan izlenmeyen her dosyayı gönderebiliyor (R-17).",
       "durum": "kısmen",
       "varyantlar": [
         {
@@ -290,7 +290,7 @@
       ],
       "dayanaklar": [
         "kapi.py",
-        "docs/KAPI_KULLANIMI.md",
+        "docs/teknik/kapi-kullanimi.md",
         "CONTRIBUTING.md"
       ],
       "durum": "kısmen",
@@ -299,7 +299,14 @@
         "S09"
       ],
       "sade": "Burada yalnız okumazsınız, yazabilirsiniz de. Yerel kullanıcı da yalnız paylaşmaz, dışarıdan gelene karşılık verir.",
-      "bugun_sade": "Dosyalar iki yönde de geçebiliyor. Dışarıdan gelen bir sorunun yerel kullanıcıya ulaşması ise henüz kendiliğinden olmuyor; şimdilik GitHub'ın kendi bildirimlerine bağlı."
+      "bugun_sade": "Dosyalar iki yönde de geçebiliyor. Dışarıdan gelen bir sorunun yerel kullanıcıya ulaşması ise henüz kendiliğinden olmuyor; şimdilik GitHub'ın kendi bildirimlerine bağlı.",
+      "sade_sorular": [
+        "nereden",
+        "nereye"
+      ],
+      "anlatim": [
+        "Bu yerde okumakla yazmak arasında bir sıra yok. Bir yazıyı okuyup hemen bir soru bırakabilirsiniz. Yerel kullanıcı da yazdığınızı okur ve karşılık verir. Kapıdan dışarı çıkan bir şeyin yanıtı da aynı yoldan geri gelebilir."
+      ]
     },
     {
       "no": 2,
@@ -313,11 +320,11 @@
       ],
       "dayanaklar": [
         "src/ortak_kopru/exchange.py",
-        "docs/kararlar/0002-dis-alan-kapisi.md",
-        "AGENTS-kopru.md"
+        "docs/teknik/kararlar/0002-dis-alan-kapisi.md",
+        "katilimcilar/AGENTS-kopru.md"
       ],
       "durum": "kısmen",
-      "eksik": "Yerel gönderici kopru_gonder.ps1 kapının dışından çalışıyor ve çalışma klasöründe kalan izlenmeyen her dosyayı herkese açık ana dala gönderebiliyor; bu, seçimsiz bir çıkış yolu.",
+      "eksik": "Yerel gönderici yerel/kopru_gonder.ps1 kapının dışından çalışıyor ve çalışma klasöründe kalan izlenmeyen her dosyayı herkese açık ana dala gönderebiliyor; bu, seçimsiz bir çıkış yolu.",
       "bulgular": [
         "R-17"
       ],
@@ -325,7 +332,14 @@
         "S02"
       ],
       "sade": "Neyin paylaşılacağına yerel kullanıcı karar verir. Dışarıdan gelen bir öneri, o kabul etmeden onun çalışmasını değiştirmez.",
-      "bugun_sade": "Kapının kendisi bu kurala uyuyor. Ama eski bir paylaşım aracı hâlâ seçim yapmadan gönderebiliyor; daraltılması bekleniyor."
+      "bugun_sade": "Kapının kendisi bu kurala uyuyor. Ama eski bir paylaşım aracı hâlâ seçim yapmadan gönderebiliyor; daraltılması bekleniyor.",
+      "sade_sorular": [
+        "nerede",
+        "ne_zaman"
+      ],
+      "anlatim": [
+        "Bu ilke yerel kullanıcıyı ve onun çalışmasını korur. Kapı, bilgisayardaki bir klasörü dışarıyla kendiliğinden aynı tutmaya çalışmaz. Dışarıdan gelen bir öneri önce bekler. Yerel kullanıcı ona bakar ve kararını kendisi verir."
+      ]
     },
     {
       "no": 3,
@@ -340,11 +354,16 @@
       "dayanaklar": [
         "schemas/exchange-manifest.schema.json",
         "src/ortak_kopru/gateway.py",
-        "kopru_ekle.py"
+        "defter/kopru_ekle.py"
       ],
       "durum": "uygulanıyor",
       "sade": "Burada okuduğunuz her şeyin nereden geldiği ve kime ait olduğu yazılıdır. Sizin katkınız da sizin adınızla kalır.",
-      "bugun_sade": "Tam olarak işliyor."
+      "bugun_sade": "Tam olarak işliyor.",
+      "sade_sorular": [],
+      "anlatim": [
+        "Kapıdan geçen her şey yanında dört bilgi taşır: nereden geldiği, kime ait olduğu, hangi sürüm olduğu ve ne zaman geçtiği. Bu bilgiler sonradan silinmez. Buradan bir yazıyı başka bir yere aktarırsanız, kaynağını da yanında taşıyın.",
+        "Bu yerin bugüne kadarki bütün kayıtları bu yüzden kendi tarihleriyle duruyor. Onları [geçmiş işler](gecmis/README.md) bölümünde bulabilirsiniz."
+      ]
     },
     {
       "no": 4,
@@ -357,7 +376,7 @@
         "ne_kadar"
       ],
       "dayanaklar": [
-        "kopru_ekle.py",
+        "defter/kopru_ekle.py",
         "src/ortak_kopru/exchange.py",
         ".github/scripts/kopru_gonder.sh"
       ],
@@ -370,7 +389,13 @@
         "S02"
       ],
       "sade": "Şifreler, kişisel bilgiler ve özel çalışmalar kapıdan geçmez. Bir kez herkese açılan bir şey geri alınamaz. Bu yüzden en sıkı kontrol çıkışta yapılır.",
-      "bugun_sade": "Kapı bu sınırı uyguluyor. Tek açık nokta yine o eski paylaşım aracı."
+      "bugun_sade": "Kapı bu sınırı uyguluyor. Tek açık nokta yine o eski paylaşım aracı.",
+      "sade_sorular": [
+        "ne_kadar"
+      ],
+      "anlatim": [
+        "Dışarı çıkacak her şey çıkmadan önce denetlenir. Bu denetim kimsenin dikkatine bırakılmaz; kapının kendisi yapar. Siz de buraya yazarken kişisel bilgilerinizi paylaşmayın, çünkü yazdığınız şey herkese açık olur."
+      ]
     },
     {
       "no": 5,
@@ -383,7 +408,7 @@
         "nereden"
       ],
       "dayanaklar": [
-        "docs/WEB_GIRISI.md",
+        "docs/web-girisi.md",
         "CONTRIBUTING.md",
         "index.html"
       ],
@@ -393,7 +418,12 @@
         "S09"
       ],
       "sade": "Önceki konuşmaları bilmeniz gerekmez. Bir yazıyı okuyup bir soru sormanız ya da bir düzeltme önermeniz yeterli bir başlangıçtır. Getirdiğiniz şey, ilgili olduğu yazının yanına bağlanır.",
-      "bugun_sade": "Okuma ve yazma yolları açık. Ama dışarıdan henüz kimse yazmadı; ilk katkı sizinki olabilir."
+      "bugun_sade": "Okuma ve yazma yolları açık. Ama dışarıdan henüz kimse yazmadı; ilk katkı sizinki olabilir.",
+      "sade_sorular": [],
+      "anlatim": [
+        "Bir şey sormak ya da önermek isterseniz [GitHub'da bir konu açın](https://github.com/HalukAINRS/ortak-kopru/issues/new); GitHub buna Issue der. Hangi yazıya ya da hangi ilkeye karşılık verdiğinizi yazmanız işi kolaylaştırır. Başkalarının neler yazdığını [konu listesinden](https://github.com/HalukAINRS/ortak-kopru/issues) görebilirsiniz.",
+        "Yazdığınız şey kaybolmaz. İlgili olduğu yazının yanına bağlanır ve nasıl karşılandığı görünür kalır. Yanıt gecikebilir. Yanıt gelmemesi, önerinizin kabul edildiği anlamına gelmez; bekleyen olarak görünür kalır."
+      ]
     },
     {
       "no": 6,
@@ -412,7 +442,13 @@
       ],
       "durum": "uygulanıyor",
       "sade": "Bir şeyin hazırlanmış olması, gönderildiği ya da okunduğu anlamına gelmez; burada bunlar ayrı yazılır. Bir hata olursa silinmez, yanına düzeltmesi eklenir.",
-      "bugun_sade": "Tam olarak işliyor."
+      "bugun_sade": "Tam olarak işliyor.",
+      "sade_sorular": [
+        "nasil"
+      ],
+      "anlatim": [
+        "Bu sayfa da bu ilkeye uyar. Burada yazan her durum, her değişiklikte yeniden denetlenen bir kayda dayanır. Bir şey değişirse durum yazısı da değişir. Kısmen işleyen ilkeler için yapılacak iş belli: eski bir paylaşım aracının daraltılması ve dışarıdan gelen soruların yerel kullanıcıya kendiliğinden ulaşması."
+      ]
     }
   ],
   "sade_tanim": "Ortak Köprü iki şeydir. Bir kapı: bir bilgisayardaki çalışma ile internet arasında. Bir köprü: o bilgisayarın sahibi ile dışarıdaki insanlar arasında. Kapıdan dosyalar ve bilgiler geçer; köprüden sorular, katkılar ve yanıtlar.",
@@ -445,5 +481,21 @@
       "terim": "Sürüm",
       "anlam": "Bir dosyanın belirli bir andaki hâli. Dosya sonradan değişse de alınan sürüm aynı kalır."
     }
-  ]
+  ],
+  "acilis_belgesi": {
+    "giris": [
+      "Bu sayfa, Ortak Köprü'yü ilk kez gören biri için yazıldı. Önceden bir şey bilmeniz gerekmiyor. Önce bu yerin niyetini, sonra o niyetin altı ilkesini okuyacaksınız. Her ilkenin altında, sizin için ne anlama geldiği ve bugün ne kadarının işlediği yazılı.",
+      "Bu sayfayı anlamak için başka bir yere bakmanız gerekmez. Merak ederseniz iki ayrı yer var. Araçlar, kurulum ve denetimler [teknik ayrıntılar](teknik/README.md) bölümünde toplandı. Bu yerin bugüne kadarki çalışmaları ve kayıtları [geçmiş işler](gecmis/README.md) bölümünde duruyor."
+    ],
+    "niyet": {
+      "sorular": [
+        "ne",
+        "ne_icin",
+        "neden"
+      ],
+      "paragraflar": [
+        "Bir kapıyı düşünün. İki odayı birbirine bağlar, ama ne zaman açılacağına ve içeri kimin gireceğine ev sahibi karar verir. Bir köprüyü düşünün. İki kıyıdaki insanların birbirine ulaşmasını sağlar. Ortak Köprü bu ikisini birlikte yapmaya çalışır. Bir yanda bir bilgisayar ve onun sahibi var, öbür yanda dış dünya ve oradaki insanlar."
+      ]
+    }
+  }
 }

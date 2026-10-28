@@ -11,19 +11,21 @@ from __future__ import annotations
 
 import argparse
 import html
+import posixpath
 import re
 from pathlib import Path
 from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO = 'https://github.com/HalukAINRS/ortak-kopru'
+# docs/ altındaki kaynak → depo kökündeki sayfa. Sayfa adları Web adresidir; değişmez.
 PAGES = {
-    'WEB_GIRISI.md': ('index.html', 'Ortak Köprü'),
-    'ACILIS.md': ('acilis.html', 'Açılış: Kapı ve Köprü'),
-    'ORTAK_MIMARI_DEFTERI.md': ('mimari.html', 'Ortak Mimari Defteri'),
-    'ANLAM_NOT_DEFTERI.md': ('not-defteri.html', 'Anlam ve Dönüş Defteri'),
-    'SON_DURUM.md': ('durum.html', 'Son durum'),
-    'KAYNAKLAR.md': ('kaynaklar.html', 'Kaynaklar'),
+    'web-girisi.md': ('index.html', 'Ortak Köprü'),
+    'acilis.md': ('acilis.html', 'Açılış: Kapı ve Köprü'),
+    'gecmis/ortak-mimari-defteri.md': ('mimari.html', 'Ortak Mimari Defteri'),
+    'gecmis/anlam-not-defteri.md': ('not-defteri.html', 'Anlam ve Dönüş Defteri'),
+    'gecmis/son-durum.md': ('durum.html', 'Son durum'),
+    'gecmis/kaynaklar.md': ('kaynaklar.html', 'Kaynaklar'),
 }
 
 
@@ -32,35 +34,40 @@ def slug(value: str) -> str:
     return re.sub(r'\s+', '-', re.sub(r'[^\w\s-]', '', value)).strip('-')
 
 
-def destination(value: str) -> str:
+def destination(value: str, folder: str = '') -> str:
+    """Resolve a link written in docs/<folder>/ to the published page or the file on GitHub."""
     parsed = urlsplit(value)
     if parsed.scheme and parsed.scheme not in ('https', 'http'):
         raise ValueError(f'Unsupported link scheme: {parsed.scheme}')
     prefix = REPO + '/blob/main/docs/'
-    relative = value[len(prefix):] if value.startswith(prefix) else value
-    filename, sep, fragment = relative.partition('#')
-    if filename in PAGES:
-        return PAGES[filename][0] + (sep + fragment if sep else '')
-    if not parsed.scheme:
-        if value == '../kopru.html':
-            return 'kopru.html'
-        if value.startswith('../'):
-            return REPO + '/blob/main/' + value[3:]
-        return REPO + '/blob/main/docs/' + value
-    return value
+    if parsed.scheme:
+        filename, sep, fragment = value[len(prefix):].partition('#') if value.startswith(prefix) else ('', '', '')
+        return PAGES[filename][0] + (sep + fragment if sep else '') if filename in PAGES else value
+    filename, sep, fragment = value.partition('#')
+    tail = sep + fragment if sep else ''
+    if not filename:
+        return value
+    path = posixpath.normpath(posixpath.join('docs', folder, filename))   # repository-relative
+    inside = path[len('docs/'):] if path.startswith('docs/') else None
+    if inside in PAGES:
+        return PAGES[inside][0] + tail
+    if path in ('kopru.html', *(target for target, _ in PAGES.values())):
+        return path + tail
+    kind = 'tree' if filename.endswith('/') else 'blob'
+    return f'{REPO}/{kind}/main/{path}' + tail
 
 
 TOKEN = re.compile(r'\[([^\]\n]+)\]\(([^\s)]+)\)|\*\*([^*\n]+)\*\*|`([^`\n]+)`')
 FENCE = re.compile(r'^[ \t]*(`{3,}|~{3,})(.*)$')
 
 
-def inline(value: str) -> str:
+def inline(value: str, folder: str = '') -> str:
     result = []
     start = 0
     for match in TOKEN.finditer(value):
         result.append(html.escape(value[start:match.start()]))
         if match.group(1) is not None:
-            target = html.escape(destination(match.group(2)), quote=True)
+            target = html.escape(destination(match.group(2), folder), quote=True)
             result.append(f'<a href="{target}">{html.escape(match.group(1))}</a>')
         elif match.group(3) is not None:
             result.append('<strong>' + html.escape(match.group(3)) + '</strong>')
@@ -110,7 +117,7 @@ def blocks(source: str) -> list[tuple[str, str]]:
     return result
 
 
-def render(source: str) -> tuple[str, list[tuple[str, str]]]:
+def render(source: str, folder: str = '') -> tuple[str, list[tuple[str, str]]]:
     output, headings = [], []
     for kind, block in blocks(source):
         if kind == 'text':
@@ -126,20 +133,20 @@ def render(source: str) -> tuple[str, list[tuple[str, str]]]:
         if heading:
             level, title = len(heading.group(1)), heading.group(2)
             anchor = slug(title)
-            output.append(f'<h{level} id="{anchor}">{inline(title)}</h{level}>')
+            output.append(f'<h{level} id="{anchor}">{inline(title, folder)}</h{level}>')
             if level == 2:
                 headings.append((anchor, title))
         elif all(line.startswith('- ') for line in block.splitlines()):
-            output.append('<ul>' + ''.join('<li>' + inline(line[2:]) + '</li>' for line in block.splitlines()) + '</ul>')
+            output.append('<ul>' + ''.join('<li>' + inline(line[2:], folder) + '</li>' for line in block.splitlines()) + '</ul>')
         else:
             if block.startswith(('```', '|', '[^')):
                 raise ValueError('Use the supported prose Markdown subset for reader pages.')
-            output.append('<p>' + inline(' '.join(block.splitlines())) + '</p>')
+            output.append('<p>' + inline(' '.join(block.splitlines()), folder) + '</p>')
     return '\n'.join(output), headings
 
 
 def page(filename: str, output_name: str, label: str) -> str:
-    body, headings = render((ROOT / 'docs' / filename).read_text(encoding='utf-8'))
+    body, headings = render((ROOT / 'docs' / filename).read_text(encoding='utf-8'), posixpath.dirname(filename))
     nav = ''.join(f'<a href="{target}"' + (' aria-current="page"' if target == output_name else '') + f'>{html.escape(name)}</a>' for target, name in [('index.html', 'Başlangıç'), ('acilis.html', 'Açılış'), ('mimari.html', 'Mimari defteri'), ('not-defteri.html', 'Not defteri'), ('durum.html', 'Son durum'), ('kaynaklar.html', 'Kaynaklar')])
     contents = ''.join(f'<li><a href="#{anchor}">{html.escape(title)}</a></li>' for anchor, title in headings)
     title = label if output_name == 'index.html' else label + ' · Ortak Köprü'

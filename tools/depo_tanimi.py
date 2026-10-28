@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Dokuz koordinatlı depo tanımını (docs/depo-tanimi.json) depodan ölçer ve denetler.
+"""Dokuz koordinatlı depo tanımını (docs/gecmis/depo-tanimi.json) depodan ölçer ve denetler.
 
 Tanımın anlatı kısmı elle yazılır; "Ne kadar" koordinatının ölçümleri ise bu araçla
 depodan üretilir. --check yazmadan şunları denetler: tanım sözleşmesine uyum, ölçümlerin
@@ -35,9 +35,9 @@ import subprocess
 import sys
 
 KOK = Path(__file__).resolve().parents[1]
-TANIM = KOK / "docs" / "depo-tanimi.json"
+TANIM = KOK / "docs" / "gecmis" / "depo-tanimi.json"
 sys.dont_write_bytecode = True
-sys.path.insert(0, str(KOK))
+sys.path.insert(0, str(KOK / "defter"))
 sys.path.insert(0, str(KOK / "tools"))
 
 from kopru_oku import Ayristirici  # noqa: E402
@@ -91,7 +91,7 @@ def olc() -> dict[str, int | str]:
     guncelleme = re.search(r'id="son-guncelleme" datetime="([^"]+)"', belge)
 
     bulgular = []
-    for yol in sorted((KOK / "docs" / "rafine").glob("*.json")):
+    for yol in sorted((KOK / "docs" / "gecmis" / "rafine").glob("*.json")):
         bulgular.extend(json.loads(yol.read_text(encoding="utf-8"))["findings"])
 
     return {

@@ -13,7 +13,7 @@ import unittest
 import unittest.mock
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "defter"))
 
 from kopru_ekle import dis_yukleme_kontrol, yasak_kontrol  # noqa: E402
 import kopru_yanitla  # noqa: E402
@@ -121,7 +121,7 @@ class AracKomutTests(unittest.TestCase):
         self.sayfa.write_text(SAYFA, encoding="utf-8", newline="\n")
 
     def calistir(self, betik, *args):
-        return subprocess.run([sys.executable, str(ROOT / betik), *map(str, args)], capture_output=True,
+        return subprocess.run([sys.executable, str(ROOT / "defter" / betik), *map(str, args)], capture_output=True,
                               text=True, encoding="utf-8", cwd=self.dizin, timeout=60)
 
     def ekle(self, *args):
@@ -185,7 +185,7 @@ class AracKomutTests(unittest.TestCase):
         self.assertLess(yeni.index('id="y-yeni"'), yeni.index('id="y-mimari"'))
 
     def test_responder_rejects_unknown_participant_filter_instead_of_doing_nothing(self):
-        sonuc = self.calistir("kopru_yanitla.py", self.sayfa, "--ayarlar", ROOT / "ayarlar.json", "--yalniz", "Copilot", "--kuru")
+        sonuc = self.calistir("kopru_yanitla.py", self.sayfa, "--ayarlar", ROOT / "katilimcilar" / "ayarlar.json", "--yalniz", "Copilot", "--kuru")
         self.assertEqual(sonuc.returncode, 1)
         self.assertIn("--yalniz 'Copilot' bu ayar dosyasında yok", sonuc.stderr)
         self.assertIn("Claude, ChatGPT, Gemini", sonuc.stderr)
@@ -199,7 +199,7 @@ class YanitlayiciMetinTests(unittest.TestCase):
                          'Claude\'un "katmanı" <br> & Gemini\'nin')
 
     def test_cloud_cli_route_does_not_receive_api_keys(self):
-        ayar = json.loads((ROOT / "ayarlar.json").read_text(encoding="utf-8"))
+        ayar = json.loads((ROOT / "katilimcilar" / "ayarlar.json").read_text(encoding="utf-8"))
         claude = next(kat for kat in ayar["katilimcilar"] if kat["saglayici"] == "cli")
         self.assertEqual(claude["ortam"], {"ANTHROPIC_API_KEY": None, "OPENAI_API_KEY": None, "GEMINI_API_KEY": None})
         self.assertEqual(claude["yedek"]["anahtar_degiskeni"], "ANTHROPIC_API_KEY")

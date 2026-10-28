@@ -1,6 +1,6 @@
 """Dokuz koordinatlı depo tanımı: sözleşme, ölçümlerin depoyla eşliği ve sapmanın yakalanması.
 
-Ağ veya sağlayıcı çağrısı yoktur; docs/depo-tanimi.json yalnız okunur, kopyası üzerinde oynanır.
+Ağ veya sağlayıcı çağrısı yoktur; docs/gecmis/depo-tanimi.json yalnız okunur, kopyası üzerinde oynanır.
 """
 from __future__ import annotations
 
@@ -98,7 +98,7 @@ class DepoTanimiTests(unittest.TestCase):
 
     def test_reference_paths_ignore_anchors_lines_and_web_addresses(self):
         self.assertEqual(depo_tanimi.dayanak_yolu("README.md#yerleştirme"), ROOT / "README.md")
-        self.assertEqual(depo_tanimi.dayanak_yolu("kopru_ekle.py:32"), ROOT / "kopru_ekle.py")
+        self.assertEqual(depo_tanimi.dayanak_yolu("defter/kopru_ekle.py:32"), ROOT / "defter" / "kopru_ekle.py")
         self.assertIsNone(depo_tanimi.dayanak_yolu("https://github.com/HalukAINRS/ortak-kopru"))
 
     def test_byte_and_line_measurements_do_not_depend_on_line_endings(self):

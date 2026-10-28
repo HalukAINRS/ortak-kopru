@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Ortak Köprü açılışı v1: niyet, tanım ve altı ilke",
-  "description": "Deponun kullanıcı tarafından konmuş niyetini, bu niyetten kurulan tanımı ve altı ana ilkeyi taşır. Sorular iki gruba ayrılır: kapının kendisini tanımlayan beşli (ne, nerede, nasıl, ne zaman, ne için) ve içinden geçeni tanımlayan dörtlü (nereden, nereye, ne kadar, neden). Her soru niyetteki yanıtını ve bugün depoda gözlenen karşılığını ayrı taşır. Beşli ile dörtlünün 20 kesişimi ayrıca sorulur. İlkelerin durumu, niyetle bugünkü depo arasındaki mesafedir; tools/acilis.py bu kaydı denetler ve README, Web girişi ve açılış belgesindeki blokları ondan üretir. Sade alanlar (sade, bugun_sade, sade_tanim, sozluk) ilk kez gelen okuyucu içindir; docs/ACILIS.md yalnız bunlardan ve elle yazılmış sade paragraflardan oluşur ve okunabilirlik denetiminden geçer. Teknik alanlar docs/ACILIS_TEKNIK.md'ye üretilir.",
+  "description": "Deponun kullanıcı tarafından konmuş niyetini, bu niyetten kurulan tanımı ve altı ana ilkeyi taşır. Sorular iki gruba ayrılır: kapının kendisini tanımlayan beşli (ne, nerede, nasıl, ne zaman, ne için) ve içinden geçeni tanımlayan dörtlü (nereden, nereye, ne kadar, neden). Her soru niyetteki yanıtını ve bugün depoda gözlenen karşılığını ayrı taşır. Beşli ile dörtlünün 20 kesişimi ayrıca sorulur. İlkelerin durumu, niyetle bugünkü depo arasındaki mesafedir. tools/acilis.py bu kaydı denetler ve README'nin, Web girişinin, açılış belgesinin ve teknik ekin bloklarını ondan üretir. Açılış belgesi (docs/acilis.md) ilk kez gelen okuyucu içindir ve bütünüyle bu kayıttan üretilir: önce giriş paragrafları, sonra 'Niyet' başlığı, sonra sırayla altı ilkenin başlıkları; liste ve tablo taşımaz. Sade alanlar (sade, sade_sorular, anlatim, bugun_sade, sade_tanim, acilis_belgesi, sozluk) bu belge içindir ve okunabilirlik denetiminden geçer. Teknik alanlar docs/teknik/acilis-teknik.md'ye üretilir.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -16,7 +16,8 @@
     "kesisimler",
     "ilkeler",
     "sade_tanim",
-    "sozluk"
+    "sozluk",
+    "acilis_belgesi"
   ],
   "properties": {
     "schema_version": {
@@ -181,7 +182,9 @@
           "dayanaklar",
           "durum",
           "sade",
-          "bugun_sade"
+          "bugun_sade",
+          "sade_sorular",
+          "anlatim"
         ],
         "properties": {
           "no": {
@@ -253,6 +256,22 @@
             "type": "string",
             "minLength": 1,
             "description": "İlkenin bugünkü durumu, sade dille."
+          },
+          "sade_sorular": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/kok"
+            },
+            "description": "Bu ilkenin bölümünde sade yanıtı verilen sorular; ilkenin bağladığı sorular arasından seçilir."
+          },
+          "anlatim": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "İlke bölümünün okuyucuya dönük paragrafları: ne yapabileceği, nereden başlayacağı."
           }
         }
       }
@@ -281,6 +300,51 @@
           "anlam": {
             "type": "string",
             "minLength": 1
+          }
+        }
+      }
+    },
+    "acilis_belgesi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "giris",
+        "niyet"
+      ],
+      "description": "Açılış belgesinin kayıttan gelen paragrafları. Dokuz sorunun sade yanıtları belgede tam bir kez yer alır: 'Niyet' bölümünde niyet.sorular, ilke bölümlerinde ilkeler[].sade_sorular.",
+      "properties": {
+        "giris": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Başlıklardan önceki paragraflar: sayfanın kime yazıldığı, nasıl okunacağı, teknik ayrıntıların ve geçmiş işlerin nerede olduğu."
+        },
+        "niyet": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sorular",
+            "paragraflar"
+          ],
+          "properties": {
+            "sorular": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/kok"
+              },
+              "description": "'Niyet' bölümünde sade yanıtı verilen sorular."
+            },
+            "paragraflar": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
           }
         }
       }

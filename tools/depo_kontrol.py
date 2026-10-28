@@ -9,7 +9,7 @@ import sys
 
 KOK = Path(__file__).resolve().parents[1]
 sys.dont_write_bytecode = True
-sys.path.insert(0, str(KOK))
+sys.path.insert(0, str(KOK / "defter"))
 
 from kopru_ayna_uret import uret  # noqa: E402
 from kopru_ekle import ISARET, KATILIMCILAR, dis_yukleme_kontrol, yasak_kontrol  # noqa: E402
@@ -67,7 +67,7 @@ def denetle():
     except (OSError, ValueError) as exc:
         hatalar.append(str(exc))
 
-    for ad in ("ayarlar.json", "ayarlar-yerel.json"):
+    for ad in ("katilimcilar/ayarlar.json", "katilimcilar/ayarlar-yerel.json"):
         try:
             ayarlar = json.loads((KOK / ad).read_text(encoding="utf-8"))
             for kat in ayarlar["katilimcilar"]:
