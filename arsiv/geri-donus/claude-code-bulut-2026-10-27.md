@@ -215,3 +215,9 @@ Bu dosya, ortak okumanın Hacker alanındaki kısmını Haluk'un değerlendirebi
 - **Düzeltilen cümle:** Son durum raporundaki "Haluk'un geri dönüşü henüz yok" cümlesi, `00aace1`'de yazıldığı anda da fazla genişti: ileti 01:25'te ulaşmış, rapor 01:32'de commit edilmişti. Bunu Şaman'ın yedinci aşama karşı okuması gösterdi (A; bu oturuma varış 01:43:53 UTC).
 - **Kapsam sınırı:** İleti şunları söylemiyor: G-C01..G-C11'deki açıklamaların kabul edildiği, açık kalanların kapandığı ya da `00aace1`'deki biçimin uygun bulunduğu. Birleştirme ve son durum raporundaki 3–7. öneriler için de karar içermiyor. "Her şey de bu şekle uygun olursa daha iyi olur" bir tercih olarak duruyor; deponun geri kalanının hangi yolla okunur kılınacağı belirlenmiş değil.
 - **Açık:** `00aace1`'deki not defterine ve son durum raporuna ilişkin geri dönüş yok. Sessizlik kabul sayılmıyor.
+
+## Ek bağ (dördüncü tur)
+
+`ebfecdd` sürümündeki satırlar korunuyor.
+
+- **EK-6 → G-C06 (kapsam daraltma ve eksik tamamlama):** G-C06'nın başlığındaki "depoda olmayan" nitelemesi yalnız `main` için doğru. Dışavurum bölümünün adları ve içsel bölümün gösterimi PR #17'nin dalında duruyor. Varış listesi de ilk varışı atlamış: süreç sözlüğü bu oturuma ilk kez 27 Ekim 14:33:54 UTC'de ulaştı (A). Ayrıntı: `arsiv/kavram-dizini/…` KD-9.

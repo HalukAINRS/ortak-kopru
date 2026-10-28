@@ -105,3 +105,7 @@ Son bölümdeki "Haluk'un geri dönüşü henüz yok" cümlesi, yazıldığı an
 Doğru kapsam şu: Altıncı adımdaki açıklamalara (G-C01..G-C11) ve açık kalanlara ilişkin bir geri dönüş yok. Bu raporun ve not defterinin biçimine ilişkin geri dönüş de henüz yok. GD-1, açıklamaların kabul edildiği ya da açık soruların kapandığı anlamına gelmez. Sessizlik kabul sayılmıyor.
 
 İki durum bilgisi daha: Bu eki taşıyan commit ile PR #18'deki commit sayısı 22 oldu. GitHub'ın depo ayarlarına göre konular (Issues) açık, tartışmalar (Discussions) kapalı; arşivin giriş sayfasının önerdiği etkileşim yolu kullanılabilir durumda.
+
+## Ek 2: Protokol parçalarının depodaki yeri
+
+Kavram dizinindeki bir cümle, çalışma protokolünün parçalarının depoda olmadığını söylüyordu. Bu cümle yalnız ana dal için doğru. Dışavurum bölümünün adları PR #17'nin dalında bir belgede herkese açık duruyor; içsel süreçlerin adları depoda hiç geçmiyor. Düzeltme, kavram dizinine KD-9 ve geri dönüş dosyasına EK-6 olarak eklendi. Bu adların web kapısından geçip geçmeyeceği açık bir karar; karar Haluk'un.

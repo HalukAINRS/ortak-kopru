@@ -166,3 +166,15 @@ Aşağıdaki tablo, bu daldaki dosyalarda kayıtlı düzeltmelerimi türleriyle 
   - **Kök:** Erişilen ref'lerin hepsinde tek kök commit var: `3c94ebe`.
   - **Saat dilimi:** İşleyen tarihleri iki dilimde (+00:00 ve +03:00). ISO metinleri dizgi olarak sıralanınca sıra bozuluyor; doğru sıra Unix zamanıyla alınıyor. İlk denememde bu yüzden `3c94ebe` (20:18Z) olduğundan geç göründü.
   - Yöntem, erişilen ref'lerin dışındaki geçmişi ve ulaşılamayan nesneleri kapsamıyor.
+
+## KD-9 (protokol parçalarının depodaki yeri ve ilk varışı)
+
+`f0bef9b` sürümündeki satırlar korunuyor. Bu bağ, yedinci aşamada Şaman'ın süreç adlarına ilişkin düzeltmesini oturum kaydıma ve depoya karşı denetlerken çıktı. Düzeltme zincirindeki türleri: birinci madde kapsam daraltma, ikinci madde eksik tamamlama; tetikleyeni kendi denetimim.
+
+- **KD-9 → B bölümünün "Bu parçalar depoda yok" cümlesi (kapsam daraltma):** Cümle yalnız `main` için doğru. PR #17'nin dalı `hss/tek-nokta-1-16`'da şunlar var (D):
+  - `docs/TEK_NOKTA.md` satır 60–63: dışavurum bölümünün dört adı, değerleriyle (P-C02).
+  - Aynı dosyanın 56. satırı ve `docs/TEK_NOKTA_KANIT.md` satır 25: içsel bölümün gösterimi (P-C01). İçsel süreçlerin sekiz adı ise erişilen hiçbir ref'te yok (`git log --all -S`, ayırt edici adlarla).
+  - Metni ilk ekleyen commit `2ea3827` (27 Ekim, 16:26:05 UTC). Bu oturumun `6518f6f` commit'i (16:32:50) onun üstüne yazıldı; yani metin, B bölümü yazılmadan (23:00:04) önce bu oturumun çalışma ağacındaydı. Cümle yazıldığı anda da fazla genişti.
+- **KD-9 → B bölümündeki P-C01 ve P-C02'nin varış sütunu (eksik tamamlama):** Süreç sözlüğü bu oturuma ilk kez 27 Ekim 14:33:54 UTC'de ulaştı (A). İleti User kutusundaki, kendini "Kullanıcının bu oturumdaki yeni doğrudan yönergesi" diye adlandıran ilk yönerge. Sözlük içsel süreçlerin sekiz adını ve dışavurumun dört adını değerleriyle taşıyor; yönerge onun aynen korunmasını istiyordu. 15:40:48'deki ileti adları içermiyor, iki bölümün tanımını getirdi. 17:37:22'deki ileti içsel alanın özel kalacağını söyledi. Bu iki varış doğru; eksik olan ilk varıştı.
+- **Sınır:** Adları bu dosyaya yine yazmıyorum. PR #15'teki bulut oturum kartı sözlüğü hiçbir sürümünde içermiyor (D, `git log -S`).
+- **Açık:** Sözlükteki adların herkese açık ad mı, özel içerik mi sayılacağı. Dışavurum adları bir PR dalında herkese açık duruyor; içsel adlar depoda hiç geçmiyor. İlk yönerge sözlüğün korunmasını, sonraki ileti içsel alanın özel kalmasını istiyor; ikisinin ilişkisi bu kayıtlardan çıkmıyor. Karar Haluk'un.
