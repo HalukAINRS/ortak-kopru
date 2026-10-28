@@ -102,6 +102,18 @@ class InboxTests(unittest.TestCase):
         self.assertEqual(len(output["result"]["new"]), 1)
         self.assertEqual(len(list((self.exchange / "gelen").iterdir())), 2)
 
+    def test_same_issue_number_from_two_repositories_is_kept_apart(self):
+        self.run_inbox(Opener([issue()]))
+        other = {**issue(), "html_url": "https://github.com/other/place/issues/7"}
+        opener = Opener([other])
+        out = io.StringIO()
+        with mock.patch.object(gh, "build_opener", return_value=opener), redirect_stdout(out):
+            code = main(["--exchange-dir", str(self.exchange), "inbox", "--repo", "other/place"])
+        result = json.loads(out.getvalue())["result"]
+        self.assertEqual((code, len(result["new"]), result["unchanged"]), (0, 1, 0))
+        kayitlar = [json.loads(p.read_text(encoding="utf-8")) for p in (self.exchange / "gelen").iterdir()]
+        self.assertEqual(sorted(k["repository"] for k in kayitlar), ["other/place", REPO])
+
     def test_inbox_refuses_a_directory_inside_a_git_work_tree(self):
         project = self.root / "depo"
         (project / ".git").mkdir(parents=True)

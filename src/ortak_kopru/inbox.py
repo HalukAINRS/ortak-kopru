@@ -5,7 +5,8 @@ kullanılmaz. Her konu, kimin ne zaman yazdığı ve formdaki "yer" alanıyla te
 JSON dosyası olur. Dosyalar aktarım dizininin altındaki `gelen/` dizinine
 yazılır; o dizin bir Git çalışma ağacının içinde olamaz. İçerik veridir:
 çalıştırılmaz, yerel çalışmaya uygulanmaz, var olan bir dosyanın üstüne yazılmaz.
-Başlığı ya da gövdesi değişen konu yeni bir dosya olur; önceki hâli kalır.
+Başlığı ya da gövdesi değişen konu yeni bir dosya olur; önceki hâli kalır. Dosya adı deponun
+adını da karmaya katar; aynı aktarım dizini birden çok depoyla kullanılsa da kayıtlar karışmaz.
 """
 from __future__ import annotations
 
@@ -40,10 +41,20 @@ def form_fields(body):
     return result
 
 
-def content_digest(issue):
-    text = json.dumps({"title": issue["title"], "body": issue["body"]},
-                      ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+def _sha256(value):
+    text = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def content_digest(issue):
+    return _sha256({"title": issue["title"], "body": issue["body"]})
+
+
+def file_name(repository, issue):
+    """Same repository, number and content → same name; anything else → a new file."""
+    key = _sha256({"repository": repository, "number": issue["number"],
+                   "title": issue["title"], "body": issue["body"]})
+    return f"konu-{issue['number']:06d}-{key[:16]}.json"
 
 
 def collect(exchange_directory, client, repository):
@@ -54,7 +65,7 @@ def collect(exchange_directory, client, repository):
     new, unchanged = [], 0
     for issue in client.open_issues(repository):
         digest = content_digest(issue)
-        name = f"konu-{issue['number']:06d}-{digest[:16]}.json"
+        name = file_name(repository, issue)
         path = private_path(inbox / name)
         if path.exists():
             unchanged += 1
