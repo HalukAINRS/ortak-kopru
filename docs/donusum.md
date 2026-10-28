@@ -2,13 +2,13 @@
 
 <!-- uretilen:donusum -->
 
-Bu sayfa, bugün GitHub'da duran Ortak Köprü deposunun yeni hâline nasıl geçeceğini anlatıyor. Yeni hâl ayrı bir yerde kuruldu ve sınandı. Ana depoya geçişi birkaç aşamada olacak. Her aşamanın kimin elinde olduğu, nasıl anlaşılacağı ve nasıl geri alınacağı yazılı.
+Bu sayfa, bugün GitHub'da duran Ortak Köprü deposunun yeni hâline nasıl geçeceğini anlatıyor. Yeni hâl ayrı bir yerde kuruldu ve sınandı. Ana depoya geçiş aşama aşama yürür. Her aşamanın kimin elinde olduğu, nasıl anlaşılacağı ve nasıl geri alınacağı yazılı.
 
 Bu geçiş, açılıştan gerçeğe giden [yolun](yol.md) ilk adımını ana depoda gerçek kılıyor. Komutlar ve ölçütler [dönüşümün teknik ekinde](teknik/donusum-teknik.md) duruyor. Teknik konuların hepsi [teknik ayrıntılar](teknik/README.md), bugüne kadar yapılanlar [geçmiş işler](gecmis/README.md) bölümünde.
 
 ## Bugün nerede duruyoruz
 
-Son ölçüm 2026-10-28 17:44 UTC'de, ana dalın o anki hâline karşı yapıldı. Dönüşümün on bir aşamasından üçü tamam. Şu an atılabilecek aşama: Birleştirme. Öteki zorunlu aşamalar bir ön koşulun bitmesini bekliyor. Son provada birleşme temiz çıktı ve denetimler geçti.
+Son ölçüm 2026-10-28 17:55 UTC'de, ana dalın o anki hâline karşı yapıldı. Dönüşümün on bir aşamasından beşi tamam. Sırada, yapılınca kanıtı yazılacak aşama: Saatlik otomasyon, Yerel geçiş. Öteki zorunlu aşamalar bir ön koşulun bitmesini bekliyor. Son provada birleşme temiz çıktı ve denetimler geçti.
 
 Aşağıdaki ağaçta her aşama, bitmesini beklediği aşamanın altında duruyor. Dolu kare biten, boş kare açık, eşkenar dörtgen isteğe bağlı aşamayı gösterir.
 
@@ -18,10 +18,10 @@ Aşağıdaki ağaçta her aşama, bitmesini beklediği aşamanın altında duruy
   (0) Yeni oluşum hazır                           ■ tamam
    ├─▶ (1) Prova                                  ■ tamam
    │   └─▶ (2) Yerel hazırlık                     ■ tamam
-   │       └─▶ (3) Birleştirme                    □ atılabilir
-   │           ├─▶ (4) Bulut denetimi ve Web      □ ön koşul
-   │           ├─▶ (5) Saatlik otomasyon          □ ön koşul
-   │           ├─▶ (6) Yerel geçiş                □ ön koşul
+   │       └─▶ (3) Birleştirme                    ■ tamam
+   │           ├─▶ (4) Bulut denetimi ve Web      ■ tamam
+   │           ├─▶ (5) Saatlik otomasyon          □ kanıt
+   │           ├─▶ (6) Yerel geçiş                □ kanıt
    │           │   └─▶ (7) Yardımcıların talimatı □ ön koşul
    │           │       └─▶ (9) Kapanış (+2)       □ ön koşul
    │           └─▶ (8) Bekleyen öteki öneriler    ◇ isteğe bağlı
@@ -109,7 +109,7 @@ Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşama
 
 **Kim?** Claude Code Bulut.
 
-**Ne?** Yeni oluşum ayrı bir dalda kuruldu ve GitHub'da bir değişiklik önerisi olarak bekliyor.
+**Ne?** Yeni oluşum ayrı bir dalda kuruldu ve GitHub'a bir değişiklik önerisi olarak sunuldu.
 
 **Neden?** Ana dal her saat çalışan bir otomasyonu ve bir yerel bilgisayarı besliyor. Bu kadar büyük bir değişiklik önce ayrı bir yerde kurulup sınanmalı.
 
@@ -159,7 +159,7 @@ Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşama
 
 ### 3. Birleştirme
 
-**Durum:** Atılabilir: ön koşulu bitti ve bir karar beklemiyor.
+**Durum:** Tamam.
 
 **Kim?** Haluk.
 
@@ -177,7 +177,7 @@ Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşama
 
 ### 4. Bulut denetimi ve Web
 
-**Durum:** Ön koşulunun bitmesini bekliyor.
+**Durum:** Tamam.
 
 **Kim?** GitHub.
 
@@ -195,7 +195,7 @@ Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşama
 
 ### 5. Saatlik otomasyon
 
-**Durum:** Ön koşulunun bitmesini bekliyor.
+**Durum:** Ön koşulu bitti; olduğu görülünce kanıtı yazılacak.
 
 **Kim?** GitHub.
 
@@ -213,7 +213,7 @@ Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşama
 
 ### 6. Yerel geçiş
 
-**Durum:** Ön koşulunun bitmesini bekliyor.
+**Durum:** Ön koşulu bitti; olduğu görülünce kanıtı yazılacak.
 
 **Kim?** Haluk.
 
@@ -313,7 +313,7 @@ Bu sırada hiçbir kayıt silinmez; geri almanın kendisi de bir kayıttır. Dah
 
 ## Siz ne yapabilirsiniz
 
-Bu geçişi izleyebilirsiniz. Yeni hâli bugün de okuyabilirsiniz: değişiklik önerisinin sayfası GitHub'da açık. Bir şey sormak ya da bir sorun bildirmek isterseniz [GitHub'da bir konu açın](https://github.com/HalukAINRS/ortak-kopru/issues/new); GitHub buna Issue der.
+Bu geçişi izleyebilirsiniz. Yeni hâl ana depoda duruyor ve Web'de okunabiliyor. Bir şey sormak ya da bir sorun bildirmek isterseniz [karşılık formunu açın](https://github.com/HalukAINRS/ortak-kopru/issues/new?template=karsilik.yml); GitHub buna Issue der.
 
 ## Birkaç kelime
 

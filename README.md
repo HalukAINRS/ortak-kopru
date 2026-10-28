@@ -40,7 +40,7 @@ Ortak Köprü iki şeydir. Bir kapı: bir bilgisayardaki çalışma ile internet
 
 İlk kez geliyorsanız [Açılış: Kapı ve Köprü](docs/acilis.md) sayfasını okuyun. Önceden bir şey bilmeniz gerekmez. Aynı sayfa [Web'de de](https://halukainrs.github.io/ortak-kopru/acilis.html) okunabilir.
 
-Bir sorunuz, kaynağınız ya da düzeltmeniz varsa GitHub'da [bir konu açın](https://github.com/HalukAINRS/ortak-kopru/issues/new); GitHub buna Issue der. Hangi yazıya karşılık verdiğinizi belirtmeniz yeter. Doğrudan değişiklik önermek için [katkı rehberine](CONTRIBUTING.md) bakın.
+Bir sorunuz, kaynağınız ya da düzeltmeniz varsa GitHub'da [karşılık formunu açın](https://github.com/HalukAINRS/ortak-kopru/issues/new?template=karsilik.yml); GitHub buna Issue der. Web'de okurken her bölümün sonundaki karşılık bağlantısı, hangi yazının hangi bölümüne yazdığınızı forma kendisi yazar. Doğrudan değişiklik önermek için [katkı rehberine](CONTRIBUTING.md) bakın.
 
 Açılıştaki niyetin adım adım nasıl gerçeğe döneceğini, hangi adımın karar beklediğini ve hangisinin atılabileceğini [yol sayfası](docs/yol.md) gösterir.
 

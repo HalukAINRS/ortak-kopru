@@ -37,9 +37,13 @@ aside h2{font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;margin:.3
 .reader-note{background:var(--wash);padding:1rem;margin-top:1.8rem;border-radius:7px}
 .reader-note p{margin:0 0 .6rem}
 .reader-note p:last-child{margin:0}
+.karsilik{margin:-.2rem 0 1.8rem;font-size:.84rem}
+.karsilik a{color:var(--muted);text-decoration:none;border-bottom:1px dashed var(--line);padding-bottom:.05rem}
+.karsilik a::before{content:"↳ "}
+.karsilik a:hover,.karsilik a:focus-visible{color:var(--accent);border-bottom-color:var(--accent)}
 .closing{border-top:1px solid var(--line);padding-top:1.8rem;margin-top:2.8rem;font-size:.92rem}
 .site-footer{max-width:1180px;margin:0 auto;padding:1.5rem 2rem 2.3rem;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted);display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:space-between}
 @media(max-width:900px){.page-shell{grid-template-columns:1fr;gap:2rem;padding-top:2.2rem}aside{position:static;order:-1}.contents{display:flex;flex-wrap:wrap;gap:.25rem .7rem;border:0}.contents a{padding:.3rem .55rem;background:var(--wash);border-radius:4px}.reader-note{display:none}main{max-width:100%}}
 @media(max-width:560px){body{font-size:16px}.site-header,.page-shell,.site-footer{padding-left:1.2rem;padding-right:1.2rem}.site-nav{gap:.6rem 1rem}.page-shell{padding-bottom:3rem}aside h2{margin-top:0}h1{margin-bottom:1.6rem}.site-footer{display:block}.site-footer span{display:block;margin:.4rem 0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-@media print{body{background:#fff;font-size:11pt}.site-header,.site-footer,aside,.skip,.closing{display:none}.page-shell{display:block;padding:0;max-width:none}main{max-width:none}h1{font-size:24pt}h2{font-size:15pt;break-after:avoid}a{color:inherit}p{orphans:3;widows:3}}
+@media print{body{background:#fff;font-size:11pt}.site-header,.site-footer,aside,.skip,.closing,.karsilik{display:none}.page-shell{display:block;padding:0;max-width:none}main{max-width:none}h1{font-size:24pt}h2{font-size:15pt;break-after:avoid}a{color:inherit}p{orphans:3;widows:3}}

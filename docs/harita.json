@@ -1188,7 +1188,7 @@
       "ad": "Otomasyon",
       "yol": ".github/",
       "her_dosya_tanimli": true,
-      "ne": "GitHub üzerinde çalışan iş akışları, gönderim betiği ve PR şablonu.",
+      "ne": "GitHub üzerinde çalışan iş akışları, gönderim betiği, PR şablonu ve okurun katkı kalıbı.",
       "kapsam": [
         ".github/**"
       ],
@@ -1217,6 +1217,16 @@
           "yol": ".github/pull_request_template.md",
           "tur": "belge",
           "ne": "PR açıklaması şablonu."
+        },
+        {
+          "yol": ".github/ISSUE_TEMPLATE/karsilik.yml",
+          "tur": "ayar",
+          "ne": "Katkı kalıbı: okurun sorusunu, kaynağını, düzeltmesini ya da görüşünü, karşılık verdiği sayfa ve bölümle birlikte alan konu formu. Okuma sayfalarındaki bölüm bağlantıları yer alanını kendisi doldurur."
+        },
+        {
+          "yol": ".github/ISSUE_TEMPLATE/config.yml",
+          "tur": "ayar",
+          "ne": "Konu açma ekranının ayarı: boş konuya izin verir, önce okumak isteyene açılış sayfasını gösterir."
         }
       ]
     }

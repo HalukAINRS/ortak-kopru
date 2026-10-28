@@ -272,7 +272,7 @@ Regresyon testleri; geçici depolar ve sahte komutlarla çalışır, gerçek sa�
 
 ## Otomasyon
 
-GitHub üzerinde çalışan iş akışları, gönderim betiği ve PR şablonu. Yeri: `.github/`.
+GitHub üzerinde çalışan iş akışları, gönderim betiği, PR şablonu ve okurun katkı kalıbı. Yeri: `.github/`.
 
 | Dosya | Tür | Ne | Eski adı |
 | --- | --- | --- | --- |
@@ -281,6 +281,8 @@ GitHub üzerinde çalışan iş akışları, gönderim betiği ve PR şablonu. Y
 | `.github/workflows/deus-nt.yml` | ayar | NT sürücüsünü Windows'ta derler; imzalamaz, yüklemez. | — |
 | `.github/scripts/kopru_gonder.sh` | betik | Otomasyonun gönderim betiği: yalnız defteri, aynayı ve çağrı kayıtlarını gönderir. | — |
 | `.github/pull_request_template.md` | belge | PR açıklaması şablonu. | — |
+| `.github/ISSUE_TEMPLATE/karsilik.yml` | ayar | Katkı kalıbı: okurun sorusunu, kaynağını, düzeltmesini ya da görüşünü, karşılık verdiği sayfa ve bölümle birlikte alan konu formu. Okuma sayfalarındaki bölüm bağlantıları yer alanını kendisi doldurur. | — |
+| `.github/ISSUE_TEMPLATE/config.yml` | ayar | Konu açma ekranının ayarı: boş konuya izin verir, önce okumak isteyene açılış sayfasını gösterir. | — |
 
 ## Çalıştırma
 

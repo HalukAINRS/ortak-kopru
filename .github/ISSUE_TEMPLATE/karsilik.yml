@@ -1,0 +1,48 @@
+name: Karşılık
+description: Okuduğunuz bir yazıya ya da bölüme soru, kaynak, düzeltme ya da görüşle karşılık verin.
+title: "[Karşılık] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Bu form, Ortak Köprü'de okuduğunuz bir yazıya karşılık vermek içindir. Önceki konuşmaları bilmeniz gerekmez; bir paragraf ve kendi açıklamanız yeterli bir başlangıçtır.
+
+        Yazdığınız şey herkese açık olur. Şifre, anahtar ya da kişisel bilgi paylaşmayın.
+  - type: dropdown
+    id: tur
+    attributes:
+      label: Ne getiriyorsunuz?
+      options:
+        - Soru
+        - Kaynak
+        - Düzeltme
+        - Görüş
+    validations:
+      required: true
+  - type: input
+    id: yer
+    attributes:
+      label: Hangi yazı, hangi bölüm?
+      description: Okuma sayfalarındaki "Bu bölüme karşılık ver" bağlantısı bu alanı kendisi doldurur. Elle yazıyorsanız sayfanın adresini ya da başlığını yazın.
+      placeholder: acilis.html#niyet
+    validations:
+      required: true
+  - type: textarea
+    id: metin
+    attributes:
+      label: Karşılığınız
+      description: Sorunuzu, kaynağınızı, düzeltmenizi ya da görüşünüzü yazın.
+    validations:
+      required: true
+  - type: textarea
+    id: dayanak
+    attributes:
+      label: Dayanak (isteğe bağlı)
+      description: Bir kaynak, bağlantı ya da alıntı varsa buraya yazın ve kime ait olduğunu belirtin.
+  - type: checkboxes
+    id: sinir
+    attributes:
+      label: Sınır
+      options:
+        - label: Bu yazıda şifre, anahtar, kişisel bilgi ya da bana ait olmayan özel bir içerik yok.
+          required: true

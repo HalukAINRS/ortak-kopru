@@ -12,10 +12,10 @@ Kayıt `docs/yol.json`, sözleşmesi `schemas/yol.schema.json`, aracı `tools/yo
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 0. Zemin (`zemin`) | 3, 6 | — | — | depo içi | orta | — | tamam |
 | 1. Gönderici yalnız seçileni gönderir (`sinir`) | 2, 4 | zemin | Haluk: bekliyor | yerel → Web | küçük | R-17, S02 | karar-bekliyor |
-| 2. Katkı kalıbı (`katki-kalibi`) | 5 | zemin | — | Web → Web (okurdan yazıya) | küçük | — | atilabilir |
-| 3. Gelen kutusu (`gelen-kutusu`) | 1, 2 | katki-kalibi | Haluk: bekliyor | Web → yerel | orta | S09 | onkosul-bekliyor |
+| 2. Katkı kalıbı (`katki-kalibi`) | 5 | zemin | — | Web → Web (okurdan yazıya) | küçük | — | tamam |
+| 3. Gelen kutusu (`gelen-kutusu`) | 1, 2 | katki-kalibi | Haluk: bekliyor | Web → yerel | orta | S09 | karar-bekliyor |
 | 4. Yanıt geri döner (`yanit-donusu`) | 1 | gelen-kutusu | Haluk: bekliyor | yerel → Web | orta | — | onkosul-bekliyor |
-| 5. İlk dış katkı (`ilk-dis-katki`) | 5 | katki-kalibi | — | Web → yerel → Web | küçük | — | onkosul-bekliyor |
+| 5. İlk dış katkı (`ilk-dis-katki`) | 5 | katki-kalibi | — | Web → yerel → Web | küçük | — | disaridan-bekleniyor |
 | 6. Kapı GitHub dışına açılır (`kapinin-genislemesi`) | 1 (ufuk) | yanit-donusu | Haluk: bekliyor | yerel ↔ ikinci dış alan | büyük | S08 | ufukta |
 
 **Yolun ağacı** · mühendis çizimi
@@ -23,11 +23,11 @@ Kayıt `docs/yol.json`, sözleşmesi `schemas/yol.schema.json`, aracı `tools/yo
 ```text
   (0) Zemin                                         ■ tamam
    ├─▶ (1) Gönderici yalnız seçileni gönderir       □ karar
-   └─▶ (2) Katkı kalıbı                             □ atılabilir
-       ├─▶ (3) Gelen kutusu                         □ ön koşul
+   └─▶ (2) Katkı kalıbı                             ■ tamam
+       ├─▶ (3) Gelen kutusu                         □ karar
        │   └─▶ (4) Yanıt geri döner                 □ ön koşul
        │       └─▶ (6) Kapı GitHub dışına açılır    ◇ ufukta
-       └─▶ (5) İlk dış katkı                        □ ön koşul
+       └─▶ (5) İlk dış katkı                        □ dışarıdan
 ```
 
 **İlkelerin göstergesi** · mühendis çizimi
@@ -39,7 +39,7 @@ Kayıt `docs/yol.json`, sözleşmesi `schemas/yol.schema.json`, aracı `tools/yo
   2 Yerel merkez                      □□        kısmen işliyor
   3 Köken ve sahiplik                 ■         işliyor
   4 Sınır                             □         kısmen işliyor
-  5 Açık katılım                      □□        kısmen işliyor
+  5 Açık katılım                      ■□        kısmen işliyor
   6 Doğrulanabilirlik ve geri dönüş   ■         işliyor
 ```
 
@@ -75,17 +75,17 @@ Karar (Haluk): Yerel gönderici, defter ve çağrı kayıtları dışındaki dos
 
 ### 2. Katkı kalıbı
 
-GitHub konu formu `karsilik.yml`: tür (soru, kaynak, düzeltme), `yer` (sayfa ve bölüm adresi) ve metin alanları. Okuma sayfası üreticisi her `h2` bölümüne `issues/new?template=karsilik.yml&yer=<sayfa#bölüm>` bağlantısı ekler. Markdown kaynakları değişmez; yalnız üretici ve sayfalar değişir.
+GitHub konu formu `.github/ISSUE_TEMPLATE/karsilik.yml`: tür (soru, kaynak, düzeltme, görüş), `yer` (sayfa ve bölüm adresi), metin, dayanak ve sınır onayı. Okuma sayfası üreticisi (`tools/okuma_yayini_uret.py`, `karsilik()`) her `h2` bölümünün sonuna `issues/new?template=karsilik.yml&yer=<sayfa#bölüm>&title=[Karşılık] <sayfa> · <bölüm>` bağlantısı ekler; sayfa sonundaki bağlantı da aynı formu sayfa adresiyle açar. Markdown kaynakları değişmez; yalnız üretici, stil ve sayfalar değişir. Boş konu açmak yine mümkündür (`config.yml`).
 
-Dokunacağı yerler: `.github/ISSUE_TEMPLATE/karsilik.yml`, `tools/okuma_yayini_uret.py`, `tests/test_okuma_yayini_uret.py`.
+Dokunacağı yerler: `.github/ISSUE_TEMPLATE/karsilik.yml`, `.github/ISSUE_TEMPLATE/config.yml`, `tools/okuma_yayini_uret.py`, `okuma.css`, `tests/test_okuma_yayini_uret.py`.
 
 Geri alma: Form dosyası ve üretici değişikliği geri alınır, sayfalar yeniden üretilir. Açılmış konular GitHub'da kalır.
 
 | Ölçüt | Bugün |
 | --- | --- |
-| `.github/ISSUE_TEMPLATE/karsilik.yml` var | karşılanmıyor |
-| `tools/okuma_yayini_uret.py` içinde `template=karsilik` geçer | karşılanmıyor |
-| `tests/test_okuma_yayini_uret.py` içinde `test_each_section_offers_a_linked_reply` sınaması var (CI'da geçer) | karşılanmıyor |
+| `.github/ISSUE_TEMPLATE/karsilik.yml` var | karşılanıyor |
+| `tools/okuma_yayini_uret.py` içinde `template=karsilik` geçer | karşılanıyor |
+| `tests/test_okuma_yayini_uret.py` içinde `test_each_section_offers_a_linked_reply` sınaması var (CI'da geçer) | karşılanıyor |
 
 ### 3. Gelen kutusu
 

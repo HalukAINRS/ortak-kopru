@@ -112,7 +112,7 @@ Beşlinin her sorusu dörtlünün her sorusuyla birleştirildi. Satırlar kapın
 | 2. Yerel merkez | Nerede, Ne zaman, Ne kadar | kısmen uygulanıyor | `src/ortak_kopru/exchange.py`, `docs/teknik/kararlar/0002-dis-alan-kapisi.md`, `katilimcilar/AGENTS-kopru.md` | Yerel gönderici yerel/kopru_gonder.ps1 kapının dışından çalışıyor ve çalışma klasöründe kalan izlenmeyen her dosyayı herkese açık ana dala gönderebiliyor; bu, seçimsiz bir çıkış yolu. (R-17, S02) |
 | 3. Köken ve sahiplik | Ne, Ne zaman, Nereden | uygulanıyor | `schemas/exchange-manifest.schema.json`, `src/ortak_kopru/gateway.py`, `defter/kopru_ekle.py` | — |
 | 4. Sınır | Nerede, Nereye, Ne kadar | kısmen uygulanıyor | `defter/kopru_ekle.py`, `src/ortak_kopru/exchange.py`, `.github/scripts/kopru_gonder.sh` | Bulut göndericisi kapsamı defter, ayna ve çağrı günlükleriyle sınırlıyor; yerel gönderici sınırlamıyor. Aynı kural iki yerde iki ayrı biçimde uygulanıyor. (R-17, S02) |
-| 5. Açık katılım | Nasıl, Ne için, Nereden | kısmen uygulanıyor | `docs/web-girisi.md`, `CONTRIBUTING.md`, `index.html` | Okuma ve katkı yolları açık, ama bugüne kadar dışarıdan bir katkı gelmedi (tek Issue #16, yerel kullanıcının kendi kaydı). Gelen bir katkının yerel kullanıcıya ulaşması GitHub bildirimlerine bırakılmış. (S09) |
+| 5. Açık katılım | Nasıl, Ne için, Nereden | kısmen uygulanıyor | `docs/web-girisi.md`, `CONTRIBUTING.md`, `index.html`, `.github/ISSUE_TEMPLATE/karsilik.yml` | Okuma ve katkı yolları açık; Web'deki her bölümün sonunda, yeri kendisi yazan bir karşılık bağlantısı var. Ama bugüne kadar dışarıdan bir katkı gelmedi (tek Issue #16, yerel kullanıcının kendi kaydı). Gelen bir katkının yerel kullanıcıya ulaşması GitHub bildirimlerine bırakılmış. (S09) |
 | 6. Doğrulanabilirlik ve geri dönüş | Nasıl, Ne zaman, Neden | uygulanıyor | `src/ortak_kopru/gateway.py`, `tools/dogrula.py`, `kopru.html` | — |
 
 <!-- /uretilen:acilis_ilkeler -->
@@ -157,7 +157,7 @@ Belirteçler, anahtarlar, IP adresleri, cihaz kimlikleri, kişisel dosyalar ve �
 
 Köprünün dış ucu herkese açıktır. Bir okuyucunun bütün mimariyi ya da geçmişi bilmesi gerekmez; bir paragraf ve kendi açıklaması yeterli bir başlangıçtır. Gelen katkı, etkilediği metnin ya da kaydın yanına bağlanır ve nasıl karşılandığı görünür kalır. Yanıt gelmemesi kabul sayılmaz.
 
-*Bağladığı sorular:* Nasıl, Ne için, Nereden. *Bugün:* kısmen uygulanıyor. Okuma ve katkı yolları açık, ama bugüne kadar dışarıdan bir katkı gelmedi (tek Issue #16, yerel kullanıcının kendi kaydı). Gelen bir katkının yerel kullanıcıya ulaşması GitHub bildirimlerine bırakılmış.
+*Bağladığı sorular:* Nasıl, Ne için, Nereden. *Bugün:* kısmen uygulanıyor. Okuma ve katkı yolları açık; Web'deki her bölümün sonunda, yeri kendisi yazan bir karşılık bağlantısı var. Ama bugüne kadar dışarıdan bir katkı gelmedi (tek Issue #16, yerel kullanıcının kendi kaydı). Gelen bir katkının yerel kullanıcıya ulaşması GitHub bildirimlerine bırakılmış.
 
 ### 6. Doğrulanabilirlik ve geri dönüş
 

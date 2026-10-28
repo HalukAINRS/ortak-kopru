@@ -8,7 +8,7 @@ Bu yol kendini denetler. Her adımın ölçütü var ve ölçütler her değişi
 
 ## Bugün nerede duruyoruz
 
-Bugün altı ilkenin ikisi tam olarak işliyor, dördü kısmen işliyor. Yolun yedi adımından biri tamam, beşi açık, biri ufukta. Şu an atılabilecek adım: Katkı kalıbı. Kararı bekleyen adım: Gönderici yalnız seçileni gönderir. Öteki açık adımlar bir ön koşulun bitmesini bekliyor.
+Bugün altı ilkenin ikisi tam olarak işliyor, dördü kısmen işliyor. Yolun yedi adımından ikisi tamam, dördü açık, biri ufukta. Kararı bekleyen adım: Gönderici yalnız seçileni gönderir, Gelen kutusu. Öteki açık adımlar bir ön koşulun bitmesini bekliyor.
 
 Aşağıdaki gösterge her ilkeye bağlı adımları sayar. Dolu kare biten, boş kare açık, eşkenar dörtgen ufuktaki adımı gösterir.
 
@@ -21,7 +21,7 @@ Aşağıdaki gösterge her ilkeye bağlı adımları sayar. Dolu kare biten, bo�
   2 Yerel merkez                      □□        kısmen işliyor
   3 Köken ve sahiplik                 ■         işliyor
   4 Sınır                             □         kısmen işliyor
-  5 Açık katılım                      □□        kısmen işliyor
+  5 Açık katılım                      ■□        kısmen işliyor
   6 Doğrulanabilirlik ve geri dönüş   ■         işliyor
 ```
 
@@ -86,11 +86,11 @@ Yol yedi adımdan oluşuyor. Aşağıdaki ağaçta her adım, bitmesini bekledi�
 ```text
   (0) Zemin                                         ■ tamam
    ├─▶ (1) Gönderici yalnız seçileni gönderir       □ karar
-   └─▶ (2) Katkı kalıbı                             □ atılabilir
-       ├─▶ (3) Gelen kutusu                         □ ön koşul
+   └─▶ (2) Katkı kalıbı                             ■ tamam
+       ├─▶ (3) Gelen kutusu                         □ karar
        │   └─▶ (4) Yanıt geri döner                 □ ön koşul
        │       └─▶ (6) Kapı GitHub dışına açılır    ◇ ufukta
-       └─▶ (5) İlk dış katkı                        □ ön koşul
+       └─▶ (5) İlk dış katkı                        □ dışarıdan
 ```
 
 ### 0. Zemin
@@ -101,7 +101,7 @@ Yol yedi adımdan oluşuyor. Aşağıdaki ağaçta her adım, bitmesini bekledi�
 
 **Neden?** Bir yerin gerçeğe dönüştüğünü görebilmek için önce neyin söz verildiğini ve neyin bugün işlediğini ayırmak gerekir.
 
-**Nerede?** Deponun kendisinde: açılışta, haritada ve denetimlerde. Bu zemin bugün ayrı bir dalda; GitHub'daki ana depoya geçişi [dönüşüm sayfasında](donusum.md) anlatılıyor.
+**Nerede?** Deponun kendisinde: açılışta, haritada ve denetimlerde. Bu zemin 28 Ekim'den beri GitHub'daki ana depoda; oraya hangi aşamalarla geçildiği [dönüşüm sayfasında](donusum.md) anlatılıyor.
 
 **Nereden nereye?** İçeride kalır; dışarıya bir şey taşımaz.
 
@@ -139,7 +139,7 @@ Yol yedi adımdan oluşuyor. Aşağıdaki ağaçta her adım, bitmesini bekledi�
 
 ### 2. Katkı kalıbı
 
-**Durum:** Atılabilir: ön koşulu bitti ve bir karar beklemiyor.
+**Durum:** Tamam.
 
 **Ne?** Her yazının her bölümünün yanında bir karşılık bağlantısı olur. Bağlantı, hangi yazıya ve hangi bölüme karşılık verildiğini kendiliğinden yazan bir katkı kalıbı açar.
 
@@ -161,7 +161,7 @@ Yol yedi adımdan oluşuyor. Aşağıdaki ağaçta her adım, bitmesini bekledi�
 
 ### 3. Gelen kutusu
 
-**Durum:** Ön koşulunun bitmesini bekliyor.
+**Durum:** Sahibinin kararını bekliyor; ön koşulu bitti.
 
 **Ne?** Dışarıdan gelen sorular ve katkılar, yerel kullanıcının bilgisayarındaki ayrı bir gelen kutusuna iner.
 
@@ -173,7 +173,7 @@ Yol yedi adımdan oluşuyor. Aşağıdaki ağaçta her adım, bitmesini bekledi�
 
 **Nasıl?** Kapıya yeni bir iş eklenir. Açık konuları okur ve her birini kimin, ne zaman yazdığıyla ve hangi yazıya bağlı olduğuyla gelen kutusuna koyar. Gelen kutusu yerel çalışmaya kendiliğinden karışmaz; yerel kullanıcı önce bakar.
 
-**Ne zaman?** Önce şu adımın bitmesi gerekiyor: Katkı kalıbı. Ayrıca Haluk'un bir karar vermesi gerekiyor. GitHub'a hangi yetkiyle bakılsın: yalnız herkese açık okumayla mı, kişisel bir anahtarla mı? Gelen kutusu bilgisayarda nerede dursun?
+**Ne zaman?** Ön koşulu bitti: Katkı kalıbı. Ayrıca Haluk'un bir karar vermesi gerekiyor. GitHub'a hangi yetkiyle bakılsın: yalnız herkese açık okumayla mı, kişisel bir anahtarla mı? Gelen kutusu bilgisayarda nerede dursun?
 
 **Ne için?** Bu adım şu ilkelere hizmet eder: 1. ilke (Karşılıklılık), 2. ilke (Yerel merkez).
 
@@ -205,7 +205,7 @@ Yol yedi adımdan oluşuyor. Aşağıdaki ağaçta her adım, bitmesini bekledi�
 
 ### 5. İlk dış katkı
 
-**Durum:** Ön koşulunun bitmesini bekliyor.
+**Durum:** Dışarıdan bir katkı bekleniyor.
 
 **Ne?** Haluk dışından biri bir soru, kaynak ya da düzeltme getirir ve bu katkı karşılık bulur.
 
@@ -217,7 +217,7 @@ Yol yedi adımdan oluşuyor. Aşağıdaki ağaçta her adım, bitmesini bekledi�
 
 **Nasıl?** Bu adım bir yazılımla atılmaz. Katkı kalıbı hazır olduktan sonra ilk dış katkının adresi ve ona verilen yanıtın adresi kayda yazılır.
 
-**Ne zaman?** Önce şu adımın bitmesi gerekiyor: Katkı kalıbı.
+**Ne zaman?** Ön koşulu bitti: Katkı kalıbı.
 
 **Ne için?** Bu adım şu ilkeye hizmet eder: 5. ilke (Açık katılım).
 
@@ -255,9 +255,9 @@ Bir ilkeye bağlı bütün zorunlu adımlar bitince, açılışta o ilkenin duru
 
 ## Siz ne yapabilirsiniz
 
-Bu yolun en kısa adımı sizin elinizde. Açılışı ya da bu sayfayı okuyup bir soru sorar, bir kaynak ya da düzeltme getirirseniz dışarıdan gelen ilk katkı gerçekleşmiş olur. Bunun için [GitHub'da bir konu açın](https://github.com/HalukAINRS/ortak-kopru/issues/new); GitHub buna Issue der.
+Bu yolun en kısa adımı sizin elinizde. Açılışı ya da bu sayfayı okuyup bir soru sorar, bir kaynak ya da düzeltme getirirseniz dışarıdan gelen ilk katkı gerçekleşmiş olur. Web'de her bölümün sonunda bir karşılık bağlantısı var; hangi bölüme yazdığınızı forma kendisi yazar. İsterseniz [karşılık formunu doğrudan açın](https://github.com/HalukAINRS/ortak-kopru/issues/new?template=karsilik.yml); GitHub buna Issue der.
 
-Hangi yazıya ve hangi adıma karşılık verdiğinizi yazmanız yeter. Bir adımın nasıl atılacağına dair öneriniz varsa onu da yazabilirsiniz. Öneriler yerel kullanıcının kararına sunulur, kendiliğinden uygulanmaz.
+Formu doğrudan açtıysanız hangi yazıya ve hangi adıma karşılık verdiğinizi yazmanız yeter. Bir adımın nasıl atılacağına dair öneriniz varsa onu da yazabilirsiniz. Öneriler yerel kullanıcının kararına sunulur, kendiliğinden uygulanmaz.
 
 ## Birkaç kelime
 

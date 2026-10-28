@@ -410,18 +410,19 @@
       "dayanaklar": [
         "docs/web-girisi.md",
         "CONTRIBUTING.md",
-        "index.html"
+        "index.html",
+        ".github/ISSUE_TEMPLATE/karsilik.yml"
       ],
       "durum": "kısmen",
-      "eksik": "Okuma ve katkı yolları açık, ama bugüne kadar dışarıdan bir katkı gelmedi (tek Issue #16, yerel kullanıcının kendi kaydı). Gelen bir katkının yerel kullanıcıya ulaşması GitHub bildirimlerine bırakılmış.",
+      "eksik": "Okuma ve katkı yolları açık; Web'deki her bölümün sonunda, yeri kendisi yazan bir karşılık bağlantısı var. Ama bugüne kadar dışarıdan bir katkı gelmedi (tek Issue #16, yerel kullanıcının kendi kaydı). Gelen bir katkının yerel kullanıcıya ulaşması GitHub bildirimlerine bırakılmış.",
       "senaryolar": [
         "S09"
       ],
       "sade": "Önceki konuşmaları bilmeniz gerekmez. Bir yazıyı okuyup bir soru sormanız ya da bir düzeltme önermeniz yeterli bir başlangıçtır. Getirdiğiniz şey, ilgili olduğu yazının yanına bağlanır.",
-      "bugun_sade": "Okuma ve yazma yolları açık. Ama dışarıdan henüz kimse yazmadı; ilk katkı sizinki olabilir.",
+      "bugun_sade": "Okuma ve yazma yolları açık; Web'de her bölümün sonunda o bölüme karşılık verme bağlantısı var. Ama dışarıdan henüz kimse yazmadı; ilk katkı sizinki olabilir.",
       "sade_sorular": [],
       "anlatim": [
-        "Bir şey sormak ya da önermek isterseniz [GitHub'da bir konu açın](https://github.com/HalukAINRS/ortak-kopru/issues/new); GitHub buna Issue der. Hangi yazıya ya da hangi ilkeye karşılık verdiğinizi yazmanız işi kolaylaştırır. Başkalarının neler yazdığını [konu listesinden](https://github.com/HalukAINRS/ortak-kopru/issues) görebilirsiniz.",
+        "Bir şey sormak ya da önermek isterseniz, Web'de okuduğunuz bölümün sonundaki karşılık bağlantısını kullanın. Bağlantı GitHub'da kısa bir form açar ve hangi yazının hangi bölümüne yazdığınızı forma kendisi yazar; GitHub buna Issue der. Bir bölüme bağlı olmayan bir şey yazmak isterseniz [karşılık formunu doğrudan açın](https://github.com/HalukAINRS/ortak-kopru/issues/new?template=karsilik.yml). Başkalarının neler yazdığını [konu listesinden](https://github.com/HalukAINRS/ortak-kopru/issues) görebilirsiniz.",
         "Yazdığınız şey kaybolmaz. İlgili olduğu yazının yanına bağlanır ve nasıl karşılandığı görünür kalır. Yanıt gecikebilir. Yanıt gelmemesi, önerinizin kabul edildiği anlamına gelmez; bekleyen olarak görünür kalır."
       ]
     },
