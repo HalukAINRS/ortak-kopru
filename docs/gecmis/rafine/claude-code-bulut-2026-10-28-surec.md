@@ -119,4 +119,6 @@ Bu arşiv, 28 Ekim 2026 tarihli rafine turunda neyin hangi sırayla yapıldığ�
 
 **14:48–14:50** Katkı rehberine üç sıfır kuralı, bakım rehberine harita ve yapı denetimleri, teknik dizine dosya tablosunun yerine harita, depo rehberine tarihli not ve güncel alan tablosu, CLI talimat parçasına yeni yollar ve eski adı bulma komutu eklendi. Doğrulama listesi on bir kontrole çıktı; yerelde on tamam, bir atlandı (pwsh yok).
 
+**14:51–14:55** Düzenleme `9ccd97b` ile gönderildi. Ubuntu'da on bir kontrolün hepsi geçti; PowerShell sınamaları yeni yerleşimle iki işletim sisteminde de geçti. Windows'ta bir harita testi kırıldı: test, eski adın artık dosya olmadığını dosya sistemine soruyordu. Windows büyük ve küçük harfi ayırmadığı için `docs/ACILIS.md` sorusu `docs/acilis.md` dosyasını buldu. Test ve aracın eski ad araması dosya sistemi yerine Git'in izlediği dosya listesine bakacak biçimde düzeltildi.
+
 **Düzeltme (14:50).** Beşinci istek bölümündeki “715 bağlantılık denetim” sabit bir dosya listesiyle çalışıyordu ve o turda yazılan yeni belgeleri kapsamıyordu. Denetim artık Git'in izlediği her Markdown ve HTML dosyasını tarıyor; bu turun sonunda 909 bağlantıda kırık bağlantı ya da çapa yok.

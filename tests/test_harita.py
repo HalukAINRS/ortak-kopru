@@ -78,7 +78,10 @@ class HaritaTests(unittest.TestCase):
                          "docs/rafine-sorulari.json": "docs/gecmis/simdi-ve-sonrasi.json"}.items():
             with self.subTest(ad=ad):
                 self.assertEqual(eski[ad], yeni)
-                self.assertFalse((ROOT / ad).exists())
+                # Git'in listesine bakılır: Windows'ta dosya sistemi büyük/küçük harfe duyarsızdır ve
+                # docs/ACILIS.md sorusu docs/acilis.md'yi bulur; eski ad yine de izlenen bir dosya değildir.
+                self.assertNotIn(ad, self.dosyalar)
+                self.assertTrue((ROOT / yeni).is_file())
         self.assertTrue(harita.nerede(self.veri, "kopru_ekle.py")[0].startswith("defter/kopru_ekle.py"))
         self.assertTrue(harita.nerede(self.veri, "SIMDI_VE_SONRASI.md")[0].startswith("docs/gecmis/simdi-ve-sonrasi.md"))
         bozuk = copy.deepcopy(self.veri)

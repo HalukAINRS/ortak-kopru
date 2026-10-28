@@ -167,9 +167,10 @@ def eski_ad_denetle(harita: dict, ref: str) -> list[str]:
     """O sürümdeki her dosya bugün aynı yerde mi, değilse eski adı haritada mı?"""
     cikti = subprocess.check_output(["git", "ls-tree", "-r", "--name-only", "-z", ref], cwd=KOK)
     eski = {ad for _, dosya in tanimlar(harita) for ad in dosya.get("eski_adlar", [])}
+    bugun = set(izlenen_dosyalar())   # Git'in listesi: büyük/küçük harfe duyarsız dosya sistemlerinde de doğru
     return [f"{ref}:{ad}: bugün yok ve eski adı haritada değil"
             for ad in sorted(set(cikti.decode("utf-8").split("\0")) - {""})
-            if not (KOK / ad).is_file() and ad not in eski]
+            if ad not in bugun and ad not in eski]
 
 
 def nerede(harita: dict, ad: str) -> list[str]:
