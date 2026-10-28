@@ -35,6 +35,8 @@ jobs:
         run: python -m unittest discover -v
       - name: Köprü ve ayna bütünlüğü
         run: python tools/depo_kontrol.py
+      - name: Statik okuma sayfalarının kaynaklarla uyumu
+        run: python tools/okuma_yayini_uret.py --check
       - name: Yerel arayüz JavaScript sözdizimi
         run: node --check ui/deus/app.js
       - name: Gönderim betiğinin Bash sözdizimi

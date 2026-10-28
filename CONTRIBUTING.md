@@ -1,5 +1,19 @@
 # Katkı ve bakım
 
+Ortak Köprü'ye bir kaynağı açıklayarak, anlam not defterindeki bir yoruma karşılık vererek, bir hata bildirerek veya dosya değişikliği önererek katkıda bulunabilirsiniz. Önce [son duruma](docs/SON_DURUM.md) ve katkınızın ilgili olduğu [kaynağa](docs/KAYNAKLAR.md) bakın. Dosyanın yerini bulmak için [depo rehberi](docs/DEPO_REHBERI.md) kullanılabilir.
+
+## Okuyucu geri dönüşü
+
+Sorunuzu veya düzeltmenizi [yeni bir Issue](https://github.com/HalukAINRS/ortak-kopru/issues/new) açarak iletebilirsiniz. Hangi belgeye, başlığa, kayıt numarasına veya sürüme karşılık verdiğinizi belirtmeniz, geri dönüşün doğru yere bağlanmasına yardımcı olur. Ardından neyi farklı anladığınızı, hangi bilginin eklendiğini veya hangi sorunun açık kaldığını kendi sözlerinizle anlatın. Varsa kaynak bağlantısını ekleyin; bilinmeyen bir alanı doldurmak için tahmin üretmeniz gerekmez.
+
+Doğrudan bir metin veya kod değişikliği önermek için çalışma dalınızdan pull request açabilirsiniz. Değişikliğin gerekçesini ve etkilediği kaydı açıklayın. Geçmişteki bir sözü düzeltirken eski kayıt korunur; yeni açıklama o kayda bağlanır. Yayımlanmış bir model yorumu, kullanıcının özgün sözü gibi yeniden yazılmaz.
+
+Issues ve pull request sayfaları herkese açıktır. Paylaşılacak alıntıyı ve dosyayı bu kapsam için seçin; özel konuşmaların tamamını, kişisel çalışma alanını veya erişim bilgilerini eklemeyin. Bir katkının gelmesi, okunması, değerlendirilmesi ve uygulanması ayrı kayıtlardır. Yanıt verilmemesi kabul anlamına gelmez; Issue açılması da yerel CLI işlerini kendiliğinden başlatmaz.
+
+Belge katkısında değişen metni, kaynak adreslerini ve bağlantıları kontrol edin; yapmadığınız bir denetimi yapılmış olarak yazmayın. Kod, yapılandırma veya çalışma davranışı değiştiğinde aşağıdaki teknik katkı ve doğrulama akışı uygulanır.
+
+## Teknik katkı
+
 Çalışma ortamı: **Python 3.12 veya üstü ve Git**. Python betikleri ve testler standart kütüphaneyi kullanır; paket kurulumu gerekmez. Yerel Windows kapıları PowerShell 7 kullanır.
 
 1. Güncel ana daldan çalışma dalı açın. Konu/araştırma dalları için [dal haritasına](docs/BAKIM.md#dal-ve-pr-haritası) bakın.
@@ -34,3 +48,7 @@ Kök Python/PowerShell dosyalarının adları ve göreli konumları yerel başla
 Göndericiler kayıt defteri, üretilen ayna ve satır günlükleri için özel birleştirme uygular. Kod/ayar veya tarihli makbuz çakışmaları otomatik taraf seçimiyle çözülmez. Birleştirme durursa `git status` ve karşılaştırmayı inceleyin; iki tarafın içeriğini koruyarak elle çözün, kontrolleri tekrarlayın. Zorlamalı gönderim bakım akışının parçası değildir.
 
 İşletim komutları, CI sınırları ve konu dalları: [Bakım rehberi](docs/BAKIM.md).
+
+## Statik okuma sayfaları
+
+`index.html`, `not-defteri.html`, `durum.html` ve `kaynaklar.html` sayfaları sırasıyla `docs/WEB_GIRISI.md`, `docs/ANLAM_NOT_DEFTERI.md`, `docs/SON_DURUM.md` ve `docs/KAYNAKLAR.md` kaynaklarından üretilir. Metinleri Markdown dosyalarında düzenleyip depo kökünde `python tools/okuma_yayini_uret.py` çalıştırın; oluşan HTML dosyalarını da değişiklikle birlikte kaydedin. `python tools/okuma_yayini_uret.py --check`, dosyalara yazmadan kaynaklarla uyumu denetler; aynı kontrol CI akışında da çalışır.
