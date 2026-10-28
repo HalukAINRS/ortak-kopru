@@ -719,11 +719,11 @@
     ]
   },
   "son_prova": {
-    "zaman": "2026-10-28T17:01:14Z",
+    "zaman": "2026-10-28T17:43:45Z",
     "ana": "origin/main",
     "ana_surum": "97c908de7a5850978082770ba3bac3e508688e57",
-    "dal": "origin/claude/rafine-2026-10-28",
-    "dal_surum": "2f69873009b4776ceccfb67cca4b504d69d2837d",
+    "dal": "HEAD",
+    "dal_surum": "7758d3e634f1e6d98ebfd5cdd0a80dc7576e1649",
     "birlesme": "temiz",
     "cakisanlar": [],
     "dogrulama": "12 tamam, 0 başarısız, 1 atlandı (powershell)",
@@ -731,11 +731,11 @@
     "basarili": true
   },
   "son_olcum": {
-    "zaman": "2026-10-28T17:41:20Z",
+    "zaman": "2026-10-28T17:44:26Z",
     "ana": "origin/main",
     "ana_surum": "97c908de7a5850978082770ba3bac3e508688e57",
-    "dal": "origin/claude/rafine-2026-10-28",
-    "dal_surum": "268e47c6163685c6c355e3a20c01104f65eb6cb3",
+    "dal": "HEAD",
+    "dal_surum": "7758d3e634f1e6d98ebfd5cdd0a80dc7576e1649",
     "durumlar": [
       {
         "kimlik": "olusum",
@@ -768,7 +768,7 @@
         "durum": "tamam",
         "olcutler": [
           {
-            "tarif": "son prova başarılı (2026-10-28 17:01, temiz, 12 tamam, 0 başarısız, 1 atlandı (powershell))",
+            "tarif": "son prova başarılı (2026-10-28 17:43, temiz, 12 tamam, 0 başarısız, 1 atlandı (powershell))",
             "karsilaniyor": true
           }
         ]

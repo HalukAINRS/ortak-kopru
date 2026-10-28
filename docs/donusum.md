@@ -8,7 +8,7 @@ Bu geçiş, açılıştan gerçeğe giden [yolun](yol.md) ilk adımını ana dep
 
 ## Bugün nerede duruyoruz
 
-Son ölçüm 2026-10-28 17:41 UTC'de, ana dalın o anki hâline karşı yapıldı. Dönüşümün on bir aşamasından üçü tamam. Şu an atılabilecek aşama: Birleştirme. Öteki zorunlu aşamalar bir ön koşulun bitmesini bekliyor. Son provada birleşme temiz çıktı ve denetimler geçti.
+Son ölçüm 2026-10-28 17:44 UTC'de, ana dalın o anki hâline karşı yapıldı. Dönüşümün on bir aşamasından üçü tamam. Şu an atılabilecek aşama: Birleştirme. Öteki zorunlu aşamalar bir ön koşulun bitmesini bekliyor. Son provada birleşme temiz çıktı ve denetimler geçti.
 
 Aşağıdaki ağaçta her aşama, bitmesini beklediği aşamanın altında duruyor. Dolu kare biten, boş kare açık, eşkenar dörtgen isteğe bağlı aşamayı gösterir.
 
