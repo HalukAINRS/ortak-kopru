@@ -1,0 +1,195 @@
+{
+  "at_utc": "2026-10-25T06:41:50.956163+00:00",
+  "source_sha256": "345adb21a3b0c7f4ecf4e69a89c1a2a9f8614204b94e3726ead05471ef90ef1b",
+  "source_encoding": "cp1254",
+  "source_sections": 5,
+  "source_original_unchanged": true,
+  "hardware": {
+    "at_utc": "2026-10-25T06:38:57.052883+00:00",
+    "qemu_policy_applied": true,
+    "qemu_online_mask": "0xFFF",
+    "qemu_priority": "Normal",
+    "launcher_persistent_policy_corrected": true,
+    "automatic_process_resuming": false,
+    "vm_restarted": false,
+    "guest_memory_resized": false,
+    "ssh_banner_available_after_change": true,
+    "performance_gain_claimed": false,
+    "smart": {
+      "nvme": {
+        "exit_status": 0,
+        "health_passed": true,
+        "temperature_c": 57,
+        "media_errors": 0,
+        "full_hardware_identifiers_published": false
+      },
+      "usb": {
+        "exit_status": 1,
+        "health_passed": null,
+        "temperature_c": null,
+        "media_errors": null,
+        "full_hardware_identifiers_published": false
+      }
+    },
+    "codex_usage_files": 30,
+    "codex_usage_events": 1024,
+    "hacker_usage_files": 74,
+    "hacker_unique_assistant_messages": 2427,
+    "hacker_current_sources_read": true,
+    "new_model_or_api_call": false,
+    "hacker_read_at_utc": "2026-10-25T06:43:30.933013+00:00"
+  },
+  "processor_physical_cores": 10,
+  "processor_logical_cpus": 12,
+  "verified_p_core_logical_indices": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "verified_e_core_logical_indices": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "mask_0x3f3_physical_p_cores": 1,
+  "observed_memory_modules": 1,
+  "observed_installed_gib": 16,
+  "dual_channel_measured": false,
+  "second_module_installed": false,
+  "packages": [
+    {
+      "id": "claude_desktop_x64",
+      "bytes": 250525856,
+      "sha256_matches_saved_source": true,
+      "native_signature_status": "Valid",
+      "executed_or_installed_by_this_check": false
+    },
+    {
+      "id": "chatgpt_desktop_x64",
+      "bytes": 979994720,
+      "sha256_matches_saved_source": true,
+      "native_signature_status": "UnknownError",
+      "executed_or_installed_by_this_check": false
+    },
+    {
+      "id": "gemini_desktop_bootstrapper",
+      "bytes": 13283768,
+      "sha256_matches_saved_source": true,
+      "native_signature_status": "Valid",
+      "executed_or_installed_by_this_check": false
+    },
+    {
+      "id": "gemini_desktop_offline_x64",
+      "bytes": 393753208,
+      "sha256_matches_saved_source": true,
+      "native_signature_status": "Valid",
+      "executed_or_installed_by_this_check": false
+    }
+  ],
+  "chatgpt_msix": {
+    "package_name": "OpenAI.Codex",
+    "version": "26.1021.3705.0",
+    "contains_appx_signature": true,
+    "contains_block_map": true,
+    "native_signature_validation_status": "UnknownError"
+  },
+  "identity": {
+    "is_local_system": true,
+    "system_drive": "X:",
+    "winpe_registry_present": true
+  },
+  "y_inventory": {
+    "full_y_root_scan_claimed": true,
+    "files": 75902,
+    "directories": 8996,
+    "read_errors": 0,
+    "appledouble": 5297,
+    "candidate_name_collisions": 0,
+    "files_deleted_or_moved": false
+  },
+  "reboot_persistence": {
+    "observed": true,
+    "boot_observations": [
+      {
+        "at_utc": "2026-10-25T06:29:51.016479+00:00",
+        "sentinel_matches": true,
+        "eight_documents_present": true,
+        "google_state_present": true
+      }
+    ],
+    "forced_reboot": false
+  },
+  "quota_contract": {
+    "claude_chat_and_code_shared_limits": true,
+    "chatgpt_work_and_codex_shared_usage": true,
+    "separate_desktop_quota_guaranteed": false,
+    "google_app_cli_pool_independence_confirmed": false,
+    "subscription_quota_inferred_from_token_totals": false
+  },
+  "existing_cyber_prevention_acceptance_count": 0,
+  "new_model_or_api_fallback_started": false,
+  "execution_order": [
+    5,
+    4,
+    3,
+    2,
+    1
+  ],
+  "task_5": {
+    "at_utc": "2026-10-25T07:04:39.616199+00:00",
+    "task": 5,
+    "status": "inspection_complete",
+    "files": 75902,
+    "directories": 8996,
+    "full_y_metadata_coverage": true,
+    "read_errors": 0,
+    "candidate_name_collisions": 0,
+    "missing_reference_classifications": [
+      {
+        "source_file": "HBCD_PE.ini",
+        "target_file": "procmon.exe",
+        "classification": "inactive_comment"
+      },
+      {
+        "source_file": "HalukAI_Ortam.ps1",
+        "target_file": "powershell_ise.exe",
+        "classification": "cleanup_target_not_startup_dependency"
+      }
+    ],
+    "unresolved_active_startup_targets": 0,
+    "no_destructive_reorganization": true,
+    "runtime_credentials_issue_transferred_to_task_3": true,
+    "other_tasks_marked_complete": false,
+    "next_task": 4
+  },
+  "task_4": {
+    "utc": "2026-10-25T07:15:09.780423+00:00",
+    "task": 4,
+    "status": "partial",
+    "completed": [
+      "CPU topology and live/persistent affinity correction",
+      "memory and reboot persistence observation",
+      "USB SCSI read: SMART unavailable, not a health verdict",
+      "140 local INF files matched by exact hardware/compatible ID token",
+      "Node compile cache redirected to persistent Y for future starts",
+      "unsupported universal RAM multiplier removed from shared interpretation"
+    ],
+    "open": [
+      "second physical RAM module not installed",
+      "nine PnP problems remain; one exact local IPF candidate, eight without exact local candidate",
+      "IPF signed drivers start manually, but targeted PnP restart restores code 37; cause not established"
+    ],
+    "driver_problem_count": 9,
+    "ipf_targeted_restart_fixed_problem": false,
+    "driver_autostart_policy_modified": false,
+    "forced_reboot": false,
+    "all_hardware_certified": false,
+    "next_nonblocked_task": 3
+  }
+}

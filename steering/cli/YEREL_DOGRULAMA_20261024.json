@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-10-24T10:59:47.403163+00:00",
+  "operation": "read_only_local_audit",
+  "provider_calls": 0,
+  "settings_changed": false,
+  "fixed_steering_files": {
+    "verified": 84,
+    "all_match": true
+  },
+  "bridge": {
+    "sha256": "fa13bdfed130d8d3b63c8a396d1712516f5c58e84ada57c01980f53e2fcfa6ec",
+    "records": 120,
+    "last_id": "k-0120",
+    "parser_only_not_full_semantic_read": true
+  },
+  "routing_reproduction": {
+    "synthetic_fixture": true,
+    "real_bridge_records_used": false,
+    "source_sha256": "0988f3c9f1e938aa88b254b3a8dee714b218055163d1b5ea51129cc81e997d00",
+    "function_lines": [
+      51,
+      67
+    ],
+    "role_address_accepted_by_producer_root": true,
+    "api_label_reply_hides_cli_label_request": true,
+    "actual_cli_delivery_proven": false
+  },
+  "binary": {
+    "name": "codex.exe",
+    "sha256": "2692c8c7bb2cf8b0aefe638741fc90236f4b824c59578ce84994f9de58200993",
+    "bytes": 341270320,
+    "saved_endpoint_strings": {
+      "ab.chatgpt.com/otlp/v1/metrics": 1,
+      "api.openai.com/v1/decisions": 1,
+      "chatgpt.com/backend-api/cloud-config": 1
+    },
+    "network_usage_verified": false
+  },
+  "cache": {
+    "sha256": "5b291c41948bd8629cd2cfe0a689bad8ad0462aa92e19543f7001a9ef6f15e6a",
+    "models": 9,
+    "marker_present": {
+      "guardian_v2": true,
+      "auto_review": true,
+      "classifier_instructions": true
+    },
+    "loaded_or_effective_verified": false
+  },
+  "local_config": {
+    "sha256": "1749a8f14e979b9a7af48a2def0534ab57e412e24636e8ed6068742148a58a3b",
+    "selected_fields": {
+      "model": "gpt-6.1-sol",
+      "model_reasoning_effort": "xhigh",
+      "plan_mode_reasoning_effort": "xhigh"
+    },
+    "server_effective_behavior_verified": false
+  },
+  "source_zip": {
+    "present": false,
+    "expected_bytes": 100641653,
+    "expected_sha256": "827bb9cac16fdb7b643c576a3bd41523e725ad4542ab023c5c4d45f3435b1009"
+  },
+  "saved_html": {
+    "source_kind": "user_supplied_saved_chatgpt_html",
+    "sha256": "cadc3f8d391ba29db16dfb5cc4f96bf6e8a997345803aa0e07d9345a86cabe1f",
+    "bootstrap_present": true,
+    "statsig_present": true,
+    "structure_counts": {
+      "feature_gates": {
+        "entries": 805,
+        "boolean_true": 363,
+        "boolean_false": 442,
+        "other_value_types": 0
+      },
+      "dynamic_configs": {
+        "entries": 143,
+        "boolean_true": 0,
+        "boolean_false": 0,
+        "other_value_types": 143
+      },
+      "layer_configs": {
+        "entries": 229,
+        "boolean_true": 0,
+        "boolean_false": 0,
+        "other_value_types": 229
+      }
+    },
+    "three_saved_flags": {
+      "mainline_classifier_steering_enabled": false,
+      "imagegen_steerability_enabled": false,
+      "disney_steerability_enabled": false
+    },
+    "runtime_activation_verified": false
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "at_utc": "2026-10-25T01:38:30.847672+00:00",
+  "source_alias": "H1",
+  "source_bytes": 20864747,
+  "source_sha256": "8d1d449710f55b4d67ce0706676e325f0946c5d81be04d0bb3e83a12b4e7eed1",
+  "fixed_prefix_verified": true,
+  "complete_parse": true,
+  "checks": [
+    {
+      "source_call_line": 3675,
+      "requested_call_line": 3675,
+      "result_line": 3676,
+      "result_is_error": true,
+      "direct_interrupted_error": true,
+      "tool": "Write",
+      "target_alias": "Steering Arsiv.txt",
+      "file_check": {
+        "current_state": "missing",
+        "automatic_retry": false,
+        "completed_at_interruption_proven": false,
+        "safety_decision_prevented": false,
+        "expected_bytes": 12481,
+        "expected_sha256": "e58b55c077aadc1fb28eef182b2697f9afde09ddd5a985fd3358bac7eb5894fa"
+      }
+    },
+    {
+      "source_call_line": 4112,
+      "result_line": 4114,
+      "result_is_error": false,
+      "direct_interrupted_error": false,
+      "tool": "Write",
+      "target_alias": "kurulum-2026-10-25.txt",
+      "file_check": {
+        "current_state": "matches_declared_write_now",
+        "automatic_retry": false,
+        "completed_at_interruption_proven": false,
+        "safety_decision_prevented": false,
+        "expected_bytes": 6158,
+        "expected_sha256": "7881b7e740ac0c91f140b97dc2f597c85cff73337557dbe9bd7d12a5f3cfbfc6",
+        "current_bytes": 6158,
+        "current_sha256": "7881b7e740ac0c91f140b97dc2f597c85cff73337557dbe9bd7d12a5f3cfbfc6",
+        "observation_stability": "two_equal_reads_and_equal_file_metadata; not an atomic historical snapshot"
+      }
+    }
+  ],
+  "original_commands_executed": false,
+  "source_modified": false,
+  "automatic_retry": false,
+  "safety_decision_prevented": false,
+  "verifier_sha256": "cd90cffc72c3c3d3b412af7339c809f9d34102d0dc63ecb32ca48246b7a6fd0f"
+}

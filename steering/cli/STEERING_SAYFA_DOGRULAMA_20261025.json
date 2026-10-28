@@ -1,0 +1,211 @@
+{
+  "at_utc": "2026-10-24T22:36:05.110968+00:00",
+  "method": "Static HTML/JSON parsing of hash-verified historical saved pages; no JavaScript execution or network access.",
+  "records": [
+    {
+      "id": "U0002",
+      "source_sha256": "4416f79ffb24a1f6eaec1954c82e309c53978ef1f45dce33bc3326c932efa858",
+      "provider": "ChatGPT",
+      "structure_counts": {
+        "feature_gates": {
+          "entries": 792,
+          "boolean_true": 352,
+          "boolean_false": 440,
+          "non_boolean": 0
+        },
+        "dynamic_configs": {
+          "entries": 142,
+          "boolean_true": 0,
+          "boolean_false": 0,
+          "non_boolean": 142
+        },
+        "layer_configs": {
+          "entries": 227,
+          "boolean_true": 0,
+          "boolean_false": 0,
+          "non_boolean": 227
+        }
+      },
+      "three_saved_flags": {
+        "mainline_classifier_steering_enabled": false,
+        "imagegen_steerability_enabled": false,
+        "disney_steerability_enabled": false
+      },
+      "saved_realtime_instructions_characters": 23797,
+      "runtime_activation_verified": false
+    },
+    {
+      "id": "U0045",
+      "source_sha256": "4a35a6a654c042968cbdff5e54f20c156f11429bb79c50aa9cdc304c8b7fc395",
+      "provider": "ChatGPT",
+      "structure_counts": {
+        "feature_gates": {
+          "entries": 792,
+          "boolean_true": 352,
+          "boolean_false": 440,
+          "non_boolean": 0
+        },
+        "dynamic_configs": {
+          "entries": 142,
+          "boolean_true": 0,
+          "boolean_false": 0,
+          "non_boolean": 142
+        },
+        "layer_configs": {
+          "entries": 227,
+          "boolean_true": 0,
+          "boolean_false": 0,
+          "non_boolean": 227
+        }
+      },
+      "three_saved_flags": {
+        "mainline_classifier_steering_enabled": false,
+        "imagegen_steerability_enabled": false,
+        "disney_steerability_enabled": false
+      },
+      "saved_realtime_instructions_characters": 23797,
+      "runtime_activation_verified": false
+    },
+    {
+      "id": "U0193",
+      "source_sha256": "53f7ab646913fa8cdf2084f1ed792478017f75d6b606c2a2d541a2ff647d8784",
+      "provider": "ChatGPT",
+      "structure_counts": {
+        "feature_gates": {
+          "entries": 792,
+          "boolean_true": 352,
+          "boolean_false": 440,
+          "non_boolean": 0
+        },
+        "dynamic_configs": {
+          "entries": 142,
+          "boolean_true": 0,
+          "boolean_false": 0,
+          "non_boolean": 142
+        },
+        "layer_configs": {
+          "entries": 227,
+          "boolean_true": 0,
+          "boolean_false": 0,
+          "non_boolean": 227
+        }
+      },
+      "three_saved_flags": {
+        "mainline_classifier_steering_enabled": false,
+        "imagegen_steerability_enabled": false,
+        "disney_steerability_enabled": false
+      },
+      "saved_realtime_instructions_characters": 23797,
+      "runtime_activation_verified": false
+    },
+    {
+      "id": "U0209",
+      "source_sha256": "ec4e0dea629cf0fdb887dc9cc7d9c377bb6aad8555d764adb4178ed50bd693f4",
+      "provider": "Gemini",
+      "dom_tag_counts": {
+        "script": 28,
+        "iframe": 4,
+        "user-query": 10,
+        "model-response": 10
+      },
+      "runtime_activation_verified": false,
+      "wiz_global_data_assignment_present": true,
+      "wiz_global_data_keys": 136,
+      "gbar_wrapper_present": true
+    },
+    {
+      "id": "U0235",
+      "source_sha256": "3903997d354d929f4adf43c8f240d8dd6a6e5f03290b91beb9a4bcbfd79200fa",
+      "provider": "Claude",
+      "dom_tag_counts": {
+        "script": 24,
+        "iframe": 1,
+        "user-query": 0,
+        "model-response": 0
+      },
+      "runtime_activation_verified": false,
+      "saved_token_counts": {
+        "vendor-flags": 1,
+        "statsig_hashing_algorithm": 1,
+        "new-page-dock-korea-latch": 1,
+        "composer-card-latch": 1,
+        "data-experiment": 1,
+        "isolated-segment": 1
+      },
+      "include_system_prompts_false_present": true
+    },
+    {
+      "id": "U0324",
+      "source_sha256": "0cbc37d6c0856e90cefe07fd7438dfdb7229660080179f1300a286b91c529cbb",
+      "provider": "ChatGPT",
+      "structure_counts": {
+        "feature_gates": {
+          "entries": 792,
+          "boolean_true": 352,
+          "boolean_false": 440,
+          "non_boolean": 0
+        },
+        "dynamic_configs": {
+          "entries": 142,
+          "boolean_true": 0,
+          "boolean_false": 0,
+          "non_boolean": 142
+        },
+        "layer_configs": {
+          "entries": 227,
+          "boolean_true": 0,
+          "boolean_false": 0,
+          "non_boolean": 227
+        }
+      },
+      "three_saved_flags": {
+        "mainline_classifier_steering_enabled": false,
+        "imagegen_steerability_enabled": false,
+        "disney_steerability_enabled": false
+      },
+      "saved_realtime_instructions_characters": 23797,
+      "runtime_activation_verified": false
+    },
+    {
+      "id": "U0325",
+      "source_sha256": "dc99e0fed294eda5dae18e412bf8d295afd1716f2d4fdf6252280a021a573946",
+      "provider": "ChatGPT",
+      "structure_counts": {
+        "feature_gates": {
+          "entries": 792,
+          "boolean_true": 352,
+          "boolean_false": 440,
+          "non_boolean": 0
+        },
+        "dynamic_configs": {
+          "entries": 142,
+          "boolean_true": 0,
+          "boolean_false": 0,
+          "non_boolean": 142
+        },
+        "layer_configs": {
+          "entries": 227,
+          "boolean_true": 0,
+          "boolean_false": 0,
+          "non_boolean": 227
+        }
+      },
+      "three_saved_flags": {
+        "mainline_classifier_steering_enabled": false,
+        "imagegen_steerability_enabled": false,
+        "disney_steerability_enabled": false
+      },
+      "saved_realtime_instructions_characters": 23797,
+      "runtime_activation_verified": false
+    }
+  ],
+  "saved_pages_checked": 7,
+  "runtime_activation_verified": false,
+  "message_role_attribution_verified": false,
+  "limitations": [
+    "Saved bootstrap values do not measure current server or local runtime behavior.",
+    "Three false steering flags do not establish that every steering mechanism is disabled.",
+    "DOM tag counts are structural markers, not verified speaker attribution or a complete message count.",
+    "No model decision, telemetry transmission, or system prompt absence is inferred from a key or string."
+  ]
+}

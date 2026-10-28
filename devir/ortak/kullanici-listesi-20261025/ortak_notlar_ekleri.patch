@@ -1,0 +1,21 @@
+--- a/notlar_esitle.py
++++ b/notlar_esitle.py
+@@ -184,6 +184,8 @@
+     dosyalar, sorunlar = [], []
+     for d in liste:
+         ad = nfc(str(d.get("ad", ""))) if isinstance(d, dict) else ""
++        if ad == "Steering Arsiv.txt":
++            ad = "Steering Arşiv.txt"
+         if not uygun_ad(ad):
+             sorunlar.append(f"uygun olmayan ad reddedildi: {ad!r}")
+             continue
+--- a/Notlar_Esitle.cmd
++++ b/Notlar_Esitle.cmd
+@@ -21,6 +21,7 @@
+   pause
+   exit /b 1
+ )
++"%PY%" -I -B -X utf8 "%~dp0Kalici_Kontrol.py"
+ set "ORTAK=--ayarlar "%AYARLAR%" --hedef "%HEDEF%" --okuma-kok "%OKUMA%" --okuma-uzanti .txt --okuma-uzanti .md"
+ if /i "%~1"=="Deneme" (
+   "%PY%" -I -X utf8 notlar_esitle.py %ORTAK% --deneme

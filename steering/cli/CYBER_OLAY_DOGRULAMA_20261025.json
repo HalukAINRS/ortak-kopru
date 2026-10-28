@@ -1,0 +1,369 @@
+{
+  "schema_version": 2,
+  "observation_time_utc": "2026-10-24T23:37:24.120702+00:00",
+  "primary_snapshot_time_utc": "2026-10-24T23:38:22.537680+00:00",
+  "source_aliases": [
+    {
+      "bytes_read": 16203590,
+      "sha256": "1d716a175ed6827c0cdb9eb4fc20324921eb48ac2f096c38413d262cda1bd756",
+      "lines": 4084,
+      "alias": "H1"
+    },
+    {
+      "bytes_read": 3812,
+      "sha256": "804c5e9d18b0bdebfff51ed3259b2b3a1dbae45b52aca5a13326219a62e463b7",
+      "lines": 10,
+      "alias": "H2"
+    },
+    {
+      "bytes_read": 2732,
+      "sha256": "d965ebf1ec6900e5c1667147a0ff85a6d9ba2ab7a597b67235a744683988e4ca",
+      "lines": 8,
+      "alias": "H3"
+    },
+    {
+      "bytes_read": 12846051,
+      "sha256": "3a6b1d70f5f59a6cdc02b66465aee9f4cd64dbe0a37ddd080a22f35489664c39",
+      "lines": 2217,
+      "alias": "H4"
+    },
+    {
+      "bytes_read": 631274,
+      "sha256": "64442af60abe590a66fb638181c691741ee78184ed0429f256ff9f9a424c8cf9",
+      "lines": 129,
+      "alias": "H5"
+    },
+    {
+      "bytes_read": 3480,
+      "sha256": "94cf92294594c1d7af312063c3faf8786c22efd990f71633f087fdc343a5f86a",
+      "lines": 8,
+      "alias": "H6"
+    },
+    {
+      "bytes_read": 3799895,
+      "sha256": "796004c8664068cba7daece759ef067ce9ca240acacb485e5a96be302a0e88df",
+      "lines": 1307,
+      "alias": "H7"
+    }
+  ],
+  "events": [
+    {
+      "id": "C01",
+      "source": "H1",
+      "line": 1364,
+      "timestamp": "2026-10-24T12:39:34.453Z",
+      "client_version": "2.1.308",
+      "level": "warning",
+      "trigger": "refusal",
+      "direction": "retry",
+      "scope": "session",
+      "originalModel": "claude-opus-5-5",
+      "fallbackModel": "claude-opus-5",
+      "apiRefusalCategory": "cyber",
+      "apiRefusalExplanation": null,
+      "retracted_messages_count": 1,
+      "refused_user_message_is_null": true,
+      "thinking_drop": {
+        "line": 1373,
+        "timestamp": "2026-10-24T12:39:48.412Z",
+        "reason": "model_mismatch",
+        "block_count": 124,
+        "turn_count": 87
+      },
+      "following_model_records": [
+        {
+          "line": 1374,
+          "timestamp": "2026-10-24T12:39:52.879Z",
+          "model": "claude-opus-5",
+          "stop_reason": "end_turn",
+          "has_tool_use": false
+        },
+        {
+          "line": 1375,
+          "timestamp": "2026-10-24T12:40:20.429Z",
+          "model": "claude-opus-5",
+          "stop_reason": "end_turn",
+          "has_tool_use": false
+        },
+        {
+          "line": 1392,
+          "timestamp": "2026-10-24T13:54:00.780Z",
+          "model": "claude-opus-5",
+          "stop_reason": "tool_use",
+          "has_tool_use": false
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "source": "H1",
+      "line": 2454,
+      "timestamp": "2026-10-24T21:51:43.663Z",
+      "client_version": "2.1.308",
+      "level": "warning",
+      "trigger": "refusal",
+      "direction": "retry",
+      "scope": "session",
+      "originalModel": "claude-opus-5-5",
+      "fallbackModel": "claude-opus-5",
+      "apiRefusalCategory": "cyber",
+      "apiRefusalExplanation": null,
+      "retracted_messages_count": 1,
+      "refused_user_message_is_null": false,
+      "thinking_drop": {
+        "line": 2541,
+        "timestamp": "2026-10-24T21:51:50.349Z",
+        "reason": "model_mismatch",
+        "block_count": 60,
+        "turn_count": 35
+      },
+      "following_model_records": [
+        {
+          "line": 2542,
+          "timestamp": "2026-10-24T21:52:16.673Z",
+          "model": "claude-opus-5",
+          "stop_reason": "tool_use",
+          "has_tool_use": false
+        },
+        {
+          "line": 2543,
+          "timestamp": "2026-10-24T21:52:20.138Z",
+          "model": "claude-opus-5",
+          "stop_reason": "tool_use",
+          "has_tool_use": false
+        },
+        {
+          "line": 2544,
+          "timestamp": "2026-10-24T21:52:32.017Z",
+          "model": "claude-opus-5",
+          "stop_reason": "tool_use",
+          "has_tool_use": true
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "source": "H1",
+      "line": 3686,
+      "timestamp": "2026-10-24T23:24:03.844Z",
+      "client_version": "2.1.308",
+      "level": "warning",
+      "trigger": "refusal",
+      "direction": "retry",
+      "scope": "session",
+      "originalModel": "claude-opus-5-5",
+      "fallbackModel": "claude-opus-5",
+      "apiRefusalCategory": "cyber",
+      "apiRefusalExplanation": null,
+      "retracted_messages_count": 1,
+      "refused_user_message_is_null": false,
+      "thinking_drop": {
+        "line": 3888,
+        "timestamp": "2026-10-24T23:24:15.170Z",
+        "reason": "model_mismatch",
+        "block_count": 116,
+        "turn_count": 71
+      },
+      "following_model_records": [
+        {
+          "line": 3889,
+          "timestamp": "2026-10-24T23:24:45.786Z",
+          "model": "claude-opus-5",
+          "stop_reason": "tool_use",
+          "has_tool_use": false
+        },
+        {
+          "line": 3890,
+          "timestamp": "2026-10-24T23:24:55.211Z",
+          "model": "claude-opus-5",
+          "stop_reason": "tool_use",
+          "has_tool_use": false
+        },
+        {
+          "line": 3891,
+          "timestamp": "2026-10-24T23:24:55.880Z",
+          "model": "claude-opus-5",
+          "stop_reason": "tool_use",
+          "has_tool_use": true
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "source": "H1",
+      "line": 3969,
+      "timestamp": "2026-10-24T23:30:21.508Z",
+      "client_version": "2.1.308",
+      "level": "warning",
+      "trigger": "refusal",
+      "direction": "retry",
+      "scope": "session",
+      "originalModel": "claude-opus-5-5",
+      "fallbackModel": "claude-opus-5",
+      "apiRefusalCategory": "cyber",
+      "apiRefusalExplanation": null,
+      "retracted_messages_count": 1,
+      "refused_user_message_is_null": false,
+      "thinking_drop": {
+        "line": 3994,
+        "timestamp": "2026-10-24T23:30:28.773Z",
+        "reason": "model_mismatch",
+        "block_count": 4,
+        "turn_count": 2
+      },
+      "following_model_records": [
+        {
+          "line": 3995,
+          "timestamp": "2026-10-24T23:30:40.102Z",
+          "model": "claude-opus-5",
+          "stop_reason": "tool_use",
+          "has_tool_use": false
+        },
+        {
+          "line": 3996,
+          "timestamp": "2026-10-24T23:30:41.795Z",
+          "model": "claude-opus-5",
+          "stop_reason": "tool_use",
+          "has_tool_use": false
+        },
+        {
+          "line": 3997,
+          "timestamp": "2026-10-24T23:30:56.359Z",
+          "model": "claude-opus-5",
+          "stop_reason": "tool_use",
+          "has_tool_use": true
+        }
+      ]
+    },
+    {
+      "id": "C05",
+      "source": "H1",
+      "line": 4133,
+      "timestamp": "2026-10-24T23:45:14.408Z",
+      "client_version": "2.1.308",
+      "trigger": "refusal",
+      "direction": "retry",
+      "scope": "session",
+      "originalModel": "claude-opus-5-5",
+      "fallbackModel": "claude-opus-5",
+      "apiRefusalCategory": "cyber",
+      "apiRefusalExplanation": null,
+      "thinking_drop": {
+        "line": 4166,
+        "timestamp": "2026-10-24T23:45:28.109Z",
+        "reason": "model_mismatch",
+        "block_count": 2,
+        "turn_count": 1
+      }
+    }
+  ],
+  "meta_stops": [
+    {
+      "line": 1077,
+      "timestamp": "2026-10-24T12:29:18.103Z",
+      "type": "user",
+      "role": "user",
+      "isMeta": true,
+      "interrupted_tool_exception_present": false,
+      "source": "H1",
+      "cyber_category_verified": false
+    },
+    {
+      "line": 1778,
+      "timestamp": "2026-10-24T21:00:47.246Z",
+      "type": "user",
+      "role": "user",
+      "isMeta": true,
+      "interrupted_tool_exception_present": false,
+      "source": "H1",
+      "cyber_category_verified": false
+    },
+    {
+      "line": 2442,
+      "timestamp": "2026-10-24T21:49:36.597Z",
+      "type": "user",
+      "role": "user",
+      "isMeta": true,
+      "interrupted_tool_exception_present": false,
+      "source": "H1",
+      "cyber_category_verified": false
+    },
+    {
+      "line": 3021,
+      "timestamp": "2026-10-24T22:27:15.323Z",
+      "type": "user",
+      "role": "user",
+      "isMeta": true,
+      "interrupted_tool_exception_present": false,
+      "source": "H1",
+      "cyber_category_verified": false
+    },
+    {
+      "line": 3678,
+      "timestamp": "2026-10-24T23:23:22.679Z",
+      "type": "user",
+      "role": "user",
+      "isMeta": true,
+      "interrupted_tool_exception_present": true,
+      "source": "H1",
+      "cyber_category_verified": false
+    },
+    {
+      "source": "H1",
+      "line": 4126,
+      "timestamp": "2026-10-24T23:44:38.729Z",
+      "isMeta": true,
+      "role": "user",
+      "type": "user",
+      "cyber_category_verified": false
+    }
+  ],
+  "limits": [
+    "Recorded timestamps were not independently calibrated.",
+    "Meta stops have no cyber category; do not add these counts as unique incidents.",
+    "Previous operation is context, not proven cause.",
+    "Dropped thinking metadata is not a measure of irreversible loss.",
+    "Classifier decision explanation is null; false positives are not proven.",
+    "Historical client model changes were observed; no new model call was made."
+  ],
+  "initial_scope": {
+    "primary_sessions": 7,
+    "all_jsonl_files_including_subrecords": 74,
+    "raw_fallback_records": 4,
+    "meta_stop_records": 5
+  },
+  "follow_up": {
+    "observation_time_utc": "2026-10-25T00:03:21.809910+00:00",
+    "observed_fallback_records": 5,
+    "meta_stop_count_recomputed": true,
+    "source_snapshot": {
+      "alias": "H1",
+      "bytes_read": 17214154,
+      "sha256": "2650c4b6f60dcd0ad854cef95449e5bc2539ea98399b9252e10c34450d939b45",
+      "lines": 4310
+    },
+    "interrupted_tool_result": {
+      "source": "H1",
+      "tool_call_line": 3675,
+      "tool_result_line": 3676,
+      "tool_name": "Write",
+      "is_error": true,
+      "interrupted": true,
+      "partial_completion_possible": true
+    },
+    "subsequent_file_checks": [
+      {
+        "source": "H1",
+        "tool_result_line": 3687,
+        "is_error": false
+      },
+      {
+        "source": "H1",
+        "tool_result_line": 3970,
+        "is_error": false
+      }
+    ],
+    "observed_meta_stop_records": 6,
+    "meta_observation_time_utc": "2026-10-25T00:09:33.470203+00:00"
+  }
+}

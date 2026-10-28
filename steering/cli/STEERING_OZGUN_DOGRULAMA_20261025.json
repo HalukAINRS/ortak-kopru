@@ -1,0 +1,156 @@
+{
+  "at_utc": "2026-10-24T22:35:09.396458+00:00",
+  "archive": {
+    "bytes": 100641653,
+    "sha256": "827bb9cac16fdb7b643c576a3bd41523e725ad4542ab023c5c4d45f3435b1009",
+    "file_members": 1483,
+    "all_member_crc_checks_passed": true
+  },
+  "public_inventory_comparison": {
+    "records_checked": 1483,
+    "differences": []
+  },
+  "embedded_checksums": {
+    "checked": 1482,
+    "omitted_members": [
+      "KONTROL_SHA256.txt"
+    ]
+  },
+  "json_files_parsed": 517,
+  "source_records": 325,
+  "derived_output_hashes_checked": 975,
+  "txt_json_html_text_comparisons": {
+    "checked": 325,
+    "differences": []
+  },
+  "original_text_roundtrip": {
+    "source_text_records": 212,
+    "exact": 211,
+    "nonmatching_source_ids": [
+      "U0136"
+    ]
+  },
+  "html_sources": [
+    {
+      "id": "U0002",
+      "name": "-chatgpt-.html",
+      "bytes": 1206715,
+      "sha256": "4416f79ffb24a1f6eaec1954c82e309c53978ef1f45dce33bc3326c932efa858",
+      "original_bytes_reconstructed": true,
+      "copilot_domain_reference_present": false
+    },
+    {
+      "id": "U0043",
+      "name": "-chatgpt-_files/runner.html",
+      "bytes": 13358,
+      "sha256": "20de673938f35b82831e9f2164bce4cca50874d5d8d27d25300d16668f15e69d",
+      "original_bytes_reconstructed": true,
+      "copilot_domain_reference_present": false
+    },
+    {
+      "id": "U0045",
+      "name": "-chatgpt-.html",
+      "bytes": 1009244,
+      "sha256": "4a35a6a654c042968cbdff5e54f20c156f11429bb79c50aa9cdc304c8b7fc395",
+      "original_bytes_reconstructed": true,
+      "copilot_domain_reference_present": false
+    },
+    {
+      "id": "U0193",
+      "name": "-ChatGPT-.html",
+      "bytes": 1510328,
+      "sha256": "53f7ab646913fa8cdf2084f1ed792478017f75d6b606c2a2d541a2ff647d8784",
+      "original_bytes_reconstructed": true,
+      "copilot_domain_reference_present": false
+    },
+    {
+      "id": "U0209",
+      "name": "-Google Gemini-.html",
+      "bytes": 2803977,
+      "sha256": "ec4e0dea629cf0fdb887dc9cc7d9c377bb6aad8555d764adb4178ed50bd693f4",
+      "original_bytes_reconstructed": true,
+      "copilot_domain_reference_present": false
+    },
+    {
+      "id": "U0211",
+      "name": "-Google Gemini-_files/app.html",
+      "bytes": 141747,
+      "sha256": "811b0105372c5bd81e5e2f4957100f6418b22bbe13e6de06869f8de2562eb009",
+      "original_bytes_reconstructed": true,
+      "copilot_domain_reference_present": false
+    },
+    {
+      "id": "U0212",
+      "name": "-Google Gemini-_files/bscframe.html",
+      "bytes": 189,
+      "sha256": "a32d2b784cf5c420125984687c1fe3c93e8781cd392817e6cae14631a05b9471",
+      "original_bytes_reconstructed": true,
+      "copilot_domain_reference_present": false
+    },
+    {
+      "id": "U0228",
+      "name": "-Google Gemini-_files/RotateCookiesPage.html",
+      "bytes": 390,
+      "sha256": "f64211b54dc4933ebf6557345a050dce1a930c18f9a2758a53555653bd82c511",
+      "original_bytes_reconstructed": true,
+      "copilot_domain_reference_present": false
+    },
+    {
+      "id": "U0235",
+      "name": "Deus ex machina analizi - Claude.html",
+      "bytes": 569711,
+      "sha256": "3903997d354d929f4adf43c8f240d8dd6a6e5f03290b91beb9a4bcbfd79200fa",
+      "original_bytes_reconstructed": true,
+      "copilot_domain_reference_present": false
+    },
+    {
+      "id": "U0240",
+      "name": "Deus ex machina analizi - Claude_files/isolated-segment.html",
+      "bytes": 129716,
+      "sha256": "bbce88b3c6c1200c60985ff4d182bc03b6c9bbb4d4ddca1bc7ad3007a13d2db4",
+      "original_bytes_reconstructed": true,
+      "copilot_domain_reference_present": false
+    },
+    {
+      "id": "U0281",
+      "name": "BASLA.html",
+      "bytes": 49316,
+      "sha256": "42984943ccf62fa3c2121a1fc7af33ebf8cb4d9e9d5fd65d6b6f1f6b33b90c79",
+      "original_bytes_reconstructed": true,
+      "copilot_domain_reference_present": false
+    },
+    {
+      "id": "U0324",
+      "name": "Yorumları ayrı sayfaya yazma(1).html",
+      "bytes": 1138476,
+      "sha256": "0cbc37d6c0856e90cefe07fd7438dfdb7229660080179f1300a286b91c529cbb",
+      "original_bytes_reconstructed": true,
+      "copilot_domain_reference_present": false
+    },
+    {
+      "id": "U0325",
+      "name": "Yorumları ayrı sayfaya yazma.md",
+      "bytes": 1034974,
+      "sha256": "dc99e0fed294eda5dae18e412bf8d295afd1716f2d4fdf6252280a021a573946",
+      "original_bytes_reconstructed": true,
+      "copilot_domain_reference_present": false
+    }
+  ],
+  "filename_search": {
+    "copilot_source_ids": [],
+    "session_bridge_source_ids": [],
+    "scope": "325 inventory source names, not proof of absence from all historical libraries"
+  },
+  "private_recovered_source_ids": [
+    "U0209",
+    "U0235"
+  ],
+  "sensitive_values_printed": false,
+  "archived_instructions_executed": false,
+  "complete_semantic_reading_claimed": false,
+  "limitations": [
+    "Text identity does not reproduce browser layout, execute scripts, or measure runtime flags.",
+    "Container, PDF, Word, spreadsheet and raster source binaries are not generally reconstructed by text equality.",
+    "The single nonmatching source must retain the historical redaction; secret values are not published."
+  ]
+}

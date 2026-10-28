@@ -1,0 +1,64 @@
+{
+  "at_utc": "2026-10-25T01:32:11.262482+00:00",
+  "provider": "Google Antigravity CLI",
+  "role": "Şahit",
+  "model": "gemini-4-argon-high",
+  "effort": "high",
+  "google_ultra_ui_confirmed": true,
+  "connection_test_passed": true,
+  "actual_actor_read_files": 7,
+  "actor_receipt_sha256": "da3811434438bae4c45ba1f3cb12247750c594356456b4d0180462653adf2189",
+  "same_pinned_conversation_resumed_in_visible_window": true,
+  "visible_window_title": "Sahit - Google Ultra - Gemini 4 Argon High",
+  "shortcut": "Y:/HalukAI/Masaustu_Kisayollari/02c - Sahit (Google Ultra).lnk",
+  "old_copilot_preserved": "Source files retained and never rewritten; the former Copilot process was not terminated by this work and is now observed closed.",
+  "visible_history_nonempty_user": 27,
+  "visible_history_nonempty_assistant": 170,
+  "entire_history_read": false,
+  "copilot_direct_oauth_model_link_established": false,
+  "api_key_used": false,
+  "credit_purchase_made": false,
+  "observed_existing_useG1Credits_setting": true,
+  "useG1Credits_changed_by_us": false,
+  "credit_balance_statusline": "Out of credits",
+  "quota_command_model_turns": 0,
+  "quota": [
+    {
+      "group": "Gemini Models",
+      "buckets": [
+        {
+          "window": "weekly",
+          "remaining_fraction": 0.9862202405929565,
+          "reset_time": "2026-10-31T11:20:58Z"
+        },
+        {
+          "window": "5h",
+          "remaining_fraction": 0.9703711867332458,
+          "reset_time": "2026-10-25T01:47:06Z"
+        }
+      ]
+    },
+    {
+      "group": "Claude and GPT models",
+      "buckets": [
+        {
+          "window": "weekly",
+          "remaining_fraction": 1,
+          "reset_time": "2026-10-31T15:44:32Z"
+        },
+        {
+          "window": "5h",
+          "remaining_fraction": 1,
+          "reset_time": "2026-10-25T06:32:11Z"
+        }
+      ]
+    }
+  ],
+  "initial_429_root_cause": "unresolved; available subscription buckets do not rule out other limits",
+  "actor_receipt_correction": "The actor overstates that 429 is not quota exhaustion; only the measured subscription buckets are available. Original actor receipt preserved.",
+  "real_hacker_review_received": false,
+  "singleton_launch_verified": true,
+  "singleton_fix": "PowerShell JSON timestamps retained as strings; matching PID/start time does not launch another Google process.",
+  "private_conversation_id_published": false,
+  "source_files_published": false
+}

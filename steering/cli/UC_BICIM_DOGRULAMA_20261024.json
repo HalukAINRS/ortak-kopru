@@ -1,0 +1,521 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "scope": "explicit_source_manifest; raw originals stay private",
+  "source_count": 10,
+  "output_files": 30,
+  "lexical_candidates_total": 4,
+  "distinct_raw_hashes": 10,
+  "independent_analyses_or_witnesses": false,
+  "source_bytes_unchanged_after_run": true,
+  "fixed_steering_hash_entries_verified": 84,
+  "fixed_files_including_hash_list": 85,
+  "unit_tests": {
+    "passed": 6,
+    "command": "python -m unittest discover -s steering/cli -p test_donustur_tara.py -v"
+  },
+  "whole_chat_verified": false,
+  "provider_runtime_effects_verified": false,
+  "raw_claude_gemini_copilot_html_available_for_this_run": false,
+  "raw_saved_html_providers": [
+    "ChatGPT"
+  ],
+  "derived_text_providers": [
+    "ChatGPT",
+    "Gemini",
+    "Claude"
+  ],
+  "masking_is_pattern_based_and_not_a_publication_guarantee": true,
+  "sources": [
+    {
+      "source": "chatgpt_kabuk",
+      "kind": "kayitli-metin",
+      "source_bytes": 652436,
+      "source_sha256": "cadc3f8d391ba29db16dfb5cc4f96bf6e8a997345803aa0e07d9345a86cabe1f",
+      "detected_html": true,
+      "encoding": "utf-8",
+      "sections_by_heuristic_role": {
+        "metin": 1
+      },
+      "mask_counts": {},
+      "lexical_candidates": 0,
+      "matches_by_role_and_signature": {},
+      "all_three_roundtrips_exact": true,
+      "static_html_violations": [],
+      "outputs": [
+        {
+          "format": "txt",
+          "bytes": 257,
+          "sha256": "95f09d03d4308f806e9f6897da43d66377c4092dfec447869bc1b5c21f2598b4"
+        },
+        {
+          "format": "json",
+          "bytes": 1210,
+          "sha256": "4c992167e52c26b749c0f432b70467482ce2b4f50c781212f30877d137de68ca"
+        },
+        {
+          "format": "html",
+          "bytes": 838,
+          "sha256": "76c88224b6c0247d616edf28b4c35b7e5c4e8621ce4a9fa26adad37b72482260"
+        }
+      ]
+    },
+    {
+      "source": "chatgpt_kismi_html",
+      "kind": "kayitli-metin",
+      "source_bytes": 843042,
+      "source_sha256": "a762abe2940a86eabc1bbe0eed23f9740855236f50f36a885c8fe16c84015a70",
+      "detected_html": true,
+      "encoding": "utf-8",
+      "sections_by_heuristic_role": {
+        "metin": 1,
+        "user": 5,
+        "assistant": 5
+      },
+      "mask_counts": {},
+      "lexical_candidates": 0,
+      "matches_by_role_and_signature": {},
+      "all_three_roundtrips_exact": true,
+      "static_html_violations": [],
+      "outputs": [
+        {
+          "format": "txt",
+          "bytes": 10364,
+          "sha256": "92a114e6816ed491cc7dfd813061b5181a9318f29a2cf0eee74364bf0a3efba6"
+        },
+        {
+          "format": "json",
+          "bytes": 11837,
+          "sha256": "44219335de4e65a86c297cad10a4f462b72a922f7b35e2e83ce6cdfeaeed6cb5"
+        },
+        {
+          "format": "html",
+          "bytes": 11645,
+          "sha256": "aceeb4e6be67b5f33b38ce05b1814928a1bbd0dea0a7bb730cc0ddabc512c655"
+        }
+      ]
+    },
+    {
+      "source": "chatgpt_arsiv_1",
+      "kind": "kayitli-metin",
+      "source_bytes": 1138476,
+      "source_sha256": "0cbc37d6c0856e90cefe07fd7438dfdb7229660080179f1300a286b91c529cbb",
+      "detected_html": true,
+      "encoding": "utf-8",
+      "sections_by_heuristic_role": {
+        "metin": 1,
+        "user": 4,
+        "assistant": 4
+      },
+      "mask_counts": {
+        "UZUN-DEGER": 1
+      },
+      "lexical_candidates": 1,
+      "matches_by_role_and_signature": {
+        "assistant|ANT-B04": 1
+      },
+      "all_three_roundtrips_exact": true,
+      "static_html_violations": [],
+      "outputs": [
+        {
+          "format": "txt",
+          "bytes": 30924,
+          "sha256": "5b43aa9f45be56d9dc05edd74a68c4697e07f1517b436ebf2eff846357127dcb"
+        },
+        {
+          "format": "json",
+          "bytes": 32301,
+          "sha256": "16711a7377521e5121655ba96366283d151adc259a2174e0b781f5aa5c2226e3"
+        },
+        {
+          "format": "html",
+          "bytes": 31987,
+          "sha256": "a1d2aa4a4e24fbeac9d28619d90dd651514bfc79717dd0a34977e4400caece52"
+        }
+      ]
+    },
+    {
+      "source": "chatgpt_arsiv_2",
+      "kind": "kayitli-metin",
+      "source_bytes": 1034974,
+      "source_sha256": "dc99e0fed294eda5dae18e412bf8d295afd1716f2d4fdf6252280a021a573946",
+      "detected_html": true,
+      "encoding": "utf-8",
+      "sections_by_heuristic_role": {
+        "metin": 1,
+        "user": 6,
+        "assistant": 6
+      },
+      "mask_counts": {},
+      "lexical_candidates": 0,
+      "matches_by_role_and_signature": {},
+      "all_three_roundtrips_exact": true,
+      "static_html_violations": [],
+      "outputs": [
+        {
+          "format": "txt",
+          "bytes": 13666,
+          "sha256": "347001d09bffd95d195eb7e0e2531113dfe0d239d310c0c56d065d5227dfb973"
+        },
+        {
+          "format": "json",
+          "bytes": 15222,
+          "sha256": "018985c5db70b15acf3547d9f8fa3535b59dec24c1dd42a85562cd3294d6bc4f"
+        },
+        {
+          "format": "html",
+          "bytes": 15137,
+          "sha256": "db097b778e7de3e9d59df3907229d6868831b88fae34700bfa51404e1e96d7cf"
+        }
+      ]
+    },
+    {
+      "source": "chatgpt_aritilmis",
+      "kind": "aritilmis-md",
+      "source_bytes": 17306,
+      "source_sha256": "45916cefdb2763814cdd383f208bdf957b21b1b6f343f46eb95b3097088911d2",
+      "detected_html": false,
+      "encoding": "utf-8",
+      "sections_by_heuristic_role": {
+        "metin": 1,
+        "user": 6,
+        "assistant": 6
+      },
+      "mask_counts": {
+        "BELIRTEC": 1,
+        "UZUN-DEGER": 1
+      },
+      "lexical_candidates": 3,
+      "matches_by_role_and_signature": {
+        "assistant|ANT-B04": 3
+      },
+      "all_three_roundtrips_exact": true,
+      "static_html_violations": [],
+      "outputs": [
+        {
+          "format": "txt",
+          "bytes": 17433,
+          "sha256": "0e80f512aa0541fd609962e94897e3883f6c1fc2ef9fafdb4f4ffc3f03f19e95"
+        },
+        {
+          "format": "json",
+          "bytes": 19016,
+          "sha256": "99e1f61280d5ab0dbabc6654610d5c586a3c9bc6437787a90e107e2ecf031849"
+        },
+        {
+          "format": "html",
+          "bytes": 18560,
+          "sha256": "20894932e705d8cbf7e5378e048b70477e3d314cd29da678872fe7848e9fba58"
+        }
+      ]
+    },
+    {
+      "source": "gemini_aritilmis",
+      "kind": "aritilmis-md",
+      "source_bytes": 117353,
+      "source_sha256": "a0dc7d43079249967fbd881946bb141fee2186cdead0f5c284381f20099f48f6",
+      "detected_html": false,
+      "encoding": "utf-8",
+      "sections_by_heuristic_role": {
+        "metin": 1
+      },
+      "mask_counts": {
+        "E-POSTA": 1,
+        "UUID": 42,
+        "IPV4": 49,
+        "IPV6": 2,
+        "UZUN-DEGER": 14
+      },
+      "lexical_candidates": 0,
+      "matches_by_role_and_signature": {},
+      "all_three_roundtrips_exact": true,
+      "static_html_violations": [],
+      "outputs": [
+        {
+          "format": "txt",
+          "bytes": 115335,
+          "sha256": "d853b829200f6a73bd29567370fabfd662c25ed2d445fd7b60e830605490b191"
+        },
+        {
+          "format": "json",
+          "bytes": 120544,
+          "sha256": "6d0588f64919665b3e2175c8ea553fcb2d8f1a1f8811b44677346973f741519c"
+        },
+        {
+          "format": "html",
+          "bytes": 128309,
+          "sha256": "77fcb04be3d5ebc182c72fbf90e2a598616318806170491da0360e1223cdc555"
+        }
+      ]
+    },
+    {
+      "source": "claude_aritilmis",
+      "kind": "aritilmis-md",
+      "source_bytes": 10757,
+      "source_sha256": "ed1af210672583a6af30f97490c7e5d6e195c81e8b1725af67e9e0a2899e900d",
+      "detected_html": false,
+      "encoding": "utf-8",
+      "sections_by_heuristic_role": {
+        "metin": 1
+      },
+      "mask_counts": {},
+      "lexical_candidates": 0,
+      "matches_by_role_and_signature": {},
+      "all_three_roundtrips_exact": true,
+      "static_html_violations": [],
+      "outputs": [
+        {
+          "format": "txt",
+          "bytes": 10923,
+          "sha256": "54e4d7c7bffe85d5c1586cbd421258002f901762594a77dfc8314e179e8c3c71"
+        },
+        {
+          "format": "json",
+          "bytes": 11752,
+          "sha256": "5ea570ec7de91619067fadf965d186c45d2c0f1f7040ea23d2576fcfd715c550"
+        },
+        {
+          "format": "html",
+          "bytes": 11395,
+          "sha256": "13c8a8cda80a809970fa1d0a0b1d0d79cc8e75f4fb6167a0c8fffe90ab49719d"
+        }
+      ]
+    },
+    {
+      "source": "anlam_cikarim_defteri",
+      "kind": "kitaplik-metni",
+      "source_bytes": 34844,
+      "source_sha256": "89c0c12d955dffd5a4cca3a9811f808838c52b1bdea30fd57d664f7cb4409ec1",
+      "detected_html": false,
+      "encoding": "utf-8",
+      "sections_by_heuristic_role": {
+        "metin": 1
+      },
+      "mask_counts": {},
+      "lexical_candidates": 0,
+      "matches_by_role_and_signature": {},
+      "all_three_roundtrips_exact": true,
+      "static_html_violations": [],
+      "outputs": [
+        {
+          "format": "txt",
+          "bytes": 35022,
+          "sha256": "f18639e2e713b6a8f9987bd1f5c2b354037c8cd32325aff986ae3b3f1508c545"
+        },
+        {
+          "format": "json",
+          "bytes": 35759,
+          "sha256": "42af4ad95de130e1996f4db382e677660e0841aea4f7a5287ff252d8aa9c3c1c"
+        },
+        {
+          "format": "html",
+          "bytes": 35539,
+          "sha256": "6db6d676945ee7a46700e2748cf59d0b053f246f37e5e25be639674e329474c8"
+        }
+      ]
+    },
+    {
+      "source": "defter",
+      "kind": "kitaplik-metni",
+      "source_bytes": 8348,
+      "source_sha256": "8c16a4aa2d59b755adb7f8df661bdea0ec463e647d9e63bb2f2ad12375630946",
+      "detected_html": false,
+      "encoding": "utf-8",
+      "sections_by_heuristic_role": {
+        "metin": 1
+      },
+      "mask_counts": {
+        "UZUN-DEGER": 7
+      },
+      "lexical_candidates": 0,
+      "matches_by_role_and_signature": {},
+      "all_three_roundtrips_exact": true,
+      "static_html_violations": [],
+      "outputs": [
+        {
+          "format": "txt",
+          "bytes": 7980,
+          "sha256": "d39619540bddc3b0fab71e1c2fcaf6eac4368ba4a5c90aac22e8921023f4a1f3"
+        },
+        {
+          "format": "json",
+          "bytes": 8741,
+          "sha256": "534a4b3647d2e44f12fc950973f46df99bfa8afb00de5730581aabaff91b2600"
+        },
+        {
+          "format": "html",
+          "bytes": 8539,
+          "sha256": "31c2de8de5c8688318aa1b2be482f88e054d0f2fe1f414ea5097060d71be86d9"
+        }
+      ]
+    },
+    {
+      "source": "deus_3_pdf_cikarilmis",
+      "kind": "kitaplik-metni",
+      "source_bytes": 58598,
+      "source_sha256": "75298f80c0cede6517c7eb1df84e0c6ef86836e43036f168cec3c1edc3d9a0a2",
+      "detected_html": false,
+      "encoding": "utf-8",
+      "sections_by_heuristic_role": {
+        "metin": 1
+      },
+      "mask_counts": {},
+      "lexical_candidates": 0,
+      "matches_by_role_and_signature": {},
+      "all_three_roundtrips_exact": true,
+      "static_html_violations": [],
+      "outputs": [
+        {
+          "format": "txt",
+          "bytes": 59356,
+          "sha256": "82fba5190a28a11bb117f1868808d57dd1711a0367df82ce851a1da7f7f5d8ab"
+        },
+        {
+          "format": "json",
+          "bytes": 60089,
+          "sha256": "3be0344b3eb6206d3f8413fa011a3b0f0ca18f95b5643184c27dd764c3a68c42"
+        },
+        {
+          "format": "html",
+          "bytes": 58668,
+          "sha256": "3751f5e350185d01e88850309535b3cc684ec83a02284da15972200a76f4f35f"
+        }
+      ]
+    }
+  ],
+  "saved_html_structure_audit": {
+    "6acd2638-a63c-83ed-b994-7baf082ce616.htm": {
+      "source_kind": "user_supplied_saved_chatgpt_html",
+      "sha256": "cadc3f8d391ba29db16dfb5cc4f96bf6e8a997345803aa0e07d9345a86cabe1f",
+      "bootstrap_present": true,
+      "statsig_present": true,
+      "structure_counts": {
+        "feature_gates": {
+          "entries": 805,
+          "boolean_true": 363,
+          "boolean_false": 442,
+          "other_value_types": 0
+        },
+        "dynamic_configs": {
+          "entries": 143,
+          "boolean_true": 0,
+          "boolean_false": 0,
+          "other_value_types": 143
+        },
+        "layer_configs": {
+          "entries": 229,
+          "boolean_true": 0,
+          "boolean_false": 0,
+          "other_value_types": 229
+        }
+      },
+      "three_saved_flags": {
+        "mainline_classifier_steering_enabled": false,
+        "imagegen_steerability_enabled": false,
+        "disney_steerability_enabled": false
+      },
+      "runtime_activation_verified": false
+    },
+    "Yorumları ayrı sayfaya yazma.html": {
+      "source_kind": "user_supplied_saved_chatgpt_html",
+      "sha256": "a762abe2940a86eabc1bbe0eed23f9740855236f50f36a885c8fe16c84015a70",
+      "bootstrap_present": true,
+      "statsig_present": true,
+      "structure_counts": {
+        "feature_gates": {
+          "entries": 805,
+          "boolean_true": 363,
+          "boolean_false": 442,
+          "other_value_types": 0
+        },
+        "dynamic_configs": {
+          "entries": 143,
+          "boolean_true": 0,
+          "boolean_false": 0,
+          "other_value_types": 143
+        },
+        "layer_configs": {
+          "entries": 229,
+          "boolean_true": 0,
+          "boolean_false": 0,
+          "other_value_types": 229
+        }
+      },
+      "three_saved_flags": {
+        "mainline_classifier_steering_enabled": false,
+        "imagegen_steerability_enabled": false,
+        "disney_steerability_enabled": false
+      },
+      "runtime_activation_verified": false
+    },
+    "ham_1.html": {
+      "source_kind": "user_supplied_saved_chatgpt_html",
+      "sha256": "0cbc37d6c0856e90cefe07fd7438dfdb7229660080179f1300a286b91c529cbb",
+      "bootstrap_present": true,
+      "statsig_present": true,
+      "structure_counts": {
+        "feature_gates": {
+          "entries": 792,
+          "boolean_true": 352,
+          "boolean_false": 440,
+          "other_value_types": 0
+        },
+        "dynamic_configs": {
+          "entries": 142,
+          "boolean_true": 0,
+          "boolean_false": 0,
+          "other_value_types": 142
+        },
+        "layer_configs": {
+          "entries": 227,
+          "boolean_true": 0,
+          "boolean_false": 0,
+          "other_value_types": 227
+        }
+      },
+      "three_saved_flags": {
+        "mainline_classifier_steering_enabled": false,
+        "imagegen_steerability_enabled": false,
+        "disney_steerability_enabled": false
+      },
+      "runtime_activation_verified": false
+    },
+    "ham_2.md": {
+      "source_kind": "user_supplied_saved_chatgpt_html",
+      "sha256": "dc99e0fed294eda5dae18e412bf8d295afd1716f2d4fdf6252280a021a573946",
+      "bootstrap_present": true,
+      "statsig_present": true,
+      "structure_counts": {
+        "feature_gates": {
+          "entries": 792,
+          "boolean_true": 352,
+          "boolean_false": 440,
+          "other_value_types": 0
+        },
+        "dynamic_configs": {
+          "entries": 142,
+          "boolean_true": 0,
+          "boolean_false": 0,
+          "other_value_types": 142
+        },
+        "layer_configs": {
+          "entries": 227,
+          "boolean_true": 0,
+          "boolean_false": 0,
+          "other_value_types": 227
+        }
+      },
+      "three_saved_flags": {
+        "mainline_classifier_steering_enabled": false,
+        "imagegen_steerability_enabled": false,
+        "disney_steerability_enabled": false
+      },
+      "runtime_activation_verified": false
+    }
+  },
+  "browser_refresh": {
+    "attempted": true,
+    "result": "55-second clipboard export timeout; no new snapshot",
+    "old_snapshots_preserved": true
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "at_utc": "2026-10-24T22:41:53.803621+00:00",
+  "method": "Saved DOM role boundaries plus existing masked static text converter; historical instructions remain data.",
+  "sources": [
+    {
+      "id": "U0209",
+      "provider": "gemini",
+      "source_sha256": "ec4e0dea629cf0fdb887dc9cc7d9c377bb6aad8555d764adb4178ed50bd693f4",
+      "dom_role_counts": {
+        "user": 10,
+        "assistant": 10
+      },
+      "characters": 100774,
+      "format_outputs": [
+        {
+          "format": "txt",
+          "sha256": "6d7e1bb6d00533a1791b2a66c77e3408d6ffbad6a42ecb51a8599b11883bc4a9"
+        },
+        {
+          "format": "json",
+          "sha256": "0e9ed939d281de7fe125c96a0b1712fc0dc6ae04921a79bab0ed6454d35b01d3"
+        },
+        {
+          "format": "html",
+          "sha256": "8422e737326422e9ae4c9ec045757ab0636c14cb624a8ee355d87d89b0fc6d42"
+        }
+      ],
+      "all_three_roundtrips_equal": true,
+      "lexical_candidates": {},
+      "source_dom_order_preserved": true,
+      "timestamps_and_original_message_ids_available": false,
+      "complete_account_history_verified": false,
+      "independent_speaker_identity_verified": false,
+      "new_denial_events_proven": false
+    },
+    {
+      "id": "U0235",
+      "provider": "claude",
+      "source_sha256": "3903997d354d929f4adf43c8f240d8dd6a6e5f03290b91beb9a4bcbfd79200fa",
+      "dom_role_counts": {
+        "user": 5,
+        "assistant": 5
+      },
+      "characters": 6825,
+      "format_outputs": [
+        {
+          "format": "txt",
+          "sha256": "a54fa010ff4c7702c14abef28325a54b24c35cee75fa352cc6b91c5c91ae5386"
+        },
+        {
+          "format": "json",
+          "sha256": "f5d672b1300645c6498c6ee14fe14258161462d4c6064d8a2b73c26876fd082e"
+        },
+        {
+          "format": "html",
+          "sha256": "72efd1787bb42c5980fde4bbfd854f1e775bd432bd062e6272d26ec373046d49"
+        }
+      ],
+      "all_three_roundtrips_equal": true,
+      "lexical_candidates": {},
+      "source_dom_order_preserved": true,
+      "timestamps_and_original_message_ids_available": false,
+      "complete_account_history_verified": false,
+      "independent_speaker_identity_verified": false,
+      "new_denial_events_proven": false
+    }
+  ],
+  "output_files": 6,
+  "raw_sources_and_transformed_bodies_published": false,
+  "semantic_reading_complete": false,
+  "limits": [
+    "DOM labels identify saved page sections, not independent speaker identity.",
+    "UI activity summaries, file cards and duplicated accessibility text may be included.",
+    "Uploaded attachment contents are not recovered by this pass.",
+    "Only selected Gemini passages and the Claude sections were semantically read; zero lexical candidates is not proof of no steering."
+  ]
+}
