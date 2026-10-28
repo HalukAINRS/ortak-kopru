@@ -113,6 +113,6 @@ Haluk'un sözü: “Birleştir. Köprü klasörü: "Y:\HalukAI\ortak-kopru"; iki
 
 - **Anlam:** [yol](../../yol.md): 1. ve 3. adım tamam, açılışta 2. ve 4. ilke uygulanıyor; [yerel taraf](../../teknik/yerel-taraf.md) tek kaynak; yeni [ortak defter](../../teknik/ortak-defter.md) sayfası; sadeleşmiş [belge dizinleri](../../README.md); [kapı kullanımında gelen kutusu](../../teknik/kapi-kullanimi.md#6-dışarıdan-gelen-soruları-almak).
 - **Süreç:** [onbirinci istek](claude-code-bulut-2026-10-28-surec.md#onbirinci-istek-kararlar-köprü-klasörü-ve-sadeleştirme).
-- **Makine:** dar gönderici `yerel/kopru_gonder.ps1` ve üç PowerShell sınaması; gelen kutusu `src/ortak_kopru/inbox.py`, `kapi.py inbox` ve `tests/test_gateway_inbox.py`; haritada on dört kaldırılan dosya; dönüşüm ana dala karşı yeniden ölçüldü; öneri #26.
+- **Makine:** dar gönderici `yerel/kopru_gonder.ps1` ve üç PowerShell sınaması; gelen kutusu `src/ortak_kopru/inbox.py`, `kapi.py inbox` ve `tests/test_gateway_inbox.py`; haritada on dört kaldırılan dosya; dönüşüm ana dala karşı yeniden ölçüldü; öneri #27.
 
 [Süreç arşivi](claude-code-bulut-2026-10-28-surec.md) · [Rafine kayıtları](README.md) · [Geçmiş işler](../README.md)

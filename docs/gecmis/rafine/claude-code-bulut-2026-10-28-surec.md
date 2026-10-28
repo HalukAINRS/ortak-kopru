@@ -225,10 +225,12 @@ Bu arşiv, Claude Code Bulut oturumunun 28 Ekim 2026'da Haluk'un art arda gelen 
 
 **20.00–20.13** Yolun 3. adımı: kapıya `inbox` komutu eklendi. Komut GitHub'daki açık konuları anahtarsız okuyor, çekme isteklerini atlıyor ve her konuyu yazarı, zamanları, gövdesinin karması ve formdaki tür ve yer alanlarıyla aktarım dizininin `gelen/` klasörüne yazıyor; dizin bir Git çalışma ağacının içinde olamıyor. Beş sınama ağsız çalışıyor. Komut gerçek depoya karşı da anahtarsız denendi; tek açık konu (#16) gelen kutusuna indi. Açılışta 2. ve 4. ilke uygulanıyor oldu. Yol ve açılış sınamalarından üçü kaydın o anki durumuna bağlıydı; kendi kopyalarında durumu kuracak biçimde yeniden yazıldı.
 
-**20.13–20.16** İki adım `9f10e56` ile gönderildi ve öneri #26 açıldı. Denetim iki işletim sisteminde geçti; PowerShell bulunan Ubuntu koşucusunda yeni gönderici sınamaları da koştu.
+**20.13–20.16** İki adım `9f10e56` ile gönderildi ve öneri #26 taslak olarak açıldı. Denetim iki işletim sisteminde geçti; PowerShell bulunan Ubuntu koşucusunda yeni gönderici sınamaları da koştu.
 
 **20.15–20.29** Sadeleştirme. Yerel tarafın durumu tek sayfaya, ortak defterin işleyişi yeni bir teknik sayfaya, doğrulama bakım rehberine, dallar ve arşivler geçmiş işler sayfasına toplandı; dizinler yalnız yönlendiriyor. Defterde zaten duran dört taslak, defteri yerinde değiştiren iki araç ve yerel başlatıcının bölüm kipi, tarihli iki kaydı canlı tutan araçlar ile onların sınamaları ve sözleşmeleri ve depo rehberi silindi; her birinin nedeni ve önceki sürümü haritada. Tarihli iki kayıt kendi kesitlerinin değerlerine döndürüldü (13.25 ve 13.33 UTC). Dönüşüm kapanmış bir iş olarak geçmişe, durum raporu tarihli adıyla taşındı. Dönüşüm bu kez bir dala değil ana dala karşı yeniden ölçüldü; önce ve sonra planı artık bugünkü haritadan değil, ölçülen sürümün kaydından çiziliyor. Harita alanları okuma sırasına girdi; adlar tekleşti (Web sayfaları, Kök komutları, Yerel taraf). Web çubuğu yalnız bugünü anlatan sayfaları gösteriyor.
 
 **20.20** Kurulum adımları yazılırken bir açık görüldü: izlenen bir dosyada yerelde kalan makine yolu, uzak dal ilerlemişken göndericinin rebase'ini durdururdu. Rebase artık yerel değişikliği kenara alıp geri koyuyor; bunu bir PowerShell sınaması sabitliyor.
 
 **20.29–20.40** Sadeleştirme `7313e83` ile gönderildi. Bağlantı denetimi, birkaç eski çapanın ve taşınan sayfaya giden bağlantıların düzeltilmesinden sonra kırık bağlantı bulmadı. Bütün talimatların üç parçalı yanıtları tek bir [yanıtlar arşivine](claude-code-bulut-2026-10-28-yanitlar.md) yazıldı.
+
+**20.40–20.45** Yanıtlar arşivi, süreç kaydı ve dört çizim `897ac5d` ile gönderildi. Taslak öneri hazır duruma API'den çevrilemediği için #26 kapatıldı ve aynı dal hazır öneri #27 olarak açıldı.
