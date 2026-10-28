@@ -60,18 +60,22 @@ Betikler ve ayarlar, kuruldukları ilk makinenin klasör düzenine bağlı yazı
 1. **İki ayrı yol ağacı.** `yerel/kopru_yerel.ps1` katmanları `Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari\…` altında arar; `katilimcilar/ayarlar-yerel.json` ise `Y:\archive\10_Katmanlar\…` ve `Y:\archive\30_Govde_Sistem\…` altındaki komutları çalıştırır. Codex'in ev klasörü ikisinde farklıdır: `CodexGiris` kipinin girişi yazdığı yer, izleyicinin baktığı yer değildir.
 2. **Copilot ile Google.** Hazırlık ve giriş kipleri Copilot CLI'ı denetler; yerel ayarlarda ise Copilot yerine `Google (CLI izleyici)` katılımcısı var.
 3. **Git'in genel ayarı.** `yerel/kopru_yerel.ps1` her çalıştığında `Y:/HalukAI/Ortak_Kopru/kopru` yolunu Git'in genel `safe.directory` listesine ekler. Bu, depo başka bir yerde olsa da olur. Geri almak için: `git config --global --unset-all safe.directory Y:/HalukAI/Ortak_Kopru/kopru`.
-4. **Gönderici.** `yerel/kopru_gonder.ps1` çalışma klasöründeki her değişikliği (`git add -A`) ana dala gönderir. Bu, [yolun 1. adımındaki](../yol.md) kararın konusudur.
+4. **Gönderici ve izleyici.** `yerel/kopru_gonder.ps1` çalışma klasöründeki her değişikliği (`git add -A`) ana dala gönderir. İzleyici (`yerel/kopru_izle.ps1`) de çalışma kopyasında gönderilmemiş bir değişiklik görürse her turdan önce göndericiyi kendisi çağırır. Yani açık yalnız `Gonder` kipinde değil, `Tek` ve sürekli izlemenin her turundadır. Bu, [yolun 1. adımındaki](../yol.md) kararın konusudur.
 
 ## Sıfırdan kurmak
 
-Yerel taraf yeniden kurulacaksa sıra şöyledir:
+Bugünkü kodla yerel tarafı kurmak güvenli değildir. Kurulum, makineye özgü yolların izlenen iki dosyaya yazılmasını ister; izleyici ise çalışma kopyasında değişiklik gördüğü ilk turda göndericiyi çağırır. Böylece o yollar ve klasörde kalan her dosya herkese açık ana dala gider. Bu yüzden kurulumdan önce iki iş biter:
+
+1. Gönderici daraltılır: yalnız defteri, aynasını ve çağrı kayıtlarını gönderir ([yolun 1. adımı](../yol.md), Haluk'un kararı).
+2. Yollar tek kaynaktan ve depo dışındaki bir yerel ayardan okunur; izlenen dosyalar makineye göre değiştirilmez (şimdi ve sonrası kaydındaki S03 senaryosu).
+
+İkisi bittikten sonra sıra şöyledir:
 
 1. Windows'ta Git, PowerShell 7 ve Python 3.12 ya da üstünü kurun.
 2. Depoyu istediğiniz bir klasöre klonlayın: `git clone https://github.com/HalukAINRS/ortak-kopru`.
-3. Göndericinin kararı verilmeden ve gönderici daraltılmadan `Kopru_Izle.cmd Gonder` ya da `yerel/kopru_gonder.ps1` çalıştırmayın.
-4. `yerel/kopru_yerel.ps1` içindeki "Yollar" bloğunu ve `katilimcilar/ayarlar-yerel.json` içindeki komut yollarını kendi makinenize göre düzeltin; ikisini aynı klasörlere bağlayın. `$DepoYolu` değişkeni deponun gerçek yolunu göstermeli.
-5. `Kopru_Izle.cmd Hazirlik` her parçayı denetler, eksikleri yazar ve hiçbir model çağırmaz.
-6. `Kopru_Izle.cmd Tek` bir tur çalışır ve çıkar; sürekli izleme için dosyaya çift tıklanır.
+3. Makineye özgü yolları depo dışındaki yerel ayara yazın.
+4. `Kopru_Izle.cmd Hazirlik` her parçayı denetler, eksikleri yazar; hiçbir model çağırmaz ve hiçbir şey göndermez.
+5. `Kopru_Izle.cmd Tek` bir tur çalışır ve çıkar; sürekli izleme için dosyaya çift tıklanır.
 
 ## Yerel taraf olmadan
 
