@@ -478,7 +478,9 @@
         "docs/harita.md",
         "docs/harita.json",
         "docs/yol.md",
-        "docs/yol.json"
+        "docs/yol.json",
+        "docs/donusum.md",
+        "docs/donusum.json"
       ],
       "dosyalar": [
         {
@@ -609,6 +611,42 @@
               "README.md"
             ],
             "okur": "araçlar ve depoyu temel alacak alanlar"
+          }
+        },
+        {
+          "yol": "docs/donusum.md",
+          "tur": "belge",
+          "ne": "Dönüşüm: GitHub'daki bugünkü deponun yeni oluşuma geçişi; aşamalar, kimin elinde olduğu, ölçüm ve geri dönüş, klavye çizimleriyle.",
+          "uretilir": {
+            "kaynak": "docs/donusum.json",
+            "arac": "tools/donusum.py"
+          },
+          "denetim": "python tools/donusum.py --check",
+          "kunye": {
+            "sahibi": "Haluk",
+            "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+            "tarih": "2026-10-28",
+            "kaynaklar": [
+              "docs/donusum.json",
+              "docs/harita.json"
+            ],
+            "okur": "depoyu yeni hâline geçirecek sahibi ve onu izleyen okuyucu"
+          }
+        },
+        {
+          "yol": "docs/donusum.json",
+          "tur": "kayit",
+          "ne": "Dönüşümün makine kaydı: aşamalar, ölçütler, son ölçüm, prova ve bekleyen önerilerin çözümlemesi.",
+          "denetim": "python tools/donusum.py --check",
+          "kunye": {
+            "sahibi": "Haluk",
+            "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+            "tarih": "2026-10-28",
+            "kaynaklar": [
+              "docs/harita.json",
+              "docs/acilis.json"
+            ],
+            "okur": "araçlar ve dönüşümü yeniden yapacak alanlar"
           }
         }
       ]
@@ -752,6 +790,25 @@
           "eski_adlar": [
             "docs/kararlar/0002-dis-alan-kapisi.md"
           ]
+        },
+        {
+          "yol": "docs/teknik/donusum-teknik.md",
+          "tur": "belge",
+          "ne": "Dönüşümün teknik eki: komutlar, dokunulan yerler, ölçütler, prova, bekleyen önerilerin dosya dosya çözümlemesi ve geri dönüş.",
+          "uretilir": {
+            "kaynak": "docs/donusum.json",
+            "arac": "tools/donusum.py"
+          },
+          "denetim": "python tools/donusum.py --check",
+          "kunye": {
+            "sahibi": "Haluk",
+            "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+            "tarih": "2026-10-28",
+            "kaynaklar": [
+              "docs/donusum.json"
+            ],
+            "okur": "dönüşümü uygulayacak ya da denetleyecek okuyucu"
+          }
         }
       ]
     },
@@ -999,6 +1056,12 @@
           "tur": "sozlesme",
           "ne": "Yerel iş atama isteği.",
           "denetim": "python tools/sema_denetle.py"
+        },
+        {
+          "yol": "schemas/donusum.schema.json",
+          "tur": "sozlesme",
+          "ne": "Dönüşüm kaydı.",
+          "denetim": "python tools/sema_denetle.py"
         }
       ]
     },
@@ -1081,6 +1144,13 @@
             "tools/rafine_sorulari.py"
           ],
           "calistir": "python tools/simdi_ve_sonrasi.py --check",
+          "yan_etkisiz": true
+        },
+        {
+          "yol": "tools/donusum.py",
+          "tur": "arac",
+          "ne": "Dönüşümü ölçer, prova eder, bekleyen önerileri çözümler ve iki belgeyi kayıttan üretir.",
+          "calistir": "python tools/donusum.py --check",
           "yan_etkisiz": true
         }
       ]

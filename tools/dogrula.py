@@ -55,6 +55,8 @@ KONTROLLER: list[tuple[str, str, list[str], str | None]] = [
      [sys.executable, str(KOK / "tools/yol.py"), "--check"], None),
     ("harita", "Depo haritası: her dosya tek alanda, eski adlar, künyeler ve harita belgesi",
      [sys.executable, str(KOK / "tools/harita.py"), "--check"], None),
+    ("donusum", "Dönüşüm: aşamalar, son ölçüm ve prova, iki belgenin kayıtla eşliği",
+     [sys.executable, str(KOK / "tools/donusum.py"), "--check"], None),
     ("arayuz", "Yerel arayüz JavaScript sözdizimi",
      ["node", "--check", str(KOK / "ui/deus/app.js")], "node"),
     ("gonderim", "Bulut gönderim betiğinin Bash sözdizimi",

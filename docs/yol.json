@@ -78,7 +78,7 @@
       "sade": {
         "ne": "Açılış yazıldı, depo alanlarına ayrıldı ve kendini denetleyen bir harita kuruldu.",
         "neden": "Bir yerin gerçeğe dönüştüğünü görebilmek için önce neyin söz verildiğini ve neyin bugün işlediğini ayırmak gerekir.",
-        "nerede": "Deponun kendisinde: açılışta, haritada ve denetimlerde.",
+        "nerede": "Deponun kendisinde: açılışta, haritada ve denetimlerde. Bu zemin bugün ayrı bir dalda; GitHub'daki ana depoya geçişi [dönüşüm sayfasında](donusum.md) anlatılıyor.",
         "yon": "İçeride kalır; dışarıya bir şey taşımaz.",
         "nasil": "Niyet, altı ilke ve her ilkenin bugünkü durumu bir kayda yazıldı. Sayfalar o kayıttan üretiliyor ve her değişiklikte yeniden sınanıyor.",
         "sonra": "Okuduğunuz her durum yazısı bir denetime dayanıyor. Bir şey değişirse yazı da değişmek zorunda."
@@ -90,7 +90,7 @@
           "tools/dogrula.py"
         ],
         "yon": "depo içi",
-        "nasil": "Açılış, harita ve tanım kayıtları; `tools/acilis.py`, `tools/harita.py` ve `tools/dogrula.py` ile üretim ve denetim.",
+        "nasil": "Açılış, harita ve tanım kayıtları; `tools/acilis.py`, `tools/harita.py` ve `tools/dogrula.py` ile üretim ve denetim. Ana dala geçişin aşamaları, provası ve ölçümü: `docs/donusum.json`, `tools/donusum.py`.",
         "geri_alma": "İlgili commit'ler geri alınır; kayıtlar ve belgeler önceki hâline döner."
       },
       "olcutler": [

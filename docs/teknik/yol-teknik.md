@@ -45,7 +45,7 @@ Kayıt `docs/yol.json`, sözleşmesi `schemas/yol.schema.json`, aracı `tools/yo
 
 ### 0. Zemin
 
-Açılış, harita ve tanım kayıtları; `tools/acilis.py`, `tools/harita.py` ve `tools/dogrula.py` ile üretim ve denetim.
+Açılış, harita ve tanım kayıtları; `tools/acilis.py`, `tools/harita.py` ve `tools/dogrula.py` ile üretim ve denetim. Ana dala geçişin aşamaları, provası ve ölçümü: `docs/donusum.json`, `tools/donusum.py`.
 
 Dokunacağı yerler: `docs/acilis.json`, `docs/harita.json`, `tools/dogrula.py`.
 

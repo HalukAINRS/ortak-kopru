@@ -176,6 +176,8 @@ Bu alandaki dosyalar tek tek tanımlanmaz; alanın açıklaması hepsi için ge�
 | `docs/web-girisi.md` | belge | Web girişinin kaynak metni; index.html bundan üretilir. | `docs/WEB_GIRISI.md` |
 | `docs/harita.md` | belge | Bu harita: alanlar, dosyalar, eski adlar ve kurallar. | — |
 | `docs/harita.json` | kayit | Haritanın makine kaydı: her dosyanın alanı, türü, eski adları ve künyesi. | — |
+| `docs/donusum.md` | belge | Dönüşüm: GitHub'daki bugünkü deponun yeni oluşuma geçişi; aşamalar, kimin elinde olduğu, ölçüm ve geri dönüş, klavye çizimleriyle. | — |
+| `docs/donusum.json` | kayit | Dönüşümün makine kaydı: aşamalar, ölçütler, son ölçüm, prova ve bekleyen önerilerin çözümlemesi. | — |
 
 ## Teknik ayrıntılar
 
@@ -195,6 +197,7 @@ Araçlar, kurulum, doğrulama, otomasyon ve kararlar. Açılışı anlamak için
 | `docs/teknik/depo-rehberi.md` | belge | Depodaki alanların ve tarihsel dalların okuma rehberi. | `docs/DEPO_REHBERI.md` |
 | `docs/teknik/kararlar/0001-deus-is-ve-nt.md` | belge | Karar 0001: yerel iş bileşeni ve NT aygıtı. | `docs/kararlar/0001-deus-is-ve-nt.md` |
 | `docs/teknik/kararlar/0002-dis-alan-kapisi.md` | belge | Karar 0002: işten bağımsız dış alan kapısı. | `docs/kararlar/0002-dis-alan-kapisi.md` |
+| `docs/teknik/donusum-teknik.md` | belge | Dönüşümün teknik eki: komutlar, dokunulan yerler, ölçütler, prova, bekleyen önerilerin dosya dosya çözümlemesi ve geri dönüş. | — |
 
 ## Geçmiş işler
 
@@ -238,6 +241,7 @@ Makine kayıtlarının JSON Schema sözleşmeleri; araçlar ve testler kayıtlar
 | `schemas/deus-checks.schema.json` | sozlesme | Yerel iş ölçüt denetimi. | — |
 | `schemas/deus-handoff.schema.json` | sozlesme | Yerel iş devri. | — |
 | `schemas/deus-assign-request.schema.json` | sozlesme | Yerel iş atama isteği. | — |
+| `schemas/donusum.schema.json` | sozlesme | Dönüşüm kaydı. | — |
 
 ## Bakım araçları
 
@@ -255,6 +259,7 @@ Deponun kendini denetleyen ve üreten araçları. Hepsi çevrimdışı, yalnız 
 | `tools/harita.py` | arac | Haritayı denetler: her dosya tek alanda, eski adlar, künyeler, komutlar; harita belgesini üretir. | — |
 | `tools/depo_tanimi.py` | arac | Depo tanımının ölçümlerini depodan üretir ve denetler. | — |
 | `tools/simdi_ve_sonrasi.py` | arac | Şimdi ve sonrası kaydını denetler; senaryo sırasını ve ölçümleri verir. | `tools/rafine_sorulari.py` |
+| `tools/donusum.py` | arac | Dönüşümü ölçer, prova eder, bekleyen önerileri çözümler ve iki belgeyi kayıttan üretir. | — |
 
 ## Testler
 
@@ -302,6 +307,7 @@ Aşağıdaki komutlar depo kökünden çalışır ve Python'un standart kütüph
 | `tools/harita.py` | `python tools/harita.py --check` | evet |
 | `tools/depo_tanimi.py` | `python tools/depo_tanimi.py --check` | evet |
 | `tools/simdi_ve_sonrasi.py` | `python tools/simdi_ve_sonrasi.py --check` | evet |
+| `tools/donusum.py` | `python tools/donusum.py --check` | evet |
 
 ## Eski adlar
 
@@ -376,9 +382,12 @@ Yeni belgeler ve kayıtlar künyeleriyle kaynak gösterilebilir. Deponun tamamı
 | `docs/yol.json` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/acilis.json`, `docs/gecmis/simdi-ve-sonrasi.json`, `docs/gecmis/rafine/claude-code-bulut-2026-10-28-bulgular.json` | araçlar ve yolu temel alacak alanlar |
 | `docs/harita.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/harita.json` | depoda yolunu arayan okuyucu |
 | `docs/harita.json` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `README.md` | araçlar ve depoyu temel alacak alanlar |
+| `docs/donusum.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/donusum.json`, `docs/harita.json` | depoyu yeni hâline geçirecek sahibi ve onu izleyen okuyucu |
+| `docs/donusum.json` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/harita.json`, `docs/acilis.json` | araçlar ve dönüşümü yeniden yapacak alanlar |
 | `docs/teknik/README.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/harita.json` | kurulum ya da katkı için gelen okuyucu |
 | `docs/teknik/acilis-teknik.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/acilis.json` | açılışın dayanağını arayan okuyucu |
 | `docs/teknik/yol-teknik.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/yol.json` | adımı atacak ya da denetleyecek kişi |
+| `docs/teknik/donusum-teknik.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/donusum.json` | dönüşümü uygulayacak ya da denetleyecek okuyucu |
 | `docs/gecmis/README.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/gecmis/rafine/claude-code-bulut-2026-10-28-surec.md` | geçmişi arayan okuyucu |
 
 <!-- /uretilen:harita -->

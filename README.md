@@ -44,4 +44,4 @@ Bir sorunuz, kaynağınız ya da düzeltmeniz varsa GitHub'da [bir konu açın](
 
 Açılıştaki niyetin adım adım nasıl gerçeğe döneceğini, hangi adımın karar beklediğini ve hangisinin atılabileceğini [yol sayfası](docs/yol.md) gösterir.
 
-Bu yerin dosyaları alanlara ayrılmıştır. Hangi klasörün ne taşıdığını ve dosyaların birbirine nasıl bağlandığını [depo haritası](docs/harita.md) gösterir. Araçlar, kurulum ve denetimler [teknik ayrıntılar](docs/teknik/README.md) bölümünde, bugüne kadarki işler ve kayıtlar [geçmiş işler](docs/gecmis/README.md) bölümündedir.
+Bu yerin dosyaları alanlara ayrılmıştır. Hangi klasörün ne taşıdığını ve dosyaların birbirine nasıl bağlandığını [depo haritası](docs/harita.md) gösterir. Deponun bu düzene hangi aşamalarla geçtiği, kimin neyi yaptığı ve geçişin nasıl geri alınabileceği [dönüşüm sayfasında](docs/donusum.md) anlatılıyor. Araçlar, kurulum ve denetimler [teknik ayrıntılar](docs/teknik/README.md) bölümünde, bugüne kadarki işler ve kayıtlar [geçmiş işler](docs/gecmis/README.md) bölümündedir.

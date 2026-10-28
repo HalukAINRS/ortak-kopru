@@ -101,7 +101,7 @@ Yol yedi adımdan oluşuyor. Aşağıdaki ağaçta her adım, bitmesini bekledi�
 
 **Neden?** Bir yerin gerçeğe dönüştüğünü görebilmek için önce neyin söz verildiğini ve neyin bugün işlediğini ayırmak gerekir.
 
-**Nerede?** Deponun kendisinde: açılışta, haritada ve denetimlerde.
+**Nerede?** Deponun kendisinde: açılışta, haritada ve denetimlerde. Bu zemin bugün ayrı bir dalda; GitHub'daki ana depoya geçişi [dönüşüm sayfasında](donusum.md) anlatılıyor.
 
 **Nereden nereye?** İçeride kalır; dışarıya bir şey taşımaz.
 

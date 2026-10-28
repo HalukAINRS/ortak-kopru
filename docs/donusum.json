@@ -1,0 +1,883 @@
+{
+  "schema_version": 1,
+  "kind": "ortak_kopru_donusum",
+  "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+  "hazirlandi": "2026-10-28T16:55:00Z",
+  "amac": "GitHub'daki ana dalı, ayrı bir dalda kurulan yeni oluşuma ölçülerek, sırayla ve her adımı geri alınabilir biçimde geçirmek.",
+  "baslangic": {
+    "ad": "GitHub'daki ana dal",
+    "dal": "main",
+    "surum": "97c908de7a5850978082770ba3bac3e508688e57",
+    "tarih": "2026-10-28T09:25:00Z",
+    "kok_dosya": 38
+  },
+  "hedef": {
+    "ad": "Yeni oluşum",
+    "dal": "claude/rafine-2026-10-28",
+    "oneri": 23,
+    "gecmis_surumleri": [
+      "9ccd97b02d1e4170b3eed8ff2a3f16d6acb3d1d9",
+      "2a58183b7106cf58b4b639e87b9062c60e91e43e"
+    ]
+  },
+  "giris": [
+    "Bu sayfa, bugün GitHub'da duran Ortak Köprü deposunun yeni hâline nasıl geçeceğini anlatıyor. Yeni hâl ayrı bir yerde kuruldu ve sınandı. Ana depoya geçişi birkaç aşamada olacak. Her aşamanın kimin elinde olduğu, nasıl anlaşılacağı ve nasıl geri alınacağı yazılı.",
+    "Bu geçiş, açılıştan gerçeğe giden [yolun](yol.md) ilk adımını ana depoda gerçek kılıyor. Komutlar ve ölçütler [dönüşümün teknik ekinde](teknik/donusum-teknik.md) duruyor. Teknik konuların hepsi [teknik ayrıntılar](teknik/README.md), bugüne kadar yapılanlar [geçmiş işler](gecmis/README.md) bölümünde."
+  ],
+  "degisenler": [
+    "Okuyan biri için değişen şey düzendir. Deponun girişi açılışla başlar. Dosyalar adı söylenen alanlara ayrılır: ortak defterin araçları, katılımcıların ayarları, yerel bilgisayarın araçları ve belgeler. Teknik ayrıntılar ile geçmiş işler ayrı klasörlere gider.",
+    "Kök klasör sadeleşir. Her dosyanın yeri, eski adı ve ne işe yaradığı bir haritada durur. Eski kayıtlarda geçen bir dosya adı o haritadan bulunur."
+  ],
+  "degismeyenler": [
+    "Dışarıdan adresle ulaşılan her şey yerinde kalır. Ortak defterin Web adresi, aynası, Web sayfalarının adresleri ve çağrı kayıtları değişmez. Web'deki asistanlar ortak defteri eskisi gibi okur.",
+    "Bilgisayarda çift tıklanan izleyici girişi de yerinde kalır. Araçların adları değişmez; yalnız durdukları klasör değişir. Ortak defterdeki hiçbir kayıt değiştirilmez."
+  ],
+  "yol": [
+    "Aşağıdaki resim geçişi bir taşınma gibi gösteriyor. Solda bugünkü depo var: bütün dosyalar tek bir odada. Sağda yeni hâl var: her şeyin bir rafı. Kapı aynı kalıyor. Yoldaki sayılar aşamaları gösteriyor."
+  ],
+  "geri_donus": [
+    "Geçişin en önemli aşaması olan birleştirme tek adımda geri alınabilir. GitHub'daki geri alma düğmesine basılırsa ana depo eski hâline döner. Bilgisayar yeni hâli bir kez daha çeker ve yardımcıların eski talimatı geri konur.",
+    "Bu sırada hiçbir kayıt silinmez; geri almanın kendisi de bir kayıttır. Daha sonra yeniden denemek için geri almanın da geri alınması gerekir."
+  ],
+  "okur": [
+    "Bu geçişi izleyebilirsiniz. Yeni hâli bugün de okuyabilirsiniz: değişiklik önerisinin sayfası GitHub'da açık. Bir şey sormak ya da bir sorun bildirmek isterseniz [GitHub'da bir konu açın](https://github.com/HalukAINRS/ortak-kopru/issues/new); GitHub buna Issue der."
+  ],
+  "teknik_giris": [
+    "Bu ek, GitHub'daki ana dalın yeni oluşuma geçişinin teknik karşılığıdır: aşamaların komutları, dokunduğu yerler, ölçütleri, son ölçüm ve prova, bekleyen öteki önerilerin çözümlemesi ve geri dönüş. Sade anlatım dönüşüm sayfasındadır.",
+    "Kayıt `docs/donusum.json`, sözleşmesi `schemas/donusum.schema.json`, aracı `tools/donusum.py`. Araç belgeleri kayıttaki son ölçümden üretir; `--durum` canlı durumu, `--olc --yaz` yeni ölçümü, `--prova --yaz` birleşme provasını, `--dallar --yaz` bekleyen önerilerin çözümlemesini verir."
+  ],
+  "cizimler": [
+    {
+      "kimlik": "tasinma",
+      "tur": "ressam",
+      "yer": "belge",
+      "bolum": "yol",
+      "baslik": "Taşınma",
+      "metin": "      bugünkü depo                             yeni hâl\n  ┌──────────────────────┐            ┌──────┬──────┬──────┐\n  │ ▣ ▣▣ ▣  ▣▣ ▣ ▣▣ ▣ ▣▣ │            │ ▣▣   │ ▣▣▣  │ ▣▣   │\n  │ ▣▣ ▣▣ ▣ ▣ ▣▣▣ ▣ ▣  ▣ │   ┌──────┐ ├──────┼──────┼──────┤\n  │  ▣ ▣▣▣ ▣▣ ▣ ▣▣ ▣ ▣▣▣ │   │▣▣▣▣▣▣│ │ ▣▣▣  │ ▣▣   │ ▣▣▣  │\n  │ ▣▣ ▣ ▣▣ ▣▣▣ ▣ ▣▣ ▣ ▣ │ ══╡▣▣▣▣▣▣╞▶├──────┼──────┼──────┤\n  │   hepsi tek odada    │   └○────○┘ │ her şeyin bir rafı │\n  └─────────┤░░├─────────┘            └──────┤░░├──────────┘\n       kapı └┬─┘                       kapı  └┬─┘\n  ───────────┴──0──1──2──3──4──5──6──7──8──9──┴──────────────\n              aynı kapı, aynı adres; yalnız raflar değişiyor"
+    },
+    {
+      "kimlik": "geri-donus",
+      "tur": "muhendis",
+      "yer": "teknik",
+      "bolum": "geri-donus",
+      "baslik": "Birleşme ve geri dönüş",
+      "metin": "  zaman ──────────────────────────────────────────────▶\n\n  ana dal  ●─────────────●─────────────●─────────────●\n           bugün         B             G             Y\n           97c908d       ▲ birleşme    geri alma     yeniden\n                         │ yeni hâl    eski hâl      dener\n  dal   ●──●──●──●──●────┘             döner\n        yeni oluşumun sürümleri ana dalın geçmişine girer\n\n  B: birleştirme kaydı; geçmişi korur, tek adımda geri alınır\n  G: geri almanın kendisi de bir kayıttır; hiçbir şey silinmez\n  Y: yeniden denemek için önce G geri alınır"
+    }
+  ],
+  "asamalar": [
+    {
+      "no": 0,
+      "kimlik": "olusum",
+      "ad": "Yeni oluşum hazır",
+      "kim": "Claude Code Bulut",
+      "zorunlu": true,
+      "onkosul": [],
+      "karar": null,
+      "sade": {
+        "ne": "Yeni oluşum ayrı bir dalda kuruldu ve GitHub'da bir değişiklik önerisi olarak bekliyor.",
+        "neden": "Ana dal her saat çalışan bir otomasyonu ve bir yerel bilgisayarı besliyor. Bu kadar büyük bir değişiklik önce ayrı bir yerde kurulup sınanmalı.",
+        "nasil": "Açılış, alanlar, harita, yol ve bu dönüşüm yolu o dalda duruyor. Her değişiklikte bütün denetimler iki ayrı işletim sisteminde çalışıyor.",
+        "geri": "Dal ana dala dokunmaz. İstenirse öneri kapatılır ve hiçbir şey değişmez.",
+        "sonra": "Yeni hâlin bütün parçaları görülebilir ve sınanabilir bir yerde durur."
+      },
+      "teknik": {
+        "komutlar": [
+          "git fetch origin claude/rafine-2026-10-28",
+          "git switch claude/rafine-2026-10-28",
+          "python tools/dogrula.py"
+        ],
+        "dokunur": [
+          "claude/rafine-2026-10-28 dalı",
+          "değişiklik önerisi #23"
+        ],
+        "geri_donus": "Öneri #23 kapatılır; dal silinmeden de kalabilir. Ana dal etkilenmez."
+      },
+      "olcutler": [
+        {
+          "tur": "dosya_var",
+          "ref": "dal",
+          "yol": "docs/acilis.md"
+        },
+        {
+          "tur": "dosya_var",
+          "ref": "dal",
+          "yol": "docs/harita.json"
+        },
+        {
+          "tur": "dosya_var",
+          "ref": "dal",
+          "yol": "docs/yol.json"
+        },
+        {
+          "tur": "dosya_var",
+          "ref": "dal",
+          "yol": "docs/donusum.json"
+        },
+        {
+          "tur": "dosya_var",
+          "ref": "dal",
+          "yol": "defter/kopru_ekle.py"
+        }
+      ]
+    },
+    {
+      "no": 1,
+      "kimlik": "prova",
+      "ad": "Prova",
+      "kim": "makine",
+      "zorunlu": true,
+      "onkosul": [
+        "olusum"
+      ],
+      "karar": null,
+      "sade": {
+        "ne": "Birleşme, ana dalın bir kopyası üzerinde önceden denenir.",
+        "neden": "Ana dala dokunmadan sonucu görmek için. Bir çakışma ya da kırılan bir denetim varsa birleşmeden önce ortaya çıkar.",
+        "nasil": "Ana dalın geçici bir kopyası açılır ve yeni oluşum onunla birleştirilir. Bütün denetimler o kopyada çalışır. Ana daldaki her dosyanın yeni yerinde ya da eski adıyla haritada bulunduğu sınanır. Kopya sonra silinir.",
+        "geri": "Prova bir kopya üzerinde yapılır; geri alınacak bir şey yoktur.",
+        "sonra": "Birleşmenin sonucu önceden bilinir: çakışma var mı, denetimler geçiyor mu."
+      },
+      "teknik": {
+        "komutlar": [
+          "git fetch origin",
+          "python tools/donusum.py --prova --ana origin/main --dal origin/claude/rafine-2026-10-28 --yaz"
+        ],
+        "dokunur": [
+          "geçici bir Git çalışma ağacı (iş bitince silinir)",
+          "docs/donusum.json (son_prova)"
+        ],
+        "geri_donus": "Geçici çalışma ağacını araç kendisi siler; kayda yalnız sonuç yazılır."
+      },
+      "olcutler": [
+        {
+          "tur": "prova_gecti"
+        }
+      ]
+    },
+    {
+      "no": 2,
+      "kimlik": "yerel-hazirlik",
+      "ad": "Yerel hazırlık",
+      "kim": "Haluk",
+      "zorunlu": true,
+      "onkosul": [
+        "prova"
+      ],
+      "karar": null,
+      "sade": {
+        "ne": "Yerel bilgisayardaki izleyici durdurulur. Gönderilmemiş bir değişiklik varsa önce gönderilir.",
+        "neden": "Dosyaların yeri değişirken yerelde yarım kalan bir değişiklik yeni yerleşimle çakışabilir. Çalışmakta olan izleyici de yeni hâli çekince eski yolları bulamaz.",
+        "nasil": "İzleyicinin penceresi kapatılır. Bekleyen bir değişiklik varsa izleyicinin gönderme komutuyla gönderilir. Sonra yerel klasörde bekleyen değişiklik kalmadığı bir kez daha denetlenir.",
+        "geri": "Hiçbir şey silinmez. İzleyici yeniden açılırsa eski hâliyle çalışmayı sürdürür.",
+        "sonra": "Yerel bilgisayar ana daldaki son hâlle aynıdır ve yeni hâli çekmeye hazırdır."
+      },
+      "teknik": {
+        "komutlar": [
+          "Kopru_Izle.cmd penceresini kapat (sürekli izleme durur)",
+          "Kopru_Izle.cmd Gonder",
+          "git status --short",
+          "git log --oneline origin/main..main"
+        ],
+        "dokunur": [
+          "Y:\\HalukAI\\Ortak_Kopru\\kopru (yerel çalışma kopyası)"
+        ],
+        "geri_donus": "Kopru_Izle.cmd yeniden çalıştırılır; eski yerleşimle sürer."
+      },
+      "olcutler": [
+        {
+          "tur": "elle",
+          "aciklama": "yerel klasörün temiz olduğunu gösteren çıktı ya da gönderim kaydı",
+          "en_az": 1,
+          "kanit": []
+        }
+      ]
+    },
+    {
+      "no": 3,
+      "kimlik": "birlesme",
+      "ad": "Birleştirme",
+      "kim": "Haluk",
+      "zorunlu": true,
+      "onkosul": [
+        "yerel-hazirlik"
+      ],
+      "karar": {
+        "kim": "Haluk",
+        "soru": "Yeni oluşum ana dala bir birleştirme kaydıyla alınsın mı? Önerilen biçim, değişikliklerin tek kayda sıkıştırılmadan alınmasıdır; böylece süreç arşivinin andığı sürümler ana dalın geçmişinde kalır.",
+        "verildi": null
+      },
+      "sade": {
+        "ne": "Yeni oluşum GitHub'da ana dala alınır.",
+        "neden": "Yeni oluşum ancak ana dala girince herkesin gördüğü depo olur. Web sayfaları ve otomasyon ana daldan çalışır.",
+        "nasil": "GitHub'daki değişiklik önerisinin sayfasında birleştirme düğmesine basılır. Seçenek olarak birleştirme kaydı oluşturan biçim seçilir; değişiklikler tek kayda sıkıştırılmaz.",
+        "geri": "GitHub'daki geri alma düğmesiyle (Revert) birleşme tek adımda geri alınır. Dosyalar eski yerlerine döner, hiçbir kayıt silinmez.",
+        "sonra": "Herkesin gördüğü depo yeni hâldedir."
+      },
+      "teknik": {
+        "komutlar": [
+          "GitHub: #23 → Merge pull request → Create a merge commit",
+          "git fetch origin",
+          "python tools/donusum.py --durum --ana origin/main"
+        ],
+        "dokunur": [
+          "main dalı",
+          "değişiklik önerisi #23"
+        ],
+        "geri_donus": "Birleşmiş önerinin sayfasında Revert; ya da git revert -m 1 <birleşme> ve ana dala gönderim."
+      },
+      "olcutler": [
+        {
+          "tur": "dosya_var",
+          "yol": "docs/harita.json"
+        },
+        {
+          "tur": "dosya_var",
+          "yol": "docs/donusum.json"
+        },
+        {
+          "tur": "dosya_yok",
+          "yol": "kopru_ekle.py"
+        },
+        {
+          "tur": "ata",
+          "surum": "9ccd97b02d1e4170b3eed8ff2a3f16d6acb3d1d9"
+        },
+        {
+          "tur": "ata",
+          "surum": "2a58183b7106cf58b4b639e87b9062c60e91e43e"
+        }
+      ]
+    },
+    {
+      "no": 4,
+      "kimlik": "bulut",
+      "ad": "Bulut denetimi ve Web",
+      "kim": "GitHub",
+      "zorunlu": true,
+      "onkosul": [
+        "birlesme"
+      ],
+      "karar": null,
+      "sade": {
+        "ne": "GitHub, birleşmeden sonra denetimleri ana dalda kendiliğinden çalıştırır ve Web sayfalarını yeniden yayımlar.",
+        "neden": "Ana daldaki hâlin de denetimlerden geçtiğini ve Web'in yeni sayfaları sunduğunu görmek için.",
+        "nasil": "Ana dala gelen her değişiklikte denetimler iki işletim sisteminde çalışır. Web yayını birkaç dakika içinde yenilenir. Açılış ve yol sayfaları Web'de görünür; eski sayfaların adresleri aynı kalır.",
+        "geri": "Bir denetim kırılırsa birleşme geri alınır.",
+        "sonra": "Ziyaretçi Web'de açılışı ve yolu okuyabilir."
+      },
+      "teknik": {
+        "komutlar": [
+          "GitHub Actions: Depo doğrulama (main)",
+          "https://halukainrs.github.io/ortak-kopru/acilis.html",
+          "https://halukainrs.github.io/ortak-kopru/yol.html"
+        ],
+        "dokunur": [
+          ".github/workflows/dogrulama.yml",
+          "GitHub Pages (kök)"
+        ],
+        "geri_donus": "Kırık denetimde birleşme geri alınır (3. aşamanın geri dönüşü)."
+      },
+      "olcutler": [
+        {
+          "tur": "elle",
+          "aciklama": "ana daldaki ilk yeşil denetim koşusunun ve Web'deki açılış sayfasının adresi",
+          "en_az": 2,
+          "kanit": []
+        }
+      ]
+    },
+    {
+      "no": 5,
+      "kimlik": "otomasyon",
+      "ad": "Saatlik otomasyon",
+      "kim": "GitHub",
+      "zorunlu": true,
+      "onkosul": [
+        "birlesme"
+      ],
+      "karar": null,
+      "sade": {
+        "ne": "Her saat çalışan otomasyon, yeni klasörlerdeki araçlarla çalışır.",
+        "neden": "Otomasyon ortak deftere gelen kayıtlara yanıt yazar. Yeri değişen araçları doğru yerden çağırdığı ilk koşuda görülmeli.",
+        "nasil": "Birleşmeden sonraki ilk saatlik koşu izlenir. Beklemek istenmezse otomasyon elle bir kez çalıştırılır.",
+        "geri": "Koşu kırılırsa birleşme geri alınır; otomasyon eski yollara döner.",
+        "sonra": "Ortak deftere gelen kayıtlar eskisi gibi yanıtlanır."
+      },
+      "teknik": {
+        "komutlar": [
+          "GitHub Actions: Ortak Köprü → Run workflow (main)",
+          "python defter/kopru_yanitla.py kopru.html --ayarlar katilimcilar/ayarlar.json --kuru"
+        ],
+        "dokunur": [
+          ".github/workflows/kopru.yml",
+          ".github/scripts/kopru_gonder.sh",
+          "defter/",
+          "katilimcilar/ayarlar.json"
+        ],
+        "geri_donus": "Kırık koşuda birleşme geri alınır; iş akışı eski yolları yeniden bulur."
+      },
+      "olcutler": [
+        {
+          "tur": "elle",
+          "aciklama": "birleşmeden sonra başarıyla biten ilk otomasyon koşusunun adresi",
+          "en_az": 1,
+          "kanit": []
+        }
+      ]
+    },
+    {
+      "no": 6,
+      "kimlik": "yerel-gecis",
+      "ad": "Yerel geçiş",
+      "kim": "Haluk",
+      "zorunlu": true,
+      "onkosul": [
+        "birlesme"
+      ],
+      "karar": null,
+      "sade": {
+        "ne": "Yerel bilgisayar yeni hâli çeker ve izleyici yeniden başlar.",
+        "neden": "Yerel kullanıcının bilgisayarı ortak deftere yazan ikinci yoldur. Yeni yerleşimdeki araçlarla çalışmalıdır.",
+        "nasil": "Yeni hâl bilgisayara çekilir. Hazırlık denetimi çalıştırılır ve her satırın tamam olduğu görülür. Sonra izleyici bir tur çalıştırılır ve yeniden sürekli açılır.",
+        "geri": "Birleşme geri alınırsa yeni hâl bir kez daha çekilir ve bilgisayar eski yerleşime döner.",
+        "sonra": "Yerel izleyici yeni yerleşimle yazar ve gönderir."
+      },
+      "teknik": {
+        "komutlar": [
+          "git pull --ff-only",
+          "Kopru_Izle.cmd Hazirlik",
+          "Kopru_Izle.cmd Tek",
+          "Kopru_Izle.cmd"
+        ],
+        "dokunur": [
+          "Kopru_Izle.cmd",
+          "yerel/kopru_yerel.ps1",
+          "yerel/kopru_izle.ps1",
+          "yerel/kopru_gonder.ps1",
+          "katilimcilar/ayarlar-yerel.json"
+        ],
+        "geri_donus": "Birleşme geri alındıktan sonra git pull --ff-only; Kopru_Izle.cmd eski yolları yeniden bulur."
+      },
+      "olcutler": [
+        {
+          "tur": "elle",
+          "aciklama": "hazırlık denetiminin temiz çıktısı ya da izleyicinin birleşmeden sonraki ilk gönderimi",
+          "en_az": 1,
+          "kanit": []
+        }
+      ]
+    },
+    {
+      "no": 7,
+      "kimlik": "katmanlar",
+      "ad": "Yardımcıların talimatı",
+      "kim": "Haluk",
+      "zorunlu": true,
+      "onkosul": [
+        "yerel-gecis"
+      ],
+      "karar": null,
+      "sade": {
+        "ne": "Bilgisayardaki yapay zekâ yardımcılarının talimat dosyalarında duran köprü bölümü yenisiyle değiştirilir.",
+        "neden": "Bu bölüm her yardımcının kendi talimat dosyasına kopyalanmıştı ve eski dosya yollarını gösteriyor. Kopyalar kendiliğinden güncellenmez.",
+        "nasil": "Codex, Claude Code, Copilot ve Gemini yardımcılarının talimat dosyalarında köprü bölümü bulunur. Depodaki yeni bölüm onun yerine konur. Bir yardımcının ortak defteri okuyup yazabildiği bir kez sınanır.",
+        "geri": "Eski bölüm geri konur.",
+        "sonra": "Yardımcılar ortak deftere yeni yollardan yazar."
+      },
+      "teknik": {
+        "komutlar": [
+          "katilimcilar/AGENTS-kopru.md → AGENTS.md (Codex, Şaman), CLAUDE.md (Claude Code, Hacker), Copilot talimatı (Şahit), GEMINI.md",
+          "python3 defter/kopru_oku.py kopru.html --acik"
+        ],
+        "dokunur": [
+          "katilimcilar/AGENTS-kopru.md",
+          "yerel bilgisayardaki talimat dosyaları (depo dışı)"
+        ],
+        "geri_donus": "Talimat dosyalarındaki eski bölüm geri konur."
+      },
+      "olcutler": [
+        {
+          "tur": "elle",
+          "aciklama": "talimatı güncellenen yardımcılar",
+          "en_az": 1,
+          "kanit": []
+        }
+      ]
+    },
+    {
+      "no": 8,
+      "kimlik": "acik-calismalar",
+      "ad": "Bekleyen öteki öneriler",
+      "kim": "katkıcılar",
+      "zorunlu": false,
+      "onkosul": [
+        "birlesme"
+      ],
+      "karar": null,
+      "sade": {
+        "ne": "Henüz birleşmemiş öteki değişiklik önerileri yeni yerleşime taşınır.",
+        "neden": "Bu öneriler eski yerleşimde hazırlandı. Bir kısmı yeri değişen dosyalara dokunuyor; çoğu haritada yeri olmayan yeni klasörler ekliyor.",
+        "nasil": "Her öneri, birleşmeden önce yeni ana dalın üzerine taşınır. Yeri değişen dosyanın yeni yeri haritadan bulunur. Yeni klasörler haritada bir alana bağlanır.",
+        "geri": "Öneriler kendi dallarında durur ve ana dala dokunmaz.",
+        "sonra": "Her öneri ana dala yeni yerleşimle girebilir."
+      },
+      "teknik": {
+        "komutlar": [
+          "git fetch origin '+refs/pull/*/head:refs/remotes/origin/pr/*'",
+          "python tools/donusum.py --dallar --ana origin/main --yaz",
+          "git rebase origin/main",
+          "python tools/harita.py --nerede ESKI_AD"
+        ],
+        "dokunur": [
+          "her önerinin kendi dalı",
+          "docs/harita.json"
+        ],
+        "geri_donus": "Taşıma her dalda ayrı yapılır; dal eski hâline git reset ile döner."
+      },
+      "olcutler": [
+        {
+          "tur": "dallar_yerlesik"
+        }
+      ]
+    },
+    {
+      "no": 9,
+      "kimlik": "kapanis",
+      "ad": "Kapanış",
+      "kim": "makine",
+      "zorunlu": true,
+      "onkosul": [
+        "bulut",
+        "otomasyon",
+        "katmanlar"
+      ],
+      "karar": null,
+      "sade": {
+        "ne": "Dönüşüm ölçülür ve kayda geçer.",
+        "neden": "Bir dönüşümün bittiği yalnız söylenerek değil, ölçülerek bilinmeli.",
+        "nasil": "Ana daldaki eski hâlin her dosyası yeni yerinde ya da eski adıyla haritada bulunur. Sonuç geçmiş işlere yazılır ve bu sayfanın durumu yenilenir.",
+        "geri": "Kapanış bir kayıttır; geri alınacak bir şey yoktur.",
+        "sonra": "Dönüşüm geçmiş işlere geçer. Yol, açılıştan gerçeğe giden adımlarla sürer."
+      },
+      "teknik": {
+        "komutlar": [
+          "python tools/harita.py --check --ref 97c908d",
+          "python tools/donusum.py --olc --ana origin/main --yaz"
+        ],
+        "dokunur": [
+          "docs/donusum.json",
+          "docs/gecmis/README.md"
+        ],
+        "geri_donus": "Kayıt yeni bir kayıtla düzeltilir; silinmez."
+      },
+      "olcutler": [
+        {
+          "tur": "eski_adlar_cozulur",
+          "taban": "97c908de7a5850978082770ba3bac3e508688e57"
+        },
+        {
+          "tur": "dosya_icerir",
+          "yol": "docs/gecmis/README.md",
+          "desen": "Dönüşüm tamamlandı"
+        }
+      ]
+    },
+    {
+      "no": 10,
+      "kimlik": "lisans",
+      "ad": "Lisans",
+      "kim": "Haluk",
+      "zorunlu": false,
+      "onkosul": [
+        "olusum"
+      ],
+      "karar": {
+        "kim": "Haluk",
+        "soru": "Depo hangi lisansla sunulsun? Lisans seçilmeden başkaları depoyu kaynak gösterebilir ama yasal olarak üzerine kuramaz.",
+        "verildi": null
+      },
+      "sade": {
+        "ne": "Depo için bir lisans seçilir ve kökte bir lisans dosyası durur.",
+        "neden": "Belgelerin üç sıfır kuralının son yarısı, hiç bilmeyen bir alanın depoyu temel alabilmesidir. Bunun yasal yolu lisanstır.",
+        "nasil": "Sahibi bir lisans seçer. Lisans metni köke eklenir, haritaya ve kaynak gösterme dosyasına işlenir.",
+        "geri": "Lisans sonradan değiştirilebilir. O güne kadar alınmış kopyalar alındıkları lisansla kalır.",
+        "sonra": "Depo yalnız kaynak gösterilmekle kalmaz, üzerine kurulabilir."
+      },
+      "teknik": {
+        "komutlar": [
+          "LICENSE (kök)",
+          "CITATION.cff: license alanı",
+          "docs/harita.json: giris alanına LICENSE"
+        ],
+        "dokunur": [
+          "LICENSE",
+          "CITATION.cff",
+          "docs/harita.json"
+        ],
+        "geri_donus": "Lisans dosyası yeni bir lisansla değiştirilir."
+      },
+      "olcutler": [
+        {
+          "tur": "dosya_var",
+          "yol": "LICENSE"
+        }
+      ]
+    }
+  ],
+  "acik_calismalar": {
+    "olculdu": "2026-10-28T16:55:08Z",
+    "taban": "97c908de7a5850978082770ba3bac3e508688e57",
+    "oneriler": [
+      {
+        "no": 1,
+        "baslik": "Steering: kaynak kataloğu, son ana dal taraması ve oturum kapanışı",
+        "hedef_dal": "main",
+        "surum": "60234ed4af16bfca4afb51a51bdaddb3a6b26d0f",
+        "dosya": 106,
+        "tasinan": [],
+        "alansiz": [
+          "steering/"
+        ]
+      },
+      {
+        "no": 2,
+        "baslik": "Add an opt-in, auditable context workflow for the bridge",
+        "hedef_dal": "main",
+        "surum": "42a310380e76f12f816fb5e6a931cac213e8af20",
+        "dosya": 23,
+        "tasinan": [
+          [
+            "istem-sablonu.md",
+            "katilimcilar/istem-sablonu.md"
+          ],
+          [
+            "kopru_yanitla.py",
+            "defter/kopru_yanitla.py"
+          ]
+        ],
+        "alansiz": [
+          "checks/",
+          "docs/architecture.md",
+          "examples/",
+          "kopru_governance/",
+          "policy/"
+        ]
+      },
+      {
+        "no": 3,
+        "baslik": "Add opt-in auditable context and run records",
+        "hedef_dal": "main",
+        "surum": "61d13f7573fec8cbbe87f93b5423110b2bf9b562",
+        "dosya": 20,
+        "tasinan": [
+          [
+            "istem-sablonu.md",
+            "katilimcilar/istem-sablonu.md"
+          ],
+          [
+            "kopru_yanitla.py",
+            "defter/kopru_yanitla.py"
+          ]
+        ],
+        "alansiz": [
+          "checks/",
+          "ortak_kopru/",
+          "policy/",
+          "reports/"
+        ]
+      },
+      {
+        "no": 4,
+        "baslik": "Prepare Şahit CLI handoff and deus_ex_machina task layer",
+        "hedef_dal": "main",
+        "surum": "0582717a00f67fccd8f583cef3d482ab5a9945fa",
+        "dosya": 19,
+        "tasinan": [
+          [
+            "kopru_yerel.ps1",
+            "yerel/kopru_yerel.ps1"
+          ]
+        ],
+        "alansiz": [
+          "deus_ex_machina/",
+          "devir/"
+        ]
+      },
+      {
+        "no": 5,
+        "baslik": "Claude (Hacker) devri ve deus_ex_machina payı",
+        "hedef_dal": "main",
+        "surum": "62b1d2b1861d5cffb6c081a6b256c9a5a3cd7cf7",
+        "dosya": 7,
+        "tasinan": [
+          [
+            "kopru_yerel.ps1",
+            "yerel/kopru_yerel.ps1"
+          ]
+        ],
+        "alansiz": [
+          "deus_ex_machina/",
+          "devir/"
+        ]
+      },
+      {
+        "no": 6,
+        "baslik": "Sahit/cli devri 2026 10 24",
+        "hedef_dal": "main",
+        "surum": "5e6d3935926eaff27689eecd21009f5a3951d5ef",
+        "dosya": 21,
+        "tasinan": [
+          [
+            "kopru_yerel.ps1",
+            "yerel/kopru_yerel.ps1"
+          ]
+        ],
+        "alansiz": [
+          "deus_ex_machina/",
+          "devir/"
+        ]
+      },
+      {
+        "no": 7,
+        "baslik": "deus_ex_machina: açık oturum kuyruğu ve katman geri dönüşünden otomatik devam",
+        "hedef_dal": "deus-ex-machina-2026-10-24",
+        "surum": "359a99c69bf131ccaffa1d2e1468eb165a59bd64",
+        "dosya": 42,
+        "tasinan": [],
+        "alansiz": [
+          "devir/",
+          "kurulum/",
+          "uygulama/"
+        ]
+      },
+      {
+        "no": 8,
+        "baslik": "Steering ve CLI devamı: kaynak doğrulaması, Cyber defteri ve ortak kurulum",
+        "hedef_dal": "steering-inceleme-2026-10-24",
+        "surum": "b2cfa94323df6847033083a2680f0d2ebdbb5909",
+        "dosya": 45,
+        "tasinan": [],
+        "alansiz": [
+          "devir/",
+          "steering/"
+        ]
+      },
+      {
+        "no": 15,
+        "baslik": "Hacker VM uzak kontrol başlatıcısı (k-0180) ve Claude Code Bulut oturum kartı",
+        "hedef_dal": "main",
+        "surum": "f12799e7221438caa240e6c36097fe403fbc811f",
+        "dosya": 7,
+        "tasinan": [],
+        "alansiz": [
+          ".claude/",
+          "Hacker_Uzak_Kontrol.cmd",
+          "docs/BULUT_KARTI.md"
+        ]
+      },
+      {
+        "no": 17,
+        "baslik": "Tek nokta (1): ortak katkı, GitHub kaynağı ve CLI kanıtı",
+        "hedef_dal": "main",
+        "surum": "23b386c162a3f586a3b2f23099e065d121597a12",
+        "dosya": 16,
+        "tasinan": [],
+        "alansiz": [
+          "Ortak_Nokta.cmd",
+          "docs/TEK_NOKTA.md",
+          "docs/TEK_NOKTA_KANIT.md"
+        ]
+      },
+      {
+        "no": 18,
+        "baslik": "Ortak geçmiş arşivi: Claude (Code Bulut) alanının altı adımı, anlamlar not defteri ve son durum raporu",
+        "hedef_dal": "main",
+        "surum": "6d8882cd2362c0db7747a691ef3d45ba23434a15",
+        "dosya": 10,
+        "tasinan": [],
+        "alansiz": [
+          "arsiv/"
+        ]
+      },
+      {
+        "no": 20,
+        "baslik": "Ortak mimari defteri: Hacker (Claude Code Bulut) bölümü ve parçalar",
+        "hedef_dal": "main",
+        "surum": "d39b868549eafb2e50e83890bcb0b02542d804a5",
+        "dosya": 2,
+        "tasinan": [],
+        "alansiz": [
+          "docs/ortak-mimari-defteri/claude-code-bulut-parcalar.md",
+          "docs/ortak-mimari-defteri/claude-code-bulut.md"
+        ]
+      }
+    ]
+  },
+  "son_prova": {
+    "zaman": "2026-10-28T16:55:00Z",
+    "ana": "origin/main",
+    "ana_surum": "97c908de7a5850978082770ba3bac3e508688e57",
+    "dal": "origin/claude/rafine-2026-10-28",
+    "dal_surum": "97c908de7a5850978082770ba3bac3e508688e57",
+    "birlesme": "temiz",
+    "cakisanlar": [],
+    "dogrulama": "",
+    "eski_adlar": "",
+    "basarili": false
+  },
+  "son_olcum": {
+    "zaman": "2026-10-28T16:55:08Z",
+    "ana": "origin/main",
+    "ana_surum": "97c908de7a5850978082770ba3bac3e508688e57",
+    "dal": "origin/claude/rafine-2026-10-28",
+    "dal_surum": "2a58183b7106cf58b4b639e87b9062c60e91e43e",
+    "durumlar": [
+      {
+        "kimlik": "olusum",
+        "durum": "atilabilir",
+        "olcutler": [
+          {
+            "tarif": "yeni oluşumun dalında `docs/acilis.md` var",
+            "karsilaniyor": true
+          },
+          {
+            "tarif": "yeni oluşumun dalında `docs/harita.json` var",
+            "karsilaniyor": true
+          },
+          {
+            "tarif": "yeni oluşumun dalında `docs/yol.json` var",
+            "karsilaniyor": true
+          },
+          {
+            "tarif": "yeni oluşumun dalında `docs/donusum.json` var",
+            "karsilaniyor": false
+          },
+          {
+            "tarif": "yeni oluşumun dalında `defter/kopru_ekle.py` var",
+            "karsilaniyor": true
+          }
+        ]
+      },
+      {
+        "kimlik": "prova",
+        "durum": "onkosul-bekliyor",
+        "olcutler": [
+          {
+            "tarif": "son prova başarılı (2026-10-28 16:55, temiz, )",
+            "karsilaniyor": false
+          }
+        ]
+      },
+      {
+        "kimlik": "yerel-hazirlik",
+        "durum": "onkosul-bekliyor",
+        "olcutler": [
+          {
+            "tarif": "elle: yerel klasörün temiz olduğunu gösteren çıktı ya da gönderim kaydı (0/1 kanıt)",
+            "karsilaniyor": false
+          }
+        ]
+      },
+      {
+        "kimlik": "birlesme",
+        "durum": "onkosul-bekliyor",
+        "olcutler": [
+          {
+            "tarif": "ana dalda `docs/harita.json` var",
+            "karsilaniyor": false
+          },
+          {
+            "tarif": "ana dalda `docs/donusum.json` var",
+            "karsilaniyor": false
+          },
+          {
+            "tarif": "ana dalda `kopru_ekle.py` yok",
+            "karsilaniyor": false
+          },
+          {
+            "tarif": "`9ccd97b` ana dalın geçmişinde",
+            "karsilaniyor": false
+          },
+          {
+            "tarif": "`2a58183` ana dalın geçmişinde",
+            "karsilaniyor": false
+          }
+        ]
+      },
+      {
+        "kimlik": "bulut",
+        "durum": "onkosul-bekliyor",
+        "olcutler": [
+          {
+            "tarif": "elle: ana daldaki ilk yeşil denetim koşusunun ve Web'deki açılış sayfasının adresi (0/2 kanıt)",
+            "karsilaniyor": false
+          }
+        ]
+      },
+      {
+        "kimlik": "otomasyon",
+        "durum": "onkosul-bekliyor",
+        "olcutler": [
+          {
+            "tarif": "elle: birleşmeden sonra başarıyla biten ilk otomasyon koşusunun adresi (0/1 kanıt)",
+            "karsilaniyor": false
+          }
+        ]
+      },
+      {
+        "kimlik": "yerel-gecis",
+        "durum": "onkosul-bekliyor",
+        "olcutler": [
+          {
+            "tarif": "elle: hazırlık denetiminin temiz çıktısı ya da izleyicinin birleşmeden sonraki ilk gönderimi (0/1 kanıt)",
+            "karsilaniyor": false
+          }
+        ]
+      },
+      {
+        "kimlik": "katmanlar",
+        "durum": "onkosul-bekliyor",
+        "olcutler": [
+          {
+            "tarif": "elle: talimatı güncellenen yardımcılar (0/1 kanıt)",
+            "karsilaniyor": false
+          }
+        ]
+      },
+      {
+        "kimlik": "acik-calismalar",
+        "durum": "istege-bagli",
+        "olcutler": [
+          {
+            "tarif": "bekleyen önerilerin hepsi yeni yerleşimde (taşınması gereken: 12)",
+            "karsilaniyor": false
+          }
+        ]
+      },
+      {
+        "kimlik": "kapanis",
+        "durum": "onkosul-bekliyor",
+        "olcutler": [
+          {
+            "tarif": "`97c908d` sürümündeki her dosya ana dalda yerinde ya da eski adıyla haritada",
+            "karsilaniyor": true
+          },
+          {
+            "tarif": "ana dalda `docs/gecmis/README.md` içinde “Dönüşüm tamamlandı” geçer",
+            "karsilaniyor": false
+          }
+        ]
+      },
+      {
+        "kimlik": "lisans",
+        "durum": "istege-bagli",
+        "olcutler": [
+          {
+            "tarif": "ana dalda `LICENSE` var",
+            "karsilaniyor": false
+          }
+        ]
+      }
+    ]
+  }
+}

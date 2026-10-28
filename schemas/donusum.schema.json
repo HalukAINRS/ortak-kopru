@@ -1,0 +1,678 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ortak Köprü dönüşümü v1: bugünkü depodan yeni oluşuma",
+  "description": "GitHub'daki ana dalın, ayrı bir dalda kurulan yeni oluşuma geçişinin aşamaları. Her aşama kimin elinde olduğunu, ön koşullarını, gerekiyorsa sahibinin kararını, sade ve teknik anlatımını, geri dönüş yolunu ve ölçütlerini taşır. Ölçütler bir Git sürümüne karşı (ana dal ya da yeni oluşumun dalı) ya da bu kayıttaki ölçümlere karşı hesaplanır. tools/donusum.py son ölçümü, provayı ve açık çalışmaların çözümlemesini bu kayda yazar; docs/donusum.md ile docs/teknik/donusum-teknik.md belgelerini kayıttan üretir.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "hazirlayan",
+    "hazirlandi",
+    "amac",
+    "baslangic",
+    "hedef",
+    "giris",
+    "degisenler",
+    "degismeyenler",
+    "yol",
+    "geri_donus",
+    "okur",
+    "teknik_giris",
+    "cizimler",
+    "asamalar",
+    "acik_calismalar",
+    "son_prova",
+    "son_olcum"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "kind": {
+      "const": "ortak_kopru_donusum"
+    },
+    "hazirlayan": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "hazirlandi": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "amac": {
+      "type": "string",
+      "minLength": 1
+    },
+    "baslangic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ad",
+        "dal",
+        "surum",
+        "tarih",
+        "kok_dosya"
+      ],
+      "description": "Dönüşümün başladığı yer: GitHub'daki ana dalın o günkü sürümü.",
+      "properties": {
+        "ad": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "surum": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "tarih": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "kok_dosya": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "hedef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ad",
+        "dal",
+        "oneri",
+        "gecmis_surumleri"
+      ],
+      "description": "Varılacak yer: yeni oluşumun dalı ve onu taşıyan değişiklik önerisi.",
+      "properties": {
+        "ad": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "oneri": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "gecmis_surumleri": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}$"
+          },
+          "description": "Süreç arşivinin andığı sürümler; birleşmeden sonra ana dalın geçmişinde kalmaları beklenir."
+        }
+      }
+    },
+    "giris": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "degisenler": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "degismeyenler": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "yol": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "geri_donus": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "okur": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "teknik_giris": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "cizimler": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kimlik",
+          "tur",
+          "yer",
+          "bolum",
+          "baslik",
+          "metin"
+        ],
+        "description": "Klavye çizimi: ressam (manzara), mimar (plan, kesit), mühendis (akış, durum, ölçü). Kuralları tools/cizim.py denetler.",
+        "properties": {
+          "kimlik": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$"
+          },
+          "tur": {
+            "enum": [
+              "ressam",
+              "mimar",
+              "muhendis"
+            ]
+          },
+          "yer": {
+            "enum": [
+              "belge",
+              "teknik"
+            ]
+          },
+          "bolum": {
+            "type": "string",
+            "minLength": 1
+          },
+          "baslik": {
+            "type": "string",
+            "minLength": 1
+          },
+          "metin": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "asamalar": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/asama"
+      }
+    },
+    "acik_calismalar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "olculdu",
+        "taban",
+        "oneriler"
+      ],
+      "description": "GitHub'da bekleyen öteki değişiklik önerilerinin yeni yerleşime göre çözümlemesi; tools/donusum.py --dallar yazar.",
+      "properties": {
+        "olculdu": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "taban": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "oneriler": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "no",
+              "baslik",
+              "hedef_dal",
+              "surum",
+              "dosya",
+              "tasinan",
+              "alansiz"
+            ],
+            "properties": {
+              "no": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "baslik": {
+                "type": "string",
+                "minLength": 1
+              },
+              "hedef_dal": {
+                "type": "string",
+                "minLength": 1
+              },
+              "surum": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{40}$"
+              },
+              "dosya": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "tasinan": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 2,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              "alansiz": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "son_prova": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "zaman",
+        "ana",
+        "ana_surum",
+        "dal",
+        "dal_surum",
+        "birlesme",
+        "cakisanlar",
+        "dogrulama",
+        "eski_adlar",
+        "basarili"
+      ],
+      "description": "Birleşmenin ana dalın geçici bir kopyasında denenmesi; tools/donusum.py --prova yazar.",
+      "properties": {
+        "zaman": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ana": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ana_surum": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "dal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dal_surum": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "birlesme": {
+          "enum": [
+            "temiz",
+            "çakışma"
+          ]
+        },
+        "cakisanlar": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dogrulama": {
+          "type": "string"
+        },
+        "eski_adlar": {
+          "type": "string"
+        },
+        "basarili": {
+          "type": "boolean"
+        }
+      }
+    },
+    "son_olcum": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "zaman",
+        "ana",
+        "ana_surum",
+        "dal",
+        "dal_surum",
+        "durumlar"
+      ],
+      "description": "Aşamaların bir ana dal sürümüne karşı hesaplanmış durumları; tools/donusum.py --olc yazar.",
+      "properties": {
+        "zaman": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ana": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ana_surum": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "dal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dal_surum": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "durumlar": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kimlik",
+              "durum",
+              "olcutler"
+            ],
+            "properties": {
+              "kimlik": {
+                "type": "string",
+                "minLength": 1
+              },
+              "durum": {
+                "enum": [
+                  "tamam",
+                  "atilabilir",
+                  "karar-bekliyor",
+                  "onkosul-bekliyor",
+                  "elle-bekleniyor",
+                  "istege-bagli"
+                ]
+              },
+              "olcutler": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "tarif",
+                    "karsilaniyor"
+                  ],
+                  "properties": {
+                    "tarif": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "karsilaniyor": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "asama": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "no",
+        "kimlik",
+        "ad",
+        "kim",
+        "zorunlu",
+        "onkosul",
+        "karar",
+        "sade",
+        "teknik",
+        "olcutler"
+      ],
+      "properties": {
+        "no": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "kimlik": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "ad": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "zorunlu": {
+          "type": "boolean"
+        },
+        "onkosul": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "karar": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/karar"
+            }
+          ]
+        },
+        "sade": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ne",
+            "neden",
+            "nasil",
+            "geri",
+            "sonra"
+          ],
+          "properties": {
+            "ne": {
+              "type": "string",
+              "minLength": 1
+            },
+            "neden": {
+              "type": "string",
+              "minLength": 1
+            },
+            "nasil": {
+              "type": "string",
+              "minLength": 1
+            },
+            "geri": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sonra": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "teknik": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "komutlar",
+            "dokunur",
+            "geri_donus"
+          ],
+          "properties": {
+            "komutlar": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "dokunur": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "geri_donus": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "olcutler": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/olcut"
+          }
+        }
+      }
+    },
+    "olcut": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tur"
+      ],
+      "description": "Bir aşamanın ölçütü. Git'e bakan türler 'ana' (varsayılan) ya da 'dal' sürümüne karşı hesaplanır.",
+      "properties": {
+        "tur": {
+          "enum": [
+            "dosya_var",
+            "dosya_yok",
+            "dosya_icerir",
+            "ata",
+            "eski_adlar_cozulur",
+            "prova_gecti",
+            "dallar_yerlesik",
+            "elle"
+          ]
+        },
+        "ref": {
+          "enum": [
+            "ana",
+            "dal"
+          ]
+        },
+        "yol": {
+          "type": "string",
+          "minLength": 1
+        },
+        "desen": {
+          "type": "string",
+          "minLength": 1
+        },
+        "surum": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "taban": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "aciklama": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en_az": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "kanit": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "karar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kim",
+        "soru",
+        "verildi"
+      ],
+      "properties": {
+        "kim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "soru": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verildi": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "tarih",
+                "yanit"
+              ],
+              "properties": {
+                "tarih": {
+                  "type": "string",
+                  "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                },
+                "yanit": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -7,6 +7,7 @@ Bu klasör, Ortak Köprü'nün yazılı belgelerini üç yerde toplar. İlk kez 
 | Belge | Ne sağlar? |
 | --- | --- |
 | [Açılış: Kapı ve Köprü](acilis.md) | Deponun niyeti ve altı ilkesi, ilk kez gelen okuyucu için paragraflarla. Makine kaydı: [açılış kaydı](acilis.json). [Web'de oku](../acilis.html). |
+| [Dönüşüm](donusum.md) | GitHub'daki bugünkü deponun yeni hâline geçişi: aşamalar, kimin elinde oldukları, ölçüm, prova ve geri dönüş; ressam, mimar ve mühendis çizimleriyle. Makine kaydı: [dönüşüm kaydı](donusum.json). |
 | [Açılıştan gerçeğe: yol](yol.md) | Niyetin adım adım gerçeğe dönüşmesi: her adımın durumu, kararı ve ölçütü; ressam, mimar ve mühendis çizimleriyle. Makine kaydı: [yol kaydı](yol.json). [Web'de oku](../yol.html). |
 | [Web girişi](web-girisi.md) | Web kapısının ilk sayfasının kaynak metni. [Web'de oku](../index.html). |
 | [Depo haritası](harita.md) | Her dosyanın alanı, tanımı, eski adı, çalıştırma komutu ve künyesi. Makine kaydı: [harita kaydı](harita.json). |

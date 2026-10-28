@@ -39,6 +39,8 @@ Yeni bir dosya ya da belge üç sıfır kuralına uyar:
 - **Sıfır makine.** Dosya [harita kaydına](docs/harita.json) alanı, türü ve tek cümlelik tanımıyla girer. Üretilen bir dosyaysa kaynağı ve aracı, çalıştırılan bir dosyaysa depo kökünden komutu, denetlenen bir dosyaysa denetim komutu yazılır. Yalnız okuyan komutlar testlerde gerçekten çalıştırılır.
 - **Sıfır alan.** Yeni belge ve kayıtlar haritada künyeleriyle durur: sahibi, hazırlayan, tarih, kaynakları ve kimin için yazıldığı. Deponun tamamı [CITATION.cff](CITATION.cff) ile kaynak gösterilir. Bir dosyanın yeri ya da adı değişirse eski adı haritada kalır.
 
+Bu düzenden önce açılmış bir öneri, birleşmeden önce yeni yerleşime taşınır: dal yeni ana dalın üzerine alınır, yeri değişen dosyanın yeni yolu `python tools/harita.py --nerede ESKI_AD` ile bulunur, yeni klasörler haritada bir alana bağlanır. Bekleyen bütün önerilerin hangi dosyasının taşınması gerektiğini `python tools/donusum.py --dallar` çıkarır; sonuç [dönüşümün teknik ekindedir](docs/teknik/donusum-teknik.md#bekleyen-öteki-öneriler).
+
 `python tools/harita.py --check` bu kuralları denetler; ayrıca her dosyanın tam bir alanda durduğunu sınar. Kontrol `python tools/dogrula.py` listesindedir.
 
 ## Köprü ve arşiv bütünlüğü
