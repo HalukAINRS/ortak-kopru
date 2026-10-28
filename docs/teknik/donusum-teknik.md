@@ -12,13 +12,13 @@ Başlangıç: `main` @ `97c908de7a5850978082770ba3bac3e508688e57` (2026-10-28), 
 
 ## Aşamalar
 
-Son ölçüm: 2026-10-28T16:55:08Z · ana `origin/main` @ `97c908d` · dal `origin/claude/rafine-2026-10-28` @ `2a58183`. Canlı durum için: `python tools/donusum.py --durum`.
+Son ölçüm: 2026-10-28T17:01:51Z · ana `origin/main` @ `97c908d` · dal `origin/claude/rafine-2026-10-28` @ `2f69873`. Canlı durum için: `python tools/donusum.py --durum`.
 
 | Aşama | Kim | Ön koşul | Karar | Zorunlu | Durum |
 | --- | --- | --- | --- | --- | --- |
-| 0. Yeni oluşum hazır (`olusum`) | Claude Code Bulut | — | — | evet | atilabilir |
-| 1. Prova (`prova`) | makine | olusum | — | evet | onkosul-bekliyor |
-| 2. Yerel hazırlık (`yerel-hazirlik`) | Haluk | prova | — | evet | onkosul-bekliyor |
+| 0. Yeni oluşum hazır (`olusum`) | Claude Code Bulut | — | — | evet | tamam |
+| 1. Prova (`prova`) | makine | olusum | — | evet | tamam |
+| 2. Yerel hazırlık (`yerel-hazirlik`) | Haluk | prova | — | evet | elle-bekleniyor |
 | 3. Birleştirme (`birlesme`) | Haluk | yerel-hazirlik | Haluk: bekliyor | evet | onkosul-bekliyor |
 | 4. Bulut denetimi ve Web (`bulut`) | GitHub | birlesme | — | evet | onkosul-bekliyor |
 | 5. Saatlik otomasyon (`otomasyon`) | GitHub | birlesme | — | evet | onkosul-bekliyor |
@@ -45,7 +45,7 @@ Geri dönüş: Öneri #23 kapatılır; dal silinmeden de kalabilir. Ana dal etki
 | yeni oluşumun dalında `docs/acilis.md` var | karşılanıyor |
 | yeni oluşumun dalında `docs/harita.json` var | karşılanıyor |
 | yeni oluşumun dalında `docs/yol.json` var | karşılanıyor |
-| yeni oluşumun dalında `docs/donusum.json` var | karşılanmıyor |
+| yeni oluşumun dalında `docs/donusum.json` var | karşılanıyor |
 | yeni oluşumun dalında `defter/kopru_ekle.py` var | karşılanıyor |
 
 ### 1. Prova
@@ -61,7 +61,7 @@ Geri dönüş: Geçici çalışma ağacını araç kendisi siler; kayda yalnız 
 
 | Ölçüt | Son ölçümde |
 | --- | --- |
-| son prova başarılı (2026-10-28 16:55, temiz, ) | karşılanmıyor |
+| son prova başarılı (2026-10-28 17:01, temiz, 12 tamam, 0 başarısız, 1 atlandı (powershell)) | karşılanıyor |
 
 ### 2. Yerel hazırlık
 
@@ -218,7 +218,7 @@ Karar (Haluk): Depo hangi lisansla sunulsun? Lisans seçilmeden başkaları depo
 
 ## Prova
 
-Son prova 2026-10-28T16:55:00Z: ana `origin/main` @ `97c908d` ile dal `origin/claude/rafine-2026-10-28` @ `97c908d` geçici bir çalışma ağacında birleştirildi. Birleşme: temiz. Doğrulama: —. Eski adlar: —. Sonuç: başarısız.
+Son prova 2026-10-28T17:01:14Z: ana `origin/main` @ `97c908d` ile dal `origin/claude/rafine-2026-10-28` @ `2f69873` geçici bir çalışma ağacında birleştirildi. Birleşme: temiz. Doğrulama: 12 tamam, 0 başarısız, 1 atlandı (powershell). Eski adlar: TAMAM: 281 dosya 17 alanda, 108 tanım, 52 eski ad; künyeler, komutlar ve harita belgesi tutarlı.. Sonuç: başarılı.
 
 Prova ana dala ve bu çalışma ağacına dokunmaz; geçici ağaç iş bitince silinir. Yenilemek için: `python tools/donusum.py --prova --yaz`.
 

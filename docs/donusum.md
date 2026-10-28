@@ -8,16 +8,16 @@ Bu geçiş, açılıştan gerçeğe giden [yolun](yol.md) ilk adımını ana dep
 
 ## Bugün nerede duruyoruz
 
-Son ölçüm 2026-10-28 16:55 UTC'de, ana dalın o anki hâline karşı yapıldı. Dönüşümün on bir aşamasından henüz hiçbiri tamam değil. Şu an atılabilecek aşama: Yeni oluşum hazır. Öteki zorunlu aşamalar bir ön koşulun bitmesini bekliyor. Birleşmenin provası henüz yapılmadı.
+Son ölçüm 2026-10-28 17:01 UTC'de, ana dalın o anki hâline karşı yapıldı. Dönüşümün on bir aşamasından ikisi tamam. Sırada, yapılınca kanıtı yazılacak aşama: Yerel hazırlık. Öteki zorunlu aşamalar bir ön koşulun bitmesini bekliyor. Son provada birleşme temiz çıktı ve denetimler geçti.
 
 Aşağıdaki ağaçta her aşama, bitmesini beklediği aşamanın altında duruyor. Dolu kare biten, boş kare açık, eşkenar dörtgen isteğe bağlı aşamayı gösterir.
 
 **Dönüşümün ağacı** · mühendis çizimi
 
 ```text
-  (0) Yeni oluşum hazır                           □ atılabilir
-   ├─▶ (1) Prova                                  □ ön koşul
-   │   └─▶ (2) Yerel hazırlık                     □ ön koşul
+  (0) Yeni oluşum hazır                           ■ tamam
+   ├─▶ (1) Prova                                  ■ tamam
+   │   └─▶ (2) Yerel hazırlık                     □ kanıt
    │       └─▶ (3) Birleştirme                    □ ön koşul
    │           ├─▶ (4) Bulut denetimi ve Web      □ ön koşul
    │           ├─▶ (5) Saatlik otomasyon          □ ön koşul
@@ -105,7 +105,7 @@ Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşama
 
 ### 0. Yeni oluşum hazır
 
-**Durum:** Atılabilir: ön koşulu bitti ve bir karar beklemiyor.
+**Durum:** Tamam.
 
 **Kim?** Claude Code Bulut.
 
@@ -123,7 +123,7 @@ Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşama
 
 ### 1. Prova
 
-**Durum:** Ön koşulunun bitmesini bekliyor.
+**Durum:** Tamam.
 
 **Kim?** Makine.
 
@@ -141,7 +141,7 @@ Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşama
 
 ### 2. Yerel hazırlık
 
-**Durum:** Ön koşulunun bitmesini bekliyor.
+**Durum:** Ön koşulu bitti; olduğu görülünce kanıtı yazılacak.
 
 **Kim?** Haluk.
 

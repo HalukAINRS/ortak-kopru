@@ -418,7 +418,7 @@ def _ozet(kayit: dict, hesap: dict[str, dict]) -> str:
              f"Dönüşümün {SAYI_ADI[len(d)]} aşamasından "
              + (f"{SAYI[d.count('tamam')]} tamam." if d.count("tamam") else "henüz hiçbiri tamam değil."))
     for durum, cumle in (("atilabilir", "Şu an atılabilecek aşama"), ("karar-bekliyor", "Kararı bekleyen aşama"),
-                         ("elle-bekleniyor", "Kanıtı beklenen aşama")):
+                         ("elle-bekleniyor", "Sırada, yapılınca kanıtı yazılacak aşama")):
         adlar = [a["ad"] for a in kayit["asamalar"] if hesap[a["kimlik"]]["durum"] == durum]
         if adlar:
             metin += f" {cumle}: " + ", ".join(adlar) + "."

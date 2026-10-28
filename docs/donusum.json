@@ -714,27 +714,27 @@
     ]
   },
   "son_prova": {
-    "zaman": "2026-10-28T16:55:00Z",
+    "zaman": "2026-10-28T17:01:14Z",
     "ana": "origin/main",
     "ana_surum": "97c908de7a5850978082770ba3bac3e508688e57",
     "dal": "origin/claude/rafine-2026-10-28",
-    "dal_surum": "97c908de7a5850978082770ba3bac3e508688e57",
+    "dal_surum": "2f69873009b4776ceccfb67cca4b504d69d2837d",
     "birlesme": "temiz",
     "cakisanlar": [],
-    "dogrulama": "",
-    "eski_adlar": "",
-    "basarili": false
+    "dogrulama": "12 tamam, 0 başarısız, 1 atlandı (powershell)",
+    "eski_adlar": "TAMAM: 281 dosya 17 alanda, 108 tanım, 52 eski ad; künyeler, komutlar ve harita belgesi tutarlı.",
+    "basarili": true
   },
   "son_olcum": {
-    "zaman": "2026-10-28T16:55:08Z",
+    "zaman": "2026-10-28T17:01:51Z",
     "ana": "origin/main",
     "ana_surum": "97c908de7a5850978082770ba3bac3e508688e57",
     "dal": "origin/claude/rafine-2026-10-28",
-    "dal_surum": "2a58183b7106cf58b4b639e87b9062c60e91e43e",
+    "dal_surum": "2f69873009b4776ceccfb67cca4b504d69d2837d",
     "durumlar": [
       {
         "kimlik": "olusum",
-        "durum": "atilabilir",
+        "durum": "tamam",
         "olcutler": [
           {
             "tarif": "yeni oluşumun dalında `docs/acilis.md` var",
@@ -750,7 +750,7 @@
           },
           {
             "tarif": "yeni oluşumun dalında `docs/donusum.json` var",
-            "karsilaniyor": false
+            "karsilaniyor": true
           },
           {
             "tarif": "yeni oluşumun dalında `defter/kopru_ekle.py` var",
@@ -760,17 +760,17 @@
       },
       {
         "kimlik": "prova",
-        "durum": "onkosul-bekliyor",
+        "durum": "tamam",
         "olcutler": [
           {
-            "tarif": "son prova başarılı (2026-10-28 16:55, temiz, )",
-            "karsilaniyor": false
+            "tarif": "son prova başarılı (2026-10-28 17:01, temiz, 12 tamam, 0 başarısız, 1 atlandı (powershell))",
+            "karsilaniyor": true
           }
         ]
       },
       {
         "kimlik": "yerel-hazirlik",
-        "durum": "onkosul-bekliyor",
+        "durum": "elle-bekleniyor",
         "olcutler": [
           {
             "tarif": "elle: yerel klasörün temiz olduğunu gösteren çıktı ya da gönderim kaydı (0/1 kanıt)",
