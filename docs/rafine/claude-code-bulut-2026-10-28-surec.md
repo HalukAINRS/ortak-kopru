@@ -40,6 +40,8 @@ Bu arşiv, 28 Ekim 2026 tarihli rafine turunda neyin hangi sırayla yapıldığ�
 
 **11:08–11:12** İki araç da çıktıyı UTF-8'e yeniden yapılandırıyor; Bash denetimi Windows'ta "Linux koşusu denetler" gerekçesiyle `ATLANDI` yazılıyor ve bu davranış testle sabitlendi; yeni testlerdeki bütün alt süreç çıktıları açıkça UTF-8 çözülüyor. Hata yerelde `PYTHONIOENCODING=cp1252` ile yeniden üretildi ve düzeltmenin onu kapattığı görüldü.
 
+**11:11** İkinci CI koşusu ([run 40677675884](https://github.com/HalukAINRS/ortak-kopru/actions/runs/40677675884)) iki işletim sisteminde de geçti. Windows: 6 tamam, 1 atlandı (Bash; Linux denetler), PowerShell ayrıştırması ve testleri dahil. Ubuntu: koşucuda pwsh bulunduğu için 7 kontrolün 7'si koştu. Kendi aracımızın Windows kusuru bulgu kaydına R-24 olarak eklendi. Son durum: 24 bulgu; 17'si düzeltildi, 6'sı açık, 1'i doğrulanmadı.
+
 ## Kapsam dışı bırakılanlar
 
 `kopru.html` ve `ayna/kopru.html` elle değiştirilmedi; kayıt eklenmedi. `kayit/` altındaki tarihli dosyalar taşınmadı veya yeniden biçimlendirilmedi. PowerShell betikleri (`kopru_gonder.ps1`, `kopru_izle.ps1`, `kopru_yerel.ps1`) çalıştırılamadığı için değiştirilmedi. Açık taslak PR'lara ve konu dallarına dokunulmadı. `istem-sablonu.md` ve `web-istem.md`, botların davranışını doğrudan değiştirdiği için düzenlenmedi; katılımcı listelerindeki eksiklik bulgu olarak not edildi. Değişiklikler ana dala doğrudan gönderilmedi; ayrı dal ve PR ile sunuldu.
