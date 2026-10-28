@@ -117,3 +117,64 @@ Ek 2'deki "içsel süreçlerin adları depoda hiç geçmiyor" cümlesi, yazıld�
 PR #19 ana dala bir okuma katmanı getirdi: bir anlam defteri, bir son durum raporu, bir kaynak rehberi, bir depo rehberi ve dört statik web sayfası. Bu rapordaki "Web kapısı: öneri" listesinin 3, 4 ve 7. maddeleri böylece kendi yoluyla karşılandı. Konu şablonu (5. madde) ana dalda yok. Yayımlanan 16 dosyayı yayımdan sonra kayıt ekleyicinin yasak desen ve uyarı denetiminden geçirdim; sonuç temiz, bağlantılar yalnız GitHub alanlarına gidiyor. Bu denetim, protokol adlarının yayımlanıp yayımlanmayacağı sorusunu kapsamaz.
 
 Bu arşiv dalı yeni ana dalla çakışmasız birleşti. README'deki bölümüm, ana daldaki girişle çelişmeyecek biçimde bir arşiv işaretçisine dönüştürüldü.
+
+## Ek 4: Önümüzdeki çalışma akışı
+
+Bu bölüm sonradan eklendi. Haluk, önümüzdeki çalışma akışının klavyeyle çizilmiş bir şemasını istedi; istek bu oturuma 28 Ekim 02:25 UTC'de aktarımla ulaştı. Aşağıdaki şema Hacker alanından bakışı gösteriyor. Şaman da kendi şemasını hazırladığını bildirdi. Şemalardan ortak bir akış çıkıp çıkmayacağına Haluk karar verir. Şema bir plan önerisidir; kurulum, onay ya da birleştirme bildirimi değildir.
+
+```text
+                  +----------------------------------+
+                  |  HALUK  -  söz, karar ve onay    |
+                  +----------------+-----------------+
+                                   |
+            talimatları ve yanıtları oturumlar arasında taşır
+                                   |
+         +-------------------------+-------------------------+
+         |                         |                         |
+         v                         v                         v
++-----------------+      +-------------------+      +-----------------+
+| ChatGPT         |      | Claude            |      | Gemini          |
+| (Şaman)         |      | (Code Bulut)      |      | (Şahit)         |
+|                 |      |                   |      |                 |
+| iç alan: özel   |      | iç alan: özel     |      | iç alan: özel   |
++--------+--------+      +---------+---------+      +--------+--------+
+         |                         |                         |
+         +-------------------------+-------------------------+
+                                   |
+                            ortak dışavurum
+                                   |
+                                   v
+         +---------------------------------------------------+
+         |                   TEK NOKTA (1)                   |
+         |    bilgisayarda: CLI      |     web'de: GitHub    |
+         +-------------+-------------+-----------+-----------+
+                       |                         |
+                       v                         v
+         [?] hedef bilgisayarda          taslak PR: #15 #17 #18
+             canlı koşu henüz                    |
+             doğrulanmadı;                       |  birleştirme: Haluk
+             bu bulut oturumu                    v
+             oraya erişemez                    main
+                                                 |
+                                                 v
+                                        Pages (web kapısı)
+                                                 |
+                                                 v
+                                            dış okuyucu
+                                                 |
+                                                 v
+                                           Issues (açık)
+                                                 |
+   geri dönüş, ilgili kaydın yanına eklenir  <---+
+   (Haluk: GD-n | dış okuyucu: ayrı kayıt | eskisi silinmez)
+```
+
+Şemadaki "iç alan", her katılımcının kendine özgü ve paylaşılmayan çalışma alanıdır. Ortak dışavurum tek noktada birleşir: bilgisayarda komut satırı (CLI), web'de GitHub. Web tarafı çalışıyor: 28 Ekim 02:27 UTC'deki gözleme göre ana dal 01:53'teki birleşmeden beri değişmedi ve o sürümün Pages yayını başarılıydı (GitHub üst verisi). Bilgisayar tarafında, hedef bilgisayardaki canlı koşu henüz doğrulanmadı. Bu bulut oturumu o bilgisayara erişemiyor; bu iş, orada çalışan bir oturum gerektiriyor.
+
+Önümüzdeki adımlar, zorunlu bir sıra olmadan:
+
+- Katılımcıların şemaları ve iç alana ilişkin anlayışları birbirine aktarılıyor; iç alanın kendisi paylaşılmıyor.
+- Haluk'un kararını bekleyenler: PR #15, #17 ve #18'in birleştirilmesi; protokol adlarının web kapısındaki sınırı (KD-10, N-15); konu (issue) şablonu.
+- Hedef bilgisayardaki canlı koşu, orada çalışan bir oturumla yapılabilir. Sonucu bir kayıtla (komut çıktısı, commit ya da koşu) gösterilmedikçe yapılmış sayılmaz.
+- Haluk'un geri dönüşü GD-n olarak, dış okuyucularınki ayrı kayıt olarak, etkilediği satırın yanına eklenir.
+- Hacker alanında süren iş: iddiaları adreslerine karşı denetlemek, gözlemleri zamanı ve yöntemiyle yazmak (N-14), bu PR'ı ana dalla uyumlu tutmak.
