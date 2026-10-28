@@ -54,8 +54,16 @@ KONTROLLER: list[tuple[str, str, list[str], str | None]] = [
 ]
 
 
+# Windows'ta `bash` çoğu kez WSL başlatıcısına çıkar ve dağıtım kurulu değilse hata verir; bu kontrolleri
+# Linux koşusu denetler (eski iş akışında da Bash sözdizimi yalnız Linux'ta koşuyordu).
+YALNIZ_POSIX = {"gonderim"}
+WINDOWS = os.name == "nt"
+
+
 def calistir(ad: str, komut: list[str], gerekli: str | None) -> tuple[str, str, str]:
     """(durum, özet, tam çıktı) döndürür; durum TAMAM, BAŞARISIZ veya ATLANDI."""
+    if ad in YALNIZ_POSIX and WINDOWS:
+        return "ATLANDI", "Windows'ta atlanır; Linux koşusu denetler", ""
     if gerekli and not shutil.which(gerekli):
         return "ATLANDI", f"{gerekli} bulunamadı", ""
     ortam = {**os.environ, "PYTHONUTF8": "1", "PYTHONDONTWRITEBYTECODE": "1"}
@@ -69,6 +77,9 @@ def calistir(ad: str, komut: list[str], gerekli: str | None) -> tuple[str, str, 
 
 
 def main() -> int:
+    for akis in (sys.stdout, sys.stderr):  # Windows konsolunda Türkçe durum adları için
+        if hasattr(akis, "reconfigure"):
+            akis.reconfigure(encoding="utf-8", errors="replace")
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--liste", action="store_true", help="kontrolleri çalıştırmadan listele")
     parser.add_argument("--sadece", help="virgülle ayrılmış kontrol adları")

@@ -16,6 +16,7 @@ import argparse
 import json
 import re
 from pathlib import Path
+import sys
 
 KOK = Path(__file__).resolve().parents[1]
 SEMA_DIZINI = KOK / "schemas"
@@ -166,7 +167,15 @@ def butun_semalar() -> dict[str, dict]:
             for yol in sorted(SEMA_DIZINI.glob("*.schema.json"))}
 
 
+def utf8_cikti() -> None:
+    """Windows konsolu ve -I ile PYTHONUTF8 yok sayıldığında da Türkçe çıktı yazılabilsin."""
+    for akis in (sys.stdout, sys.stderr):
+        if hasattr(akis, "reconfigure"):
+            akis.reconfigure(encoding="utf-8", errors="replace")
+
+
 def main() -> int:
+    utf8_cikti()
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--sema", help="şema adı (ör. deus-event) veya schemas/ altındaki dosya adı")
     parser.add_argument("--veri", help="denetlenecek JSON dosyası; --sema ile birlikte")

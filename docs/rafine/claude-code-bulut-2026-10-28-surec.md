@@ -36,6 +36,10 @@ Bu arşiv, 28 Ekim 2026 tarihli rafine turunda neyin hangi sırayla yapıldığ�
 
 **11:00** Son kanıt: `python -m unittest discover` → 254 test, OK, 6 atlandı (PowerShell). `python tools/dogrula.py` → 6 tamam, 0 başarısız, 1 atlandı. `python tools/sema_denetle.py --sema rafine-bulgu --veri docs/rafine/claude-code-bulut-2026-10-28-bulgular.json` → UYUMLU. Bulgu kaydı 23 bulgu taşır: 16'sı düzeltildi, 6'sı açık, 1'i doğrulanmadı.
 
+**11:04–11:07** Dal `claude/rafine-2026-10-28` iki commit ile gönderildi ve PR #23 açıldı. İlk commit ayrı bir çalışma ağacında da tek başına yeşil koştu. CI'da Linux işi geçti; Windows işi iki kontrolde düştü. Birincisi `tools/sema_denetle.py`'nin `-I` ile çağrıldığında `PYTHONUTF8` ayarını yok sayması ve Windows konsolunun `↔` karakterini yazamamasıydı. İkincisi `bash` komutunun Windows'ta dağıtımı kurulu olmayan WSL başlatıcısına çıkmasıydı; eski iş akışı Bash sözdizimini zaten yalnız Linux'ta denetliyordu. Aynı Windows koşusu, bu ortamda çalıştırılamayan PowerShell ayrıştırmasının (`windows/nt/build.ps1` dahil) ve altı PowerShell gönderim testinin geçtiğini gösterdi.
+
+**11:08–11:12** İki araç da çıktıyı UTF-8'e yeniden yapılandırıyor; Bash denetimi Windows'ta "Linux koşusu denetler" gerekçesiyle `ATLANDI` yazılıyor ve bu davranış testle sabitlendi; yeni testlerdeki bütün alt süreç çıktıları açıkça UTF-8 çözülüyor. Hata yerelde `PYTHONIOENCODING=cp1252` ile yeniden üretildi ve düzeltmenin onu kapattığı görüldü.
+
 ## Kapsam dışı bırakılanlar
 
 `kopru.html` ve `ayna/kopru.html` elle değiştirilmedi; kayıt eklenmedi. `kayit/` altındaki tarihli dosyalar taşınmadı veya yeniden biçimlendirilmedi. PowerShell betikleri (`kopru_gonder.ps1`, `kopru_izle.ps1`, `kopru_yerel.ps1`) çalıştırılamadığı için değiştirilmedi. Açık taslak PR'lara ve konu dallarına dokunulmadı. `istem-sablonu.md` ve `web-istem.md`, botların davranışını doğrudan değiştirdiği için düzenlenmedi; katılımcı listelerindeki eksiklik bulgu olarak not edildi. Değişiklikler ana dala doğrudan gönderilmedi; ayrı dal ve PR ile sunuldu.

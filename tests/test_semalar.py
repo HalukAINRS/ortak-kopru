@@ -110,18 +110,18 @@ class ValidatorRulesTests(unittest.TestCase):
                             encoding="utf-8")
             ok = subprocess.run([sys.executable, "-I", str(ROOT / "tools/sema_denetle.py"),
                                  "--sema", "deus-event", "--veri", str(veri)],
-                                capture_output=True, text=True, cwd=ROOT)
+                                capture_output=True, text=True, encoding="utf-8", cwd=ROOT)
             self.assertEqual(ok.returncode, 0, ok.stdout + ok.stderr)
             self.assertIn("UYUMLU", ok.stdout)
             veri.write_text(json.dumps({"seq": 0}), encoding="utf-8")
             bad = subprocess.run([sys.executable, "-I", str(ROOT / "tools/sema_denetle.py"),
                                   "--sema", "deus-event", "--veri", str(veri)],
-                                 capture_output=True, text=True, cwd=ROOT)
+                                 capture_output=True, text=True, encoding="utf-8", cwd=ROOT)
             self.assertEqual(bad.returncode, 1)
             self.assertIn("zorunlu alan 'id' yok", bad.stdout)
             self.assertIn("$.seq: en az 1", bad.stdout)
         shape = subprocess.run([sys.executable, "-I", str(ROOT / "tools/sema_denetle.py")],
-                               capture_output=True, text=True, cwd=ROOT)
+                               capture_output=True, text=True, encoding="utf-8", cwd=ROOT)
         self.assertEqual(shape.returncode, 0, shape.stdout + shape.stderr)
         self.assertIn("7 şema", shape.stdout)
 
