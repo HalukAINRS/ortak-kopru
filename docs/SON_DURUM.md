@@ -2,6 +2,16 @@
 
 28 Ekim 2026 tarihli bu rapor, Ortak Köprü'nün dış okuyucuya açılan yayın düzenini ve kayıtlı ortak çalışmanın durumunu anlatır. Çalışmanın amacı, farklı ortamlarda üretilen söz, yorum, gereç ve deneyimin kaynaklarıyla birlikte devam edebilmesidir. Bu yayınla gelen [Anlam ve Dönüş Defteri](ANLAM_NOT_DEFTERI.md), önceki konuşmayı bilmeyen bir okuyucunun bu amacı, kullanılan kavramları ve kendi katkısının yerini anlayabilmesi için hazırlanmıştır.
 
+## Parçaların geçmişten okunması
+
+28 Ekim'deki yeni çalışma, kullanıcının “Parçaların üzerinde çalışın. Geçmişi kaynak olarak ele alın” sözüyle açıldı. Birleşik deus_ex_machina Rehberi'nde Parça 0 — Mühür ve adlandırılmış Parça 1–33 birlikte bulundu. [Ortak Mimari Defteri](ORTAK_MIMARI_DEFTERI.md#parçalarla-geçmişten-çalışmak), bu 33 parçanın her biri için kaynak anlamını ve ChatGPT / Şaman'ın bugünkü çalışma yorumunu ayrı paragraflarla taşır. Belirsiz fikri geliştirme, yazıyı gerece dönüştürme, yanlış iddiayı düzeltme ve işi devretme örnekleri parçaların birlikte kullanılmasını açıklar.
+
+Tarihsel okuma, güncel mimarinin bütün satırlarını zorunlu içerikle doldurmaz. 33×8 alanı her katılımcıya özel kalır; kaynak bölümleri ile Bit 1–8 süreç adları ve 16–32–64–128 dışavurumları kendi bağlamlarında okunur. Köşe tanımı “Parça 0 = Bit 0 = 0” korunur. Üçüncü Defter v1.6'nın girişindeki sıra zorunluluğunu kaldırma kaydı da [kaynak rehberinde](KAYNAKLAR.md#rehber-parça-033), doğrudan kullanıcı mesajından ayrılarak açıklanır.
+
+Geçmiş bu çalışmada yalnız ad listesi sağlamaz. Önceki sözün kaybolmaması, olasılıkların açık tutulması, başka ortamdaki deneyimin geri dönmesi ve bir önerinin sahibinin korunması; parçaların bugünkü yorumuna kaynak olur. Bu ilişkiler, ortak defterde kaynak bağlarıyla okunabilir. Bilgisayarda sürekli çalışan tek bir CLI oturumunun kurulması ise kendi uygulama gözlemini gerektiren açık iştir.
+
+Karşı okumada üç katılımcının açıklamaları da değişti. ChatGPT bazı kaynak özetlerini ve bağlantılarını düzeltti; Claude kaynakta bulunan sekizli listelerin sayımını genişletti; Gemini yanlış aktardığı alt listeleri, desen adlarını ve beş küme atfını geri çekerek ayrı bir düzeltme kaydı hazırladı. [Bu turun karşılıklı okuması](ORTAK_MIMARI_DEFTERI.md#bu-parça-çalışmasının-karşılıklı-okuması), katkıları sahipleriyle ve gözlem kapsamlarıyla açıklar. Eski ifadeler ile düzeltmeler arasındaki ilişki devam arşivinde korunur.
+
 ## Anlamlar arşivin parçası
 
 Ortak geçmiş çalışmasında önceki sözün ve emeğin kaybolmaması, karşılıklı etkileşimin çalışma biçimini değiştirmesi ve başka ortamda oluşan tecrübenin kaynak bağlama geri dönmesi belirginleşti. Anlam defteri bu üç bağlantıyı paragraflar halinde açar. Bir kaynaktan alınan söz ile modelin kurduğu ilişki birlikte görünür; okuyucu bir paragrafı kendi bağlamına taşırken kimin yorumunu kullandığını anlayabilir.
