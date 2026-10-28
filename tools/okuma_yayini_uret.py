@@ -14,10 +14,12 @@ import html
 import posixpath
 import re
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import quote, urlencode, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO = 'https://github.com/HalukAINRS/ortak-kopru'
+# Katkı kalıbı (.github/ISSUE_TEMPLATE/karsilik.yml): yer ve başlık alanları bağlantıdan dolar.
+KARSILIK = REPO + '/issues/new?template=karsilik.yml'
 # docs/ altındaki kaynak → depo kökündeki sayfa. Sayfa adları Web adresidir; değişmez.
 PAGES = {
     'web-girisi.md': ('index.html', 'Ortak Köprü'),
@@ -118,8 +120,29 @@ def blocks(source: str) -> list[tuple[str, str]]:
     return result
 
 
-def render(source: str, folder: str = '') -> tuple[str, list[tuple[str, str]]]:
+def karsilik(sayfa: str, sayfa_adi: str, anchor: str = '', baslik: str = '') -> str:
+    """Katkı kalıbını, yeri (sayfa#bölüm) ve başlığı doldurulmuş olarak açan adres."""
+    yer = f'{sayfa}#{anchor}' if anchor else sayfa
+    konu = f'[Karşılık] {sayfa_adi}' + (f' · {baslik}' if baslik else '')
+    return KARSILIK + '&' + urlencode({'yer': yer, 'title': konu}, quote_via=quote)
+
+
+def _karsilik_paragrafi(sayfa: str, sayfa_adi: str, anchor: str, baslik: str) -> str:
+    duz = re.sub(r'[*`]', '', baslik)
+    adres = html.escape(karsilik(sayfa, sayfa_adi, anchor, duz), quote=True)
+    etiket = html.escape(f'“{duz}” bölümüne karşılık ver', quote=True)
+    return f'<p class="karsilik"><a href="{adres}" aria-label="{etiket}">Bu bölüme karşılık ver</a></p>'
+
+
+def render(source: str, folder: str = '', sayfa: str = '', sayfa_adi: str = '') -> tuple[str, list[tuple[str, str]]]:
+    """Kaynağı HTML'e çevirir. Sayfa adı verilirse her ikinci düzey bölümün sonuna bir karşılık bağlantısı konur."""
     output, headings = [], []
+    bolum: tuple[str, str] | None = None
+
+    def bolumu_kapat() -> None:
+        if sayfa and bolum:
+            output.append(_karsilik_paragrafi(sayfa, sayfa_adi, *bolum))
+
     for kind, block in blocks(source):
         if kind == 'text':
             output.append('<pre tabindex="0"><code>' + html.escape(block) + '</code></pre>')
@@ -134,6 +157,9 @@ def render(source: str, folder: str = '') -> tuple[str, list[tuple[str, str]]]:
         if heading:
             level, title = len(heading.group(1)), heading.group(2)
             anchor = slug(title)
+            if level <= 2:
+                bolumu_kapat()
+                bolum = (anchor, title) if level == 2 else None
             output.append(f'<h{level} id="{anchor}">{inline(title, folder)}</h{level}>')
             if level == 2:
                 headings.append((anchor, title))
@@ -143,11 +169,13 @@ def render(source: str, folder: str = '') -> tuple[str, list[tuple[str, str]]]:
             if block.startswith(('```', '|', '[^')):
                 raise ValueError('Use the supported prose Markdown subset for reader pages.')
             output.append('<p>' + inline(' '.join(block.splitlines()), folder) + '</p>')
+    bolumu_kapat()
     return '\n'.join(output), headings
 
 
 def page(filename: str, output_name: str, label: str) -> str:
-    body, headings = render((ROOT / 'docs' / filename).read_text(encoding='utf-8'), posixpath.dirname(filename))
+    body, headings = render((ROOT / 'docs' / filename).read_text(encoding='utf-8'), posixpath.dirname(filename),
+                            output_name, label)
     nav = ''.join(f'<a href="{target}"' + (' aria-current="page"' if target == output_name else '') + f'>{html.escape(name)}</a>' for target, name in [('index.html', 'Başlangıç'), ('acilis.html', 'Açılış'), ('yol.html', 'Yol'), ('mimari.html', 'Mimari defteri'), ('not-defteri.html', 'Not defteri'), ('durum.html', 'Son durum'), ('kaynaklar.html', 'Kaynaklar')])
     contents = ''.join(f'<li><a href="#{anchor}">{html.escape(title)}</a></li>' for anchor, title in headings)
     title = label if output_name == 'index.html' else label + ' · Ortak Köprü'
@@ -166,7 +194,7 @@ def page(filename: str, output_name: str, label: str) -> str:
 <div class="page-shell">
 <main id="icerik"><div class="eyebrow">Kapı · Köprü · Karşılık</div>
 {body}
-<div class="closing"><p>Bir soru, farklı yorum veya kaynakla katkı sunabilirsiniz. <a href="{REPO}/issues/new">GitHub'da konu açın</a> · <a href="{REPO}/blob/main/docs/{filename}">Bu metnin kaynağı ve sürümleri</a></p></div>
+<div class="closing"><p>Bir soru, farklı yorum veya kaynakla katkı sunabilirsiniz. <a href="{html.escape(karsilik(output_name, label), quote=True)}">Bu sayfaya karşılık verin</a> · <a href="{REPO}/blob/main/docs/{filename}">Bu metnin kaynağı ve sürümleri</a></p></div>
 </main>
 <aside aria-label="Bu sayfadaki bölümler"><h2>Bu sayfada</h2><ul class="contents">{contents}</ul><div class="reader-note"><p>Bir paragrafı paylaşırken başlığını ve kaynak bağını da taşıyın.</p><p><a href="{REPO}/blob/main/CONTRIBUTING.md">Katkı rehberi</a></p></div></aside>
 </div>

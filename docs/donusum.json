@@ -21,7 +21,7 @@
     ]
   },
   "giris": [
-    "Bu sayfa, bugün GitHub'da duran Ortak Köprü deposunun yeni hâline nasıl geçeceğini anlatıyor. Yeni hâl ayrı bir yerde kuruldu ve sınandı. Ana depoya geçişi birkaç aşamada olacak. Her aşamanın kimin elinde olduğu, nasıl anlaşılacağı ve nasıl geri alınacağı yazılı.",
+    "Bu sayfa, bugün GitHub'da duran Ortak Köprü deposunun yeni hâline nasıl geçeceğini anlatıyor. Yeni hâl ayrı bir yerde kuruldu ve sınandı. Ana depoya geçiş aşama aşama yürür. Her aşamanın kimin elinde olduğu, nasıl anlaşılacağı ve nasıl geri alınacağı yazılı.",
     "Bu geçiş, açılıştan gerçeğe giden [yolun](yol.md) ilk adımını ana depoda gerçek kılıyor. Komutlar ve ölçütler [dönüşümün teknik ekinde](teknik/donusum-teknik.md) duruyor. Teknik konuların hepsi [teknik ayrıntılar](teknik/README.md), bugüne kadar yapılanlar [geçmiş işler](gecmis/README.md) bölümünde."
   ],
   "degisenler": [
@@ -40,7 +40,7 @@
     "Bu sırada hiçbir kayıt silinmez; geri almanın kendisi de bir kayıttır. Daha sonra yeniden denemek için geri almanın da geri alınması gerekir."
   ],
   "okur": [
-    "Bu geçişi izleyebilirsiniz. Yeni hâli bugün de okuyabilirsiniz: değişiklik önerisinin sayfası GitHub'da açık. Bir şey sormak ya da bir sorun bildirmek isterseniz [GitHub'da bir konu açın](https://github.com/HalukAINRS/ortak-kopru/issues/new); GitHub buna Issue der."
+    "Bu geçişi izleyebilirsiniz. Yeni hâl ana depoda duruyor ve Web'de okunabiliyor. Bir şey sormak ya da bir sorun bildirmek isterseniz [karşılık formunu açın](https://github.com/HalukAINRS/ortak-kopru/issues/new?template=karsilik.yml); GitHub buna Issue der."
   ],
   "teknik_giris": [
     "Bu ek, GitHub'daki ana dalın yeni oluşuma geçişinin teknik karşılığıdır: aşamaların komutları, dokunduğu yerler, ölçütleri, son ölçüm ve prova, bekleyen öteki önerilerin çözümlemesi ve geri dönüş. Sade anlatım dönüşüm sayfasındadır.",
@@ -74,7 +74,7 @@
       "onkosul": [],
       "karar": null,
       "sade": {
-        "ne": "Yeni oluşum ayrı bir dalda kuruldu ve GitHub'da bir değişiklik önerisi olarak bekliyor.",
+        "ne": "Yeni oluşum ayrı bir dalda kuruldu ve GitHub'a bir değişiklik önerisi olarak sunuldu.",
         "neden": "Ana dal her saat çalışan bir otomasyonu ve bir yerel bilgisayarı besliyor. Bu kadar büyük bir değişiklik önce ayrı bir yerde kurulup sınanmalı.",
         "nasil": "Açılış, alanlar, harita, yol ve bu dönüşüm yolu o dalda duruyor. Her değişiklikte bütün denetimler iki ayrı işletim sisteminde çalışıyor.",
         "geri": "Dal ana dala dokunmaz. İstenirse öneri kapatılır ve hiçbir şey değişmez.",
@@ -287,7 +287,10 @@
           "tur": "elle",
           "aciklama": "ana daldaki ilk yeşil denetim koşusunun ve Web'deki açılış sayfasının adresi",
           "en_az": 2,
-          "kanit": []
+          "kanit": [
+            "Depo doğrulama, ana dalda birleşme kaydı üzerinde iki işletim sisteminde başarılı: https://github.com/HalukAINRS/ortak-kopru/actions/runs/40739072906",
+            "Web yayını başarılı (https://github.com/HalukAINRS/ortak-kopru/actions/runs/40739070183); açılış ve yol sayfaları 17.50 UTC'de sunuluyor: https://halukainrs.github.io/ortak-kopru/acilis.html · https://halukainrs.github.io/ortak-kopru/yol.html"
+          ]
         }
       ]
     },
@@ -326,7 +329,9 @@
           "tur": "elle",
           "aciklama": "birleşmeden sonra başarıyla biten ilk otomasyon koşusunun adresi",
           "en_az": 1,
-          "kanit": []
+          "kanit": [
+            "Birleşmeden sonraki ilk saatlik koşu (18.25 UTC, ana dal birleşme kaydı üzerinde) başarılı; araçları yeni yerlerinden çağırdı (defter/kopru_ekle.py, defter/kopru_yanitla.py, katilimcilar/ayarlar.json): https://github.com/HalukAINRS/ortak-kopru/actions/runs/40744994620"
+          ]
         }
       ]
     },
@@ -731,11 +736,11 @@
     "basarili": true
   },
   "son_olcum": {
-    "zaman": "2026-10-28T17:44:26Z",
+    "zaman": "2026-10-28T18:26:32Z",
     "ana": "origin/main",
-    "ana_surum": "97c908de7a5850978082770ba3bac3e508688e57",
-    "dal": "HEAD",
-    "dal_surum": "7758d3e634f1e6d98ebfd5cdd0a80dc7576e1649",
+    "ana_surum": "2c51769678fa7876647e2f3b242d335c9064eb0b",
+    "dal": "origin/claude/rafine-2026-10-28",
+    "dal_surum": "3165b9886c1f20e0f0e972b493d535f205343530",
     "durumlar": [
       {
         "kimlik": "olusum",
@@ -785,53 +790,53 @@
       },
       {
         "kimlik": "birlesme",
-        "durum": "atilabilir",
+        "durum": "tamam",
         "olcutler": [
           {
             "tarif": "ana dalda `docs/harita.json` var",
-            "karsilaniyor": false
+            "karsilaniyor": true
           },
           {
             "tarif": "ana dalda `docs/donusum.json` var",
-            "karsilaniyor": false
+            "karsilaniyor": true
           },
           {
             "tarif": "ana dalda `kopru_ekle.py` yok",
-            "karsilaniyor": false
+            "karsilaniyor": true
           },
           {
             "tarif": "`9ccd97b` ana dalın geçmişinde",
-            "karsilaniyor": false
+            "karsilaniyor": true
           },
           {
             "tarif": "`2a58183` ana dalın geçmişinde",
-            "karsilaniyor": false
+            "karsilaniyor": true
           }
         ]
       },
       {
         "kimlik": "bulut",
-        "durum": "onkosul-bekliyor",
+        "durum": "tamam",
         "olcutler": [
           {
-            "tarif": "elle: ana daldaki ilk yeşil denetim koşusunun ve Web'deki açılış sayfasının adresi (0/2 kanıt)",
-            "karsilaniyor": false
+            "tarif": "elle: ana daldaki ilk yeşil denetim koşusunun ve Web'deki açılış sayfasının adresi (2/2 kanıt)",
+            "karsilaniyor": true
           }
         ]
       },
       {
         "kimlik": "otomasyon",
-        "durum": "onkosul-bekliyor",
+        "durum": "tamam",
         "olcutler": [
           {
-            "tarif": "elle: birleşmeden sonra başarıyla biten ilk otomasyon koşusunun adresi (0/1 kanıt)",
-            "karsilaniyor": false
+            "tarif": "elle: birleşmeden sonra başarıyla biten ilk otomasyon koşusunun adresi (1/1 kanıt)",
+            "karsilaniyor": true
           }
         ]
       },
       {
         "kimlik": "yerel-gecis",
-        "durum": "onkosul-bekliyor",
+        "durum": "elle-bekleniyor",
         "olcutler": [
           {
             "tarif": "elle: hazırlık denetiminin temiz çıktısı ya da izleyicinin birleşmeden sonraki ilk gönderimi (0/1 kanıt)",

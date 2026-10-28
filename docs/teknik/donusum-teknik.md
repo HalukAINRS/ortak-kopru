@@ -12,17 +12,17 @@ Başlangıç: `main` @ `97c908de7a5850978082770ba3bac3e508688e57` (2026-10-28), 
 
 ## Aşamalar
 
-Son ölçüm: 2026-10-28T17:44:26Z · ana `origin/main` @ `97c908d` · dal `HEAD` @ `7758d3e`. Canlı durum için: `python tools/donusum.py --durum`.
+Son ölçüm: 2026-10-28T18:26:32Z · ana `origin/main` @ `2c51769` · dal `origin/claude/rafine-2026-10-28` @ `3165b98`. Canlı durum için: `python tools/donusum.py --durum`.
 
 | Aşama | Kim | Ön koşul | Karar | Zorunlu | Durum |
 | --- | --- | --- | --- | --- | --- |
 | 0. Yeni oluşum hazır (`olusum`) | Claude Code Bulut | — | — | evet | tamam |
 | 1. Prova (`prova`) | makine | olusum | — | evet | tamam |
 | 2. Yerel hazırlık (`yerel-hazirlik`) | Haluk | prova | — | evet | tamam |
-| 3. Birleştirme (`birlesme`) | Haluk | yerel-hazirlik | Haluk: 2026-10-28 | evet | atilabilir |
-| 4. Bulut denetimi ve Web (`bulut`) | GitHub | birlesme | — | evet | onkosul-bekliyor |
-| 5. Saatlik otomasyon (`otomasyon`) | GitHub | birlesme | — | evet | onkosul-bekliyor |
-| 6. Yerel geçiş (`yerel-gecis`) | Haluk | birlesme | — | evet | onkosul-bekliyor |
+| 3. Birleştirme (`birlesme`) | Haluk | yerel-hazirlik | Haluk: 2026-10-28 | evet | tamam |
+| 4. Bulut denetimi ve Web (`bulut`) | GitHub | birlesme | — | evet | tamam |
+| 5. Saatlik otomasyon (`otomasyon`) | GitHub | birlesme | — | evet | tamam |
+| 6. Yerel geçiş (`yerel-gecis`) | Haluk | birlesme | — | evet | elle-bekleniyor |
 | 7. Yardımcıların talimatı (`katmanlar`) | Haluk | yerel-gecis | — | evet | onkosul-bekliyor |
 | 8. Bekleyen öteki öneriler (`acik-calismalar`) | katkıcılar | birlesme | — | hayır | istege-bagli |
 | 9. Kapanış (`kapanis`) | makine | bulut, otomasyon, katmanlar | — | evet | onkosul-bekliyor |
@@ -96,11 +96,11 @@ Karar (Haluk): Yeni oluşum ana dala bir birleştirme kaydıyla alınsın mı? �
 
 | Ölçüt | Son ölçümde |
 | --- | --- |
-| ana dalda `docs/harita.json` var | karşılanmıyor |
-| ana dalda `docs/donusum.json` var | karşılanmıyor |
-| ana dalda `kopru_ekle.py` yok | karşılanmıyor |
-| `9ccd97b` ana dalın geçmişinde | karşılanmıyor |
-| `2a58183` ana dalın geçmişinde | karşılanmıyor |
+| ana dalda `docs/harita.json` var | karşılanıyor |
+| ana dalda `docs/donusum.json` var | karşılanıyor |
+| ana dalda `kopru_ekle.py` yok | karşılanıyor |
+| `9ccd97b` ana dalın geçmişinde | karşılanıyor |
+| `2a58183` ana dalın geçmişinde | karşılanıyor |
 
 ### 4. Bulut denetimi ve Web
 
@@ -116,7 +116,7 @@ Geri dönüş: Kırık denetimde birleşme geri alınır (3. aşamanın geri dö
 
 | Ölçüt | Son ölçümde |
 | --- | --- |
-| elle: ana daldaki ilk yeşil denetim koşusunun ve Web'deki açılış sayfasının adresi (0/2 kanıt) | karşılanmıyor |
+| elle: ana daldaki ilk yeşil denetim koşusunun ve Web'deki açılış sayfasının adresi (2/2 kanıt) | karşılanıyor |
 
 ### 5. Saatlik otomasyon
 
@@ -131,7 +131,7 @@ Geri dönüş: Kırık koşuda birleşme geri alınır; iş akışı eski yollar
 
 | Ölçüt | Son ölçümde |
 | --- | --- |
-| elle: birleşmeden sonra başarıyla biten ilk otomasyon koşusunun adresi (0/1 kanıt) | karşılanmıyor |
+| elle: birleşmeden sonra başarıyla biten ilk otomasyon koşusunun adresi (1/1 kanıt) | karşılanıyor |
 
 ### 6. Yerel geçiş
 

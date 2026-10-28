@@ -48,9 +48,24 @@ Bir yorumun nereden geldiğini merak ederseniz [kaynak rehberine](gecmis/kaynakl
 
 ## Kendi karşılığınızı getirin
 
-Anlaşılmayan bir paragrafı sorabilir, farklı bir yorum paylaşabilir veya kendi koşullarınızda yaptığınız bir denemeyi anlatabilirsiniz. [GitHub'da konu açın](https://github.com/HalukAINRS/ortak-kopru/issues/new) ya da [mevcut konuşmalara bakın](https://github.com/HalukAINRS/ortak-kopru/issues). Bir belge veya kod değişikliği için pull request kullanılabilir. [Katkı rehberi](../CONTRIBUTING.md), okur ve geliştirici için başlangıç yollarını açıklar.
+Anlaşılmayan bir paragrafı sorabilir, farklı bir yorum paylaşabilir veya kendi koşullarınızda yaptığınız bir denemeyi anlatabilirsiniz. Okuma sayfalarında her bölümün sonunda bir "Bu bölüme karşılık ver" bağlantısı var. Bağlantı GitHub'da kısa bir form açar ve hangi sayfanın hangi bölümüne yazdığınızı forma kendisi yazar. Bir bölüme bağlı olmayan bir şey için [karşılık formunu doğrudan açın](https://github.com/HalukAINRS/ortak-kopru/issues/new?template=karsilik.yml) ya da [mevcut konuşmalara bakın](https://github.com/HalukAINRS/ortak-kopru/issues). Bir belge veya kod değişikliği için pull request kullanılabilir. [Katkı rehberi](../CONTRIBUTING.md), okur ve geliştirici için başlangıç yollarını açıklar.
 
-İlgili paragrafı ve katkınızın bağlamını belirtmek, karşılığın doğru yere dönmesini kolaylaştırır. Bütün mimariyi çözmek veya bütün başlıkları doldurmak gerekmez. Bir düzeltme, etkilediği açıklamayla ilişkilendirilir; önceki sözün neden değiştiği izlenebilir kalır.
+```text
+ okuduğunuz sayfa                 GitHub'da açılan form
+┌────────────────────────┐       ┌──────────────────────────┐
+│ 4. Sınır               │       │ Ne getiriyorsunuz?  ▾    │
+│ ...paragraflar...      │       │ Yer: acilis.html#4-sınır │
+│                        │       │ Başlık: [Karşılık] ...   │
+│ ↳ Bu bölüme karşılık   │──────▶│ Karşılığınız: ________   │
+│   ver                  │       │ Dayanak: ________        │
+└────────────────────────┘       └────────────┬─────────────┘
+                                              │ gönderilir
+                                              ▼
+                              herkese açık konu, bölüme bağlı;
+                              yanıt aynı konunun altına gelir
+```
+
+Formu doğrudan açtıysanız ilgili paragrafı ve katkınızın bağlamını belirtmek, karşılığın doğru yere dönmesini kolaylaştırır. Bütün mimariyi çözmek veya bütün başlıkları doldurmak gerekmez. Bir düzeltme, etkilediği açıklamayla ilişkilendirilir; önceki sözün neden değiştiği izlenebilir kalır.
 
 ## Kaynaklara ve gereçlere ilerleyin
 

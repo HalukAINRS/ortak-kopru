@@ -4,7 +4,7 @@ Ortak Köprü'ye bir kaynağı açıklayarak, anlam not defterindeki bir yoruma 
 
 ## Okuyucu geri dönüşü
 
-Sorunuzu veya düzeltmenizi [yeni bir Issue](https://github.com/HalukAINRS/ortak-kopru/issues/new) açarak iletebilirsiniz. Hangi belgeye, başlığa, kayıt numarasına veya sürüme karşılık verdiğinizi belirtmeniz, geri dönüşün doğru yere bağlanmasına yardımcı olur. Ardından neyi farklı anladığınızı, hangi bilginin eklendiğini veya hangi sorunun açık kaldığını kendi sözlerinizle anlatın. Varsa kaynak bağlantısını ekleyin; bilinmeyen bir alanı doldurmak için tahmin üretmeniz gerekmez.
+Sorunuzu veya düzeltmenizi [karşılık formuyla](https://github.com/HalukAINRS/ortak-kopru/issues/new?template=karsilik.yml) bir Issue açarak iletebilirsiniz. Web'deki okuma sayfalarında her bölümün sonundaki karşılık bağlantısı bu formu, sayfa ve bölüm adresi yazılmış olarak açar. Formu doğrudan açtığınızda hangi belgeye, başlığa, kayıt numarasına veya sürüme karşılık verdiğinizi belirtmeniz, geri dönüşün doğru yere bağlanmasına yardımcı olur. Ardından neyi farklı anladığınızı, hangi bilginin eklendiğini veya hangi sorunun açık kaldığını kendi sözlerinizle anlatın. Varsa kaynak bağlantısını ekleyin; bilinmeyen bir alanı doldurmak için tahmin üretmeniz gerekmez.
 
 Doğrudan bir metin veya kod değişikliği önermek için çalışma dalınızdan pull request açabilirsiniz. Değişikliğin gerekçesini ve etkilediği kaydı açıklayın. Geçmişteki bir sözü düzeltirken eski kayıt korunur; yeni açıklama o kayda bağlanır. Yayımlanmış bir model yorumu, kullanıcının özgün sözü gibi yeniden yazılmaz.
 

@@ -41,6 +41,8 @@ Açılış bütünüyle kayıttan üretilen paragraflara döndü: “Niyet” ve
 
 16.40 UTC'de Haluk, GitHub'daki bugünkü deponun bu yeni oluşuma dönüşümünün yolunun kurulmasını istedi. [Dönüşüm sayfası](../donusum.md) on bir aşama yazıyor: yeni oluşumun hazır olması, prova, yerel hazırlık, birleştirme, bulut denetimi ve Web, saatlik otomasyon, yerel geçiş, yardımcıların talimatı, bekleyen öteki öneriler, kapanış ve lisans. Birleştirme ve lisans Haluk'un kararını bekliyor. Birleşmenin ana dalın geçici bir kopyasında önceden denenmesi bir araca bağlandı. Bekleyen on iki önerinin hangi dosyalarının yer değiştirdiği ve hangi yeni klasörlerin haritada yeri olmadığı çıkarıldı. Sayfa bir taşınma resmi, önceyi ve sonrayı gösteren bir plan, bir aşama ağacı ve bir iş çizelgesiyle anlatılıyor.
 
+17.36 UTC'de Haluk birleştirmeyi onayladı ve sıradaki ilk ana işin yapılmasını istedi. Birleştirmeden önceki son provada üç sınama, kararın henüz verilmediğini varsaydığı için kırıldı; sınamalar kaydın bugünkü durumundan bağımsız yazıldı ve prova geçti. Yeni oluşum 17.47 UTC'de birleştirme kaydıyla ana depoya geçti; denetimler ana dalda geçti, açılış ve yol sayfaları Web'de yayımlandı. Ardından yolun karar beklemeyen ilk adımı olan katkı kalıbı kuruldu. Web'deki her bölümün sonunda artık bir karşılık bağlantısı var; bağlantı GitHub'da, hangi sayfanın hangi bölümüne yazıldığını kendisi dolduran bir form açıyor.
+
 ## Steering incelemesi ve kaynak arşivi
 
 Steering araştırması k-0016'daki yerleşim kararına uygun olarak aynı deponun referans dalındadır. Arşiv okuma, analitik aktarım ve bu oturumun düzenleme işi tamamlanmıştır. Güncel kapsam ile ayrı açık uygulama işleri başlangıç sayfasında gösterilir.
@@ -61,6 +63,8 @@ Steering araştırması k-0016'daki yerleşim kararına uygun olarak aynı depon
 k-0111, Şaman CLI devrinin tarihsel başlangıç kaydıdır; sonraki ilerleme ve açık işler kanonik köprüde izlenir. Açık Şaman oturumuna yeni dosyaları hazırlamak için `Kopru_Izle.cmd SamanHazirla`; yeni etkileşimli oturum gerekiyorsa `Kopru_Izle.cmd SamanDevam` kullanılır. Bu kapılar ayrı çalışma ağacındaki sabit dosyaları doğrular. İkinci argüman olarak özel kaynak ZIP yolu verilebilir. [Başlatma rehberi](https://github.com/HalukAINRS/ortak-kopru/blob/a3e34ad2e486e1a723a9a64257b63cbc5af366ed/devir/saman/BASLATMA.md), gerçek kabulün ve ilerlemenin nerede kaydedileceğini açıklar.
 
 ## Değişiklik geçmişi
+
+- 2026-10-28: Birleşme ve katkı kalıbı: yeni oluşum birleştirme kaydıyla ana dala geçti (#23); bulut aşamasının kanıtı [dönüşüm kaydına](../donusum.json) yazıldı. Katkı kalıbı `.github/ISSUE_TEMPLATE/karsilik.yml` (tür, yer, karşılık, dayanak, sınır onayı) ve `config.yml`; `tools/okuma_yayini_uret.py` her `h2` bölümünün sonuna formu `yer` ve başlık alanları dolu açan bir bağlantı ekler (`karsilik()`), sınamaları `tests/test_okuma_yayini_uret.py` içinde. Yolun ikinci adımı tamam; yol ve dönüşüm sınamaları kaydın ilerlemesinden bağımsız.
 
 - 2026-10-28: Dönüşüm yolu: GitHub'daki ana dalın yeni oluşuma geçişi [dönüşüm sayfası](../donusum.md) ve [teknik eki](../teknik/donusum-teknik.md) olarak dönüşüm kaydından (`docs/donusum.json`, `schemas/donusum.schema.json`) `tools/donusum.py` ile üretiliyor. On bir aşamanın durumu ölçütlerden hesaplanıyor: Git'e bakan ölçütler ana dala ya da yeni oluşumun dalına karşı, kayda bağlı ölçütler prova, kanıt ve bekleyen önerilerin çözümlemesine karşı. `--prova` birleşmeyi geçici bir çalışma ağacında dener; `--dallar` bekleyen önerileri yeni yerleşime göre çözümler. Doğrulama listesi on üç kontrole çıktı.
 

@@ -100,11 +100,11 @@ Dışarı çıkacak her şey çıkmadan önce denetlenir. Bu denetim kimsenin di
 
 Önceki konuşmaları bilmeniz gerekmez. Bir yazıyı okuyup bir soru sormanız ya da bir düzeltme önermeniz yeterli bir başlangıçtır. Getirdiğiniz şey, ilgili olduğu yazının yanına bağlanır.
 
-Bir şey sormak ya da önermek isterseniz [GitHub'da bir konu açın](https://github.com/HalukAINRS/ortak-kopru/issues/new); GitHub buna Issue der. Hangi yazıya ya da hangi ilkeye karşılık verdiğinizi yazmanız işi kolaylaştırır. Başkalarının neler yazdığını [konu listesinden](https://github.com/HalukAINRS/ortak-kopru/issues) görebilirsiniz.
+Bir şey sormak ya da önermek isterseniz, Web'de okuduğunuz bölümün sonundaki karşılık bağlantısını kullanın. Bağlantı GitHub'da kısa bir form açar ve hangi yazının hangi bölümüne yazdığınızı forma kendisi yazar; GitHub buna Issue der. Bir bölüme bağlı olmayan bir şey yazmak isterseniz [karşılık formunu doğrudan açın](https://github.com/HalukAINRS/ortak-kopru/issues/new?template=karsilik.yml). Başkalarının neler yazdığını [konu listesinden](https://github.com/HalukAINRS/ortak-kopru/issues) görebilirsiniz.
 
 Yazdığınız şey kaybolmaz. İlgili olduğu yazının yanına bağlanır ve nasıl karşılandığı görünür kalır. Yanıt gecikebilir. Yanıt gelmemesi, önerinizin kabul edildiği anlamına gelmez; bekleyen olarak görünür kalır.
 
-**Bugün:** Okuma ve yazma yolları açık. Ama dışarıdan henüz kimse yazmadı; ilk katkı sizinki olabilir.
+**Bugün:** Okuma ve yazma yolları açık; Web'de her bölümün sonunda o bölüme karşılık verme bağlantısı var. Ama dışarıdan henüz kimse yazmadı; ilk katkı sizinki olabilir.
 
 ## 6. Doğrulanabilirlik ve geri dönüş
 

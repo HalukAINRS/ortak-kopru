@@ -33,6 +33,16 @@ class YolTests(unittest.TestCase):
     def adim(self, kayit, kimlik):
         return next(a for a in kayit["adimlar"] if a["kimlik"] == kimlik)
 
+    def acik_kopya(self, *kimlikler):
+        """Kaydın, verilen adımları bitmemiş ve kararsız sayılan bir kopyası."""
+        kayit = copy.deepcopy(self.yol)
+        for kimlik in kimlikler:
+            a = self.adim(kayit, kimlik)
+            a["olcutler"] = [{"tur": "dosya_var", "yol": "olmayan-dosya.txt"}]
+            if a.get("karar"):
+                a["karar"]["verildi"] = None
+        return kayit
+
     def test_repository_path_is_consistent_and_documents_are_current(self):
         self.assertEqual(self.denetle(self.yol), [])
         hesap = yol.durumlar(self.yol, self.bulgular)
@@ -41,14 +51,19 @@ class YolTests(unittest.TestCase):
                 self.assertEqual(acilis.belge_denetle(hedef.name, hedef.read_text(encoding="utf-8"), uretilen), [])
 
     def test_states_are_computed_from_criteria_not_written(self):
-        hesap = yol.durumlar(self.yol, self.bulgular)
-        self.assertEqual(hesap["zemin"]["durum"], "tamam")
+        # Zemin her zaman tamamdır. Öteki adımlar kendi kopyalarında açılıp kapatılır; böylece yol
+        # ilerledikçe (bir adım bitince, bir karar verilince) bu sınamanın değişmesi gerekmez.
+        self.assertEqual(yol.durumlar(self.yol, self.bulgular)["zemin"]["durum"], "tamam")
+        kayit = self.acik_kopya("sinir", "katki-kalibi", "gelen-kutusu", "kapinin-genislemesi")
+        hesap = yol.durumlar(kayit, self.bulgular)
         self.assertEqual(hesap["sinir"]["durum"], "karar-bekliyor")
         self.assertEqual(hesap["katki-kalibi"]["durum"], "atilabilir")
         self.assertEqual(hesap["gelen-kutusu"]["durum"], "onkosul-bekliyor")
         self.assertEqual(hesap["kapinin-genislemesi"]["durum"], "ufukta")
+        # Ön koşul bitince karar bekleyen adım karar bekler hâle gelir.
+        self.adim(kayit, "katki-kalibi")["olcutler"] = [{"tur": "dosya_var", "yol": "kopru.html"}]
+        self.assertEqual(yol.durumlar(kayit, self.bulgular)["gelen-kutusu"]["durum"], "karar-bekliyor")
         # Karar verilince adım atılabilir olur; bulgu kapanır ve ölçütler karşılanınca tamam olur.
-        kayit = copy.deepcopy(self.yol)
         self.adim(kayit, "sinir")["karar"]["verildi"] = {"tarih": "2026-10-29", "yanit": "Evet, daraltılsın."}
         self.assertEqual(yol.durumlar(kayit, self.bulgular)["sinir"]["durum"], "atilabilir")
         self.adim(kayit, "sinir")["olcutler"] = [{"tur": "dosya_var", "yol": "kopru.html"}]
@@ -79,7 +94,7 @@ class YolTests(unittest.TestCase):
         kayit = copy.deepcopy(self.yol)
         self.adim(kayit, "katki-kalibi")["onkosul"] = ["olmayan-adim"]
         self.assertIn("adimlar[2] katki-kalibi: ön koşul yok (olmayan-adim)", self.denetle(kayit))
-        kayit = copy.deepcopy(self.yol)
+        kayit = self.acik_kopya("katki-kalibi")
         self.adim(kayit, "gelen-kutusu")["olcutler"] = [{"tur": "dosya_var", "yol": "kopru.html"}]
         self.assertIn("adimlar[3] gelen-kutusu: tamam görünüyor ama ön koşulu 'katki-kalibi' tamam değil", self.denetle(kayit))
 
@@ -92,7 +107,7 @@ class YolTests(unittest.TestCase):
         self.assertIn("4. ilke (Sınır): yoldaki bütün zorunlu adımları tamam; açılıştaki durum 'uygulanıyor' olarak güncellenmeli",
                       self.denetle(kayit))
         # Tam işleyen bir ilkeye açık zorunlu adım bağlanamaz.
-        kayit = copy.deepcopy(self.yol)
+        kayit = self.acik_kopya("katki-kalibi")
         self.adim(kayit, "katki-kalibi")["ilkeler"].append(3)
         self.assertIn("3. ilke (Köken ve sahiplik): açılışta tam işliyor ama yolda açık zorunlu adımı var (katki-kalibi)",
                       self.denetle(kayit))
