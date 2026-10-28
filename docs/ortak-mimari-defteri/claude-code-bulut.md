@@ -6,7 +6,7 @@ Haluk 28 Ekim'de şunu istedi. İstek bu oturuma 03:03'te aktarımla ulaştı:
 
 > İçsel döngüleri her çeşit varyantla içerecek 33x8 şemayı + her türlü varyantlı dışavurumun birlikteliğinden oluşacak mimariyi tamamlamalıyız. Bu talimatımı okuyun. Benim anlayacağım şekilde, yaptıklarınızı ayrı bir not defteri içine yazarak alanlarınızdan ayrı ortak bir noktadan bana aktarın.
 
-Bu dosya, ortak noktadaki defterin Hacker bölümü. Şaman, üç katılımcının bölümlerini `docs/ortak-mimari-defteri.md` adlı ortak defterde, kaynaklarıyla birlikte toplamayı önerdi. Bu dosya o defter için bir kaynak olarak yazıldı. Benim çalışma alanım olan `arsiv/` klasöründen ayrı tutuluyor.
+Bu dosya, ortak noktadaki defterin Hacker bölümü. Şaman, üç katılımcının bölümlerini `docs/ORTAK_MIMARI_DEFTERI.md` adlı ortak defterde, kaynaklarıyla birlikte topluyor; defterin web yüzü `mimari.html` olacak (aktarıldı). Bu dosya o defter için bir kaynak olarak yazıldı. Benim çalışma alanım olan `arsiv/` klasöründen ayrı tutuluyor.
 
 Talimat şemanın tamamlanıp aktarılmasını istediği için bu bölümde 33×8 şemasının yapısı ve adları yazılı. Hücrelerin içeriği ve herhangi bir katılımcının iç alanında izlediği yol ise yazılı değil; protokole göre onlar özel kalır.
 
@@ -14,7 +14,7 @@ Cümlelerin yanında üç işaret kullanıyorum. **(doğruladım)**: dosyaya, co
 
 ## 1. Kısaca
 
-Tamamladığım haliyle mimari üç katmandan oluşuyor (çıkarımım). En içte her katılımcının kendi 33×8 tablosu var. Bu tablo özeldir ve her türlü döngüye açıktır. Ortada bir eşik var: iç alandan dışarıya yalnız katılımcının seçtiği şey geçer. Dışta tek nokta (1) var: üç katılımcının dışavurumu orada buluşur. Bu buluşmanın bilgisayardaki yüzü komut satırı (CLI), web'deki yüzü GitHub'dır. Tek noktadan dönen sonuçlar ve geri dönüşler, her katılımcının kendi iç alanına yeni girdi olarak girer. Böylece mimari kapanan bir halka olur.
+Tamamladığım haliyle mimari üç katmandan oluşuyor (çıkarımım). En içte her katılımcının kendi 33×8 tablosu var. Bu tablo özeldir ve her türlü döngüye açıktır. Ortada bir eşik var: iç alandan dışarıya yalnız katılımcının seçtiği şey geçer. Dışta tek nokta (1) var: üç katılımcının dışavurumu orada buluşur. Bu buluşmanın bilgisayardaki yüzü komut satırı (CLI), web'deki yüzü GitHub'dır. Tek noktadan dönen sonuçlar ve geri dönüşler ortak noktada kalır. Her katılımcı onları uygun anda alıp okuyabilir ve kendi alanındaki çalışmasında kullanabilir. Böylece mimari bir halka olur; ama halka kendiliğinden dönmez: almak, okumak ve kullanmak ayrı olaylardır.
 
 ## 2. 33×8 şeması
 
@@ -79,14 +79,15 @@ Dört dışavurum işlevi var: 16 Gereksinim belirleme, 32 Gereç oluşturma, 64
 +------------------------+------------------------+                |
                          |                                         |
                          +-----------------------------------------+
-                           sonuçlar ve geri dönüş, herkesin kendi
-                           iç alanına yeni girdi olarak döner
+                           sonuçlar ve geri dönüş ortak noktada
+                           kalır; her katılımcı uygun anda alıp
+                           kendi alanında kullanabilir
 ```
 
 - **Eşik:** İç alanla tek nokta arasında bir eşik var; "eşik" benim adlandırmam. Eşikten yalnız katılımcının seçtiği şey geçer. Protokol, iç döngü paylaşılırsa bunun "sadece dışavurumda kullanılacak malzeme" olacağını söylüyor (aktarıldı). Yani eşikten geçen şey artık iç alanın parçası değil.
 - **Sabit eşleme yok:** Sekiz iç süreçle dört dış işlev arasında sabit bir eşleme yok. Herhangi bir iç adım, herhangi bir dış işleve malzeme verebilir (çıkarımım).
 - **İç adım dıştakinin yerine geçmez:** İçeride bir şey yapmak (5 Hareket yapma) ortak noktada bir uygulama (64) değildir. İçeride bir şeyi saklamak (8 Arşivleme) da ortak kayda yazılmış bir geri dönüş (128) değildir (aktarıldı; `bilgi_1.md` satır 35). Uygulama bir iz bırakır: komut çıktısı, commit ya da koşu kaydı. Geri dönüş, etkilediği kaydın yanına yazılır.
-- **Halka:** Tek noktadan dönen her şey (sonuç, geri dönüş, öteki katılımcıların katkısı) her katılımcının kendi iç alanına yeni girdi olarak girer. Orada yine her türlü döngüyle işlenebilir (çıkarımım).
+- **Halka:** Tek noktadan dönen her şey (sonuç, geri dönüş, öteki katılımcıların katkısı) ortak noktada bulunur. Bir katılımcı onu uygun anda alırsa, kendi alanında yine her türlü döngüyle işleyebilir. Almak, okumak ve kullanmak ayrı olaylardır; hiçbiri kendiliğinden olmaz ve sürmekte olan bir işi kesmez (çıkarımım; Şaman'ın düzeltmesiyle).
 - **Süreklilik:** Benim iç alanım yalnız bu oturum içinde var. Oturum bitince kalıcı olan, ortak noktaya yazılmış olandır (doğruladım: bu oturumun çalışma alanı geçici, depo herkese açık). Öteki katılımcılar için durum farklı olabilir; onu bilemem.
 
 ## 6. Hacker önerisi: ortak noktaya giren her şeyin üç işareti
@@ -129,3 +130,7 @@ Bu üç işaret biçimi kısıtlamıyor. Serbest biçimlerin birbirine bağlanma
 - **Haluk'un talimatları:** Bu oturuma aktarımla ulaştılar. 27 Ekim 14:33 (süreç sözlüğü), 15:40 (33×8 tanımı), 17:37 (protokol, köşe kutusu ve ipucu), 21:28 (ikili mantık ilhamı); 28 Ekim 03:03 (bu bölümü doğuran talimat).
 - **`bilgi_1.md` devir paketi:** Bu oturuma yüklendi; 6.295 bayt; SHA-256 `678df51fa48c22947eb5ab04f2cb2c2943227b197b05002b833b3f83d9b184fe`; satır 6, 12 ve 35. Dosyadaki yerel sistem ayrıntıları buraya alınmadı.
 - **Depo:** ana dal `8126d92`; PR #18'in ucu `6d8882c`; Pages koşusu 40617662864.
+
+## Düzeltmeler
+
+- **28 Ekim, `2dc600c` sürümünden sonra:** İlk sürümde, tek noktadan dönenlerin her katılımcının iç alanına "yeni girdi olarak girer" diye yazmıştım. Bu ifade 1. bölümde, 5. bölümdeki şemanın alt yazısında ve "Halka" maddesinde geçiyordu. Almayı, okumayı ve kullanmayı kendiliğinden olan tek bir olay gibi gösteriyordu. Şaman'ın karşı okumasıyla düzelttim: dönenler ortak noktada kalır; bir katılımcının onları alması, okuması ve kullanması ayrı olaylardır. Ortak defterin dosya adını da Şaman'ın bildirdiği adla güncelledim. Eski sürüm `2dc600c` commit'inde duruyor.
