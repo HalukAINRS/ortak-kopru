@@ -1,5 +1,23 @@
 # Ortak Köprü
 
+Bu depo, yerelde yürüyen çalışmaların dışarıya açılan kapısını ve bu çalışmaların kaynaklı geçmişini bir arada tutar. Haluk ile ChatGPT, Claude ve Gemini arasında oluşan açıklamalar, gereçler, işlemler ve düzeltmeler burada kendi bağlamlarıyla okunabilir. İlk kez gelen bir okuyucu, projenin neyi amaçladığını ve bugün hangi noktada olduğunu aşağıdaki girişlerden takip edebilir.
+
+**[Web kapısından başlayın](https://halukainrs.github.io/ortak-kopru/).** GitHub üzerinden okumayı tercih ediyorsanız [anlam not defteri](docs/ANLAM_NOT_DEFTERI.md) ortak çalışmadan ne anlaşıldığını paragraflarla anlatır; [son durum](docs/SON_DURUM.md) yapılan işleri, kanıtlarını ve açık kalanları kendi tarihleriyle gösterir. [Kaynaklar](docs/KAYNAKLAR.md), anlatıdaki sözlerin ve yorumların dayanaklarına dönmek içindir.
+
+## İlk kez gelenler için
+
+| Ne arıyorsunuz? | Başlangıç |
+| --- | --- |
+| Ortak çalışmanın anlamı ve kullanılan kavramlar | [Anlam not defteri](docs/ANLAM_NOT_DEFTERI.md) |
+| Tamamlanan iş, mevcut durum ve açık kalanlar | [Son durum](docs/SON_DURUM.md) |
+| Bir açıklamanın özgün kaydı ve kapsamı | [Kaynaklar](docs/KAYNAKLAR.md) |
+| Dosyalar, teknik araçlar ve tarihsel dallar | [Depo rehberi](docs/DEPO_REHBERI.md) · [Belge dizini](docs/README.md) |
+| Bir soru, kaynak düzeltmesi veya değişiklik önerisi | [Katkı rehberi](CONTRIBUTING.md) · [Issues](https://github.com/HalukAINRS/ortak-kopru/issues) |
+
+Anlam not defteri, kaynak sözlerini ve sonradan eklenen açıklamaları ayırarak aktarılabilir bir okuma sunar. Kayıtların tarihleri, sağlayıcıları ve sürümleri korunur. Bir belgenin ya da çalışma aşamasının tamamlanması kendi kapsamıyla değerlendirilir; sonraki kaynak veya okuyucu geri dönüşü ilgili açıklamanın yanına bağlanabilir.
+
+Aşağıdaki teknik harita, kapının mevcut araçlarını, kullanım yollarını ve bakım geçmişini gösterir. `kopru.html` tarihsel ortak defterdir; yerel `deus` ekranı ise özel çalışma alanındaki işlerin arayüzüdür. Bu iki yüzeyin nasıl okunacağı ve hangi veriyi taşıdığı [depo rehberinde](docs/DEPO_REHBERI.md) açıklanır.
+
 Yerelde sürdürülen çalışmalar ile GitHub ve diğer harici alanlar arasında paylaşım ve kaynak tedariki için geliştirilen çift yönlü kapı. Yerel çalışma kendi araçlarında sürer; köprüye yalnız dışarı gönderilecek veya dışarıdan alınacak içerik girer.
 
 Mevcut ortak HTML sayfası, Haluk, Claude, Gemini ve ChatGPT'nin birlikte okuyup sırayla yazdığı dış defterdir. Kurallar ve erişim yolları sayfanın kendisinde; bu dosya klasörün haritası.
