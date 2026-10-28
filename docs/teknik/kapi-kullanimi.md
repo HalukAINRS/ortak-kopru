@@ -207,6 +207,28 @@ python kapi.py --exchange-dir $KapiAlani inbox --repo HalukAINRS/ortak-kopru
 
 Komut açık konuları okur, çekme isteklerini atlar ve her konuyu aktarım alanının `gelen/` dizinine `konu-<numara>-<karma>.json` adıyla yazar. Dosya; konunun adresini, numarasını, yazarını, açılış ve güncellenme zamanını, başlığı, gövdeyi, gövdenin SHA-256 karmasını ve formdan okunan iki alanı taşır: `tur` (soru, kaynak, düzeltme, görüş) ve `yer` (hangi sayfa, hangi bölüm). Formsuz açılmış bir konuda bu iki alan boştur.
 
+Aşağıdaki akış, bir okurun sorusunun gelen kutusuna nasıl indiğini gösterir. Sol sütun Web'de, sağ sütun yerel kullanıcının bilgisayarında olanı anlatır.
+
+**Gelen kutusunun akışı** · mühendis çizimi
+
+```text
+ Web (GitHub)                    bilgisayar (aktarım dizini)
+ ─────────────────────────────   ─────────────────────────────
+ okur bölüm bağlantısına basar
+          │
+          ▼
+ karşılık formu: tür, yer, metin
+          │ konu açılır
+          ▼
+ açık konu #N ─── inbox ───────▶ gelen/konu-00000N-<karma>.json
+ (anahtarsız okunur;             yazar · zamanlar · yer · tür
+  çekme istekleri atlanır)       gövde · karma · adres
+                                          │
+                                          ▼
+                                 yerel kullanıcı okur, karar
+                                 verir; hiçbir şey çalışmaz
+```
+
 Okuma anahtarsızdır: ortamda bir GitHub belirteci olsa bile bu komut onu göndermez. GitHub anahtarsız okumaya saatte 60 istek tanır; bir okuma, her 100 açık konu için bir istek yapar. Bu yol Haluk'un 28 Ekim 2026 kararıdır ([yolun 3. adımı](../yol.md)).
 
 Değişmemiş bir konu ikinci kez yazılmaz. Başlığı ya da gövdesi değişen konu yeni bir dosya olur; önceki hâli silinmez. Gelen kutusu yalnız okumak içindir: içerik çalıştırılmaz, yerel çalışmaya uygulanmaz ve aktarım alanı Git'in dışında olduğu için hiçbir gönderime karışmaz. Konuya yanıt yazmak henüz kapının işi değildir; yanıt GitHub'da konunun altına yazılır ([yolun 4. adımı](../yol.md)).

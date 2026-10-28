@@ -137,6 +137,7 @@ Bugüne kadar yapılan işlerin anlatıları ve kayıtları. Her biri kendi tari
 | `docs/gecmis/rafine/claude-code-bulut-2026-10-28-bulgular.json` | kayit | Bulgu kayıtları: kimlik, kanıt, çözüm durumu. | `docs/rafine/claude-code-bulut-2026-10-28-bulgular.json` |
 | `docs/gecmis/rafine/okuma-2026-10-28.md` | belge | 28 Ekim akşamki belge okumasının anlatısı: ne okundu, ne bulundu, ne tamamlandı, ne açık kaldı. | — |
 | `docs/gecmis/rafine/claude-code-bulut-2026-10-28-okuma.json` | kayit | Belge okumasının makine kaydı: kontroller ve yirmi dokuz bulgu (R-25…R-53), sonuçlarıyla. | — |
+| `docs/gecmis/rafine/claude-code-bulut-2026-10-28-yanitlar.md` | belge | Haluk'un 28 Ekim 2026'daki on bir talimatı ve her birine verilen üç parçalı yanıt: anlam belgeleri, süreç kaydı ve makine dosyaları. | — |
 
 ## Web sayfaları
 
@@ -459,6 +460,7 @@ Yeni belgeler ve kayıtlar künyeleriyle kaynak gösterilebilir. Deponun tamamı
 | `docs/gecmis/donusum-teknik.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/gecmis/donusum.json` | dönüşümü denetleyecek ya da benzerini yapacak okuyucu |
 | `docs/gecmis/rafine/okuma-2026-10-28.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/gecmis/rafine/claude-code-bulut-2026-10-28-okuma.json` | belgelerin hangi durumda olduğunu merak eden okuyucu |
 | `docs/gecmis/rafine/claude-code-bulut-2026-10-28-okuma.json` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `schemas/rafine-bulgu.schema.json` | bulguları işleyecek araçlar ve alanlar |
+| `docs/gecmis/rafine/claude-code-bulut-2026-10-28-yanitlar.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `docs/gecmis/rafine/claude-code-bulut-2026-10-28-surec.md` | talimatların nasıl yanıtlandığını tek yerden izlemek isteyen okuyucu |
 | `.github/SECURITY.md` | Haluk | Claude Code Bulut (Hacker odağı) | 2026-10-28 | `defter/kopru_ekle.py`, `defter/kopru_yanitla.py`, `src/ortak_kopru/local_files.py` | depoya bir şey eklemek isteyen ya da sızmış bir bilgi gören |
 
 <!-- /uretilen:harita -->

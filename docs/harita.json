@@ -640,6 +640,20 @@
             ],
             "okur": "bulguları işleyecek araçlar ve alanlar"
           }
+        },
+        {
+          "yol": "docs/gecmis/rafine/claude-code-bulut-2026-10-28-yanitlar.md",
+          "tur": "belge",
+          "ne": "Haluk'un 28 Ekim 2026'daki on bir talimatı ve her birine verilen üç parçalı yanıt: anlam belgeleri, süreç kaydı ve makine dosyaları.",
+          "kunye": {
+            "sahibi": "Haluk",
+            "hazirlayan": "Claude Code Bulut (Hacker odağı)",
+            "tarih": "2026-10-28",
+            "kaynaklar": [
+              "docs/gecmis/rafine/claude-code-bulut-2026-10-28-surec.md"
+            ],
+            "okur": "talimatların nasıl yanıtlandığını tek yerden izlemek isteyen okuyucu"
+          }
         }
       ]
     },

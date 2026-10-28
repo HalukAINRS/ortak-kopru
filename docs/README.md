@@ -2,6 +2,25 @@
 
 Bu klasör, Ortak Köprü'nün yazılı belgelerini üç yerde toplar. İlk kez gelen okuyucunun belgeleri burada, klasörün kökünde durur. Teknik ayrıntılar bir alt klasörde, geçmiş işler bir başkasındadır. Her dosyanın yeri ve tanımı depo haritasında yazılıdır.
 
+Belgelerin düzeni bir evin planı gibi okunabilir: girişte herkes için olan oda, bir yanda teknik oda, öbür yanda arşiv.
+
+**Belgelerin planı** · ressam ve mimar çizimi
+
+```text
+           ┌──────────────────────────────────────┐
+           │  İLK TEMAS (bu klasör)               │
+           │  açılış · yol · sözlük · harita      │
+           └──────────┬────────────────┬──────────┘
+                      │                │
+     ┌────────────────┴───┐      ┌─────┴────────────────┐
+     │ TEKNİK             │      │ GEÇMİŞ               │
+     │ kapı · defter ·    │      │ raporlar · tanımlar ·│
+     │ yerel taraf ·      │      │ dönüşüm · rafine ·   │
+     │ bakım · kararlar   │      │ dallar ve arşivler   │
+     └────────────────────┘      └──────────────────────┘
+       bugün nasıl çalışır          o gün ne oldu
+```
+
 ## İlk temas
 
 - [Açılış: Kapı ve Köprü](acilis.md): deponun niyeti ve altı ilkesi, ilk kez gelen okuyucu için paragraflarla. [Web'de oku](https://halukainrs.github.io/ortak-kopru/acilis.html).

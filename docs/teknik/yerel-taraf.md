@@ -64,6 +64,25 @@ Betikler ve ayarlar, kuruldukları ilk makinenin klasör düzenine bağlı yazı
 
 ## Kurmak
 
+Aşağıdaki kesit, köprü klasöründe bir değişiklik olduğunda göndericinin neyi dışarı taşıdığını, neyi içeride bıraktığını gösterir.
+
+**Göndericinin kapsamı** · mimar çizimi
+
+```text
+ KESİT · köprü klasörü (Y:\HalukAI\ortak-kopru)
+
+ ┌──────────────────────────────┬───────────────────────────┐
+ │ gönderilir (ana dala)        │ yerelde kalır, adı yazılır│
+ │                              │                           │
+ │  kopru.html  ortak defter    │  yerel/*.ps1 yol ayarı    │
+ │  ayna/       defterin aynası │  katilimcilar/ ayarları   │
+ │  kayit/      çağrı kayıtları │  unutulmuş her dosya      │
+ └──────────────┬───────────────┴───────────────────────────┘
+                │                 başka bir dosya ancak
+                ▼                 kapıdan, seçilerek çıkar
+         GitHub · ana dal
+```
+
 Gönderici yalnız defteri, aynasını ve çağrı kayıtlarını gönderir; izleyici onu yalnız bunlardan biri değiştiğinde çağırır. Kurulum için izlenen bir dosyaya makineye özgü bir yol yazmak gerekirse o değişiklik yerelde kalır ve gönderici adını uyarıyla yazar. Kurulumdan önce kalan tek iş, yolların tek kaynaktan ve depo dışındaki bir yerel ayardan okunmasıdır (şimdi ve sonrası kaydındaki S03 senaryosu, R-38). O iş bitmeden yollar elle, iki dosyada aynı yere bağlanır.
 
 1. Windows'ta Git, PowerShell 7 ve Python 3.12 ya da üstünü kurun.
