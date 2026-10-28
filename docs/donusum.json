@@ -329,7 +329,9 @@
           "tur": "elle",
           "aciklama": "birleşmeden sonra başarıyla biten ilk otomasyon koşusunun adresi",
           "en_az": 1,
-          "kanit": []
+          "kanit": [
+            "Birleşmeden sonraki ilk saatlik koşu (18.25 UTC, ana dal birleşme kaydı üzerinde) başarılı; araçları yeni yerlerinden çağırdı (defter/kopru_ekle.py, defter/kopru_yanitla.py, katilimcilar/ayarlar.json): https://github.com/HalukAINRS/ortak-kopru/actions/runs/40744994620"
+          ]
         }
       ]
     },
@@ -734,7 +736,7 @@
     "basarili": true
   },
   "son_olcum": {
-    "zaman": "2026-10-28T17:55:29Z",
+    "zaman": "2026-10-28T18:26:32Z",
     "ana": "origin/main",
     "ana_surum": "2c51769678fa7876647e2f3b242d335c9064eb0b",
     "dal": "origin/claude/rafine-2026-10-28",
@@ -824,11 +826,11 @@
       },
       {
         "kimlik": "otomasyon",
-        "durum": "elle-bekleniyor",
+        "durum": "tamam",
         "olcutler": [
           {
-            "tarif": "elle: birleşmeden sonra başarıyla biten ilk otomasyon koşusunun adresi (0/1 kanıt)",
-            "karsilaniyor": false
+            "tarif": "elle: birleşmeden sonra başarıyla biten ilk otomasyon koşusunun adresi (1/1 kanıt)",
+            "karsilaniyor": true
           }
         ]
       },

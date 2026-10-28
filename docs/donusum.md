@@ -8,7 +8,7 @@ Bu geçiş, açılıştan gerçeğe giden [yolun](yol.md) ilk adımını ana dep
 
 ## Bugün nerede duruyoruz
 
-Son ölçüm 2026-10-28 17:55 UTC'de, ana dalın o anki hâline karşı yapıldı. Dönüşümün on bir aşamasından beşi tamam. Sırada, yapılınca kanıtı yazılacak aşama: Saatlik otomasyon, Yerel geçiş. Öteki zorunlu aşamalar bir ön koşulun bitmesini bekliyor. Son provada birleşme temiz çıktı ve denetimler geçti.
+Son ölçüm 2026-10-28 18:26 UTC'de, ana dalın o anki hâline karşı yapıldı. Dönüşümün on bir aşamasından altısı tamam. Sırada, yapılınca kanıtı yazılacak aşama: Yerel geçiş. Öteki zorunlu aşamalar bir ön koşulun bitmesini bekliyor. Son provada birleşme temiz çıktı ve denetimler geçti.
 
 Aşağıdaki ağaçta her aşama, bitmesini beklediği aşamanın altında duruyor. Dolu kare biten, boş kare açık, eşkenar dörtgen isteğe bağlı aşamayı gösterir.
 
@@ -20,7 +20,7 @@ Aşağıdaki ağaçta her aşama, bitmesini beklediği aşamanın altında duruy
    │   └─▶ (2) Yerel hazırlık                     ■ tamam
    │       └─▶ (3) Birleştirme                    ■ tamam
    │           ├─▶ (4) Bulut denetimi ve Web      ■ tamam
-   │           ├─▶ (5) Saatlik otomasyon          □ kanıt
+   │           ├─▶ (5) Saatlik otomasyon          ■ tamam
    │           ├─▶ (6) Yerel geçiş                □ kanıt
    │           │   └─▶ (7) Yardımcıların talimatı □ ön koşul
    │           │       └─▶ (9) Kapanış (+2)       □ ön koşul
@@ -195,7 +195,7 @@ Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşama
 
 ### 5. Saatlik otomasyon
 
-**Durum:** Ön koşulu bitti; olduğu görülünce kanıtı yazılacak.
+**Durum:** Tamam.
 
 **Kim?** GitHub.
 

@@ -12,7 +12,7 @@ Başlangıç: `main` @ `97c908de7a5850978082770ba3bac3e508688e57` (2026-10-28), 
 
 ## Aşamalar
 
-Son ölçüm: 2026-10-28T17:55:29Z · ana `origin/main` @ `2c51769` · dal `origin/claude/rafine-2026-10-28` @ `3165b98`. Canlı durum için: `python tools/donusum.py --durum`.
+Son ölçüm: 2026-10-28T18:26:32Z · ana `origin/main` @ `2c51769` · dal `origin/claude/rafine-2026-10-28` @ `3165b98`. Canlı durum için: `python tools/donusum.py --durum`.
 
 | Aşama | Kim | Ön koşul | Karar | Zorunlu | Durum |
 | --- | --- | --- | --- | --- | --- |
@@ -21,7 +21,7 @@ Son ölçüm: 2026-10-28T17:55:29Z · ana `origin/main` @ `2c51769` · dal `orig
 | 2. Yerel hazırlık (`yerel-hazirlik`) | Haluk | prova | — | evet | tamam |
 | 3. Birleştirme (`birlesme`) | Haluk | yerel-hazirlik | Haluk: 2026-10-28 | evet | tamam |
 | 4. Bulut denetimi ve Web (`bulut`) | GitHub | birlesme | — | evet | tamam |
-| 5. Saatlik otomasyon (`otomasyon`) | GitHub | birlesme | — | evet | elle-bekleniyor |
+| 5. Saatlik otomasyon (`otomasyon`) | GitHub | birlesme | — | evet | tamam |
 | 6. Yerel geçiş (`yerel-gecis`) | Haluk | birlesme | — | evet | elle-bekleniyor |
 | 7. Yardımcıların talimatı (`katmanlar`) | Haluk | yerel-gecis | — | evet | onkosul-bekliyor |
 | 8. Bekleyen öteki öneriler (`acik-calismalar`) | katkıcılar | birlesme | — | hayır | istege-bagli |
@@ -131,7 +131,7 @@ Geri dönüş: Kırık koşuda birleşme geri alınır; iş akışı eski yollar
 
 | Ölçüt | Son ölçümde |
 | --- | --- |
-| elle: birleşmeden sonra başarıyla biten ilk otomasyon koşusunun adresi (0/1 kanıt) | karşılanmıyor |
+| elle: birleşmeden sonra başarıyla biten ilk otomasyon koşusunun adresi (1/1 kanıt) | karşılanıyor |
 
 ### 6. Yerel geçiş
 
