@@ -2,26 +2,31 @@
 """Build the static reader pages from the repository's prose, with no network.
 
 The small supported Markdown subset is intentional: headings, paragraphs,
-links, bold, inline code, simple lists, explicit safe heading anchors and
-plain-text blocks fenced with three backticks (unlabelled or labelled text).
+links, bold, inline code, simple lists, explicit safe heading anchors, HTML comment
+marker lines (skipped) and plain-text blocks fenced with three backticks (unlabelled
+or labelled text).
 Use --check in CI to detect publication drift without writing files.
 """
 from __future__ import annotations
 
 import argparse
 import html
+import posixpath
 import re
 from pathlib import Path
 from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO = 'https://github.com/HalukAINRS/ortak-kopru'
+# docs/ altındaki kaynak → depo kökündeki sayfa. Sayfa adları Web adresidir; değişmez.
 PAGES = {
-    'WEB_GIRISI.md': ('index.html', 'Ortak Köprü'),
-    'ORTAK_MIMARI_DEFTERI.md': ('mimari.html', 'Ortak Mimari Defteri'),
-    'ANLAM_NOT_DEFTERI.md': ('not-defteri.html', 'Anlam ve Dönüş Defteri'),
-    'SON_DURUM.md': ('durum.html', 'Son durum'),
-    'KAYNAKLAR.md': ('kaynaklar.html', 'Kaynaklar'),
+    'web-girisi.md': ('index.html', 'Ortak Köprü'),
+    'acilis.md': ('acilis.html', 'Açılış: Kapı ve Köprü'),
+    'yol.md': ('yol.html', 'Açılıştan gerçeğe: yol'),
+    'gecmis/ortak-mimari-defteri.md': ('mimari.html', 'Ortak Mimari Defteri'),
+    'gecmis/anlam-not-defteri.md': ('not-defteri.html', 'Anlam ve Dönüş Defteri'),
+    'gecmis/son-durum.md': ('durum.html', 'Son durum'),
+    'gecmis/kaynaklar.md': ('kaynaklar.html', 'Kaynaklar'),
 }
 
 
@@ -30,35 +35,40 @@ def slug(value: str) -> str:
     return re.sub(r'\s+', '-', re.sub(r'[^\w\s-]', '', value)).strip('-')
 
 
-def destination(value: str) -> str:
+def destination(value: str, folder: str = '') -> str:
+    """Resolve a link written in docs/<folder>/ to the published page or the file on GitHub."""
     parsed = urlsplit(value)
     if parsed.scheme and parsed.scheme not in ('https', 'http'):
         raise ValueError(f'Unsupported link scheme: {parsed.scheme}')
     prefix = REPO + '/blob/main/docs/'
-    relative = value[len(prefix):] if value.startswith(prefix) else value
-    filename, sep, fragment = relative.partition('#')
-    if filename in PAGES:
-        return PAGES[filename][0] + (sep + fragment if sep else '')
-    if not parsed.scheme:
-        if value == '../kopru.html':
-            return 'kopru.html'
-        if value.startswith('../'):
-            return REPO + '/blob/main/' + value[3:]
-        return REPO + '/blob/main/docs/' + value
-    return value
+    if parsed.scheme:
+        filename, sep, fragment = value[len(prefix):].partition('#') if value.startswith(prefix) else ('', '', '')
+        return PAGES[filename][0] + (sep + fragment if sep else '') if filename in PAGES else value
+    filename, sep, fragment = value.partition('#')
+    tail = sep + fragment if sep else ''
+    if not filename:
+        return value
+    path = posixpath.normpath(posixpath.join('docs', folder, filename))   # repository-relative
+    inside = path[len('docs/'):] if path.startswith('docs/') else None
+    if inside in PAGES:
+        return PAGES[inside][0] + tail
+    if path in ('kopru.html', *(target for target, _ in PAGES.values())):
+        return path + tail
+    kind = 'tree' if filename.endswith('/') else 'blob'
+    return f'{REPO}/{kind}/main/{path}' + tail
 
 
 TOKEN = re.compile(r'\[([^\]\n]+)\]\(([^\s)]+)\)|\*\*([^*\n]+)\*\*|`([^`\n]+)`')
 FENCE = re.compile(r'^[ \t]*(`{3,}|~{3,})(.*)$')
 
 
-def inline(value: str) -> str:
+def inline(value: str, folder: str = '') -> str:
     result = []
     start = 0
     for match in TOKEN.finditer(value):
         result.append(html.escape(value[start:match.start()]))
         if match.group(1) is not None:
-            target = html.escape(destination(match.group(2)), quote=True)
+            target = html.escape(destination(match.group(2), folder), quote=True)
             result.append(f'<a href="{target}">{html.escape(match.group(1))}</a>')
         elif match.group(3) is not None:
             result.append('<strong>' + html.escape(match.group(3)) + '</strong>')
@@ -108,7 +118,7 @@ def blocks(source: str) -> list[tuple[str, str]]:
     return result
 
 
-def render(source: str) -> tuple[str, list[tuple[str, str]]]:
+def render(source: str, folder: str = '') -> tuple[str, list[tuple[str, str]]]:
     output, headings = [], []
     for kind, block in blocks(source):
         if kind == 'text':
@@ -117,25 +127,28 @@ def render(source: str) -> tuple[str, list[tuple[str, str]]]:
         if re.fullmatch(r'<a id="[\w-]+"></a>', block):
             # The heading immediately below receives the same stable ID.
             continue
+        if re.fullmatch(r'<!--[^<>]*-->', block):
+            # Generated-block markers (tools/acilis.py) are source bookkeeping, not reader text.
+            continue
         heading = re.fullmatch(r'(#{1,3}) (.+)', block)
         if heading:
             level, title = len(heading.group(1)), heading.group(2)
             anchor = slug(title)
-            output.append(f'<h{level} id="{anchor}">{inline(title)}</h{level}>')
+            output.append(f'<h{level} id="{anchor}">{inline(title, folder)}</h{level}>')
             if level == 2:
                 headings.append((anchor, title))
         elif all(line.startswith('- ') for line in block.splitlines()):
-            output.append('<ul>' + ''.join('<li>' + inline(line[2:]) + '</li>' for line in block.splitlines()) + '</ul>')
+            output.append('<ul>' + ''.join('<li>' + inline(line[2:], folder) + '</li>' for line in block.splitlines()) + '</ul>')
         else:
             if block.startswith(('```', '|', '[^')):
                 raise ValueError('Use the supported prose Markdown subset for reader pages.')
-            output.append('<p>' + inline(' '.join(block.splitlines())) + '</p>')
+            output.append('<p>' + inline(' '.join(block.splitlines()), folder) + '</p>')
     return '\n'.join(output), headings
 
 
 def page(filename: str, output_name: str, label: str) -> str:
-    body, headings = render((ROOT / 'docs' / filename).read_text(encoding='utf-8'))
-    nav = ''.join(f'<a href="{target}"' + (' aria-current="page"' if target == output_name else '') + f'>{html.escape(name)}</a>' for target, name in [('index.html', 'Başlangıç'), ('mimari.html', 'Mimari defteri'), ('not-defteri.html', 'Not defteri'), ('durum.html', 'Son durum'), ('kaynaklar.html', 'Kaynaklar')])
+    body, headings = render((ROOT / 'docs' / filename).read_text(encoding='utf-8'), posixpath.dirname(filename))
+    nav = ''.join(f'<a href="{target}"' + (' aria-current="page"' if target == output_name else '') + f'>{html.escape(name)}</a>' for target, name in [('index.html', 'Başlangıç'), ('acilis.html', 'Açılış'), ('yol.html', 'Yol'), ('mimari.html', 'Mimari defteri'), ('not-defteri.html', 'Not defteri'), ('durum.html', 'Son durum'), ('kaynaklar.html', 'Kaynaklar')])
     contents = ''.join(f'<li><a href="#{anchor}">{html.escape(title)}</a></li>' for anchor, title in headings)
     title = label if output_name == 'index.html' else label + ' · Ortak Köprü'
     return f'''<!doctype html>
@@ -143,7 +156,7 @@ def page(filename: str, output_name: str, label: str) -> str:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Ortak Köprü: çalışmadan çıkarılan anlamlar, kaynaklar, güncel durum ve dış okuyucu katkıları.">
+<meta name="description" content="Ortak Köprü: Web ile yerel bilgisayar arasında bir kapı, dışarıdaki bireyler ile yerel kullanıcı arasında bir köprü.">
 <title>{html.escape(title)}</title>
 <link rel="stylesheet" href="okuma.css">
 </head>
@@ -151,13 +164,13 @@ def page(filename: str, output_name: str, label: str) -> str:
 <a class="skip" href="#icerik">İçeriğe geç</a>
 <header class="site-header"><a class="brand" href="index.html">Ortak Köprü</a><nav class="site-nav" aria-label="Ana gezinme">{nav}<a href="{REPO}/issues">Katkı</a></nav></header>
 <div class="page-shell">
-<main id="icerik"><div class="eyebrow">Okuma · Kaynak · Karşılık</div>
+<main id="icerik"><div class="eyebrow">Kapı · Köprü · Karşılık</div>
 {body}
 <div class="closing"><p>Bir soru, farklı yorum veya kaynakla katkı sunabilirsiniz. <a href="{REPO}/issues/new">GitHub'da konu açın</a> · <a href="{REPO}/blob/main/docs/{filename}">Bu metnin kaynağı ve sürümleri</a></p></div>
 </main>
 <aside aria-label="Bu sayfadaki bölümler"><h2>Bu sayfada</h2><ul class="contents">{contents}</ul><div class="reader-note"><p>Bir paragrafı paylaşırken başlığını ve kaynak bağını da taşıyın.</p><p><a href="{REPO}/blob/main/CONTRIBUTING.md">Katkı rehberi</a></p></div></aside>
 </div>
-<footer class="site-footer"><span>Ortak Köprü · 28 Ekim 2026</span><span><a href="{REPO}">GitHub deposu</a> · <a href="kopru.html">Tarihsel köprü defteri</a></span></footer>
+<footer class="site-footer"><span>Ortak Köprü · <a href="{REPO}/commits/main/docs/{filename}">bu metnin değişiklik geçmişi</a></span><span><a href="{REPO}">GitHub deposu</a> · <a href="kopru.html">Tarihsel köprü defteri</a></span></footer>
 </body>
 </html>
 '''

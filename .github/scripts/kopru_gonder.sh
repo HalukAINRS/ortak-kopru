@@ -20,8 +20,8 @@ while IFS= read -r -d '' dosya; do
   esac
 done < <(git diff --cached --name-only -z)
 
-python kopru_ekle.py kopru.html --kontrol
-python kopru_ayna_uret.py kopru.html ayna/kopru.html
+python defter/kopru_ekle.py kopru.html --kontrol
+python defter/kopru_ayna_uret.py kopru.html ayna/kopru.html
 git config user.name "kopru-bot"
 git config user.email "kopru-bot@users.noreply.github.com"
 git add -- kopru.html ayna/kopru.html kayit
@@ -58,17 +58,17 @@ for deneme in 1 2 3; do
       for dosya in "${cakisanlar[@]}"; do
         case "$dosya" in
           kopru.html)
-            python kopru_birlestir.py --rebase kopru.html || rebase_durdur "Köprü birleştirilemedi."
+            python defter/kopru_birlestir.py --rebase kopru.html || rebase_durdur "Köprü birleştirilemedi."
             git add -- kopru.html
             ;;
           kayit/*.log)
-            python kopru_birlestir.py --rebase-metin "$dosya" || rebase_durdur "Günlük birleştirilemedi."
+            python defter/kopru_birlestir.py --rebase-metin "$dosya" || rebase_durdur "Günlük birleştirilemedi."
             git add -- "$dosya"
             ;;
         esac
       done
-      python kopru_ekle.py kopru.html --kontrol || rebase_durdur "Birleşen köprü denetimi geçmedi."
-      python kopru_ayna_uret.py kopru.html ayna/kopru.html || rebase_durdur "Ayna üretilemedi."
+      python defter/kopru_ekle.py kopru.html --kontrol || rebase_durdur "Birleşen köprü denetimi geçmedi."
+      python defter/kopru_ayna_uret.py kopru.html ayna/kopru.html || rebase_durdur "Ayna üretilemedi."
       git add -- ayna/kopru.html
       if GIT_EDITOR=true git rebase --continue; then
         break
@@ -80,8 +80,8 @@ for deneme in 1 2 3; do
   fi
 
   # Temiz bir rebase de kanonik sayfayı değiştirebilir; aynayı tekrar denetle.
-  python kopru_ekle.py kopru.html --kontrol
-  python kopru_ayna_uret.py kopru.html ayna/kopru.html
+  python defter/kopru_ekle.py kopru.html --kontrol
+  python defter/kopru_ayna_uret.py kopru.html ayna/kopru.html
   git add -- ayna/kopru.html
   if ! git diff --cached --quiet; then
     git commit -m "köprü: birleşen sayfanın aynası [skip ci]"

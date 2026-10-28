@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "Bu depoyu kaynak gösterirseniz bu künyeyi kullanın. If you cite this repository, please use this record."
+title: "Ortak Köprü"
+abstract: "Web ile yerel bilgisayar arasında bir kapı, dışarıdaki bireyler ile yerel kullanıcı arasında bir köprü. Karşılıklı aktarımı ve bağlantıları köken, sahiplik, sürüm ve zamanıyla taşır; niyeti, altı ilkesi ve depo haritası makinece denetlenen kayıtlardır."
+type: software
+authors:
+  - given-names: "Haluk"
+    alias: "HalukAINRS"
+repository-code: "https://github.com/HalukAINRS/ortak-kopru"
+url: "https://halukainrs.github.io/ortak-kopru/"
+keywords:
+  - "kapı"
+  - "köprü"
+  - "yerel ve Web arası aktarım"
+  - "kaynaklı ortak defter"

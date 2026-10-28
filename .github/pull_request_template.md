@@ -8,8 +8,7 @@ Değişen alanlar ve varsa uyumluluk etkisi.
 
 ## Doğrulama
 
-- `python -m unittest discover -v`
-- `python tools/depo_kontrol.py`
+- `python tools/dogrula.py` (CI ile aynı liste; `ATLANDI` yazılan kontrolleri belirtin)
 
 Çalıştırılan kontrollerin sonuçlarını ve denenmeyen canlı ortamları yazın.
 

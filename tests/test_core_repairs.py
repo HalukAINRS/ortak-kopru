@@ -11,7 +11,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "defter"))
 import kopru_yanitla as bot
 from kopru_oku import Ayristirici
 
@@ -27,14 +27,14 @@ class AppenderTests(unittest.TestCase):
 
     def append(self, sender="Sen", body="Çevrimdışı sınama.", reply=""):
         return subprocess.run(
-            [sys.executable, str(ROOT / "kopru_ekle.py"), str(self.page),
+            [sys.executable, str(ROOT / "defter" / "kopru_ekle.py"), str(self.page),
              "--kimden", sender, "--kime", "Sen", "--konu", "Bakım sınaması",
              "--govde", body, "--yanit", reply],
             capture_output=True, text=True, encoding="utf-8", check=False,
         )
 
     def test_configured_google_signature_can_append(self):
-        settings = json.loads((ROOT / "ayarlar-yerel.json").read_text(encoding="utf-8"))
+        settings = json.loads((ROOT / "katilimcilar" / "ayarlar-yerel.json").read_text(encoding="utf-8"))
         google = next(p for p in settings["katilimcilar"] if p["ad"] == "Google")
         signature = bot.yol_kimligi(google["ad"], google, google)
         result = self.append(sender=signature)
@@ -85,7 +85,7 @@ class ParserTests(unittest.TestCase):
 class LogTests(unittest.TestCase):
     def test_same_second_concurrent_logs_never_overwrite(self):
         fixed = datetime.datetime(2026, 10, 26, 12, 0, tzinfo=datetime.timezone.utc)
-        with tempfile.TemporaryDirectory() as directory, patch.object(bot, "BURASI", directory), \
+        with tempfile.TemporaryDirectory() as directory, patch.object(bot, "KOK", directory), \
                 patch.object(bot.datetime, "datetime") as clock:
             clock.now.return_value = fixed
             def write(index):

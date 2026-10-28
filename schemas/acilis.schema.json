@@ -1,0 +1,488 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ortak Köprü açılışı v1: niyet, tanım ve altı ilke",
+  "description": "Deponun kullanıcı tarafından konmuş niyetini, bu niyetten kurulan tanımı ve altı ana ilkeyi taşır. Sorular iki gruba ayrılır: kapının kendisini tanımlayan beşli (ne, nerede, nasıl, ne zaman, ne için) ve içinden geçeni tanımlayan dörtlü (nereden, nereye, ne kadar, neden). Her soru niyetteki yanıtını ve bugün depoda gözlenen karşılığını ayrı taşır. Beşli ile dörtlünün 20 kesişimi ayrıca sorulur. İlkelerin durumu, niyetle bugünkü depo arasındaki mesafedir. tools/acilis.py bu kaydı denetler ve README'nin, Web girişinin, açılış belgesinin ve teknik ekin bloklarını ondan üretir. Açılış belgesi (docs/acilis.md) ilk kez gelen okuyucu içindir ve bütünüyle bu kayıttan üretilir: önce giriş paragrafları, sonra 'Niyet' başlığı, sonra sırayla altı ilkenin başlıkları; liste ve tablo taşımaz. Sade alanlar (sade, sade_sorular, anlatim, bugun_sade, sade_tanim, acilis_belgesi, sozluk) bu belge içindir ve okunabilirlik denetiminden geçer. Teknik alanlar docs/teknik/acilis-teknik.md'ye üretilir.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "niyet",
+    "hazirlayan",
+    "hazirlandi",
+    "tanim",
+    "gruplar",
+    "sorular",
+    "kesisimler",
+    "ilkeler",
+    "sade_tanim",
+    "sozluk",
+    "acilis_belgesi"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "kind": {
+      "const": "ortak_kopru_acilis"
+    },
+    "niyet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "soz",
+        "sahibi",
+        "zaman"
+      ],
+      "properties": {
+        "soz": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Kullanıcının niyet sözü, değiştirilmeden."
+        },
+        "sahibi": {
+          "type": "string",
+          "minLength": 1
+        },
+        "zaman": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "hazirlayan": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "hazirlandi": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tanim": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Niyetten kurulan tanım; hazırlayanın sözüdür, niyetin yerine geçmez."
+    },
+    "gruplar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kapi",
+        "gecis"
+      ],
+      "properties": {
+        "kapi": {
+          "$ref": "#/$defs/grup"
+        },
+        "gecis": {
+          "$ref": "#/$defs/grup"
+        }
+      }
+    },
+    "sorular": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ne",
+        "nerede",
+        "nasil",
+        "ne_zaman",
+        "ne_icin",
+        "nereden",
+        "nereye",
+        "ne_kadar",
+        "neden"
+      ],
+      "properties": {
+        "ne": {
+          "$ref": "#/$defs/soru"
+        },
+        "nerede": {
+          "$ref": "#/$defs/soru"
+        },
+        "nasil": {
+          "$ref": "#/$defs/soru"
+        },
+        "ne_zaman": {
+          "$ref": "#/$defs/soru"
+        },
+        "ne_icin": {
+          "$ref": "#/$defs/soru"
+        },
+        "nereden": {
+          "$ref": "#/$defs/soru"
+        },
+        "nereye": {
+          "$ref": "#/$defs/soru"
+        },
+        "ne_kadar": {
+          "$ref": "#/$defs/soru"
+        },
+        "neden": {
+          "$ref": "#/$defs/soru"
+        }
+      }
+    },
+    "kesisimler": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kapi",
+          "gecis",
+          "soru",
+          "yanit"
+        ],
+        "properties": {
+          "kapi": {
+            "enum": [
+              "ne",
+              "nerede",
+              "nasil",
+              "ne_zaman",
+              "ne_icin"
+            ]
+          },
+          "gecis": {
+            "enum": [
+              "nereden",
+              "nereye",
+              "ne_kadar",
+              "neden"
+            ]
+          },
+          "soru": {
+            "type": "string",
+            "minLength": 1
+          },
+          "yanit": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "ilkeler": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "no",
+          "ad",
+          "ilke",
+          "aciklama",
+          "sorular",
+          "dayanaklar",
+          "durum",
+          "sade",
+          "bugun_sade",
+          "sade_sorular",
+          "anlatim"
+        ],
+        "properties": {
+          "no": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          },
+          "ad": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ilke": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Tek cümlelik ilke."
+          },
+          "aciklama": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sorular": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "$ref": "#/$defs/kok"
+            }
+          },
+          "dayanaklar": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "İlkeyi bugün taşıyan depo içi yollar; denetlenir."
+          },
+          "durum": {
+            "enum": [
+              "uygulanıyor",
+              "kısmen",
+              "henüz yok"
+            ]
+          },
+          "eksik": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Durum 'uygulanıyor' değilse zorunlu: niyetle bugünkü depo arasındaki mesafe."
+          },
+          "bulgular": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^R-[0-9]{2}$"
+            }
+          },
+          "senaryolar": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^S[0-9]{2}$"
+            }
+          },
+          "sade": {
+            "type": "string",
+            "minLength": 1,
+            "description": "İlkenin okuyucu için anlamı."
+          },
+          "bugun_sade": {
+            "type": "string",
+            "minLength": 1,
+            "description": "İlkenin bugünkü durumu, sade dille."
+          },
+          "sade_sorular": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/kok"
+            },
+            "description": "Bu ilkenin bölümünde sade yanıtı verilen sorular; ilkenin bağladığı sorular arasından seçilir."
+          },
+          "anlatim": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "İlke bölümünün okuyucuya dönük paragrafları: ne yapabileceği, nereden başlayacağı."
+          }
+        }
+      }
+    },
+    "sade_tanim": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Tanımın teknik terim taşımayan, ilk kez gelen okuyucu için kısa hâli."
+    },
+    "sozluk": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Sade anlatımda geçen teknik kelimelerin açıklaması; sözlükte olmayan teknik kelime sade anlatıma giremez.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "terim",
+          "anlam"
+        ],
+        "properties": {
+          "terim": {
+            "type": "string",
+            "minLength": 1
+          },
+          "anlam": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "acilis_belgesi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "giris",
+        "niyet"
+      ],
+      "description": "Açılış belgesinin kayıttan gelen paragrafları. Dokuz sorunun sade yanıtları belgede tam bir kez yer alır: 'Niyet' bölümünde niyet.sorular, ilke bölümlerinde ilkeler[].sade_sorular.",
+      "properties": {
+        "giris": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Başlıklardan önceki paragraflar: sayfanın kime yazıldığı, nasıl okunacağı, teknik ayrıntıların ve geçmiş işlerin nerede olduğu."
+        },
+        "niyet": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sorular",
+            "paragraflar"
+          ],
+          "properties": {
+            "sorular": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/kok"
+              },
+              "description": "'Niyet' bölümünde sade yanıtı verilen sorular."
+            },
+            "paragraflar": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "cizim": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "baslik",
+                "tur",
+                "aciklama",
+                "metin"
+              ],
+              "description": "'Niyet' bölümünü destekleyen klavye çizimi; açıklama paragrafından sonra gelir. Kuralları tools/cizim.py denetler.",
+              "properties": {
+                "baslik": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "tur": {
+                  "enum": [
+                    "ressam",
+                    "mimar",
+                    "muhendis"
+                  ]
+                },
+                "aciklama": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "metin": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "kok": {
+      "enum": [
+        "ne",
+        "nerede",
+        "nasil",
+        "ne_zaman",
+        "ne_icin",
+        "nereden",
+        "nereye",
+        "ne_kadar",
+        "neden"
+      ]
+    },
+    "grup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ad",
+        "aciklama",
+        "sorular"
+      ],
+      "properties": {
+        "ad": {
+          "type": "string",
+          "minLength": 1
+        },
+        "aciklama": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sorular": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/kok"
+          }
+        }
+      }
+    },
+    "soru": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "soru",
+        "yanit",
+        "bugun",
+        "durum",
+        "varyantlar",
+        "sade"
+      ],
+      "properties": {
+        "soru": {
+          "type": "string",
+          "minLength": 1
+        },
+        "yanit": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Niyete göre tanım."
+        },
+        "bugun": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Bugün depoda gözlenen karşılık."
+        },
+        "durum": {
+          "enum": [
+            "var",
+            "kısmen",
+            "yok"
+          ]
+        },
+        "varyantlar": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "soru",
+              "yanit"
+            ],
+            "properties": {
+              "soru": {
+                "type": "string",
+                "minLength": 1
+              },
+              "yanit": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "sade": {
+          "type": "string",
+          "minLength": 1,
+          "description": "İlk kez gelen okuyucu için yanıt."
+        }
+      }
+    }
+  }
+}

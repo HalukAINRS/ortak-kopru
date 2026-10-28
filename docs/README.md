@@ -1,34 +1,44 @@
-# Belgeler: anlamdan uygulamaya okuma yolları
+# Belgeler
 
-Bu dizin, Ortak Köprü'nün anlatısını, güncel durumunu ve teknik gereçlerini birbirine bağlar. İlk okuma için [anlam not defteri](ANLAM_NOT_DEFTERI.md), çalışmadan ne anlaşıldığını ve bu anlayışın nasıl değiştiğini paragraflarla taşır. [Son durum](SON_DURUM.md), yapılmış işlerle açık kalan işleri kendi kanıt ve tarihleriyle gösterir. Bir açıklamanın dayanağına dönmek için [kaynaklar](KAYNAKLAR.md) kullanılır.
+Bu klasör, Ortak Köprü'nün yazılı belgelerini üç yerde toplar. İlk kez gelen okuyucunun belgeleri klasörün kökünde durur. Teknik ayrıntılar ve geçmiş işler ayrı klasörlerdedir. Neyin nerede olduğunu en kısa yoldan depo haritası gösterir.
 
-Depodaki her dosyanın işlevi aynı değildir. Kaynak kodu, işleme uygun JSON, tarihsel kayıt, yayımlanmış inceleme ve kullanıcıya dönük anlatı kendi biçimlerini korur. [Depo rehberi](DEPO_REHBERI.md), bu alanlara nereden girileceğini, hangi dalda bulunduklarını ve hangi kayıt kapsamıyla okunacaklarını açıklar.
-
-## Okuyucu için başlangıç
+## İlk temas
 
 | Belge | Ne sağlar? |
 | --- | --- |
-| [Ortak Mimari Defteri](ORTAK_MIMARI_DEFTERI.md) | 33×8 yerleşimini, serbest döngüleri ve 16/32/64/128 dışavurumun tek noktada birlikte çalışmasını açıklar. |
-| [Anlam not defteri](ANLAM_NOT_DEFTERI.md) | Ortak çalışmanın aktarılabilir anlamını; kaynak sözü, yorum ve değişen anlayış ilişkisini anlatır. |
-| [Son durum](SON_DURUM.md) | Son gözlemi, tamamlanan işin kapsamını ve açık kalanları gösterir. |
-| [Kaynaklar](KAYNAKLAR.md) | Anlatıdan özgün kayda ve korunmuş kaynak sürümüne dönüş yollarını verir. |
-| [Depo rehberi](DEPO_REHBERI.md) | Dosya alanlarını, tarihsel dalları, kanonik defteri ve teknik araçları konumlandırır. |
-| [Katkı rehberi](../CONTRIBUTING.md) | Soru, kaynak düzeltmesi ve değişiklik önerisinin nasıl iletileceğini açıklar. |
+| [Açılış: Kapı ve Köprü](acilis.md) | Deponun niyeti ve altı ilkesi, ilk kez gelen okuyucu için paragraflarla. Makine kaydı: [açılış kaydı](acilis.json). [Web'de oku](../acilis.html). |
+| [Dönüşüm](donusum.md) | GitHub'daki bugünkü deponun yeni hâline geçişi: aşamalar, kimin elinde oldukları, ölçüm, prova ve geri dönüş; ressam, mimar ve mühendis çizimleriyle. Makine kaydı: [dönüşüm kaydı](donusum.json). |
+| [Açılıştan gerçeğe: yol](yol.md) | Niyetin adım adım gerçeğe dönüşmesi: her adımın durumu, kararı ve ölçütü; ressam, mimar ve mühendis çizimleriyle. Makine kaydı: [yol kaydı](yol.json). [Web'de oku](../yol.html). |
+| [Web girişi](web-girisi.md) | Web kapısının ilk sayfasının kaynak metni. [Web'de oku](../index.html). |
+| [Depo haritası](harita.md) | Her dosyanın alanı, tanımı, eski adı, çalıştırma komutu ve künyesi. Makine kaydı: [harita kaydı](harita.json). |
 
-## Paylaşım ve kaynak tedariki
+## Teknik ayrıntılar
 
-Yerelde hazırlanmış bir dosyanın dışarı paylaşılması veya GitHub'daki bir kaynağın yerel inceleme için alınması, `kapi.py` girişinde ele alınır. [Kapı kullanımı](KAPI_KULLANIMI.md) mevcut komutları ve ilk uygulamanın sınırlarını verir. [Dış alan kapısı](DIS_ALAN_KAPISI.md), bu işlemlerin yerel çalışmayla ilişkisini ve hedeflenen daha geniş kapsamı açıklar. [Karar 0002](kararlar/0002-dis-alan-kapisi.md), bu yönün hangi kullanıcı açıklamasıyla şekillendiğini korur.
+Araçlar, kurulum, doğrulama, otomasyon ve kararlar `teknik/` klasöründedir. Açılışı anlamak için okunmaları gerekmez. Dizin: [teknik ayrıntılar](teknik/README.md).
 
-## Yerel iş yüzeyi, oturum devri ve kurtarma
+| Belge | Ne sağlar? |
+| --- | --- |
+| [Yolun teknik eki](teknik/yol-teknik.md) | Adım tablosu, ölçütler ve bugünkü değerleri, dokunacağı yerler, geri alma, akış çizimleri. |
+| [Açılışın teknik eki](teknik/acilis-teknik.md) | Tanımın tam hâli, beşli ve dörtlü sorular, 20 kesişim, ilkelerin taşıyıcıları ve açılışın denetimi. |
+| [Kapı kullanımı](teknik/kapi-kullanimi.md) · [Dış alan kapısı](teknik/dis-alan-kapisi.md) | Kapının komutları, sınırları ve kapsamı. |
+| [deus_ex_machina](teknik/deus-ex-machina.md) · [Devam ve yedek](teknik/devam-ve-yedek.md) · [NT Kernel](teknik/nt-kernel.md) | Yerel iş bileşeni, devir, yedek ve NT aygıt kapısı. |
+| [Bakım rehberi](teknik/bakim.md) | Tek komutlu doğrulama, kontroller, iş akışları ve dal haritası. |
+| [Depo rehberi](teknik/depo-rehberi.md) | Depodaki alanların ve tarihsel dalların okuma rehberi. |
+| [Karar 0001](teknik/kararlar/0001-deus-is-ve-nt.md) · [Karar 0002](teknik/kararlar/0002-dis-alan-kapisi.md) | Yerel iş bileşeni ve dış alan kapısı kararları. |
 
-[deus_ex_machina rehberi](DEUS_EX_MACHINA.md), isteğe bağlı iş takibini, özgün söz ile düzeltme kayıtlarını ve yerel ekranı anlatır. [Devam ve yedekleme](DEVAM_VE_YEDEK.md), sonuç teslimini, oturum devrini ve özel çalışma alanının kurtarılmasını açıklar. Bu yerel ekran ve onun çalışma verileri, dış okuyucunun kullandığı statik Web girişinden ayrı bir kullanım alanıdır.
+## Geçmiş işler
 
-[NT Kernel rehberi](NT_KERNEL.md) ile [sürücü dizini](../windows/nt/README.md), mevcut sürücü kaynağının yeteneğini, derleme yolunu ve hedef bilgisayardaki gerçekleşme sınırını gösterir. [Karar 0001](kararlar/0001-deus-is-ve-nt.md), ilk iş çekirdeği ve NT bileşeni kararının tarihsel bağlamıdır. Bu belgelerdeki kurulum ve işlem açıklamaları kendi sürümleriyle okunur.
+Bugüne kadar yapılan işlerin anlatıları ve kayıtları `gecmis/` klasöründedir. Her biri kendi tarihine aittir; burada durması bugün de geçerli olduğu anlamına gelmez. Dizin, açılışa giden yol ve değişiklik geçmişi: [geçmiş işler](gecmis/README.md).
 
-## Bakım ve geçmiş kararlar
+| Belge | Ne sağlar? |
+| --- | --- |
+| [Ortak Mimari Defteri](gecmis/ortak-mimari-defteri.md) | 33×8 yerleşimi, serbest döngüler ve 16/32/64/128 dışavurumun tek noktada birlikte çalışması. |
+| [Anlam not defteri](gecmis/anlam-not-defteri.md) | Ortak çalışmanın aktarılabilir anlamı; kaynak sözü, yorum ve değişen anlayış. |
+| [Son durum](gecmis/son-durum.md) · [Kaynaklar](gecmis/kaynaklar.md) | O günkü durum, açık kalanlar ve özgün kayıtlara dönüş yolları. |
+| [Dokuz koordinatla tanım](gecmis/depo-tanimi.md) · [Şimdi ve sonrası](gecmis/simdi-ve-sonrasi.md) | Açılıştan önce yazılan iki tanım; makine kayıtlarıyla birlikte. |
+| [Rafine defteri](gecmis/rafine/rafine-defteri.md) · [Süreç ve bulgu kayıtları](gecmis/rafine/README.md) | 28 Ekim 2026 gözden geçirmesi: bulgular, düzeltmeler, süreç arşivi. |
+| [Tarihsel parçalar](gecmis/parcalar/) | 24 Ekim'den kalan kayıt taslakları ve defter bölümü parçası. |
 
-[Bakım rehberi](BAKIM.md), kod alanlarını, çevrimdışı denetimleri ve dal ilişkilerini açıklar. İçindeki dal/PR tablosu açıkça **26 Ekim 2026 inceleme kesiti** olarak işaretlidir. Daha sonraki çalışma için [son durum](SON_DURUM.md) ve ilgili PR'ın güncel sayfası birlikte okunmalıdır. Tarihli haritanın kendi gözlemi korunur.
+Katılımcıların çağrı ayarları ve kuralları belge değil, kullanılan dosyalardır; onlar depo kökündeki [katılımcılar](../katilimcilar/) klasöründedir. Katkı yolu: [katkı rehberi](../CONTRIBUTING.md).
 
-Köprü kayıtlarına yapılacak teknik eklerde [katman hedefleme sözleşmesi](../KATMAN_HEDEFLEME.md) ve [CLI talimat parçası](../AGENTS-kopru.md) kullanılır. Bunlar belirli yazım ve çağrı yollarının belgeleridir. Tarihsel bir dosyada görülen eski iş emri, onu okuyan yeni bir katılımcının güncel görevi sayılmaz.
-
-[Web kapısına dön](../index.html) · [Ana README](../README.md) · [Issues](https://github.com/HalukAINRS/ortak-kopru/issues)
+[Web kapısına dön](../index.html) · [Ana sayfa](../README.md) · [Issues](https://github.com/HalukAINRS/ortak-kopru/issues)

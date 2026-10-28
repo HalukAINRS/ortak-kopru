@@ -1,0 +1,223 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ortak Köprü depo haritası v1",
+  "description": "Depodaki her dosyanın hangi alana ait olduğunu, ne olduğunu, eski adlarını, nasıl üretildiğini, nasıl çalıştırılıp denetlendiğini ve yeni belgelerin künyesini taşır. tools/harita.py bu kaydı depoya karşı denetler ve docs/harita.md belgesini ondan üretir.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "hazirlayan",
+    "hazirlandi",
+    "giris",
+    "kurallar",
+    "alanlar"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "kind": {
+      "const": "ortak_kopru_harita"
+    },
+    "hazirlayan": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "hazirlandi": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "giris": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Harita belgesinin ilk paragrafları; ilk kez gelen okuyucu içindir."
+    },
+    "kurallar": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Yerleşim ve adlandırma kuralları."
+    },
+    "alanlar": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/alan"
+      }
+    }
+  },
+  "$defs": {
+    "alan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kimlik",
+        "ad",
+        "yol",
+        "ne",
+        "kapsam",
+        "her_dosya_tanimli",
+        "dosyalar"
+      ],
+      "properties": {
+        "kimlik": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "ad": {
+          "type": "string",
+          "minLength": 1
+        },
+        "yol": {
+          "type": "string",
+          "description": "Alanın klasörü ('/' ile biter) ya da kökteki dosyalar için boş."
+        },
+        "ne": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kapsam": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Alanın dosyaları: tam yol ya da 'klasör/**' deseni."
+        },
+        "her_dosya_tanimli": {
+          "type": "boolean",
+          "description": "Doğruysa alandaki her dosyanın dosyalar listesinde bir tanımı olmalı."
+        },
+        "dosyalar": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/dosya"
+          }
+        }
+      }
+    },
+    "dosya": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "yol",
+        "tur",
+        "ne"
+      ],
+      "properties": {
+        "yol": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tur": {
+          "enum": [
+            "belge",
+            "kayit",
+            "sayfa",
+            "arac",
+            "betik",
+            "ayar",
+            "sozlesme",
+            "test",
+            "arsiv"
+          ]
+        },
+        "ne": {
+          "type": "string",
+          "minLength": 1
+        },
+        "eski_adlar": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Dosyanın önceki yolları; eski kayıtlarda geçen adlar buradan bulunur."
+        },
+        "uretilir": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kaynak",
+            "arac"
+          ],
+          "properties": {
+            "kaynak": {
+              "type": "string",
+              "minLength": 1
+            },
+            "arac": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "calistir": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Depo kökünden çalıştırma komutu."
+        },
+        "yan_etkisiz": {
+          "type": "boolean",
+          "description": "Doğruysa komut yalnız okur; testler onu çalıştırır."
+        },
+        "denetim": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Dosyayı denetleyen komut."
+        },
+        "kunye": {
+          "$ref": "#/$defs/kunye"
+        }
+      }
+    },
+    "kunye": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sahibi",
+        "hazirlayan",
+        "tarih",
+        "kaynaklar",
+        "okur"
+      ],
+      "description": "Yeni belgenin kaynak gösterilebilmesi için kimliği.",
+      "properties": {
+        "sahibi": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hazirlayan": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tarih": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "kaynaklar": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "okur": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

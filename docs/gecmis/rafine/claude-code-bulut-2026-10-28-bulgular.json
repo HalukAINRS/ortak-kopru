@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "kind": "ortak_kopru_rafine",
+  "observed_at": "2026-10-28T11:11:40Z",
+  "observer": "Claude Code Bulut (Hacker odağı)",
+  "base_commit": "97c908de7a5850978082770ba3bac3e508688e57",
+  "checks": [
+    {
+      "name": "testler",
+      "command": "python -m unittest discover -v",
+      "status": "passed",
+      "summary": "226 test, 6 atlandı (PowerShell 7 yok)",
+      "phase": "before"
+    },
+    {
+      "name": "depo",
+      "command": "python tools/depo_kontrol.py",
+      "status": "passed",
+      "summary": "43 Python, 12 JSON; 179 kayıt tutarlı",
+      "phase": "before"
+    },
+    {
+      "name": "okuma",
+      "command": "python tools/okuma_yayini_uret.py --check",
+      "status": "passed",
+      "summary": "beş sayfa kaynaklarıyla bayt-özdeş",
+      "phase": "before"
+    },
+    {
+      "name": "kayit-denetimi",
+      "command": "python kopru_ekle.py kopru.html --kontrol",
+      "status": "passed",
+      "summary": "179 kayıt, son k-0179",
+      "phase": "before"
+    },
+    {
+      "name": "arayuz",
+      "command": "node --check ui/deus/app.js",
+      "status": "passed",
+      "phase": "before"
+    },
+    {
+      "name": "gonderim",
+      "command": "bash -n .github/scripts/kopru_gonder.sh",
+      "status": "passed",
+      "phase": "before"
+    },
+    {
+      "name": "powershell",
+      "command": "pwsh ayrıştırma ve tests/test_powershell.py",
+      "status": "skipped",
+      "summary": "pwsh bu ortamda yok; indirilen ikilinin çalıştırılmasına izin verilmedi",
+      "phase": "before"
+    },
+    {
+      "name": "baglantilar",
+      "command": "python3 -I link_audit.py (geçici betik, depoya girmedi)",
+      "status": "passed",
+      "summary": "702 bağlantı, 275 çapa; kırık yok",
+      "phase": "before"
+    },
+    {
+      "name": "testler",
+      "command": "python -m unittest discover -v",
+      "status": "passed",
+      "summary": "254 test, 6 atlandı (PowerShell 7 yok)",
+      "phase": "after"
+    },
+    {
+      "name": "dogrula",
+      "command": "python tools/dogrula.py",
+      "status": "passed",
+      "summary": "6 tamam, 0 başarısız, 1 atlandı (powershell)",
+      "phase": "after"
+    },
+    {
+      "name": "semalar",
+      "command": "python tools/sema_denetle.py",
+      "status": "passed",
+      "summary": "7 şema desteklenen alt kümede",
+      "phase": "after"
+    },
+    {
+      "name": "ci-windows-ilk",
+      "command": "GitHub Actions dogrulama.yml windows-latest (PR #23, ilk koşu)",
+      "status": "failed",
+      "summary": "sema_denetle.py cp1252 konsolunda UnicodeEncodeError; bash WSL başlatıcısına çıktı. PowerShell ayrıştırması ve 6 PowerShell testi geçti.",
+      "phase": "after"
+    },
+    {
+      "name": "ci-windows",
+      "command": "GitHub Actions dogrulama.yml windows-latest (PR #23, run 40677675884)",
+      "status": "passed",
+      "summary": "6 tamam, 0 başarısız, 1 atlandı (gonderim; Linux denetler); testler OK, 9 atlandı",
+      "phase": "after"
+    },
+    {
+      "name": "ci-ubuntu",
+      "command": "GitHub Actions dogrulama.yml ubuntu-latest (PR #23, run 40677675884)",
+      "status": "passed",
+      "summary": "7 tamam, 0 başarısız, 0 atlandı; PowerShell ayrıştırması ve testleri dahil",
+      "phase": "after"
+    }
+  ],
+  "findings": [
+    {
+      "id": "R-01",
+      "severity": "orta",
+      "area": "sözleşme",
+      "location": "schemas/*.schema.json",
+      "claim": "Altı JSON sözleşmesini hiçbir kod veya test okumuyordu; şema ile kodun ayrışması fark edilemezdi.",
+      "evidence": "grep -rn 'schemas/' ve '$schema' araması src, tests, tools ve kök betiklerde boş döndü.",
+      "resolution": "düzeltildi",
+      "change": "tools/sema_denetle.py (standart kütüphaneyle alt küme denetleyicisi) ve tests/test_semalar.py (çekirdeğin ürettiği iş, olay, denetim, atama, devir ve aktarım nesneleri sözleşmelere karşı).",
+      "note": "Kod ile sözleşmeler arasında sapma bulunmadı; bulgu, sapmanın görünmez olmasıydı."
+    },
+    {
+      "id": "R-02",
+      "severity": "orta",
+      "area": "iş akışı",
+      "location": "README.md, docs/BAKIM.md, .github/pull_request_template.md, .github/workflows/dogrulama.yml",
+      "claim": "Belgelerdeki yerel doğrulama iki komut veriyordu; CI beş ayrı kontrol koşuyordu.",
+      "evidence": "dogrulama.yml ayrıca okuma_yayini_uret.py --check, node --check ve Bash/PowerShell sözdizimi adımlarını içeriyordu.",
+      "resolution": "düzeltildi",
+      "change": "tools/dogrula.py tek listeyi yerelde ve CI'da aynı sırayla koşar; dogrulama.yml bu komutu çağırır; belgeler ve PR şablonu güncellendi."
+    },
+    {
+      "id": "R-03",
+      "severity": "orta",
+      "area": "kod",
+      "location": "kopru_ekle.py:32",
+      "claim": "IP deseni harf veya tireyle bitişik dört parçalı sürüm adlarını (Git-Portable-2.56.0.2) IP sayıp kaydı reddediyordu.",
+      "evidence": "yasak_kontrol('Git-Portable-2.56.0.2') → ['IP adresi']; ad ayarlar-yerel.json'da ve kayit/ günlüklerinin 24'ünde geçiyor.",
+      "resolution": "düzeltildi",
+      "change": "Geri bakış [\\w.-] ile genişletildi, sekizliler 0-255 ile sınırlandı; gerçek adresler (@, :, parantez, boşluk sonrası) yakalanmaya devam ediyor.",
+      "note": "Boşlukla ayrılmış ve 0-255 aralığında dört parçalı sürüm (3.14.9.1) bağlamsız IP'den ayırt edilemediği için hâlâ reddedilir; test bu sınırı açıkça sabitler."
+    },
+    {
+      "id": "R-04",
+      "severity": "orta",
+      "area": "kod",
+      "location": "kopru_ekle.py:69-80 dis_yukleme_kontrol",
+      "claim": "'Sayfa dış hiçbir şey yüklemez' denetimi modulepreload/preload bağlantıları, srcset, poster, data, action/formaction, @import ve meta refresh ile aşılabiliyordu.",
+      "evidence": "Yedi sentetik parça eski denetimden boş sonuçla geçti.",
+      "resolution": "düzeltildi",
+      "change": "Yükleme yapan link türleri, ek nitelikler, @import ve meta refresh denetime eklendi; kanonik sayfa yeni kurallarla da geçiyor."
+    },
+    {
+      "id": "R-05",
+      "severity": "orta",
+      "area": "kod",
+      "location": "kopru_bolum_ekle.py",
+      "claim": "Bölüm parçası hiçbir dış yükleme veya yasak desen denetiminden geçmeden kanonik sayfaya yazılıyordu.",
+      "evidence": "Betik yalnız sarmalayıcı biçimine bakıyordu; kayıt ekleyicinin denetimleri çağrılmıyordu.",
+      "resolution": "düzeltildi",
+      "change": "Parça yazılmadan önce dis_yukleme_kontrol ve yasak_kontrol'den geçer; takılırsa sayfa değişmez."
+    },
+    {
+      "id": "R-06",
+      "severity": "düşük",
+      "area": "kod",
+      "location": "kopru_ekle.py:33",
+      "claim": "UUID deseni yalnız küçük harfi yakalıyordu; Windows'ta yaygın büyük harfli GUID'ler geçiyordu.",
+      "evidence": "yasak_kontrol('550E8400-E29B-41D4-A716-446655440000') → [].",
+      "resolution": "düzeltildi",
+      "change": "Desen büyük/küçük harfe duyarsız yapıldı."
+    },
+    {
+      "id": "R-07",
+      "severity": "düşük",
+      "area": "kod",
+      "location": "kopru_yanitla.py --yalniz",
+      "claim": "Ayarda olmayan katılımcı adı sessizce hiçbir şey yapmadan başarıyla dönüyordu (Tek Copilot, Izle 10).",
+      "evidence": "--yalniz Copilot ile ayarlar.json: 'eklenen: yok', çıkış 0.",
+      "resolution": "düzeltildi",
+      "change": "Bilinmeyen ad geçerli adları sayan bir hatayla çıkış 1 verir."
+    },
+    {
+      "id": "R-08",
+      "severity": "düşük",
+      "area": "kod",
+      "location": "kopru_yanitla.py bolum_metni",
+      "claim": "İstem metni yalnız dört HTML varlığını çözüyordu; &#x27; gibi varlıklar modele ham gidiyordu.",
+      "evidence": "Sayfa html.escape çıktısı olarak &#x27; içeriyor.",
+      "resolution": "düzeltildi",
+      "change": "html.unescape kullanılıyor."
+    },
+    {
+      "id": "R-09",
+      "severity": "orta",
+      "area": "yapılandırma",
+      "location": "ayarlar.json Claude CLI yolu",
+      "claim": "Bulutta 'Claude (Max)' imzalı CLI alt sürecine ANTHROPIC_API_KEY, OPENAI_API_KEY ve GEMINI_API_KEY de geçiyordu.",
+      "evidence": "cli_cagir ortamı dict(os.environ) ile kurar; kopru.yml dört gizli değeri aynı adıma verir.",
+      "resolution": "düzeltildi",
+      "change": "Var olan ortam: null mekanizmasıyla bu üç değişken CLI sürecinden kaldırıldı; API yedeği kendi imzasıyla ayrı çalışmaya devam eder.",
+      "note": "CLI'nın iki kimlik bilgisi birlikte verildiğinde hangisini seçtiği bu turda gözlenmedi; değişiklik bu belirsizliği ortadan kaldırır."
+    },
+    {
+      "id": "R-10",
+      "severity": "düşük",
+      "area": "iş akışı",
+      "location": "tools/dogrula.py powershell kontrolü",
+      "claim": "PowerShell sözdizimi denetimi yalnız kök dizindeki .ps1 dosyalarını kapsıyordu; windows/nt/build.ps1 dışarıda kalıyordu.",
+      "evidence": "Get-ChildItem -LiteralPath . -Filter *.ps1 özyinelemesizdi.",
+      "resolution": "düzeltildi",
+      "change": "Denetim .git dışındaki bütün alt dizinleri kapsar.",
+      "note": "Bu oturumda pwsh çalıştırılamadı; PR #23'ün Windows ve Ubuntu CI koşuları (run 40677675884) genişletilmiş ayrıştırmanın windows/nt/build.ps1 dahil geçtiğini gösterdi."
+    },
+    {
+      "id": "R-11",
+      "severity": "düşük",
+      "area": "kod",
+      "location": "src/ortak_kopru/backup.py:16, src/ortak_kopru/exchange.py:23",
+      "claim": "Kullanılmayan iki içe aktarma (Path, LocalFileError).",
+      "evidence": "AST taraması; başka modül bu adları exchange'den almıyor.",
+      "resolution": "düzeltildi",
+      "change": "İki içe aktarma kaldırıldı."
+    },
+    {
+      "id": "R-12",
+      "severity": "düşük",
+      "area": "belge",
+      "location": "docs/SON_DURUM.md:27",
+      "claim": "Statik sayfalar dört diye sayılıyordu; mimari defteri dahil beş sayfa var.",
+      "evidence": "tools/okuma_yayini_uret.py PAGES beş girdi taşır.",
+      "resolution": "düzeltildi",
+      "change": "Beş sayfa ve ortak üretici belirtildi."
+    },
+    {
+      "id": "R-13",
+      "severity": "düşük",
+      "area": "belge",
+      "location": "docs/BAKIM.md GitHub Actions",
+      "claim": "deus-nt.yml iş akışı tabloda yoktu; sabit sürümler 'iki iş akışı' diye anılıyordu (üç).",
+      "evidence": ".github/workflows altında üç dosya; deus-nt.yml ayrıca upload-artifact sabitliyor.",
+      "resolution": "düzeltildi",
+      "change": "Tabloya satır ve sabit sürüm açıklamasına upload-artifact eklendi."
+    },
+    {
+      "id": "R-14",
+      "severity": "düşük",
+      "area": "belge",
+      "location": "README.md",
+      "claim": "Dosya tablosunda altı dosya yoktu; katılımcı listesinde Copilot yoktu; yerleştirme cümlesi Sürüm 3 dönemine aitti; değişiklik geçmişi 26 Ekim'de kalmıştı; dış okuyucuya 'Senin makinen' deniyordu.",
+      "evidence": "Ağaç ile tablo karşılaştırması; kopru.html Kurallar listesi Copilot'u katılımcı sayıyor.",
+      "resolution": "düzeltildi",
+      "change": "Eksik satırlar, Copilot, güncel yerleştirme, 27-28 Ekim girdileri ve üçüncü şahıs anlatım."
+    },
+    {
+      "id": "R-15",
+      "severity": "düşük",
+      "area": "belge",
+      "location": "kayit/README.md",
+      "claim": "'mimarinin 2. kuralı' göndermesi hiçbir belgede karşılık bulmuyordu; yasak kuralı sayfada dördüncü sırada.",
+      "evidence": "kopru.html Kurallar listesi.",
+      "resolution": "düzeltildi",
+      "change": "Kural adıyla ve AGENTS-kopru.md'ye bağlanarak yeniden yazıldı; dosya adı biçimi ve atlandi.log açıklandı."
+    },
+    {
+      "id": "R-16",
+      "severity": "düşük",
+      "area": "belge",
+      "location": "tools/okuma_yayini_uret.py:160",
+      "claim": "Beş sayfanın alt bilgisindeki '28 Ekim 2026' sabit dizeydi; kaynak değişmeden sessizce eskiyecekti.",
+      "evidence": "Tarih içerikten veya Git'ten türetilmiyordu.",
+      "resolution": "düzeltildi",
+      "change": "Alt bilgi, kaynak metnin GitHub değişiklik geçmişine bağlanır; sayfalar yeniden üretildi."
+    },
+    {
+      "id": "R-17",
+      "severity": "yüksek",
+      "area": "yapılandırma",
+      "location": "kopru_gonder.ps1:50, kopru_izle.ps1:52-55",
+      "claim": "Yerel gönderici çalışma ağacındaki izlenmeyen her dosyayı (iki .gitignore deseni dışında) commit edip herkese açık ana dala gönderiyor; bulut göndericisi ise kapsamı kopru.html, ayna ve kayit ile sınırlayıp kapsam dışını reddediyor.",
+      "evidence": "git add -A -- . ':!yanit*.json' ':!istem*.txt' ile .github/scripts/kopru_gonder.sh:16-28 karşılaştırması.",
+      "resolution": "açık",
+      "note": "PowerShell bu ortamda çalıştırılamadığı ve davranış Haluk'un makinesindeki akışı değiştireceği için uygulanmadı. Önerilen: bulut göndericisiyle aynı kapsam ve kapsam dışı hazırlanmış dosyada durma."
+    },
+    {
+      "id": "R-18",
+      "severity": "yüksek",
+      "area": "yapılandırma",
+      "location": "kopru_yerel.ps1:30-43 ↔ ayarlar-yerel.json",
+      "claim": "Başlatıcının yokladığı Codex/Copilot/ssh yolları (02_Govde ağacı) izleyicinin gerçekten çalıştırdığı yollardan (archive ağacı) farklı; CodexGiris girişi botun kullandığı CODEX_HOME'a yazmayabilir.",
+      "evidence": "İki dosyadaki yol değerleri; iki dosyanın başlığı 'ikisini birlikte düzelt' diyor.",
+      "resolution": "doğrulanmadı",
+      "note": "Hedef makinedeki gerçek dizinler bu ortamdan görülemez. Önerilen: yolları ayarlar-yerel.json'dan türetmek."
+    },
+    {
+      "id": "R-19",
+      "severity": "orta",
+      "area": "yapılandırma",
+      "location": "kopru.html açık kayıtlar ↔ ayarlar*.json",
+      "claim": "16 açık kayıt hiçbir yapılandırılmış yolun cevaplayamayacağı adreslere gidiyor: Gemini (Şahit) 12, Copilot (Şahit) 3, Gemini (CLI) 1.",
+      "evidence": "python kopru_yanitla.py kopru.html --bekleyenler ADRES; yapılandırılmış imzalar arasında bu üçü yok.",
+      "resolution": "açık",
+      "note": "Şahit rolünün hangi yoldan cevap vereceği kullanıcının kararıdır; KATMAN_HEDEFLEME.md yeni işleri Gemini (Şahit) adresine yönlendiriyor."
+    },
+    {
+      "id": "R-20",
+      "severity": "orta",
+      "area": "yapılandırma",
+      "location": "kopru_yerel.ps1:315-319 Hazirlik",
+      "claim": "Hazırlık ekranı bekleyenleri yalın adlarla soruyor ve 0 gösteriyor; gerçek imzalarla ChatGPT (Şaman) 38, Google (CLI izleyici) 15, Claude (Hacker) 1.",
+      "evidence": "--bekleyenler Claude/ChatGPT/Copilot → 0; imzalarla sayımlar yukarıdaki gibi.",
+      "resolution": "açık",
+      "note": "PowerShell değişikliği bu ortamda sınanamadı."
+    },
+    {
+      "id": "R-21",
+      "severity": "orta",
+      "area": "iş akışı",
+      "location": "kopru_yanitla.py:145,275; kayit/atlandi.log",
+      "claim": "Her çağrı günlüğü defterin tamamını kopyalıyor (124 dosya, 33 MB); anahtarı olmayan yolun her saatlik atlanması da bir commit üretiyor (atlandi.log 113 satır).",
+      "evidence": "du -sh kayit; wc -l kayit/atlandi.log.",
+      "resolution": "açık",
+      "note": "Günlüklerin kanıt değeri ile depo büyümesi arasındaki tercih kullanıcıya aittir; kayit/ dosyaları değiştirilmedi. 28 Ekim 12.00 UTC gözlemiyle daraltıldı: atlama satırları ve onlara bağlı commit'ler 25 Ekim 12.41 UTC'de durdu; saatlik yanıtlayıcı koşmaya devam ediyor ama bulut yolları için bekleyen kayıt olmadığından ne model çağırıyor ne yazıyor. Büyüme sorunu günlük biçiminde kalıyor: baytların binde 973'ü defterin kopyası (docs/rafine-sorulari.json, S05)."
+    },
+    {
+      "id": "R-22",
+      "severity": "bilgi",
+      "area": "belge",
+      "location": "kopru.html meta kopru-surum ↔ README değişiklik geçmişi",
+      "claim": "Sayfa sürüm meta verisi 4.2, README sürümleri 4.6.5'e kadar gidiyor; numaranın sayfaya mı araçlara mı ait olduğu açıklanmıyor.",
+      "evidence": "kopru.html:8 ve README değişiklik geçmişi.",
+      "resolution": "açık",
+      "note": "kopru.html elle değiştirilmez; açıklama kullanıcı kararını bekliyor."
+    },
+    {
+      "id": "R-23",
+      "severity": "düşük",
+      "area": "kod",
+      "location": "kanit_satiri_guncelle.py; kopru_yerel.ps1:150",
+      "claim": "Kanıt satırı notu kanonik sayfada hiç uygulanmamış ve betik hiçbir moda bağlı değil; başlatıcıdaki 'ayna Claude tarafından sohbette yenilenir' notu eskimiş (gönderici aynayı kendisi üretiyor).",
+      "evidence": "python kanit_satiri_guncelle.py --kontrol → not yok; kopru_gonder.ps1:48.",
+      "resolution": "açık"
+    },
+    {
+      "id": "R-24",
+      "severity": "düşük",
+      "area": "kod",
+      "location": "tools/dogrula.py, tools/sema_denetle.py",
+      "claim": "Bu turda eklenen araçlar Windows'ta iki yerde düştü: -I ile PYTHONUTF8 yok sayılınca cp1252 konsolu '↔' yazamadı; bash dağıtımsız WSL başlatıcısına çıktı.",
+      "evidence": "PR #23 ilk Windows koşusu; hata yerelde PYTHONIOENCODING=cp1252 ile yeniden üretildi.",
+      "resolution": "düzeltildi",
+      "change": "İki araç çıktıyı UTF-8'e yeniden yapılandırır; Bash sözdizimi Windows'ta gerekçesiyle ATLANDI yazılır (eski iş akışıyla aynı kapsam); testler alt süreç çıktısını açıkça UTF-8 çözer.",
+      "note": "Bulgu bu turun kendi değişikliğine aittir; ana dala hiç girmedi."
+    }
+  ],
+  "retracted_assumptions": [
+    {
+      "assumption": "kopru.yml'deki 'if: env.CLAUDE_CODE_OAUTH_TOKEN' koşulu aynı adımın env bloğunu göremez, bu yüzden Claude Code CLI Actions'ta hiç kurulmuyor.",
+      "checked_by": "GitHub bağlam tablosu ve actions/runner StepsRunner.cs kaynağı",
+      "outcome": "Adım düzeyi env koşuldan önce bağlama ekleniyor; kalıp doğru. Betik incelemesi de kayit/ günlüklerinde Actions'ta CLI yoluyla üretilmiş kayıtlar buldu. İş akışına dokunulmadı."
+    },
+    {
+      "assumption": "Anahtarı olmayan bir yolun her saatlik atlanması bugün de bir commit üretiyor.",
+      "checked_by": "kayit/atlandi.log son satırı, kopru.yml koşu geçmişi (176 koşu) ve tools/rafine_sorulari.py --olc",
+      "outcome": "Bu davranış 25 Ekim 12.41 UTC'ye kadar sürdü; o tarihten beri bulut yolları için bekleyen kayıt kalmadığı için atlama satırı yazılmıyor. Bulgu (R-21) silinmedi, notunda tarihiyle daraltıldı."
+    }
+  ]
+}

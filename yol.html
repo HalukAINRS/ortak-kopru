@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Ortak Köprü: Web ile yerel bilgisayar arasında bir kapı, dışarıdaki bireyler ile yerel kullanıcı arasında bir köprü.">
+<title>Açılıştan gerçeğe: yol · Ortak Köprü</title>
+<link rel="stylesheet" href="okuma.css">
+</head>
+<body>
+<a class="skip" href="#icerik">İçeriğe geç</a>
+<header class="site-header"><a class="brand" href="index.html">Ortak Köprü</a><nav class="site-nav" aria-label="Ana gezinme"><a href="index.html">Başlangıç</a><a href="acilis.html">Açılış</a><a href="yol.html" aria-current="page">Yol</a><a href="mimari.html">Mimari defteri</a><a href="not-defteri.html">Not defteri</a><a href="durum.html">Son durum</a><a href="kaynaklar.html">Kaynaklar</a><a href="https://github.com/HalukAINRS/ortak-kopru/issues">Katkı</a></nav></header>
+<div class="page-shell">
+<main id="icerik"><div class="eyebrow">Kapı · Köprü · Karşılık</div>
+<h1 id="açılıştan-gerçeğe-yol">Açılıştan gerçeğe: yol</h1>
+<p>Açılış, Ortak Köprü&#x27;nün ne olmak istediğini söylüyor. Bu sayfa, oraya nasıl varılacağını adım adım gösteriyor. Her adım için neyin değişeceği, neden gerektiği, ne zaman atılabileceği ve bitince sizin için neyin değişeceği yazılı.</p>
+<p>Bu yol kendini denetler. Her adımın ölçütü var ve ölçütler her değişiklikte yeniden sınanıyor. Bir adım bitince bu sayfa da, açılıştaki durum yazısı da değişmek zorunda. Ölçütler ve dosyalar <a href="https://github.com/HalukAINRS/ortak-kopru/blob/main/docs/teknik/yol-teknik.md">yolun teknik ekinde</a>, bu yolun nasıl ortaya çıktığı <a href="https://github.com/HalukAINRS/ortak-kopru/blob/main/docs/gecmis/README.md">geçmiş işler</a> bölümünde duruyor.</p>
+<h2 id="bugün-nerede-duruyoruz">Bugün nerede duruyoruz</h2>
+<p>Bugün altı ilkenin ikisi tam olarak işliyor, dördü kısmen işliyor. Yolun yedi adımından biri tamam, beşi açık, biri ufukta. Şu an atılabilecek adım: Katkı kalıbı. Kararı bekleyen adım: Gönderici yalnız seçileni gönderir. Öteki açık adımlar bir ön koşulun bitmesini bekliyor.</p>
+<p>Aşağıdaki gösterge her ilkeye bağlı adımları sayar. Dolu kare biten, boş kare açık, eşkenar dörtgen ufuktaki adımı gösterir.</p>
+<p><strong>İlkelerin göstergesi</strong> · mühendis çizimi</p>
+<pre tabindex="0"><code>  ilke                                adımlar   açılışta
+  ──────────────────────────────────  ────────  ────────────────
+  1 Karşılıklılık                     □□◇       kısmen işliyor
+  2 Yerel merkez                      □□        kısmen işliyor
+  3 Köken ve sahiplik                 ■         işliyor
+  4 Sınır                             □         kısmen işliyor
+  5 Açık katılım                      □□        kısmen işliyor
+  6 Doğrulanabilirlik ve geri dönüş   ■         işliyor
+</code></pre>
+<h2 id="varılacak-yer">Varılacak yer</h2>
+<p>Yolun sonunda Ortak Köprü, açılışta söylediği şey olur. Yerel kullanıcı neyi paylaşacağını seçer ve seçtiği şey kaynağıyla dışarı çıkar. Dışarıdaki biri bir paragrafı okur, aklına takılanı o paragrafın yanına yazar. Yazdığı şey yerel kullanıcının önüne düşer, karşılığı aynı yoldan geri döner. Her adım kayda geçer ve hiçbir şey olduğundan fazla gösterilmez.</p>
+<p>Aşağıdaki resim bunu bir manzara gibi gösteriyor. Solda yerel kullanıcının çalışma yeri ve kapısı var. Ortada iki yöne taşıyan köprü, sağda dışarıdaki insanlar duruyor. Aşağıdan kapıya uzanan kesik çizgi, bugünden oraya giden yol.</p>
+<p><strong>Varılacak yer</strong> · ressam çizimi</p>
+<pre tabindex="0"><code>                \   |   /
+              ─   .───.   ─        varılacak yer
+   ____________  (     )  ______________________________
+               \__`───&#x27;__/
+  ┌─────────┐                                o    o
+  │ yerel   │    ╔═════════════════════╗    /|\  /|\
+  │ çalışma ├════╣ ← soru, katkı       ╠════ / \  / \
+  │  ┌──┐   │    ║        yanıt, kayıt →║   dışarıdaki
+  └──┤░░├───┘    ╚═════════════════════╝   insanlar
+     └┬─┘ kapı ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      :
+      :  yol: altı adım
+      :
+      x  bugün buradayız
+</code></pre>
+<h2 id="yapının-planı">Yapının planı</h2>
+<p>Aşağıdaki plan, Ortak Köprü&#x27;yü üstten görülen bir yapı gibi gösterir. Solda yerel kullanıcının odası, sağda dış avlu var. Aradaki duvarda tek bir kapı bulunuyor. Oklar neyin hangi yönde geçtiğini, parantez içindeki sayılar o geçişi koruyan ilkeyi gösteriyor.</p>
+<p>Plan bugün yarı yarıya gerçek. Seçilen dosyaların dışarı çıkışı ve kaynakların sürümüyle içeri girişi çalışıyor. Soruların gelen kutusuna inmesi ve yanıtın aynı yoldan dönmesi henüz yok. Yol, eksik okları tek tek çiziyor.</p>
+<p><strong>Yapının planı</strong> · mimar çizimi</p>
+<pre tabindex="0"><code>  PLAN · üstten görünüş                     ölçek: yok
+  ┌────────────────────────────┬──────┬──────────────────────┐
+  │ YEREL ODA                  │      │ DIŞ AVLU · Web       │
+  │                            │      │                      │
+  │ [çalışma]─▶[seçilen]────────────────▶[yayın]        (3)  │
+  │              (2)           │  K   │                      │
+  │ [gelen kutusu]◀──────────────────────[kaynak]       (3)  │
+  │      │ (1)                 │  A   │                      │
+  │      ▼                     │  P   │                      │
+  │ [yerel kullanıcı]◀───────────────────[soru, katkı]  (5)  │
+  │      └──────────────────────────────▶[yanıt]        (1)  │
+  │                            │  I   │                      │
+  │ duvar (4): gizli olan      │      │        [okur]        │
+  │ bu odadan çıkmaz           │      │                      │
+  └────────────────────────────┴──────┴──────────────────────┘
+   (6) her ok bir kayıt bırakır; hiçbir ok iz silmez
+</code></pre>
+<h2 id="adımlar">Adımlar</h2>
+<p>Yol yedi adımdan oluşuyor. Aşağıdaki ağaçta her adım, bitmesini beklediği adımın altında duruyor. Sağdaki işaret adımın bugünkü durumunu gösteriyor.</p>
+<p><strong>Yolun ağacı</strong> · mühendis çizimi</p>
+<pre tabindex="0"><code>  (0) Zemin                                         ■ tamam
+   ├─▶ (1) Gönderici yalnız seçileni gönderir       □ karar
+   └─▶ (2) Katkı kalıbı                             □ atılabilir
+       ├─▶ (3) Gelen kutusu                         □ ön koşul
+       │   └─▶ (4) Yanıt geri döner                 □ ön koşul
+       │       └─▶ (6) Kapı GitHub dışına açılır    ◇ ufukta
+       └─▶ (5) İlk dış katkı                        □ ön koşul
+</code></pre>
+<h3 id="0-zemin">0. Zemin</h3>
+<p><strong>Durum:</strong> Tamam.</p>
+<p><strong>Ne?</strong> Açılış yazıldı, depo alanlarına ayrıldı ve kendini denetleyen bir harita kuruldu.</p>
+<p><strong>Neden?</strong> Bir yerin gerçeğe dönüştüğünü görebilmek için önce neyin söz verildiğini ve neyin bugün işlediğini ayırmak gerekir.</p>
+<p><strong>Nerede?</strong> Deponun kendisinde: açılışta, haritada ve denetimlerde. Bu zemin bugün ayrı bir dalda; GitHub&#x27;daki ana depoya geçişi <a href="https://github.com/HalukAINRS/ortak-kopru/blob/main/docs/donusum.md">dönüşüm sayfasında</a> anlatılıyor.</p>
+<p><strong>Nereden nereye?</strong> İçeride kalır; dışarıya bir şey taşımaz.</p>
+<p><strong>Nasıl?</strong> Niyet, altı ilke ve her ilkenin bugünkü durumu bir kayda yazıldı. Sayfalar o kayıttan üretiliyor ve her değişiklikte yeniden sınanıyor.</p>
+<p><strong>Ne zaman?</strong> Bir ön koşulu yok.</p>
+<p><strong>Ne için?</strong> Bu adım şu ilkelere hizmet eder: 3. ilke (Köken ve sahiplik), 6. ilke (Doğrulanabilirlik ve geri dönüş).</p>
+<p><strong>Ne kadar?</strong> Orta büyüklükte bir iş.</p>
+<p><strong>Bitince:</strong> Okuduğunuz her durum yazısı bir denetime dayanıyor. Bir şey değişirse yazı da değişmek zorunda.</p>
+<h3 id="1-gönderici-yalnız-seçileni-gönderir">1. Gönderici yalnız seçileni gönderir</h3>
+<p><strong>Durum:</strong> Sahibinin kararını bekliyor; ön koşulu bitti.</p>
+<p><strong>Ne?</strong> Yerel bilgisayardaki eski paylaşım aracı, yalnız ortak defteri ve çağrı kayıtlarını gönderecek biçimde daraltılır.</p>
+<p><strong>Neden?</strong> Bu araç bugün çalışma klasöründe unutulmuş herhangi bir dosyayı da herkese açık yere gönderebiliyor. Bu, yerel kullanıcının seçmediği bir şeyin dışarı çıkabilmesi demek.</p>
+<p><strong>Nerede?</strong> Yerel bilgisayardaki eski paylaşım aracında.</p>
+<p><strong>Nereden nereye?</strong> Yerel bilgisayardan Web&#x27;e giden çıkışta.</p>
+<p><strong>Nasıl?</strong> Araç, bulut tarafındaki eşi gibi yalnız belirli dosyaları hazırlar. Başka bir dosyayı paylaşmak isteyen kapıyı kullanır; kapı yalnız seçileni taşır.</p>
+<p><strong>Ne zaman?</strong> Ön koşulu bitti: Zemin. Ayrıca Haluk&#x27;un bir karar vermesi gerekiyor. Yerel gönderici, defter ve çağrı kayıtları dışındaki dosyaları göndermeyi bıraksın mı? Bırakırsa öteki dosyalar kapıdan, seçilerek gider.</p>
+<p><strong>Ne için?</strong> Bu adım şu ilkelere hizmet eder: 2. ilke (Yerel merkez), 4. ilke (Sınır).</p>
+<p><strong>Ne kadar?</strong> Küçük bir değişiklik.</p>
+<p><strong>Bitince:</strong> Dışarı çıkan her şey bir seçimden geçmiş olur. Yerel merkez ve sınır ilkeleri bu açıdan tam işler.</p>
+<h3 id="2-katkı-kalıbı">2. Katkı kalıbı</h3>
+<p><strong>Durum:</strong> Atılabilir: ön koşulu bitti ve bir karar beklemiyor.</p>
+<p><strong>Ne?</strong> Her yazının her bölümünün yanında bir karşılık bağlantısı olur. Bağlantı, hangi yazıya ve hangi bölüme karşılık verildiğini kendiliğinden yazan bir katkı kalıbı açar.</p>
+<p><strong>Neden?</strong> Bugün bir soru sormak mümkün, ama sorunun hangi yazıya ait olduğunu soranın kendisi anlatmak zorunda. Getirilen şeyin etkilediği yere bağlanması kişinin dikkatine kalıyor.</p>
+<p><strong>Nerede?</strong> Web&#x27;deki okuma sayfalarında ve GitHub&#x27;daki konu açma ekranında.</p>
+<p><strong>Nereden nereye?</strong> Okurdan, okuduğu yazının yanına.</p>
+<p><strong>Nasıl?</strong> GitHub&#x27;a bir katkı kalıbı eklenir: soru, kaynak ya da düzeltme seçilir, ilgili yerin adresi hazır gelir. Web sayfaları her bölüm için bu adresi taşıyan bağlantıyı üretir.</p>
+<p><strong>Ne zaman?</strong> Ön koşulu bitti: Zemin.</p>
+<p><strong>Ne için?</strong> Bu adım şu ilkeye hizmet eder: 5. ilke (Açık katılım).</p>
+<p><strong>Ne kadar?</strong> Küçük bir değişiklik.</p>
+<p><strong>Bitince:</strong> Bir paragrafı okurken aklınıza takılanı tek tıkla yazabilirsiniz. Yazdığınız şey o paragrafa bağlı olarak görünür.</p>
+<h3 id="3-gelen-kutusu">3. Gelen kutusu</h3>
+<p><strong>Durum:</strong> Ön koşulunun bitmesini bekliyor.</p>
+<p><strong>Ne?</strong> Dışarıdan gelen sorular ve katkılar, yerel kullanıcının bilgisayarındaki ayrı bir gelen kutusuna iner.</p>
+<p><strong>Neden?</strong> Bugün dışarıdaki birinin sorusu yerel kullanıcıya ancak GitHub&#x27;ın kendi bildirimleriyle ulaşıyor. Köprünün dış ucu açık, ama iç ucu kapıya bağlı değil.</p>
+<p><strong>Nerede?</strong> Kapıda ve yerel kullanıcının bilgisayarında.</p>
+<p><strong>Nereden nereye?</strong> Web&#x27;den yerel bilgisayara.</p>
+<p><strong>Nasıl?</strong> Kapıya yeni bir iş eklenir. Açık konuları okur ve her birini kimin, ne zaman yazdığıyla ve hangi yazıya bağlı olduğuyla gelen kutusuna koyar. Gelen kutusu yerel çalışmaya kendiliğinden karışmaz; yerel kullanıcı önce bakar.</p>
+<p><strong>Ne zaman?</strong> Önce şu adımın bitmesi gerekiyor: Katkı kalıbı. Ayrıca Haluk&#x27;un bir karar vermesi gerekiyor. GitHub&#x27;a hangi yetkiyle bakılsın: yalnız herkese açık okumayla mı, kişisel bir anahtarla mı? Gelen kutusu bilgisayarda nerede dursun?</p>
+<p><strong>Ne için?</strong> Bu adım şu ilkelere hizmet eder: 1. ilke (Karşılıklılık), 2. ilke (Yerel merkez).</p>
+<p><strong>Ne kadar?</strong> Orta büyüklükte bir iş.</p>
+<p><strong>Bitince:</strong> Sorunuz bir bildirime takılıp kalmaz. Yerel kullanıcının önüne, kaynağıyla birlikte düşer.</p>
+<h3 id="4-yanıt-geri-döner">4. Yanıt geri döner</h3>
+<p><strong>Durum:</strong> Ön koşulunun bitmesini bekliyor.</p>
+<p><strong>Ne?</strong> Yerel kullanıcının gelen kutusundaki bir şeye verdiği karşılık, kapıdan geçerek soranın yanına döner.</p>
+<p><strong>Neden?</strong> Karşılıklılık yalnız gelmekle tamamlanmaz. Yanıtın da aynı yoldan, kaydıyla birlikte geri dönmesi gerekir.</p>
+<p><strong>Nerede?</strong> Kapıda ve GitHub&#x27;daki konunun altında.</p>
+<p><strong>Nereden nereye?</strong> Yerel bilgisayardan Web&#x27;e, soranın yanına.</p>
+<p><strong>Nasıl?</strong> Kapıya bir iş daha eklenir. Yerel kullanıcının seçtiği yanıtı ilgili konuya yazar ve bunu ayrı bir olay olarak kaydeder. Yanıt yazılmadan gönderilmiş sayılmaz.</p>
+<p><strong>Ne zaman?</strong> Önce şu adımın bitmesi gerekiyor: Gelen kutusu. Ayrıca Haluk&#x27;un bir karar vermesi gerekiyor. Yanıtlar GitHub&#x27;a hangi hesapla yazılsın?</p>
+<p><strong>Ne için?</strong> Bu adım şu ilkeye hizmet eder: 1. ilke (Karşılıklılık).</p>
+<p><strong>Ne kadar?</strong> Orta büyüklükte bir iş.</p>
+<p><strong>Bitince:</strong> Sorduğunuz şeyin karşılığını, sorduğunuz yerde görürsünüz. Karşılıklılık ilkesi tam işler.</p>
+<h3 id="5-ilk-dış-katkı">5. İlk dış katkı</h3>
+<p><strong>Durum:</strong> Ön koşulunun bitmesini bekliyor.</p>
+<p><strong>Ne?</strong> Haluk dışından biri bir soru, kaynak ya da düzeltme getirir ve bu katkı karşılık bulur.</p>
+<p><strong>Neden?</strong> Açık katılım ilkesi, yollar açık olduğu için değil, biri gerçekten geldiği için işler. Bugüne kadar dışarıdan kimse yazmadı.</p>
+<p><strong>Nerede?</strong> GitHub&#x27;da, herkese açık konular arasında.</p>
+<p><strong>Nereden nereye?</strong> Dışarıdaki birinden yerel kullanıcıya ve geri.</p>
+<p><strong>Nasıl?</strong> Bu adım bir yazılımla atılmaz. Katkı kalıbı hazır olduktan sonra ilk dış katkının adresi ve ona verilen yanıtın adresi kayda yazılır.</p>
+<p><strong>Ne zaman?</strong> Önce şu adımın bitmesi gerekiyor: Katkı kalıbı.</p>
+<p><strong>Ne için?</strong> Bu adım şu ilkeye hizmet eder: 5. ilke (Açık katılım).</p>
+<p><strong>Ne kadar?</strong> Küçük bir değişiklik.</p>
+<p><strong>Bitince:</strong> İlk katkı sizinki olabilir. O gün bu sayfadaki durum da değişir.</p>
+<h3 id="6-kapı-github-dışına-açılır">6. Kapı GitHub dışına açılır</h3>
+<p><strong>Durum:</strong> Ufukta; zorunlu değil.</p>
+<p><strong>Ne?</strong> Kapı, GitHub&#x27;ın yanında ikinci bir dış alana da açılır; örneğin bir dosya hizmetine.</p>
+<p><strong>Neden?</strong> Niyet, Web ile yerel bilgisayar arasında bir kapıdan söz ediyor. Bugün Web tarafında yalnız GitHub var.</p>
+<p><strong>Nerede?</strong> Kapıda ve yeni dış alanda.</p>
+<p><strong>Nereden nereye?</strong> Yerel bilgisayar ile ikinci bir dış alan arasında, iki yönde.</p>
+<p><strong>Nasıl?</strong> Kapının aktarım kuralları aynı kalır; yalnız yeni alan için bir bağlantı parçası eklenir. Seçim, kayıt ve sınırlar değişmez.</p>
+<p><strong>Ne zaman?</strong> Önce şu adımın bitmesi gerekiyor: Yanıt geri döner. Ayrıca Haluk&#x27;un bir karar vermesi gerekiyor. Kapı hangi dış alana açılsın: bir dosya hizmetine mi, başka bir siteye mi?</p>
+<p><strong>Ne için?</strong> Bu adım şu ilkeye hizmet eder: 1. ilke (Karşılıklılık).</p>
+<p><strong>Ne kadar?</strong> Büyük bir iş.</p>
+<p><strong>Bitince:</strong> Bu adım zorunlu değil. Altı ilke bu adım atılmadan da tam işleyebilir; bu adım ufuktadır.</p>
+<h2 id="bu-yol-nasıl-izlenir">Bu yol nasıl izlenir</h2>
+<p>Her adımın yanında bir durum yazar: tamam, atılabilir, karar bekliyor, ön koşul bekliyor, dışarıdan bekleniyor ya da ufukta. Bu durumlar elle yazılmaz; ölçütlerden hesaplanır. Bir adımın bütün ölçütleri karşılandığında adım tamam olur.</p>
+<p>Bir ilkeye bağlı bütün zorunlu adımlar bitince, açılışta o ilkenin durumu güncellenmek zorundadır. Güncellenmezse denetim kırılır. Tersine, bir ilke tam işliyor diye yazılmışsa ona bağlı açık bir adım kalamaz.</p>
+<h2 id="siz-ne-yapabilirsiniz">Siz ne yapabilirsiniz</h2>
+<p>Bu yolun en kısa adımı sizin elinizde. Açılışı ya da bu sayfayı okuyup bir soru sorar, bir kaynak ya da düzeltme getirirseniz dışarıdan gelen ilk katkı gerçekleşmiş olur. Bunun için <a href="https://github.com/HalukAINRS/ortak-kopru/issues/new">GitHub&#x27;da bir konu açın</a>; GitHub buna Issue der.</p>
+<p>Hangi yazıya ve hangi adıma karşılık verdiğinizi yazmanız yeter. Bir adımın nasıl atılacağına dair öneriniz varsa onu da yazabilirsiniz. Öneriler yerel kullanıcının kararına sunulur, kendiliğinden uygulanmaz.</p>
+<h2 id="birkaç-kelime">Birkaç kelime</h2>
+<p>Bu sayfada geçen birkaç kelime: <strong>İnternet ve Web:</strong> Bu sayfada ikisi aynı anlamda kullanılıyor: herkesin bir tarayıcıyla ulaşabildiği dış dünya. <strong>Yerel kullanıcı:</strong> Ortak Köprü&#x27;nün öbür ucundaki bilgisayarın sahibi. Bugün bu kişi Haluk. <strong>GitHub:</strong> Yazıların ve dosyaların herkese açık durduğu, insanların birlikte çalışmak için kullandığı bir internet sitesi. Ortak Köprü&#x27;nün dış yüzü orada. <strong>Depo:</strong> GitHub&#x27;da bir çalışmanın bütün dosyalarını ve geçmişini bir arada tutan yer. Ortak Köprü bir depodur. <strong>Issue:</strong> GitHub&#x27;da bir depoya soru, öneri ya da hata bildirimi yazmanın yolu. Okumak için hesap gerekmez; yazmak için ücretsiz bir GitHub hesabı yeter. <strong>Sürüm:</strong> Bir dosyanın belirli bir andaki hâli. Dosya sonradan değişse de alınan sürüm aynı kalır.</p>
+<div class="closing"><p>Bir soru, farklı yorum veya kaynakla katkı sunabilirsiniz. <a href="https://github.com/HalukAINRS/ortak-kopru/issues/new">GitHub'da konu açın</a> · <a href="https://github.com/HalukAINRS/ortak-kopru/blob/main/docs/yol.md">Bu metnin kaynağı ve sürümleri</a></p></div>
+</main>
+<aside aria-label="Bu sayfadaki bölümler"><h2>Bu sayfada</h2><ul class="contents"><li><a href="#bugün-nerede-duruyoruz">Bugün nerede duruyoruz</a></li><li><a href="#varılacak-yer">Varılacak yer</a></li><li><a href="#yapının-planı">Yapının planı</a></li><li><a href="#adımlar">Adımlar</a></li><li><a href="#bu-yol-nasıl-izlenir">Bu yol nasıl izlenir</a></li><li><a href="#siz-ne-yapabilirsiniz">Siz ne yapabilirsiniz</a></li><li><a href="#birkaç-kelime">Birkaç kelime</a></li></ul><div class="reader-note"><p>Bir paragrafı paylaşırken başlığını ve kaynak bağını da taşıyın.</p><p><a href="https://github.com/HalukAINRS/ortak-kopru/blob/main/CONTRIBUTING.md">Katkı rehberi</a></p></div></aside>
+</div>
+<footer class="site-footer"><span>Ortak Köprü · <a href="https://github.com/HalukAINRS/ortak-kopru/commits/main/docs/yol.md">bu metnin değişiklik geçmişi</a></span><span><a href="https://github.com/HalukAINRS/ortak-kopru">GitHub deposu</a> · <a href="kopru.html">Tarihsel köprü defteri</a></span></footer>
+</body>
+</html>

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rafine çalışması bulgu kaydı v1",
+  "description": "Bir rafine (gözden geçirme ve iyileştirme) turunda yapılan kontrolleri ve bulguları makinece okunur biçimde taşır. Kayıt, belirli bir sürümde belirli bir katılımcının gözlemidir; sonraki sürümler için geçerliliği yeniden denetlenir. Hiçbir alan, hedef bilgisayarda bir işin yürütüldüğünü veya başka katılımcıların kabulünü ifade etmez.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "observed_at", "observer", "base_commit", "checks", "findings"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "kind": {"const": "ortak_kopru_rafine"},
+    "observed_at": {"type": "string", "format": "date-time", "description": "Gözlemin UTC zamanı; kaydın yazıldığı an."},
+    "observer": {"type": "string", "minLength": 1, "maxLength": 200, "description": "Gözlemi yapan katılımcı ve odağı; kimlik kanıtı değil, imza beyanıdır."},
+    "base_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$", "description": "İncelenen ana dal ucu. Bulgular bu kesite aittir."},
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "command", "status"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "command": {"type": "string", "minLength": 1},
+          "status": {"enum": ["passed", "failed", "skipped"]},
+          "summary": {"type": "string"},
+          "phase": {"enum": ["before", "after"], "description": "Değişikliklerden önce mi sonra mı koşuldu."}
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "severity", "area", "location", "claim", "evidence", "resolution"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^R-[0-9]{2}$"},
+          "severity": {"enum": ["yüksek", "orta", "düşük", "bilgi"]},
+          "area": {"enum": ["kod", "test", "belge", "yapılandırma", "iş akışı", "sözleşme"]},
+          "location": {"type": "string", "minLength": 1, "description": "Dosya ve varsa satır; bulguya dönülebilecek adres."},
+          "claim": {"type": "string", "minLength": 1, "description": "Gözlenen sorun veya durum, tek cümle."},
+          "evidence": {"type": "string", "minLength": 1, "description": "Nasıl görüldü: komut, çıktı veya kaynak satırı."},
+          "resolution": {"enum": ["düzeltildi", "düzeltilmedi", "açık", "geri çekildi", "doğrulanmadı"]},
+          "change": {"type": "string", "description": "Uygulanan değişiklik; düzeltildi ise zorunlu olmasa da beklenir."},
+          "note": {"type": "string", "description": "Kapsam sınırı veya düzeltmeme gerekçesi."}
+        }
+      }
+    },
+    "retracted_assumptions": {
+      "type": "array",
+      "description": "Çalışma sırasında kurulan ve kanıtla geri çekilen varsayımlar; yanlışın izi silinmez.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["assumption", "checked_by", "outcome"],
+        "properties": {
+          "assumption": {"type": "string", "minLength": 1},
+          "checked_by": {"type": "string", "minLength": 1},
+          "outcome": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

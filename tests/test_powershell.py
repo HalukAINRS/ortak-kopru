@@ -36,15 +36,18 @@ class PowerShellSenderTests(unittest.TestCase):
         self.git(self.local, 'init', '--initial-branch=main')
         self.configure(self.local)
         self.git(self.local, 'remote', 'add', 'origin', str(self.remote))
-        for name in ('kopru_gonder.ps1', 'kopru_izle.ps1', 'kopru_birlestir.py',
-                     'kopru_ekle.py', 'kopru_oku.py', 'kopru_ayna_uret.py'):
+        # Depodaki yerleşim aynen kurulur: betikler yerel/, kayıt araçları defter/, ayarlar katilimcilar/ altında.
+        for name in ('yerel/kopru_gonder.ps1', 'yerel/kopru_izle.ps1', 'defter/kopru_birlestir.py',
+                     'defter/kopru_ekle.py', 'defter/kopru_oku.py', 'defter/kopru_ayna_uret.py'):
+            (self.local / name).parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(ROOT / name, self.local / name)
+        (self.local / 'katilimcilar').mkdir()
         (self.local / '.gitignore').write_text('__pycache__/\n*.pyc\n', encoding='utf-8')
         (self.local / 'kopru.html').write_text(CANONICAL, encoding='utf-8')
-        (self.local / 'ayarlar-yerel.json').write_text('{"katilimcilar": []}\n', encoding='utf-8')
+        (self.local / 'katilimcilar' / 'ayarlar-yerel.json').write_text('{"katilimcilar": []}\n', encoding='utf-8')
         (self.local / 'settings.txt').write_text('base\n', encoding='utf-8', newline='\n')
         # İzleyici sınamasındaki tek sağlayıcı, bir günlük yazıp başarısız çıkan yerel taklittir.
-        (self.local / 'kopru_yanitla.py').write_text(
+        (self.local / 'defter' / 'kopru_yanitla.py').write_text(
             'from pathlib import Path\n'
             'Path("kayit").mkdir(exist_ok=True)\n'
             'Path("kayit/response-error.md").write_text("synthetic failure\\n", encoding="utf-8", newline="\\n")\n'
@@ -73,12 +76,12 @@ class PowerShellSenderTests(unittest.TestCase):
         self.git(repo, 'config', 'user.email', 'test@example.invalid')
 
     def append(self, repo, topic, time):
-        self.run_command(repo, sys.executable, 'kopru_ekle.py', 'kopru.html', '--kimden', 'Sen',
+        self.run_command(repo, sys.executable, 'defter/kopru_ekle.py', 'kopru.html', '--kimden', 'Sen',
                          '--kime', 'Sen', '--konu', topic, '--govde', topic + ' synthetic body.',
                          '--dayanak', 'tests/test_powershell.py', '--durum', 'kapandi', '--zaman', time)
 
     def generate(self, repo):
-        self.run_command(repo, sys.executable, 'kopru_ayna_uret.py', 'kopru.html', 'ayna/kopru.html')
+        self.run_command(repo, sys.executable, 'defter/kopru_ayna_uret.py', 'kopru.html', 'ayna/kopru.html')
 
     def commit(self, repo, message):
         self.git(repo, 'add', '.')
@@ -96,7 +99,7 @@ class PowerShellSenderTests(unittest.TestCase):
     def remote_bytes(self, path):
         return subprocess.check_output(['git', 'show', 'main:' + path], cwd=self.remote, env=self.env)
 
-    def run_ps(self, script='kopru_gonder.ps1', *args):
+    def run_ps(self, script='yerel/kopru_gonder.ps1', *args):
         return self.run_command(self.local, PWSH, '-NoLogo', '-NoProfile', '-NonInteractive',
                                 '-ExecutionPolicy', 'Bypass', '-File', script, *args, check=False)
 
@@ -170,7 +173,7 @@ class PowerShellSenderTests(unittest.TestCase):
         self.assertEqual((self.local / '.git/rejection-count').read_text().splitlines(), ['attempt'] * 3)
 
     def test_watcher_publishes_error_log_and_returns_failure(self):
-        result = self.run_ps('kopru_izle.ps1', '-TekSefer')
+        result = self.run_ps('yerel/kopru_izle.ps1', '-TekSefer')
         self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertEqual(self.remote_bytes('kayit/response-error.md'), b'synthetic failure\n')
         self.assertIn('[skip ci]', self.git(self.remote, 'log', '-1', '--format=%s'))
@@ -178,7 +181,7 @@ class PowerShellSenderTests(unittest.TestCase):
 
     def test_watcher_does_not_call_provider_after_failed_fetch(self):
         self.git(self.local, 'remote', 'set-url', 'origin', str(self.root / 'missing.git'))
-        result = self.run_ps('kopru_izle.ps1', '-TekSefer')
+        result = self.run_ps('yerel/kopru_izle.ps1', '-TekSefer')
         self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertFalse((self.local / 'kayit/response-error.md').exists())
         self.assertEqual(self.remote_head(), self.initial)

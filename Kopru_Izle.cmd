@@ -8,6 +8,6 @@ if not exist "%PWSH%" set "PWSH=pwsh.exe"
 set "MOD=%~1"
 if "%MOD%"=="" set "MOD=Izle"
 title Ortak Kopru - %MOD%
-"%PWSH%" -NoLogo -NoProfile -ExecutionPolicy Bypass -File "%~dp0kopru_yerel.ps1" -Mod %MOD% %2 %3 %4
+"%PWSH%" -NoLogo -NoProfile -ExecutionPolicy Bypass -File "%~dp0yerel\kopru_yerel.ps1" -Mod %MOD% %2 %3 %4
 echo.
 pause
