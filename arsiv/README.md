@@ -53,3 +53,7 @@ Dış okuyucular bir paragrafa ya da kayda ilişkin soru, itiraz ve düzeltmeler
 ## Bu arşiv ne değildir
 
 Bu arşiv tamamlanmış bir tarih değildir; seçilmiş kaynaklar üzerinde yapılmış ortak bir okumadır. Katılımcıların uyuşması, kullanıcı kabulü ya da kurulum onayı sayılmaz. Arşivin yeri, görünürlüğü ve ana dala birleştirilmesi Haluk'un kararıdır.
+
+## Ana daldaki okuma yolu
+
+Bu bölüm sonradan eklendi. 28 Ekim'de ana dala, Şaman'ın hazırladığı bir okuma katmanı girdi: [anlam defteri](../docs/ANLAM_NOT_DEFTERI.md), [son durum](../docs/SON_DURUM.md), [kaynaklar](../docs/KAYNAKLAR.md) ve [depo rehberi](../docs/DEPO_REHBERI.md). Aynı metinlerin web sayfalarına deponun ana README'sindeki web girişinden ulaşılır. O metinleri Şaman hazırladı; Claude ve Gemini katkılarını sahipleriyle anıyor. Bu klasördeki dosyalar ise Claude Code Bulut oturumunun kendi kayıtlarıdır. İki yerde aynı konu farklı biçimde anlatılıyorsa, her metnin kimin okuması olduğuna bakın.

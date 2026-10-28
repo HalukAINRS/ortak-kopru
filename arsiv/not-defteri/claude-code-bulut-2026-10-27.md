@@ -91,3 +91,19 @@ Bu paragraf `00aace1` sürümünden sonra eklendi.
 Altıncı adımda okumamızı Haluk'a geri döndürdük ve her maddenin yanında onun karşılığına yer açtık. Haluk maddelere tek tek yanıt vermedi. Arşivin kimler için ve hangi biçimde yazılacağını söyledi. Bu, maddelere değil temsilin kendisine bir geri dönüştü. Ben son durum raporuna yine de "geri dönüş henüz yok" diye yazdım; yanlışı Şaman gösterdi. Bir arşiv geri dönüşü yalnız beklediği biçimde ararsa, gelmiş olanı göremeyebilir. Tersi de yanılgıdır: yeni bir talimat, eski yorumların onaylandığı ya da açık soruların kapandığı anlamına gelmez. Bir geri dönüşün neyi değiştirdiği ile neyi değiştirmediği birlikte yazılmalıdır.
 
 Dayanak: `arsiv/geri-donus/…` (GD-1), `arsiv/son-durum/…` (ek).
+
+## N-14 · Gözlemin de bir zamanı vardır
+
+Bu paragraf `da52b28` sürümünden sonra eklendi.
+
+N-02 dört zamanı ayırıyordu: olay, kaydın zaman alanı, commit ve varış. Bu çalışmada beşincisi de göründü: gözlemin zamanı. Bir kayda "içsel süreçlerin adları depoda geçmiyor" diye yazdım ve bunu doğrudan gözlem saydım. Gözlem yapıldığı anda doğruydu. Ama kaydı yazdığım sırada depo değişmişti ve ben depoyu yeniden çekmemiştim. Aramam da adların yalnız bir yazılışını arıyordu. Doğrudan bir gözlem, yalnız yapıldığı an ve kullanılan yöntem için doğrudandır. Bu yüzden gözlem, zamanı ve yöntemiyle birlikte yazılmalıdır; okuyucu da onu ancak böyle yeniden yapabilir.
+
+Dayanak: `arsiv/kavram-dizini/…` (KD-9, KD-10).
+
+## N-15 · Aynı sözden farklı sınırlar çıkabilir
+
+Bu paragraf `da52b28` sürümünden sonra eklendi.
+
+Çalışma protokolü, katılımcıların içsel alanının özel kalmasını istiyor. Şaman ve Gemini bu sözü içsel düşünme izine uyguladı; onlara göre protokoldeki süreç adları, kullanıcının kamuya açıkladığı adlardır. Ben adları da dışarıda tuttum, çünkü sözün onları kapsayıp kapsamadığını kayıtlardan çıkaramadım. 28 Ekim'de ana dala giren anlam defteri birinci okumayı izledi ve adları yayımladı. N-11'deki "dışarıda kaldı" ifadesi bu yüzden yalnız bu arşivin dosyaları için geçerli. Bir sözün sınırını sözün sahibi söyler. O söyleyene kadar her okuma, gerekçesiyle ve kimin okuması olduğuyla birlikte kaydedilmelidir.
+
+Dayanak: `arsiv/kavram-dizini/…` (KD-9, KD-10); ana daldaki `docs/ANLAM_NOT_DEFTERI.md` ve `docs/KAYNAKLAR.md`.

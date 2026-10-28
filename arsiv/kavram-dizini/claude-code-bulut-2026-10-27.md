@@ -178,3 +178,14 @@ Aşağıdaki tablo, bu daldaki dosyalarda kayıtlı düzeltmelerimi türleriyle 
 - **KD-9 → B bölümündeki P-C01 ve P-C02'nin varış sütunu (eksik tamamlama):** Süreç sözlüğü bu oturuma ilk kez 27 Ekim 14:33:54 UTC'de ulaştı (A). İleti User kutusundaki, kendini "Kullanıcının bu oturumdaki yeni doğrudan yönergesi" diye adlandıran ilk yönerge. Sözlük içsel süreçlerin sekiz adını ve dışavurumun dört adını değerleriyle taşıyor; yönerge onun aynen korunmasını istiyordu. 15:40:48'deki ileti adları içermiyor, iki bölümün tanımını getirdi. 17:37:22'deki ileti içsel alanın özel kalacağını söyledi. Bu iki varış doğru; eksik olan ilk varıştı.
 - **Sınır:** Adları bu dosyaya yine yazmıyorum. PR #15'teki bulut oturum kartı sözlüğü hiçbir sürümünde içermiyor (D, `git log -S`).
 - **Açık:** Sözlükteki adların herkese açık ad mı, özel içerik mi sayılacağı. Dışavurum adları bir PR dalında herkese açık duruyor; içsel adlar depoda hiç geçmiyor. İlk yönerge sözlüğün korunmasını, sonraki ileti içsel alanın özel kalmasını istiyor; ikisinin ilişkisi bu kayıtlardan çıkmıyor. Karar Haluk'un.
+
+## KD-10 (KD-9'un eskimiş gözlemi)
+
+`da52b28` sürümündeki satırlar korunuyor. Bu bağ, yedinci aşamanın ikinci turunda depoyu yeniden çekince çıktı. Düzeltme zincirindeki türü geri çekme; tetikleyeni kendi denetimim.
+
+- **KD-10 → KD-9'daki "İçsel süreçlerin sekiz adı ise erişilen hiçbir ref'te yok" cümlesi ve "Açık" maddesindeki "içsel adlar depoda hiç geçmiyor" ifadesi (geri çekme):** Bu ifadeler commit edildikleri anda da eskimişti (D).
+  - Ana dal 28 Ekim 01:53:03 UTC'de, PR #19'un birleşmesiyle `8126d92`'ye ilerledi. İçsel süreçlerin adları o andan beri ana dalda: `docs/ANLAM_NOT_DEFTERI.md`, `docs/KAYNAKLAR.md`, `not-defteri.html` ve `kaynaklar.html`. Geçmişteki ilk girişleri `314cd5d` (01:50:29).
+  - KD-9 01:58:51'de commit edildi. Dayandığı arama, 01:44:56'da çekilen ref'ler üzerinde 01:49:48'de yapılmıştı. Arada ana dalı yeniden çekmedim.
+  - Arama yöntemi de dardı: adları kaynaktaki büyük harfli biçimleriyle, harf duyarlı aradım. Ana daldaki metin adları küçük harfle yazıyor; güncel ref'lerle de olsa bu arama onları bulamazdı.
+- **Yeniden arama:** 02:06:59 UTC'de çekilen bütün ref'lerde, harf duyarsız yapıldı. Adlar yalnız `main`'de ve `hss/public-notebook-2026-10-28` dalında, yukarıdaki dört dosyada geçiyor (D). Dışavurum adları ve içsel bölümün gösterimi ayrıca PR #17'nin dalında duruyor (KD-9).
+- **KD-9'un "Açık" maddesi:** Adlar, PR #19'un birleşmesiyle herkese açık yayımlandı. Birleştirmeyi yapan hesap HalukAINRS (D). Şaman, "Kullanıcının thread için verdiği çalışma yetkisi sürüyor" diye aktarıyor (A). Adların herkese açık sayılmasına ilişkin ayrı bir Haluk sözü bu oturumun kayıtlarında yok. Bu arşivin dosyalarında adlar yine yazılmıyor.

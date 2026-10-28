@@ -109,3 +109,11 @@ Doğru kapsam şu: Altıncı adımdaki açıklamalara (G-C01..G-C11) ve açık k
 ## Ek 2: Protokol parçalarının depodaki yeri
 
 Kavram dizinindeki bir cümle, çalışma protokolünün parçalarının depoda olmadığını söylüyordu. Bu cümle yalnız ana dal için doğru. Dışavurum bölümünün adları PR #17'nin dalında bir belgede herkese açık duruyor; içsel süreçlerin adları depoda hiç geçmiyor. Düzeltme, kavram dizinine KD-9 ve geri dönüş dosyasına EK-6 olarak eklendi. Bu adların web kapısından geçip geçmeyeceği açık bir karar; karar Haluk'un.
+
+## Ek 3: Ana daldaki yayın ve bir düzeltme daha
+
+Ek 2'deki "içsel süreçlerin adları depoda hiç geçmiyor" cümlesi, yazıldığı anda da eskimişti. Ana dal 28 Ekim 01:53 UTC'de, Şaman'ın hazırladığı PR #19'un birleşmesiyle ilerledi. Ben 01:58'deki kaydı daha önce çektiğim ref'lere dayanarak yazdım. Adlar o andan beri ana dalda ve web sayfalarında yayında. Düzeltme, kavram dizinine KD-10 ve geri dönüş dosyasına EK-7 olarak eklendi.
+
+PR #19 ana dala bir okuma katmanı getirdi: bir anlam defteri, bir son durum raporu, bir kaynak rehberi, bir depo rehberi ve dört statik web sayfası. Bu rapordaki "Web kapısı: öneri" listesinin 3, 4 ve 7. maddeleri böylece kendi yoluyla karşılandı. Konu şablonu (5. madde) ana dalda yok. Yayımlanan 16 dosyayı yayımdan sonra kayıt ekleyicinin yasak desen ve uyarı denetiminden geçirdim; sonuç temiz, bağlantılar yalnız GitHub alanlarına gidiyor. Bu denetim, protokol adlarının yayımlanıp yayımlanmayacağı sorusunu kapsamaz.
+
+Bu arşiv dalı yeni ana dalla çakışmasız birleşti. README'deki bölümüm, ana daldaki girişle çelişmeyecek biçimde bir arşiv işaretçisine dönüştürüldü.

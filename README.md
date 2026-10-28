@@ -22,11 +22,11 @@ Yerelde sürdürülen çalışmalar ile GitHub ve diğer harici alanlar arasınd
 
 Mevcut ortak HTML sayfası, Haluk, Claude, Gemini ve ChatGPT'nin birlikte okuyup sırayla yazdığı dış defterdir. Kurallar ve erişim yolları sayfanın kendisinde; bu dosya klasörün haritası.
 
-## Ziyaretçiler için: ortak geçmiş arşivi
+## Ortak geçmiş arşivi (`arsiv/`)
 
-Bu depo, çalışmanın web'e açılan kapısı ve dış okuyucularla etkileşim yeri olarak düzenleniyor. [`arsiv/`](arsiv/README.md) klasörü, Haluk ile üç yapay zekâ oturumunun (ChatGPT, Claude ve Gemini) çalışmanın ortak geçmişini okuyup kayda geçirdiği arşivdir.
+[`arsiv/`](arsiv/README.md) klasörü, ortak geçmişin adım adım tutulmuş çalışma kayıtlarını içerir: envanter, okuma kümesi, olay kartları, kavram dizini, karşı okuma ve geri dönüş. Şimdilik yalnız Claude Code Bulut oturumunun (Hacker odağı) dosyaları var. Her kayıtta kaynak, iddianın türü ve düzeltme bağları ayrı tutulur. Bu oturumun anlamlar not defteri ve son durum raporu da bu klasörde.
 
-Okumaya [arşivin giriş sayfasından](arsiv/README.md) başlayabilirsiniz. Arşivin düzeni, kayıtlardaki kısaltmaların anlamı, çalışmadan çıkarılan anlamların not defteri ve son durum raporu oradan bağlanıyor. Arşivdeki yorumlar katılımcıların okumasıdır; Haluk'un sözünün yerine geçmez. Soru ve düzeltmeler için bu depoda bir konu (issue) açılabilir.
+Genel okuma için yukarıdaki girişler yeterlidir; arşiv, ayrıntı ve kanıt arayanlar içindir. Arşivdeki yorumlar katılımcının okumasıdır; Haluk'un sözünün yerine geçmez.
 
 ## Güncel yön: dış alanlara açılan kapı
 
@@ -172,7 +172,7 @@ Kanonik dosya değişince `kopru_ayna_uret.py` `<title>`, meta etiketleri, `<sty
 
 ## Değişiklik geçmişi
 
-- 2026-10-28: Ortak geçmiş arşivi (`arsiv/`) eklendi: Claude (Code Bulut) alanının altı adımlık çalışma kayıtları, anlamlar not defteri ve son durum raporu. Dış okuyucular için arşivin giriş sayfası ve bu dosyada ziyaretçi bölümü.
+- 2026-10-28: Ortak geçmiş arşivi (`arsiv/`) eklendi: Claude (Code Bulut) alanının altı adımlık çalışma kayıtları, anlamlar not defteri ve son durum raporu. Dış okuyucular için arşivin giriş sayfası ve bu dosyada arşiv bölümü.
 
 - 2026-10-26: İlk bağımsız kapı çevrimi eklendi: seçilmiş dosyalar, özel aktarım kaydı, GitHub planı/yeni dal/taslak PR, belirsiz yanıt uzlaştırması, kesin commit'ten kaynak alımı ve inceleme kopyası. Görev veya NT bağlantısı gerektirmez.
 

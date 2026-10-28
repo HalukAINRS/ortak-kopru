@@ -221,3 +221,9 @@ Bu dosya, ortak okumanın Hacker alanındaki kısmını Haluk'un değerlendirebi
 `ebfecdd` sürümündeki satırlar korunuyor.
 
 - **EK-6 → G-C06 (kapsam daraltma ve eksik tamamlama):** G-C06'nın başlığındaki "depoda olmayan" nitelemesi yalnız `main` için doğru. Dışavurum bölümünün adları ve içsel bölümün gösterimi PR #17'nin dalında duruyor. Varış listesi de ilk varışı atlamış: süreç sözlüğü bu oturuma ilk kez 27 Ekim 14:33:54 UTC'de ulaştı (A). Ayrıntı: `arsiv/kavram-dizini/…` KD-9.
+
+## Ek bağ (beşinci tur)
+
+`da52b28` sürümündeki satırlar korunuyor.
+
+- **EK-7 → EK-6 (geri çekme):** EK-6'daki "yalnız `main` için doğru" nitelemesi, yazıldığı anda (28 Ekim 01:58:51 UTC) da eskimişti. Ana dal 01:53:03'te PR #19 ile ilerledi; protokol parçalarının adları ve gösterimi o andan beri ana dalda da var. Ayrıntı ve yeniden arama: `arsiv/kavram-dizini/…` KD-10.
