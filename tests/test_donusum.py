@@ -89,7 +89,7 @@ class DonusumTests(unittest.TestCase):
     def test_merge_waits_for_the_owner_and_keeps_history(self):
         birlesme = next(a for a in self.kayit["asamalar"] if a["kimlik"] == "birlesme")
         self.assertEqual(birlesme["kim"], "Haluk")
-        self.assertIsNone(birlesme["karar"]["verildi"])
+        self.assertEqual(birlesme["karar"]["kim"], "Haluk")      # karar verilmiş ya da bekliyor olabilir
         atalar = {o["surum"] for o in birlesme["olcutler"] if o["tur"] == "ata"}
         self.assertEqual(atalar, set(self.kayit["hedef"]["gecmis_surumleri"]))
         bozuk = copy.deepcopy(self.kayit)
@@ -107,7 +107,8 @@ class DonusumTests(unittest.TestCase):
     def test_evidence_written_by_hand_requires_a_new_measurement(self):
         bozuk = copy.deepcopy(self.kayit)
         elle = next(o for a in bozuk["asamalar"] if a["kimlik"] == "yerel-hazirlik" for o in a["olcutler"])
-        elle["kanit"].append("https://example.invalid/kanit")
+        # Kanıtın karşılanma durumunu tersine çevir: kayıt bugün hangi hâldeyse sınama ona bağlı kalmaz.
+        elle["kanit"] = [] if len(elle["kanit"]) >= elle["en_az"] else ["kanıt"] * elle["en_az"]
         self.assertTrue(any("yeniden ölçün" in h for h in donusum.denetle(bozuk)))
 
     # ---------- ölçütler sentetik depoda ----------
@@ -143,6 +144,14 @@ class DonusumTests(unittest.TestCase):
 
     def test_statuses_follow_prerequisites_decisions_and_evidence(self):
         kayit = copy.deepcopy(self.kayit)
+        # Kaydın bugünkü kararlarından ve kanıtlarından bağımsız bir başlangıç.
+        for a in kayit["asamalar"]:
+            if a["karar"]:
+                a["karar"]["verildi"] = None
+            for o in a["olcutler"]:
+                if o["tur"] == "elle":
+                    o["kanit"] = []
+        kayit["son_prova"]["basarili"] = False
         hesap = donusum.durumlar(kayit, {"ana": "main", "dal": "olusum"}, self.depo.kok)
         self.assertEqual(hesap["birlesme"]["durum"], "onkosul-bekliyor")
         self.assertEqual(hesap["lisans"]["durum"], "istege-bagli")
