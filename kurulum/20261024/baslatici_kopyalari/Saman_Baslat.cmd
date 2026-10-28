@@ -1,0 +1,1 @@
+@"Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari\Runtime\PowerShell-7.6.8-win-x64\pwsh.exe" -NoLogo -NoProfile -ExecutionPolicy Bypass -File "Y:\HalukAI\02_Govde\Canli\CLI_Katmanlari\03_Codex_Saman\Saman_Baslat.ps1" %*

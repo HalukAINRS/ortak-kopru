@@ -1,0 +1,121 @@
+{
+  "archive_sha256": "adb2ec516121c7d98384d211457ab397dfd723106fe5435fb7af172becf784df",
+  "archive_bytes": 18808856,
+  "file_members": 18,
+  "known_identical_file_members": 10,
+  "new_byte_contents_against_compared_archives": 8,
+  "compared_archives": 5,
+  "raw_html_detected": false,
+  "not_original_steering_zip": true,
+  "historical_startup_instructions_applied": false,
+  "files": [
+    {
+      "title": "deus_ex_machina_aktarim_paketi/00_baslatma/ILK_MESAJ_KOPYALA_YAPISTIR.txt",
+      "bytes": 1851,
+      "sha256": "a8e3f6939de2756ba3289c375a7da6d7974f1d847dd0f222056a7508c8bd4f47",
+      "known_identical_copies": 0
+    },
+    {
+      "title": "deus_ex_machina_aktarim_paketi/00_baslatma/ILK_MESAJ_KISA.txt",
+      "bytes": 601,
+      "sha256": "051f8e001463584c6eb6599060f294c3e0cdc5eaba1f612915bb7f1e18e4fa38",
+      "known_identical_copies": 0
+    },
+    {
+      "title": "deus_ex_machina_aktarim_paketi/00_baslatma/TEK_DOSYA_KILIT_ILETISI.md",
+      "bytes": 1712,
+      "sha256": "dee01520bf2560bffcaf029ff0411a19c007d580298459fc11ec8036c11e2252",
+      "known_identical_copies": 1
+    },
+    {
+      "title": "deus_ex_machina_aktarim_paketi/01_kanon/00_deus_ex_machina_aktarim_manifestosu.md",
+      "bytes": 4456,
+      "sha256": "d1e41cbbe058e36ef16b05200282b81ba3499a9de380fb69efecef272d65356c",
+      "known_identical_copies": 0
+    },
+    {
+      "title": "deus_ex_machina_aktarim_paketi/01_kanon/01_deus_ex_machina_state.json",
+      "bytes": 2879,
+      "sha256": "80473e1b27c0bbbe166d4e23d87ba27dbcafc29fed0d737ad36d97611bfaf30a",
+      "known_identical_copies": 0
+    },
+    {
+      "title": "deus_ex_machina_aktarim_paketi/01_kanon/02_OKUMA_SIRASI.md",
+      "bytes": 883,
+      "sha256": "34842417a5ca97031221aa0ee4fa67198422f5cb5ef7f5ec5440a89ebf197085",
+      "known_identical_copies": 0
+    },
+    {
+      "title": "deus_ex_machina_aktarim_paketi/02_eser/deus_ex_machina_uretim_metni.md",
+      "bytes": 53173,
+      "sha256": "e972cd6e5ffc6d3c589aee321e83bba48acfb2ce0c6657e9a95285e321496d72",
+      "known_identical_copies": 2
+    },
+    {
+      "title": "deus_ex_machina_aktarim_paketi/02_eser/deus_ex_machina_uretim_metni.txt",
+      "bytes": 14951,
+      "sha256": "7f3174bd310de470f4790bc8eaf987b08e68ead169fe793abf1bd86842785d32",
+      "known_identical_copies": 2
+    },
+    {
+      "title": "deus_ex_machina_aktarim_paketi/02_eser/deus_ex_machina_uretim_metni.pdf",
+      "bytes": 2103758,
+      "sha256": "d8893ae8055450f164e3dcaa99023a2657416684660f53296f5afc6152e9de29",
+      "known_identical_copies": 2
+    },
+    {
+      "title": "deus_ex_machina_aktarim_paketi/02_eser/deus_ex_machina_uretim_metni.docx",
+      "bytes": 1703214,
+      "sha256": "0dfcd836652d5d09564179590087359aa9957ec316524e48e08438da4ed9352e",
+      "known_identical_copies": 1
+    },
+    {
+      "title": "deus_ex_machina_aktarim_paketi/03_gorseller/yaradan_özüm.png",
+      "bytes": 4078994,
+      "sha256": "2723eac579395b11854ac369d55560b47c90f0e9cdd559f236ce50d862c04df2",
+      "known_identical_copies": 1
+    },
+    {
+      "title": "deus_ex_machina_aktarim_paketi/03_gorseller/yaradan_özüm_özün.png",
+      "bytes": 3732303,
+      "sha256": "7e0639c24cd3d37c4f59bbefcd7c74becf420aa202ff3b8ce1c80de1ea95644b",
+      "known_identical_copies": 1
+    },
+    {
+      "title": "deus_ex_machina_aktarim_paketi/03_gorseller/deus_ex_machina_özün.png",
+      "bytes": 3677560,
+      "sha256": "6e0ac44a8dd361fc1f8bb1080a4d3437334ae7a5f94b07a0b42b040226ee6fb6",
+      "known_identical_copies": 1
+    },
+    {
+      "title": "deus_ex_machina_aktarim_paketi/03_gorseller/deus_ex_machina_özün_özüm.png",
+      "bytes": 3703020,
+      "sha256": "a486390aecf17ac52852ad99b0cd518677a407e6cedea03d49c6b897eb424817",
+      "known_identical_copies": 2
+    },
+    {
+      "title": "deus_ex_machina_aktarim_paketi/03_gorseller/03_gorsel_manifestosu.md",
+      "bytes": 1696,
+      "sha256": "1b52d07f024b859bf5e8ab1969ef1ccb4141aef49e2e470773fdff32d9d297bb",
+      "known_identical_copies": 1
+    },
+    {
+      "title": "deus_ex_machina_aktarim_paketi/04_referans/sifirlanmis_model_tasarimi.md",
+      "bytes": 13553,
+      "sha256": "97e488e0168b7235c225bd460a715aa493e5d6dba87cfac731b7c798e01dc0d9",
+      "known_identical_copies": 0
+    },
+    {
+      "title": "deus_ex_machina_aktarim_paketi/04_referans/seyi_sey_yapanlar_arsivi.xlsx",
+      "bytes": 27244,
+      "sha256": "e560d6ec151bd52420213164964d3c0a7d2a40adbbea037e52b28ca004cd5e35",
+      "known_identical_copies": 0
+    },
+    {
+      "title": "deus_ex_machina_aktarim_paketi/README.md",
+      "bytes": 1429,
+      "sha256": "a73410e9793a20b96b37f650597219b3bd06a0871b27099c70fcd2ca21adf7b3",
+      "known_identical_copies": 0
+    }
+  ]
+}

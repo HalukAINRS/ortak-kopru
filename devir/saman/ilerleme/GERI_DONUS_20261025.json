@@ -1,0 +1,31 @@
+{
+  "utc": "2026-10-25T07:59:40.766394+00:00",
+  "existing_session_bound": true,
+  "registered_peer_result_sources": 3,
+  "bridge_baseline_articles": 133,
+  "github_poll_seconds": 60,
+  "local_and_vm_poll_seconds": 10,
+  "watcher_unit_tests_passed": 12,
+  "previous_bridge_and_queue_tests_passed": 16,
+  "dispatch_phases": [
+    "queued",
+    "queued"
+  ],
+  "actual_native_message_receipt_verified": false,
+  "worker_restart_preserves_delivery_journal": true,
+  "same_result_across_channels_is_deduplicated": true,
+  "new_model_session_or_inference_api_started": false,
+  "seven_common_documents_only": true,
+  "removed_request_list_recreated": false,
+  "hacker_protocol_file_hash_verified": true,
+  "hacker_model_reading_claimed": false,
+  "sahit_console_relay_sent": false,
+  "sahit_existing_user_draft_preserved": true,
+  "support_request_cancelled_and_not_sent": true,
+  "full_test_suite_passed": 28,
+  "real_result_dispatches": 3,
+  "actual_model_reading_via_readonly_tools": true,
+  "real_new_sahit_result_file_received": true,
+  "real_hacker_github_bridge_article_received": "k-0136",
+  "github_readonly_fetch_observed": true
+}

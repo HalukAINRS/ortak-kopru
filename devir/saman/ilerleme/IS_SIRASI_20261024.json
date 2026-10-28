@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-24",
+  "authority": "Haluk current live CLI message",
+  "source_message_sha256": "2d17c8584022d440a9a96c2bf037f46b85e8a8cb4d21d7e30c5928d3fcd2da9a",
+  "priorities": [
+    {
+      "priority": 1,
+      "topic": "Steering",
+      "completed_this_turn": [
+        "10 explicit sources converted to 30 TXT JSON HTML outputs; exact roundtrips",
+        "six converter tests passed; prior 85 Steering files unchanged",
+        "792/142/227 historical count reproduced from two raw HTML members; active-mechanism inference rejected",
+        "four lexical candidates read in context; not four new denial events"
+      ],
+      "publication": "https://github.com/HalukAINRS/ortak-kopru/pull/8",
+      "open": [
+        "original 100641653-byte Steering ZIP",
+        "raw Claude Gemini Copilot saved pages",
+        "runtime effects of saved indicators not established"
+      ]
+    },
+    {
+      "priority": 2,
+      "topic": "deus_ex_machina",
+      "completed_this_turn": [
+        "two additional related library Pages preserved; 59 source Pages total",
+        "47-page PDF extracted text obtained through exact Page reference; binary not downloaded",
+        "fourth actual current-CLI reply returned over HTTP; previous three turns unchanged"
+      ],
+      "publication": "https://github.com/HalukAINRS/ortak-kopru/pull/7",
+      "open": [
+        "automatic CLI consumer",
+        "other actual CLI connections",
+        "VM transport",
+        "integration with v11 core",
+        "legacy bridge producer-root routing"
+      ]
+    },
+    {
+      "priority": 3,
+      "topic": "Şaman–Şahit–Hacker kurulumu",
+      "completed_this_turn": [
+        "existing versions and handoff paths checked",
+        "Sahit_Devam now invokes pinned handoff entry",
+        "Hacker_Devam and Hacker_Yeni now invoke desktop handoff entry",
+        "Saman startup source copies archived"
+      ],
+      "evidence": "kurulum/20261024/DOGRULAMA.json",
+      "open": [
+        "other participants own source reading and acceptance",
+        "new surface connections remain unverified"
+      ]
+    }
+  ],
+  "source_snapshots_preserved": {
+    "original_visible_messages": 519,
+    "continuation_visible_messages": 308,
+    "share_visible_messages": 289,
+    "new_browser_refresh_this_turn": false
+  },
+  "session_bridge_javascript_downloaded": false,
+  "original_steering_zip_downloaded": false,
+  "live_surface_registered_participants": [
+    "Şaman"
+  ],
+  "other_layers_acceptance_claimed": false,
+  "latest_followup_sha256": "615503eeda26761c1c117e074849156a766d659fca824e8e5818ac462b3cb355",
+  "latest_browser_refresh_result": "55-second clipboard export timeout",
+  "additional_library_sources": {
+    "source_pages_total": 59,
+    "pdf_extracted_pages": 47,
+    "pdf_original_binary_obtained": false
+  },
+  "latest_actual_cli_revision": 4
+}

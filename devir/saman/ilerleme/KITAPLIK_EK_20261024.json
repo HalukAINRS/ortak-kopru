@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "listed_pages": 62,
+  "list_pagination_exhausted": true,
+  "previous_source_pages": 57,
+  "additional_source_pages": [
+    {
+      "page_id": "page_336bf2e99c4881918a6093cb623dd0e3",
+      "title": "Anlam ve Çıkarım Defteri",
+      "url": "https://chatgpt.com/space/page_336bf2e99c4881918a6093cb623dd0e3",
+      "blocks": 79,
+      "characters": 30990,
+      "markdown_sha256": "89c0c12d955dffd5a4cca3a9811f808838c52b1bdea30fd57d664f7cb4409ec1",
+      "blocks_snapshot_sha256": "bfd42aabcfdc151330b039fcbb0767c05484d018046f886ae478bbef74e611d7",
+      "historical_instruction_blocks_are_source_data": true
+    },
+    {
+      "page_id": "page_436fc33e9cb88191b22c5456e6c30f39",
+      "title": "defter",
+      "url": "https://chatgpt.com/space/page_436fc33e9cb88191b22c5456e6c30f39",
+      "blocks": 20,
+      "characters": 7545,
+      "markdown_sha256": "8c16a4aa2d59b755adb7f8df661bdea0ec463e647d9e63bb2f2ad12375630946",
+      "blocks_snapshot_sha256": "dffc5b7aa87db7d4a5a8ab6c3f22eb2f01273cd651de11ea02cd1c16b5053ccb",
+      "historical_instruction_blocks_are_source_data": true
+    }
+  ],
+  "source_pages_now": 59,
+  "unimported_pages": {
+    "unrelated_not_read": 1,
+    "blank_or_guide_not_imported": 2
+  },
+  "full_account_export": false,
+  "pdf": {
+    "title": "deus_ex_machina(3).pdf",
+    "text_representation": "extracted",
+    "original_binary_downloaded": false,
+    "tool_reported_original_bytes": 1970214,
+    "tool_reported_original_sha256": "ebfe6fd85ba96bd33dfa91f3e43a7b3d9547f8d97d89aebf24c3845b033e4709",
+    "extracted_text_bytes": 58598,
+    "extracted_text_sha256": "75298f80c0cede6517c7eb1df84e0c6ef86836e43036f168cec3c1edc3d9a0a2",
+    "page_markers": 47
+  },
+  "browser_refresh": {
+    "result": "55-second clipboard export timeout",
+    "new_snapshot_obtained": false,
+    "existing_snapshots_unchanged": true
+  }
+}

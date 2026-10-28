@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "revision": 4,
+  "same_current_cli_session": true,
+  "delivery_method": "Haluk words copied by actual current Şaman to HTTP; not a new user click",
+  "original_words_sha256": "615503eeda26761c1c117e074849156a766d659fca824e8e5818ac462b3cb355",
+  "source_context_fields_preserved": [
+    "branch",
+    "correction",
+    "realization",
+    "source_ref",
+    "speaker",
+    "status",
+    "transformation",
+    "uncertainty"
+  ],
+  "source_context_verified": false,
+  "previous_three_turns_unchanged": true,
+  "claimed_at": "2026-10-24T12:03:11.098684+00:00",
+  "answered_at": "2026-10-24T12:04:08.492311+00:00",
+  "status": "answered",
+  "actual_reply_read_back_over_http": true,
+  "sources": [
+    {
+      "name": "UC_BICIM_DOGRULAMA_20261024.json",
+      "bytes": 16138,
+      "sha256": "7f7ff131b187041625cc74a809def4f6ff24a17f045ff87d99993e872005c084"
+    },
+    {
+      "name": "KITAPLIK_EK_20261024.json",
+      "bytes": 1948,
+      "sha256": "66da2675d46296d7ee984b141bb75f16c903cc1138811d9947871eb83fe5292c"
+    },
+    {
+      "name": "deus_ex_machina_3_pdf_MAKBUZ.json",
+      "bytes": 482,
+      "sha256": "ed2be516ecf014b2e4d717d55c484212ddbc96a956e66f5ed6668e9e12f20cd5"
+    }
+  ],
+  "other_participants_connected": false,
+  "automatic_consumer": false
+}

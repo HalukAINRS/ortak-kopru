@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-10-24T21:36:00.859715+00:00",
+  "probe": "DEUS_KUYRUK_TEST_20261024_A",
+  "message_sha256": "8d3805fe2faf1b4c473e2c729ce4540ca2c384b577d648e0a4f8e2c7404363e4",
+  "previous_queue_returncode": 0,
+  "actual_model_received_verified": true,
+  "observation": "The exact queued synthetic probe appeared as an incoming user message in the existing real Saman model turn.",
+  "existing_thread_binding_matched": true,
+  "synthetic_probe_not_new_user_decision": true,
+  "new_model_session_requested": false,
+  "consumer_queued_vm_message_model_receipt_verified": false,
+  "other_cli_model_roundtrip_verified": false,
+  "previous_queued_receipt_preserved": true
+}

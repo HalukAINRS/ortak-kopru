@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-10-24T21:55:54.975768+00:00",
+  "probe": "vm-kuyruk-probu-20261024",
+  "actual_model_received_verified": true,
+  "delivery_origin": "existing queue consumer -> native Codex queue -> same real Saman model turn",
+  "same_registered_session_verified": true,
+  "envelope_sha256": "a07a44926ce6c9f62a7fb7872e94cdfc575f5b40a8f2d54e705b612cdf3218af",
+  "envelope_snapshot_status": "claimed",
+  "live_job_status": "answered",
+  "original_words_and_eight_context_fields_preserved": true,
+  "receive_command_completed": true,
+  "receive_pending_request": false,
+  "existing_response_sha256": "c2760feeb1559ee608699e94840efd6c85e73ea76f84ec802d856a9920fdcd0a",
+  "existing_reply_source_hashes_verified": 2,
+  "execution_replayed": false,
+  "new_reply_written": false,
+  "previous_dispatch_and_test_receipts_preserved": true,
+  "new_model_session_or_api_fallback_started": false,
+  "other_cli_model_acceptance_verified": false,
+  "ui_model_receipt_flag_updated": false
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "transport": "local HTTP -> current live Saman CLI receive -> actual model reply -> same HTTP job",
+  "submission_actor": "Saman verification operator quoting actual Haluk task",
+  "browser_click_tested": false,
+  "automated_cli_consumer": false,
+  "other_cli_connections_tested": false,
+  "registered_participants": [
+    "Şaman"
+  ],
+  "same_job": true,
+  "same_session": true,
+  "answered_revisions": 2,
+  "original_words_preserved": true,
+  "first_reply_preserved": true,
+  "http_submit_and_cli_reply_replays_add_no_events": true,
+  "real_server_restart": {
+    "same_job_after_http_restart": true,
+    "same_cli_session": true,
+    "second_revision_redelivered_without_new_claim": true,
+    "original_claim_time_preserved": true,
+    "first_response_unchanged": true,
+    "first_response_sha256": "4c2f5b2f75c533101043a8eec99737f9aef8ed358f3713970fd499459bb4200b",
+    "registered_sessions": [
+      {
+        "participant": "Şaman",
+        "label": "Mevcut açık Codex CLI oturumu"
+      }
+    ]
+  },
+  "turns": [
+    {
+      "revision": 1,
+      "input_sha256": "d4327061b7081977b14722eab5e3e492e172e0d55059af4505f95dd20ea3a2cb",
+      "response_sha256": "4c2f5b2f75c533101043a8eec99737f9aef8ed358f3713970fd499459bb4200b",
+      "source_hashes": [
+        "18b3b6a9b5ca289a8ca5f2691139aa2db6f9c458dcdc38a36d753afd3a8a2c98",
+        "c03e159d139453134307758450f64e2d982ad4cbf2f839af5c2ceb9dce565ca3",
+        "cbc49e5c13d7468a3691529ddfdc7a7148200080bfb01837c2f3219e3329f86a"
+      ]
+    },
+    {
+      "revision": 2,
+      "input_sha256": "cb0c5806d79e0d18c77d1ef4a5e39ac4ec3264a3000f67b57dc1446b48cf0cf1",
+      "response_sha256": "215ed695d9cba4381d4c2fab03685656d4b910a06faec73be3c72cb4a69d34f5",
+      "source_hashes": [
+        "014e55eab46d65622f2ea31c40b8701dea8a27267fbf4eb287177ed12c8fa4d8"
+      ]
+    }
+  ],
+  "boundary": "Second input was created by Saman for correction/restart verification, not a new Haluk decision. Queue consumption uses explicit CLI commands."
+}
