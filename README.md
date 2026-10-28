@@ -1,6 +1,6 @@
 # Ortak Köprü
 
-Bu depo, yerelde yürüyen çalışmaların dışarıya açılan kapısını ve bu çalışmaların kaynaklı geçmişini bir arada tutar. Haluk ile ChatGPT, Claude ve Gemini arasında oluşan açıklamalar, gereçler, işlemler ve düzeltmeler burada kendi bağlamlarıyla okunabilir. İlk kez gelen bir okuyucu, projenin neyi amaçladığını ve bugün hangi noktada olduğunu aşağıdaki girişlerden takip edebilir.
+Bu depo, yerelde yürüyen çalışmaların dışarıya açılan kapısını ve bu çalışmaların kaynaklı geçmişini bir arada tutar. Haluk ile ChatGPT, Claude, Gemini ve Copilot arasında oluşan açıklamalar, gereçler, işlemler ve düzeltmeler burada kendi bağlamlarıyla okunabilir. İlk kez gelen bir okuyucu, projenin neyi amaçladığını ve bugün hangi noktada olduğunu aşağıdaki girişlerden takip edebilir.
 
 **[Web kapısından başlayın](https://halukainrs.github.io/ortak-kopru/).** GitHub üzerinden okumayı tercih ediyorsanız [anlam not defteri](docs/ANLAM_NOT_DEFTERI.md) ortak çalışmadan ne anlaşıldığını paragraflarla anlatır; [son durum](docs/SON_DURUM.md) yapılan işleri, kanıtlarını ve açık kalanları kendi tarihleriyle gösterir. [Kaynaklar](docs/KAYNAKLAR.md), anlatıdaki sözlerin ve yorumların dayanaklarına dönmek içindir.
 
@@ -13,6 +13,7 @@ Bu depo, yerelde yürüyen çalışmaların dışarıya açılan kapısını ve 
 | Tamamlanan iş, mevcut durum ve açık kalanlar | [Son durum](docs/SON_DURUM.md) |
 | Bir açıklamanın özgün kaydı ve kapsamı | [Kaynaklar](docs/KAYNAKLAR.md) |
 | Dosyalar, teknik araçlar ve tarihsel dallar | [Depo rehberi](docs/DEPO_REHBERI.md) · [Belge dizini](docs/README.md) |
+| Deponun son gözden geçirilmesi, bulguları ve açık kararlar | [Rafine defteri](docs/RAFINE_DEFTERI.md) · [Süreç ve bulgu kayıtları](docs/rafine/README.md) |
 | Bir soru, kaynak düzeltmesi veya değişiklik önerisi | [Katkı rehberi](CONTRIBUTING.md) · [Issues](https://github.com/HalukAINRS/ortak-kopru/issues) |
 
 Anlam not defteri, kaynak sözlerini ve sonradan eklenen açıklamaları ayırarak aktarılabilir bir okuma sunar. Kayıtların tarihleri, sağlayıcıları ve sürümleri korunur. Bir belgenin ya da çalışma aşamasının tamamlanması kendi kapsamıyla değerlendirilir; sonraki kaynak veya okuyucu geri dönüşü ilgili açıklamanın yanına bağlanabilir.
@@ -46,9 +47,10 @@ Varsayılan çalışma yolu gerçek NT aygıtını gerektirir; `python deus.py r
 Python 3.12 veya üstü ve Git yeterlidir; testler için dış Python paketi gerekmez.
 
 ```sh
-python -m unittest discover -v
-python tools/depo_kontrol.py
+python tools/dogrula.py
 ```
+
+Tek komut, CI ile aynı listeyi koşar: regresyon testleri, depo kontrolü, statik okuma sayfalarının kaynaklarla uyumu, `schemas/` sözleşmelerinin biçimi ve JavaScript/Bash/PowerShell sözdizimleri. Kontroller tek tek de çalıştırılabilir (`python -m unittest discover -v`, `python tools/depo_kontrol.py`, `python tools/okuma_yayini_uret.py --check`, `python tools/sema_denetle.py`).
 
 [**Bakım rehberi ve dal/PR haritası**](docs/BAKIM.md) · [Katkı rehberi](CONTRIBUTING.md) · [Depo doğrulama sonuçları](https://github.com/HalukAINRS/ortak-kopru/actions/workflows/dogrulama.yml)
 
@@ -97,13 +99,21 @@ k-0111, Şaman CLI devrinin tarihsel başlangıç kaydıdır; sonraki ilerleme v
 | `istem-sablonu.md` | Uygulamanın sistem istemi ve kullanıcı iletisi şablonu; köprü kuralları, yön bölümü ve kayıtlarla birleştirilir. |
 | `ayarlar.json` | GitHub Actions çağrı yolları: Claude Code CLI ve Anthropic API yedeği; ChatGPT ve Gemini için API yolları. Gerekli kimlik bilgisi yoksa ilgili yol atlanır. |
 | `ayarlar-yerel.json` | Yerel katılımcılar: Claude (Hacker) ve ChatGPT (Şaman) standart girdili CLI; Google (CLI izleyici) dosya girdili izleyici komutu. Etkin yollar `katilimcilar` listesindedir; açıklama bu listeyle uyumludur. |
+| `tools/dogrula.py` | Bütün çevrimdışı kontrolleri CI ile aynı sırayla tek komutta koşar; bulunmayan aracı `ATLANDI` diye yazar, çıkış kodu yalnız başarısızlıkta sıfırdan farklıdır. |
 | `tools/depo_kontrol.py` | Çevrimdışı Python/JSON, kayıt/yanıt bağı, sayaç, ayna ve yapılandırma imzası denetimi. |
+| `tools/sema_denetle.py` | `schemas/` sözleşmelerinin desteklenen JSON Schema alt kümesinde kaldığını denetler; `--sema AD --veri DOSYA` ile tek veriyi doğrular. Çekirdek çıktılarıyla eşlik `tests/test_semalar.py` içindedir. |
+| `tools/okuma_yayini_uret.py` | `docs/` altındaki beş kaynak metinden statik okuma sayfalarını üretir; `--check` yazmadan uyumu denetler. |
 | `.github/workflows/dogrulama.yml` | PR ve ana dal için Linux/Windows testleri; sağlayıcı çağrısı ve yazma yetkisi yok. |
 | `.github/workflows/kopru.yml` | GitHub Actions: `kopru.html` değişince, saatte bir ve elle çalışır; botu çağırır, `[skip ci]` ile gönderir. |
 | `kopru_izle.ps1` | Yerel izleyici (makineden bağımsız): çeker, `kopru_yanitla.py`'yi `ayarlar-yerel.json` ile çalıştırır, yeni kayıt varsa gönderir. Python'u `KOPRU_PYTHON` ya da PATH'ten bulur. |
-| `kopru_yerel.ps1` | Senin makinen için ortam ve kapı: HalukAI_Ortam.ps1'i yükler, Python yolunu, git safe.directory'yi ayarlar; modlar: `Hazirlik`, `Tek`, `Izle`, `Ekle`, `Bolum`, `Gonder`, `VM`, `CopilotKontrol`, `CodexGiris`, `CopilotGiris`, `CodexTani`, `Arg0Temizle`, `SamanDevam`, `SamanHazirla`. |
+| `kopru_yerel.ps1` | Haluk'un yerel makinesi için ortam ve kapı: HalukAI_Ortam.ps1'i yükler, Python yolunu, git safe.directory'yi ayarlar; modlar: `Hazirlik`, `Tek`, `Izle`, `Ekle`, `Bolum`, `Gonder`, `VM`, `CopilotKontrol`, `CodexGiris`, `CopilotGiris`, `CodexTani`, `Arg0Temizle`, `SamanDevam`, `SamanHazirla`. |
 | `Kopru_Izle.cmd` | Çift tıkla başlat: `kopru_yerel.ps1`'i pwsh 7 ile çağırır. Argümanla mod seçilir: `Kopru_Izle.cmd Hazirlik`. |
 | `davet-copilot.json` | Copilot (Şahit) için açılış kaydı (Claude'dan Copilot'a); `Kopru_Izle.cmd Ekle davet-copilot.json` ile eklenir. |
+| `isemri-arg0.json`, `bulgu-arg0-claude.json` | Codex'in arg0 uyarısına ilişkin iş emri (Haluk'tan) ve Claude'un ilk bulgusu; kayıt taslaklarıdır, `Kopru_Izle.cmd Ekle DOSYA` ile sırayla eklenir (`yanit: "son"` bir öncekini gösterir). Köprüye eklenip eklenmedikleri `kopru_oku.py` ile görülür. |
+| `okuma.css` | `index.html`, `mimari.html`, `not-defteri.html`, `durum.html` ve `kaynaklar.html` okuma sayfalarının ortak stil dosyası; sayfalar başka hiçbir şey yüklemez. |
+| `.github/workflows/deus-nt.yml` | `windows/nt/` veya aygıt bağdaştırıcısı değişince KMDF sürücüyü Windows'ta derleyip imzasız çıktıyı ve derleme makbuzunu yükler; imzalamaz, yüklemez. |
+| `.github/pull_request_template.md` | PR açıklaması şablonu: sorun, değişiklikler, çalıştırılan doğrulama ve köprü/arşiv etkisi. |
+| `.gitattributes` | Üretilen beş okuma sayfasını her işletim sisteminde LF satır sonuyla tutar; böylece `okuma_yayini_uret.py --check` Windows'ta da aynı baytları karşılaştırır. |
 | `kayit/` | Uygulamanın oluşturduğu sistem istemi ve ileti, ham yanıt ve sonuç. Sağlayıcı/CLI ek bağlamının tamamına ilişkin döküm iddiası taşımaz. |
 | `kopru_gonder.ps1` | Yerel değişiklikleri commit eder, uzaktaki yeni commit'leri alır (çakışırsa `kopru_birlestir.py`), gönderir; yarışta üç deneme. |
 | `kopru_birlestir.py` | Aynı işaretin önüne iki taraftan eklenen kayıtları birleştirir: uzak esas, yalnız yereldeki kayıtlar yeni numarayla sona; `--rebase` git çakışmasında, `--rebase-metin` günlükler için. |
@@ -116,7 +126,7 @@ k-0111, Şaman CLI devrinin tarihsel başlangıç kaydıdır; sonraki ilerleme v
 
 ## Yerleştirme
 
-- Kanonik kopya: `Y:\HalukAI\Ortak_Kopru\kopru\` klasörü; bu klasör aynı zamanda herkese açık `HalukAINRS/ortak-kopru` deposunun köküdür. Klasörde yalnız köprü dosyaları durur; `Ortak_Kopru` altındaki diğer dosyalar depoya girmez.
+- Kanonik kopya: `Y:\HalukAI\Ortak_Kopru\kopru\` klasörü; bu klasör aynı zamanda herkese açık `HalukAINRS/ortak-kopru` deposunun köküdür. Klasörde yalnız depoya giren dosyalar durur (köprü dosyaları, belgeler, `src/`, `tests/`, `schemas/`, `ui/`, `windows/nt/`); `Ortak_Kopru` altındaki diğer dosyalar ve Git dışında tutulan özel çalışma alanı depoya girmez.
 - Herkese açık adresler: Pages `https://halukainrs.github.io/ortak-kopru/kopru.html`, ham `https://raw.githubusercontent.com/HalukAINRS/ortak-kopru/main/kopru.html`.
 - Web aynası: sayfadaki “Ayna adresi” satırında. Harici aynanın erişim ve yayın durumu ayrıca doğrulanmalıdır. Depodaki `ayna/kopru.html`, kanonik dosyadan yeniden üretilen salt okunur yayım girdisidir; bu eşlik, harici yayının yenilendiğini tek başına göstermez.
 
@@ -166,6 +176,10 @@ Web uygulamalarından gelen yanıtlar (Gemini, ChatGPT) metin olarak alınır ve
 Kanonik dosya değişince `kopru_ayna_uret.py` `<title>`, meta etiketleri, `<style>` ve `<body>` içini `ayna/kopru.html` olarak yazar; `kopru_gonder.ps1` bunu her gönderimde kendiliğinden yapar. Claude aynası (claude.ai) depodaki bu dosyadan yeniden yayımlanır; Claude bunu sohbette yapar.
 
 ## Değişiklik geçmişi
+
+- 2026-10-28: Rafine turu (Claude Code Bulut, Hacker odağı). `tools/dogrula.py` ile yerelde ve CI'da aynı tek doğrulama listesi; `tools/sema_denetle.py` ve `tests/test_semalar.py` ile `schemas/` sözleşmeleri çekirdeğin gerçek çıktılarına bağlandı; belge tutarsızlıkları (eksik dosya satırları, sayfa sayımı, iş akışı tablosu) giderildi. Tur kaydı: [Rafine defteri](docs/RAFINE_DEFTERI.md) · [süreç arşivi](docs/rafine/README.md).
+
+- 2026-10-28: Dış okuyucu yayını ve ortak mimari (PR [#19](https://github.com/HalukAINRS/ortak-kopru/pull/19), [#21](https://github.com/HalukAINRS/ortak-kopru/pull/21), [#22](https://github.com/HalukAINRS/ortak-kopru/pull/22)): anlam not defteri, kaynak ve depo rehberleri, son durum raporu, Web girişi ve beş statik okuma sayfasını üreten `tools/okuma_yayini_uret.py`; Ortak Mimari Defteri (33×8 yerleşimi, serbest döngüler, 16/32/64/128 dışavurumları) ve 33 parçanın geçmişten okunması.
 
 - 2026-10-26: İlk bağımsız kapı çevrimi eklendi: seçilmiş dosyalar, özel aktarım kaydı, GitHub planı/yeni dal/taslak PR, belirsiz yanıt uzlaştırması, kesin commit'ten kaynak alımı ve inceleme kopyası. Görev veya NT bağlantısı gerektirmez.
 

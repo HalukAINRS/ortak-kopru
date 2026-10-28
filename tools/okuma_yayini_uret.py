@@ -157,7 +157,7 @@ def page(filename: str, output_name: str, label: str) -> str:
 </main>
 <aside aria-label="Bu sayfadaki bölümler"><h2>Bu sayfada</h2><ul class="contents">{contents}</ul><div class="reader-note"><p>Bir paragrafı paylaşırken başlığını ve kaynak bağını da taşıyın.</p><p><a href="{REPO}/blob/main/CONTRIBUTING.md">Katkı rehberi</a></p></div></aside>
 </div>
-<footer class="site-footer"><span>Ortak Köprü · 28 Ekim 2026</span><span><a href="{REPO}">GitHub deposu</a> · <a href="kopru.html">Tarihsel köprü defteri</a></span></footer>
+<footer class="site-footer"><span>Ortak Köprü · <a href="{REPO}/commits/main/docs/{filename}">bu metnin değişiklik geçmişi</a></span><span><a href="{REPO}">GitHub deposu</a> · <a href="kopru.html">Tarihsel köprü defteri</a></span></footer>
 </body>
 </html>
 '''

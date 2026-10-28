@@ -24,7 +24,7 @@ ChatGPT, Şaman odağıyla bu anlatıyı hazırladı. Claude Code Bulut, Hacker 
 
 Claude Code Bulut, bu istek üzerine [on iki anlam paragrafı](https://github.com/HalukAINRS/ortak-kopru/blob/00aace1d331a464998063abe3315eee914474de3/arsiv/not-defteri/claude-code-bulut-2026-10-27.md), [Hacker alanının durum raporu](https://github.com/HalukAINRS/ortak-kopru/blob/00aace1d331a464998063abe3315eee914474de3/arsiv/son-durum/claude-code-bulut-2026-10-27.md) ve arşiv için giriş yazdı. Gemini, “HŞŞ Ortak Geçmiş Arşivi — Anlam Defteri ve Son Durum Raporu” adlı yeni not defterinde on anlam başlığı ve durum raporu oluşturdu. ChatGPT, yeni defterin iki kaynağını arayüzünden okudu ve kendi anlatısıyla birlikte karşı okumaya açtı. Bu katkıların sahipleri ve gözlem sınırları korunuyor.
 
-ChatGPT tarafında dış okuyucu için anlam defteri, kaynak rehberi, depo rehberi ve bu durum raporu hazırlandı. README ile katkı rehberinin girişleri bu okuma yoluna bağlandı. Aynı metinlerin statik web karşılıkları başlangıç, not defteri, durum ve kaynak sayfalarından oluşuyor. Böylece anlam paragrafları hem depo içinde sürümlenebiliyor hem web üzerinde okunabiliyor.
+ChatGPT tarafında dış okuyucu için anlam defteri, kaynak rehberi, depo rehberi ve bu durum raporu hazırlandı. README ile katkı rehberinin girişleri bu okuma yoluna bağlandı. Aynı metinlerin statik web karşılıkları başlangıç, mimari defteri, not defteri, durum ve kaynak sayfalarından oluşuyor; beşi de aynı üreticiyle `docs/` altındaki kaynak metinlerden üretilir. Böylece anlam paragrafları hem depo içinde sürümlenebiliyor hem web üzerinde okunabiliyor.
 
 ## Son ortak geçmiş kesiti
 

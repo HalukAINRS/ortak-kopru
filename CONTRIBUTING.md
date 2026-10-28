@@ -22,9 +22,10 @@ Belge katkısında değişen metni, kaynak adreslerini ve bağlantıları kontro
 4. Depo kökünde doğrulayın:
 
    ```sh
-   python -m unittest discover -v
-   python tools/depo_kontrol.py
+   python tools/dogrula.py
    ```
+
+   Bu komut CI ile aynı kontrol listesini koşar (testler, depo kontrolü, okuma sayfaları, JSON sözleşmeleri, betik sözdizimleri). Makinede bulunmayan araç için ilgili kontrol `ATLANDI` yazılır; PR açıklamasında bunu belirtin. Kontroller tek tek de çalıştırılabilir: `python -m unittest discover -v`, `python tools/depo_kontrol.py`, `python tools/okuma_yayini_uret.py --check`, `python tools/sema_denetle.py`.
 
 5. PR açıklamasına sorunu, değişen davranışı ve çalıştırılan kontrolleri yazın. CI'nin Linux ve Windows sonuçlarını kontrol edin.
 
@@ -38,6 +39,8 @@ Kanonik sayfa değiştiğinde aynayı üretin:
 python kopru_ayna_uret.py kopru.html ayna/kopru.html
 python tools/depo_kontrol.py
 ```
+
+`schemas/` altındaki bir sözleşmeyi veya onu üreten kodu değiştirirken `python tools/sema_denetle.py` ile şemanın desteklenen alt kümede kaldığını, `python -m unittest tests.test_semalar` ile de çekirdeğin ürettiği nesnelerin sözleşmeye hâlâ uyduğunu kontrol edin; ikisi de dış paket istemez.
 
 `ayna/kopru.html` üretilen dosyadır. Tarihli `kayit/` dosyaları geçmiş çağrıların kanıtıdır; bakım için topluca taşınmaz, yeniden biçimlendirilmez veya silinmez. Ham özel sayfalar, belirteçler ve kişisel kimlik değerleri depoya eklenmez; ayrıntı `AGENTS-kopru.md` içindedir.
 

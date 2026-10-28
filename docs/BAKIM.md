@@ -13,7 +13,7 @@
 | Kanonik sayfa ve üretilen ayna | `kopru.html`, `ayna/kopru.html`, `kopru_ayna_uret.py` |
 | Yerel başlatıcılar | `Kopru_Izle.cmd`, `kopru_yerel.ps1`, `kopru_izle.ps1`, `saman_devral.py` |
 | Tarihsel kanıtlar | `kayit/`; değiştirilmeden korunur |
-| Çevrimdışı kontroller | `test_saman_devral.py`, `tests/`, `tools/depo_kontrol.py` |
+| Çevrimdışı kontroller | `tools/dogrula.py` (hepsi tek komutla), `test_saman_devral.py`, `tests/`, `tools/depo_kontrol.py`, `tools/sema_denetle.py` |
 | Katkı kuralları | [CONTRIBUTING.md](../CONTRIBUTING.md), [AGENTS-kopru.md](../AGENTS-kopru.md) |
 
 ## Tek doğrulama yolu
@@ -21,13 +21,25 @@
 Depo kökünde Python 3.12 veya üstü ve Git ile:
 
 ```sh
+python tools/dogrula.py
+```
+
+Bu komut, CI'daki doğrulama işinin çalıştırdığı listeyle aynı kontrolleri aynı sırayla koşar ve her birini `TAMAM`, `BAŞARISIZ` veya `ATLANDI` olarak yazar: regresyon testleri, depo kontrolü, statik okuma sayfalarının kaynaklarla uyumu, `schemas/` altındaki JSON sözleşmelerinin biçimi, yerel arayüz JavaScript sözdizimi, bulut gönderim betiğinin Bash sözdizimi ve kök PowerShell betiklerinin ayrıştırılması. `node`, `bash` veya `pwsh` bulunmayan makinede ilgili kontrol atlanır; atlama başarı sayılmaz, çıkış kodunu da bozmaz. `--liste` kontrolleri gösterir, `--sadece testler,semalar` alt küme seçer, `--ayrintili` her kontrolün tam çıktısını yazar ve testleri `-v` ile koşar.
+
+Kontroller ayrı ayrı da çalıştırılabilir:
+
+```sh
 python -m unittest discover -v
 python tools/depo_kontrol.py
+python tools/okuma_yayini_uret.py --check
+python tools/sema_denetle.py
 ```
 
 İlk komut hem kökteki devir testlerini hem `tests/` altındaki regresyonları keşfeder. Sahte CLI ve geçici Git depoları kullanılır; gerçek sağlayıcı çağrısı yapılmaz. Bash gönderim sınamaları POSIX ortamında çalışır, Windows'ta açıkça atlanır.
 
 İkinci komut Python sözdizimini, JSON dosyalarını, kayıt kimliklerinin tekilliği/sırasını, yanıt bağlarını, görünür sayacı, kayıt ekleyicinin içerik kurallarını, aynanın eşliğini ve ayarlı yol imzalarını kontrol eder. Dosya yazmaz, model veya yerel başlatıcı çalıştırmaz. Bu kontrol, harici aynanın yayımlandığı veya bir CLI'ın kurulu olduğu anlamına gelmez.
+
+Dördüncü komut `schemas/` altındaki sözleşmelerin desteklenen JSON Schema alt kümesinde kaldığını ve iç başvurularının çözüldüğünü denetler; `--sema deus-event --veri dosya.json` biçiminde tek bir veri dosyasını da sözleşmeye karşı doğrular. Sözleşmelerin çekirdeğin gerçekten ürettiği iş, olay, denetim, devir ve aktarım nesneleriyle eşliği `tests/test_semalar.py` içinde sınanır; şema ile kod ayrışırsa bu test kırılır.
 
 Yalnız ayna eşliği için:
 
@@ -41,8 +53,9 @@ Eksik/eski ayna sıfırdan farklı çıkış kodu üretir. Yenilemek için aynı
 
 | Akış | Tetikleme | Yetki ve sonuç |
 | --- | --- | --- |
-| `dogrulama.yml` — Depo doğrulama | PR, `main` gönderimi, elle | Salt okuma; Linux ve Windows'ta çevrimdışı testler ve depo kontrolü; Linux'ta Bash, Windows'ta PowerShell sözdizimi |
+| `dogrulama.yml` — Depo doğrulama | PR, `main` gönderimi, elle | Salt okuma; Linux ve Windows'ta `python tools/dogrula.py` ile yereldekiyle aynı çevrimdışı kontrol listesi (testler, depo kontrolü, okuma sayfaları, JSON sözleşmeleri, JavaScript/Bash/PowerShell sözdizimi) |
 | `kopru.yml` — Ortak Köprü | `main` üzerindeki `kopru.html`, saatlik zamanlayıcı, elle | Ayarlı katılımcıları çağırır; başarılı kayıtları ve çağrı günlüklerini, yeniden üretilmiş aynayla gönderir |
+| `deus-nt.yml` — deus_ex_machina NT derleme | `windows/nt/**`, `src/ortak_kopru/adapters/**`, `tests/test_deus_nt.py` veya akışın kendisi değişince; elle | Salt okuma; Windows 2022 üzerinde KMDF sürücüyü derler, imzasız `.sys`/`.pdb` ve derleme makbuzunu 14 gün saklanan çıktı olarak yükler; imzalamaz, yüklemez, hedef bilgisayarda sınamaz |
 
 Yanıtlayıcıda eksik kimlik bilgisi veya bulunmayan CLI beklenen atlamadır. Gerçek çağrı hatası izin verilen yedek yolun başarılı çağrısıyla karşılanamazsa çıkış kodu 1 olur. Çağrıdan sonraki geçersiz JSON veya kayıt ekleme hatası da çıkış kodu 1 üretir; bu aşamada yedek yol denenmez. Diğer katılımcılar işlenmeye devam eder. Actions başarılı kayıtları/hata günlüklerini gönderdikten sonra bu başarısızlığı iş sonucuna yansıtır.
 
@@ -50,7 +63,7 @@ Bulut göndericisi üç push denemesinden sonra başarısız çıkış verir. Re
 
 Bot commit'leri mevcut `[skip ci]` işaretini kullanır. Bu nedenle bot yayını için o adımın yerel denetimleri dayanak alınır; her bot commit'inde ayrı doğrulama akışının çalıştığı varsayılmaz.
 
-Actions bağımlılıkları Node 24 kullanan [checkout v7.0.1](https://github.com/actions/checkout/releases/tag/v7.0.1) ve [setup-python v7.1.0](https://github.com/actions/setup-python/releases/tag/v7.1.0) sürümlerinin sabit commit kimliklerine bağlıdır. Sürüm güncellemesinde iki iş akışındaki kimlik ve sürüm yorumları birlikte güncellenir; doğrulama işinde Git kimlik bilgileri çalışma ağacına bırakılmaz.
+Actions bağımlılıkları Node 24 kullanan [checkout v7.0.1](https://github.com/actions/checkout/releases/tag/v7.0.1) ve [setup-python v7.1.0](https://github.com/actions/setup-python/releases/tag/v7.1.0) sürümlerinin sabit commit kimliklerine bağlıdır; `deus-nt.yml` ayrıca [upload-artifact v7.0.2](https://github.com/actions/upload-artifact/releases/tag/v7.0.2) sürümünü sabitler. Sürüm güncellemesinde üç iş akışındaki kimlik ve sürüm yorumları birlikte güncellenir; doğrulama ve derleme işlerinde Git kimlik bilgileri çalışma ağacına bırakılmaz.
 
 ## İmza ve hedefleme
 

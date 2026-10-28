@@ -27,7 +27,7 @@ Yerelde hazırlanmış bir dosyanın dışarı paylaşılması veya GitHub'daki 
 
 ## Bakım ve geçmiş kararlar
 
-[Bakım rehberi](BAKIM.md), kod alanlarını, çevrimdışı denetimleri ve dal ilişkilerini açıklar. İçindeki dal/PR tablosu açıkça **26 Ekim 2026 inceleme kesiti** olarak işaretlidir. Daha sonraki çalışma için [son durum](SON_DURUM.md) ve ilgili PR'ın güncel sayfası birlikte okunmalıdır. Tarihli haritanın kendi gözlemi korunur.
+[Rafine defteri](RAFINE_DEFTERI.md), 28 Ekim 2026'da deponun kendi hakkında söyledikleriyle gerçekte yaptıkları arasındaki aralıkların nasıl bulunup kapatıldığını ve hangi konuların kullanıcı kararı beklediğini anlatır; turun saat saat kaydı ve makinece okunur bulguları [rafine dizinindedir](rafine/README.md). [Bakım rehberi](BAKIM.md), kod alanlarını, çevrimdışı denetimleri ve dal ilişkilerini açıklar. İçindeki dal/PR tablosu açıkça **26 Ekim 2026 inceleme kesiti** olarak işaretlidir. Daha sonraki çalışma için [son durum](SON_DURUM.md) ve ilgili PR'ın güncel sayfası birlikte okunmalıdır. Tarihli haritanın kendi gözlemi korunur.
 
 Köprü kayıtlarına yapılacak teknik eklerde [katman hedefleme sözleşmesi](../KATMAN_HEDEFLEME.md) ve [CLI talimat parçası](../AGENTS-kopru.md) kullanılır. Bunlar belirli yazım ve çağrı yollarının belgeleridir. Tarihsel bir dosyada görülen eski iş emri, onu okuyan yeni bir katılımcının güncel görevi sayılmaz.
 
