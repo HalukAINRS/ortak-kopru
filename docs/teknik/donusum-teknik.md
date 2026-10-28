@@ -12,14 +12,14 @@ Başlangıç: `main` @ `97c908de7a5850978082770ba3bac3e508688e57` (2026-10-28), 
 
 ## Aşamalar
 
-Son ölçüm: 2026-10-28T17:01:51Z · ana `origin/main` @ `97c908d` · dal `origin/claude/rafine-2026-10-28` @ `2f69873`. Canlı durum için: `python tools/donusum.py --durum`.
+Son ölçüm: 2026-10-28T17:41:20Z · ana `origin/main` @ `97c908d` · dal `origin/claude/rafine-2026-10-28` @ `268e47c`. Canlı durum için: `python tools/donusum.py --durum`.
 
 | Aşama | Kim | Ön koşul | Karar | Zorunlu | Durum |
 | --- | --- | --- | --- | --- | --- |
 | 0. Yeni oluşum hazır (`olusum`) | Claude Code Bulut | — | — | evet | tamam |
 | 1. Prova (`prova`) | makine | olusum | — | evet | tamam |
-| 2. Yerel hazırlık (`yerel-hazirlik`) | Haluk | prova | — | evet | elle-bekleniyor |
-| 3. Birleştirme (`birlesme`) | Haluk | yerel-hazirlik | Haluk: bekliyor | evet | onkosul-bekliyor |
+| 2. Yerel hazırlık (`yerel-hazirlik`) | Haluk | prova | — | evet | tamam |
+| 3. Birleştirme (`birlesme`) | Haluk | yerel-hazirlik | Haluk: 2026-10-28 | evet | atilabilir |
 | 4. Bulut denetimi ve Web (`bulut`) | GitHub | birlesme | — | evet | onkosul-bekliyor |
 | 5. Saatlik otomasyon (`otomasyon`) | GitHub | birlesme | — | evet | onkosul-bekliyor |
 | 6. Yerel geçiş (`yerel-gecis`) | Haluk | birlesme | — | evet | onkosul-bekliyor |
@@ -78,7 +78,7 @@ Geri dönüş: Kopru_Izle.cmd yeniden çalıştırılır; eski yerleşimle süre
 
 | Ölçüt | Son ölçümde |
 | --- | --- |
-| elle: yerel klasörün temiz olduğunu gösteren çıktı ya da gönderim kaydı (0/1 kanıt) | karşılanmıyor |
+| elle: yerel klasörün temiz olduğunu gösteren çıktı ya da gönderim kaydı (1/1 kanıt) | karşılanıyor |
 
 ### 3. Birleştirme
 

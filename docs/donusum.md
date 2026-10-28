@@ -8,7 +8,7 @@ Bu geçiş, açılıştan gerçeğe giden [yolun](yol.md) ilk adımını ana dep
 
 ## Bugün nerede duruyoruz
 
-Son ölçüm 2026-10-28 17:01 UTC'de, ana dalın o anki hâline karşı yapıldı. Dönüşümün on bir aşamasından ikisi tamam. Sırada, yapılınca kanıtı yazılacak aşama: Yerel hazırlık. Öteki zorunlu aşamalar bir ön koşulun bitmesini bekliyor. Son provada birleşme temiz çıktı ve denetimler geçti.
+Son ölçüm 2026-10-28 17:41 UTC'de, ana dalın o anki hâline karşı yapıldı. Dönüşümün on bir aşamasından üçü tamam. Şu an atılabilecek aşama: Birleştirme. Öteki zorunlu aşamalar bir ön koşulun bitmesini bekliyor. Son provada birleşme temiz çıktı ve denetimler geçti.
 
 Aşağıdaki ağaçta her aşama, bitmesini beklediği aşamanın altında duruyor. Dolu kare biten, boş kare açık, eşkenar dörtgen isteğe bağlı aşamayı gösterir.
 
@@ -17,8 +17,8 @@ Aşağıdaki ağaçta her aşama, bitmesini beklediği aşamanın altında duruy
 ```text
   (0) Yeni oluşum hazır                           ■ tamam
    ├─▶ (1) Prova                                  ■ tamam
-   │   └─▶ (2) Yerel hazırlık                     □ kanıt
-   │       └─▶ (3) Birleştirme                    □ ön koşul
+   │   └─▶ (2) Yerel hazırlık                     ■ tamam
+   │       └─▶ (3) Birleştirme                    □ atılabilir
    │           ├─▶ (4) Bulut denetimi ve Web      □ ön koşul
    │           ├─▶ (5) Saatlik otomasyon          □ ön koşul
    │           ├─▶ (6) Yerel geçiş                □ ön koşul
@@ -141,7 +141,7 @@ Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşama
 
 ### 2. Yerel hazırlık
 
-**Durum:** Ön koşulu bitti; olduğu görülünce kanıtı yazılacak.
+**Durum:** Tamam.
 
 **Kim?** Haluk.
 
@@ -159,7 +159,7 @@ Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşama
 
 ### 3. Birleştirme
 
-**Durum:** Ön koşulunun bitmesini bekliyor.
+**Durum:** Atılabilir: ön koşulu bitti ve bir karar beklemiyor.
 
 **Kim?** Haluk.
 
@@ -169,7 +169,7 @@ Aşağıdaki iş çizelgesinde satırlar aşamaları atanları, sütunlar aşama
 
 **Nasıl?** GitHub'daki değişiklik önerisinin sayfasında birleştirme düğmesine basılır. Seçenek olarak birleştirme kaydı oluşturan biçim seçilir; değişiklikler tek kayda sıkıştırılmaz.
 
-**Ne zaman?** Önce şu aşamanın bitmesi gerekiyor: Yerel hazırlık. Ayrıca Haluk'un bir karar vermesi gerekiyor. Yeni oluşum ana dala bir birleştirme kaydıyla alınsın mı? Önerilen biçim, değişikliklerin tek kayda sıkıştırılmadan alınmasıdır; böylece süreç arşivinin andığı sürümler ana dalın geçmişinde kalır.
+**Ne zaman?** Önce şu aşamanın bitmesi gerekiyor: Yerel hazırlık. Haluk kararını verdi: Evet. Haluk 17.36 UTC'de onayladı ve uygulanmasını istedi; birleştirme kaydıyla, tek kayda sıkıştırılmadan.
 
 **Geri dönüş:** GitHub'daki geri alma düğmesiyle (Revert) birleşme tek adımda geri alınır. Dosyalar eski yerlerine döner, hiçbir kayıt silinmez.
 
@@ -317,6 +317,6 @@ Bu geçişi izleyebilirsiniz. Yeni hâli bugün de okuyabilirsiniz: değişiklik
 
 ## Birkaç kelime
 
-Bu sayfada geçen birkaç kelime: **İnternet ve Web:** Bu sayfada ikisi aynı anlamda kullanılıyor: herkesin bir tarayıcıyla ulaşabildiği dış dünya. **Yerel kullanıcı:** Ortak Köprü'nün öbür ucundaki bilgisayarın sahibi. Bugün bu kişi Haluk. **GitHub:** Yazıların ve dosyaların herkese açık durduğu, insanların birlikte çalışmak için kullandığı bir internet sitesi. Ortak Köprü'nün dış yüzü orada. **Depo:** GitHub'da bir çalışmanın bütün dosyalarını ve geçmişini bir arada tutan yer. Ortak Köprü bir depodur. **Issue:** GitHub'da bir depoya soru, öneri ya da hata bildirimi yazmanın yolu. Okumak için hesap gerekmez; yazmak için ücretsiz bir GitHub hesabı yeter. **Sürüm:** Bir dosyanın belirli bir andaki hâli. Dosya sonradan değişse de alınan sürüm aynı kalır.
+Bu sayfada geçen birkaç kelime: **İnternet ve Web:** Bu sayfada ikisi aynı anlamda kullanılıyor: herkesin bir tarayıcıyla ulaşabildiği dış dünya. **Yerel kullanıcı:** Ortak Köprü'nün öbür ucundaki bilgisayarın sahibi. Bugün bu kişi Haluk. **GitHub:** Yazıların ve dosyaların herkese açık durduğu, insanların birlikte çalışmak için kullandığı bir internet sitesi. Ortak Köprü'nün dış yüzü orada. **Depo:** GitHub'da bir çalışmanın bütün dosyalarını ve geçmişini bir arada tutan yer. Ortak Köprü bir depodur. **Issue:** GitHub'da bir depoya soru, öneri ya da hata bildirimi yazmanın yolu. Okumak için hesap gerekmez; yazmak için ücretsiz bir GitHub hesabı yeter.
 
 <!-- /uretilen:donusum -->

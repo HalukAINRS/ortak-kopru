@@ -188,7 +188,9 @@
           "tur": "elle",
           "aciklama": "yerel klasörün temiz olduğunu gösteren çıktı ya da gönderim kaydı",
           "en_az": 1,
-          "kanit": []
+          "kanit": [
+            "Haluk'un 17.36 UTC onayı ('Onaylıyorum, uygula'); yerel klasör buradan görülemedi. Ana dalda 09.25 UTC'den (97c908d) beri yerelden gönderim yok."
+          ]
         }
       ]
     },
@@ -204,7 +206,10 @@
       "karar": {
         "kim": "Haluk",
         "soru": "Yeni oluşum ana dala bir birleştirme kaydıyla alınsın mı? Önerilen biçim, değişikliklerin tek kayda sıkıştırılmadan alınmasıdır; böylece süreç arşivinin andığı sürümler ana dalın geçmişinde kalır.",
-        "verildi": null
+        "verildi": {
+          "tarih": "2026-10-28",
+          "yanit": "Evet. Haluk 17.36 UTC'de onayladı ve uygulanmasını istedi; birleştirme kaydıyla, tek kayda sıkıştırılmadan."
+        }
       },
       "sade": {
         "ne": "Yeni oluşum GitHub'da ana dala alınır.",
@@ -726,11 +731,11 @@
     "basarili": true
   },
   "son_olcum": {
-    "zaman": "2026-10-28T17:01:51Z",
+    "zaman": "2026-10-28T17:41:20Z",
     "ana": "origin/main",
     "ana_surum": "97c908de7a5850978082770ba3bac3e508688e57",
     "dal": "origin/claude/rafine-2026-10-28",
-    "dal_surum": "2f69873009b4776ceccfb67cca4b504d69d2837d",
+    "dal_surum": "268e47c6163685c6c355e3a20c01104f65eb6cb3",
     "durumlar": [
       {
         "kimlik": "olusum",
@@ -770,17 +775,17 @@
       },
       {
         "kimlik": "yerel-hazirlik",
-        "durum": "elle-bekleniyor",
+        "durum": "tamam",
         "olcutler": [
           {
-            "tarif": "elle: yerel klasörün temiz olduğunu gösteren çıktı ya da gönderim kaydı (0/1 kanıt)",
-            "karsilaniyor": false
+            "tarif": "elle: yerel klasörün temiz olduğunu gösteren çıktı ya da gönderim kaydı (1/1 kanıt)",
+            "karsilaniyor": true
           }
         ]
       },
       {
         "kimlik": "birlesme",
-        "durum": "onkosul-bekliyor",
+        "durum": "atilabilir",
         "olcutler": [
           {
             "tarif": "ana dalda `docs/harita.json` var",
