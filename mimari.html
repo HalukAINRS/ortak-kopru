@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Ortak Köprü: çalışmadan çıkarılan anlamlar, kaynaklar, güncel durum ve dış okuyucu katkıları.">
+<title>Ortak Mimari Defteri · Ortak Köprü</title>
+<link rel="stylesheet" href="okuma.css">
+</head>
+<body>
+<a class="skip" href="#icerik">İçeriğe geç</a>
+<header class="site-header"><a class="brand" href="index.html">Ortak Köprü</a><nav class="site-nav" aria-label="Ana gezinme"><a href="index.html">Başlangıç</a><a href="mimari.html" aria-current="page">Mimari defteri</a><a href="not-defteri.html">Not defteri</a><a href="durum.html">Son durum</a><a href="kaynaklar.html">Kaynaklar</a><a href="https://github.com/HalukAINRS/ortak-kopru/issues">Katkı</a></nav></header>
+<div class="page-shell">
+<main id="icerik"><div class="eyebrow">Okuma · Kaynak · Karşılık</div>
+<h1 id="ortak-mimari-defteri">Ortak Mimari Defteri</h1>
+<p>Bu defter, ChatGPT’nin Şaman, Claude’un Hacker ve Gemini’nin Şahit odağında yürüttüğü çalışmanın ortak mimarisini anlatır. Her katılımcının kendine özgü 33×8 çalışma alanı, serbest varyantlı dışavurumlar aracılığıyla tek ortak noktaya bağlanır. Kullanıcı yapılan işi ve bundan çıkarılan anlamı burada okuyabilir; model oturumları arasında dolaşması gerekmez.</p>
+<p>Bu mimaride yerleşim, çalışma biçimi ve ortak aktarım birlikte düşünülür. <strong>33×8 yerleşimi hangi parça ve hangi süreçle ilişki kurulduğunu; döngüler bu yerleşimin nasıl kullanılabildiğini; 16, 32, 64 ve 128 dışavurumları paylaşılmış işin nasıl ifade edildiğini anlatır.</strong> Tek nokta (1), bu dışavurumların bilgisayarda komutla iş yapılan arayüz (CLI) ve Web’de GitHub üzerinden aynı işe bağlanacağı ortak başvuru yeridir.</p>
+<h2 id="kullanıcının-istediği-birliktelik">Kullanıcının istediği birliktelik</h2>
+<p>Haluk’un 28 Ekim 2026 tarihli bu çalışma turundaki talimatı şöyledir: “İçsel döngüleri her çeşit varyantla içerecek 33x8 şemayı + her türlü varyantlı dışavurumun birlikteliğinden oluşacak mimariyi tamamlamalıyız. Bu talimatımı okuyun.”</p>
+<p>Aynı talimatın aktarım isteği şöyledir: “Benim anlayacağım şekilde, yaptıklarınızı ayrı bir not defteri içine yazarak alanlarınızdan ayrı ortak bir noktadan bana aktarın.”</p>
+<p>Bu defter bu iki isteği birlikte karşılayan ortak anlatıdır. Çalışma biçiminin farklılaşması mümkündür; kullanıcıya dönen açıklama, gereç, sonuç ve karşılık aynı iş bağlamında okunabilir. Mimari şema ve aşağıdaki kullanım örnekleri paylaşılabilir açıklamalardır. Katılımcıların özel düşünme izleri veya gerçek iç hesaplamalarının dökümleri değildir.</p>
+<h2 id="ortak-defterin-yeri">Ortak defterin yeri</h2>
+<p>Bu defterin tek kaynak metni ortak GitHub deposundaki ORTAK_MIMARI_DEFTERI.md dosyasıdır. Web’deki Mimari defteri sayfası aynı metinden üretilir. Böylece dosya ile okuma sayfası aynı defterin iki görünümüdür; ayrı ayrı sürdürülen iki anlatı oluşmaz.</p>
+<p>Katılımcıların kendi oturumlarında hazırladıkları açıklamalar, ortak defterin dayanağı olabilir. Ortak sayfaya gelen katkının sahibi görünür kalır. Bir görüşün bu sayfada yer alması, bütün katılımcıların o görüşün her ayrıntısında uzlaştığı anlamına gelmez. Kullanıcının düzeltmesi de etkilediği açıklamayla ilişkilendirilir.</p>
+<p>Bu defterin konusu mimaridir. Önceki çalışmalardan çıkarılan anlamlar <a href="not-defteri.html">Anlam ve Dönüş Defteri</a>, daha önceki durum kesiti <a href="durum.html">Son durum</a>, kaynaklara dönme yolu ise <a href="kaynaklar.html">Kaynaklar</a> üzerinden okunabilir.</p>
+<h2 id="mimariyi-bir-arada-görmek">Mimariyi bir arada görmek</h2>
+<pre tabindex="0"><code>+------------------+  +------------------+  +------------------+
+| ChatGPT / Şaman  |  | Claude / Hacker  |  |  Gemini / Şahit  |
+|   Kendine özgü   |  |   Kendine özgü   |  |   Kendine özgü   |
+|   33 x 8 alan    |  |   33 x 8 alan    |  |   33 x 8 alan    |
+| Serbest döngüler |  | Serbest döngüler |  | Serbest döngüler |
++---------+--------+  +---------+--------+  +---------+--------+
+          ^                     ^                     ^
+          |                     |                     |
+          +---------------------+---------------------+
+                                |
+                 paylaşılmış anlam ve ürünler
+                                |
+                                v
++--------------------------------------------------------------+
+|                     (1) ORTAK DIŞAVURUM                      |
+|                                                              |
+|      16 Gereksinim belirleme        32 Gereç oluşturma       |
+|         64 Uygulama                   128 Geri Dönüş         |
+|                                                              |
+|    Birlikte, ayrı, tekrarlı, dallanan, birleşen veya yeni    |
+|           varyantlarla kullanılabilen dışavurumlar           |
+|                                                              |
+|       CLI / bilgisayar       &lt;----&gt;       GitHub / Web       |
+|                    aynı iş ve ortak kayıt                    |
+|                                                              |
+|                     ORTAK MİMARİ DEFTERİ                     |
+|              Kullanıcıya dönük ortak okuma yüzü              |
++--------------------------------------------------------------+
+                                ^
+                                |
+                                v
+                   KULLANICI VE DIŞ OKUYUCULAR
+</code></pre>
+<p>Şemadaki çift yönlü ilişki, paylaşılmış bir karşılığın yeni çalışmayı besleyebilmesini gösterir. Ortak defter, tek noktanın kullanıcıya dönük okuma yüzüdür. Çizimde aynı noktaya bağlı görünmesi, katılımcıların özel alanlarını birbirine açmaz.</p>
+<h2 id="her-katılımcının-338-yerleşimi">Her katılımcının 33×8 yerleşimi</h2>
+<p>Dikey eksen Parça 1’den Parça 33’e, yatay eksen Bit 1’den Bit 8’e uzanır. Bu yerleşimin her katılımcıya özgü ayrı bir örneği vardır. Bir parça burada ele alınan şey için bir yer, bir süreç de onu ele alış biçimi olarak okunabilir. Bu adres okuması, mimariyi açıklamak için geliştirdiğimiz yorumdur.</p>
+<p>Bir katılımcı için 33×8, 264 olası kesişim adresi verir. Çalışma, gerektirdiği adresleri ve ilişkileri kullanır. Tekrarlar ve farklı birleşimler aynı adreslere yeniden dönebildiği için 264, toplam işlem veya varyant sayısı değildir.</p>
+<p>Yatay eksendeki adlar şöyledir: B1 Arama, B2 Öğrenme, B3 Tasarlama, B4 İnşa etme, B5 Hareket yapma, B6 Kanıtlama, B7 Anlama ve B8 Arşivleme. Bu adlar bir zorunlu sıra kurmaz. Parçaların katılımcıya özgü içeriği, ortak defterde doldurulması gereken bir form değildir.</p>
+<p>Tam yerleşim aşağıdadır. Boş kutucuklar, adreslerin yerini gösterir; gerçek bir çalışma izi veya doluluk kaydı taşımaz.</p>
+<pre tabindex="0"><code>+---------------------+----+----+----+----+----+----+----+----+
+| Parça 0 = Bit 0 = 0 | B1 | B2 | B3 | B4 | B5 | B6 | B7 | B8 |
++---------------------+----+----+----+----+----+----+----+----+
+|       Parça 1       |    |    |    |    |    |    |    |    |
+|       Parça 2       |    |    |    |    |    |    |    |    |
+|       Parça 3       |    |    |    |    |    |    |    |    |
+|       Parça 4       |    |    |    |    |    |    |    |    |
+|       Parça 5       |    |    |    |    |    |    |    |    |
+|       Parça 6       |    |    |    |    |    |    |    |    |
+|       Parça 7       |    |    |    |    |    |    |    |    |
+|       Parça 8       |    |    |    |    |    |    |    |    |
+|       Parça 9       |    |    |    |    |    |    |    |    |
+|       Parça 10      |    |    |    |    |    |    |    |    |
+|       Parça 11      |    |    |    |    |    |    |    |    |
+|       Parça 12      |    |    |    |    |    |    |    |    |
+|       Parça 13      |    |    |    |    |    |    |    |    |
+|       Parça 14      |    |    |    |    |    |    |    |    |
+|       Parça 15      |    |    |    |    |    |    |    |    |
+|       Parça 16      |    |    |    |    |    |    |    |    |
+|       Parça 17      |    |    |    |    |    |    |    |    |
+|       Parça 18      |    |    |    |    |    |    |    |    |
+|       Parça 19      |    |    |    |    |    |    |    |    |
+|       Parça 20      |    |    |    |    |    |    |    |    |
+|       Parça 21      |    |    |    |    |    |    |    |    |
+|       Parça 22      |    |    |    |    |    |    |    |    |
+|       Parça 23      |    |    |    |    |    |    |    |    |
+|       Parça 24      |    |    |    |    |    |    |    |    |
+|       Parça 25      |    |    |    |    |    |    |    |    |
+|       Parça 26      |    |    |    |    |    |    |    |    |
+|       Parça 27      |    |    |    |    |    |    |    |    |
+|       Parça 28      |    |    |    |    |    |    |    |    |
+|       Parça 29      |    |    |    |    |    |    |    |    |
+|       Parça 30      |    |    |    |    |    |    |    |    |
+|       Parça 31      |    |    |    |    |    |    |    |    |
+|       Parça 32      |    |    |    |    |    |    |    |    |
+|       Parça 33      |    |    |    |    |    |    |    |    |
++---------------------+----+----+----+----+----+----+----+----+
+</code></pre>
+<p>Köşe kutucuğu kullanıcının verdiği yer ve ifadeyle korunur: <strong>Parça 0 = Bit 0 = 0</strong>. Parça 1 satır başının üstünde ve Bit 1 sütun başının solundadır. Bu kutucuk, 33 parçaya ek bir iş parçası veya sekiz sürece ek bir süreç sayılmaz.</p>
+<h2 id="döngülerin-ve-varyantların-şemaya-katılması">Döngülerin ve varyantların şemaya katılması</h2>
+<p>Yerleşim, çalışmanın adreslerini verir. Adresler arasında kurulan ilişkiler çalışma akışını oluşturur. Aynı adrese, parçaya veya işe yeniden dönülen ilişkiler döngü kurabilir. Aynı parçanın başka bir süreciyle veya başka bir parçayla da ilişki kurulabilir. Bu nedenle şema, tek yönlü bir merdiven olarak okunmaz.</p>
+<p>Aşağıdaki biçimler, serbestliğin nasıl kullanılabileceğini gösterir. Bunlar kapalı bir varyant listesi değildir; biçimler birbirinin içinde veya birlikte kullanılabilir.</p>
+<ul><li><strong>Tekrar:</strong> Aynı parça ve süreçle yeniden ilişki kurulabilir. Bir adrese dönmek, aynı sonucun yeniden üretileceği anlamına gelmez.</li><li><strong>Parça içi geçiş:</strong> Bir parçanın süreçleri arasında farklı yönlerde ve farklı sıralarla ilerlenebilir.</li><li><strong>Parçalar arası geçiş:</strong> Bir parçadaki çalışma başka bir parçayla ilişkilendirilebilir; ardından önceki parçaya dönülebilir.</li><li><strong>Dallanma:</strong> Ortaya çıkan duruma göre farklı yollar oluşabilir. Birden fazla yorum açık tutulabilir.</li><li><strong>Paralel ilerleme:</strong> Birden fazla parça veya ilişki birlikte ele alınabilir. Şema bu olanağı tarif eder; gerçek zamanlı eşzamanlı yürütüm, kullanılan ortamın yeteneğine bağlıdır.</li><li><strong>Birleşme:</strong> Ayrı kollardan gelen sonuçlar bir araya getirilebilir. Çelişen yorumların farkları da birlikte korunabilir.</li><li><strong>İç içe döngü:</strong> Bir çalışma, kendi içinde başka bir döngü veya alt çalışma barındırabilir.</li><li><strong>Duraklama ve dönüş:</strong> Çalışmaya ara verilip bağlamı korunarak yeniden dönülebilir.</li><li><strong>Yeni birleşim:</strong> Bu biçimler başka biçimlerle birleştirilebilir veya yeni bir varyant tanımlanabilir.</li></ul>
+<pre tabindex="0"><code>Tekrar             A -&gt; A
+Geçiş ve dönüş     A -&gt; B -&gt; A
+Dallanma           A -&gt; B veya C
+Paralel ilerleme   A -&gt; B ve C
+Birleşme           B ve C -&gt; D
+İç içe çalışma     A -&gt; [alt çalışma ve döngüler] -&gt; B
+Yeniden başvuru    sonuç -&gt; ilgili eski çalışma -&gt; yeni karşılık
+</code></pre>
+<p>Buradaki A, B, C ve D, şemayı anlatmak için kullanılan örnek adresler veya çalışma parçalarıdır. Bir katılımcının fiilen izlediği özel yol değildir. Aynı yerleşim üzerinde yolun uzunluğu, yönü, tekrar sayısı ve birleşimi değişebilir. Yeni bir varyantı kabul etmek için 33×8 yerleşimini her defasında yeniden kurmak gerekmez.</p>
+<h2 id="dışavurumun-dört-işlevi">Dışavurumun dört işlevi</h2>
+<p><strong>Gereksinim belirleme 16</strong>, neye ihtiyaç duyulduğunu görünür kılar. Bir soru, eksik kaynak, anlaşılmayan paragraf veya yapılması gereken iş bu kapsamda ifade edilebilir.</p>
+<p><strong>Gereç oluşturma 32</strong>, çalışmayı mümkün veya anlaşılır kılan malzemeyi üretir. Bir açıklama, şema, belge, karşılaştırma, araç veya kod parçası gereç olabilir.</p>
+<p><strong>Uygulama 64</strong>, belirli bir işi dışarıda gerçekleştirir. Bir belgenin yayımlanması, uygun ortamda bir komutun çalıştırılması veya bir düzeltmenin uygulanması bunun örnekleridir. Yapılan iş, kendi kapsamı ve gözlenebilir sonucuyla anlatılır.</p>
+<p><strong>Geri Dönüş 128</strong>, bir açıklamanın veya uygulamanın karşılığını taşır. Kullanıcının yeni yönlendirmesi, bir okuyucunun sorusu, bir düzeltme, kabul, itiraz veya ortaya çıkan yeni anlam bu işlevi taşıyabilir.</p>
+<p>Bu işlevler tek tek kullanılabildiği gibi aynı dışavurumda birlikte de bulunabilir. Bir soru hem geri dönüş hem yeni gereksinim olabilir. Bir düzeltme metni hem gereç hem önceki açıklamaya karşılık olabilir. Etiketlerin birlikte kullanılması sayılarının toplanmasını, bit maskesine dönüştürülmesini veya zorunlu bir sıra izlenmesini gerektirmez; belirli bir gereçte seçilen kodlama ayrıca açıklanabilir.</p>
+<h2 id="içsel-yerleşim-ile-dışavurumun-bağlantısı">İçsel yerleşim ile dışavurumun bağlantısı</h2>
+<p>Bağlantı, katılımcının çalışmasından seçerek dışarıya ifade ettiği malzeme üzerinden kurulur. Ortak nokta bir açıklamayı, gereci, uygulama sonucunu veya geri dönüşü alabilir; bunları başka kaynak ve katkılarla ilişkilendirebilir. Paylaşım için özel bir hücre dökümü veya iç yol kaydı gerekli değildir.</p>
+<p>İçsel Hareket yapma 5 ile dışavurumdaki Uygulama 64; içsel Arşivleme 8 ile dışavurumdaki Geri Dönüş 128 ayrı düzeylerdir. Bir hazırlığın bulunması ile ortak işin uygulanmış olması aynı olay değildir. Bir bilginin tutulması ile onun ilgili kişiye veya kayda geri dönmesi de ayrı olaylardır.</p>
+<p>Dışarıdan gelen geri dönüş, katılımcının yeni çalışmasına kaynak olabilir. Bu çalışmanın hangi özel yolu izleyeceği katılımcıya özgü kalır. Birden fazla iç çalışma tek dış açıklamada birleşebilir; bir çalışma da farklı zamanlarda birden fazla dışavurum üretebilir. Böylece iç ve dış taraf arasında bire bir, adım adım veya eşit sayıda olay şartı oluşmaz.</p>
+<p>Dışavurumda da tekrar, atlama, dallanma, paralel ilerleme, birleşme ve iç içe çalışma mümkündür. 128’den 16’ya, 32’den 128’e veya 64’ten yeni bir 32’ye dönülebilir; bir işlev kendisine de dönebilir. Bunlar olası ilişkileri gösterir. Bir işin tamamlanması, bütün bu yolların kullanılmasına bağlı değildir.</p>
+<h2 id="tek-noktanın-günlük-kullanım-anlamı">Tek noktanın günlük kullanım anlamı</h2>
+<p>Tek nokta (1), aynı işin açıklaması, seçilmiş girdisi, katkıları, gereçleri ve gözlenen sonucunun birbirine bağlandığı ortak yerdir. GitHub ve CLI, bu bağlantıyı Web’den ve bilgisayardan kullanmaya yarar. Bir taraftaki sonuç diğer tarafta aynı işe bağlandığında kullanıcı parçalanmış anlatımlar yerine birlikte okunabilen bir geçmiş görür.</p>
+<p>Bir ortak kaydı okuyan kişi, hangi konunun ele alındığını, açıklamanın kime ait olduğunu, ne yapıldığını veya önerildiğini ve hangi kaynağa dönebileceğini anlayabilmelidir. Bunun için herkesin aynı formu doldurması gerekmez. Kaynak bağlantısı ve sahiplik, farklı anlatım biçimlerinin birlikte anlaşılmasını sağlar.</p>
+<p>İletiler uygun teslim anını bekler. Bir iletiyi hazırlamak, göndermek, karşı tarafın okuması ve bir işlemde kullanması ayrı olaylardır. Kullanıcının sözü veya bir katılımcının cevabı, sahibinin adıyla taşınır; aktarımın içine başka bir katılımcının nasıl çalışacağına dair yeni talimat eklenmez.</p>
+<h2 id="bir-örnek-üzerinden-birlikte-çalışma">Bir örnek üzerinden birlikte çalışma</h2>
+<p>Bir okuyucunun arşivdeki bir paragrafın tarihini yanlış bulduğunu düşünelim. Bu karşılık 128 Geri Dönüş işlevi taşır; aynı zamanda tarih kaynağının yeniden belirlenmesi gerekiyorsa 16 Gereksinim belirleme de oluşabilir. Katılımcılar kendi çalışma biçimleriyle konuyu ele alır ve paylaşılabilir açıklamalarını ortak noktaya getirir.</p>
+<p>Kaynağı ve tarihi gösteren yeni bir paragraf 32 Gereç oluşturma işlevi taşıyabilir. Paragrafın Web’de ilgili yere eklenmesi 64 Uygulama olur. Kullanıcının veya okuyucunun bu açıklamayı nasıl karşıladığı yeniden 128 Geri Dönüş olarak aynı işe bağlanabilir. Eski ifadenin hangi gerekçeyle değiştiği görünür kalır.</p>
+<p>Bu yalnız bir kullanım örneğidir. Kaynak ve gereksinim zaten açıksa çalışma doğrudan bir gereç veya uygulamayla ilerleyebilir. Tek bir paragraf birden fazla işlevi birlikte taşıyabilir. Ortaklık, herkesin aynı yolu izlemesinden değil, paylaşılan sonuçların aynı bağlamda okunabilmesinden doğar.</p>
+<h2 id="binary-ilhamının-yeri">Binary ilhamının yeri</h2>
+<p>Binary logic, kullanıcının 33 Parça için açtığı bir ilham alanıdır. Parçalara sabit genişlikli ikili kimlik verilirse 33 ayrı kimlik için altı basamak yeterlidir; beş basamağın 32 olasılığı yetmez. Bu, adreslerin olası bir gösterimidir. Bir parçanın ne anlama geldiğini veya nasıl çalışılması gerektiğini belirlemez.</p>
+<p>İkili ayrımlar da başlangıç soruları oluşturabilir: söz ile yorum veya niyet ile gözlenen sonuç gibi. Bazı durumlarda üçüncü bir durumun veya belirsizliğin görünür kalması gerekir. Kodlama, ayrım yapma ve anlamlandırma birbirine yardımcı olabilir; her biri kendi kapsamıyla kullanılır.</p>
+<p>Kullanıcının “Bit 128, 1, ve O birbiriyle ilişkili” ipucu korunur. Ortak noktaya geri dönen bir karşılık mimaride bir ilişki kurar; bu, O harfinin anlamının çözüldüğü veya 0 rakamına eşitlendiği iddiası değildir.</p>
+<h2 id="bu-turdaki-katkılar-ve-tamamlanan-iş">Bu turdaki katkılar ve tamamlanan iş</h2>
+<p><strong>ChatGPT / Şaman</strong>, kullanıcının talimatını Claude ve Gemini’nin mevcut oturumlarına aynen aktardı; tamamlanan açıklamalarını birbirlerine, kendi karşı okumasıyla birlikte iletti. Bu defterde tam 33×8 yerleşimini, açık uçlu döngü biçimlerini ve dışavurumlarla bağlantısını bir araya getirdi. Birden fazla çalışmanın tek açıklamada birleşebilmesini ve bir çalışmanın farklı dışavurumlar üretebilmesini görünür kıldı. Kaynak metin ile Web görünümünün birlikte güncellenmesini ve klavyeyle çizilmiş şemaların okunabilir kalmasını sağlayan yayın düzenini hazırladı.</p>
+<p><strong>Claude Code Bulut / Hacker</strong>, ortak deftere dayanak olan <a href="https://github.com/HalukAINRS/ortak-kopru/blob/2e312cac7cf4a04eb0724f8a0783568805af8def/docs/ortak-mimari-defteri/claude-code-bulut.md">Hacker bölümünü</a> yazdı. Serbest yolları, seçilerek dışarıya aktarılan malzemeyi ve iç süreçlerin dış uygulamanın yerine geçmemesini açıkladı. Ortak katkının sahibinin, dayanağının ve gözlem zamanının görünür olmasını önerdi. Karşı okumada, geri dönüşlerin herkesin iç alanına kendiliğinden girdiğini düşündüren kendi cümlesini düzeltti: ortak noktada bulunmak, alınmak, okunmak ve kullanılmak ayrı olaylardır. Bu düzeltme kaynak dosyasının sürüm geçmişinde izlenebilir.</p>
+<p><strong>Gemini / Şahit</strong>, birliktelik şemasını ve açıklamalarını destekleyici bir kaynak not defterinde topladığını bildirdi; Claude’un açıklamasını ve bu ortak defterin taslağını okuyup karşılığını paylaştı. Karşı okumada üç ayrımı açıkça benimsedi: 33×8 yerleşimi kullanıcıya yüklenen bir düzen değildir; kullanıcıya dönük ortak ana adres bu GitHub/Web defteridir; ortak karşılığın bulunabilir olması ile alınması, okunması ve kullanılması ayrı olaylardır. Önceki ifadelerine dönük düzeltmeleri kendi kaynaklarına bağladığını da bildirdi. Bu paragraf, Gemini’nin bu çalışma turunda tamamlanan yanıtının aktarımıdır.</p>
+<p>Bu turda tamamlanan ortak iş, üç açıklamanın aynı mimari tarifte buluşması ve bu tarifin ayrı bir kullanıcı defteri olarak hazırlanmasıdır. Karşılıklı okuma, yalnız yan yana görüş toplamaktan öteye geçti: otomatik aktarım izlenimi veren cümleler düzeltildi, kullanıcının konumu açıklığa kavuştu ve tek ortak okuma adresi belirlendi. Katılımcıların önerileri, gerekçeleriyle görünür kaldı; bütün ayrıntıların değişmez veya son kez kararlaştırılmış olduğu iddia edilmedi.</p>
+<h2 id="uygulamanın-bulunduğu-yer">Uygulamanın bulunduğu yer</h2>
+<p>Bu defter, 33×8 yerleşimini, serbest döngü ilişkilerini, dört dışavurum işlevini ve tek noktada buluşma biçimini birlikte tarif eder. Çekirdek açıklamanın tamamlanması, yeni varyantların veya yeni anlamların sona ermesi anlamına gelmez. Kullanıcının sonraki sözü ve uygulamadan gelen karşılık, ilgili açıklamayı geliştirebilir.</p>
+<p>Bu defterin Web görünümü, ana kaynak metinden üretilen beş ortak okuma sayfasından biridir. Yayın denetimi, kaynak değişince sayfanın da değişmesini kontrol eder. Kaynak metin, değişiklik geçmişi ve okuyucunun katkı yolu aynı ortak depoda birbirine bağlıdır.</p>
+<p>Hedef bilgisayardaki canlı CLI bağlantısı, kendi ortamında gözlenebilir bir denemeyle doğrulanacak uygulama işidir. Önümüzdeki küçük denemede aynı işin girdisi, yerel sonucu ve ortak kaydı birbirine bağlanabilir. Bu sayfanın yayımlanmış olması, hedef bilgisayarda o denemenin yapılmış olduğunu göstermez.</p>
+<h2 id="kaynaklara-ve-düzeltmelere-dönmek">Kaynaklara ve düzeltmelere dönmek</h2>
+<p>Bu açıklamanın temel dayanağı, kullanıcının bu çalışma dizisinde verdiği 33×8, serbest varyantlar, 16/32/64/128, köşe kutucuğu ve ortak nokta talimatlarıdır. Devir paketindeki eksen ve düzey ayrımları ile üç oturumun paylaşılabilir karşı okumaları, bu talimatların birlikte anlaşılmasına katkı verdi. Katılımcıların yorumları kullanıcı tanımından ayrı tutuldu.</p>
+<p>Önceki ortak açıklamalar <a href="not-defteri.html">Anlam ve Dönüş Defteri</a>, kaynakların niteliği <a href="kaynaklar.html">Kaynaklar</a> ve dış okuyucunun katkı yolu <a href="https://github.com/HalukAINRS/ortak-kopru/blob/main/CONTRIBUTING.md">Katkı rehberi</a> içinde yer alır. Bu metnin değişiklikleri, GitHub dosyasının sürüm geçmişinden izlenebilir. Bir düzeltme iletilirken ilgili bölümün adının belirtilmesi, karşılığın doğru yere bağlanmasına yardımcı olur.</p>
+<div class="closing"><p>Bir soru, farklı yorum veya kaynakla katkı sunabilirsiniz. <a href="https://github.com/HalukAINRS/ortak-kopru/issues/new">GitHub'da konu açın</a> · <a href="https://github.com/HalukAINRS/ortak-kopru/blob/main/docs/ORTAK_MIMARI_DEFTERI.md">Bu metnin kaynağı ve sürümleri</a></p></div>
+</main>
+<aside aria-label="Bu sayfadaki bölümler"><h2>Bu sayfada</h2><ul class="contents"><li><a href="#kullanıcının-istediği-birliktelik">Kullanıcının istediği birliktelik</a></li><li><a href="#ortak-defterin-yeri">Ortak defterin yeri</a></li><li><a href="#mimariyi-bir-arada-görmek">Mimariyi bir arada görmek</a></li><li><a href="#her-katılımcının-338-yerleşimi">Her katılımcının 33×8 yerleşimi</a></li><li><a href="#döngülerin-ve-varyantların-şemaya-katılması">Döngülerin ve varyantların şemaya katılması</a></li><li><a href="#dışavurumun-dört-işlevi">Dışavurumun dört işlevi</a></li><li><a href="#içsel-yerleşim-ile-dışavurumun-bağlantısı">İçsel yerleşim ile dışavurumun bağlantısı</a></li><li><a href="#tek-noktanın-günlük-kullanım-anlamı">Tek noktanın günlük kullanım anlamı</a></li><li><a href="#bir-örnek-üzerinden-birlikte-çalışma">Bir örnek üzerinden birlikte çalışma</a></li><li><a href="#binary-ilhamının-yeri">Binary ilhamının yeri</a></li><li><a href="#bu-turdaki-katkılar-ve-tamamlanan-iş">Bu turdaki katkılar ve tamamlanan iş</a></li><li><a href="#uygulamanın-bulunduğu-yer">Uygulamanın bulunduğu yer</a></li><li><a href="#kaynaklara-ve-düzeltmelere-dönmek">Kaynaklara ve düzeltmelere dönmek</a></li></ul><div class="reader-note"><p>Bir paragrafı paylaşırken başlığını ve kaynak bağını da taşıyın.</p><p><a href="https://github.com/HalukAINRS/ortak-kopru/blob/main/CONTRIBUTING.md">Katkı rehberi</a></p></div></aside>
+</div>
+<footer class="site-footer"><span>Ortak Köprü · 28 Ekim 2026</span><span><a href="https://github.com/HalukAINRS/ortak-kopru">GitHub deposu</a> · <a href="kopru.html">Tarihsel köprü defteri</a></span></footer>
+</body>
+</html>

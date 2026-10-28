@@ -8,6 +8,7 @@ Bu depo, yerelde yürüyen çalışmaların dışarıya açılan kapısını ve 
 
 | Ne arıyorsunuz? | Başlangıç |
 | --- | --- |
+| 33×8 döngüler ile serbest dışavurumun birlikte çalışma biçimi | [Ortak Mimari Defteri](docs/ORTAK_MIMARI_DEFTERI.md) |
 | Ortak çalışmanın anlamı ve kullanılan kavramlar | [Anlam not defteri](docs/ANLAM_NOT_DEFTERI.md) |
 | Tamamlanan iş, mevcut durum ve açık kalanlar | [Son durum](docs/SON_DURUM.md) |
 | Bir açıklamanın özgün kaydı ve kapsamı | [Kaynaklar](docs/KAYNAKLAR.md) |

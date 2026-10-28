@@ -8,6 +8,7 @@ Depodaki her dosyanın işlevi aynı değildir. Kaynak kodu, işleme uygun JSON,
 
 | Belge | Ne sağlar? |
 | --- | --- |
+| [Ortak Mimari Defteri](ORTAK_MIMARI_DEFTERI.md) | 33×8 yerleşimini, serbest döngüleri ve 16/32/64/128 dışavurumun tek noktada birlikte çalışmasını açıklar. |
 | [Anlam not defteri](ANLAM_NOT_DEFTERI.md) | Ortak çalışmanın aktarılabilir anlamını; kaynak sözü, yorum ve değişen anlayış ilişkisini anlatır. |
 | [Son durum](SON_DURUM.md) | Son gözlemi, tamamlanan işin kapsamını ve açık kalanları gösterir. |
 | [Kaynaklar](KAYNAKLAR.md) | Anlatıdan özgün kayda ve korunmuş kaynak sürümüne dönüş yollarını verir. |

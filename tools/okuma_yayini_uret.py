@@ -2,7 +2,8 @@
 """Build the static reader pages from the repository's prose, with no network.
 
 The small supported Markdown subset is intentional: headings, paragraphs,
-links, bold, inline code, simple lists and explicit safe heading anchors.
+links, bold, inline code, simple lists, explicit safe heading anchors and
+plain-text blocks fenced with three backticks (unlabelled or labelled text).
 Use --check in CI to detect publication drift without writing files.
 """
 from __future__ import annotations
@@ -17,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REPO = 'https://github.com/HalukAINRS/ortak-kopru'
 PAGES = {
     'WEB_GIRISI.md': ('index.html', 'Ortak Köprü'),
+    'ORTAK_MIMARI_DEFTERI.md': ('mimari.html', 'Ortak Mimari Defteri'),
     'ANLAM_NOT_DEFTERI.md': ('not-defteri.html', 'Anlam ve Dönüş Defteri'),
     'SON_DURUM.md': ('durum.html', 'Son durum'),
     'KAYNAKLAR.md': ('kaynaklar.html', 'Kaynaklar'),
@@ -47,6 +49,7 @@ def destination(value: str) -> str:
 
 
 TOKEN = re.compile(r'\[([^\]\n]+)\]\(([^\s)]+)\)|\*\*([^*\n]+)\*\*|`([^`\n]+)`')
+FENCE = re.compile(r'^[ \t]*(`{3,}|~{3,})(.*)$')
 
 
 def inline(value: str) -> str:
@@ -66,9 +69,51 @@ def inline(value: str) -> str:
     return ''.join(result)
 
 
+def blocks(source: str) -> list[tuple[str, str]]:
+    """Separate literal text before splitting prose at blank lines."""
+    result: list[tuple[str, str]] = []
+    prose: list[str] = []
+    literal: list[str] | None = None
+    opened_at = 0
+
+    def flush_prose() -> None:
+        text = ''.join(prose).strip()
+        if text:
+            result.extend(('prose', block) for block in re.split(r'\n\s*\n', text))
+        prose.clear()
+
+    for number, raw_line in enumerate(source.splitlines(keepends=True), 1):
+        line = raw_line.rstrip('\r\n')
+        fence = FENCE.fullmatch(line)
+        if literal is not None:
+            if fence:
+                if fence.group(1) != '```' or fence.group(2).strip():
+                    raise ValueError(f'Mismatched closing fence at line {number}; expected ```.')
+                result.append(('text', ''.join(literal)))
+                literal = None
+            else:
+                literal.append(raw_line)
+        elif fence:
+            if fence.group(1) != '```' or fence.group(2).strip() not in ('', 'text'):
+                raise ValueError(f'Unsupported fenced block at line {number}; use ``` or ```text.')
+            flush_prose()
+            literal = []
+            opened_at = number
+        else:
+            prose.append(raw_line)
+
+    if literal is not None:
+        raise ValueError(f'Unclosed plain-text fence opened at line {opened_at}.')
+    flush_prose()
+    return result
+
+
 def render(source: str) -> tuple[str, list[tuple[str, str]]]:
     output, headings = [], []
-    for block in re.split(r'\n\s*\n', source.strip()):
+    for kind, block in blocks(source):
+        if kind == 'text':
+            output.append('<pre tabindex="0"><code>' + html.escape(block) + '</code></pre>')
+            continue
         if re.fullmatch(r'<a id="[\w-]+"></a>', block):
             # The heading immediately below receives the same stable ID.
             continue
@@ -90,7 +135,7 @@ def render(source: str) -> tuple[str, list[tuple[str, str]]]:
 
 def page(filename: str, output_name: str, label: str) -> str:
     body, headings = render((ROOT / 'docs' / filename).read_text(encoding='utf-8'))
-    nav = ''.join(f'<a href="{target}"' + (' aria-current="page"' if target == output_name else '') + f'>{html.escape(name)}</a>' for target, name in [('index.html', 'Başlangıç'), ('not-defteri.html', 'Not defteri'), ('durum.html', 'Son durum'), ('kaynaklar.html', 'Kaynaklar')])
+    nav = ''.join(f'<a href="{target}"' + (' aria-current="page"' if target == output_name else '') + f'>{html.escape(name)}</a>' for target, name in [('index.html', 'Başlangıç'), ('mimari.html', 'Mimari defteri'), ('not-defteri.html', 'Not defteri'), ('durum.html', 'Son durum'), ('kaynaklar.html', 'Kaynaklar')])
     contents = ''.join(f'<li><a href="#{anchor}">{html.escape(title)}</a></li>' for anchor, title in headings)
     title = label if output_name == 'index.html' else label + ' · Ortak Köprü'
     return f'''<!doctype html>
@@ -135,7 +180,7 @@ def main() -> int:
         print('Reader publication is out of date: ' + ', '.join(mismatches))
         print('Run: python tools/okuma_yayini_uret.py')
         return 1
-    print('Reader publication matches its source paragraphs.' if args.check else 'Built four static reader pages.')
+    print('Reader publication matches its source paragraphs.' if args.check else f'Built {len(PAGES)} static reader pages.')
     return 0
 
 
