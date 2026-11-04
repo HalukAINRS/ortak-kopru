@@ -1,0 +1,319 @@
+[
+  {
+    "pr": 27,
+    "reviews": [
+      {
+        "id": 5689368121,
+        "node_id": "PRR_kwDOVVMgGM8AAAABUxzeOQ",
+        "user": {
+          "login": "chatgpt-codex-connector[bot]",
+          "id": 199175422,
+          "node_id": "BOT_kgDOC98s_g",
+          "avatar_url": "https://avatars.githubusercontent.com/in/1144995?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D",
+          "html_url": "https://github.com/apps/chatgpt-codex-connector",
+          "followers_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/followers",
+          "following_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/following{/other_user}",
+          "gists_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/subscriptions",
+          "organizations_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/orgs",
+          "repos_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/repos",
+          "events_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/received_events",
+          "type": "Bot",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "body": "<!-- codex-review-receipt:v1 -->\n\n\n### 💡 Codex Review\n\nHere are some automated review suggestions for this pull request.\n\n**Reviewed commit:** `897ac5d3ef`\n    \n\n<details> <summary>ℹ️ About Codex in GitHub</summary>\n<br/>\n\n[Your team has set up Codex to review pull requests in this repo](https://chatgpt.com/codex/cloud/settings/general). Reviews are triggered when you\n- Open a pull request for review\n- Mark a draft as ready\n- Comment \"@codex review\".\n\nIf Codex has suggestions, it will comment; otherwise it will react with 👍.\n\n\n\n\nCodex can also answer questions or update the PR. Try commenting \"@codex address that feedback\".\n            \n</details>",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/HalukAINRS/ortak-kopru/pull/27#pullrequestreview-5689368121",
+        "pull_request_url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/27",
+        "author_association": "NONE",
+        "is_copilot_code_review": false,
+        "copilot_code_review_effort": null,
+        "_links": {
+          "html": {
+            "href": "https://github.com/HalukAINRS/ortak-kopru/pull/27#pullrequestreview-5689368121"
+          },
+          "pull_request": {
+            "href": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/27"
+          }
+        },
+        "submitted_at": "2026-10-28T20:37:51Z",
+        "commit_id": "897ac5d3ef0f857fc87ba0361d5c20fafe57bee7"
+      },
+      {
+        "id": 5689380205,
+        "node_id": "PRR_kwDOVVMgGM8AAAABUx0NbQ",
+        "user": {
+          "login": "HalukAINRS",
+          "id": 143292150,
+          "node_id": "U_kgDOCIp29g",
+          "avatar_url": "https://avatars.githubusercontent.com/u/143292150?u=afbe54f486e0f42ad695487dfe57be9911ed4a0f&v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/HalukAINRS",
+          "html_url": "https://github.com/HalukAINRS",
+          "followers_url": "https://api.github.com/users/HalukAINRS/followers",
+          "following_url": "https://api.github.com/users/HalukAINRS/following{/other_user}",
+          "gists_url": "https://api.github.com/users/HalukAINRS/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/HalukAINRS/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/HalukAINRS/subscriptions",
+          "organizations_url": "https://api.github.com/users/HalukAINRS/orgs",
+          "repos_url": "https://api.github.com/users/HalukAINRS/repos",
+          "events_url": "https://api.github.com/users/HalukAINRS/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/HalukAINRS/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "body": "",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/HalukAINRS/ortak-kopru/pull/27#pullrequestreview-5689380205",
+        "pull_request_url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/27",
+        "author_association": "OWNER",
+        "is_copilot_code_review": false,
+        "copilot_code_review_effort": null,
+        "_links": {
+          "html": {
+            "href": "https://github.com/HalukAINRS/ortak-kopru/pull/27#pullrequestreview-5689380205"
+          },
+          "pull_request": {
+            "href": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/27"
+          }
+        },
+        "submitted_at": "2026-10-28T20:38:56Z",
+        "commit_id": "6459122f32b72d5af0fad654336c3110f276472a"
+      }
+    ]
+  },
+  {
+    "pr": 26,
+    "reviews": []
+  },
+  {
+    "pr": 25,
+    "reviews": [
+      {
+        "id": 5688633591,
+        "node_id": "PRR_kwDOVVMgGM8AAAABUxGo9w",
+        "user": {
+          "login": "chatgpt-codex-connector[bot]",
+          "id": 199175422,
+          "node_id": "BOT_kgDOC98s_g",
+          "avatar_url": "https://avatars.githubusercontent.com/in/1144995?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D",
+          "html_url": "https://github.com/apps/chatgpt-codex-connector",
+          "followers_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/followers",
+          "following_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/following{/other_user}",
+          "gists_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/subscriptions",
+          "organizations_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/orgs",
+          "repos_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/repos",
+          "events_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/received_events",
+          "type": "Bot",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "body": "<!-- codex-review-receipt:v1 -->\n\n\n### 💡 Codex Review\n\nHere are some automated review suggestions for this pull request.\n\n**Reviewed commit:** `e817242a46`\n    \n\n<details> <summary>ℹ️ About Codex in GitHub</summary>\n<br/>\n\n[Your team has set up Codex to review pull requests in this repo](https://chatgpt.com/codex/cloud/settings/general). Reviews are triggered when you\n- Open a pull request for review\n- Mark a draft as ready\n- Comment \"@codex review\".\n\nIf Codex has suggestions, it will comment; otherwise it will react with 👍.\n\n\n\n\nCodex can also answer questions or update the PR. Try commenting \"@codex address that feedback\".\n            \n</details>",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/HalukAINRS/ortak-kopru/pull/25#pullrequestreview-5688633591",
+        "pull_request_url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/25",
+        "author_association": "NONE",
+        "is_copilot_code_review": false,
+        "copilot_code_review_effort": null,
+        "_links": {
+          "html": {
+            "href": "https://github.com/HalukAINRS/ortak-kopru/pull/25#pullrequestreview-5688633591"
+          },
+          "pull_request": {
+            "href": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/25"
+          }
+        },
+        "submitted_at": "2026-10-28T19:38:11Z",
+        "commit_id": "e817242a46608c27f5642a7140dcd8a0597359c9"
+      },
+      {
+        "id": 5688686707,
+        "node_id": "PRR_kwDOVVMgGM8AAAABUxJ4cw",
+        "user": {
+          "login": "HalukAINRS",
+          "id": 143292150,
+          "node_id": "U_kgDOCIp29g",
+          "avatar_url": "https://avatars.githubusercontent.com/u/143292150?u=afbe54f486e0f42ad695487dfe57be9911ed4a0f&v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/HalukAINRS",
+          "html_url": "https://github.com/HalukAINRS",
+          "followers_url": "https://api.github.com/users/HalukAINRS/followers",
+          "following_url": "https://api.github.com/users/HalukAINRS/following{/other_user}",
+          "gists_url": "https://api.github.com/users/HalukAINRS/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/HalukAINRS/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/HalukAINRS/subscriptions",
+          "organizations_url": "https://api.github.com/users/HalukAINRS/orgs",
+          "repos_url": "https://api.github.com/users/HalukAINRS/repos",
+          "events_url": "https://api.github.com/users/HalukAINRS/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/HalukAINRS/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "body": "",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/HalukAINRS/ortak-kopru/pull/25#pullrequestreview-5688686707",
+        "pull_request_url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/25",
+        "author_association": "OWNER",
+        "is_copilot_code_review": false,
+        "copilot_code_review_effort": null,
+        "_links": {
+          "html": {
+            "href": "https://github.com/HalukAINRS/ortak-kopru/pull/25#pullrequestreview-5688686707"
+          },
+          "pull_request": {
+            "href": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/25"
+          }
+        },
+        "submitted_at": "2026-10-28T19:42:17Z",
+        "commit_id": "2c6b770b45917e18c7a82e77ca3cdaa6d7174372"
+      }
+    ]
+  },
+  {
+    "pr": 24,
+    "reviews": []
+  },
+  {
+    "pr": 23,
+    "reviews": []
+  },
+  {
+    "pr": 22,
+    "reviews": []
+  },
+  {
+    "pr": 21,
+    "reviews": []
+  },
+  {
+    "pr": 20,
+    "reviews": []
+  },
+  {
+    "pr": 19,
+    "reviews": []
+  },
+  {
+    "pr": 18,
+    "reviews": []
+  },
+  {
+    "pr": 17,
+    "reviews": []
+  },
+  {
+    "pr": 15,
+    "reviews": []
+  },
+  {
+    "pr": 14,
+    "reviews": []
+  },
+  {
+    "pr": 13,
+    "reviews": []
+  },
+  {
+    "pr": 12,
+    "reviews": []
+  },
+  {
+    "pr": 11,
+    "reviews": []
+  },
+  {
+    "pr": 10,
+    "reviews": []
+  },
+  {
+    "pr": 9,
+    "reviews": [
+      {
+        "id": 5639960539,
+        "node_id": "PRR_kwDOVVMgGM8AAAABUCr32w",
+        "user": {
+          "login": "chatgpt-codex-connector[bot]",
+          "id": 199175422,
+          "node_id": "BOT_kgDOC98s_g",
+          "avatar_url": "https://avatars.githubusercontent.com/in/1144995?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D",
+          "html_url": "https://github.com/apps/chatgpt-codex-connector",
+          "followers_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/followers",
+          "following_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/following{/other_user}",
+          "gists_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/subscriptions",
+          "organizations_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/orgs",
+          "repos_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/repos",
+          "events_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/received_events",
+          "type": "Bot",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "body": "<!-- codex-review-receipt:v1 -->\n\n\n### 💡 Codex Review\n\nHere are some automated review suggestions for this pull request.\n\n**Reviewed commit:** `ac4f034b96`\n    \n\n<details> <summary>ℹ️ About Codex in GitHub</summary>\n<br/>\n\n[Your team has set up Codex to review pull requests in this repo](https://chatgpt.com/codex/cloud/settings/general). Reviews are triggered when you\n- Open a pull request for review\n- Mark a draft as ready\n- Comment \"@codex review\".\n\nIf Codex has suggestions, it will comment; otherwise it will react with 👍.\n\n\n\n\nCodex can also answer questions or update the PR. Try commenting \"@codex address that feedback\".\n            \n</details>",
+        "state": "COMMENTED",
+        "html_url": "https://github.com/HalukAINRS/ortak-kopru/pull/9#pullrequestreview-5639960539",
+        "pull_request_url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/9",
+        "author_association": "NONE",
+        "is_copilot_code_review": false,
+        "copilot_code_review_effort": null,
+        "_links": {
+          "html": {
+            "href": "https://github.com/HalukAINRS/ortak-kopru/pull/9#pullrequestreview-5639960539"
+          },
+          "pull_request": {
+            "href": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/9"
+          }
+        },
+        "submitted_at": "2026-10-24T20:50:33Z",
+        "commit_id": "ac4f034b96f1990cafe792f59739d7dce5ee4b5e"
+      }
+    ]
+  },
+  {
+    "pr": 8,
+    "reviews": []
+  },
+  {
+    "pr": 7,
+    "reviews": []
+  },
+  {
+    "pr": 6,
+    "reviews": []
+  },
+  {
+    "pr": 5,
+    "reviews": []
+  },
+  {
+    "pr": 4,
+    "reviews": []
+  },
+  {
+    "pr": 3,
+    "reviews": []
+  },
+  {
+    "pr": 2,
+    "reviews": []
+  },
+  {
+    "pr": 1,
+    "reviews": []
+  }
+]

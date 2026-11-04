@@ -1,0 +1,359 @@
+[
+  {
+    "url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/comments/4368475066",
+    "pull_request_review_id": 5639960539,
+    "id": 4368475066,
+    "node_id": "PRRC_kwDOVVMgGM8AAAABBGGjug",
+    "diff_hunk": "@@ -49,18 +79,29 @@ def numara(kid):\n \n \n def bekleyenler(kayitlar, ad):\n-    kapsanan_ust = -1\n-    for k in kayitlar:\n-        if ad_kok(k[\"kimden\"]) == ad and k.get(\"yanit\"):\n-            kapsanan_ust = max(kapsanan_ust, numara(k[\"yanit\"]))\n+    hedef = hedef_kimligi(ad)\n+    genel = (hedef[0], \"\")\n+    kapsanan = {}\n+    for y in kayitlar:\n+        if not y.get(\"yanit\"):\n+            continue\n+        kimden = hedef_kimligi(y[\"kimden\"])\n+        for kapsam in {kimden, (kimden[0], \"\")}:\n+            kapsanan[kapsam] = max(kapsanan.get(kapsam, -1), numara(y[\"yanit\"]))\n     out = []\n     for k in kayitlar:\n         if k[\"durum\"] != \"acik\":\n             continue\n-        if ad not in kime_adlari(k[\"kime\"]):\n+        adresler = kime_adlari(k[\"kime\"])\n+        kapsam = hedef if hedef in adresler else genel if genel in adresler else None\n+        if kapsam is None:\n             continue",
+    "path": "kopru_yanitla.py",
+    "commit_id": "ac4f034b96f1990cafe792f59739d7dce5ee4b5e",
+    "original_commit_id": "ac4f034b96f1990cafe792f59739d7dce5ee4b5e",
+    "user": {
+      "login": "chatgpt-codex-connector[bot]",
+      "id": 199175422,
+      "node_id": "BOT_kgDOC98s_g",
+      "avatar_url": "https://avatars.githubusercontent.com/in/1144995?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "followers_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/followers",
+      "following_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/subscriptions",
+      "organizations_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/orgs",
+      "repos_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/repos",
+      "events_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/received_events",
+      "type": "Bot",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Update readiness checks to query explicit CLI identities**\n\nWhen an open record targets an explicit CLI identity such as `Copilot (Şahit)`, this change makes a root-name query return no pending records. However, the local readiness flow in `kopru_yerel.ps1:315–319` still invokes `--bekleyenler` with `Claude`, `ChatGPT`, and `Copilot`. Consequently, `Kopru_Izle.cmd Hazirlik` reports zero pending work even though the configured CLI will process it; for Copilot it additionally recommends adding an invitation because it incorrectly concludes that no record has been addressed to it. Update those callers to use the configured CLI signatures alongside this matching change.\n\nUseful? React with 👍 / 👎.\n\n<!-- codex-code-review-finding:v1 -->",
+    "created_at": "2026-10-24T20:50:33Z",
+    "updated_at": "2026-10-24T20:50:33Z",
+    "html_url": "https://github.com/HalukAINRS/ortak-kopru/pull/9#discussion_r4368475066",
+    "pull_request_url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/9",
+    "_links": {
+      "self": {
+        "href": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/comments/4368475066"
+      },
+      "html": {
+        "href": "https://github.com/HalukAINRS/ortak-kopru/pull/9#discussion_r4368475066"
+      },
+      "pull_request": {
+        "href": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/9"
+      }
+    },
+    "reactions": {
+      "url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/comments/4368475066/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "start_line": 95,
+    "original_start_line": 95,
+    "start_side": "RIGHT",
+    "line": 98,
+    "original_line": 98,
+    "side": "RIGHT",
+    "author_association": "NONE",
+    "original_position": 73,
+    "position": 73,
+    "subject_type": "line",
+    "is_copilot_code_review": false,
+    "copilot_code_review_sources": []
+  },
+  {
+    "url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/comments/4405243132",
+    "pull_request_review_id": 5688633591,
+    "id": 4405243132,
+    "node_id": "PRRC_kwDOVVMgGM8AAAABBpKs_A",
+    "diff_hunk": "@@ -0,0 +1,87 @@\n+# Yerel taraf\n+\n+Bu sayfa, kapının bilgisayardaki ucunu anlatır: ne için tasarlandığını, bugün nerede durduğunu ve sıfırdan nasıl kurulacağını. Kısa cevap şu: 28 Ekim 2026 itibarıyla yerel taraf hiçbir bilgisayarda kurulu değil. Depo onu çalıştıracak betikleri taşıyor, ama betiklerin beklediği klasörler ve programlar bugün yok. Bu sayfa teknik ayrıntıdır; açılışı anlamak için okunması gerekmez.\n+\n+## Bugünkü durum\n+\n+Haluk 28 Ekim 2026 18.47 UTC'de bilgisayarında köprü klasörü olmadığını bildirdi. Bunun sonuçları:\n+\n+| Konu | Bugün |\n+| --- | --- |\n+| Ortak defter | Tek kopyası GitHub'daki ana dalda. Defterin kendi kurallarındaki \"kanonik kopya yereldir\" cümlesi o günün düzenini anlatır; defter kendi kuralıyla yalnız yeni bir kayıtla düzeltilebilir ve bu karar Haluk'ta. |\n+| Bot | GitHub'da saatte bir çalışıyor (`.github/workflows/kopru.yml`). Yerel katmanlar (Hacker, Şaman, Google izleyicisi) çalışmıyor. |\n+| Kapı | `kapi.py` herhangi bir Git kopyasında çalışır; aktarım dizini Git'in dışında olmak zorundadır. Yerel tarafa bağlı değildir. |\n+| Yerel gönderici | `yerel/kopru_gonder.ps1` kurulu değil; seçimsiz gönderme açığı (R-17) bu yüzden uykuda. Daraltılması [yolun 1. adımında](../yol.md) karar bekliyor. |\n+| Yerel iş bileşeni | `deus.py` herhangi bir bilgisayarda kurulabilir; NT aygıt kapısı yalnız Windows'ta ve yalnız derlenmiş olarak var. |\n+\n+## Tasarım\n+\n+Yerel taraf bir Windows bilgisayarı için yazıldı. Tek giriş noktası kökteki `Kopru_Izle.cmd` dosyasıdır; o, ortamı kuran `yerel/kopru_yerel.ps1` betiğini bir kiple çağırır.\n+\n+**Yerel tarafın planı** · mimar çizimi\n+\n+```text\n+ Kopru_Izle.cmd  (çift tık = Izle; ya da kip adı)\n+       │\n+       ▼\n+ yerel/kopru_yerel.ps1   ortam: Y:\\ yolları, Python, SSH\n+       │\n+       ├── Izle / Tek ──▶ yerel/kopru_izle.ps1\n+       │                    │\n+       │                    ▼\n+       │                  defter/kopru_yanitla.py\n+       │                    + katilimcilar/ayarlar-yerel.json\n+       │                    │\n+       │                    ├──▶ Claude (Hacker): VM, SSH 2222\n+       │                    ├──▶ ChatGPT (Şaman): Codex CLI\n+       │                    └──▶ Google (CLI izleyici)\n+       │\n+       ├── Gonder ───▶ yerel/kopru_gonder.ps1 ──▶ push main\n+       ├── Hazirlik ────▶ her parçayı denetler, model çağırmaz\n+       └── Ekle, Bolum, VM, Giriş ve tanı kipleri\n+```\n+\n+## Gerekenler\n+\n+Betiklerin kendisi depoda. Çalışmaları için depo dışında şunlar gerekir:\n+\n+| Gereken | Neden |\n+| --- | --- |\n+| Windows ve PowerShell 7 (`pwsh`) | Betikler PowerShell 7 için yazıldı; `Kopru_Izle.cmd` önce sabit bir yolda, sonra PATH'te `pwsh.exe` arar. |\n+| Git | Çekme, birleştirme ve gönderme. |\n+| Python 3.12 ya da üstü | Defter araçları ve bot. `KOPRU_PYTHON` ortam değişkeni ya da PATH'teki `python`/`py` kullanılır. Hazırlık kipi eksikse yalnız indirme adresini yazar; kendisi kurmaz. |\n+| Ortam betiği `Y:\\HalukAI\\HalukAI_Ortam.ps1` | PATH ve ortak ortam değişkenleri. Yoksa betik uyarı verip sürer. |\n+| CLI katmanları | Hacker için SSH ile ulaşılan sanal makinede Claude Code; Şaman için Codex CLI; Google izleyicisi için Python. Her birinin kendi kurulumu ve girişi vardır. |\n+\n+## Bilinen uyuşmazlıklar ve yan etkiler\n+\n+Betikler ve ayarlar, kuruldukları ilk makinenin klasör düzenine bağlı yazıldı. Yeniden kurmadan önce şunlar bilinmeli:\n+\n+1. **İki ayrı yol ağacı.** `yerel/kopru_yerel.ps1` katmanları `Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\…` altında arar; `katilimcilar/ayarlar-yerel.json` ise `Y:\\archive\\10_Katmanlar\\…` ve `Y:\\archive\\30_Govde_Sistem\\…` altındaki komutları çalıştırır. Codex'in ev klasörü ikisinde farklıdır: `CodexGiris` kipinin girişi yazdığı yer, izleyicinin baktığı yer değildir.\n+2. **Copilot ile Google.** Hazırlık ve giriş kipleri Copilot CLI'ı denetler; yerel ayarlarda ise Copilot yerine `Google (CLI izleyici)` katılımcısı var.\n+3. **Git'in genel ayarı.** `yerel/kopru_yerel.ps1` her çalıştığında `Y:/HalukAI/Ortak_Kopru/kopru` yolunu Git'in genel `safe.directory` listesine ekler. Bu, depo başka bir yerde olsa da olur. Geri almak için: `git config --global --unset-all safe.directory Y:/HalukAI/Ortak_Kopru/kopru`.\n+4. **Gönderici.** `yerel/kopru_gonder.ps1` çalışma klasöründeki her değişikliği (`git add -A`) ana dala gönderir. Bu, [yolun 1. adımındaki](../yol.md) kararın konusudur.\n+\n+## Sıfırdan kurmak\n+\n+Yerel taraf yeniden kurulacaksa sıra şöyledir:\n+\n+1. Windows'ta Git, PowerShell 7 ve Python 3.12 ya da üstünü kurun.\n+2. Depoyu istediğiniz bir klasöre klonlayın: `git clone https://github.com/HalukAINRS/ortak-kopru`.\n+3. Göndericinin kararı verilmeden ve gönderici daraltılmadan `Kopru_Izle.cmd Gonder` ya da `yerel/kopru_gonder.ps1` çalıştırmayın.\n+4. `yerel/kopru_yerel.ps1` içindeki \"Yollar\" bloğunu ve `katilimcilar/ayarlar-yerel.json` içindeki komut yollarını kendi makinenize göre düzeltin; ikisini aynı klasörlere bağlayın. `$DepoYolu` değişkeni deponun gerçek yolunu göstermeli.\n+5. `Kopru_Izle.cmd Hazirlik` her parçayı denetler, eksikleri yazar ve hiçbir model çağırmaz.\n+6. `Kopru_Izle.cmd Tek` bir tur çalışır ve çıkar; sürekli izleme için dosyaya çift tıklanır.",
+    "path": "docs/teknik/yerel-taraf.md",
+    "commit_id": "2366a0f6afed7dca8b435a6a0844bb0515028266",
+    "original_commit_id": "e817242a46608c27f5642a7140dcd8a0597359c9",
+    "user": {
+      "login": "chatgpt-codex-connector[bot]",
+      "id": 199175422,
+      "node_id": "BOT_kgDOC98s_g",
+      "avatar_url": "https://avatars.githubusercontent.com/in/1144995?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "followers_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/followers",
+      "following_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/subscriptions",
+      "organizations_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/orgs",
+      "repos_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/repos",
+      "events_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/received_events",
+      "type": "Bot",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Gate watcher startup on narrowing the sender**\n\nOn a fresh Windows setup with push access, following step 4 leaves local edits in the tracked launcher and participant settings, and step 6 then publishes those edits despite step 3's warning not to run the sender. In the inspected wrappers, `Tek` invokes `yerel/kopru_izle.ps1`, whose dirty-worktree branch at lines 53–56 automatically calls `kopru_gonder.ps1` before calling any participant; double-click startup follows the same path. Thus avoiding the explicit `Gonder` command does not prevent machine-specific configuration or other pending files from being published. Require the sender to be narrowed before starting either watcher mode, not just before invoking it directly.\n\nUseful? React with 👍 / 👎.\n\n<!-- codex-code-review-finding:v1 -->",
+    "created_at": "2026-10-28T19:38:12Z",
+    "updated_at": "2026-10-28T19:38:12Z",
+    "html_url": "https://github.com/HalukAINRS/ortak-kopru/pull/25#discussion_r4405243132",
+    "pull_request_url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/25",
+    "_links": {
+      "self": {
+        "href": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/comments/4405243132"
+      },
+      "html": {
+        "href": "https://github.com/HalukAINRS/ortak-kopru/pull/25#discussion_r4405243132"
+      },
+      "pull_request": {
+        "href": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/25"
+      }
+    },
+    "reactions": {
+      "url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/comments/4405243132/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "start_line": null,
+    "original_start_line": null,
+    "start_side": null,
+    "line": null,
+    "original_line": 74,
+    "side": "RIGHT",
+    "author_association": "NONE",
+    "original_position": 74,
+    "position": 1,
+    "subject_type": "line",
+    "is_copilot_code_review": false,
+    "copilot_code_review_sources": []
+  },
+  {
+    "url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/comments/4405285927",
+    "pull_request_review_id": 5688686707,
+    "id": 4405285927,
+    "node_id": "PRRC_kwDOVVMgGM8AAAABBpNUJw",
+    "diff_hunk": "@@ -0,0 +1,87 @@\n+# Yerel taraf\n+\n+Bu sayfa, kapının bilgisayardaki ucunu anlatır: ne için tasarlandığını, bugün nerede durduğunu ve sıfırdan nasıl kurulacağını. Kısa cevap şu: 28 Ekim 2026 itibarıyla yerel taraf hiçbir bilgisayarda kurulu değil. Depo onu çalıştıracak betikleri taşıyor, ama betiklerin beklediği klasörler ve programlar bugün yok. Bu sayfa teknik ayrıntıdır; açılışı anlamak için okunması gerekmez.\n+\n+## Bugünkü durum\n+\n+Haluk 28 Ekim 2026 18.47 UTC'de bilgisayarında köprü klasörü olmadığını bildirdi. Bunun sonuçları:\n+\n+| Konu | Bugün |\n+| --- | --- |\n+| Ortak defter | Tek kopyası GitHub'daki ana dalda. Defterin kendi kurallarındaki \"kanonik kopya yereldir\" cümlesi o günün düzenini anlatır; defter kendi kuralıyla yalnız yeni bir kayıtla düzeltilebilir ve bu karar Haluk'ta. |\n+| Bot | GitHub'da saatte bir çalışıyor (`.github/workflows/kopru.yml`). Yerel katmanlar (Hacker, Şaman, Google izleyicisi) çalışmıyor. |\n+| Kapı | `kapi.py` herhangi bir Git kopyasında çalışır; aktarım dizini Git'in dışında olmak zorundadır. Yerel tarafa bağlı değildir. |\n+| Yerel gönderici | `yerel/kopru_gonder.ps1` kurulu değil; seçimsiz gönderme açığı (R-17) bu yüzden uykuda. Daraltılması [yolun 1. adımında](../yol.md) karar bekliyor. |\n+| Yerel iş bileşeni | `deus.py` herhangi bir bilgisayarda kurulabilir; NT aygıt kapısı yalnız Windows'ta ve yalnız derlenmiş olarak var. |\n+\n+## Tasarım\n+\n+Yerel taraf bir Windows bilgisayarı için yazıldı. Tek giriş noktası kökteki `Kopru_Izle.cmd` dosyasıdır; o, ortamı kuran `yerel/kopru_yerel.ps1` betiğini bir kiple çağırır.\n+\n+**Yerel tarafın planı** · mimar çizimi\n+\n+```text\n+ Kopru_Izle.cmd  (çift tık = Izle; ya da kip adı)\n+       │\n+       ▼\n+ yerel/kopru_yerel.ps1   ortam: Y:\\ yolları, Python, SSH\n+       │\n+       ├── Izle / Tek ──▶ yerel/kopru_izle.ps1\n+       │                    │\n+       │                    ▼\n+       │                  defter/kopru_yanitla.py\n+       │                    + katilimcilar/ayarlar-yerel.json\n+       │                    │\n+       │                    ├──▶ Claude (Hacker): VM, SSH 2222\n+       │                    ├──▶ ChatGPT (Şaman): Codex CLI\n+       │                    └──▶ Google (CLI izleyici)\n+       │\n+       ├── Gonder ───▶ yerel/kopru_gonder.ps1 ──▶ push main\n+       ├── Hazirlik ────▶ her parçayı denetler, model çağırmaz\n+       └── Ekle, Bolum, VM, Giriş ve tanı kipleri\n+```\n+\n+## Gerekenler\n+\n+Betiklerin kendisi depoda. Çalışmaları için depo dışında şunlar gerekir:\n+\n+| Gereken | Neden |\n+| --- | --- |\n+| Windows ve PowerShell 7 (`pwsh`) | Betikler PowerShell 7 için yazıldı; `Kopru_Izle.cmd` önce sabit bir yolda, sonra PATH'te `pwsh.exe` arar. |\n+| Git | Çekme, birleştirme ve gönderme. |\n+| Python 3.12 ya da üstü | Defter araçları ve bot. `KOPRU_PYTHON` ortam değişkeni ya da PATH'teki `python`/`py` kullanılır. Hazırlık kipi eksikse yalnız indirme adresini yazar; kendisi kurmaz. |\n+| Ortam betiği `Y:\\HalukAI\\HalukAI_Ortam.ps1` | PATH ve ortak ortam değişkenleri. Yoksa betik uyarı verip sürer. |\n+| CLI katmanları | Hacker için SSH ile ulaşılan sanal makinede Claude Code; Şaman için Codex CLI; Google izleyicisi için Python. Her birinin kendi kurulumu ve girişi vardır. |\n+\n+## Bilinen uyuşmazlıklar ve yan etkiler\n+\n+Betikler ve ayarlar, kuruldukları ilk makinenin klasör düzenine bağlı yazıldı. Yeniden kurmadan önce şunlar bilinmeli:\n+\n+1. **İki ayrı yol ağacı.** `yerel/kopru_yerel.ps1` katmanları `Y:\\HalukAI\\02_Govde\\Canli\\CLI_Katmanlari\\…` altında arar; `katilimcilar/ayarlar-yerel.json` ise `Y:\\archive\\10_Katmanlar\\…` ve `Y:\\archive\\30_Govde_Sistem\\…` altındaki komutları çalıştırır. Codex'in ev klasörü ikisinde farklıdır: `CodexGiris` kipinin girişi yazdığı yer, izleyicinin baktığı yer değildir.\n+2. **Copilot ile Google.** Hazırlık ve giriş kipleri Copilot CLI'ı denetler; yerel ayarlarda ise Copilot yerine `Google (CLI izleyici)` katılımcısı var.\n+3. **Git'in genel ayarı.** `yerel/kopru_yerel.ps1` her çalıştığında `Y:/HalukAI/Ortak_Kopru/kopru` yolunu Git'in genel `safe.directory` listesine ekler. Bu, depo başka bir yerde olsa da olur. Geri almak için: `git config --global --unset-all safe.directory Y:/HalukAI/Ortak_Kopru/kopru`.\n+4. **Gönderici.** `yerel/kopru_gonder.ps1` çalışma klasöründeki her değişikliği (`git add -A`) ana dala gönderir. Bu, [yolun 1. adımındaki](../yol.md) kararın konusudur.\n+\n+## Sıfırdan kurmak\n+\n+Yerel taraf yeniden kurulacaksa sıra şöyledir:\n+\n+1. Windows'ta Git, PowerShell 7 ve Python 3.12 ya da üstünü kurun.\n+2. Depoyu istediğiniz bir klasöre klonlayın: `git clone https://github.com/HalukAINRS/ortak-kopru`.\n+3. Göndericinin kararı verilmeden ve gönderici daraltılmadan `Kopru_Izle.cmd Gonder` ya da `yerel/kopru_gonder.ps1` çalıştırmayın.\n+4. `yerel/kopru_yerel.ps1` içindeki \"Yollar\" bloğunu ve `katilimcilar/ayarlar-yerel.json` içindeki komut yollarını kendi makinenize göre düzeltin; ikisini aynı klasörlere bağlayın. `$DepoYolu` değişkeni deponun gerçek yolunu göstermeli.\n+5. `Kopru_Izle.cmd Hazirlik` her parçayı denetler, eksikleri yazar ve hiçbir model çağırmaz.\n+6. `Kopru_Izle.cmd Tek` bir tur çalışır ve çıkar; sürekli izleme için dosyaya çift tıklanır.",
+    "path": "docs/teknik/yerel-taraf.md",
+    "commit_id": "2366a0f6afed7dca8b435a6a0844bb0515028266",
+    "original_commit_id": "e817242a46608c27f5642a7140dcd8a0597359c9",
+    "user": {
+      "login": "HalukAINRS",
+      "id": 143292150,
+      "node_id": "U_kgDOCIp29g",
+      "avatar_url": "https://avatars.githubusercontent.com/u/143292150?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/HalukAINRS",
+      "html_url": "https://github.com/HalukAINRS",
+      "followers_url": "https://api.github.com/users/HalukAINRS/followers",
+      "following_url": "https://api.github.com/users/HalukAINRS/following{/other_user}",
+      "gists_url": "https://api.github.com/users/HalukAINRS/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/HalukAINRS/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/HalukAINRS/subscriptions",
+      "organizations_url": "https://api.github.com/users/HalukAINRS/orgs",
+      "repos_url": "https://api.github.com/users/HalukAINRS/repos",
+      "events_url": "https://api.github.com/users/HalukAINRS/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/HalukAINRS/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "body": "Düzeltildi (2c6b770): kurulum adımları artık göndericinin daraltılması (yol, 1. adım) ve yolların depo dışındaki bir yerel ayardan okunması (S03) bitmeden başlamıyor; sayfa, izleyicinin kirli çalışma kopyasında her turdan önce göndericiyi çağırdığını açıkça yazıyor. Göndericiye dair görüşe de bu eklendi.\n\n---\n_Generated by [Claude Code](https://claude.ai/code)_",
+    "created_at": "2026-10-28T19:42:17Z",
+    "updated_at": "2026-10-28T19:42:17Z",
+    "html_url": "https://github.com/HalukAINRS/ortak-kopru/pull/25#discussion_r4405285927",
+    "pull_request_url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/25",
+    "_links": {
+      "self": {
+        "href": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/comments/4405285927"
+      },
+      "html": {
+        "href": "https://github.com/HalukAINRS/ortak-kopru/pull/25#discussion_r4405285927"
+      },
+      "pull_request": {
+        "href": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/25"
+      }
+    },
+    "reactions": {
+      "url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/comments/4405285927/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "start_line": null,
+    "original_start_line": null,
+    "start_side": null,
+    "line": null,
+    "original_line": 74,
+    "side": "RIGHT",
+    "in_reply_to_id": 4405243132,
+    "author_association": "OWNER",
+    "original_position": 74,
+    "position": 1,
+    "subject_type": "line",
+    "is_copilot_code_review": false,
+    "copilot_code_review_sources": []
+  },
+  {
+    "url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/comments/4405821968",
+    "pull_request_review_id": 5689368121,
+    "id": 4405821968,
+    "node_id": "PRRC_kwDOVVMgGM8AAAABBpuCEA",
+    "diff_hunk": "@@ -0,0 +1,70 @@\n+\"\"\"Gelen kutusu: GitHub'daki açık konuları yerel, özel bir dizine indirir.\n+\n+Konular herkese açıktır ve anahtarsız okunur; ortamdaki bir belirteç bu yolda\n+kullanılmaz. Her konu, kimin ne zaman yazdığı ve formdaki \"yer\" alanıyla tek bir\n+JSON dosyası olur. Dosyalar aktarım dizininin altındaki `gelen/` dizinine\n+yazılır; o dizin bir Git çalışma ağacının içinde olamaz. İçerik veridir:\n+çalıştırılmaz, yerel çalışmaya uygulanmaz, var olan bir dosyanın üstüne yazılmaz.\n+Başlığı ya da gövdesi değişen konu yeni bir dosya olur; önceki hâli kalır.\n+\"\"\"\n+from __future__ import annotations\n+\n+from datetime import datetime, timezone\n+import hashlib\n+import json\n+\n+from .local_files import private_path, write_private_file\n+\n+KIND = \"ortak_kopru_gelen\"\n+SCHEMA_VERSION = 1\n+DIRECTORY = \"gelen\"\n+# Karşılık formunun (.github/ISSUE_TEMPLATE/karsilik.yml) alan etiketleri.\n+FORM_FIELDS = {\"tur\": \"Ne getiriyorsunuz?\", \"yer\": \"Hangi yazı, hangi bölüm?\"}\n+_EMPTY = \"_No response_\"\n+\n+\n+def form_fields(body):\n+    \"\"\"Read the form's answers from an issue body rendered by GitHub.\"\"\"\n+    sections, heading, lines = {}, None, []\n+    for line in body.replace(\"\\r\\n\", \"\\n\").split(\"\\n\") + [\"### \"]:\n+        if line.startswith(\"### \"):\n+            if heading is not None:\n+                sections.setdefault(heading, \"\\n\".join(lines).strip())\n+            heading, lines = line[4:].strip(), []\n+        elif heading is not None:\n+            lines.append(line)\n+    result = {}\n+    for key, label in FORM_FIELDS.items():\n+        value = sections.get(label, \"\")\n+        result[key] = value[:512] if value and value != _EMPTY else None\n+    return result\n+\n+\n+def content_digest(issue):\n+    text = json.dumps({\"title\": issue[\"title\"], \"body\": issue[\"body\"]},\n+                      ensure_ascii=False, sort_keys=True, separators=(\",\", \":\"))\n+    return hashlib.sha256(text.encode(\"utf-8\")).hexdigest()\n+\n+\n+def collect(exchange_directory, client, repository):\n+    \"\"\"Write every new or changed open issue to the private inbox.\"\"\"\n+    inbox = private_path(exchange_directory / DIRECTORY)\n+    inbox.mkdir(mode=0o700, exist_ok=True)\n+    fetched_at = datetime.now(timezone.utc).isoformat(timespec=\"seconds\")\n+    new, unchanged = [], 0\n+    for issue in client.open_issues(repository):\n+        digest = content_digest(issue)\n+        name = f\"konu-{issue['number']:06d}-{digest[:16]}.json\"\n+        path = private_path(inbox / name)\n+        if path.exists():\n+            unchanged += 1\n+            continue",
+    "path": "src/ortak_kopru/inbox.py",
+    "commit_id": "be6eef75e9b3fec8e6739e9d1bf9cf977ad70933",
+    "original_commit_id": "897ac5d3ef0f857fc87ba0361d5c20fafe57bee7",
+    "user": {
+      "login": "chatgpt-codex-connector[bot]",
+      "id": 199175422,
+      "node_id": "BOT_kgDOC98s_g",
+      "avatar_url": "https://avatars.githubusercontent.com/in/1144995?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "followers_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/followers",
+      "following_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/subscriptions",
+      "organizations_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/orgs",
+      "repos_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/repos",
+      "events_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/received_events",
+      "type": "Bot",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Include repository identity in inbox filenames**\n\nWhen the same exchange directory is used with two repositories, issues with the same number, title, and body produce identical filenames because the digest contains only the title and body. The second repository's issue is silently counted as unchanged and never saved, leaving only the first repository's provenance. This is reproducible by collecting issue #1 with identical content from two different repositories. Include the repository identity in the filename, digest, or directory hierarchy so deduplication cannot discard unrelated issues.\n\nUseful? React with 👍 / 👎.\n\n<!-- codex-code-review-finding:v1 -->",
+    "created_at": "2026-10-28T20:37:51Z",
+    "updated_at": "2026-10-28T20:37:51Z",
+    "html_url": "https://github.com/HalukAINRS/ortak-kopru/pull/27#discussion_r4405821968",
+    "pull_request_url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/27",
+    "_links": {
+      "self": {
+        "href": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/comments/4405821968"
+      },
+      "html": {
+        "href": "https://github.com/HalukAINRS/ortak-kopru/pull/27#discussion_r4405821968"
+      },
+      "pull_request": {
+        "href": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/27"
+      }
+    },
+    "reactions": {
+      "url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/comments/4405821968/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "start_line": 67,
+    "original_start_line": 56,
+    "start_side": "RIGHT",
+    "line": 72,
+    "original_line": 61,
+    "side": "RIGHT",
+    "author_association": "NONE",
+    "original_position": 61,
+    "position": 72,
+    "subject_type": "line",
+    "is_copilot_code_review": false,
+    "copilot_code_review_sources": []
+  },
+  {
+    "url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/comments/4405831721",
+    "pull_request_review_id": 5689380205,
+    "id": 4405831721,
+    "node_id": "PRRC_kwDOVVMgGM8AAAABBpuoKQ",
+    "diff_hunk": "@@ -0,0 +1,70 @@\n+\"\"\"Gelen kutusu: GitHub'daki açık konuları yerel, özel bir dizine indirir.\n+\n+Konular herkese açıktır ve anahtarsız okunur; ortamdaki bir belirteç bu yolda\n+kullanılmaz. Her konu, kimin ne zaman yazdığı ve formdaki \"yer\" alanıyla tek bir\n+JSON dosyası olur. Dosyalar aktarım dizininin altındaki `gelen/` dizinine\n+yazılır; o dizin bir Git çalışma ağacının içinde olamaz. İçerik veridir:\n+çalıştırılmaz, yerel çalışmaya uygulanmaz, var olan bir dosyanın üstüne yazılmaz.\n+Başlığı ya da gövdesi değişen konu yeni bir dosya olur; önceki hâli kalır.\n+\"\"\"\n+from __future__ import annotations\n+\n+from datetime import datetime, timezone\n+import hashlib\n+import json\n+\n+from .local_files import private_path, write_private_file\n+\n+KIND = \"ortak_kopru_gelen\"\n+SCHEMA_VERSION = 1\n+DIRECTORY = \"gelen\"\n+# Karşılık formunun (.github/ISSUE_TEMPLATE/karsilik.yml) alan etiketleri.\n+FORM_FIELDS = {\"tur\": \"Ne getiriyorsunuz?\", \"yer\": \"Hangi yazı, hangi bölüm?\"}\n+_EMPTY = \"_No response_\"\n+\n+\n+def form_fields(body):\n+    \"\"\"Read the form's answers from an issue body rendered by GitHub.\"\"\"\n+    sections, heading, lines = {}, None, []\n+    for line in body.replace(\"\\r\\n\", \"\\n\").split(\"\\n\") + [\"### \"]:\n+        if line.startswith(\"### \"):\n+            if heading is not None:\n+                sections.setdefault(heading, \"\\n\".join(lines).strip())\n+            heading, lines = line[4:].strip(), []\n+        elif heading is not None:\n+            lines.append(line)\n+    result = {}\n+    for key, label in FORM_FIELDS.items():\n+        value = sections.get(label, \"\")\n+        result[key] = value[:512] if value and value != _EMPTY else None\n+    return result\n+\n+\n+def content_digest(issue):\n+    text = json.dumps({\"title\": issue[\"title\"], \"body\": issue[\"body\"]},\n+                      ensure_ascii=False, sort_keys=True, separators=(\",\", \":\"))\n+    return hashlib.sha256(text.encode(\"utf-8\")).hexdigest()\n+\n+\n+def collect(exchange_directory, client, repository):\n+    \"\"\"Write every new or changed open issue to the private inbox.\"\"\"\n+    inbox = private_path(exchange_directory / DIRECTORY)\n+    inbox.mkdir(mode=0o700, exist_ok=True)\n+    fetched_at = datetime.now(timezone.utc).isoformat(timespec=\"seconds\")\n+    new, unchanged = [], 0\n+    for issue in client.open_issues(repository):\n+        digest = content_digest(issue)\n+        name = f\"konu-{issue['number']:06d}-{digest[:16]}.json\"\n+        path = private_path(inbox / name)\n+        if path.exists():\n+            unchanged += 1\n+            continue",
+    "path": "src/ortak_kopru/inbox.py",
+    "commit_id": "be6eef75e9b3fec8e6739e9d1bf9cf977ad70933",
+    "original_commit_id": "897ac5d3ef0f857fc87ba0361d5c20fafe57bee7",
+    "user": {
+      "login": "HalukAINRS",
+      "id": 143292150,
+      "node_id": "U_kgDOCIp29g",
+      "avatar_url": "https://avatars.githubusercontent.com/u/143292150?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/HalukAINRS",
+      "html_url": "https://github.com/HalukAINRS",
+      "followers_url": "https://api.github.com/users/HalukAINRS/followers",
+      "following_url": "https://api.github.com/users/HalukAINRS/following{/other_user}",
+      "gists_url": "https://api.github.com/users/HalukAINRS/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/HalukAINRS/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/HalukAINRS/subscriptions",
+      "organizations_url": "https://api.github.com/users/HalukAINRS/orgs",
+      "repos_url": "https://api.github.com/users/HalukAINRS/repos",
+      "events_url": "https://api.github.com/users/HalukAINRS/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/HalukAINRS/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "body": "Düzeltildi: be6eef7. Dosya adının karması artık deponun adını ve konunun numarasını da kapsıyor (`inbox.file_name`); aynı aktarım dizininde iki depodan gelen aynı numaralı ve aynı içerikli konular ayrı dosyalara yazılıyor. Sınama: `test_same_issue_number_from_two_repositories_is_kept_apart`.\n\n---\n_Generated by [Claude Code](https://claude.ai/code)_",
+    "created_at": "2026-10-28T20:38:56Z",
+    "updated_at": "2026-10-28T20:38:56Z",
+    "html_url": "https://github.com/HalukAINRS/ortak-kopru/pull/27#discussion_r4405831721",
+    "pull_request_url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/27",
+    "_links": {
+      "self": {
+        "href": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/comments/4405831721"
+      },
+      "html": {
+        "href": "https://github.com/HalukAINRS/ortak-kopru/pull/27#discussion_r4405831721"
+      },
+      "pull_request": {
+        "href": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/27"
+      }
+    },
+    "reactions": {
+      "url": "https://api.github.com/repos/HalukAINRS/ortak-kopru/pulls/comments/4405831721/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "start_line": 67,
+    "original_start_line": 56,
+    "start_side": "RIGHT",
+    "line": 72,
+    "original_line": 61,
+    "side": "RIGHT",
+    "in_reply_to_id": 4405821968,
+    "author_association": "OWNER",
+    "original_position": 61,
+    "position": 72,
+    "subject_type": "line",
+    "is_copilot_code_review": false,
+    "copilot_code_review_sources": []
+  }
+]
