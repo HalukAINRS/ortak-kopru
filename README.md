@@ -41,3 +41,36 @@ Kalıcı yapmak için örnek: `setx KOPRU_TAM_IZIN 1` (yeni açılan pencerelerd
 - Dosya ASCII ve CRLF satır sonlarıyla saklanır (`.gitattributes`: `*.cmd -text`); düzenlerken bu biçimi koruyun.
 - Model ya da efor hesabınızda kullanılamıyorsa veya Copilot CLI eskiyse Copilot hata verir; `copilot update` ile güncelleyin.
 - PowerShell 7 (`pwsh`) önerilir. Bulunamazsa Copilot Windows PowerShell 5.1 kullanır: `winget install --id Microsoft.PowerShell -e`
+
+## karargah/claude_code
+
+Claude Code karargâhını "tek ortam" düzenine göre kuran kit. Her oturum (yeni, `--continue`, `--resume`) karargâh kökünde açılır; başka klasör oturuma yalnızca uzak yer olarak eklenir. Durum satırı ortamın nerede olduğunu oturum boyunca gösterir; `kanit.cmd` kapıyı ve durum satırını sınar ve rapor yazar. İşleyiş, doğrulanmış durum ve kalan iş tek belgededir: [tek_ortam_kaydi.md](karargah/claude_code/kit/arastirma_tasarim/tek_ortam_kaydi.md).
+
+### Kurulum
+
+Windows komut isteminde, depo klonunun kökünden çalıştırılır. Kurucu hedefi argümandan, `KARARGAH_HEDEF` değişkeninden ya da `Y:\02_karargahlar\01_claude_code_karargah*` aramasından bulur. Önce kuru çalıştırma yapılır; hiçbir dosya kopyalanmaz, yapılacaklar listelenir:
+
+```cmd
+set KARARGAH_DENEME=1
+karargah\claude_code\kur.cmd
+```
+
+Çıktı beklendiği gibiyse değişken temizlenir ve kurulur:
+
+```cmd
+set KARARGAH_DENEME=
+karargah\claude_code\kur.cmd
+```
+
+Kurucu eski kapıyı `claude_code.asil.cmd` (yalnızca ilk kurulumda) ve `claude_code.onceki.cmd` olarak yedekler, var olan `.claude\settings.json` dosyasının üzerine yazmaz ve sonunda karargâhın kanıtını çalıştırır; raporda `KALDI` satırı olmamalıdır. Geri almak için `claude_code.onceki.cmd` dosyası `claude_code.cmd` üzerine kopyalanır.
+
+### Kullanım
+
+| Çağrı | Sonuç |
+|---|---|
+| `claude_code.cmd` | Oturum karargâh kökünde |
+| `claude_code.cmd --burada` | Oturum yine kökte; çağrılan klasör uzak yer olarak eklenir, oturum klasörün adını alır |
+| `claude_code.cmd --continue` | Son oturuma devam; bayraklar yeniden verilir |
+| `claude_code.cmd remote-control` | Remote Control sunucusu kökte |
+| `araclar\kanit.cmd` | Kanıt: oturum açmaz, ağa çıkmaz; raporu `gecici\kanit.son.txt` dosyasına yazar |
+| `KARARGAH_DENEME=1` | Kapı ve kurucu ne yapacağını gösterir, yapmaz |

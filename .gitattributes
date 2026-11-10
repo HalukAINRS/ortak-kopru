@@ -1,3 +1,4 @@
 # Windows toplu dosyalari CRLF ile, donusturulmeden saklanir (ham indirme de CRLF kalir).
 *.cmd -text
 *.bat -text
+*.ps1 -text
