@@ -44,33 +44,25 @@ Kalıcı yapmak için örnek: `setx KOPRU_TAM_IZIN 1` (yeni açılan pencerelerd
 
 ## karargah/claude_code
 
-Claude Code karargâhını "tek ortam" kuralına göre kuran kit: her oturum (yeni, `--continue`, `--resume`) karargâh kökünde açılır; başka klasör yalnızca uzak yer olarak eklenir. Adlar ve kalıplar [usul.md](karargah/claude_code/kit/.claude/rules/usul.md) dosyasındadır.
-
-| Kit dosyası | Karargâhtaki yeri | İşi |
-|---|---|---|
-| `kit/claude_code.cmd` | `claude_code.cmd` | Kapı: oturumu kökte açar, `--burada` ile çağrılan klasörü ekler ve oturuma adını verir |
-| `kit/araclar/durum_satiri.cmd`, `.ps1` | `araclar\` | Durum satırı: ortamın nerede olduğunu ve eklenen uzak yerleri gösterir |
-| `kit/araclar/kanit.cmd` | `araclar\kanit.cmd` | Kanıt: kapıyı ve durum satırını sınar, rapor verir |
-| `kit/.claude/settings.json` | `.claude\settings.json` | Durum satırını bağlar; dosya araçlarını kök ve eklenen yerlerle sınırlar |
-| `kit/.claude/rules/usul.md` | `.claude\rules\usul.md` | Usul: sözlük, kalıplar, ileti biçimi, kanıt damgaları |
+Claude Code karargâhını "tek ortam" düzenine göre kuran kit. Her oturum (yeni, `--continue`, `--resume`) karargâh kökünde açılır; başka klasör oturuma yalnızca uzak yer olarak eklenir. Durum satırı ortamın nerede olduğunu oturum boyunca gösterir; `kanit.cmd` kapıyı ve durum satırını sınar ve rapor yazar. İşleyiş, doğrulanmış durum ve kalan iş tek belgededir: [tek_ortam_kaydi.md](karargah/claude_code/kit/arastirma_tasarim/tek_ortam_kaydi.md).
 
 ### Kurulum
 
-1. Depoyu klonlayın ya da güncelleyin.
-2. Önce kuru çalıştırın; hiçbir dosya kopyalanmaz, yapılacaklar listelenir:
+Windows komut isteminde, depo klonunun kökünden çalıştırılır. Kurucu hedefi argümandan, `KARARGAH_HEDEF` değişkeninden ya da `Y:\02_karargahlar\01_claude_code_karargah*` aramasından bulur. Önce kuru çalıştırma yapılır; hiçbir dosya kopyalanmaz, yapılacaklar listelenir:
 
-   ```cmd
-   set KARARGAH_DENEME=1
-   karargah\claude_code\kur.cmd
-   ```
+```cmd
+set KARARGAH_DENEME=1
+karargah\claude_code\kur.cmd
+```
 
-3. Kurun (yeni pencerede ya da `set KARARGAH_DENEME=` yazdıktan sonra):
+Çıktı beklendiği gibiyse değişken temizlenir ve kurulur:
 
-   ```cmd
-   karargah\claude_code\kur.cmd
-   ```
+```cmd
+set KARARGAH_DENEME=
+karargah\claude_code\kur.cmd
+```
 
-Kurucu hedefi argümandan, `KARARGAH_HEDEF` değişkeninden ya da `Y:\02_karargahlar\01_claude_code_karargah*` aramasından bulur. Eski kapıyı `claude_code.asil.cmd` (yalnızca ilk kurulumda) ve `claude_code.onceki.cmd` olarak yedekler. Var olan `.claude\settings.json` dosyasının üzerine yazmaz; kit ayarını yanına `settings.kit.json` olarak koyar. Sonunda karargâhın kanıtını (`araclar\kanit.cmd`) çalıştırır: raporda `KALDI` satırı olmamalıdır.
+Kurucu eski kapıyı `claude_code.asil.cmd` (yalnızca ilk kurulumda) ve `claude_code.onceki.cmd` olarak yedekler, var olan `.claude\settings.json` dosyasının üzerine yazmaz ve sonunda karargâhın kanıtını çalıştırır; raporda `KALDI` satırı olmamalıdır. Geri almak için `claude_code.onceki.cmd` dosyası `claude_code.cmd` üzerine kopyalanır.
 
 ### Kullanım
 
@@ -79,31 +71,6 @@ Kurucu hedefi argümandan, `KARARGAH_HEDEF` değişkeninden ya da `Y:\02_kararga
 | `claude_code.cmd` | Oturum karargâh kökünde |
 | `claude_code.cmd --burada` | Oturum yine kökte; çağrılan klasör uzak yer olarak eklenir, oturum klasörün adını alır |
 | `claude_code.cmd --continue` | Son oturuma devam; bayraklar yeniden verilir |
-| `claude_code.cmd remote-control` | Remote Control sunucusu kökte; karakter ve yetki fiilden sonra verilir |
-| `KARARGAH_DENEME=1` | Komutu ve çalışma dizinini gösterir, Claude Code'u başlatmaz |
-
-Durum satırı `karargah | uzak: C:\proje (+1) | ad: proje | 2.1.322` biçimindedir. `ORTAM KAYDI` oturumun kökten taşındığını, `KAPI DISI` oturumun kapıdan açılmadığını gösterir.
-
-### Sınır ayarı
-
-`.claude\settings.json` içindeki `blockReadsOutsideWorkingDirectories` ve `blockWritesOutsideWorkingDirectories`, dosya araçlarının kök ve eklenen yerler dışına erişmesini her yetki kipinde reddeder. Kök dışındaki bir klasör (örneğin `Y:\02_karargahlar\ortak`) gerekiyorsa `/add-dir` ile eklenir. Kabuk komutlarını sınırlamaz. İstemiyorsanız bu iki satırı silin.
-
-### Kanıt
-
-Karargâh kendi durumunu sınar ve gösterir. Parçaların nasıl çalıştığı ve her iddianın hangi kanıta dayandığı [ACIKLAMA.md](karargah/claude_code/ACIKLAMA.md) dosyasındadır.
-
-| Nerede | Komut | Ne yapar |
-|---|---|---|
-| Karargâhta | `araclar\kanit.cmd` | Kapıyı kuru çalıştırır, durum satırını örnek girdiyle sınar; oturum açmaz, ağa çıkmaz |
-| Karargâhta | `araclar\kanit.cmd --canli` | Ek olarak gerçek `claude.exe` ile tek bir `-p` çağrısı yapar; hesabınızdan küçük bir kullanım düşer |
-| Depoda (bulut oturumu) | `karargah/claude_code/sinama/sina.sh` | Kurucuyu ve `kanit.cmd` dosyasını wine'da, durum satırını PowerShell'de sınar |
-| Depoda (bulut oturumu) | `karargah/claude_code/sinama/sina.sh --canli` | Ek olarak gerçek `claude` ile iki küçük çağrı yapar |
-
-Rapor `gecici\kanit.son.txt` dosyasına yazılır. Bulut oturumu Windows'ta ne olduğunu ancak bu rapordan görebilir; raporu oturuma yükleyin ya da depoya işleyin.
-
-Bugünkü durum:
-
-- **Denendi (wine 9.0 `cmd`):** `kanit.cmd` içindeki 12 kapı sınaması ve kurucunun 6 durumu.
-- **Denendi (PowerShell 7.4, Linux):** durum satırı betiği, 10 örnek girdi.
-- **Denendi (Linux, gerçek `claude` 2.1.322):** göreli yol çalışma dizinine göre çözülüyor; `--add-dir=` ile eklenen boşluklu klasör okunuyor; kit ayarı dışarıdaki dosyanın okunmasını reddediyor, ayar yokken dosya okunuyor.
-- **Denenmedi:** gerçek Windows ve `claude.exe`, Windows PowerShell 5.1, durum satırının Claude Code içinden çağrılması, sürücü kökünü (`C:\`) eklemek, ASCII dışı harfli yol. Bunları Windows'ta `kanit.cmd` ve `kanit.cmd --canli` sınar.
+| `claude_code.cmd remote-control` | Remote Control sunucusu kökte |
+| `araclar\kanit.cmd` | Kanıt: oturum açmaz, ağa çıkmaz; raporu `gecici\kanit.son.txt` dosyasına yazar |
+| `KARARGAH_DENEME=1` | Kapı ve kurucu ne yapacağını gösterir, yapmaz |

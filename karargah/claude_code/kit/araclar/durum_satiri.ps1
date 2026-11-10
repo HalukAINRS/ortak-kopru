@@ -2,13 +2,13 @@
 #
 # Girdi : Claude Code'un stdin'e verdigi JSON (workspace.project_dir, workspace.current_dir,
 #         workspace.added_dirs, session_name, version).
-# Cikti : tek satir. Ornek:  karargah | uzak: C:\proje (+1) | ad: proje | 2.1.322
+# Cikti : tek satir. Ornek:  karargah | uzak yer: C:\proje (+1) | ad: proje | 2.1.322
 #
 #   karargah              oturum kapidan acildi ve karargah kokunde
 #   ORTAM KAYDI: <yol>    oturum kapidan acildi ama kok baska yere tasinmis (/cd, worktree)
 #   KAPI DISI: <yol>      oturum kapidan acilmamis (KARARGAH_ROOT ortamda yok)
 #   konum: <yol>          kabuk su an kokten baska bir klasorde (ortam degismedi)
-#   uzak: <yol> (+N)      eklenen uzak yerler; yoksa "uzak: yok"
+#   uzak yer: <yol> (+N)  eklenen uzak yerler; yoksa "uzak yer: yok"
 #   ad: <ad>              oturum adi (-n, /rename)
 #
 # Dosya ASCII'dir; Windows PowerShell 5.1 ve PowerShell 7 ile calisir. Girdi ve cikti UTF-8 bayt
@@ -62,9 +62,9 @@ try {
     if ($ekli.Count -gt 0) {
         $ilk = Duz ([string]$ekli[0])
         if ($ekli.Count -gt 1) { $ilk = $ilk + ' (+' + ($ekli.Count - 1) + ')' }
-        $parca.Add('uzak: ' + $ilk)
+        $parca.Add('uzak yer: ' + $ilk)
     } else {
-        $parca.Add('uzak: yok')
+        $parca.Add('uzak yer: yok')
     }
 
     if ($veri.session_name) { $parca.Add('ad: ' + [string]$veri.session_name) }

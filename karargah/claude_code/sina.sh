@@ -6,9 +6,9 @@
 #   2) pwsh     : durum satiri betigi, ornek girdiler
 #   3) --canli  : gercek claude ile iki kucuk -p cagrisi (hesaptan kullanim duser). Urunun davranisini
 #                 sinar: goreli yol calisma dizinine gore cozulur, --add-dir= ile eklenen klasor okunur,
-#                 kitin ayari disaridaki dosyanin okunmasini reddeder.
+#                 istege bagli okuma siniri ayari disaridaki dosyanin okunmasini reddeder.
 #
-# Kullanim: karargah/claude_code/sinama/sina.sh [--canli]
+# Kullanim: karargah/claude_code/sina.sh [--canli]
 # Gerekenler (eksik olan adim ATLANDI yazar):
 #   apt-get install -y --no-install-recommends wine64
 #   apt-get install -y --no-install-recommends dotnet-sdk-8.0 && dotnet tool install --global PowerShell --version 7.4.6
@@ -18,7 +18,7 @@
 
 set -u
 BURASI=$(cd "$(dirname "$0")" && pwd)
-KIT_KOKU=$(cd "$BURASI/.." && pwd)          # karargah/claude_code
+KIT_KOKU=$BURASI                            # karargah/claude_code
 CANLI=""; [ "${1:-}" = "--canli" ] && CANLI=1
 GECICI=$(mktemp -d)
 trap 'rm -rf "$GECICI"' EXIT
@@ -63,7 +63,7 @@ else
   kos k2 '' "$HEDEF"
   KANIT_CIKTISI=$CIKTI
   sina "kurucu: ilk kurulum, dosyalar kitle ayni, eski kapi yedekli" "$CIKTI" 'kurulum tamam' \
-    'cmp -s "$H/claude_code.cmd" "$KIT/claude_code.cmd" && cmp -s "$H/claude_code.asil.cmd" "$GECICI/eski_kapi.cmd" && cmp -s "$H/claude_code.onceki.cmd" "$GECICI/eski_kapi.cmd" && cmp -s "$H/araclar/kanit.cmd" "$KIT/araclar/kanit.cmd" && cmp -s "$H/araclar/durum_satiri.cmd" "$KIT/araclar/durum_satiri.cmd" && cmp -s "$H/araclar/durum_satiri.ps1" "$KIT/araclar/durum_satiri.ps1" && cmp -s "$H/.claude/rules/usul.md" "$KIT/.claude/rules/usul.md" && cmp -s "$H/.claude/settings.json" "$KIT/.claude/settings.json"'
+    'cmp -s "$H/claude_code.cmd" "$KIT/claude_code.cmd" && cmp -s "$H/claude_code.asil.cmd" "$GECICI/eski_kapi.cmd" && cmp -s "$H/claude_code.onceki.cmd" "$GECICI/eski_kapi.cmd" && cmp -s "$H/araclar/kanit.cmd" "$KIT/araclar/kanit.cmd" && cmp -s "$H/araclar/durum_satiri.cmd" "$KIT/araclar/durum_satiri.cmd" && cmp -s "$H/araclar/durum_satiri.ps1" "$KIT/araclar/durum_satiri.ps1" && cmp -s "$H/.claude/rules/tek_ortam.md" "$KIT/.claude/rules/tek_ortam.md" && cmp -s "$H/arastirma_tasarim/tek_ortam_kaydi.md" "$KIT/arastirma_tasarim/tek_ortam_kaydi.md" && cmp -s "$H/.claude/settings.json" "$KIT/.claude/settings.json"'
 
   # Karargahin kendi kaniti: kurucu kurulumun sonunda araclar\kanit.cmd dosyasini calistirir.
   echo "        ---- kanit.cmd raporu (sahte karargah, wine) ----"
@@ -71,7 +71,7 @@ else
   echo "        ----"
   sina "kanit.cmd: KALDI yok" "$KANIT_CIKTISI" ' 0 kaldi' '! printf "%s" "$KANIT_CIKTISI" | grep -q "^KALDI"'
   sina "kanit.cmd: gecici klasorlerini temizler" "$KANIT_CIKTISI" 'SONUC' \
-    '[ ! -e "$C/ust klasor/_kanit uzak" ] && [ ! -e "$C/ust klasor/_kanit dis" ] && [ ! -e "$H/gecici/kanit" ] && [ -s "$H/gecici/kanit.son.txt" ]'
+    '[ ! -e "$H/gecici/kanit" ] && [ -s "$H/gecici/kanit.son.txt" ] && [ "$(ls "$C/ust klasor")" = "sahte karargah" ]'
 
   kos k3 '' "$HEDEF"
   sina "kurucu: yeniden kurulum, ilk kapi korunur" "$CIKTI" 'ayar yerinde, dokunulmadi' \
@@ -106,16 +106,16 @@ else
     if [ "$cikti" = "$4" ] || { [ -n "${5:-}" ] && [ "${cikti#"$4"}" != "$cikti" ]; }; then gecti "durum satiri: $1"; else kaldi "durum satiri: $1" "beklenen: $4 | gelen: $cikti"; fi
   }
   K='Y:\02_karargahlar\01_claude_code_karargahı'; KJ='Y:\\02_karargahlar\\01_claude_code_karargahı'
-  ds "kokte, uzak yer yok" "$K" "{\"workspace\":{\"current_dir\":\"$KJ\",\"project_dir\":\"$KJ\",\"added_dirs\":[]},\"version\":\"2.1.322\"}" 'karargah | uzak: yok | 2.1.322'
-  ds "iki uzak yer ve oturum adi" "$K" "{\"session_name\":\"proje\",\"workspace\":{\"current_dir\":\"$KJ\",\"project_dir\":\"$KJ\",\"added_dirs\":[\"C:\\\\proje\",\"D:\\\\veri\"]},\"version\":\"2.1.322\"}" 'karargah | uzak: C:\proje (+1) | ad: proje | 2.1.322'
-  ds "ortam kaydi" "$K" "{\"workspace\":{\"current_dir\":\"C:\\\\baska\",\"project_dir\":\"C:\\\\baska\",\"added_dirs\":[\"C:\\\\proje\"]},\"version\":\"2.1.322\"}" 'ORTAM KAYDI: C:\baska | uzak: C:\proje | 2.1.322'
-  ds "kapi disi" "-" "{\"workspace\":{\"current_dir\":\"C:\\\\x\",\"project_dir\":\"C:\\\\x\"},\"version\":\"2.1.322\"}" 'KAPI DISI: C:\x | uzak: yok | 2.1.322'
-  ds "kabuk baska klasorde" "$K" "{\"workspace\":{\"current_dir\":\"C:\\\\proje\\\\alt\",\"project_dir\":\"$KJ\",\"added_dirs\":[\"C:\\\\proje\"]}}" 'karargah | konum: C:\proje\alt | uzak: C:\proje'
-  ds "egik cizgi, harf buyuklugu, sondaki ayrac" 'y:\02_KARARGAHLAR\01_claude_code_karargahı\' "{\"workspace\":{\"current_dir\":\"Y:/02_karargahlar/01_claude_code_karargahı/\",\"project_dir\":\"Y:/02_karargahlar/01_claude_code_karargahı\",\"added_dirs\":[\"C:\\\\\"]}}" 'karargah | uzak: C:\'
+  ds "kokte, uzak yer yok" "$K" "{\"workspace\":{\"current_dir\":\"$KJ\",\"project_dir\":\"$KJ\",\"added_dirs\":[]},\"version\":\"2.1.322\"}" 'karargah | uzak yer: yok | 2.1.322'
+  ds "iki uzak yer ve oturum adi" "$K" "{\"session_name\":\"proje\",\"workspace\":{\"current_dir\":\"$KJ\",\"project_dir\":\"$KJ\",\"added_dirs\":[\"C:\\\\proje\",\"D:\\\\veri\"]},\"version\":\"2.1.322\"}" 'karargah | uzak yer: C:\proje (+1) | ad: proje | 2.1.322'
+  ds "ortam kaydi" "$K" "{\"workspace\":{\"current_dir\":\"C:\\\\baska\",\"project_dir\":\"C:\\\\baska\",\"added_dirs\":[\"C:\\\\proje\"]},\"version\":\"2.1.322\"}" 'ORTAM KAYDI: C:\baska | uzak yer: C:\proje | 2.1.322'
+  ds "kapi disi" "-" "{\"workspace\":{\"current_dir\":\"C:\\\\x\",\"project_dir\":\"C:\\\\x\"},\"version\":\"2.1.322\"}" 'KAPI DISI: C:\x | uzak yer: yok | 2.1.322'
+  ds "kabuk baska klasorde" "$K" "{\"workspace\":{\"current_dir\":\"C:\\\\proje\\\\alt\",\"project_dir\":\"$KJ\",\"added_dirs\":[\"C:\\\\proje\"]}}" 'karargah | konum: C:\proje\alt | uzak yer: C:\proje'
+  ds "egik cizgi, harf buyuklugu, sondaki ayrac" 'y:\02_KARARGAHLAR\01_claude_code_karargahı\' "{\"workspace\":{\"current_dir\":\"Y:/02_karargahlar/01_claude_code_karargahı/\",\"project_dir\":\"Y:/02_karargahlar/01_claude_code_karargahı\",\"added_dirs\":[\"C:\\\\\"]}}" 'karargah | uzak yer: C:\'
   ds "bozuk girdi" "$K" '{"workspace":' 'durum satiri okunamadi: ' onek
-  ds "bos girdi" "$K" '' 'ortam bilinmiyor | uzak: yok'
-  ds "yalniz cwd alani" "$K" "{\"cwd\":\"$KJ\"}" 'karargah | uzak: yok'
-  ds "uc uzak yer" 'C:\x' '{"workspace":{"current_dir":"C:\\x","project_dir":"C:\\x","added_dirs":["D:\\a","D:\\b","D:\\c"]},"session_name":"x","version":"2.1.322"}' 'karargah | uzak: D:\a (+2) | ad: x | 2.1.322'
+  ds "bos girdi" "$K" '' 'ortam bilinmiyor | uzak yer: yok'
+  ds "yalniz cwd alani" "$K" "{\"cwd\":\"$KJ\"}" 'karargah | uzak yer: yok'
+  ds "uc uzak yer" 'C:\x' '{"workspace":{"current_dir":"C:\\x","project_dir":"C:\\x","added_dirs":["D:\\a","D:\\b","D:\\c"]},"session_name":"x","version":"2.1.322"}' 'karargah | uzak yer: D:\a (+2) | ad: x | 2.1.322'
 fi
 
 # ---------------------------------------------------------------- 3) --canli: urunun davranisi
@@ -135,12 +135,13 @@ if [ -n "$CANLI" ]; then
     CIKTI=$(cagir)
     sina "canli: goreli yol calisma dizinine gore cozulur" "$CIKTI" "$T1"
     sina "canli: --add-dir= ile eklenen bosluklu klasor okunur" "$CIKTI" "$T2"
-    sina "canli: sinir ayari yokken disaridaki dosya okunur (karsilastirma)" "$CIKTI" "$T3"
+    sina "canli: sinir ayari yokken disaridaki dosya okunur (kitin varsayilani)" "$CIKTI" "$T3"
 
-    mkdir -p "$L/kok/.claude"; cp "$KIT_KOKU/kit/.claude/settings.json" "$L/kok/.claude/settings.json"
+    # Istege bagli sinir: kitte acik gelmez; burada elle yazilir ve urunun onu uyguladigi sinanir.
+    mkdir -p "$L/kok/.claude"; echo '{"permissions":{"blockReadsOutsideWorkingDirectories":true}}' > "$L/kok/.claude/settings.json"
     CIKTI=$(cagir)
-    sina "canli: kit ayariyla kok ve uzak yer yine okunur" "$CIKTI" "$T1" 'printf "%s" "$CIKTI" | grep -qF -- "$T2"'
-    sina "canli: kit ayariyla disaridaki dosya okunamaz" "$CIKTI" "RED" '! printf "%s" "$CIKTI" | grep -qF -- "$T3"'
+    sina "canli: okuma siniri yaziliyken kok ve uzak yer yine okunur" "$CIKTI" "$T1" 'printf "%s" "$CIKTI" | grep -qF -- "$T2"'
+    sina "canli: okuma siniri yaziliyken disaridaki dosya okunamaz" "$CIKTI" "RED" '! printf "%s" "$CIKTI" | grep -qF -- "$T3"'
   fi
 fi
 

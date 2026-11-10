@@ -15,6 +15,7 @@ rem    |-- durum\claude\                 hafiza: CLAUDE_CONFIG_DIR (oturumlar, .
 rem    |                                 kullanici ayari); tam izolasyonda ev
 rem    |-- gecici\claude\                gecicilik: CLAUDE_CODE_TMPDIR; tam izolasyonda TEMP ve TMP
 rem    |-- gecici\onbellek\              LOCALAPPDATA ve APPDATA (tam izolasyonda)
+rem    |-- .claude\                      (varsa) proje ayari ve kurali: durum satiri, tek ortam
 rem    |-- araclar\                      (varsa) karargaha ozel komutlar; PATH'e eklenir
 rem    `-- arastirma_tasarim\            dusunce; kapi dokunmaz
 rem    <ust kok>\00_araclar\             (varsa) uc karargahin ortak tasinabilir araclari; PATH'e eklenir
@@ -312,7 +313,7 @@ cd /d "%KARARGAH_IS%"
 echo ============================================================================
 echo   Claude Code Karargahi                           %KARARGAH_SURUM%
 echo   Kok    : "%KARARGAH_ROOT%"   [%KARARGAH_YERLESIM% yerlesimi]
-if defined KARARGAH_UZAK echo   Uzak   : "%KARARGAH_UZAK%"   ek dizin, oturuma adini verir; ortam kokte kalir. Cikarmak icin: set KARARGAH_DIZIN=
+if defined KARARGAH_UZAK echo   Uzak yer: "%KARARGAH_UZAK%"   ek dizin, oturuma adini verir; ortam kokte kalir. Cikarmak icin: set KARARGAH_DIZIN=
 echo   Hafiza : "%CLAUDE_CONFIG_DIR%"
 echo   Model  : %KARARGAH_MODEL_BILGI%   efor: %KARARGAH_EFOR_BILGI%   hizli kip: kapali
 echo   Yetki  : %KARARGAH_YETKI_BILGI%

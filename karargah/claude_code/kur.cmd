@@ -7,8 +7,9 @@ rem    kit\claude_code.cmd              kapi: tek ortam, uzak ekleme, oturum adi
 rem    kit\araclar\durum_satiri.cmd     durum satiri komutu (statusLine)
 rem    kit\araclar\durum_satiri.ps1     durum satirinin asil isi
 rem    kit\araclar\kanit.cmd            kanit: kapiyi ve durum satirini sinar, rapor verir
-rem    kit\.claude\settings.json        durum satiri + calisma dizini siniri; varsa uzerine yazilmaz
-rem    kit\.claude\rules\usul.md        usul: sozluk, kaliplar, ileti bicimi, kanit damgalari
+rem    kit\.claude\settings.json        durum satirini baglar; varsa uzerine yazilmaz
+rem    kit\.claude\rules\tek_ortam.md   tek ortam kurali (Claude Code kolunun kendi alani)
+rem    kit\arastirma_tasarim\tek_ortam_kaydi.md   operasyon kaydi: amac, isleyis, dogrulanmis durum, kalan is
 rem
 rem  KULLANIM
 rem    kur.cmd [karargah koku]
@@ -68,7 +69,9 @@ call :kopyala "araclar\durum_satiri.ps1"
 if errorlevel 1 goto :hata
 call :kopyala "araclar\kanit.cmd"
 if errorlevel 1 goto :hata
-call :kopyala ".claude\rules\usul.md"
+call :kopyala ".claude\rules\tek_ortam.md"
+if errorlevel 1 goto :hata
+call :kopyala "arastirma_tasarim\tek_ortam_kaydi.md"
 if errorlevel 1 goto :hata
 call :ayar_kur
 if errorlevel 1 goto :hata
