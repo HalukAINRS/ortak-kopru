@@ -41,3 +41,55 @@ Kalıcı yapmak için örnek: `setx KOPRU_TAM_IZIN 1` (yeni açılan pencerelerd
 - Dosya ASCII ve CRLF satır sonlarıyla saklanır (`.gitattributes`: `*.cmd -text`); düzenlerken bu biçimi koruyun.
 - Model ya da efor hesabınızda kullanılamıyorsa veya Copilot CLI eskiyse Copilot hata verir; `copilot update` ile güncelleyin.
 - PowerShell 7 (`pwsh`) önerilir. Bulunamazsa Copilot Windows PowerShell 5.1 kullanır: `winget install --id Microsoft.PowerShell -e`
+
+## karargah/claude_code
+
+Claude Code karargâhını "tek ortam" kuralına göre kuran kit: her oturum (yeni, `--continue`, `--resume`) karargâh kökünde açılır; başka klasör yalnızca uzak yer olarak eklenir. Adlar ve kalıplar [usul.md](karargah/claude_code/kit/.claude/rules/usul.md) dosyasındadır.
+
+| Kit dosyası | Karargâhtaki yeri | İşi |
+|---|---|---|
+| `kit/claude_code.cmd` | `claude_code.cmd` | Kapı: oturumu kökte açar, `--burada` ile çağrılan klasörü ekler ve oturuma adını verir |
+| `kit/araclar/durum_satiri.cmd`, `.ps1` | `araclar\` | Durum satırı: ortamın nerede olduğunu ve eklenen uzak yerleri gösterir |
+| `kit/.claude/settings.json` | `.claude\settings.json` | Durum satırını bağlar; dosya araçlarını kök ve eklenen yerlerle sınırlar |
+| `kit/.claude/rules/usul.md` | `.claude\rules\usul.md` | Usul: sözlük, kalıplar, ileti biçimi, kanıt damgaları |
+
+### Kurulum
+
+1. Depoyu klonlayın ya da güncelleyin.
+2. Önce kuru çalıştırın; hiçbir dosya kopyalanmaz, yapılacaklar listelenir:
+
+   ```cmd
+   set KARARGAH_DENEME=1
+   karargah\claude_code\kur.cmd
+   ```
+
+3. Kurun (yeni pencerede ya da `set KARARGAH_DENEME=` yazdıktan sonra):
+
+   ```cmd
+   karargah\claude_code\kur.cmd
+   ```
+
+Kurucu hedefi argümandan, `KARARGAH_HEDEF` değişkeninden ya da `Y:\02_karargahlar\01_claude_code_karargah*` aramasından bulur. Eski kapıyı `claude_code.asil.cmd` (yalnızca ilk kurulumda) ve `claude_code.onceki.cmd` olarak yedekler. Var olan `.claude\settings.json` dosyasının üzerine yazmaz; kit ayarını yanına `settings.kit.json` olarak koyar. Sonunda kurulan kapıyı kuru çalıştırır: `[deneme] dizin:` satırı karargâh kökünü göstermelidir.
+
+### Kullanım
+
+| Çağrı | Sonuç |
+|---|---|
+| `claude_code.cmd` | Oturum karargâh kökünde |
+| `claude_code.cmd --burada` | Oturum yine kökte; çağrılan klasör uzak yer olarak eklenir, oturum klasörün adını alır |
+| `claude_code.cmd --continue` | Son oturuma devam; bayraklar yeniden verilir |
+| `claude_code.cmd remote-control` | Remote Control sunucusu kökte; karakter ve yetki fiilden sonra verilir |
+| `KARARGAH_DENEME=1` | Komutu ve çalışma dizinini gösterir, Claude Code'u başlatmaz |
+
+Durum satırı `karargah | uzak: C:\proje (+1) | ad: proje | 2.1.322` biçimindedir. `ORTAM KAYDI` oturumun kökten taşındığını, `KAPI DISI` oturumun kapıdan açılmadığını gösterir.
+
+### Sınır ayarı
+
+`.claude\settings.json` içindeki `blockReadsOutsideWorkingDirectories` ve `blockWritesOutsideWorkingDirectories`, dosya araçlarının kök ve eklenen yerler dışına erişmesini her yetki kipinde reddeder. Kök dışındaki bir klasör (örneğin `Y:\02_karargahlar\ortak`) gerekiyorsa `/add-dir` ile eklenir. Kabuk komutlarını sınırlamaz. İstemiyorsanız bu iki satırı silin.
+
+### Kanıt durumu
+
+- **Denendi (wine 9.0 `cmd`, kuru çalıştırma):** kapının 32 çağrı biçimi ve kurucunun 10 durumu.
+- **Denendi (PowerShell 7.4, Linux):** durum satırı betiği, 10 örnek girdi.
+- **Denendi (Linux `claude` 2.1.322):** `--add-dir=` ve `--mcp-config=` biçimleri ardındaki argümanı yutmuyor; `remote-control` öncesinde `--settings` ve `--permission-mode` reddediliyor.
+- **Denenmedi:** gerçek Windows ve `claude.exe`, Windows PowerShell 5.1, durum satırının Claude Code içinden çağrılması, sürücü kökünü (`C:\`) eklemek, ASCII dışı harfli yol.
