@@ -1,0 +1,15 @@
+{
+  "bicim": 1,
+  "ana_environment": "CLI",
+  "codex_cli": {
+    "remote_environment": ".",
+    "yurutulebilir": "uygulama/yerel/bin/codex.exe",
+    "profil": "durum/codex"
+  },
+  "codex_bulut": {
+    "remote_environment": "https://github.com/HalukAINRS/ortak-kopru",
+    "depo": "HalukAINRS/ortak-kopru",
+    "dal": "main",
+    "ortam_kimligi": null
+  }
+}
