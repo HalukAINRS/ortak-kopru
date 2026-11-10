@@ -50,6 +50,7 @@ Claude Code karargâhını "tek ortam" kuralına göre kuran kit: her oturum (ye
 |---|---|---|
 | `kit/claude_code.cmd` | `claude_code.cmd` | Kapı: oturumu kökte açar, `--burada` ile çağrılan klasörü ekler ve oturuma adını verir |
 | `kit/araclar/durum_satiri.cmd`, `.ps1` | `araclar\` | Durum satırı: ortamın nerede olduğunu ve eklenen uzak yerleri gösterir |
+| `kit/araclar/kanit.cmd` | `araclar\kanit.cmd` | Kanıt: kapıyı ve durum satırını sınar, rapor verir |
 | `kit/.claude/settings.json` | `.claude\settings.json` | Durum satırını bağlar; dosya araçlarını kök ve eklenen yerlerle sınırlar |
 | `kit/.claude/rules/usul.md` | `.claude\rules\usul.md` | Usul: sözlük, kalıplar, ileti biçimi, kanıt damgaları |
 
@@ -69,7 +70,7 @@ Claude Code karargâhını "tek ortam" kuralına göre kuran kit: her oturum (ye
    karargah\claude_code\kur.cmd
    ```
 
-Kurucu hedefi argümandan, `KARARGAH_HEDEF` değişkeninden ya da `Y:\02_karargahlar\01_claude_code_karargah*` aramasından bulur. Eski kapıyı `claude_code.asil.cmd` (yalnızca ilk kurulumda) ve `claude_code.onceki.cmd` olarak yedekler. Var olan `.claude\settings.json` dosyasının üzerine yazmaz; kit ayarını yanına `settings.kit.json` olarak koyar. Sonunda kurulan kapıyı kuru çalıştırır: `[deneme] dizin:` satırı karargâh kökünü göstermelidir.
+Kurucu hedefi argümandan, `KARARGAH_HEDEF` değişkeninden ya da `Y:\02_karargahlar\01_claude_code_karargah*` aramasından bulur. Eski kapıyı `claude_code.asil.cmd` (yalnızca ilk kurulumda) ve `claude_code.onceki.cmd` olarak yedekler. Var olan `.claude\settings.json` dosyasının üzerine yazmaz; kit ayarını yanına `settings.kit.json` olarak koyar. Sonunda karargâhın kanıtını (`araclar\kanit.cmd`) çalıştırır: raporda `KALDI` satırı olmamalıdır.
 
 ### Kullanım
 
@@ -87,9 +88,22 @@ Durum satırı `karargah | uzak: C:\proje (+1) | ad: proje | 2.1.322` biçiminde
 
 `.claude\settings.json` içindeki `blockReadsOutsideWorkingDirectories` ve `blockWritesOutsideWorkingDirectories`, dosya araçlarının kök ve eklenen yerler dışına erişmesini her yetki kipinde reddeder. Kök dışındaki bir klasör (örneğin `Y:\02_karargahlar\ortak`) gerekiyorsa `/add-dir` ile eklenir. Kabuk komutlarını sınırlamaz. İstemiyorsanız bu iki satırı silin.
 
-### Kanıt durumu
+### Kanıt
 
-- **Denendi (wine 9.0 `cmd`, kuru çalıştırma):** kapının 32 çağrı biçimi ve kurucunun 10 durumu.
+Karargâh kendi durumunu sınar ve gösterir. Parçaların nasıl çalıştığı ve her iddianın hangi kanıta dayandığı [ACIKLAMA.md](karargah/claude_code/ACIKLAMA.md) dosyasındadır.
+
+| Nerede | Komut | Ne yapar |
+|---|---|---|
+| Karargâhta | `araclar\kanit.cmd` | Kapıyı kuru çalıştırır, durum satırını örnek girdiyle sınar; oturum açmaz, ağa çıkmaz |
+| Karargâhta | `araclar\kanit.cmd --canli` | Ek olarak gerçek `claude.exe` ile tek bir `-p` çağrısı yapar; hesabınızdan küçük bir kullanım düşer |
+| Depoda (bulut oturumu) | `karargah/claude_code/sinama/sina.sh` | Kurucuyu ve `kanit.cmd` dosyasını wine'da, durum satırını PowerShell'de sınar |
+| Depoda (bulut oturumu) | `karargah/claude_code/sinama/sina.sh --canli` | Ek olarak gerçek `claude` ile iki küçük çağrı yapar |
+
+Rapor `gecici\kanit.son.txt` dosyasına yazılır. Bulut oturumu Windows'ta ne olduğunu ancak bu rapordan görebilir; raporu oturuma yükleyin ya da depoya işleyin.
+
+Bugünkü durum:
+
+- **Denendi (wine 9.0 `cmd`):** `kanit.cmd` içindeki 12 kapı sınaması ve kurucunun 6 durumu.
 - **Denendi (PowerShell 7.4, Linux):** durum satırı betiği, 10 örnek girdi.
-- **Denendi (Linux `claude` 2.1.322):** `--add-dir=` ve `--mcp-config=` biçimleri ardındaki argümanı yutmuyor; `remote-control` öncesinde `--settings` ve `--permission-mode` reddediliyor.
-- **Denenmedi:** gerçek Windows ve `claude.exe`, Windows PowerShell 5.1, durum satırının Claude Code içinden çağrılması, sürücü kökünü (`C:\`) eklemek, ASCII dışı harfli yol.
+- **Denendi (Linux, gerçek `claude` 2.1.322):** göreli yol çalışma dizinine göre çözülüyor; `--add-dir=` ile eklenen boşluklu klasör okunuyor; kit ayarı dışarıdaki dosyanın okunmasını reddediyor, ayar yokken dosya okunuyor.
+- **Denenmedi:** gerçek Windows ve `claude.exe`, Windows PowerShell 5.1, durum satırının Claude Code içinden çağrılması, sürücü kökünü (`C:\`) eklemek, ASCII dışı harfli yol. Bunları Windows'ta `kanit.cmd` ve `kanit.cmd --canli` sınar.

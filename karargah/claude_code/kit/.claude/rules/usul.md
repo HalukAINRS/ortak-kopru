@@ -42,6 +42,9 @@ anlamda kullanılır.
 Her iddia üç damgadan birini taşır: **denendi** (nerede ve nasıl), **belgede** (kaynağıyla), **denenmedi**.
 Denenmeyen şey denenmiş gibi yazılmaz.
 
+Karargâhın durumunu görmek ve göstermek için `kanit.cmd` çalıştırılır; oturum açmaz, ağa çıkmaz, raporu
+`gecici\kanit.son.txt` dosyasına yazar. Ortamla ilgili bir şüphede tahmin yürütme, kanıtı çalıştır ve raporu oku.
+
 ## Yeni bir şey eklerken
 
 1. **Ad:** Sözlükten al; sözlükte yoksa önce sözlüğe ekle.

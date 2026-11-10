@@ -6,6 +6,7 @@ rem  Kit (kit\) hedefin aynasidir: kitteki her dosya karargah kokune gore ayni y
 rem    kit\claude_code.cmd              kapi: tek ortam, uzak ekleme, oturum adi, remote-control, deneme
 rem    kit\araclar\durum_satiri.cmd     durum satiri komutu (statusLine)
 rem    kit\araclar\durum_satiri.ps1     durum satirinin asil isi
+rem    kit\araclar\kanit.cmd            kanit: kapiyi ve durum satirini sinar, rapor verir
 rem    kit\.claude\settings.json        durum satiri + calisma dizini siniri; varsa uzerine yazilmaz
 rem    kit\.claude\rules\usul.md        usul: sozluk, kaliplar, ileti bicimi, kanit damgalari
 rem
@@ -17,7 +18,8 @@ rem
 rem  Kok yerlesimi icindir (kapi karargah kokunde, uygulama\yerel\ yaninda durur). Eski kapi yedeklenir:
 rem    claude_code.asil.cmd    ilk kurulumdan onceki kapi; bir kez yazilir, sonra dokunulmaz
 rem    claude_code.onceki.cmd  her kurulumda bir onceki kapi
-rem  Kurulumdan sonra kurulan kapi kuru calistirilir; cikan komut ve dizin kanittir.
+rem  Kurulumdan sonra karargahin kendi kaniti (araclar\kanit.cmd) calistirilir; raporu gecici\kanit.son.txt
+rem  dosyasina da yazilir.
 rem  Dosya ASCII + CRLF, BOM'suz.
 rem ============================================================================
 setlocal EnableExtensions DisableDelayedExpansion
@@ -64,23 +66,30 @@ call :kopyala "araclar\durum_satiri.cmd"
 if errorlevel 1 goto :hata
 call :kopyala "araclar\durum_satiri.ps1"
 if errorlevel 1 goto :hata
+call :kopyala "araclar\kanit.cmd"
+if errorlevel 1 goto :hata
 call :kopyala ".claude\rules\usul.md"
 if errorlevel 1 goto :hata
 call :ayar_kur
 if errorlevel 1 goto :hata
 
-rem ---- [04] Kanit: kurulan kapinin kuru calistirmasi ---------------------------
+rem ---- [04] Kanit: kurulan karargah kendini sinar --------------------------------
 if defined KUR_ONEK goto :son
 findstr /c:"KARARGAH_DENEME" "%KUR_HEDEF%\claude_code.cmd" >nul 2>&1
 if errorlevel 1 goto :hata_kanit
 echo.
-echo [KARARGAH] BILGI: kurulan kapinin kuru calistirmasi (--continue); dizin karargah koku olmali:
-set "KARARGAH_DENEME=1"
-set "KARARGAH_HAZIRLIK=0"
-call "%KUR_HEDEF%\claude_code.cmd" --continue
+echo [KARARGAH] BILGI: kurulum tamam; karargahin kaniti calistiriliyor (araclar\kanit.cmd):
+call "%KUR_HEDEF%\araclar\kanit.cmd"
+if errorlevel 1 goto :kanit_kaldi
 echo.
-echo [KARARGAH] BILGI: kurulum tamam. Geri almak icin claude_code.onceki.cmd dosyasini claude_code.cmd uzerine kopyalayin.
+echo [KARARGAH] BILGI: kanit gecti. Geri almak icin claude_code.onceki.cmd dosyasini claude_code.cmd uzerine kopyalayin.
 goto :son
+:kanit_kaldi
+echo.
+echo [KARARGAH] UYARI: kanit KALDI satiri verdi; rapora bakin. Geri almak icin claude_code.onceki.cmd dosyasini claude_code.cmd uzerine kopyalayin.
+if defined KUR_CP chcp %KUR_CP% >nul 2>&1
+if not defined CI pause
+exit /b 1
 
 rem ---- [09] Hatalar ------------------------------------------------------------------
 :hata_hedef
@@ -97,7 +106,7 @@ echo [KARARGAH] HATA: hedef kok yerlesiminde degil (uygulama\yerel\ ya da durum\
 echo            Iskelet yerlesiminde kit elle kopyalanir.
 goto :hata
 :hata_kanit
-echo [KARARGAH] HATA: kurulan kapi beklenen dosya degil; kuru calistirma yapilmadi: "%KUR_HEDEF%\claude_code.cmd"
+echo [KARARGAH] HATA: kurulan kapi beklenen dosya degil; kanit calistirilmadi: "%KUR_HEDEF%\claude_code.cmd"
 goto :hata
 :hata
 echo.
