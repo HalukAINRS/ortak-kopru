@@ -85,7 +85,9 @@ Araçlara dağıtım önerisi (11–11–11) çalışma kaydının Ek C bölüm�
 
 ## Değişiklik yolu
 
-Kütüphanenin tek kaynağı bu klasördür. Bir protokoldeki değişiklik protokol dosyasının kendisinde yapılır: ortak biçim kurallarına uyar, biçim denetimi sıfır verir, çizimler ASCII ve en çok 72 sütun kalır. Değişen protokolün sürüm numarası artar (1.0'dan 1.1'e) ve tarihi güncellenir. Değişiklik gerekçesiyle çalışma kaydına ya da yeni bir kayda yazılır ve `SHA256SUMS` yeniden üretilir. Kimlik metinlerinde değişikliği yalnız kullanıcı yapar.
+Kütüphanenin tek kaynağı, bu klasörün GitHub'daki `ortak-kopru` deposunda duran hâlidir; Drive'daki kopya onun aynasıdır. Bir protokoldeki değişiklik protokol dosyasının kendisinde yapılır: ortak biçim kurallarına uyar, biçim denetimi sıfır verir, çizimler ASCII ve en çok 72 sütun kalır. Değişen protokolün sürüm numarası artar (1.0'dan 1.1'e) ve tarihi güncellenir. Değişiklik gerekçesiyle çalışma kaydına ya da yeni bir kayda yazılır ve `SHA256SUMS` yeniden üretilir. Kimlik metinlerinde değişikliği yalnız kullanıcı yapar.
+
+Drive'daki kopyayı, aynı depodaki `aktarici` klasöründe duran Köprü Aktarıcısı haftada bir eşitler: kaynakta değişen dosya Drive'da yenilenir; Drive'da eksilen ya da değiştirilen dosya kaynaktaki hâline döner. Yerinden edilen kopya çöp kutusuna gider ve otuz gün içinde geri alınabilir. Klasöre sonradan eklenmiş, `SHA256SUMS` listesinde bulunmayan dosyalara dokunulmaz.
 
 ## Köken
 

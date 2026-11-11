@@ -45,3 +45,7 @@ Kalıcı yapmak için örnek: `setx KOPRU_TAM_IZIN 1` (yeni açılan pencerelerd
 ## 33_Protokol_Kutuphanesi
 
 33 protokol, köken aldıkları üç kimlik metni, ortak biçim kuralları, çalışma kaydı ve denetim araçlarından oluşan kütüphane. Okumaya ve çalışmaya klasördeki `00_HARITA.md` dosyasından başlanır; her protokol tek başına yeter. Dosyaların bu sürümle aynı olup olmadığı klasörün içinde `sha256sum -c SHA256SUMS` komutuyla denetlenir. Klasördeki dosyalar Git'te satır sonları dönüştürülmeden saklanır (`.gitattributes`).
+
+## aktarici
+
+Kütüphaneyi bu depodan Google Drive'daki 128-bit CPU klasörüne taşıyan ve orada `SHA256SUMS` ile doğrulayan Köprü Aktarıcısı (`kopru_aktarici.gs`, bir Google Apps Script betiği) ve onun yolu (`Kutuphane_Aktarim_Protokolu.md`). Aktarıcı, Drive'ın sahibinin Google hesabında çalışır: protokoldeki Uyanma adımlarıyla bir kez uyandırılır, sonra her hafta kendiliğinden çalışır ve Drive'daki kopyayı bu depodaki kütüphanenin aynası olarak tutar. Kütüphanedeki değişiklikler için aktarıcıya dokunulmaz; GitHub anahtarı depoda değil, Apps Script'in betik özelliklerinde durur.

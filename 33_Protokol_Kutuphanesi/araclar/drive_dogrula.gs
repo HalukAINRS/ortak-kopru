@@ -43,17 +43,19 @@ function dogrula() {
   if (sorun.length === 0) Logger.log('Kütüphane bozulmadan yerleşmiş.');
 }
 
+// Çöp kutusundaki dosya ve klasörler sayılmaz (Drive bazı listelerde onları da döndürür).
 function tara(klasor, onek, bulunan) {
   var f = klasor.getFiles();
   while (f.hasNext()) {
     var d = f.next();
+    if (d.isTrashed()) continue;
     var yol = onek + d.getName();
     (bulunan[yol] = bulunan[yol] || []).push(d);
   }
   var k = klasor.getFolders();
   while (k.hasNext()) {
     var alt = k.next();
-    tara(alt, onek + alt.getName() + '/', bulunan);
+    if (!alt.isTrashed()) tara(alt, onek + alt.getName() + '/', bulunan);
   }
 }
 
@@ -63,15 +65,23 @@ function ozet(dosya) {
 }
 
 function tekKlasor(ust, ad) {
-  var it = ust.getFoldersByName(ad);
-  if (!it.hasNext()) throw new Error(ad + ' klasörü bulunamadı');
-  var k = it.next();
-  if (it.hasNext()) throw new Error(ad + ' adında birden çok klasör var; fazlasını kaldırıp yeniden çalıştırın');
-  return k;
+  var bulunan = canlilar(ust.getFoldersByName(ad));
+  if (!bulunan.length) throw new Error(ad + ' klasörü bulunamadı');
+  if (bulunan.length > 1) throw new Error(ad + ' adında birden çok klasör var; fazlasını kaldırıp yeniden çalıştırın');
+  return bulunan[0];
 }
 
 function tekDosya(klasor, ad) {
-  var it = klasor.getFilesByName(ad);
-  if (!it.hasNext()) throw new Error(ad + ' bulunamadı');
-  return it.next();
+  var bulunan = canlilar(klasor.getFilesByName(ad));
+  if (!bulunan.length) throw new Error(ad + ' bulunamadı');
+  return bulunan[0];
+}
+
+function canlilar(it) {
+  var bulunan = [];
+  while (it.hasNext()) {
+    var x = it.next();
+    if (!x.isTrashed()) bulunan.push(x);
+  }
+  return bulunan;
 }
