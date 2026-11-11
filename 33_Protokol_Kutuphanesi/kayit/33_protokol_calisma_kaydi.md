@@ -122,8 +122,6 @@ Uygulayan kişi veya kullanılan masaüstü asistanı: Claude (bu konuşmadaki a
 
 **İkinci tur.** Okuma ve çizim turu kapandıktan sonra yazdıklarınız (11 Kasım 2026, 16:52):
 
-**Kütüphane.** İkinci turdan sonra elde edilenleri Drive'daki bir klasöre aktararak daha geniş kapsamda kullanma fikrini sordunuz; klasörün bir kütüphane mi, bir kaynak mı olacağını sordum. Yanıtınız (11 Kasım 2026, 19:37): "Okunacak ve korunacak bir kütüphane, araçların oradan okuyup çalışacağı bir kaynak. Alakalı olacak her şey, alakasız olan hiçbir şey." Kütüphanenin düzeni bu yanıta dayanır (6 Kökleşme kaydı ve Değişiklik kaydı). Aktarım yolu için yanıtınız (20:04): "ortak-kopru kullanılabilir." Ardından aktarımı ikimizden başka kimin ve hangi yolla yapabileceğini sordunuz. Son yanıtınız: "Ben bir şey yapmayacağım, sen de bir şey yapmayacaksın. Sadece bu işi yapanı ve yolunu oluşturacağız." İşi yapan ve yolu bu yanıta dayanır (6 Kökleşme kaydı ve Değişiklik kaydı).
-
 > Çizimler iyi gerçekten. Bozmayalım. Mükerrerlik ve tekrarı azaltma konusunu metinlerle birlikte tüm çizimler - tasarımlar - modellemeler birlikte ele alabiliriz. 33 protokol içinde de birbirlerini çok tekrarlayan varlarsa, onları protokollere has bir şekilde dönüştürebiliriz. Yapılabilir mi, yapılamaz mı?
 >
 > Dağıtım beklesin.
@@ -137,6 +135,8 @@ Uygulayan kişi veya kullanılan masaüstü asistanı: Claude (bu konuşmadaki a
 > Bunlar bittikten sonra kapsam dışı bıraktıklarımıza geçelim. Öncesinde değil.
 
 Ölçümle birlikte önerilerimi ve üç karar sorusunu gönderdim. Yanıtınız (17:13): "1, 2, 3 önerileriniz uygundur. Gerçekleştirebilirsiniz." Kararlarınız: kesme ve tırnak işareti (a), şapka (a), dış kaynak adresleri (a); yani düz kesme işareti ve kıvrık tırnak, Güncel Türkçe Sözlük'teki şapkalı yazım, künyenin yanında düz metin olarak duran adres. İkinci tur bu yanıtlara dayanır; dökümü Ek F'dedir. Dağıtım ile kapsam dışı bırakılanlar (karargah, Ortak Yol) bu turdan sonraya kaldı.
+
+**Kütüphane.** İkinci turdan sonra elde edilenleri Drive'daki bir klasöre aktararak daha geniş kapsamda kullanma fikrini sordunuz; klasörün bir kütüphane mi, bir kaynak mı olacağını sordum. Yanıtınız (11 Kasım 2026, 19:37): "Okunacak ve korunacak bir kütüphane, araçların oradan okuyup çalışacağı bir kaynak. Alakalı olacak her şey, alakasız olan hiçbir şey." Kütüphanenin düzeni bu yanıta dayanır (6 Kökleşme kaydı ve Değişiklik kaydı). Aktarım yolu için yanıtınız (20:04): "ortak-kopru kullanılabilir." Ardından aktarımı ikimizden başka kimin ve hangi yolla yapabileceğini sordunuz. Son yanıtınız: "Ben bir şey yapmayacağım, sen de bir şey yapmayacaksın. Sadece bu işi yapanı ve yolunu oluşturacağız." İşi yapan ve yolu bu yanıta dayanır (6 Kökleşme kaydı ve Değişiklik kaydı).
 
 ## 5 Gaye kaydı
 
@@ -343,7 +343,7 @@ Okuması: bir çizim ilk üç protokolde (04, 02, 11) ortalama 18–20 satırdı
 **Tarih:** 11 Kasım 2026\
 **Değişen karar:** Drive'a aktarım için işi yapan ve yolu oluşturuldu: Köprü Aktarıcısı (`aktarici/kopru_aktarici.gs`) ve Kütüphane Aktarım Protokolü (`aktarici/Kutuphane_Aktarim_Protokolu.md`). İkisi `ortak-kopru` deposunda kütüphaneyle aynı dalda, kütüphane klasörünün dışında durur. Aktarıcı kütüphaneyi GitHub'dan okur, Drive'daki klasöre yazar ve her dosyayı `SHA256SUMS` ile doğrular; değişen ya da eksik dosyayı yeniler, eskisini çöp kutusuna atar, listede olmayan dosyalara dokunmaz. Aynı sırada `araclar/drive_dogrula.gs` düzeltildi: çöp kutusundaki dosyaları artık saymıyor. Önceki hâli, Drive'ın bazı listelerde çöptekileri de döndürmesi yüzünden, çöpe atılmış bir kopyayı ikinci kopya gibi bildirebilirdi. Kütüphanenin haritasına, Drive'daki kopyanın bir ayna olduğu ve değişikliğin nerede yapılacağı eklendi.\
 **Gerekçe:** Son yanıtınız (4 Zaman kaydı). Drive'a yazan her el için Google, Drive'ın sahibinin bir kerelik iznini ister; aktarıcı bu izinle uyanır ve işi kendisi yapar.\
-**Önceki kayıtla ilişkisi:** Protokoller, kimlik metinleri ve ortak biçim kuralları değişmedi; kütüphanede yenilenenler şunlardır: `araclar/drive_dogrula.gs`, harita, bu kayıt ve `SHA256SUMS`.
+**Önceki kayıtla ilişkisi:** Protokoller, kimlik metinleri ve ortak biçim kuralları değişmedi; kütüphanede yenilenenler şunlardır: `araclar/drive_dogrula.gs`, harita, bu kayıt ve `SHA256SUMS`. Aynı sırada bu kayıttaki bir yerleşim yanlışı düzeltildi: 4 Zaman'daki Kütüphane paragrafı, ikinci turun giriş cümlesiyle alıntısının arasına düşmüştü; ikinci turun ardına alındı.
 
 ## Ek A — Döküm
 
