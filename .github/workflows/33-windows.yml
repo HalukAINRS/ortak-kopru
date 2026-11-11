@@ -1,0 +1,51 @@
+# 33.exe'yi GitHub'in Windows makinelerinde sinar.
+# Yalniz claude-sohbet dalina, claude-sohbet/33/ klasorune ya da bu dosyaya
+# bir sey gonderildiginde kosar. Depoda baska hicbir seyi degistirmez.
+name: 33-windows
+on:
+  push:
+    branches: [claude-sohbet]
+    paths:
+      - 'claude-sohbet/33/**'
+      - '.github/workflows/33-windows.yml'
+permissions:
+  contents: read
+jobs:
+  sina:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-2022, windows-2025, windows-11-arm]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: claude-sohbet/33
+    steps:
+      - uses: actions/checkout@v4
+      - name: ortam
+        shell: pwsh
+        run: |
+          cmd /c ver
+          (Get-CimInstance Win32_OperatingSystem | Select-Object Caption, Version, BuildNumber, OSArchitecture | Format-List | Out-String).Trim()
+          cmd /c chcp
+          try { (Get-MpComputerStatus | Select-Object AMServiceEnabled, AntivirusEnabled, RealTimeProtectionEnabled, AntivirusSignatureVersion, AntivirusSignatureLastUpdated | Format-List | Out-String).Trim() } catch { "Defender durumu okunamadi: $_" }
+          certutil -hashfile 33.exe SHA256
+      - name: sina.cmd
+        shell: cmd
+        run: |
+          set SINA_BEKLEME=1
+          call sina.cmd
+          findstr /C:" 0 kaldi" windows_sonucu.txt >nul || exit /b 1
+      - name: windows_sinama.py
+        if: always()
+        shell: cmd
+        run: python -B windows_sinama.py
+      - name: sonuclar
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sonuc-${{ matrix.os }}
+          path: |
+            claude-sohbet/33/windows_sonucu.txt
+            claude-sohbet/33/windows_python_sonucu.txt
