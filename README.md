@@ -41,3 +41,7 @@ Kalıcı yapmak için örnek: `setx KOPRU_TAM_IZIN 1` (yeni açılan pencerelerd
 - Dosya ASCII ve CRLF satır sonlarıyla saklanır (`.gitattributes`: `*.cmd -text`); düzenlerken bu biçimi koruyun.
 - Model ya da efor hesabınızda kullanılamıyorsa veya Copilot CLI eskiyse Copilot hata verir; `copilot update` ile güncelleyin.
 - PowerShell 7 (`pwsh`) önerilir. Bulunamazsa Copilot Windows PowerShell 5.1 kullanır: `winget install --id Microsoft.PowerShell -e`
+
+## 33_Protokol_Kutuphanesi
+
+33 protokol, köken aldıkları üç kimlik metni, ortak biçim kuralları, çalışma kaydı ve denetim araçlarından oluşan kütüphane. Okumaya ve çalışmaya klasördeki `00_HARITA.md` dosyasından başlanır; her protokol tek başına yeter. Dosyaların bu sürümle aynı olup olmadığı klasörün içinde `sha256sum -c SHA256SUMS` komutuyla denetlenir. Klasördeki dosyalar Git'te satır sonları dönüştürülmeden saklanır (`.gitattributes`).

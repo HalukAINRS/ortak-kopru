@@ -1,3 +1,5 @@
 # Windows toplu dosyalari CRLF ile, donusturulmeden saklanir (ham indirme de CRLF kalir).
 *.cmd -text
 *.bat -text
+# 33 Protokol Kutuphanesi baytlari degismeden saklanir; SHA256SUMS ozetleri her klonda tutar.
+33_Protokol_Kutuphanesi/** -text
