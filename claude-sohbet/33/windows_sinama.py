@@ -174,65 +174,96 @@ class CSBI(ctypes.Structure): _fields_ = [("dwSize", COORD), ("dwCursorPosition"
 class KEY_EVENT_RECORD(ctypes.Structure): _fields_ = [("bKeyDown", wintypes.BOOL), ("wRepeatCount", wintypes.WORD), ("wVirtualKeyCode", wintypes.WORD), ("wVirtualScanCode", wintypes.WORD), ("UnicodeChar", wintypes.WCHAR), ("dwControlKeyState", wintypes.DWORD)]
 class INPUT_RECORD(ctypes.Structure): _fields_ = [("EventType", wintypes.WORD), ("KeyEvent", KEY_EVENT_RECORD)]
 
-def t_konsol():
-    # Cift tiklamadaki durum: arac kendi yeni konsoluyla acilir; tuslar konsolun giris kuyruguna yazilir, ekran konsoldan okunur.
-    assert ctypes.sizeof(INPUT_RECORD) == 20
-    u32 = ctypes.WinDLL("user32", use_last_error=True)
-    k32.CreateFileW.restype = wintypes.HANDLE; k32.CreateFileW.argtypes = [wintypes.LPCWSTR, wintypes.DWORD, wintypes.DWORD, ctypes.c_void_p, wintypes.DWORD, wintypes.DWORD, wintypes.HANDLE]
-    k32.AttachConsole.argtypes = [wintypes.DWORD]; k32.AttachConsole.restype = wintypes.BOOL
-    k32.WriteConsoleInputW.argtypes = [wintypes.HANDLE, ctypes.POINTER(INPUT_RECORD), wintypes.DWORD, ctypes.POINTER(wintypes.DWORD)]; k32.WriteConsoleInputW.restype = wintypes.BOOL
-    k32.ReadConsoleOutputCharacterW.argtypes = [wintypes.HANDLE, wintypes.LPWSTR, wintypes.DWORD, COORD, ctypes.POINTER(wintypes.DWORD)]; k32.ReadConsoleOutputCharacterW.restype = wintypes.BOOL
-    k32.GetConsoleScreenBufferInfo.argtypes = [wintypes.HANDLE, ctypes.POINTER(CSBI)]; k32.GetConsoleScreenBufferInfo.restype = wintypes.BOOL
-    k32.GetConsoleMode.argtypes = [wintypes.HANDLE, ctypes.POINTER(wintypes.DWORD)]
-    p = subprocess.Popen([EXE], creationflags=0x00000010)   # CREATE_NEW_CONSOLE
-    try:
+class Konsol:
+    """Araci kendi yeni konsoluyla acar (cift tiklamadaki durum). Tuslar konsolun giris kuyruguna yazilir, ekran konsoldan okunur."""
+    def __init__(self, kod_sayfasi=None):
+        assert ctypes.sizeof(INPUT_RECORD) == 20
+        self.u32 = ctypes.WinDLL("user32", use_last_error=True)
+        k32.CreateFileW.restype = wintypes.HANDLE; k32.CreateFileW.argtypes = [wintypes.LPCWSTR, wintypes.DWORD, wintypes.DWORD, ctypes.c_void_p, wintypes.DWORD, wintypes.DWORD, wintypes.HANDLE]
+        k32.AttachConsole.argtypes = [wintypes.DWORD]; k32.AttachConsole.restype = wintypes.BOOL
+        k32.WriteConsoleInputW.argtypes = [wintypes.HANDLE, ctypes.POINTER(INPUT_RECORD), wintypes.DWORD, ctypes.POINTER(wintypes.DWORD)]; k32.WriteConsoleInputW.restype = wintypes.BOOL
+        k32.ReadConsoleOutputCharacterW.argtypes = [wintypes.HANDLE, wintypes.LPWSTR, wintypes.DWORD, COORD, ctypes.POINTER(wintypes.DWORD)]; k32.ReadConsoleOutputCharacterW.restype = wintypes.BOOL
+        k32.GetConsoleScreenBufferInfo.argtypes = [wintypes.HANDLE, ctypes.POINTER(CSBI)]; k32.GetConsoleScreenBufferInfo.restype = wintypes.BOOL
+        k32.GetConsoleMode.argtypes = [wintypes.HANDLE, ctypes.POINTER(wintypes.DWORD)]
+        self.p = subprocess.Popen([EXE], creationflags=0x00000010)   # CREATE_NEW_CONSOLE
         time.sleep(3)
-        if p.poll() is not None: raise OSError("arac yeni konsolda hemen kapandi, cikis %r" % p.returncode)
+        if self.p.poll() is not None: raise OSError("arac yeni konsolda hemen kapandi, cikis %r" % self.p.returncode)
         k32.FreeConsole()
-        if not k32.AttachConsole(p.pid): raise OSError("AttachConsole: %d" % ctypes.get_last_error())
-        hin = k32.CreateFileW("CONIN$", 0xC0000000, 3, None, 3, 0, None); hout = k32.CreateFileW("CONOUT$", 0xC0000000, 3, None, 3, 0, None)
-        if hin in (None, wintypes.HANDLE(-1).value) or hout in (None, wintypes.HANDLE(-1).value): raise OSError("CONIN$/CONOUT$: %d" % ctypes.get_last_error())
-        kip = wintypes.DWORD(0); k32.GetConsoleMode(hin, ctypes.byref(kip)); bilgi("konsol giris kipi: 0x%04X (satir: %s, yanki: %s, islenmis: %s); giris kod sayfasi %d, cikis %d" % (kip.value, bool(kip.value & 2), bool(kip.value & 4), bool(kip.value & 1), k32.GetConsoleCP(), k32.GetConsoleOutputCP()))
-        def tus(ch, vk=None, ctrl=0):
-            if vk is None: vk = u32.VkKeyScanW(ord(ch)) & 0xFF
-            kayit = (INPUT_RECORD * 2)()
-            for i, asagi in enumerate((1, 0)):
-                kayit[i].EventType = 1; e = kayit[i].KeyEvent
-                e.bKeyDown = asagi; e.wRepeatCount = 1; e.wVirtualKeyCode = vk; e.wVirtualScanCode = u32.MapVirtualKeyW(vk, 0) & 0xFFFF; e.UnicodeChar = ch; e.dwControlKeyState = ctrl
-            n = wintypes.DWORD(0)
-            if not k32.WriteConsoleInputW(hin, kayit, 2, ctypes.byref(n)) or n.value != 2: raise OSError("WriteConsoleInput: %d" % ctypes.get_last_error())
-        def satir(s):
-            for c in s: tus(c)
-            tus("\r", 0x0D); time.sleep(2)
-        def ekran(kac=10):
-            b = CSBI()
-            if not k32.GetConsoleScreenBufferInfo(hout, ctypes.byref(b)): raise OSError("GetConsoleScreenBufferInfo: %d" % ctypes.get_last_error())
-            cik = []
-            for y in range(kac):
-                t = ctypes.create_unicode_buffer(b.dwSize.X + 1); n = wintypes.DWORD(0)
-                k32.ReadConsoleOutputCharacterW(hout, t, b.dwSize.X, COORD(0, y), ctypes.byref(n)); cik.append(t[:n.value].rstrip())
-            return cik
-        bos = ekran(); tamam("konsol: pencere bos acilir (arac kendiliginden bir sey yazmaz)", all(x == "" for x in bos), bos)
-        satir("-1"); e = ekran(); tamam("konsol: -1 yazilinca alt satira 34 gelir", e[:2] == ["-1", "34"], e)
-        satir("-33 para"); e = ekran(); tamam("konsol: -33 para yazilinca 66 para gelir", e[2:4] == ["-33 para", "66 para"], e)
-        satir("66 34 33 32 0"); e = ekran(); tamam("konsol: bes sayi tek satirda aynadan gecer", e[4:6] == ["66 34 33 32 0", "-33 -1 0 1 33"], e)
-        satir("merhaba"); e = ekran(); tamam("konsol: sayi olmayan yazi oldugu gibi doner", e[6:8] == ["merhaba", "merhaba"], e)
-        tus("\x1a", 0x5A, 0x0008); tus("\r", 0x0D)
-        try: kod = p.wait(timeout=10); bilgi("konsol: Ctrl+Z ve Enter aracin bitmesini sagladi, cikis %r; ekran: %s" % (kod, ascii(ekran()[8:10])))
-        except subprocess.TimeoutExpired: bilgi("konsol: Ctrl+Z ve Enter araci BITIRMEDI; ekran: %s" % ascii(ekran()[8:10]))
-    finally:
-        if p.poll() is None: p.kill()
+        if not k32.AttachConsole(self.p.pid): raise OSError("AttachConsole: %d" % ctypes.get_last_error())
+        self.hin = k32.CreateFileW("CONIN$", 0xC0000000, 3, None, 3, 0, None); self.hout = k32.CreateFileW("CONOUT$", 0xC0000000, 3, None, 3, 0, None)
+        if self.hin in (None, wintypes.HANDLE(-1).value) or self.hout in (None, wintypes.HANDLE(-1).value): raise OSError("CONIN$/CONOUT$: %d" % ctypes.get_last_error())
+        if kod_sayfasi:
+            if not k32.SetConsoleCP(kod_sayfasi) or not k32.SetConsoleOutputCP(kod_sayfasi): raise OSError("kod sayfasi %d kurulamadi: %d" % (kod_sayfasi, ctypes.get_last_error()))
+        kip = wintypes.DWORD(0); k32.GetConsoleMode(self.hin, ctypes.byref(kip))
+        self.durum = "giris kipi 0x%04X (satir: %s, yanki: %s, islenmis: %s); giris kod sayfasi %d, cikis %d" % (kip.value, bool(kip.value & 2), bool(kip.value & 4), bool(kip.value & 1), k32.GetConsoleCP(), k32.GetConsoleOutputCP())
+    def tus(self, ch, vk=None, ctrl=0):
+        if vk is None:
+            vk = self.u32.VkKeyScanW(ord(ch)) & 0xFF
+            if vk == 0xFF: vk = 0
+        kayit = (INPUT_RECORD * 2)()
+        for i, asagi in enumerate((1, 0)):
+            kayit[i].EventType = 1; e = kayit[i].KeyEvent
+            e.bKeyDown = asagi; e.wRepeatCount = 1; e.wVirtualKeyCode = vk; e.wVirtualScanCode = self.u32.MapVirtualKeyW(vk, 0) & 0xFFFF; e.UnicodeChar = ch; e.dwControlKeyState = ctrl
+        n = wintypes.DWORD(0)
+        if not k32.WriteConsoleInputW(self.hin, kayit, 2, ctypes.byref(n)) or n.value != 2: raise OSError("WriteConsoleInput: %d" % ctypes.get_last_error())
+    def satir(self, s):
+        for c in s: self.tus(c)
+        self.tus("\r", 0x0D); time.sleep(2)
+    def ekran(self, kac=10):
+        b = CSBI()
+        if not k32.GetConsoleScreenBufferInfo(self.hout, ctypes.byref(b)): raise OSError("GetConsoleScreenBufferInfo: %d" % ctypes.get_last_error())
+        cik = []
+        for y in range(kac):
+            t = ctypes.create_unicode_buffer(b.dwSize.X + 1); n = wintypes.DWORD(0)
+            k32.ReadConsoleOutputCharacterW(self.hout, t, b.dwSize.X, COORD(0, y), ctypes.byref(n)); cik.append(t[:n.value].rstrip())
+        return cik
+    def kapat(self):
+        if self.p.poll() is None: self.p.kill()
         k32.FreeConsole()
+
+def t_konsol():
+    k = Konsol()
+    try:
+        bilgi("konsol: " + k.durum)
+        bos = k.ekran(); tamam("konsol: pencere bos acilir (arac kendiliginden bir sey yazmaz)", all(x == "" for x in bos), bos)
+        k.satir("-1"); e = k.ekran(); tamam("konsol: -1 yazilinca alt satira 34 gelir", e[:2] == ["-1", "34"], e)
+        k.satir("-33 para"); e = k.ekran(); tamam("konsol: -33 para yazilinca 66 para gelir", e[2:4] == ["-33 para", "66 para"], e)
+        k.satir("66 34 33 32 0"); e = k.ekran(); tamam("konsol: bes sayi tek satirda aynadan gecer", e[4:6] == ["66 34 33 32 0", "-33 -1 0 1 33"], e)
+        k.satir("merhaba"); e = k.ekran(); tamam("konsol: sayi olmayan yazi oldugu gibi doner", e[6:8] == ["merhaba", "merhaba"], e)
+        k.tus("\x1a", 0x5A, 0x0008); k.tus("\r", 0x0D)
+        try: kod = k.p.wait(timeout=10); bilgi("konsol: Ctrl+Z ve Enter aracin bitmesini sagladi, cikis %r; ekran: %s" % (kod, ascii(k.ekran()[8:10])))
+        except subprocess.TimeoutExpired: bilgi("konsol: Ctrl+Z ve Enter araci BITIRMEDI; ekran: %s" % ascii(k.ekran()[8:10]))
+    finally: k.kapat()
+
+TURKCE = "şeker 5 ığüöç -1"; TURKCE_YANIT = "şeker 28 ığüöç 34"
+
+def t_konsol_857():
+    # Turkce Windows'un konsol kod sayfasi (857): Turkce harfler aractan bozulmadan gecmeli.
+    k = Konsol(857)
+    try:
+        k.satir(TURKCE); e = k.ekran(4)
+        tamam("konsol, kod sayfasi 857: Turkce harfli satir bozulmadan gecer, sayilar aynadan gecer", e[:2] == [TURKCE, TURKCE_YANIT] and k.p.poll() is None, e)
+    finally: k.kapat()
+
+def t_konsol_utf8():
+    # UTF-8 konsol (65001): Turkce harfler cok baytlidir; arac her seferinde tek bayt ister. Sonuc bilgi olarak yazilir.
+    k = Konsol(65001)
+    try:
+        k.satir(TURKCE); e = k.ekran(4); yasiyor = k.p.poll() is None
+        bilgi("konsol, kod sayfasi 65001 (UTF-8): ekran %s; arac %s; beklenen yanit %s" % (ascii(e[:3]), "calisiyor" if yasiyor else "KAPANDI (cikis %r)" % k.p.returncode, "geldi" if e[:2] == [TURKCE, TURKCE_YANIT] else "GELMEDI"))
+        if yasiyor:
+            k.satir("-1"); e = k.ekran(6); bilgi("konsol, 65001: ardindan -1 yazilinca ekran %s" % ascii(e[2:5]))
+    finally: k.kapat()
 
 def t_defender():
     mp = os.path.join(os.environ.get("ProgramFiles", r"C:\Program Files"), "Windows Defender", "MpCmdRun.exe")
     if not os.path.exists(mp): bilgi("Defender: MpCmdRun.exe bu makinede yok; tarama yapilmadi"); return
-    r = subprocess.run([mp, "-Scan", "-ScanType", "3", "-File", EXE, "-DisableRemediation"], capture_output=True, timeout=900)
+    r = subprocess.run([mp, "-Scan", "-ScanType", "3", "-File", EXE, "-DisableRemediation"], stdin=subprocess.DEVNULL, capture_output=True, timeout=900)
     metin = " | ".join(x.strip() for x in (r.stdout + r.stderr).decode("mbcs", "replace").splitlines() if x.strip())[:500]
     if r.returncode in (0, 2): tamam("Defender dosyayi taradi ve tehdit bulmadi (cikis kodu %d)" % r.returncode, r.returncode == 0, metin)
     bilgi("Defender taramasi: cikis kodu %d; %s" % (r.returncode, ascii(metin)))
 
-for ad, f in (("ortam", t_ortam), ("elle yazilmis beklentiler", t_elle), ("sayilar", t_sayilar), ("rastgele akislar", t_akislar), ("uclar", t_uclar), ("ucsuz arac", t_ucsuz), ("konsol", t_konsol), ("defender", t_defender)):
+for ad, f in (("ortam", t_ortam), ("elle yazilmis beklentiler", t_elle), ("sayilar", t_sayilar), ("rastgele akislar", t_akislar), ("uclar", t_uclar), ("ucsuz arac", t_ucsuz), ("defender", t_defender), ("konsol", t_konsol), ("konsol 857", t_konsol_857), ("konsol utf-8", t_konsol_utf8)):
     dene(ad, f)
 yaz("")
 yaz("toplam: %d gecti, %d kaldi" % (sum(1 for s in satirlar if s.startswith("GECTI")), len(kalanlar)))
