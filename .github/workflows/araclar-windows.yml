@@ -1,0 +1,52 @@
+# oran.exe, 128.exe ve yuva.exe'yi GitHub'in Windows makinelerinde sinar.
+# Yalniz claude-sohbet dalina, claude-sohbet/araclar/ klasorune ya da bu dosyaya
+# bir sey gonderildiginde kosar. Depoda baska hicbir seyi degistirmez.
+name: araclar-windows
+on:
+  push:
+    branches: [claude-sohbet]
+    paths:
+      - 'claude-sohbet/araclar/**'
+      - '.github/workflows/araclar-windows.yml'
+permissions:
+  contents: read
+jobs:
+  sina:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-2022, windows-2025, windows-11-arm]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: claude-sohbet/araclar
+    steps:
+      - uses: actions/checkout@v4
+      - name: ortam
+        shell: pwsh
+        run: |
+          cmd /c ver
+          (Get-CimInstance Win32_OperatingSystem | Select-Object Caption, Version, BuildNumber, OSArchitecture | Format-List | Out-String).Trim()
+          try { (Get-MpComputerStatus | Select-Object AMServiceEnabled, AntivirusEnabled, RealTimeProtectionEnabled, AntivirusSignatureVersion | Format-List | Out-String).Trim() } catch { "Defender durumu okunamadi: $_" }
+          Get-ChildItem *.exe | ForEach-Object { certutil -hashfile $_.Name SHA256 | Select-Object -First 2 }
+          (Get-CimInstance Win32_PhysicalMemory | Select-Object BankLabel, DeviceLocator, Capacity, DataWidth, TotalWidth, FormFactor, Speed | Format-Table -AutoSize | Out-String).Trim()
+      - name: sina_araclar.cmd
+        shell: cmd
+        run: |
+          set SINA_BEKLEME=1
+          call sina_araclar.cmd
+          findstr /C:" 0 kaldi" araclar_sonucu.txt >nul || exit /b 1
+          findstr /C:"GECTI  yuva.exe" araclar_sonucu.txt >nul || exit /b 1
+      - name: sina.py
+        if: always()
+        shell: cmd
+        run: python -B sina.py
+      - name: sonuclar
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: araclar-${{ matrix.os }}
+          path: |
+            claude-sohbet/araclar/araclar_sonucu.txt
+            claude-sohbet/araclar/sina_sonucu.txt
