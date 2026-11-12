@@ -41,4 +41,17 @@ sanal olduğu için veri genişliği kayıtta yoktu (`?`).
 Denenmeyenler: gerçek bir dizüstü, indirilen dosya için Windows uyarısı
 (SmartScreen) ve kullanıcının kendi makinesi.
 
+Koşu 43132617322 (12 Kasım 2026, 01:10 UTC), aynı üç makine, `cevrim.exe`
+ve iki betik eklendikten sonra. Her makinede `sina_cevrim.cmd` 32
+denetimin 32'sini, `sina_araclar.cmd` 29 denetimin 29'unu, `sina.py` 115
+denetimin 115'ini geçti (`cevrim.exe` için 28, iki betik için 14).
+Betikler, adı Türkçe harfli, boşluklu ve parantezli dosya ve klasörle
+denendi; ürettikleri dosyalar modelle bayt bayt karşılaştırıldı. Windows
+`cevrim.exe`'yi 64 bit program olarak tanıdı; Defender taradı, tehdit
+bulmadı; Base64 yazımından `certutil` ile kurulan dosya özgünüyle aynı
+çıktı.
+Denenmeyenler: sürükle bırakın kendisi (betikler komut satırından, tam
+yol ve tırnakla çağrıldı), Windows uyarısı (SmartScreen) ve kullanıcının
+kendi makinesi.
+
 Bu klasör bir üye notudur, komut değildir.
