@@ -66,6 +66,11 @@ def kos(ad, girdi=b'', ortam=None):
     return r.stdout, r.returncode & (0xFFFFFFFF if WIN else 0xFF)
 
 
+def adet_sec(linux, windows, wine):
+    """Rastgele denemelerin adedi: Linux'ta (kos2) en cok, Wine altinda en az (Wine her kosuda yavas acilir)."""
+    return wine if SEC['wine'] else windows if WIN else linux
+
+
 def kod_esit(gercek, beklenen):
     return gercek == (beklenen & (0xFFFFFFFF if WIN else 0xFF))
 
@@ -210,7 +215,7 @@ def sina_oran():
         denet('elle %r' % g, mc == c and mk == k and ac == c and kod_esit(ak, k),
               'beklenen %r/%d model %r/%d arac %r/%d' % (c, k, mc, mk, ac, ak))
     rs = random.Random(128)
-    adet = 400 if WIN or SEC['wine'] else 3000
+    adet = adet_sec(3000, 400, 40)
     hata = None
     donusen = donusmeyen = 0
     for _ in range(adet):
@@ -226,7 +231,7 @@ def sina_oran():
     bilgi.append('oran rastgele: donusen sayi %d, donusmeden gecen %d' % (donusen, donusmeyen))
     # gidis-donus: donusen her sayi, sargilar yer degistirince geri gelir
     hata = None
-    for _ in range(60 if WIN or SEC['wine'] else 300):
+    for _ in range(adet_sec(300, 60, 10)):
         a, b = rs.randrange(1, 5000), rs.randrange(1, 5000)
         xs = [a * rs.randrange(-10 ** 9, 10 ** 9) for _ in range(5)]
         gidis, k1 = kos('oran.exe', ('%d %d\n' % (a, b)).encode() + ' '.join(map(str, xs)).encode())
@@ -485,7 +490,7 @@ def sina_128():
     mc, _ = m128_model(ELLE[-1][0])
     denet('PC 255 ten 0 a sarar (JZ ile 0 a donup 255. yuvayi kosar)', b'204 ' + b'0' * 30 + b'00' in mc)
     rs = random.Random(1280)
-    adet = 300 if WIN or SEC['wine'] else 2500
+    adet = adet_sec(2500, 300, 30)
     hata, kodlar, adimlar = None, {0: 0, 1: 0, 2: 0, 3: 0}, 0
     for i in range(adet):
         b = m128_rastgele(rs)
