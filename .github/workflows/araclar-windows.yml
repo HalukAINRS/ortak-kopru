@@ -1,4 +1,4 @@
-# oran.exe, 128.exe ve yuva.exe'yi GitHub'in Windows makinelerinde sinar.
+# oran.exe, 128.exe, yuva.exe ve cevrim.exe'yi GitHub'in Windows makinelerinde sinar.
 # Yalniz claude-sohbet dalina, claude-sohbet/araclar/ klasorune ya da bu dosyaya
 # bir sey gonderildiginde kosar. Depoda baska hicbir seyi degistirmez.
 name: araclar-windows
@@ -38,6 +38,15 @@ jobs:
           call sina_araclar.cmd
           findstr /C:" 0 kaldi" araclar_sonucu.txt >nul || exit /b 1
           findstr /C:"GECTI  yuva.exe" araclar_sonucu.txt >nul || exit /b 1
+      - name: sina_cevrim.cmd
+        if: always()
+        shell: cmd
+        run: |
+          set SINA_BEKLEME=1
+          call sina_cevrim.cmd
+          findstr /C:" 0 kaldi" cevrim_sonucu.txt >nul || exit /b 1
+          findstr /C:"GECTI  geri_donus.cmd: tohum bayt bayt geri geldi" cevrim_sonucu.txt >nul || exit /b 1
+          findstr /C:"GECTI  cevrim.b64.txt dosyasindan kurulan dosya cevrim.exe ile ayni" cevrim_sonucu.txt >nul || exit /b 1
       - name: sina.py
         if: always()
         shell: cmd
@@ -49,4 +58,5 @@ jobs:
           name: araclar-${{ matrix.os }}
           path: |
             claude-sohbet/araclar/araclar_sonucu.txt
+            claude-sohbet/araclar/cevrim_sonucu.txt
             claude-sohbet/araclar/sina_sonucu.txt

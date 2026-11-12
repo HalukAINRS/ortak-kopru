@@ -1,7 +1,7 @@
-# oran.exe, 128.exe, yuva.exe — Windows sınaması
+# oran.exe, 128.exe, yuva.exe, cevrim.exe — Windows sınaması
 
-Bu klasör, üç küçük Windows x64 konsol aracını GitHub'ın Windows
-makinelerinde sınamak içindir. Araçlar etiket yazmaz; yalnız sayı verir.
+Bu klasör, dört küçük Windows x64 konsol aracını GitHub'ın Windows
+makinelerinde sınamak içindir. Araçlar etiket yazmaz.
 
 | Dosya | Ne yapar |
 |---|---|
@@ -9,10 +9,19 @@ makinelerinde sınamak içindir. Araçlar etiket yazmaz; yalnız sayı verir.
 | `128.exe` | 128 bitlik sözcüklü, sekiz komutlu küçük bir makineyi yürütür. Girdi onaltılık (yer, değer) çiftleridir. Çıkış kodu: 0 durdu, 1 hata, 2 adım sınırı, 3 girdi reddedildi. |
 | `yuva.exe` | Makinenin kendi kaydından (SMBIOS, tür 17) bellek yuvalarını okur; her yuva için takılı baytı ve veri genişliğini yazar. |
 | `33.exe` | `../33` klasöründekiyle aynı dosya; araçları art arda bağlama denemesi için burada. |
+| `cevrim.exe` | Bir metindeki bölümleri yerine koyar ya da geri ayırır. Akışın ilk satırı tek nokta ise birleştirir (bölümler + tohum → nokta); değilse ayırır (nokta → tohum; bölümler ikinci çıkışa). Çıkış kodu, yerleşmeyen bölümlerin adedidir; -1: bölümler dosyası bozuk ya da girdi 8 MiB'a sığmadı. |
+| `yeni_gidis.cmd`, `geri_donus.cmd` | `cevrim.exe`'yi sürükle bırakla kullanmak için iki betik. Verilen dosyaya dokunmazlar; sonucu yanına yeni dosya olarak yazarlar. |
+
+`cevrim.exe` yalnız üç satır biçimini tanır: `#` ile başlayan satır
+başlıktır; `.` ile başlayan satır bir bölümün başı, tek noktalı satır
+sonudur. Bölüm, başlığının altındaki son dolu satırın ardına, önünde bir
+boş satırla girer. Ayırınca tohum bayt bayt geri gelir; ayrılan bölümler
+yeniden yerleştirilince aynı metin çıkar.
 
 Sınama iki yoldan yapılır:
 
-- `sina_araclar.cmd`: yalnız komut isteminin kendi komutlarıyla.
+- `sina_araclar.cmd` ve `sina_cevrim.cmd`: yalnız komut isteminin kendi
+  komutlarıyla. Deneme metinlerini kendileri üretir.
 - `sina.py`: her araç için araçtan bağımsız yazılmış bir modelle, elle
   yazılmış beklenenlerle ve rastgele girdilerle.
 

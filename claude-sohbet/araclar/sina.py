@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""sina.py -- oran.exe, 128.exe ve yuva.exe sinamasi.
+"""sina.py -- oran.exe, 128.exe, yuva.exe ve cevrim.exe sinamasi.
 
 Her arac icin bu dosyada, aractan bagimsiz yazilmis bir model vardir.
 Sinama uc seyi karsilastirir: elle yazilmis beklenenler, model, arac.
@@ -12,7 +12,8 @@ Secenekler: --klasor DIZIN (exe'lerin yeri)   --kos YOL (kos2)
             --isyuku DOSYA (is yuku programlari ve yayimlanmis degerler; yoksa o denetimler atlanir;
                             bu dosyanin yaninda isyuku.json varsa kendiliginden okunur)
             --izler DIZIN  (yayimlanmis adim adim izlerin klasoru; yoksa atlanir)
-            oran | 128 | yuva  (yalniz secilen araclar)
+            oran | 128 | yuva | cevrim | betikler  (yalniz secilenler; betikler: yeni_gidis.cmd ve
+                            geri_donus.cmd, yalniz Windows'ta ya da --wine ile)
 Cikti ASCII'dir; ayrica exe'lerin yanindaki sina_sonucu.txt dosyasina yazilir.
 """
 import json
@@ -48,8 +49,8 @@ def denet(ad, kosul, ayrinti=''):
         yaz('  KALDI  ' + ad + ('  ' + ayrinti if ayrinti else ''))
 
 
-def kos(ad, girdi=b'', ortam=None):
-    """Araci calistirir; (cikti baytlari, cikis kodu) verir."""
+def kos(ad, girdi=b'', ortam=None, ikinci=False):
+    """Araci calistirir; (cikti baytlari, cikis kodu) verir. ikinci=True ise ikinci cikis (stderr) da gelir."""
     exe = os.path.join(SEC['klasor'], ad)
     if WIN:
         komut = [exe]
@@ -63,6 +64,8 @@ def kos(ad, girdi=b'', ortam=None):
         e['WINEDEBUG'] = '-all'
     r = subprocess.run(komut, input=girdi, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                        env=e, timeout=300)
+    if ikinci:
+        return r.stdout, r.stderr, r.returncode & (0xFFFFFFFF if WIN else 0xFF)
     return r.stdout, r.returncode & (0xFFFFFFFF if WIN else 0xFF)
 
 
@@ -706,6 +709,375 @@ def sina_yuva():
     denet('rastgele 1500 kayit (bozuk ve kesik olanlar dahil): arac = model', hata is None, hata or '')
 
 
+# ============================================================ cevrim
+CEVRIM_SIGA = 0x800000
+
+
+def _satir(d, p):
+    """p'de baslayan satir: (icerik sonu, sonraki satirin basi). Icerik CR LF'yi kapsamaz."""
+    i = d.find(b'\n', p)
+    if i < 0:
+        return len(d), len(d)
+    return (i - 1 if i > p and d[i - 1] == 13 else i), i + 1
+
+
+def cevrim_model(d):
+    """(birinci cikis, ikinci cikis, cikis kodu). Reddedilirse (b'', b'', 0xFFFFFFFF)."""
+    n, RET = len(d), (b'', b'', 0xFFFFFFFF)
+    if n >= CEVRIM_SIGA:
+        return RET
+    ce, nx = _satir(d, 0) if n else (0, 0)
+    if n and d[:ce] == b'.':                                    # birlestirme (yeni gidis)
+        kayitlar, p = [], nx
+        while True:
+            if p >= n:
+                return RET
+            ce, nx = _satir(d, p)
+            if ce == p:
+                return RET
+            if d[p] == 0x2E:
+                if ce - p != 1:
+                    return RET
+                tohum = nx
+                break
+            if d[p] != 0x23 or len(kayitlar) >= 256:
+                return RET
+            anahtar, p = d[p:ce], nx
+            if p >= n:
+                return RET
+            ce, nx = _satir(d, p)
+            if ce - p < 2 or d[p] != 0x2E:
+                return RET
+            bas, p = p, nx
+            while True:
+                if p >= n:
+                    return RET
+                ce, nx = _satir(d, p)
+                if ce - p == 1 and d[p] == 0x2E:
+                    break
+                if ce - p >= 2 and d[p] == 0x2E and d[p - 4:p] == b'\r\n\r\n':
+                    return RET                                  # bolumun icinde ikinci bir bolum basi
+                p = nx
+            kayitlar.append([anahtar, d[bas:ce], False])
+            p = nx
+        c1, s, p = bytearray(), tohum, tohum
+        while p < n:
+            ce, nx = _satir(d, p)
+            baslik = d[p:ce]
+            if ce > p and d[p] == 0x23 and any(not k[2] and k[0] == baslik for k in kayitlar):
+                capa, q = ce, nx
+                while q < n:
+                    qce, qnx = _satir(d, q)
+                    if qce > q and d[q] == 0x23:
+                        break
+                    if qce > q:
+                        capa = qce
+                    q = qnx
+                c1 += d[s:capa]
+                s = capa
+                for k in kayitlar:
+                    if not k[2] and k[0] == baslik:
+                        k[2] = True
+                        c1 += b'\r\n\r\n' + k[1]
+                p = q
+            else:
+                p = nx
+        c1 += d[s:]
+        kalan = [k for k in kayitlar if not k[2]]
+        c2 = b''.join(k[0] + b'\r\n' + k[1] + b'\r\n' for k in kalan)
+        return bytes(c1), (b'.\r\n' + c2 + b'.\r\n' if kalan else b''), len(kalan)
+    c1, c2, s, p, anahtar, adet = bytearray(), bytearray(), 0, 0, None, 0   # ayirma (geri donus)
+    while p < n:
+        ce, nx = _satir(d, p)
+        if ce > p and d[p] == 0x23:
+            anahtar = d[p:ce]
+        elif ce - p >= 2 and d[p] == 0x2E and anahtar is not None and p >= 4 and d[p - 4:p] == b'\r\n\r\n':
+            q, son = nx, None
+            while q < n:
+                qce, qnx = _satir(d, q)
+                if qce - q == 1 and d[q] == 0x2E:
+                    son = (qce, qnx)
+                    break
+                if qce - q >= 2 and d[q] == 0x2E and d[q - 4:q] == b'\r\n\r\n':
+                    break                                       # ic ice olmaz: ilki bolum degildi
+                q = qnx
+            if son:
+                c1 += d[s:p - 4]
+                if adet == 0:
+                    c2 += b'.\r\n'
+                adet += 1
+                c2 += anahtar + b'\r\n' + d[p:son[0]] + b'\r\n'
+                s, p = son
+                continue
+        p = nx
+    c1 += d[s:]
+    if adet:
+        c2 += b'.\r\n'
+    return bytes(c1), bytes(c2), 0
+
+
+def cevrim_rastgele_tohum(rs, blok_olabilir=True):
+    basliklar = [b'### A', b'### B', b'### C', b'#', b'# uzun bir baslik satiri:', b'###']
+    s = bytearray()
+    for _ in range(rs.randrange(0, 14)):
+        t = rs.random()
+        if t < 0.22:
+            satir = rs.choice(basliklar)
+        elif t < 0.45:
+            satir = b''
+        elif t < 0.75:
+            satir = rs.choice([b'metin', b'iki kelime', b'x', b' bosluklu ', b'33 - x', b'a.b', b'..', b'#degil'[1:]])
+        elif t < 0.85 and blok_olabilir:
+            satir = rs.choice([b'.c:', b'.claude, 1:', b'.x'])
+        elif t < 0.93 and blok_olabilir:
+            satir = b'.'
+        else:
+            satir = b'son satir'
+        s += satir + rs.choice([b'\r\n'] * 6 + [b'\n', b'\r\n\r\n'])
+    if s and rs.random() < 0.4:
+        s = s.rstrip(b'\r\n')
+    return bytes(s)
+
+
+def cevrim_rastgele_baslik(rs, bozuk=False):
+    basliklar = [b'### A', b'### B', b'### C', b'#', b'# uzun bir baslik satiri:', b'### yok']
+    s = bytearray(b'.\r\n')
+    for _ in range(rs.randrange(0, 5)):
+        s += rs.choice(basliklar) + b'\r\n' + rs.choice([b'.c:', b'.claude, 2026:', b'.x']) + b'\r\n'
+        for _ in range(rs.randrange(0, 5)):
+            s += rs.choice([b'bolum satiri', b'', b'# bolum icinde kare', b'.nokta ile baslayan', b'33 - x', b' . ', b'bolum satiri']) + b'\r\n'
+        s += b'.\r\n'
+    s += b'.\r\n'
+    if bozuk:
+        i = rs.randrange(0, len(s))
+        s = rs.choice([s[:i], s[:i] + b'yabanci\r\n' + s[i:], s[:-3], s.replace(b'.\r\n', b'', 1) if rs.random() < 0.5 else s[:i] + b'\r\n' + s[i:]])
+    return bytes(s)
+
+
+def sina_cevrim():
+    yaz('cevrim.exe')
+    RET = 0xFFFFFFFF
+    T = b'bas\r\n### H\r\nx\r\n\r\n### G\r\ny'
+    H = b'.\r\n### H\r\n.c:\r\nmetin\r\n.\r\n.\r\n'
+    N = b'bas\r\n### H\r\nx\r\n\r\n.c:\r\nmetin\r\n.\r\n\r\n### G\r\ny'
+    ELLE = [
+        ('yeni gidis: bolum, basliginin bolgesindeki son dolu satirin ardina girer', H + T, N, b'', 0),
+        ('geri donus: bolum ayrilir, tohum bayt bayt geri gelir', N, T, H, 0),
+        ('bos akis', b'', b'', b'', 0),
+        ('bolumu olmayan metin aynen gecer', T, T, b'', 0),
+        ('bos baslik: tohum aynen gecer', b'.\r\n.\r\n' + T, T, b'', 0),
+        ('basligi olmayan bolum yerlesmez, sayilir ve ikinci cikistan geri gelir',
+         b'.\r\n### Z\r\n.c:\r\nm\r\n.\r\n.\r\n' + T, T, b'.\r\n### Z\r\n.c:\r\nm\r\n.\r\n.\r\n', 1),
+        ('ayni basliga iki bolum sirayla girer',
+         b'.\r\n### G\r\n.a:\r\n1\r\n.\r\n### G\r\n.b:\r\n2\r\n.\r\n.\r\n' + T,
+         b'bas\r\n### H\r\nx\r\n\r\n### G\r\ny\r\n\r\n.a:\r\n1\r\n.\r\n\r\n.b:\r\n2\r\n.', b'', 0),
+        ('iki bolum art arda ayrilir',
+         b'bas\r\n### H\r\nx\r\n\r\n### G\r\ny\r\n\r\n.a:\r\n1\r\n.\r\n\r\n.b:\r\n2\r\n.', T,
+         b'.\r\n### G\r\n.a:\r\n1\r\n.\r\n### G\r\n.b:\r\n2\r\n.\r\n.\r\n', 0),
+        ('basliktaki sira tohumdaki siradan farkli olabilir',
+         b'.\r\n### G\r\n.g:\r\n.\r\n### H\r\n.h:\r\n.\r\n.\r\n' + T,
+         b'bas\r\n### H\r\nx\r\n\r\n.h:\r\n.\r\n\r\n### G\r\ny\r\n\r\n.g:\r\n.', b'', 0),
+        ('bolgesi bos basligin capasi basligin kendisidir',
+         b'.\r\n### H\r\n.c:\r\n.\r\n.\r\n### H\r\n\r\n\r\n### G\r\n', b'### H\r\n\r\n.c:\r\n.\r\n\r\n\r\n### G\r\n', b'', 0),
+        ('basliksiz bolum ayrilmaz', b'x\r\n\r\n.c:\r\nm\r\n.\r\n', b'x\r\n\r\n.c:\r\nm\r\n.\r\n', b'', 0),
+        ('kapanisi olmayan bolum ayrilmaz', b'### H\r\nx\r\n\r\n.c:\r\nm\r\n', b'### H\r\nx\r\n\r\n.c:\r\nm\r\n', b'', 0),
+        ('iki satir sonunun ardinda durmayan bolum ayrilmaz', b'### H\r\nx\r\n.c:\r\nm\r\n.\r\n', b'### H\r\nx\r\n.c:\r\nm\r\n.\r\n', b'', 0),
+        ('LF ile ayrilmis bos satir yetmez (CR LF CR LF gerekir)', b'### H\nx\n\n.c:\nm\n.\n', b'### H\nx\n\n.c:\nm\n.\n', b'', 0),
+        ('tek noktali satirlar tek basina bolum degildir', b'### H\r\n\r\n.\r\n.\r\n', b'### H\r\n\r\n.\r\n.\r\n', b'', 0),
+        ('bozuk baslik: bolum basi yok', b'.\r\n### H\r\nx\r\n.\r\n.\r\n' + T, b'', b'', RET),
+        ('bozuk baslik: bolum kapanmamis', b'.\r\n### H\r\n.c:\r\nmetin\r\n', b'', b'', RET),
+        ('bozuk baslik: kapanis yok', b'.\r\n### H\r\n.c:\r\n.\r\n', b'', b'', RET),
+        ('bozuk baslik: bos satir', b'.\r\n\r\n.\r\n' + T, b'', b'', RET),
+        ('bozuk baslik: yabanci satir', b'.\r\nabc\r\n.\r\n' + T, b'', b'', RET),
+        ('yalniz acilis', b'.', b'', b'', RET),
+        ('bozuk baslik: bolumun icinde ikinci bir bolum basi', b'.\r\n### H\r\n.c:\r\n\r\n.d:\r\n.\r\n.\r\n' + T, b'', b'', RET),
+        ('ic ice olmaz: bos satirdan sonra nokta ile baslayan satir, gercek bolumu yutmaz',
+         b'### H\r\n\r\n..\r\nx\r\n\r\n.c:\r\nm\r\n.\r\ny', b'### H\r\n\r\n..\r\nx\r\ny',
+         b'.\r\n### H\r\n.c:\r\nm\r\n.\r\n.\r\n', 0),
+    ]
+    for ad, g, c1, c2, k in ELLE:
+        m = cevrim_model(g)
+        a = kos('cevrim.exe', g, ikinci=True)
+        denet('elle: ' + ad, m == (c1, c2, k) and a[:2] == (c1, c2) and kod_esit(a[2], k),
+              'model %r arac %r' % (m, a))
+    rs = random.Random(2)
+    adet = adet_sec(4000, 500, 40)
+    hata, sayac = None, {'ayir': 0, 'birlestir': 0, 'ret': 0, 'donen': 0, 'bolum': 0}
+    for i in range(adet):
+        t = cevrim_rastgele_tohum(rs)
+        h = cevrim_rastgele_baslik(rs, bozuk=rs.random() < 0.12)
+        g = rs.choice([t, h + t, h + t, h])
+        m = cevrim_model(g)
+        a = kos('cevrim.exe', g, ikinci=True)
+        if a[:2] != m[:2] or not kod_esit(a[2], m[2]):
+            hata = 'girdi %r model %r arac %r' % (g, m, a)
+            break
+        sayac['ret' if m[2] == RET else 'birlestir' if g[:1] == b'.' and _satir(g, 0)[0] == 1 else 'ayir'] += 1
+        if m[2] != RET and g is not t and m[0]:
+            # donus: aracin kurdugu nokta yine araca verilir
+            m2 = cevrim_model(m[0])
+            a2 = kos('cevrim.exe', m[0], ikinci=True)
+            if a2[:2] != m2[:2] or not kod_esit(a2[2], m2[2]):
+                hata = 'donus girdisi %r model %r arac %r' % (m[0], m2, a2)
+                break
+            sayac['donen'] += 1
+            sayac['bolum'] += m2[1].count(b'\r\n.\r\n')
+    denet('rastgele %d akis (ayirma, birlestirme, bozuk baslik): arac = model' % adet, hata is None, hata or '')
+    bilgi.append('cevrim rastgele: ayirma %(ayir)d, birlestirme %(birlestir)d, reddedilen %(ret)d; kurulan %(donen)d nokta yeniden ayrildi' % sayac)
+    # yasa: bolumsuz tohum + baslik -> nokta -> (tohum, baslik) -> ayni nokta
+    hata, tur = None, 0
+    for i in range(adet_sec(1500, 200, 20)):
+        t = cevrim_rastgele_tohum(rs, blok_olabilir=False)
+        h = cevrim_rastgele_baslik(rs)
+        n1, kalan, k1 = kos('cevrim.exe', h + t, ikinci=True)
+        if kod_esit(k1, RET):
+            continue                                            # bu baslik bozuk sayildi (ic ice bolum)
+        t2, h2, k2 = kos('cevrim.exe', n1, ikinci=True)
+        n2, kalan2, k3 = kos('cevrim.exe', h2 + t2, ikinci=True)
+        if t2 != t or n2 != n1 or k2 != 0 or k3 != 0 or kalan2 != b'':
+            hata = 'tohum %r baslik %r nokta %r donen tohum %r ikinci nokta %r' % (t, h, n1, t2, n2)
+            break
+        tur += 1
+    denet('yasa: %d kez gidis, donus, yeni gidis: tohum bayt bayt doner, ikinci nokta ilkiyle ayni' % tur, hata is None, hata or '')
+    buyuk = b'### B\r\nx\r\n\r\n.c:\r\n' + b'0123456789abcdef\r\n' * 150000 + b'.\r\n' + b'y\r\n' * 100000
+    m = cevrim_model(buyuk)
+    a = kos('cevrim.exe', buyuk, ikinci=True)
+    denet('buyuk akis (%d bayt, 2,7 MB lik bolum): arac = model' % len(buyuk), a[:2] == m[:2] and kod_esit(a[2], m[2]) and len(m[1]) > 2000000)
+    a = kos('cevrim.exe', b'a' * CEVRIM_SIGA, ikinci=True)
+    denet('8 MiB a sigmayan akis reddedilir, hicbir sey verilmez', a[:2] == (b'', b'') and kod_esit(a[2], RET))
+    a = kos('cevrim.exe', b'a' * (CEVRIM_SIGA - 1), ikinci=True)
+    denet('8 MiB tan bir bayt kisa akis islenir', a[0] == b'a' * (CEVRIM_SIGA - 1) and a[2] == 0)
+    if not WIN and not SEC['wine']:
+        g = H + T
+        denet('ZOR: korunmayan yazmaclar bozulunca sonuc ayni',
+              kos('cevrim.exe', g, {'ZOR': '1'}, ikinci=True)[:2] == cevrim_model(g)[:2]
+              and kos('cevrim.exe', N, {'ZOR': '1'}, ikinci=True)[:2] == cevrim_model(N)[:2])
+        a = kos('cevrim.exe', g, {'YAZ_KES': '1'}, ikinci=True)
+        denet('cikis ucu kapaninca arac durur (kod -1)', a[2] == 255 and len(a[0]) < len(N))
+
+
+# ============================================================ betikler
+def cevrim_ornek(rs):
+    """Yapay bir tohum ile alti bolumlu bir baslik. Gercek kullanima benzer: UTF-8, CR LF,
+    yinelenen basliklar, son satirda satir sonu yok, ilk ve son basliga ikiser bolum."""
+    hece = ['ara', 'bağ', 'çık', 'dön', 'göz', 'ışık', 'öz', 'şu', 'üç', 'yol', 'zemin', 'nokta', 'kod', '33', 'x']
+
+    def tumce(n):
+        return ' '.join(rs.choice(hece) for _ in range(n))
+    basliklar = ['### BİRİNCİ BAŞLIK: ' + tumce(6).upper(), '### İKİNCİ BAŞLIK:', '### ÜÇÜNCÜ BAŞLIK:', '### SON BAŞLIK:']
+    s = ['İlk satır: ' + tumce(5), '']
+    for _ in range(6):
+        s += ['### YİNELENEN BAŞLIK AŞAĞIDA:', '']
+        s += [tumce(rs.randrange(3, 12)) if rs.random() < 0.8 else '' for _ in range(rs.randrange(40, 100))]
+        s.append('')
+    s += [basliklar[0]] + [''] * 15
+    s += [basliklar[1], '', tumce(20), '', '']
+    s += [basliklar[2], '', tumce(18), '']
+    s += [basliklar[3], '', 'Son satır.']
+    tohum = '\r\n'.join(s).encode('utf-8')
+
+    def bolum(ad, n):
+        g = ['.' + ad + ':', '']
+        g += ['│ ' + tumce(rs.randrange(2, 9)) + ' │' if rs.random() < 0.5 else tumce(rs.randrange(1, 10)) for _ in range(n)]
+        return '\r\n'.join(g + ['', 'son satır', '.']).encode('utf-8')
+    sira = [(0, bolum('uye, 1', 40)), (0, bolum('uye, 2', 12)), (1, bolum('uye, 3', 25)),
+            (2, bolum('uye, 4', 9)), (3, bolum('uye, 5', 14)), (3, bolum('uye, 6', 6))]
+    baslik = b'.\r\n' + b''.join(basliklar[i].encode('utf-8') + b'\r\n' + b + b'\r\n' for i, b in sira) + b'.\r\n'
+    eski = tohum[:tohum.index(basliklar[1].encode('utf-8'))].rstrip(b'\r\n')
+    return tohum, baslik, eski
+
+
+def betik_kos(dizin, betik, *dosyalar):
+    """Bir .cmd betigini calistirir: (cikis kodu, konsola yazdigi). Windows'ta surukle birakta oldugu gibi
+    betik de dosya da tam yoluyla ve tirnak icinde verilir."""
+    e = dict(os.environ, SINA_BEKLEME='1')
+    if WIN:
+        komut = 'cmd /d /s /c "' + ' '.join('"%s"' % os.path.join(dizin, x) for x in (betik,) + dosyalar) + '"'
+    else:
+        e['WINEDEBUG'] = '-all'
+        komut = ['wine', 'cmd', '/c', betik] + list(dosyalar)
+    r = subprocess.run(komut, env=e, cwd=dizin, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE,
+                       stderr=subprocess.STDOUT, timeout=600)
+    return r.returncode & (0xFFFFFFFF if WIN else 0xFF), r.stdout.decode('ascii', 'replace').replace('\r', '')
+
+
+def sina_betikler():
+    """yeni_gidis.cmd ve geri_donus.cmd: yalniz Windows'ta (ya da --wine ile). Urettikleri dosyalar
+    burada, betiklerden bagimsiz olarak modelle bayt bayt karsilastirilir."""
+    yaz('betikler: yeni_gidis.cmd, geri_donus.cmd')
+    gerek = ('cevrim.exe', 'yeni_gidis.cmd', 'geri_donus.cmd')
+    eksik = [x for x in gerek if not os.path.exists(os.path.join(SEC['klasor'], x))]
+    if eksik:
+        bilgi.append('betikler sinanmadi; yok: ' + ', '.join(eksik))
+        return
+    RET = 0xFFFFFFFF
+    tohum, baslik, eski = cevrim_ornek(random.Random(5))
+    nokta, kalan, k = cevrim_model(baslik + tohum)
+    denet('ornek (%d baytlik tohum, 6 bolum): modelde hepsi yerlesiyor, donuste tohum ve baslik geri geliyor' % len(tohum),
+          k == 0 and kalan == b'' and cevrim_model(nokta) == (tohum, baslik, 0))
+    dizin = tempfile.mkdtemp(prefix='deneme klasörü (2) ', dir=SEC['klasor'])
+    for x in gerek:
+        with open(os.path.join(SEC['klasor'], x), 'rb') as f, open(os.path.join(dizin, x), 'wb') as g:
+            g.write(f.read())
+
+    def oku(x):
+        y = os.path.join(dizin, x)
+        return open(y, 'rb').read() if os.path.exists(y) else None
+
+    def koy(x, d):
+        with open(os.path.join(dizin, x), 'wb') as f:
+            f.write(d)
+    ad = 'çalışma dosyası (deneme)'
+    koy(ad + '.html', tohum)
+    koy('bolumler.txt', baslik)
+    kod, yazi = betik_kos(dizin, 'yeni_gidis.cmd', ad + '.html')
+    denet('yeni_gidis.cmd: adi Turkce harfli, bosluklu, parantezli dosya ve klasor; nokta = model (kod 0)',
+          kod == 0 and oku(ad + '.nokta.html') == nokta, 'kod %d yazi %r' % (kod, yazi))
+    denet('yeni_gidis.cmd: verilen dosyaya dokunmadi; gecici dosya ve yerlesmeyen dosyasi birakmadi',
+          oku(ad + '.html') == tohum and sorted(os.listdir(dizin)) == sorted(gerek + ('bolumler.txt', ad + '.html', ad + '.nokta.html')),
+          repr(sorted(os.listdir(dizin))))
+    if WIN:
+        denet('yeni_gidis.cmd kendi denemesini yapti (fc): nokta ayrilinca tohum bayt bayt geri geliyor',
+              'Denendi: nokta ayrilinca tohum bayt bayt geri geliyor.' in yazi and 'Butun bolumler yerlesti.' in yazi, repr(yazi))
+    kod, yazi = betik_kos(dizin, 'geri_donus.cmd', ad + '.nokta.html')
+    denet('geri_donus.cmd: tohum bayt bayt, bolumler basliklariyla geri geldi (kod 0)',
+          kod == 0 and oku(ad + '.nokta.tohum.html') == tohum and oku(ad + '.nokta.bolumler.txt') == baslik,
+          'kod %d yazi %r' % (kod, yazi))
+    if WIN:
+        denet('geri_donus.cmd kendi denemesini yapti (fc): yeniden birlestirince ayni nokta',
+              'Denendi: tohum ile bolumler yeniden birlestirilince ayni nokta cikti.' in yazi, repr(yazi))
+    kod, yazi = betik_kos(dizin, 'yeni_gidis.cmd', ad + '.nokta.tohum.html', ad + '.nokta.bolumler.txt')
+    denet('yeni_gidis.cmd: donen tohum ile donen bolumlerden kurulan ikinci nokta ilkiyle ayni',
+          kod == 0 and oku(ad + '.nokta.tohum.nokta.html') == nokta, 'kod %d yazi %r' % (kod, yazi))
+    kod, yazi = betik_kos(dizin, 'yeni_gidis.cmd', ad + '.nokta.html')
+    denet('yeni_gidis.cmd: icinde bolum olan dosyada bolumler iki kez girmedi; oncekiler ayri dosyaya yazildi',
+          kod == 0 and oku(ad + '.nokta.nokta.html') == nokta and oku(ad + '.nokta.onceki_bolumler.txt') == baslik,
+          'kod %d yazi %r' % (kod, yazi))
+    m = cevrim_model(baslik + eski)
+    koy('eski sürüm.html', eski)
+    kod, yazi = betik_kos(dizin, 'yeni_gidis.cmd', 'eski sürüm.html')
+    denet('yeni_gidis.cmd: eski tohumda basligi duran 2 bolum yerlesti; 4 bolum yerlesmeyen dosyasinda (kod 4)',
+          kod == 4 == m[2] and oku('eski sürüm.nokta.html') == m[0] and oku('eski sürüm.yerlesmeyen.txt') == m[1],
+          'kod %d yazi %r' % (kod, yazi))
+    kod, yazi = betik_kos(dizin, 'geri_donus.cmd', 'eski sürüm.nokta.html')
+    denet('geri_donus.cmd: eski tohum bayt bayt geri geldi',
+          kod == 0 and oku('eski sürüm.nokta.tohum.html') == eski, 'kod %d yazi %r' % (kod, yazi))
+    kod, yazi = betik_kos(dizin, 'geri_donus.cmd', ad + '.html')
+    denet('geri_donus.cmd: bolumu olmayan dosyada bir sey yazmadi (kod 1)',
+          kod == 1 and oku(ad + '.tohum.html') is None and oku(ad + '.bolumler.txt') is None, 'kod %d yazi %r' % (kod, yazi))
+    kod, yazi = betik_kos(dizin, 'geri_donus.cmd', 'bolumler.txt')
+    denet('geri_donus.cmd: bolumler dosyasi verilince reddetti, bir sey yazmadi (kod -1)',
+          kod_esit(kod, RET) and oku('bolumler.tohum.txt') is None and oku('bolumler.bolumler.txt') is None, 'kod %d yazi %r' % (kod, yazi))
+    koy('bozuk.txt', b'.\r\nyabanci\r\n')
+    kod, yazi = betik_kos(dizin, 'yeni_gidis.cmd', ad + '.html', 'bozuk.txt')
+    denet('yeni_gidis.cmd: bozuk bolumler dosyasinda nokta yazmadi (kod -1)',
+          kod_esit(kod, RET) and oku(ad + '.nokta.html') == nokta, 'kod %d yazi %r' % (kod, yazi))
+    denet('betikler gecici dosya birakmadi', not any(x.endswith('.tmp') for x in os.listdir(dizin)), repr(sorted(os.listdir(dizin))))
+    if WIN:
+        import shutil
+        shutil.rmtree(dizin, ignore_errors=True)
+
+
 def sina_windows():
     """Yalniz Windows: dosya turu ve Defender taramasi."""
     import ctypes
@@ -715,7 +1087,7 @@ def sina_windows():
     k32.GetBinaryTypeW.argtypes = [wintypes.LPCWSTR, ctypes.POINTER(wintypes.DWORD)]
     k32.GetBinaryTypeW.restype = wintypes.BOOL
     mp = os.path.join(os.environ.get('ProgramFiles', r'C:\Program Files'), 'Windows Defender', 'MpCmdRun.exe')
-    for ad in ('oran.exe', '128.exe', 'yuva.exe'):
+    for ad in ('oran.exe', '128.exe', 'yuva.exe', 'cevrim.exe'):
         yol = os.path.join(SEC['klasor'], ad)
         tur = wintypes.DWORD(99)
         iyi = k32.GetBinaryTypeW(yol, ctypes.byref(tur))
@@ -742,9 +1114,11 @@ def ana():
             SEC[x[2:]] = a.pop(0)
         else:
             secim.append(x)
-    for ad, f in (('oran', sina_oran), ('128', sina_128), ('yuva', sina_yuva)):
+    for ad, f in (('oran', sina_oran), ('128', sina_128), ('yuva', sina_yuva), ('cevrim', sina_cevrim)):
         if not secim or ad in secim:
             f()
+    if (WIN or SEC['wine']) and (not secim or 'betikler' in secim):
+        sina_betikler()
     if WIN and not secim:
         sina_windows()
     for b in bilgi:
